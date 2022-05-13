@@ -1,0 +1,1040 @@
+
+% Last updated: April 29, 2021
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+%SetFonts
+
+%SetFonts
+\let\L\relax
+\newcommand{\L}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\Li}[1]{\mathcal{L}^{-1}\left\{#1\right\}}
+
+
+\title{Differential Equations}
+
+\date{\today}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{First order differential equations}
+\subsection{Introduction}
+Suppose you are shown the equality
+$$
+dy/dx = -2x + 3y - 5
+$$
+and you know that its solution is of the form
+$$
+y = mx + b.
+$$
+Figuring out what $m$ and $b$ are would solve this \underline{differential equation}. We know that
+$$
+dy/dx = m,
+$$
+so
+$$
+m = -2x + 3(mx+b)-5.
+$$ 
+We find that 
+$$
+m = (3m -2)x + 3b - 5,
+$$
+so $3m - 2 = 0$ and $3b-5=m$. Thus, $m = 2/3$ and $b = 17 / 9$, so the solution to this differential equation is
+$$
+y = 2/3 x + 17 / 9.
+$$
+\subsection{Euler's method}
+We know that if 
+$$
+dy/dx = y
+$$ and $y(0) = 1$, then
+$$
+y = e^x
+$$
+is the solution. In the table below, we'll start with the initial condition, then increment $x$ by some $\Delta x$, say $1$, each time. We increment $y$ by the previous $dy/dx$ value times $\Delta x$, and we get a polygonal approximation for the solution.
+\begin{center} 
+\begin{tabular}{|c |c |c|} 
+\hline
+$x$ & $y$ & $dy/dx$\\ 
+\hline
+0 & 1 & 1 \\ 
+\hline
+1 & 2 & 2  \\
+\hline
+2 & 4 & 4\\
+\hline
+3 & 8 & 8 \\
+\hline
+\end{tabular}
+\end{center}
+The table below is from $\Delta x = 1/2$.
+\begin{center}
+\begin{tabular}{|c |c |c|} 
+\hline
+$x$ & $y$ & $dy/dx$\\ 
+\hline
+0 & 1 & 1 \\ 
+\hline
+1/2 & 3/2 & 3/2  \\
+\hline
+1 & 9/4 & 9/4\\
+\hline
+3/2 & 27/8 & 27/8\\
+\hline
+\end{tabular}
+\end{center}
+This method is called \underline{Euler's method}.\\\\
+\textbf{Example.} Consider the differential equation
+$$
+dy/dx = 3x - 2y.
+$$
+Let $y=g(x)$ be a solution to the differential equation with the initial condition $g(0) = k$ where $k$ is a constant. Euler's method, starting at $x=0$ with a step size of $1$ gives the approximation $g(2) = 4.5$. Determine $k$. \\\\
+Let's set up the table.
+\begin{center}
+\begin{tabular}{|c |c |c|} 
+\hline
+$x$ & $y$ & $dy/dx$\\ 
+\hline
+$0$ & $k$ & $-2k$ \\ 
+\hline
+$1$ & $-k$ & $3+2k$  \\
+\hline
+$2$ &  $3 + k$ & $4.5$\\
+\hline
+\end{tabular}
+\end{center}
+We know that $3+k = 4.5$, so $k=1.5$.
+\subsection{Separable equations}
+Suppose you want to find the solution to 
+$$
+dy/dx = -x/ye^{x^2}
+$$
+that goes through the point $(0,1)$. We can see that this differential equation to get
+$$
+y\, dy = -xe^{-x^2}dx.
+$$
+This is a \underline{separable differential equation}. We can now integrate both sides:
+\begin{align*}
+\int y \,dy &= \int -xe^{-x^2}dx\\
+y^2 / 2 + C_1 &= 1/2 e^{-x^2} + C_2\\
+y^2/2 &= 1/2 e^{-x^2} + C\\ 
+\end{align*}
+We find that with the initial condition $C = 0$. We then get 
+\begin{align*}
+y^2 &= e^{-x^2}\\
+y &= \sqrt{e^{-x^2}}\\
+y &= e^{-x^2/2}
+\end{align*}
+as the solution. A differential equation is separable if we can write $dy/dx$ as a function of $x$ times a function of $y$. \\\\
+\textbf{Example.} Determine the solution of the differential equation
+$$
+dy/dx = 2y^2
+$$
+passing through the point $(1,-1)$. \\\\
+We know that 
+$$
+1/2y^{-2} dy = dx
+$$
+so
+\begin{align*}
+\int 1/2y^{-2}dy &= \int dx\\
+-1/2y^{-1} &= x + C\\
+y &= 1 / (-2x + C).\\
+\end{align*}
+From the initial condition, we know that $C=1$, so the solution is
+$$
+y = \frac{1}{-2x+1}.\\
+$$
+Note that if 
+$$
+dy/dx = ky,
+$$
+the solution is 
+$$
+y = ae^{kx}.
+$$
+
+\subsection{Newton's law of cooling}
+Suppose we have an object hotter or cooler than ambient room temperature. \underline{Newton's law of cooling} states that the rate of change of the temperature is proportional to the difference between the object's temperature and the ambient temperature:
+$$
+dT/dt = -k(T - T_\textrm{ambient}).
+$$
+Solving this differential equation, we find that 
+$$
+1 / (T - T_\textrm{ambient}) dT = -k dt.
+$$
+So, 
+\begin{align*}
+\int 1 / (T - T_\textrm{ambient}) dT &= \int -k dt\\
+\log |T - T_\textrm{ambient}| &= -kt + C\\
+|T - T_\textrm{ambient}|&= e^{-kt + C} = Ce^{-kt}.
+\end{align*}
+If $T \geqslant T_\textrm{ambient}$, then
+$$
+T(t) = Ce^{-kt} + T_\textrm{ambient}.
+$$
+If $T < T_\textrm{ambient}$, then
+$$
+T(t) = T_\textrm{ambient} - Ce^{-kt}.\\\\
+$$
+\textbf{Example.} Suppose a bowl of oatmeal at $80$ degrees Celsius is placed in a room with temperature $20$ degrees Celsius. After two minutes, the oatmeal is at $60$ degrees Celsius. How many minutes have passed when the oatmeal is at $40$ degrees Celsius?\\\\
+We know that $C = 60$ from the initial condition. So,
+$$
+T(t) = 60 e^{-kt} + 20.
+$$
+From the second condition,
+\begin{align*}
+60 &= 60e^{-2k} + 20\\
+k &= -\log(2/3)/2.
+\end{align*}
+Thus,
+$$
+T(t) = 60 e^{-t \cdot \log(2/3)/2} + 20.
+$$
+Finishing up,
+\begin{align*}
+40 &=  60 e^{-t \cdot \log(2/3)/2} + 20 \\
+t &= 2 \log(1/3)/\log(2/3).\\\\
+\end{align*}
+
+\subsection{Logistic models}
+Suppose $N(t)$ is the population at a time $t$. We can say that the rate of change of the population is proportional to the population:
+$$
+dN/dt = rN.
+$$
+We find that 
+$$
+N(t) = N_0e^{rt}
+$$
+where $N_0$ is the initial population. Malthus proposed that there was a limit to this exponential growth, and P. F. Verhulst formalized this proposition in the form of a differential equation:
+$$
+dN/dt = rN(1 - N/k)
+$$
+where $k$ is the ``natural limit.'' It is called the \underline{logistic differential equation}. Solving this equation, we get
+$$
+\frac{1}{N(1-N/k)}dN = r\, dt.
+$$
+After a partial fraction expansion, we get
+$$
+\left( \frac{1}{N} + \frac{1/k}{1-N/k}\right)dN = r\, dt.
+$$
+Anti-differentiating and assuming that $0<N(t)<k$,
+$$
+\log N - \log (1-N/k) = rt + C_1
+$$
+which simplifies to 
+$$
+\log \left(\frac{N}{1-N/k}\right) = rt + C_1.
+$$
+Thus,
+$$
+\frac{N}{1-N/k} = e^{rt +C_1} = C_2 e^{rt}.
+$$
+Manipulating further,
+$$
+\frac{1}{N} - \frac{1}{k} = C_3e^{-rt}.
+$$
+Finally,
+$$
+N(t) = \frac{1}{C_3e^{-rt} + 1/k}.
+$$
+What is $C_3$?
+\begin{align*}
+N_0 &= \frac{1}{C_3 + 1/k}\\
+C_3 &= \frac{1}{N_0} - \frac{1}{k}.
+\end{align*}
+Now we get
+$$
+N(t) = \frac{N_0k}{(k-N_0)e^{-rt} + N_0}
+$$
+as the ``logistic function.''
+
+\subsection{Exact equations and integrating factors}
+Suppose $\Psi$ is a function of $x$ and $y$. Then 
+$$
+\frac{d}{dx} \Psi = \partial_ x\Psi +\partial_y\Psi \frac{dy}{dx}.
+$$
+Trying to provide some intuition, suppose
+$$
+\Psi = f_1(x)g_1(y) + \cdots +f_n(x)g_n(y).
+$$
+Then 
+\begin{align*}
+\frac{d \Psi}{dx} &= f_1'(x)g_1(y) + f_1(x)g_1'(y)\frac{dy}{dx} + \cdots + f_n'(x)g_n(y) + f_n(x)g_n'(y)\frac{dy}{dx}\\
+& = \left(f_1'(x)g_1(y) + \cdots + f_n'(x)g_n'(y)\right) +  \left(f_1(x)g_1'(y) + \cdots +  f_n(x)g_n'(y) \right)\frac{dy}{dx}\\
+&= \partial_x\Psi +\partial_y\Psi\frac{dy}{dx}.
+\end{align*}
+If $y$ is independent of $x$ then this derivative is simply the partial derivative. If the partial derivatives of $\Psi$ meet some continuity properties, then 
+$$
+\partial_{xy}\Psi = \partial_{yx}\Psi .
+$$
+An \underline{exact equation} is of the form
+$$
+M(x,y) + N(x,y)\frac{dy}{dx} = 0
+$$
+where $M=\partial_x \Psi$ and $N=\partial_y \Psi$. We can rewrite the above form as
+$$
+\partial_x \Psi + \partial_y\Psi \frac{dy}{dx} = \frac{d}{dx}\Psi = 0
+$$
+which means that $\Psi = C$. So, going back to the original form, 
+$$
+\partial_y M = \partial_x N \iff \textrm{exact equation},
+$$
+which implies that there exists a $\Psi$ such that 
+$$
+\frac{d}{dx}\Psi = 0
+$$
+where $\partial_x \Psi=M$ and $\partial_y \Psi=N$.\\\\
+\textbf{Example.} Solve
+$$
+(y\cos x + 2xe^y) + (\sin x + x^2 e^y-1)y' = 0.
+$$
+This is not separable. We find 
+$$
+\partial_y M = \cos x + 2xe^y\textrm{ and } \partial_x N = \cos x + 2xe^y,
+$$
+so $\partial_y M=\partial_x N $ and thus this is an exact equation. We know 
+$$
+\partial_x \Psi = y\cos x + 2xe^y
+$$ and 
+\begin{align*}
+\int \partial_x \Psi 	&= \int (y\cos x + 2xe^y)dx + f(y)\\
+\Psi				&= y\sin x  + x^2e^y + f(y).
+\end{align*}
+Thus
+$$
+\frac{\partial \Psi}{\partial y} = \sin x + x^2e^y + f'(y) = \sin x + x^2e^y - 1
+$$
+by definition. We get 
+$$
+f'(y) = -1\implies f(y) = y+C.
+$$
+So
+$$
+\Psi(x,y) = y\sin x + x^2e^y - y + C.
+$$
+Also, $d/dx \Psi = 0 $, so we get the solution 
+$$
+\boxed{y\sin x + x^2e^y - y = C.}
+$$
+\textbf{Example.} Find the solution to 
+$$
+2x + 3 + (2y-2)y' = 0.
+$$
+We know
+$$
+\partial _y M = 0 \textrm{ and } \partial _x N = 0,
+$$
+so this is exact. It is worth noting that this is also separable. We know that there is a $\Psi$ such that 
+$$
+\partial_x \Psi = 2x+3\textrm{ and } \partial_y \Psi = 2y+3.
+$$
+Anti-differentiating with respect to $x$, 
+$$
+\Psi = x^2 + 3x + h(y).
+$$
+So
+$$
+\partial_y \Psi = h' (y)=2y-2\implies h(y) = y^2 - 2y.
+$$
+Therefore, 
+$$
+\Psi(x,y) = x^2 + 3x + y^2 - 2y,
+$$
+and since $\Psi=C$, 
+$$
+\boxed{x^2 + 3x + y^2 - 2y = C.}
+$$
+\textbf{Example.} Determine the solution to 
+$$
+(3x^2  - 2xy + 2)dx + (6y^2 - x^2+3)dy = 0.
+$$
+We can rewrite this as
+$$
+3x^2  - 2xy + 2+ (6y^2 - x^2+3)\frac{dy}{dx} = 0.
+$$
+We know that 
+$$
+\partial _y M = -2x \textrm{ and } \partial _x N = -2x,
+$$
+and so this is exact. So 
+$$
+\partial _x \Psi - 3x^2 - 2xy + 2\implies \Psi = x^3 - x^2y + 2x + h(y).
+$$
+Solving for $h$,
+$$
+\partial_y\Psi = -x^2 + h'(y) = 6y^2 - x^2 + 3.
+$$
+We find that 
+$$
+h'(y) = 6y^2 + 3\implies h(y) = 2y^3 + 3y.
+$$
+So 
+$$
+\Psi(x,y) = x^3 - x^2y + 2x + 2y^3 + 3y.
+$$
+We know that $d/dx\Psi = 0 $ (which one can confirm by implicit differentiation) and thus the solution is
+$$
+\boxed{x^3 - x^2y + 2x + 2y^3 + 3y = C.}
+$$
+\textrm{}\\ Suppose 
+$$
+(3xy + y^2) + (x^2 + xy)y' = 0.
+$$
+Checking for exactness,
+$$
+\partial_y M =  3x + 2y \textrm{ and }\partial_x  N= 2x + y.
+$$
+Based on our current methods, this is not exact. But what if there were some factor $\mu$ by which we could multiply the differential equation to make it exact? Suppose $\mu $ is a function of $x$. Then there may be a $\mu $ such that
+$$
+\mu(x) (3xy + y^2) + \mu(x)(x^2 + xy)y' = 0.
+$$
+Checking for exactness,
+$$
+\partial_y M =  \mu(x)(3x + 2y) \textrm{ and }\partial_x  N= \mu'(x)(x^2 + xy) + \mu(x)(2x + y).
+$$
+We know that for this to be exact, 
+$$
+\mu(x)(3x + 2y) = \mu'(x)(x^2 + xy) + \mu(x)(2x + y).
+$$
+After simplification,
+$$
+\mu(x) =  \frac{d\mu}{dx} x, 
+$$
+and simplifying even more,
+$$
+1/x \,dx = 1/\mu\, d\mu\implies x =\mu.
+$$
+We call this $\mu$ the \underline{integrating factor}. Multiplying by $\mu$, we find that when checking for exactness,
+$$
+\partial_y M =  3x^2 + 2xy \textrm{ and }\partial_x  N= 3x^2 + 2xy,
+$$
+so, indeed, the differential equation is exact. We know that there exists a $\Psi$ such that
+$$
+\partial_x \Psi  = 3x^2y + xy^2\implies \Psi = x^3y + 1/2x^2y^2 + h(y).
+$$
+Solving for $h$,
+$$
+\partial_y \Psi = x^3 + x^2y + h'(y) = x^3 + x^2y \implies h'(y) = 0 \implies h(y) = C.
+$$
+Since $d/dx \Psi = 0$, the solution is 
+$$
+x^3y + 1/2x^2y^2 = C.
+$$
+
+\subsection{First order homogenous equations}
+Suppose 
+$$
+dy/dx = f(x,y).
+$$
+If we can rewrite this such that
+$$
+dy/dx = F(y/x),
+$$
+the equation is a \underline{homogenous differential equation}. For example, if 
+$$
+dy/dx =  \frac{x+y}{x},
+$$
+we can rewrite it as
+$$
+dy/dx = 1 + y/x.
+$$
+We make a substitution, letting $v = y/x$. So $y = xv$. Also, $dy/dx = v + x dv/dx$. So
+$$
+v+x\frac{dv}{dx} = 1 + v\implies du = \frac{1}{x}\,dx.
+$$
+Anti-differentiating and solving,
+\begin{align*}
+\int dv 	&= \int \frac{1}{x}\,dx\\
+	v	&= \log|x| + C\\
+	y/x	&= \log|x| + C\\
+	y 	&=x\log|x| + Cx.
+\end{align*}
+\textbf{Example.} Solve
+$$
+dy/dx  = \frac{x^2+3y^2}{2xy}.
+$$
+We rewrite this as
+$$
+dy/dx = \frac{1+3(y/x)^2}{2(y/x)}.
+$$
+Let $v= y/x$. Then $y=xv$ and $dy/dx = v + xdv/dx$. So 
+$$
+v+x v' = \frac{1+3v^2}{2v} \implies \frac{2v}{1+v^2}\,dv = \frac{1}{x}\,dx.
+$$
+Anti-differentiating and solving,
+\begin{align*}
+\int\frac{2v}{1+v^2}\,dv 	&= \int\frac{1}{x}\,dx\\
+\log(1+v^2)			&= \log|Cx|\\
+1+v^2 				&= Cx\\
+1 + (y/x)^2 			&= Cx\\
+x^2 + y^2	- Cx^3		&= 0.
+\end{align*}
+\section{Second order differential equations}
+\subsection{Linear second order equations}
+This equation
+$$
+a(x)y'' +b(x)y' +c(x)y = d(x)
+$$
+is second order and linear since its coefficients are functions of $x$. We now study the case where $a$, $b$, and $c$ are constants and $d$ is $0$:
+$$
+Ay'' + By' + Cy = 0.
+$$
+This is \underline{homogenous} because it is set equal to zero. We call this a second order linear homogenous differential equation. Suppose $g(x)$ is a solution. $C_1g$ is also a solution. If $h(x)$ is a solution, $g + h$ is also a solution.\\\\
+\textbf{Example.} Solve
+$$
+y'' + 5y' + 6y =0.
+$$
+$y$ is going to be of the form $e^{rx}$, since its derivatives are powers of $r$ times itself. We solve for $r$:
+\begin{align*}
+r^2e^{rx} + 5 re^{rx} + 6e^{rx} 	&= 0 \\
+e^{rx} (r^2 + 5r + 6) 			&= 0 \\
+\implies (r+3)(r+2)			&= 0.
+\end{align*}
+So $r=-2$ or $-3$. Thus, the general solution is 
+$$
+\boxed{y = C_1e^{-2x} + C_2e^{-3x}.}
+$$
+\textbf{Example.} Find the solution to the above equation if $y(0) = 2$ and $y'(0)=3$. \\\\
+We get 
+$$
+y(0) = 2 = C_1 + C_2
+$$
+and
+$$
+y'(0) = 3 = -2C_1 - 3C_2.
+$$
+We find that $C_1 =9 $ and $C_2 = -7$. So the solution is
+$$
+\boxed{y = 9e^{-2x} - 7e^{-3x}.}
+$$
+\textbf{Example.} Solve
+$$
+4y'' - 8y' + 3y = 0
+$$
+where $y(0)=2$ and $y'(0) = 1/2$.\\\\
+We go straight to the \underline{characteristic equation}:
+\begin{align*}
+4r^2 - 8r + 3 	&= 0\\
+\implies r		&= 1 \pm 1/2.
+\end{align*}
+The general solution is 
+$$
+y= C_1e^{3/2x} + C_2 e^{1/2x}.
+$$
+Solving for $C_1$ and $C_2$, one finds that
+$$
+\boxed{y=  5/2 e^{1/2x} - 1/2Ce^{3/2x}.}
+$$
+\subsection{Complex and repeated roots of the characteristic equation}
+We know that for 
+$$
+Ay'' + By'+Cy=0
+$$
+the characteristic equation is 
+$$
+Ar^2 + Br + C = 0
+$$
+and the general solution is 
+$$
+y  = C_1 e^{r_1x} + C_2 e^{r_2x}
+$$
+where the $r_i$ are real. What if $\Delta = B^2 - 4AC < 0$, i.e. the roots are complex? Firstly, the $r_i$ are conjugate. In particular, if $\lambda = -B/2A$ and $\mu = \sqrt{|B^2-4AC|}/2A$, then
+$$
+r = \lambda \pm \mu i. 
+$$
+We get the general form as 
+$$
+y = e^{\lambda x} (C_1e^{\mu x i} + C_2e^{-\mu x i}).
+$$
+By Euler's formula,
+$$
+y =  e^{\lambda x} (C_3\cos(\mu x) + C_4 \sin(\mu x)).
+$$
+\textbf{Example.} Solve 
+$$
+y'' + y' + y = 0.
+$$
+The characteristic equation is 
+$$
+r^2 + r + 1,
+$$
+and its roots are
+$$
+r = \frac{1}{2} \pm \frac{\sqrt 3}{2}i.
+$$
+Substituting into the derived formula for $y$,
+$$
+\boxed{y = e^{-1/2x}(C_1\cos (\sqrt 3/2x) + C_2\sin(\sqrt 3/2x)).}
+$$
+\textbf{Example.} Solve
+$$
+y'' + 4y' + 5y = 0
+$$
+where $y(0) =1 $ and $y'(0) = 0$.\\\\
+The characteristic equation is
+$$
+r^2 + 4r + 5 = 0,
+$$
+and its roots are
+$$
+r = -2 \pm i.
+$$
+So
+$$
+y = e^{-2x}(C_1 \cos x + C_2\sin x).
+$$
+Given our initial conditions, we solve for $C_1$ and $C_2$ and find that
+$$
+\boxed{y = e^{-2x} (\cos( x) + 2\sin (x)).}
+$$
+Now suppose we want to find the general solution to
+$$
+y'' + 4y' + 4y = 0.
+$$
+Its characteristic equation is
+$$
+r^2 + 4r + 4 
+$$
+and the characteristic equation has one root: $r=-2$. Indeed, $y=Ce^{-2x}$ is a solution, but it is not the general solution. This is because given two initial conditions, we can solve for $C$, but there's nothing to do with the second initial condition, and things do not work out. We use a technique called reduction of order. We guess a solution in addition to the one we suggested. So suppose
+$$
+g = v(x)e^{-2x}
+$$
+is the solution. We need to solve for $v$. We know
+$$
+g' = e^{-2x}(v' - 2v) \textrm{ and } g'' = e^{-2x}(v''-4v'+4v).
+$$
+So
+$$
+e^{-2x}v''  =0\implies  v'' = 0\implies v = C_1x+C_2.
+$$
+We get that
+$$
+g = C_1xe^{-2x} + C_2e^{-2x}.
+$$
+\textbf{Example.} Solve
+$$
+y'' - y' + 1/4 y = 0
+$$
+where $y(0)=2$ and $y'(0) = 1/3$.\\\\
+The characteristic equation is 
+$$
+r^2 - r + 1/4
+$$
+and its repeated root is $1/2$. We have two initial conditions, so $y=Ce^{1/2x} $ is not general enough. But
+$$
+y= v(x)e^{1/2x}
+$$
+is. We have found that $v(x) = C_1x+C_2$. So 
+$$
+y = C_1xe^{1/2x}+ C_2e^{1/2x}.
+$$
+Using the initial conditions to solve for $C_1$ and $C_2$, we get
+$$
+\boxed{y = (-2/3)xe^{1/2x}+ 2e^{1/2x}.}
+$$
+\subsection{Method of undetermined coefficients}
+We now move to the study of non-homogenous second order linear differential equations with constant coefficients, i.e. where the differential equation is of the form 
+$$
+Ay'' + By'+Cy = g(x).
+$$
+Suppose $h$ is a solution for 
+$$
+A y'' + By' + Cy = 0
+$$
+and $j$ is a particular solution to the first equation. Then the general solution is $h+j$. Suppose
+$$
+y'' - 3y' - 4y = 3e^{2x}.
+$$
+We want to find the solution of the homogenous equation like the above. So we get the characteristic equation 
+$$
+r^2 - 3r - 4
+$$
+and its roots are $4$ and $-1$.  So we get its general solution to be 
+$$
+y_g = C_1e^{4x} + C_2e^{-x}.
+$$
+We now use the \underline{method of undetermined coefficients}. We guess that a particular solution, based on the $g(x)$ in the general form of this kind of equation, is of the form
+$$
+y_p = Ae^{2x}.
+$$
+Then $y_p' = 2Ae^{2x}$ and $y_p'' = 4Ae^{2x}$. So we solve for $A$. In this case, we find $A = -1/2$. So
+$$
+y_p = (-1/2) e^{2x}.
+$$
+We know that the solution $y = y_g + y_p$, so 
+$$
+y =C_1e^{4x} + C_2e^{-x} - (1/2) e^{2x}.
+$$
+It will help to see some examples.\\\\
+\textbf{Example.} Solve
+$$
+y'' - 3y' - 4y = 2\sin x.
+$$
+The homogenous solution is
+$$
+y_h = C_1e^{4x} + C_2e^{-x}.
+$$
+To guess a particular solution, we need to realize that it will be of the form
+$$
+y_p = A\sin x + B\cos x. 
+$$
+Then $y_p' = A\cos x - B\sin x$ and $y_p'' = -A\sin x - B\cos x$. Solving for $A$ and $B$, we find that
+$$
+(-5A + 3B)\sin x + (-3A-5B)\cos x = 2\sin x.
+$$
+From here, we get that $A = -5/17$ and $B = 3/17$. So
+$$
+y_p = (-5/17)\sin x + (3/17)\cos x
+$$
+and the general solution is 
+$$
+\boxed{y = C_1e^{4x} + C_2e^{-x}-(5/17)\sin x + (3/17)\cos x.}
+$$
+\textbf{Example.} Solve
+$$
+y'' - 3y' - 4y = 4x^2.
+$$
+We guess that a particular solution to this is 
+$$
+y_p =Ax^2 + Bx + C.
+$$
+We see that $y_p' = 2Ax + B$ and $y_p'' = 2A$. We find that 
+$$
+-4Ax^2 - (6A + 4B) x + 2A - 3B - 4C = 4x^2.
+$$
+From here, we find that $A=-1$, $B=3/2$, and $C = -13/8$. So 
+$$
+y_p = -x^2 +(3/2)x-13/8.
+$$
+Adding this to the homogenous solution, we find the solution to be
+$$
+\boxed{y=C_1e^{4x} + C_2e^{-x}-x^2 +(3/2)x-13/8.}
+$$
+\textbf{Example.} Solve
+$$
+y'' - 3y' - 4y = 3e^{2x} +2\sin x + 4x^2.
+$$
+We know that the solution to the homogenous equation is 
+$$
+y=C_1e^{4x} + C_2e^{-x}.
+$$
+We have also seen that the solution to $y'' - 3y' - 4y = 3e^{2x}$ is 
+$$
+y  =C_1e^{4x} + C_2e^{-x} - (1/2) e^{2x},
+$$
+the solution to $y'' - 3y' - 4y = 2\sin x$ is 
+$$
+y = C_1e^{4x} + C_2e^{-x}-(5/17)\sin x + (3/17)\cos x,
+$$
+and the solution to $y'' - 3y' - 4y = 4x^2$ is
+$$
+y=C_1e^{4x} + C_2e^{-x}-x^2 +(3/2)x-13/8.
+$$
+We take the particular solution of each. We note that we can take the sum of the homogenous solution and all the particular solutions to give the final solution. So the solution is
+$$
+\boxed{y = C_1e^{4x} + C_2e^{-x} - (1/2) e^{2x} -(5/17)\sin x + (3/17)\cos x -x^2 +(3/2)x-13/8. }
+$$
+\section{Laplace transform}
+The \underline{Laplace transform} denoted $\L{f(t)}$ takes $f(t)$ to another function $F(s)$. We define
+$$
+\L{f(t)} = \int_0^\infty e^{-st}f(t) dt.
+$$
+Suppose $f=1$. Then 
+\begin{align*}
+\L{1} &= \int_0^\infty e^{-st}dt\\
+	&= -\frac{1}{s}e^{-st} \Bigg|_0^\infty\\
+	&= \frac{1}{s}.
+\end{align*}
+We assume $s>0$. Suppose $f = e^{at}$. Then
+\begin{align*}
+\L{e^{at}}	&= \int_0^\infty e^{-st}e^{at}dt\\
+		&= \int_0^\infty e^{(a-s)t}dt\\
+		&= \frac{1}{a-s}e^{(a-s)t} \Bigg|_0^\infty\\
+		&= \frac{1}{s-a}.
+\end{align*}
+We assume $s>a$. Suppose $f = \sin({at})$. Then
+\begin{align*}
+\L{\sin(at)}	&= \int_0^\infty e^{-st}\sin(at)dt\\
+		&= \left(\frac{s^2}{s^2+a^s}\right) \left(-e^{-st}\left( \frac{1}{s}\sin(at) + \frac{a}{s^2}\cos(at) \right)\right)\Bigg|_0^\infty\\
+		&= \frac{a}{s^2+a^2} .
+\end{align*}
+The Laplace transform is a linear operator. Observe.
+\begin{align*}
+\L{c_1f(t) +c_2g(t)}	&= \int_0^\infty e^{-st}(c_1f(t) +c_2g(t))dt\\
+				&= \int_0^\infty e^{-st}c_1f(t) + e^{-st}c_2g(t)dt\\
+				&= c_1\int_0^\infty e^{-st}f(t)dt + c_2 \int_0^\infty e^{-st}g(t)dt\\
+				&= c_1\L{f(t)} + c_2 \L{g(t)} 
+\end{align*}
+Suppose we want to know $\L{f'(t)}$.
+\begin{align*}
+\L{f'(t)}	&= \int_0^\infty e^{-st}f'(t)dt\\
+		&= e^{-st}f(t)\Bigg|_0^\infty + \int_0^\infty se^{-st}f(t)dt\\
+		&= s\L{f(t)} - f(0).
+\end{align*}
+We here assume that $f$ grows slower than $e^{-st}$ vanishes as $t\to \infty$. So
+$$
+\L{f''(t)} = s^2\L{f(t)} - sf(0) - f'(0).
+$$
+Suppose $f = \cos (at)$. Observe.
+\begin{align*}
+\L{\cos(at)}	&=  \frac{s}{a} \L{\sin(at)} - \sin(0)\\
+			&= \left(\frac{s}{a}\right)\left( \frac{a}{s^2+a^2} \right) \\
+			&= \frac{s}{s^2+a^2}
+\end{align*}
+Suppose $f = t$.
+\begin{align*}
+\L{t}	&= \frac{1}{s}\left( \L{1} + 0 \right)\\
+	&= \frac{1}{s^2}.
+\end{align*}
+Suppose $f = t^2$.
+\begin{align*}
+\L{t^2}	&= \frac{1}{s}\left( \L{2t} + 0 \right)\\
+		&= \frac{2}{s^3}.
+\end{align*}
+In general, 
+$$
+\L{t^n} = \frac{n!}{s^{n+1}}.
+$$
+We write
+$$
+\L{f(t)} = F(s).
+$$
+What is $\L{e^{at}f(t)}$?
+\begin{align*}
+\L{e^{at}f(t)}	&= \int_0^\infty e^{-st}e^{at}f(t)dt\\
+			&=  \int_0^\infty e^{-(s-a)t}f(t)dt.
+\end{align*}
+This is just $F(s-a)$. Take the \underline{unit step function}:
+$$
+u_c(x) := 
+\begin{cases}
+0 & t < c\\
+1 & t \geqslant c
+\end{cases}.
+$$ % https://www.khanacademy.org/math/differential-equations/laplace-transform/properties-of-laplace-transform/v/laplace-transform-of-the-unit-step-function?modal=1
+This happens to be a very useful function. We can take $u_c(t)f(t-c)$ to ``zero-out'' a function when it is less than zero and shift it by $c$. Let's find its Laplace transform.
+\begin{align*}
+\L{u_c(t)f(t-c)}  	&=  \int_0^\infty e^{-st}u_c(t)f(t-c)dt\\
+			&= \int_c^\infty e^{-st}f(t-c)dt\\
+			&=  \int_{0}^\infty e^{-s(\zeta+c)} f(\zeta)d\zeta\\
+			&= e^{-sc}\int_0^\infty e^{-s\zeta}f(\zeta)d\zeta\\
+			&= e^{-sc}\L{f(t)}.
+\end{align*}
+\textbf{Example.} Suppose $F(s) = 3!/(s-2)^4$. What is $f$? Alternatively, what is the inverse Laplace transform of $F$?\\\\
+We know
+$$
+\L{t^3} = \frac{3!}{s^4}.
+$$
+We may call this $F(s)$. So the original function is $F(s-2)$. We should recognize that
+$$
+\Li{\frac{3!}{(s-2)^4}} = \boxed{e^{2t}t^3.}
+$$
+\textbf{Example.} Determine the inverse Laplace transform of
+$$
+F(s) = \frac{2(s-1)e^{-2s}}{s^2 - 2s +2}.
+$$
+Firstly, we complete the square in the denominator and get
+$$
+F(s) = \frac{2(s-1)e^{-2s}}{(s-1)^2 + 1}.
+$$
+We know that 
+$$
+\L{\cos t} = \frac{s}{s^2 + 1}
+$$
+and 
+$$
+\L{e^t\cos t} = \frac{s-1}{(s-1)^2 + 1}.
+$$
+We also know that
+$$
+\L{u_c(t)f(t-c)}  = e^{-sc}F(s).
+$$
+So if $f(t) = e^t\cos t$ then we know what $F(s)$ is. The original function is $2F(s)e^{-2s}$. So taking the inverse Laplace transform of that, we get
+$$
+\Li{2F(s)e^{-2s}} = 2u_2(t)f(t-2).
+$$
+Thus,
+$$
+\Li{\frac{2(s-1)e^{-2s}}{s^2 - 2s +2}} = \boxed{2u_2(t) e^{t-2}\cos(t-2).}
+$$
+
+When we are taking the inverse Laplace transform of a function multiplied by $e^{-as}$, always think about shifting by $u_a(t)f(t-a)$.
+
+We define the \underline{Dirac delta function} as
+$$
+\delta(t) := 
+\begin{cases}
+\infty & t = 0 \\
+0 & t \neq 0
+\end{cases}.
+$$
+Crucially, we define
+$$
+\int_{-\infty}^\infty \delta(t) dt := 1.
+$$
+Define
+$$
+d_\tau (t) := \begin{cases}
+1/(2\tau) & -\tau<t<\tau \\
+0 & \textrm{otherwise}
+\end{cases}.
+$$
+Notice that
+$$
+\int_{-\infty}^\infty d_\tau(t)dt = 1.
+$$
+Also notice that
+$$
+\lim_{\tau\to 0} d_\tau (t) = \delta(t).
+$$
+This should provide some intuition for the definition of the improper integral of $\delta$. $\delta(t-s)$ is $\delta $ shifted to $s$. These functions model (approximate) real-world situations very well, e.g. impulse. Let us determine the Laplace transform of $\delta$.
+\begin{align*}
+\L{\delta(t-c)f(t)}  	&=  \int_0^\infty e^{-st}f(t)\delta(t-c)dt\\
+				&=  \int_0^\infty e^{-sc}f(c)\delta(t-c)dt\\
+				&=  e^{-sc}f(c) \int_0^\infty\delta(t-c)dt\\
+				&= e^{-sc}f(c).
+\end{align*}
+We find that
+$$
+\L{\delta(t)} = 1
+$$
+and
+$$
+\L{\delta(t-c)} = e^{-cs}.
+$$
+
+Suppose we want to solve
+$$
+y'' + 5y' + 6y = 0
+$$ 
+where $y(0)=2$ and $y'(0)=3$. We get
+$$
+\L{y''} + 5\L{y'} + 6\L{y} = 0.
+$$
+We use some previously-derived properties to get that the above is equivalent to
+$$
+\L{y}(s^2 + 5s + 6) = 2s + 13.
+$$
+Notice that the polynomial multiplied by $\L{y}$ is the characteristic equation. So 
+$$
+\L{y} = \frac{2s+13}{s^2 +5s+6} \implies y = \Li{ \frac{2s+13}{s^2 +5s+6} }.
+$$
+Algebraically manipulating, we find that
+$$
+y = \Li{ \frac{9}{s + 2} - \frac{7}{s + 3} }.
+$$
+Therefore, 
+$$
+y = 9e^{-2t} - 7e^{-3t}.
+$$
+
+Suppose we want to solve
+$$
+y'' + y = \sin(2t)
+$$
+where $y(0) = 2$ and $y'(0) = 1$. Taking the Laplace transform on both sides,
+$$
+s^2Y(s) - 2s -1 + Y(s)=  \frac{2}{s^2+4}.
+$$
+So
+$$
+Y(s) = -\frac{1}{3}\left( \frac{2}{s^2 + 4} \right) +\frac{2}{3}\left( \frac{1}{s^2 + 1} \right) + 2\left(\frac{s}{s^2+1}\right) + \frac{1}{s^2+1}.
+$$
+Taking the inverse Laplace transform on both sides, we find
+$$
+y = -\frac{1}{3}\sin(2t) +  \frac{5}{3}\sin (t) + 2\cos(t).
+$$
+
+Suppose we want to solve
+$$
+y'' + 4y = \sin (t) -u_{2\pi}(t)\sin(t-2\pi)
+$$
+where $y(0) = 0$ ad $y'(0) = 0$. Taking the Laplace transform on both sides,
+$$
+s^2\L{y} -sy(0) - y'(0) +4\L{y} = \frac{1}{s^2+1} - e^{-2\pi s}{\frac{1}{s^2+1}}.
+$$
+So
+$$
+\L{y}= \frac{1-e^{-2\pi s}}{(s^2 + 1)(s^2 + 4)}.
+$$
+We eventually find that
+$$
+\L{y} = \left(1-e^{-2\pi s}\right) \left(\frac{1}{3}\left(\frac{1}{s^2 + 1}\right) -\frac{1}{6}\left(\frac{2}{s^2+4}\right)\right)      .
+$$
+and expanding,
+$$
+\L{y} =  \frac{1}{3}\left(\frac{1}{s^2+1}\right) - \frac{1}{6}\left(\frac{2}{s^2 + 4}\right) - \frac{e^{-2\pi s}}{3}\left(\frac{1}{s^2+1}\right) +   \frac{e^{-2\pi s}}{6}\left(\frac{2}{s^2 + 4}\right)            .
+$$
+Therefore, 
+$$
+y =  \frac{1-u_{2\pi}(t)}{3}\left(  \sin(t) - \frac{1}{2}\sin(2t)  \right)  . 
+$$ % not courtesy of Sal and could be wrong. I am currently very tired.
+
+The \underline{convolution} of $f$ and $g$ is defined as 
+$$
+(f*g)(t) := \int_0^t f(t-\tau)g(\tau)d\tau.
+$$
+For instance, if $f(t) =\sin t$ and $g(t) =\cos t$, then
+\begin{align*}
+(f*g)(t) 	&= \int _0^t \sin(t-\tau)\cos\tau d\tau\\
+		&= \int_0^t (\sin t\cos \tau - \sin\tau \cos t) \cos \tau d\tau\\
+		&= \int_0^t \sin t\cos^2\tau - \cos t\sin \tau\cos \tau d\tau\\
+		&= \int_0^t \sin t\cos^2\tau d\tau - \int_0^t  \cos t\sin \tau\cos \tau d\tau\\
+		& = \sin t \int_0^t \cos^2\tau d\tau - \cos t \int_0^t \sin\tau\cos\tau d\tau\\
+		&=\frac{1}{2}\sin t \left( \tau + \frac{1}{2}\sin(2\tau) \right)\Bigg|_0^t - \cos t\left(  \frac{1}{2}\sin^2\tau  \right)\Bigg|_0^t\\
+		&=  \frac{1}{2} t\sin t.
+\end{align*}
+
+The \underline{convolution theorem} states that If $\L{f(t)} = F(s)$ and $\L{g(t)} = G(s)$ then
+$$
+\L{(f*g)(t)} = F(s)G(s).
+$$
+Suppose 
+$$
+H(s) = \frac{2s}{(s^2+1)^2}
+$$ 
+and we want to find the inverse Laplace transform of it. We can rewrite $H$ as
+$$
+\frac{2}{s^2+1}\cdot\frac{s}{s^2+1}.
+$$
+If we take the Laplace transform of this, we get that if $F(s)$ and $G(s)$ are terms in that alternate form of $H$, then $f(t) = 2\sin t$ and $g(t) =\cos t$. The convolution theorem says that
+$$
+\Li{F(s)G(s)} = \Li{F(s)} * \Li{G(s)}.
+$$
+So 
+\begin{align*}
+\Li{\frac{2s}{(s^2+1)^2}} 	&= \Li{\frac{2}{s^2+1}} * \Li{\frac{s}{s^2+1}}\\
+					&= 2\sin t * \cos t\\
+					&= t\sin t.
+\end{align*}
+\textbf{Example.} Solve
+$$
+y'' + 2y' + 2y = \sin\alpha t
+$$
+where $y(0)=0$ and $y'(0)=0$.\\\\
+We rewrite this as 
+$$
+(s^2 + 2s + 2)Y(s)= \frac{\alpha}{s^2+\alpha^2}
+$$
+so
+$$
+Y(s) = \frac{\alpha}{s^2 + \alpha ^2} \cdot \frac{1}{s^2 + 2s+2} = \frac{\alpha}{s^2 + \alpha ^2} \cdot \frac{1}{(s+1)^2+1}.
+$$
+We know what the inverse Laplace transform of the first term is. So if we can figure out what it is for the second term, at least we can describe $y$ in terms of a convolution integral. So 
+\begin{align*}
+y(t) 	&= \Li{\frac{\alpha}{s^2 + \alpha ^2} \cdot \frac{1}{(s+1)^2+1}}\\
+	&=  \Li{\frac{\alpha}{s^2 + \alpha ^2}} * \Li{\frac{1}{(s+1)^2+1}}\\
+	&= \sin \alpha t * e^{-t}\sin t\\
+	&= \int_0^t e^{-(t-\tau)}\sin(t-\tau)\sin(\alpha\tau)d\tau.
+\end{align*}
+\end{document} 

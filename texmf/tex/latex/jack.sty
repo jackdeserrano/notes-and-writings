@@ -1,0 +1,851 @@
+\ProvidesPackage{jack}
+
+\newif \ifjackcolour \jackcolourfalse
+\newif \ifjacksection \jacksectiontrue
+\newif \ifevan \evanfalse 
+\newif \ifindex \indextrue
+\newif \ifjackwide \jackwidefalse 
+\newif \ifjackbeautiful \jackbeautifulfalse
+\newif \ifjackcourse \jackcoursefalse
+\newif \ifjackannot
+\newif \ifnone \nonefalse
+\newif \ifams \amsfalse
+\newif \ifthing \thingfalse
+\newif \ifscr \scrfalse
+\newif \ifassg \assgfalse
+\newif \ifold \oldfalse
+
+
+% TODO: Add arg options
+
+\DeclareOption {old} {\oldtrue}
+	% only useful \ifoldtrue
+	\DeclareOption {colour} {\jackcolourtrue}
+	\DeclareOption {nocolour} {\jackcolourfalse}
+	\DeclareOption {nosection} {\jacksectionfalse}
+	\DeclareOption {evan} {\evantrue}
+\DeclareOption {noindex} {\indexfalse}
+\DeclareOption {course} {\jackcoursetrue}
+\DeclareOption {none} {\nonetrue}
+\DeclareOption {ams} {\amstrue}
+\DeclareOption {annot} {\jackannottrue}
+\DeclareOption {scr} {\scrtrue}
+\DeclareOption {assg} {\assgtrue}
+
+% USELESS OPTIONS
+\DeclareOption {wide} {\jackwidetrue}
+\DeclareOption {beautiful} {\jackbeautifultrue}
+\DeclareOption {thing} {\thingtrue}
+
+\ProcessOptions\relax
+
+\RequirePackage [usenames, svgnames, dvipsnames] {xcolor}
+\RequirePackage {amsmath, amsthm, amssymb, amsfonts}
+\RequirePackage {microtype}
+\RequirePackage {thmtools}
+\RequirePackage [framemethod = TikZ] {mdframed}
+\RequirePackage {mathtools}
+\RequirePackage {imakeidx}
+
+\makeatletter
+	\ifdefined\frontmatter
+		
+	\else
+		\newcommand\frontmatter{%
+    			\cleardoublepage
+  			%\@mainmatterfalse
+  			\pagenumbering{roman}
+		}
+	\fi
+	
+	\ifdefined\mainmatter
+
+	\else
+		\newcommand\mainmatter{%
+    			\cleardoublepage
+ 			% \@mainmattertrue
+  			\pagenumbering{arabic}
+		}
+	\fi
+	
+	\ifdefined\backmatter
+
+	\else
+		\newcommand\backmatter{%
+			\if@openright
+    				\cleardoublepage
+ 			 \else
+    				\clearpage
+  			\fi
+ 		% \@mainmatterfalse
+		}
+	\fi
+\makeatother
+
+
+\iffalse	% DEPRECATED (default colours for specific styles)
+	\ifjackcourse
+		\RequirePackage [colorlinks, linkcolor = RawSienna, citecolor = black, urlcolor = Blue] {hyperref}
+		%\RequirePackage {hyperref}
+	\else
+		\ifjackcolour
+			\RequirePackage [colorlinks, linkcolor = RoyalBlue] {hyperref}
+			%\RequirePackage {hyperref}
+		\else
+			\ifjackannot
+				\RequirePackage [colorlinks, linkcolor = RawSienna, citecolor = black, urlcolor = Blue] {hyperref}
+			\else
+				\RequirePackage [hidelinks] {hyperref} % colorlinks = true, linkcolor = black
+			\fi
+		\fi
+	\fi
+\fi
+
+\RequirePackage [colorlinks, linkcolor = RoyalBlue, citecolor = black, urlcolor = Blue] {hyperref}
+
+\RequirePackage {enumitem}
+\RequirePackage {graphicx}	
+\RequirePackage {indentfirst}
+\RequirePackage [utf8]{inputenc}
+\RequirePackage {parcolumns}
+\RequirePackage {polynom}
+\RequirePackage {multicol}
+\RequirePackage {tikz}
+\RequirePackage {tikz-cd}
+\RequirePackage {manfnt}
+\RequirePackage {stmaryrd}
+\RequirePackage {wasysym}
+\RequirePackage {listings}
+\RequirePackage {spverbatim}
+\RequirePackage [capitalize, nameinlink] {cleveref}
+\RequirePackage {scrextend}
+\RequirePackage {booktabs}
+\RequirePackage {siunitx}
+\RequirePackage {ifmtarg}
+\RequirePackage {kvoptions}
+\RequirePackage {tikz-cd}
+\RequirePackage {eucal}
+\RequirePackage {mathrsfs}
+\RequirePackage {esint}
+\RequirePackage [usestackEOL] {stackengine}
+
+\ifscr
+	\RequirePackage [headsepline] {scrlayer-scrpage}
+\else
+	\RequirePackage [T1] {fontenc}	% Screws up fonts
+	\RequirePackage {regexpatch}	% Clashes with `scrlayer-scrpage`
+	\RequirePackage {fancyhdr}		
+\fi
+
+\usetikzlibrary {arrows}
+
+\tikzset {
+	commutative diagrams/.cd,
+	arrow style = tikz,
+	diagrams = {>= latex}
+}
+
+\iffalse	% DEPRECATED (change section/subsection header styles)
+
+	\RequirePackage {titlesec}
+	\setcounter {tocdepth} {2}
+
+	\titleformat {\section} {} {\thesection} {1em} {}
+	\titleformat {\subsection}   {\normalfont\bfseries} {} {0em} {}
+
+	\makeatletter
+		\renewcommand{\section}{\@startsection
+			{section}
+			{1}
+			{\z@}
+			{-\baselineskip}
+			{0.5\baselineskip}
+			{\large\scshape\bfseries\noindent\S}}					
+	\makeatother
+
+	\let \oldsection \subsection
+
+	\makeatletter
+		\renewcommand {\subsection} [2] [] {
+			\@ifmtarg {#1}%
+			{\oldsection {#2.}}
+			{\oldsection [#1] {#2.}}
+		}
+	\makeatother
+
+	\iffalse
+		\makeatletter
+			\renewcommand{\section}{\@startsection
+				{section}			% name
+				{1}				% level
+				{\z@}			% the indent / 0mm
+				{-\baselineskip}	% before skip / -3.5ex \@plus -1ex \@minus -.2ex
+				{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
+				{\bfseries\large}} 	% style
+		\makeatother
+	\fi
+	
+\fi
+
+
+\makeatletter
+	\renewcommand* \env@matrix [1] [\arraystretch] {
+		\edef \arraystretch {#1}
+		\hskip -\arraycolsep
+		\let \@ifnextchar \new@ifnextchar
+		\array {*\c@MaxMatrixCols c}
+	}
+\makeatother
+
+
+
+\RequirePackage [hmarginratio=1:1] {geometry} 
+
+\newcommand {\0} {\underline{0}}											% zero vector
+\let\A\relax
+\newcommand {\A} {\mathbf{A}}											% affine space, adeles
+\newcommand {\abs} [1] {\left \lvert #1 \right \rvert}							% absolute value
+\let\ang\relax
+\newcommand {\ang} [1] {\left \langle #1 \right \rangle}							%
+\newcommand {\cat} [1] {\mathcal #1}										% category variable
+\newcommand {\catn} [1] {\textsf{#1}}										% category
+
+\def\firstletter#1#2@{#1}
+\def\reststring#1#2@{#2}
+\newcommand {\catnold} [1] {\mathcal{\firstletter#1@}\mathrm{\reststring#1@}}		% category (old)
+
+\newcommand {\ceiling} [1] {\left \lceil #1 \right \rceil}							% ceiling
+\newcommand {\C} {\mathbf C}											% complex numbers
+\newcommand {\dg} {^\circ}												% degrees
+\let\epsilon\relax
+\newcommand{\epsilon}{\varepsilon}										%
+\newcommand {\eps} {\epsilon}											%
+\newcommand {\floor} [1] {\left \lfloor #1 \right \rfloor}							% floor
+\newcommand {\F} {\mathbf F}											% finite field
+\newcommand {\Grp} {\catn {Grp}}											% Grp
+\let \H \relax
+\newcommand {\H} {\mathbf H}											% upper-half plane, quaternions
+\newcommand {\indx} [2] {\left [#1 : #2 \right]}								% index of subgroup
+\newcommand {\inv} {^{-1}}												% inverse
+\newcommand {\isomto} {\cong}											% isomorphic to
+\newcommand {\isom} {\overset {\sim} {\longrightarrow}}						% isomorphism
+\newcommand {\LL} {\mathcal L}											% 
+\newcommand {\mailto} [1] {\href {mailto : #1} {\texttt{#1}}}						%
+\newcommand {\mat} [1] {\begin{pmatrix} [ 1.2 ] #1\end{pmatrix}}  				% matrix (note array stretch in [   ])
+\newcommand {\mf} {\mathfrak}											% Fraktur font
+\newcommand {\morphism} [1] {\overset {#1} {\longrightarrow}}					%
+\newcommand {\norm} [1] {\left \lVert #1 \right \rVert}							% norm
+\newcommand {\N} {\mathbf N}											% natural numbers
+\newcommand {\NN} {\mathcal N}											%
+\newcommand {\ol} {\overline}											%
+\newcommand {\OO} {\mathcal O}											% ring of algebraic integers
+\newcommand {\op} {\textsuperscript{op}}									% opposite category
+\newcommand {\Pg} {\tilde {\mathbf{P}}}									%
+\newcommand {\PP} {\mathbf P}											% projective space
+\newcommand {\Q} {\mathbf Q}											% rational numbers
+\newcommand {\R} {\mathbf R}											% real numbers
+\newcommand {\Ring} {\catn {Ring}}										% Ring
+\newcommand {\Set} {\catn {Set}}											% Set
+\newcommand {\tensor} {\otimes}											% tensor product
+\newcommand {\ts} {\textsuperscript}										%
+\newcommand {\tp} {{}^{\mathrm{t}}\!}										% transpose
+\newcommand {\ul} {\underline}											% 
+\newcommand {\wh} {\widehat}											%
+\newcommand {\wt} {\widetilde}											%
+\newcommand {\Zmod} [1] {\Z / #1\Z}										% Z/[arg]Z
+\newcommand {\Z} {\mathbf Z}											% integers
+
+
+\DeclareMathOperator* {\argmax} {arg max}	% arg max
+\DeclareMathOperator* {\argmin} {arg min}	% arg min
+\DeclareMathOperator* {\colim} {colim}		% colimit
+\DeclareMathOperator* {\lcm} {lcm}		% least common multiple
+\DeclareMathOperator {\Aut} {Aut}			% automorphism group
+\DeclareMathOperator {\Ag} {A}			% alternating group, etc.
+\DeclareMathOperator {\Ass} {Ass}			% set of associated primes of module (assassin)
+\DeclareMathOperator {\Ann} {Ann}		% annihilator 
+\DeclareMathOperator {\bd} {bd}			% boundary of set
+\DeclareMathOperator {\Burn} {Burn}		% Burnside ring
+\DeclareMathOperator {\CC} {C} 			%
+\DeclareMathOperator {\chr} {char}		% characteristic of ring
+\DeclareMathOperator {\cl} {cl}			% closure of set
+\DeclareMathOperator {\cis} {cis}			%
+\DeclareMathOperator {\codim} {codim}		% codimension
+\DeclareMathOperator {\Coker} {Coker}		% cokernel
+\DeclareMathOperator {\coker} {coker}		% cokernel
+\DeclareMathOperator {\Col} {Col}			% column space
+\DeclareMathOperator {\Disc} {Disc}		% discriminant
+\DeclareMathOperator {\dom} {dom} 		% domain
+\DeclareMathOperator {\D} {D}			% dihedral group
+\let \d \relax
+\DeclareMathOperator {\d} {d}			%
+\DeclareMathOperator {\E} {E}			% icosahedral Du Val singularities
+\DeclareMathOperator {\End} {End}		% endomorphisms
+\DeclareMathOperator {\Ext} {Ext}			% Ext functor
+\DeclareMathOperator {\Gal} {Gal}			% Galois group
+\DeclareMathOperator {\GL} {GL}			% general linear group
+\DeclareMathOperator {\Gr} {Gr}			% Grassmannian 
+\DeclareMathOperator {\Hom} {Hom}		% homomorphisms
+\DeclareMathOperator {\HH} {H}			% homology group
+\DeclareMathOperator {\id} {id}			% identity
+\DeclareMathOperator {\II} {I}				%
+\DeclareMathOperator {\Img} {Im}			% image
+\DeclareMathOperator {\img} {im}			% image
+\DeclareMathOperator {\Inn} {Inn}			% inner automorphism group
+\DeclareMathOperator {\inr} {int}			% interior of set
+\DeclareMathOperator {\ISO} {ISO}			
+\DeclareMathOperator {\Jac} {Jac}			% Jacobian, Jacobson radical
+\DeclareMathOperator {\Ker} {Ker} 			% kernel
+\DeclareMathOperator {\Mat} {Mat} 		% matrices
+\DeclareMathOperator {\mesh} {mesh} 		% mesh
+\DeclareMathOperator {\Mor} {Mor} 		% morphisms
+\DeclareMathOperator {\mult} {mult} 		% multiplicity
+\DeclareMathOperator {\MM} {M} 			% matrices
+\DeclareMathOperator {\Nz} {N} 			% normalizer
+\DeclareMathOperator {\Nil} {Nil} 			% nilradical
+\DeclareMathOperator {\ord} {ord}			% ord
+\DeclareMathOperator {\On} {On}			%
+\DeclareMathOperator {\Out} {Out}			% outer automorphism group
+\DeclareMathOperator {\Pic} {Pic}			% Picard group
+\DeclareMathOperator {\pred} {pred} 		%
+\DeclareMathOperator {\pr} {pr} 			%
+\DeclareMathOperator {\Proj} {Proj} 		% Proj
+\DeclareMathOperator {\PGL} {PGL} 		% projective general linear group
+\DeclareMathOperator {\PSL} {PSL} 		% projective special linear group
+\DeclareMathOperator {\Qu} {Q_8} 		% quaternions
+\DeclareMathOperator {\QQ} {Q} 			%
+\DeclareMathOperator {\Ran} {ran}			% range
+\DeclareMathOperator {\Res} {Res}		% residue
+\DeclareMathOperator {\rank} {rank}		% rank
+\DeclareMathOperator {\ran} {ran}			% range
+\DeclareMathOperator {\sgn} {sgn}			% sign
+\DeclareMathOperator {\Sg} {S} 			% symmetric group
+\DeclareMathOperator {\SL} {SL} 			% special linear group
+\DeclareMathOperator {\SO} {SO} 			% special orthogonal group
+\DeclareMathOperator {\Spec} {Spec} 		% spectrum
+\DeclareMathOperator {\spa} {span} 		% span
+\DeclareMathOperator {\SU} {SU} 			% special unitary group
+\DeclareMathOperator {\Syl} {Syl} 			% Sylow subgroup
+\DeclareMathOperator {\Tor} {Tor} 			% Tor
+\DeclareMathOperator {\Tr} {Tr} 			% trace
+\DeclareMathOperator {\tr} {tr} 			% trace
+\DeclareMathOperator {\Vol} {Vol} 			% volume
+\DeclareMathOperator {\vol} {vol} 			% volume
+\let \O \relax 
+\DeclareMathOperator {\O} {O} 			% orthogonal group
+\DeclareMathOperator {\ZZ} {Z} 			% centre of group
+
+\DeclareMathOperator {\sech} {sech}		% hyperbolic secant
+\DeclareMathOperator {\csch} {csch}		% hyperbolic cosecant
+
+
+\setenumerate[1]{label=\arabic*.}	% enumerate label
+\setenumerate[2]{label=(\alph*)}	% second-order enumerate label
+
+\renewcommand\labelitemi{---} 	% itemizes have this label unless otherwise specified
+
+
+\ifnone	% [none]
+
+	% ENVIRONMENTS FOR [none]:
+	% 	thm [Theorem]
+	%	lemma [Lemma]
+	%	corollary [Corollary]
+	%	proposition [Proposition]
+	%	conj [Conjecture]
+	%	remark [Remark]
+	%	definition [Definition]
+	%	defprop [Definition/Proposition]
+	%	question [Question]
+	%	example [Example]
+	%	examples [Examples]
+	%	convention [Convention]
+	%	exercise [Exercise]
+	%	warning [Warning]
+	%	problem [Problem]
+
+	\newcommand {\defn} [1] {\slshape #1} 	% keywords emphasized with slanted font
+
+	\numberwithin{equation}{section}
+	\theoremstyle{thm}
+	\newtheorem{thm}{Theorem}
+	\numberwithin{thm}{section}
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{corollary}[thm]{Corollary}
+	\newtheorem{proposition}[thm]{Proposition}
+	\newtheorem{conj}[thm]{Conjecture}
+
+	\theoremstyle{definition}
+	\newtheorem{remark}[thm]{Remark}
+	\newtheorem{definition}[thm]{Definition}
+	\newtheorem{defprop}[thm]{Definition/Proposition}
+	\newtheorem{question}[thm]{Question}
+	\newtheorem{example}[thm]{Example}
+	\newtheorem{examples}[thm]{Examples}
+	\newtheorem{convention}[thm]{Convention}
+	\newtheorem{exercise}{Exercise}
+	\newtheorem{warning}{Warning}
+	\newtheorem{problem}{Problem}
+	
+	\setenumerate [1] {label = (\roman*), leftmargin = *}	% enumerates numbered by Roman numerals, no indent
+	
+
+\else		% not [none], not [thing]
+	
+	\ifold	% not [none], [old]
+	
+		% ENVIRONMENTS FOR not [none], [old]:
+		%	theorem [Theorem]
+		%	example [Example]
+		%	lemma [Lemma]
+		%	proposition [Proposition]
+		%	corollary [Corollary]
+		%	theorem* [Theorem]
+		%	example* [Example]
+		%	lemma* [Lemma]
+		%	proposition* [Proposition]
+		%	corollary* [Corollary]
+		%	definition [Definition]
+		%	exercise [Exercise]
+		%	remark [Remark]
+		%	algorithm [Algorithm]
+		%	algorithm* [Algorithm]
+		%	tbox
+		%		An empty text box
+		%	warning [Warning]
+
+		\mdfsetup{skipabove = \topskip, skipbelow = \topskip}
+
+		\theoremstyle {definition}
+
+		\ifjackcolour	% not [none], [old, colour]
+	
+			\newcommand{\defn}[1]{{\bf{\color{Blue} #1}}} % emphasize keywords with bolded blue
+	
+			\ifevan	% % not [none], [old, colour, evan]
+					% Evan Chen--inspired theme 
+	 				% See https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty
+
+				\mdfdefinestyle {bluebox} {
+					roundcorner = 10 pt,
+					linewidth = 1 pt,
+					innerbottommargin =10pt,
+					linecolor = blue,
+					nobreak = false,
+					backgroundcolor = TealBlue!5,}
+
+				\mdfdefinestyle {redbox} {
+					linewidth = 0.5 pt,
+					innerbottommargin = 10 pt,
+					backgroundcolor = Salmon!5,
+					linecolor = black,}
+
+					
+				\declaretheoremstyle [
+					headfont = \bfseries \color {MidnightBlue},
+					mdframed = {style = bluebox},
+					headpunct = {\\[3 pt]},
+					postheadspace = {0 pt},] {theorembox}
+
+				\declaretheoremstyle [
+					headfont = \bfseries \color {RawSienna},
+					mdframed = {style = redbox},
+					headpunct = {\\[3 pt]},
+					postheadspace = {0 pt}] {examplebox}
+						
+
+			\else	 % not [none], not [colour], [old]
+
+				\mdfdefinestyle {colourthm} {
+					linewidth = 2 pt,
+					%leftline = true,
+					rightline = false,
+					topline = false,
+					bottomline = false,
+					linecolor = MidnightBlue,
+					%innerbottommargin =10pt,
+					backgroundcolor = Cerulean!5,}
+
+				\mdfdefinestyle {colourexp} {
+					linewidth = 2 pt,
+					leftline = true,
+					rightline = false,
+					topline = false,
+					bottomline = false,
+					linecolor = RawSienna,
+					backgroundcolor = Salmon!5,}
+		
+				\mdfdefinestyle {colouralg} {
+					linewidth = 2 pt,
+					leftline = true,
+					rightline = false,
+					topline = false,
+					bottomline = false,
+					linecolor = OliveGreen,
+					backgroundcolor = OliveGreen!5,}
+
+
+				\declaretheoremstyle [
+					headfont = \bfseries \color {MidnightBlue},
+					bodyfont = \normalfont ,
+					mdframed = {style = colourthm},
+					headpunct = {\\[3 pt]},
+					postheadspace = {0 pt},] {theorembox}
+
+				\declaretheoremstyle [
+					headfont = \bfseries \color {RawSienna},
+					mdframed = {style = colourexp},
+					headpunct = {\\[3 pt]},
+					postheadspace = {0 pt},] {examplebox}
+
+				\declaretheoremstyle [
+					headfont = \bfseries \color {OliveGreen},
+					mdframed = {style = colouralg},
+					headpunct = {\\[3 pt]},
+					postheadspace = {0 pt},] {algbox}
+						
+						
+			\fi
+
+		\else		% not [none], not [beautiful], not [colour]
+
+			\newcommand{\defn}[1]{\textit {#1}}	% emphasize keywords with italics
+
+			\declaretheoremstyle [
+				bodyfont = \normalfont \itshape,] {theorembox}
+
+			\declaretheoremstyle [
+				bodyfont = \normalfont,] {examplebox}
+
+			\declaretheoremstyle [
+				bodyfont = \normalfont,] {algbox}
+
+		\fi 
+
+		\ifjacksection
+
+			\declaretheorem [style = theorembox, name = Theorem, numberwithin = section]  {theorem}
+			\declaretheorem [style = examplebox, name = Example, sibling = theorem] {example}
+			\declaretheorem [style = theorembox, name = Lemma, sibling = theorem] {lemma}
+			\declaretheorem [style = theorembox, name = Proposition, sibling = theorem] {proposition}	
+			\declaretheorem [style = theorembox, name = Corollary, sibling = theorem] {corollary}	
+			\declaretheorem [style = theorembox, name = Theorem, numbered = no] {theorem*}		
+			\declaretheorem [style = theorembox, name = Lemma, numbered = no] {lemma*}		
+			\declaretheorem [style = theorembox, name = Proposition, numbered = no] {proposition*}			
+			\declaretheorem [style = theorembox, name = Corollary, numbered = no] {corollary*}
+			\declaretheorem [name = Definition,  sibling = theorem] {definition}
+			\declaretheorem [name = Exercise,  sibling = theorem] {exercise}
+			\declaretheorem [name = Remark, sibling = theorem] {remark}
+			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm}
+			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm*}
+	
+		\else
+
+			\declaretheorem [style = theorembox, name = Theorem]  {theorem}
+			\declaretheorem [style = examplebox, name = Example, sibling = theorem] {example}
+			\declaretheorem [style = theorembox, name = Lemma, sibling = theorem] {lemma}
+			\declaretheorem [style = theorembox, name = Proposition, sibling = theorem] {proposition}	
+			\declaretheorem [style = theorembox, name = Corollary, sibling = theorem] {corollary}	
+			\declaretheorem [style = theorembox, name = Theorem, numbered = no] {theorem*}		
+			\declaretheorem [style = theorembox, name = Lemma, numbered = no] {lemma*}		
+			\declaretheorem [style = theorembox, name = Proposition, numbered = no] {proposition*}			
+			\declaretheorem [style = theorembox, name = Corollary, numbered = no] {corollary*}
+			\declaretheorem [name = Definition,  sibling = theorem] {definition}
+			\declaretheorem [name = Exercise,  sibling = theorem] {exercise}
+			\decl	aretheorem [name = Remark, sibling = theorem] {remark}
+			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm}
+			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm*}
+
+		\fi
+
+		\mdfdefinestyle {plainbox} {}
+
+		\newenvironment {tbox} {\begin {mdframed} [style = plainbox]} {\end{mdframed}}
+		\newenvironment {warning} {\begin {mdframed} [style = plainbox] \dbend \begin {addmargin} [2em] {0em} \vspace*{-12pt}} {\end {addmargin}\end {mdframed}}	% quasi-Bourbaki--style warning environment
+
+
+	\else	% not [old]
+	
+		% ENVIRONMENTS FOR not [old]:
+		% 	esquisse [Esquisse] (for proof sketches)
+		%	thm [Theorem]
+		%	theorem [Theorem]
+		%	lemma [Lemma]
+		%	corollary [Corollary]
+		%	proposition [Proposition]
+		%	conj [Conjecture]
+		%	definition [Definition]
+		%	defprop [Definition/Proposition]
+		%	question [Question]
+		%	example [Example]
+		%	examples [Examples]
+		%	convention [Convention]
+		%	exercise [Exercise]
+		%	problem [Problem]
+		%	notation [Notation]
+		%	bnotation [Bad notation]
+		%	remark [Remark]
+		%	warn [Warning]
+		%	ramble [Ramble]
+		%	eproof [Proof] (builtin itemize for proper formatting with enumerates and QED symbol)
+		%		\begin{eproof}
+		%			\item [something]
+		%			\item [something]
+		%		\end{eproof}
+
+
+		\let\proof\relax		% will redefine the proof environment for style
+		\let\endproof\relax	% "
+		
+		\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
+		
+		\newcommand{\defn}[1]{{\iffalse\slshape \fi\bfseries{\color{darkcandyapplered} #1}}}			% keywords emphasized by bolded red
+		\newcommand{\frdefn}[1]{{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French keywords emphasized by bolded red with appropriate italicization
+
+			\newtheoremstyle{thm}	% name
+				{1 em}			% space above
+				{1 em}			% space below
+				{\iffalse\slshape\fi}	% body font
+				{0 em}			% indent amount
+				{\scshape\bfseries}	% theorem head font
+				{.}				% punctuation after theorem head
+				{.5em}			% space after theorem head
+				{}				% theorem head spec
+	
+			\newtheoremstyle{defn}
+				{1 em}
+				{1 em}
+				{}
+				{0 em}
+				{\scshape\bfseries}
+				{.}
+				{.5em}
+				{}
+			
+			\newtheoremstyle{remark}
+				{1 em}
+				{1 em}
+				{}
+				{0 em}
+				{\scshape\bfseries}
+				{.---}
+				{0 em}
+				{}
+				
+			\newtheoremstyle{proof}
+				{1 em}
+				{1 em}
+				{}
+				{0 em}
+				{\scshape\bfseries}
+				{.---}
+				{0 em}
+				{}
+				
+			\theoremstyle{proof}
+			\newtheorem*{proof}{Proof}
+			\newtheorem*{pf}{Proof}
+			\newtheorem*{esquisse}{Esquisse}
+			
+			\let \tempendproof = \endproof
+			\def \endproof {\hfill\qed\tempendproof}
+			
+			\numberwithin{equation}{section}
+			\theoremstyle{thm}
+			\newtheorem{thm}{Theorem}
+			\numberwithin{thm}{section}
+			\newtheorem{theorem}[thm]{Theorem}
+			\newtheorem{lemma}[thm]{Lemma}
+			\newtheorem{corollary}[thm]{Corollary}
+			\newtheorem{proposition}[thm]{Proposition}
+			\newtheorem{conj}[thm]{Conjecture}
+
+			\theoremstyle{defn}
+			\newtheorem{definition}[thm]{Definition}
+			\newtheorem{defprop}[thm]{Definition/Proposition}
+			\newtheorem{question}[thm]{Question}
+			\newtheorem{example}[thm]{Example}
+			\newtheorem{examples}[thm]{Examples}
+			\newtheorem{convention}[thm]{Convention}
+			\newtheorem{exercise}[thm]{Exercise}
+			
+			\ifassg	% if this is in an assignment, ignore sections
+				\newtheorem{problem}{Problem}	
+			\else
+				\newtheorem{problem}[thm]{Problem}		
+			\fi
+
+			\newtheorem{notation}[thm]{Notation}
+			\newtheorem{bnotation}[thm]{Bad notation}
+			
+			\theoremstyle{remark}
+			\newtheorem{remark}[thm]{Remark}
+			\newtheorem{warn}[thm]{Warning}
+			\newtheorem{ramble}[thm]{Ramble}
+			
+			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}} {\hfill\qed\end{enumerate}\end{pf}}
+
+			\ifjackcourse	% not [none], [course]
+			
+				% REQUIREMENTS FOR not [none], [course]:
+				% 	Define `jtitle` for title
+				% 	Define `jlecturer` for lecturer
+				% 	Define `jterm` for current term
+				% 	Define `jauthor` for you, the person writing this
+				%		\def \jtitle {Linear Algebra 2}
+				%		\def \jlecturer {Dr. John Smith}
+				%		\def \jterm {Spring 2022}
+				%		\def \jauthor {Me}
+			
+				\iffalse%\ifscr
+					
+				\else
+
+					\makeatletter
+						%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
+					
+						\def\title#1{\gdef\@title{#1}\gdef\THETITLE{#1}}
+
+						% redefining `\maketitle` such that it is better suited for courses
+						\renewcommand \maketitle{
+							\thispagestyle{empty}
+								{\raggedright 
+								\begin{center}
+									{\Large\scshape \jtitle}\\\vspace*{1 em}
+									{\large Based on lectures by \jlecturer}\text{}\\
+									{\normalsize Written by Jack DeSerrano}\text{}\\
+									{\small Last updated on \today}\\\vspace*{0.666666 em}
+									{\large \jterm}
+								\end{center}}}
+					\makeatother
+				
+        				
+        					\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
+        						\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+        					\makeatother 
+					
+        					\ifscr
+					
+					\else	% setting up the headers and footers
+					
+        						\pagestyle{fancy} 
+        						\renewcommand{\sectionmark}[1]{\markright{#1}}
+        						\renewcommand{\subsectionmark}[1]{}
+        						\fancyhf{}
+        			
+        				
+        						\ifams
+        							\renewcommand{\sectionmark}[1]{\markleft{#1}}
+        						\fi
+        				
+        						\fancyhead[L]{\jtitle}
+        						\fancyhead[R]{\nouppercase\rightmark}
+        						\cfoot{\text{}\\\thepage}
+						
+						\ifindex
+        							\makeindex
+        							\indexsetup {othercode = {\thispagestyle {fancy}}}
+						\fi
+					\fi
+				\fi
+				
+			\else
+			
+				\ifjackannot	% not [none], not [course], [annot]
+				
+					% REQUIREMENTS FOR not [none], not [course], [annot]:
+					% 	Define `jtitle` for title
+					% 	Define `jauthor` for you, the person writing this
+					%		\def \jtitle {Title}
+					%		\def \jauthor {Me}
+			
+					\iffalse%\ifscr
+					
+					\else
+
+					% previous attempt to customize \maketitle
+						\makeatletter
+						%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
+					
+							\def\title#1{\gdef\@title{#1}\gdef\THETITLE{#1}}
+
+							\renewcommand \maketitle{
+								\thispagestyle{empty}
+								\text{}
+								\vfill
+									{\raggedright 
+									\begin{center}
+										{\Large\scshape \jtitle}\\\vspace*{1 em}
+										{\normalsize Written by Jack DeSerrano}\text{}\\
+										{\small Last updated on \today}\\\vspace*{0.666666 em}
+									\end{center}}
+								\vfill\newpage
+								}
+						\makeatother
+					
+						\ifscr
+						
+						\else
+				
+							\makeatletter
+								\renewcommand{\section}{\@startsection
+									{section}			% name
+									{1}				% level
+									{\z@}			% the indent / 0mm
+									{-\baselineskip}	% before skip / -3.5ex \@plus -1ex \@minus -.2ex
+									{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
+									{\centering\bfseries\S}} 	% style
+							\makeatother
+				
+							\makeatletter
+								\renewcommand{\subsection}{\@startsection
+									{subsection}		% name
+									{2}				% level
+									{\z@}			% the indent / 0mm
+									{-\baselineskip}	% before skip / -3.5ex \@plus -1ex \@minus -.2ex
+									{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
+									{}} 				% style
+							\makeatother
+				
+							\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
+								\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+							\makeatother 
+				
+							\makeatletter
+								\renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname .\ }
+							\makeatother
+					
+						\fi
+				
+					\fi
+
+				\ifscr
+				
+				\else
+				
+					\pagestyle{fancy} 
+					\renewcommand{\sectionmark}[1]{\markright{#1}}
+					\renewcommand{\subsectionmark}[1]{}
+					\fancyhf{}
+			
+				
+					\ifams
+						\renewcommand{\sectionmark}[1]{\markleft{#1}}
+					\fi
+				
+				
+					\fancyhead[L]{\jtitle}
+					\fancyhead[R]{\nouppercase\rightmark}
+					\cfoot{\text{}\\\thepage}
+					
+					\ifindex
+        						\makeindex
+        						\indexsetup {othercode = {\thispagestyle {fancy}}}
+					\fi
+				\fi
+			\fi
+		\fi
+	\fi
+\fi
+
+\endinput
