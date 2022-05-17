@@ -1,5 +1,5 @@
 ## Notes and writing
-This contains some notes I have written up in TeX over the last little while. Each folder (with one exception) corresponds to one topic; therein will be the note in both `.tex` and `.pdf` format. I will update the `.tex` file more often than I will the `.pdf` file.
+This contains some notes I have written up in TeX over the last little while. Each folder (with one exception) corresponds to one topic.
 
 
 
