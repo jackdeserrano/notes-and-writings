@@ -1,5 +1,3 @@
-
-% Last updated: (probably) April 1, 2022
 \documentclass[11pt, oneside,margin=1in]{article}
 
 \def\jtitle{Modular forms}
@@ -18,7 +16,7 @@
     \vspace*{\fill}
 \fi
 \maketitle
-These notes are based on Richard Borcherds's YouTube series on modular forms\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj51HisRtNyzHX-Xyg6I3Wl2F}.}.
+These notes are based on Richard Borcherds's YouTube series on modular forms.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj51HisRtNyzHX-Xyg6I3Wl2F}.}
 \ifams
 	\vspace*{\fill}
 \fi
@@ -74,11 +72,11 @@ is very close to an integer. A brief look at the $q$-expansion of $j$ corroborat
 What else?
 
 \begin{example}[Sphere packing]\label{}\text{}
-Kepler\footnote{``On the six-cornered snowflake,'' 1611.} conjectured that no arrangement of equally sized spheres filling space has density greater than $\pi/\sqrt{18}$. Hales\footnote{``A proof of the Kepler conjecture.''} proved this in 1998, and his method was considerably complicated. 
+Kepler\footnote{``On the six-cornered snowflake,'' 1611.} conjectured that no arrangement of equally sized spheres filling space has a density greater than $\pi/\sqrt{18}$. Hales\footnote{``A proof of the Kepler conjecture.''} proved this in 1998, and his method was considerably complicated. 
 
-While the next dimensions after $3$ are mostly unknown, optimal sphere packings in dimensions $8$ and $24$ are known. Take all points $(n_1,\hdots, n_8)$ with $\sum_{i}^{} n_i$ even and all $n_i\in \Z$ or all $n_i\in \Z + 1/2$. These are the centres of the spheres. This packing had been known for a while, but Maryna Viazovska used modular forms---a process that involved miraculous coincidences and cancellations---to prove that it was optimal\footnote{See \url{https://arxiv.org/abs/1603.04246}.}. Her method only works in $8$ and $24$ dimensions.
+While the next dimensions after $3$ are mostly unknown, optimal sphere packings in dimensions $8$ and $24$ are known. Take all points $(n_1,\hdots, n_8)$ with $\sum_{i}^{} n_i$ even and all $n_i\in \Z$ or all $n_i\in \Z + 1/2$. These are the centres of the spheres. This packing had been known for a while, but Maryna Viazovska used modular forms---a process that involved miraculous coincidences and cancellations---to prove that it was optimal.\footnote{See \url{https://arxiv.org/abs/1603.04246}.} Her method only works in $8$ and $24$ dimensions.
 
-The dimensions $8$ and $24$ appear frequently in the theory of modular forms, but no one really knows why. There happen to be
+The dimensions $8$ and $24$ frequently appear in the theory of modular forms, but no one really knows why. There happen to be
 \begin{align*}
 	240\sigma_3(n)
 \end{align*}
@@ -286,7 +284,7 @@ Fix $\omega_1=1$, and we get
 \begin{align*}
 	\sum_{\substack{m,n\in \Z\\(m,n)\ne (0,0)}}^{} \frac{1}{(m+n\tau)^k}.
 \end{align*}
-This is an \defn{Eisenstein series}\index{Eisenstein series}. We only consider even $k$ (otherwise the series is $0$), and we take $k\ge 4$ since this is not absolutely convergent when $k=2$ (though that case is interesting).
+This is an \defn{Eisenstein series}\index{Eisenstein series}. We only consider even $k$ (otherwise, the series is $0$), and we take $k\ge 4$ since this is not absolutely convergent when $k=2$ (though that case is interesting).
 
 This series is invariant under $\tau \longmapsto \tau+1$: under the matrix
  \begin{align*}
@@ -501,7 +499,7 @@ The denominator is chosen that way such that it does not vanish for $\Im(\tau)>0
 \end{align*}
 It turns out that it is more natural for $744$ to be $24$, but Klein defined it this way.
 
-But why is $E_4^2 = E_8$, and $E_4E_6=E_{10}$? Well, spaces of modular forms have small dimension: in particular, the space of modular forms of weight $8$ is one-dimensional, so any modular form of weight $8$ with the same constant coefficient must be equal, and same with weight $10$.
+But why is $E_4^2 = E_8$, and $E_4E_6=E_{10}$? Well, spaces of modular forms have small dimensions: in particular, the space of modular forms of weight $8$ is one-dimensional, so any modular forms of weight $8$ with the same constant coefficient must be equal. The same goes for weight $10$.
 \end{example}
 
 \section{Fundamental domain}
@@ -892,7 +890,7 @@ Now, vectors of norm $4$: Vectors $(0,\hdots,\pm 1,\hdots,\pm 1,\hdots, \pm_1,\h
 	Can you hear the shape of a drum?
 \end{problem}
 
-Take a Riemannian manifold $M$ and consider the eigenvalues of the Laplace operator on it. We take $M=\R^n/\Lambda$, and the eigenvalues of the Laplacian correspond to the norms of vectors in $\Lambda$. Are there two lattices with the same number of vectors with any given norm---the same theta function? Milnor pointed out that $E_8^2$ and $E_{16}$ satisfy this. Both of their theta functions are modular forms of weight $8$, and the space of modular forms of weight $8$ is $1$-dimensional, so that theta function must be the Eisenstein series $E_8(\tau)$. These lattices are distinct, for $E_8^2$ can be split into $2$ nonempty orthogonal subsets and $E_{16}$ cannot. That is, these lattices generate different Riemannian manifolds but have the same spectrum, ``so if you had these $16$-dimensional drums, they would sound exactly the same.''
+Take a Riemannian manifold $M$ and consider the eigenvalues of the Laplace operator on it. We take $M=\R^n/\Lambda$, and the eigenvalues of the Laplacian correspond to the norms of vectors in $\Lambda$. Are there two lattices with the same number of vectors with any given norm---the same theta function? Milnor pointed out that $E_8^2$ and $E_{16}$ satisfy this. Both of their theta functions are modular forms of weight $8$, and the space of modular forms of weight $8$ is $1$-dimensional, so the theta function must be the Eisenstein series $E_8(\tau)$. These lattices are distinct, for $E_8^2$ can be split into $2$ nonempty orthogonal subsets and $E_{16}$ cannot. That is, these lattices generate different Riemannian manifolds but have the same spectrum, ``so if you had these $16$-dimensional drums, they would sound exactly the same.''
 
 \begin{problem}
 	How many length-$\sqrt{4} $ vectors are there in the Leech lattice?
@@ -900,23 +898,23 @@ Take a Riemannian manifold $M$ and consider the eigenvalues of the Laplace opera
 
 Well, the Leech lattice is even, unimodular (that is, self-dual), $24$-dimensional, and has no vectors of length $\sqrt{2} $. The corresponding theta function is a modular form of weight $12$, and the space of modular forms is $2$-dimensional and spanned by $E_4^3$ and $\Delta$. The coefficient of $q^0$ must be $1$ since there's only one vector of norm $0$. The coefficient of $q^1$ must be $0$ since there are no vectors of norm $\sqrt{2} $. Therefore,
 \begin{align*}
-	\vartheta _{II_{25,1}} &= E_4^3 - 720\Delta\\
+	\vartheta _{\Lambda_{\textrm{Leech}}} &= E_4^3 - 720\Delta\\
 			       &= 1 + 0q + 196560q^2 + \cdots.
 \end{align*}
 
 \begin{exercise}\label{}\text{}
-Do the same thing in $32$ dimensions. There are more than $10000000$ unimodular, even lattices with no vectors of norm $\sqrt{2} $, as Oliver King proved\footnote{``A mass formula for unimodular lattices with no roots,'' 2002.}.
+Do the same thing in $32$ dimensions. There are more than $10000000$ unimodular, even lattices with no vectors of norm $\sqrt{2} $, as Oliver King proved.\footnote{``A mass formula for unimodular lattices with no roots,'' 2002.}
 \end{exercise}
 
 \begin{problem}
-	Can we find an even, unimodular lattice with positive dimension less than $8$?
+	Can we find an even, unimodular lattice with a positive dimension of less than $8$?
 \end{problem}
 
 No: The dimension must be divisible by $8$. Suppose not, and let $\Lambda$ be such a lattice. Then we can repeatedly take direct sums of $\Lambda$ such that the resulting dimension of the lattice is congruent to $4$ mod $8$. Therefore, we can show that a lattice of dimension $4$ mod $8$ cannot satisfying these properties cannot be. The lattice $\Lambda$ would satisfy
 \begin{align*}
 	\vartheta_{\Lambda } \left( \frac{a\tau + b}{c\tau + d} \right) &= \chi \mat{a&b\\c&d} (c\tau + d)^{n/2} \vartheta_{\Lambda } (\tau)
 \end{align*}
-where $\chi$ is a character, so $\chi(AB) = \chi (A)\chi  (B)$. Further, we must have
+where $\chi$ is a character. Further, we must have
 \begin{align*}
 	\chi \mat{1&1\\0&1} &= \chi(T) = +1;\\
 	\chi\mat{0&-1\\1&0} &=\chi(S) = -1.
@@ -1051,7 +1049,7 @@ So, applying $\exp$,
 \begin{align*}
 	p^{-1} \prod_{\substack{ m > 0\\n\in \Z}} (1-p^mq^n)^{c_{mn}} = \sum_{m}^{} p^m \times \textrm{modular function in $\tau$}. 
 \end{align*}
-Doing some rough work with the coefficients\footnote{See \url{https://youtu.be/CBfDbJIaPJo?t=657}.}, the formula for $j$ follows.
+Doing some rough work with the coefficients,\footnote{See \url{https://youtu.be/CBfDbJIaPJo?t=657}.} the formula for $j$ follows.
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale = 0.4]{j}
@@ -1187,7 +1185,7 @@ The spaces of cusp forms of weight $12$, $16$, $18$, $20$, $22$, and $26$ is one
 
 \section{Petersson inner product}
 
-Recall: If $f$ is an eigenfunction of the Hecke operators, then we get relations between the coefficients. What if the space of forms has dimension greater than $1$? We will show that it is spanned by eigenfunctions $T_n$. Recall that if $T_n$ commute and are self-adjoint, then the vector space $V$ on which they act has a basis of eigenforms. (Self-adjoint means that we need a sesquilinear form $(\cdot,\cdot)$ on the space of modular forms.)
+Recall: If $f$ is an eigenfunction of the Hecke operators, then we get relations between the coefficients. What if the space of forms has a dimension greater than $1$? We will show that it is spanned by eigenfunctions $T_n$. Recall that if $T_n$ commute and are self-adjoint, then the vector space $V$ on which they act has a basis of eigenforms. (``Self-adjoint'' means that we need a sesquilinear form $(\cdot,\cdot)$ on the space of modular forms.)
 
 Notice that $T_m$ and $T_n$ commute when $m$ and $n$ are coprime. We also showed that $T_pT_{p^n} = T_{p^{n+1}} + p^{2k-1}T_{p^{n-1}}$. So, the algebra of operators spanned by $T_p,T_{p^2},\hdots$ is generated by $T_p$. So all $T_n$ commute.
 
@@ -1197,7 +1195,7 @@ Now, what about self-adjointness? Well, what is the inner product? There is a me
 \end{align*}
 However, this appears to diverge. For example, $jg$ will typically have a term of $q^{-n}$, and $\left\lvert q^{-n} \right\rvert = \exp(2\pi ny)$ gets huge.
 
-We can regularize, though. It turns out that the integrals obtained by cutting off the fundamental domain at some horizontal line are the same\footnote{See \url{https://youtu.be/wWTMTSmOBL4?t=362}.}. Therefore, we can take
+We can regularize, though. It turns out that the integrals obtained by cutting off the fundamental domain at some horizontal line are the same.\footnote{See \url{https://youtu.be/wWTMTSmOBL4?t=362}.} Therefore, we can take
 \begin{align*}
 	(f,g) := \lim_{\varpi\to\infty}  \int_{\textrm{fundamental domain cut off at $\varpi$} }fg\frac{dx\,dy}{y^2}. 
 \end{align*}
@@ -1255,7 +1253,7 @@ Petersson generalized this conjecture, to guess that
 Deligne proved both of these.
 
 \begin{exercise}\label{}\text{}
-Find the eigenforms of weight $24$, the first case when the space of cusp forms has dimension greater than $1$. (Warning: The answer is messy. The eigenforms do not have integer coefficients, but those defined over an imaginary quadratic field. In general, this is how eigenforms of heigher weight tend to look.)
+Find the eigenforms of weight $24$, the first case when the space of cusp forms has a dimension greater than $1$. (Warning: The answer is messy. The eigenforms do not have integer coefficients; they have coefficients defined over an imaginary quadratic field. In general, this is how eigenforms of higher weight tend to look.)
 \end{exercise}
 
 \printindex
