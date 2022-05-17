@@ -1,8 +1,6 @@
-
-% Last updated: December 15, 2021
 \documentclass[11pt, oneside]{amsart}
 
-\usepackage[old]{jack}
+\usepackage[old, colour]{jack}
 \def\arraystretch{1}
 \title{Group theory}
 \author{Jack DeSerrano}
@@ -55,7 +53,7 @@ The group $\SU_3$ is useful in QCD: it is the set of three-by-three unitary matr
 
 We can even consider the symmetries of a group, for instance, $\Z/5\Z = \{0,1,2,3,4\}$ and its symmetries. For instance, we have the map
 $$
-\Z/5\Z\to\Z/5\Z : a \mapsto a^2.
+\Z/5\Z\longrightarrow\Z/5\Z : a \mapsto a^2.
 $$
 There are $4$ symmetries in total.
 
@@ -70,7 +68,7 @@ A group $G$ acts on a set $S$ if there is a function from $G\times S$ to $S$ tha
 
 You might notice that there is an obvious action of $G$ on itself. Namely, if $S=G$, then we can define $g(s)=gs$. Therefore, $G$ is a subgroup of the permutations of $S$. (Let's digress on what a subgroup is.) $G$ is a \defn{subgroup} of $H$ if $G$ is a subset of $H$ with the same product, containing $1$, and closed under this product.
 
-We can also define an action that involves a function $S\times G \to S$ with $s,g \mapsto (s)g$ satisfying the axioms as described above. This is called a right action as opposed to the left action that was described prior. 
+We can also define an action that involves a function $S\times G \longrightarrow S$ with $s,g \mapsto (s)g$ satisfying the axioms as described above. This is called a right action as opposed to the left action that was described prior. 
 
 These actions do not need to be the same. When we consider left and right actions of $G$ on itself, we might ask if $gs=sg$ holds. If it does, then $s$ and $g$ are said to commute. If $gs=sg$ for all elements in $G$, we call $G$ \defn{commutative} or \defn{abelian}. Groups are not commutative, usually. A simple example of a noncommutative group is the symmetries of a triangle.
 
@@ -91,7 +89,7 @@ There are eight ways a group $G$ can act itself (four left actions and four righ
 \end{enumerate}
 We cannot take the right actions and turn them into left actions. For example, suppose we have $g(s) = sg$. Then $(gh)s = sgh$, $(gh)s = g(hs)$, and $g(hs) = (sh)g$. But, we see that $sgh\neq (sh)g$ if $G$ is noncommutative. So $g(s)$ cannot be $sg$.
 \section{Homomorphisms}
-A \defn{homomorphism} is a map $f:G\to H$ that preserves multiplication:
+A \defn{homomorphism} is a map $f:G\longrightarrow H$ that preserves multiplication:
 $$
 f(ab) = f(a)f(b).
 $$
@@ -171,34 +169,34 @@ The group $\Z/4\Z$ has a subgroup of order $1$ and one of order $2$. The group $
 
 Sometimes, it useful to write what are called {\defn{exact sequences}} of the form
 $$
-0\to A \to B\to C\to 0.
+0\longrightarrow A \longrightarrow B\longrightarrow C\longrightarrow 0.
 $$
 In particular, the above is \defn{exact at $B$} if the arrows are homomorphisms of groups and the kernel of the map from $B$ to $C$ is the image of the map from $A$ to $B$. Essentially, this means that $A$ is more-or-less a subgroup of $B$, $B$ maps onto $C$, and $A$ is more-or-less the kernel of the map from $B$ to $C$. 
 
 Actually, we have
 $$
-0\to\Z/2\Z \to \Z/4\Z \to \Z/2\Z \to 0.
+0\longrightarrow\Z/2\Z \longrightarrow \Z/4\Z \longrightarrow \Z/2\Z \longrightarrow 0.
 $$
 The group $\Z/4\Z$ has a homomorphism onto $\Z/2\Z$ and the kernel is a group of order $2$. The sequence
 $$
-0\to\Z/2\Z \to \Z/2\Z \times \Z/2\Z\to \Z/2\Z \to 0
+0\longrightarrow\Z/2\Z \longrightarrow \Z/2\Z \times \Z/2\Z\longrightarrow \Z/2\Z \longrightarrow 0
 $$
 is exact since the sequence 
 $$
-0\to A\to A\times B \to B\to 0
+0\longrightarrow A\longrightarrow A\times B \longrightarrow B\longrightarrow 0
 $$
 is always exact: the map from $A\times B$ to $B$ is a projection and the map from $A$ to $A\times B$ is the natural inclusion.
 \begin{warning}
 The objects $A$ and $B$ in the exact sequence
 $$
-0 \to A \to G\to B \to 0
+0 \longrightarrow A \longrightarrow G\longrightarrow B \longrightarrow 0
 $$
 do not determine $G$.
 \end{warning}
 
 Any exact sequence of the form 
 $$
-0\to A\to A\times B \to B\to 0
+0\longrightarrow A\longrightarrow A\times B \longrightarrow B\longrightarrow 0
 $$
 is called \defn{split}. You should be careful when assuming that an exact sequence is split.
 
@@ -208,7 +206,7 @@ G\times H = \{ (g,h) : g\in G,h\in H\}.
 $$
 The product $G\times H$ is always a group.
 
-Suppose $G$ has subgroups $A,B$. Suppose $A$ and $B$ commute and every element in $G$ is of the form $ab$ with $a\in A$ and $b\in B$ uniquely. Then $G\isomto A\times B$, since there is a homomorphism $A\times B\to G$ that takes $(a,b)$ to $ab$, and this homomorphism is bijective. 
+Suppose $G$ has subgroups $A,B$. Suppose $A$ and $B$ commute and every element in $G$ is of the form $ab$ with $a\in A$ and $b\in B$ uniquely. Then $G\isomto A\times B$, since there is a homomorphism $A\times B\longrightarrow G$ that takes $(a,b)$ to $ab$, and this homomorphism is bijective. 
 
 The group $\R^*$ is isomorphic to $\{\pm 1\} \times \R_{>0}$. This follows rather trivially from the criteria given above.
 
@@ -281,7 +279,7 @@ These diagrams become much more interesting once we have (non-trivial) inclusion
 
 Suppose $H$ is a subgroup of $G$. We define the \defn{quotient group} $G/H$ as the group making
 $$
-1\to H\to G \to G/H\to 1
+1\longrightarrow H\longrightarrow G \longrightarrow G/H\longrightarrow 1
 $$
 exact. From this, we also have that $G/H$ is the set of left cosets of $H$. 
 
@@ -326,7 +324,7 @@ etc.) so they are conjugate. Also, if a subgroup is not normal, then all subgrou
 
 Suppose $G$ has a normal subgroup $H$. Then 
 $$
-1\to H \to G \to G/H \to 1
+1\longrightarrow H \longrightarrow G \longrightarrow G/H \longrightarrow 1
 $$
 is exact, and $H$ and $G/H$ are usually of lesser order than $G$.
 
@@ -344,7 +342,7 @@ Show that $G$ is associative. % 8:20 (https://www.youtube.com/watch?v=puyFI5Ow5q
 This product is called the \defn{semidirect product} of $A$ and $B$ and written $A\ltimes B$. Again, $B$ is a normal subgroup, $A$ is a subgroup, the action $b\mapsto a\inv b a$ in $A\ltimes B$ is the same as the right action of $A$ on $B$. If we have a left action of $A$ on $B$ instead, we also have a semidirect product, written $B \rtimes A$.
 
 \begin{example}
-$\Sg_3 \isomto \Z/2\Z \ltimes \Z/3\Z.$
+$\Sg_3 \isomto \Z/2\Z \ltimes \Z/3\Z$.
 \end{example}
 
 We can use these notions to classify groups $G$ of order $6$. Firstly, $G$ has an element $g$ of order $3$, since if $G$ has an element of order $6$, then $G$ is cyclic, and if not (and $G$ has no elements of order $3$), then all non-identity elements are of order $2$, which corresponds to $\prod \Z/2\Z$, so $G$ must have an element of order $3$. We have $\{1,g,g^2\}\lhd G$ since it is a subgroup of index $2$. 
@@ -366,13 +364,13 @@ G \isomto \Z/2\Z \times \Z/2\Z \times \Z/2\Z.
 $$ 
 Now, we can assume that $G$ has an element $g$ of order $4$. Consider the subgroup $H = \{ 1,g,g^2, g^3\}$. It is normal in $G$ since it has index $2$. We get the exact sequence
 $$
-1\to H\isomto \Z/4\Z \to G\to \Z/2\Z \to 1.
+1\longrightarrow H\isomto \Z/4\Z \longrightarrow G\longrightarrow \Z/2\Z \longrightarrow 1.
 $$
 
 \begin{definition}
 $G$ is an \defn{extension} of $B$ by $A$ if
 $$
-1\to A \to G \to B \to 1
+1\longrightarrow A \longrightarrow G \longrightarrow B \longrightarrow 1
 $$
 is exact.
 \end{definition}
@@ -400,7 +398,7 @@ $$
 and $G = \{\pm a,\pm b,\pm c,\pm d\}$ is a group of order $8$. It is common to write $a=i$, $b = j$, $c=k$, and $d=1$, where $i^2 =j^2 =k^2 = ijk = -1$.
 
 \section{Quaternions}
-Recall that $\Qu = \{ \pm1,\pm i,\pm  j,\pm k\}$ with the relations $ij = k$, $jk=i$, $ki=j$, and $i^2 = j^2 = k^2 = ijk =-1$. We have the representation $\rho : \Qu \injto \SU(2)$ where
+Recall that $\Qu = \{ \pm1,\pm i,\pm  j,\pm k\}$ with the relations $ij = k$, $jk=i$, $ki=j$, and $i^2 = j^2 = k^2 = ijk =-1$. We have the representation $\rho : \Qu \hookrightarrow \SU(2)$ where
 \begin{align*}
 i \mapsto \mat{i &\\ & -i},\quad  j \mapsto \mat{ & 1 \\ -1&},\quad k \mapsto \mat{& i \\i&},\quad  1\mapsto \mat{1 & \\ & 1}.
 \end{align*}
@@ -427,7 +425,7 @@ Pick some $v\in \R^3$ and $g\in S^3$. The number $gvg\inv$ is in $\R^3$ (is ``pu
 
 The group $S^3$ is not the group of rotations of three-dimensional space. The sequence 
 $$
-1\to\{\pm1\} \to S^3 \to \SO_3(\R)\to 1
+1\longrightarrow\{\pm1\} \longrightarrow S^3 \longrightarrow \SO_3(\R)\longrightarrow 1
 $$
 is exact, and, in particular, the homomorphism from $S^3 $ to $\SO_3(\R)$ has a nontrivial kernel (of order $2$). Since the kernel is of order $2$, $S^3$ is a \defn{double cover} of $\SO_3(\R)$. We could get a trivial double cover by taking the product of $\SO_3(\R)$ with $\Z/2\Z$, but this is much more interesting.
 
@@ -438,7 +436,7 @@ Consider the exact sequence (with the double cover) above. We can take some fini
 
 Identify $\R^4 = a + bi + cj + dk$ and suppose $v\in \R^4$, $g,h\in S^3$. We can map $v\mapsto gvh\inv$, which turns out to be an element in $\SO_4(\R)$. So  
 $$
-1\to (-1,-1)\to S^3 \times S^3 \to \SO_4(\R) \to 1
+1\longrightarrow (-1,-1)\longrightarrow S^3 \times S^3 \longrightarrow \SO_4(\R) \longrightarrow 1
 $$
 is exact, and $\SO_4(\R) \isomto (S^3 \times S^3)/(\Z/2\Z)$.
 
@@ -614,7 +612,7 @@ These subgroups are called \defn{Sylow $p$-subgroups}.
 
 Suppose $G$ does not have a proper subgroup of index coprime to $p$. Then all proper subgroups have index divisible by $p$. The order of $G$ is the order of the centre of $G$ plus the sum over all conjugacy classes of size greater than $1$ of the size of the conjugacy class. The size of the conjugacy class is the index of some proper subgroup of $G$, so the entire sum is divisible by $p$. Since $\abs{G}$ is also divisible by $p$, the centre of $G$ has order divisible by $p$. So $G$ has an element of order $p$ in the centre. 
 
-Look at $G/\ang g$ where $g^p = 1$, $g\neq 1$, and $g$ is in the centre. Pick a Sylow $p$-subgroup $S$ of $G/\ang{g} $, so $\abs{S} = p^{n-1}$. We have the map $G\to G/\ang{g}$, and we consider the inverse image $S'$ of $S$ under this map. The inverse image $S'$ has order $p^n$, so is a Sylow $p$-subgroup of $G$.
+Look at $G/\ang g$ where $g^p = 1$, $g\neq 1$, and $g$ is in the centre. Pick a Sylow $p$-subgroup $S$ of $G/\ang{g} $, so $\abs{S} = p^{n-1}$. We have the map $G\longrightarrow G/\ang{g}$, and we consider the inverse image $S'$ of $S$ under this map. The inverse image $S'$ has order $p^n$, so is a Sylow $p$-subgroup of $G$.
 \end{proof}
 
 \begin{proof}
@@ -992,7 +990,7 @@ $$
 %The group $H$ acts on the product by its regular representation, so $H$ acts on itself by left translations.
 \end{definition}
 
-\begin{example}
+\begin{example}\text{}
 \begin{enumerate}
 \item Take $G=\Zmod 3$ and $H = \Zmod 2$. Then 
 $
@@ -1039,7 +1037,7 @@ This last group is a Frobenius group.
 A \defn{Frobenius group} $G$ is a group acting transitively on a set $S$ such that no nonidentity element of $G$ fixes at least two elements of $S$ and $S$ is not the regular representation.
 \end{definition}
 
-\begin{example}
+\begin{example}\text{}
 \begin{enumerate}
 \item The $ax+b$ group over a field $F$ is Frobenius, where $S$ consists of elements in $F$, $a\in F^*$, and $b\in F$, with order $\abs{F} (\abs{F} - 1)$.
 \item The group $\D_n$ for $n$ odd is Frobenius.
@@ -1098,7 +1096,7 @@ If the kernel has order $2$, the image has order $12$ and has more than $1$ Sylo
 %So we have found $3$ ways to ``join'' $\Ag_4$ with $\Zmod 2$.
 Let's consider the binary tetrahedral group. Recall that the group $S^3$ of unit quaternions maps to $\SO_3(\R)$. Inside $\SO_3(\R)$ is $\Ag_4$ (the rotations of the tetrahedron). We have the following \defn{central extension}
 $$
-1 \to \Zmod 2 \to \widehat{\Ag_4} \to \Ag_4 \to 1 
+1 \longrightarrow \Zmod 2 \longrightarrow \widehat{\Ag_4} \longrightarrow \Ag_4 \longrightarrow 1 
 $$
 where $\widehat{\Ag_4}$ denotes the binary tetrahedral group. 
 
@@ -1130,9 +1128,9 @@ It has a subgroup $\Ag_n$, the alternating group, with index $2$, and $\abs{\Ag_
 $$
 \prod_{0<i<j\le n} (x_i - x_j).
 $$
-Indeed, we have a homomorphism $\Sg_n \to \{\pm 1\}$ where the sign depends on the sign of the above polynomial. The group $\Ag_n$ is the kernel of this homomorphism, so we have the exact sequence
+Indeed, we have a homomorphism $\Sg_n \longrightarrow \{\pm 1\}$ where the sign depends on the sign of the above polynomial. The group $\Ag_n$ is the kernel of this homomorphism, so we have the exact sequence
 $$
-1 \to \Ag_n \to \Sg_n \to \{\pm 1\} \to 1.
+1 \longrightarrow \Ag_n \longrightarrow \Sg_n \longrightarrow \{\pm 1\} \longrightarrow 1.
 $$
 The group $\Ag_n$ is normal in $\Sg_n$ because it is the kernel of a homomorphism.
 
@@ -1175,7 +1173,7 @@ $$
 $$
 For each point $\tau$, $\tau^2=1$. If $\tau$ is connected to $\tau'$, then $(\tau\tau')^3 = 1$. If $\tau$ is not connected to $\tau'$, then $(\tau\tau')^2=1$.
 
-Are there any other relations that we can't get from the previous ones? That is, do the relations above define the symmetric group? Suppose $G$ is a group defined by these relations. Then there is a map $G\to \Sg_n$ that is surjective because $\Sg_n$ is generated by the relations. We want to show that the kernel of this map is $\{1\}$ such that the $G$ is isomorphic to $\Sg_n$. It is enough to show that $\abs{G} \le \abs{\Sg_n}$. 
+Are there any other relations that we can't get from the previous ones? That is, do the relations above define the symmetric group? Suppose $G$ is a group defined by these relations. Then there is a map $G\longrightarrow \Sg_n$ that is surjective because $\Sg_n$ is generated by the relations. We want to show that the kernel of this map is $\{1\}$ such that the $G$ is isomorphic to $\Sg_n$. It is enough to show that $\abs{G} \le \abs{\Sg_n}$. 
 
 Suppose we have the Coxeter diagram
 $$
@@ -1192,7 +1190,7 @@ We have $3$ abelian groups of order $p^3$: $\Zmod{p^3}$, $\Zmod {p^2}\times \Zmo
 
 If $p$ is odd, then we have one nonabelian group for each case. Let $G$ be the group. If $G$ has an element of order $p^2$, the centre $Z$ is cyclic of order $p$. Then $G/Z = (\Zmod p)^2$, and we have the extension
 $$
-\{1\} \to \Zmod p \to G \to (\Zmod p)^2 \to \{1\}.
+\{1\} \longrightarrow \Zmod p \longrightarrow G \longrightarrow (\Zmod p)^2 \longrightarrow \{1\}.
 $$
 
 First let's look at the case when all elements of $G$ have order $1$ or $p$. The group
@@ -1201,7 +1199,7 @@ G=\left \{ \mat{  \,1 & \,* & \,*\, \\ \, & \,1 &\, *\,\\ \, & \, & \,1\, } \rig
 $$ 
 is nonabelian of order $p^3$. Do all of its elements have order $p$, and, if so, why does that fail when $p=2$? We define the map
 $$
-\exp : \left \{ \mat{  \,\,& * & *\, \\ \, &  & *\,\\ \, &  & \, } \right\} \to G,
+\exp : \left \{ \mat{  \,\,& * & *\, \\ \, &  & *\,\\ \, &  & \, } \right\} \longrightarrow G,
 $$
 which, in this case, can be defined
 $$
@@ -1215,23 +1213,23 @@ Suppose $G$ is nonabelian of order $p^3$ with an element of order $p^2$. The gro
 
 So we only get $2$ nonabelian groups of order $p^3$. We can construct them by either taking the upper triangular matrices above or a semidirect product $\Zmod {p^2} \ltimes \Zmod p$. The first kind forms a family for all $p$, and the second forms a family for $p$ odd. When $p=2$, it turns out that one semidirect product is isomorphic to the group in matrix form (the dihedral group), and another semidirect product is isomorphic to $\Qu$. 
 
-These groups are analogues of the Heisenberg group. Suppose $f:\R\to\C$. We can transform $f$ by $T_\alpha : f(x)\mapsto f(x+\alpha)$ and $T_\beta : f(x) \mapsto e^{2\pi i \beta x}f(x)$ (corresponding to momentum and position operators). We have $T_\alpha T_\beta \equiv T_\beta T_\alpha e^{2\pi i \alpha \beta}$. We get a three dimensional group of transformations where $f(x) \mapsto e^{2\pi i (\gamma + \beta x)} f(x+\alpha) $. The circle group $S^1$ is a subgroup, so we have the extension
+These groups are analogues of the Heisenberg group. Suppose $f:\R\longrightarrow\C$. We can transform $f$ by $T_\alpha : f(x)\mapsto f(x+\alpha)$ and $T_\beta : f(x) \mapsto e^{2\pi i \beta x}f(x)$ (corresponding to momentum and position operators). We have $T_\alpha T_\beta \equiv T_\beta T_\alpha e^{2\pi i \alpha \beta}$. We get a three dimensional group of transformations where $f(x) \mapsto e^{2\pi i (\gamma + \beta x)} f(x+\alpha) $. The circle group $S^1$ is a subgroup, so we have the extension
 $$
-\{1 \} \to S^1 \to G \to \R\times \R \to \{1\}.
+\{1 \} \longrightarrow S^1 \longrightarrow G \longrightarrow \R\times \R \longrightarrow \{1\}.
 $$
-Now suppose $f: \F_p \to \C$ with $T_\alpha : f(x) \to (x+\alpha)f(x)$ and $T_\beta : f(x) \mapsto e^{2\pi i \beta x/p} f(x)$, where $\alpha,\beta\in \F_p$. Also, $e^{2\pi i\beta x/p}$ is a well defined $p$th root of unity. These commute with each other up to multiplication by $e^{2\pi i \gamma/p}$, $\gamma\in \F_p$. We get a group $G$ of order $p^3$ where
+Now suppose $f: \F_p \longrightarrow \C$ with $T_\alpha : f(x) \longrightarrow (x+\alpha)f(x)$ and $T_\beta : f(x) \mapsto e^{2\pi i \beta x/p} f(x)$, where $\alpha,\beta\in \F_p$. Also, $e^{2\pi i\beta x/p}$ is a well defined $p$th root of unity. These commute with each other up to multiplication by $e^{2\pi i \gamma/p}$, $\gamma\in \F_p$. We get a group $G$ of order $p^3$ where
 $$
-\{1\} \to \F_p \to G \to \F_p\times \F_p\to\{1\}.
+\{1\} \longrightarrow \F_p \longrightarrow G \longrightarrow \F_p\times \F_p\longrightarrow\{1\}.
 $$
 The group $G$ is isomorphic to the group of those upper triangular matrices. 
 
 So groups of order $p^3$ are similar to the Heisenberg group. We can have Heisenberg groups in $n$ dimensions. We have the extension
 $$
-\{1\} \to S^1 \to G \to \R^n \times \R^n \to \{1\},
+\{1\} \longrightarrow S^1 \longrightarrow G \longrightarrow \R^n \times \R^n \longrightarrow \{1\},
 $$
 hence the extension
 $$
-\{1\} \to \F_p \to H \to \F_p^n \times \F_p^n \to \{1\}.
+\{1\} \longrightarrow \F_p \longrightarrow H \longrightarrow \F_p^n \times \F_p^n \longrightarrow \{1\}.
 $$
 These groups $H$ are \defn{extra special groups}. Such a group $H$ has order $p^{1+2n}$, its centre $Z$ has order $p$, and $H/Z \isomto (\Zmod p)^{2n}$.
 
@@ -1243,7 +1241,7 @@ If we have an extra special group of order $2^{1+2n}$, then
 $$
 G/Z \isomto (\Zmod 2)^{2n},
 $$
-which has a quadratic form $q$, and a map $(\Zmod 2)^{2n} \to \Zmod 2 = Z$, where $q(a) = a^2$. Also, $q(ab) = q(a)q(b)\langle a,b\rangle = q(a)q(b)aba\inv b\inv$. Quadratic forms $q : \F_2^n \to \F_2$ can be distinguished by the Arf invariant, given by the most common value of $q$. (It is sometimes called the ``democratic invariant.'')
+which has a quadratic form $q$, and a map $(\Zmod 2)^{2n} \longrightarrow \Zmod 2 = Z$, where $q(a) = a^2$. Also, $q(ab) = q(a)q(b)\langle a,b\rangle = q(a)q(b)aba\inv b\inv$. Quadratic forms $q : \F_2^n \longrightarrow \F_2$ can be distinguished by the Arf invariant, given by the most common value of $q$. (It is sometimes called the ``democratic invariant.'')
 
 \section{The transfer homomorphism} \label{transfer}
 Let's classify the groups $G$ of order $30 = 2\cdot3\cdot5$. We want to show that $G$ has a normal subgroup of index $2$. We will construct a transfer homomorphism 
@@ -1252,13 +1250,13 @@ $$
 $$
 whose kernel is a normal subgroup of $G$ of order $15$. The only subgroup of order $15$ must be cyclic of order $15$, so we get the split exact sequence
 $$
-\{1\} \to \Zmod{15} \to G \to \Zmod 2 \to\{1\}
+\{1\} \longrightarrow \Zmod{15} \longrightarrow G \longrightarrow \Zmod 2 \longrightarrow\{1\}
 $$
 so $G \isomto \Zmod{15}\ltimes \Zmod 2$ classified by how $\Zmod 2$ acts on $\Zmod{15}$. There are $4$ ways this can happen, so we get $4$ groups: $\Zmod {30}$, $\Zmod 3 \times \D_{10}$, $\Zmod {5} \times \D_6$, $\D_{30}$. 
 
 Suppose $H$ is a subgroup of $G$. Then the transfer homomorphism is the map
 $$
-\tau : H\textsuperscript{ab} \leftarrow G\textsuperscript{ab},
+\tau : H\textsuperscript{ab} \longleftarrow G\textsuperscript{ab},
 $$
 where $G\textsuperscript{ab}$ is the abelianization of $G$. Indeed, the transfer ``goes the wrong way.''
 
@@ -1287,9 +1285,9 @@ If $g\in G$, what is $\tau(g)$? Take $g\in H$. We calculate $ga_1=a_2$, and choo
 
 Now suppose no two distinct elements in $H$ are conjugate in $G$. From $h_1 = a_1\inv g^na_1$ and $g^n,h\in H$, we get $h_1 = g^n$, $h_2 = g^k$, etc. So $\tau(g) = h_1h_2\cdots = g^ng^k\cdots = g^{[G:H]}$ in this case.
 
-If $G$ is abelian, if $H\in \ZZ(G)$, or if $H$ has order $2$, then $\tau(g) = g^{[G:H]}$ for $g\in H$. If $H$ has order $2$, then $\tau$ acts on $H$ as  $g\mapsto g^{[G:H]}$. If $[G:H]$ is odd, then $\tau : G\to H$ is onto. That is, if $\abs{G}= 2n$ with $n$ odd, there is a surjective homomorphism $\tau : G\to H$ where $H$ is a Sylow subgroup. So $G$ is a semidirect product $K\ltimes H$ where $K$ is index $2$ and $H\isomto \Zmod 2$, and, in particular, $G$ is not simple. No group of order $2\pmod 4$ is simple! 
+If $G$ is abelian, if $H\in \ZZ(G)$, or if $H$ has order $2$, then $\tau(g) = g^{[G:H]}$ for $g\in H$. If $H$ has order $2$, then $\tau$ acts on $H$ as  $g\mapsto g^{[G:H]}$. If $[G:H]$ is odd, then $\tau : G\longrightarrow H$ is onto. That is, if $\abs{G}= 2n$ with $n$ odd, there is a surjective homomorphism $\tau : G\longrightarrow H$ where $H$ is a Sylow subgroup. So $G$ is a semidirect product $K\ltimes H$ where $K$ is index $2$ and $H\isomto \Zmod 2$, and, in particular, $G$ is not simple. No group of order $2\pmod 4$ is simple! 
 
-Suppose $p$ is the smallest prime dividing $\abs{G}$. If $p^2$ does not divide $\abs G$, then the Sylow $p$-subgroup is $\Zmod p$, and no $2$ distinct elements can be conjugate (if there was such a pair, then there would have to be an inner automorphism of $G$ acting on $\Zmod p$ nontrivially, but no nontrivial elements of $G$ have order less than $p$). So $\tau : G\to \Zmod p$ acts as $g\mapsto g^{\abs G /p}$ for $g\in \Zmod p$, and this map is onto. So $G$ has a normal subgroup of index $p$ (a normal $p$ conjugate), so $G$ is not simple. In fact, this holds even if $p^2$ divides $\abs G$, provided the Sylow $p$-subgroup is cyclic.
+Suppose $p$ is the smallest prime dividing $\abs{G}$. If $p^2$ does not divide $\abs G$, then the Sylow $p$-subgroup is $\Zmod p$, and no $2$ distinct elements can be conjugate (if there was such a pair, then there would have to be an inner automorphism of $G$ acting on $\Zmod p$ nontrivially, but no nontrivial elements of $G$ have order less than $p$). So $\tau : G\longrightarrow \Zmod p$ acts as $g\mapsto g^{\abs G /p}$ for $g\in \Zmod p$, and this map is onto. So $G$ has a normal subgroup of index $p$ (a normal $p$ conjugate), so $G$ is not simple. In fact, this holds even if $p^2$ divides $\abs G$, provided the Sylow $p$-subgroup is cyclic.
 
 So any simple group must be divisible by the square of some prime. 
 
@@ -1306,7 +1304,7 @@ $$
 $$
 This is how we will restrict $G$. So $G$ is an extension $(\Zmod p)^m \times (\Zmod p)^{m'}$ where $(\Zmod p)^{m'}$ can be thought of as a vector space of dimension $m'$ over $\F_p$. We can choose a basis $\{a_1,\hdots , a_{m'}\}$ and look at all the elements $(a_ia_ja_i\inv a_j\inv)$ (that is, the commutator). The commutator must be in the centre,  so  $(a_ia_ja_i\inv a_j\inv) \in \F_p^m$. We can define at least one group with these commutator relations by defining an element in $\F_p^m$ to be the commutator. 
 
-How many ways can we write the commutator? There are about $m'(m'-1)/2$ ways of choosing $i,j$. The dimension of all bilinear maps from $(\Zmod p)^{m'} \tensor (\Zmod p)^{m'} \to (\Zmod p)^m$ is about $mm'^2 / 2$. So the vector space of all of these maps has size about $p^{mm'^2/2}$. Now, we have $m+m'=n$, where $\abs{G} = p^n$, and we want to maximize $p^{mm'^2/2}$. We get $m' \approx (2/3)n$, $m \approx (1/3)n$. So we seem to be getting about $p^{(2/27) n^3}$ groups, but there are actually less.
+How many ways can we write the commutator? There are about $m'(m'-1)/2$ ways of choosing $i,j$. The dimension of all bilinear maps from $(\Zmod p)^{m'} \tensor (\Zmod p)^{m'} \longrightarrow (\Zmod p)^m$ is about $mm'^2 / 2$. So the vector space of all of these maps has size about $p^{mm'^2/2}$. Now, we have $m+m'=n$, where $\abs{G} = p^n$, and we want to maximize $p^{mm'^2/2}$. We get $m' \approx (2/3)n$, $m \approx (1/3)n$. So we seem to be getting about $p^{(2/27) n^3}$ groups, but there are actually less.
 
 We haven't accounted for symmetries. We could have chosen a different basis of $a_i$s that gives us $2$ of the elements in the $p^{(2/27) n^3}$ groups. This depends on the automorphisms of the vector spaces $(\Zmod p)^m$ and $(\Zmod p)^{m'}$. The automorphism group of the latter vector space is $\GL_{m'}(\F_p)$ whose order is about $p^{m'^2}$. We should have the number of groups, then, being $p^{(2/27) n^3 - O(n^2)}$. So the number of groups of order $p^n$ grows like (not asymptotic to) $p^{(2/27) n^3}$. And that's too many groups.
 
@@ -1317,9 +1315,9 @@ The group $G = \GL_2 (\F_3)$ is of order $48 = (3^2-1)(3^2-3)$ (good exercise). 
 $$
 \GL_2(\F_3) \ni \mat{a&b\\c&d} (\tau) = \frac{a\tau + b}{c\tau + d}.
 $$
-This gives a surjective homomorphism $\GL_2(\F_3) \to \Sg_4$ with kernel $\{\pm I\}$:
+This gives a surjective homomorphism $\GL_2(\F_3) \longrightarrow \Sg_4$ with kernel $\{\pm I\}$:
 $$
-\{1 \} \to \{\pm I\} \to \GL_2(\F_3) \to \Sg_4 \to \{1\}.
+\{1 \} \longrightarrow \{\pm I\} \longrightarrow \GL_2(\F_3) \longrightarrow \Sg_4 \longrightarrow \{1\}.
 $$
 The binary octahedral group maps onto the octahedral group $\isomto \Sg_4$ with kernel of order $2$, just like $\GL_2(\F_3)$. Are they the same group, then? No. The binary octahedral group only has $1$ element of order $2$ (since $S^3$ only has $1$ element of order $2$) and $\GL_2(\F_3)$ has several elements of order $2$.
 
@@ -1332,7 +1330,7 @@ Now, we'll look at groups of order $60$. For example, we have
 \end{enumerate}
 These are all isomorphic, but why? If we can map any of these groups to a group of permutations of $5$ elements, we get a map to $\Sg_5$, and, from there, it would be easy to show that the group is isomorphic to $\Ag_5$. 
 
-The group $\SL_2(\F_4)$ acts on $\F_4 \cup \{ \infty\}$ (the projective line), so we get a homomorphism $\SL_2(\F_4)\to \Sg_5$, and one can check that the image of the homomorphism is $\Ag_5$. The group of rotations of an icosahedron acts on $5$ objects. The dodecahedron has the same rotation group as the icosahedron since the two are dual. There are five ways to embed a cube in a dodecahedron, so each rotation of a dodecahedron gives a permutation of these five cubes. Also, refer to figure 3. The rotations of an icosahedron (or dodecahedron) give permutations of the five tetrahedra. Once again, the image of the homomorphism from the group of rotations to $\Sg_5$ is $\Ag_5$.
+The group $\SL_2(\F_4)$ acts on $\F_4 \cup \{ \infty\}$ (the projective line), so we get a homomorphism $\SL_2(\F_4)\longrightarrow \Sg_5$, and one can check that the image of the homomorphism is $\Ag_5$. The group of rotations of an icosahedron acts on $5$ objects. The dodecahedron has the same rotation group as the icosahedron since the two are dual. There are five ways to embed a cube in a dodecahedron, so each rotation of a dodecahedron gives a permutation of these five cubes. Also, refer to figure 3. The rotations of an icosahedron (or dodecahedron) give permutations of the five tetrahedra. Once again, the image of the homomorphism from the group of rotations to $\Sg_5$ is $\Ag_5$.
 \begin{figure}
 \centering
 \includegraphics[scale=0.7]{images/icosahedron_tetrahedral_stellation}
@@ -1356,7 +1354,7 @@ Show that any simple group of order less than $60$ is cyclic.
 Any simple group of order $60$ is isomorphic to $\Ag_5$.
 \end{proposition}
 
-To prove this proposition, we notice that there must be $6$ Sylow $5$-subgroups. Each Sylow subgroup contains $4$ elements of order $5$, and each subgroup is disjoint, so there are $24$ elements of order $5$. Also, the number of Sylow $3$-subgroups might be $4$ or $10$, but it can't be $4$, because then we would have a homomorphism to $\Sg_4$ with kernel a normal subgroup, so there must be $10$ Sylow $3$-subgroups. Therefore, we have $20$ elements of order $3$. Now, consider elements of order $2$; there must be $1$, $3$, $5$, or $15$ of them. If there were $1$, $3$, or $5$, then we would have a homomorphism to $\Sg_3$ or $\Sg_5$, and the first case gives a normal subgroup and the second gives an isomorphism to $\Ag_5$. So we must have $15$ elements of order $2$, and (as always) $1$ element of order $1$. The Sylow $2$-subgroup cannot be cyclic, so it is $(\Zmod 2)\times (\Zmod 2)$, and all elements of order $2$ must be conjugate (recall \cref{transfer}). So the centralizer of an element of order $2$ has order $60/15=4$, hence it must be the Sylow $2$-subgroup. Any Sylow $2$-subgroups must be disjoint (except for $1$). Each Sylow $2$-subgroup has $3$ elements of order $2$, and there are $15$ elements of order $2$, so there must be exactly $5$ Sylow $2$-subgroups. Thus, we get a homomorphism $G\to \Sg_5$, and we deduce that $G\isomto \Ag_5$. 
+To prove this proposition, we notice that there must be $6$ Sylow $5$-subgroups. Each Sylow subgroup contains $4$ elements of order $5$, and each subgroup is disjoint, so there are $24$ elements of order $5$. Also, the number of Sylow $3$-subgroups might be $4$ or $10$, but it can't be $4$, because then we would have a homomorphism to $\Sg_4$ with kernel a normal subgroup, so there must be $10$ Sylow $3$-subgroups. Therefore, we have $20$ elements of order $3$. Now, consider elements of order $2$; there must be $1$, $3$, $5$, or $15$ of them. If there were $1$, $3$, or $5$, then we would have a homomorphism to $\Sg_3$ or $\Sg_5$, and the first case gives a normal subgroup and the second gives an isomorphism to $\Ag_5$. So we must have $15$ elements of order $2$, and (as always) $1$ element of order $1$. The Sylow $2$-subgroup cannot be cyclic, so it is $(\Zmod 2)\times (\Zmod 2)$, and all elements of order $2$ must be conjugate (recall \cref{transfer}). So the centralizer of an element of order $2$ has order $60/15=4$, hence it must be the Sylow $2$-subgroup. Any Sylow $2$-subgroups must be disjoint (except for $1$). Each Sylow $2$-subgroup has $3$ elements of order $2$, and there are $15$ elements of order $2$, so there must be exactly $5$ Sylow $2$-subgroups. Thus, we get a homomorphism $G\longrightarrow \Sg_5$, and we deduce that $G\isomto \Ag_5$. 
 
 \begin{proposition}
 The group $\Ag_n$ is simple if $n \ge 5$.
@@ -1654,24 +1652,24 @@ An \defn{inner automorphism} of a group $G$ is an automorphism that takes an ele
 \end{definition}
 The group of inner automorphisms is $\Inn(G) = G / \ZZ(G)$. The quotient $\Out(G) = \Aut(G)/\Inn(G)$ is called the \defn{outer automorphisms} of $G$, and we get an exact sequence
 $$
-\{1\} \to \ZZ(G) \to G\to \Aut(G) \to \Out(G) \to \{1\}.
+\{1\} \longrightarrow \ZZ(G) \longrightarrow G\longrightarrow \Aut(G) \longrightarrow \Out(G) \longrightarrow \{1\}.
 $$
 Since we generally know $G$ and $\ZZ(G)$, determining $\Aut(G)$ depends on determining $\Out(G)$.
 \begin{example}
 Suppose $G = (\Zmod 2)^2$. Then $\ZZ(G) = G$, so $\Inn(G) = \{1\}$. So $\Out(G) = \Aut(G)$, and we know $\Aut(G) = \Sg_3$.
 \end{example}
 
-For most groups, the automorphisms are usually easy to find. Suppose $G = \PSL_n(\F_q)$. Then $\Aut(G)$ consists of inner automorphisms, conjugations by elements of $\GL_n(\F_q)$,  field automorphisms $\F_q\to \F_q$, and $g\mapsto \tp{(g\inv)}$. Indeed, $\Aut(G)$ is generated by these obvious automorphisms, and this is usually the case.
+For most groups, the automorphisms are usually easy to find. Suppose $G = \PSL_n(\F_q)$. Then $\Aut(G)$ consists of inner automorphisms, conjugations by elements of $\GL_n(\F_q)$,  field automorphisms $\F_q\longrightarrow \F_q$, and $g\mapsto \tp{(g\inv)}$. Indeed, $\Aut(G)$ is generated by these obvious automorphisms, and this is usually the case.
 
 Suppose $G= \Ag_n$. Then the obvious automorphisms are $\Sg_n$, and if $n\ne 6$, this gives all automorphisms of $G$, so $\Out(G) = \Zmod 2$. When $n=6$, we find $\Out(\Ag_n) = \Zmod 2 \times \Zmod 2$. (The sporadic group $\MM_{11}$ has subgroup fixing a point of order $720$ and is composed of $\Ag_6$ with an unexpected automorphism of it.)
 
-Let's consider outer automorphisms of $\Sg_6$. Observe that $\Sg_5$ has a subgroup of index $6$ of order $20$, which is a Frobenius group of order $20$. This gives a nontrivial homomorphism $\Sg_5\to \Sg_6$ ($\Sg_5$ acts transitively on a set of $6$ elements), so $\Sg_5\subset \Sg_6$ not fixing a point. In fact, $\Sg_6$ has $6+6$ subgroups of $\Sg_5$ (usually $\Sg_n$ has $n$ subgroups $\Sg_{n-1}$). The group $\Sg_6$ has a transitive $\Sg_5$ subgroup of index $6$. This gives a homomorphism $\Sg_6\to\Sg_6$ acting on the $6$ cosets of this subgroup. This is not an inner automorphism, so $\Sg_6$ has an outer automorphism. 
+Let's consider outer automorphisms of $\Sg_6$. Observe that $\Sg_5$ has a subgroup of index $6$ of order $20$, which is a Frobenius group of order $20$. This gives a nontrivial homomorphism $\Sg_5\longrightarrow \Sg_6$ ($\Sg_5$ acts transitively on a set of $6$ elements), so $\Sg_5\subset \Sg_6$ not fixing a point. In fact, $\Sg_6$ has $6+6$ subgroups of $\Sg_5$ (usually $\Sg_n$ has $n$ subgroups $\Sg_{n-1}$). The group $\Sg_6$ has a transitive $\Sg_5$ subgroup of index $6$. This gives a homomorphism $\Sg_6\longrightarrow\Sg_6$ acting on the $6$ cosets of this subgroup. This is not an inner automorphism, so $\Sg_6$ has an outer automorphism. 
 
 We want to write down an outer automorphism explicitly. The group $\Sg_6$ is generated by the $5$ transpositions:
 $$
 \Sg_6 : \dynkin [Coxeter]A{5}
 $$
-(So for the transpositions $\tau_1,\hdots, \tau_5$, if $i < j$, then $\tau_i^2 = 1$, $(\tau_i\tau_j)^2=1$ if $j \ne i+1$, and $(\tau_i\tau_j)^3=1$ if $j = i+1$.) We want to find $\sigma_1 ,\hdots,\sigma_5$ with the same relations. Then we can get a homomorphism $\Sg_6\to\Sg_6$ by $\tau_i \mapsto \sigma_i$. This automorphism will not be inner since the $\sigma_i$ are not transpositions. So each $\sigma_i$ is of the form $(*\ *)(*\ *)(*\ *)$ (a product of three transpositions), since the product will be of order $3$ or order $2$. Consider $\sigma_1 = (1\ 2)(3\ 4)(5\ 6)$. Then $\sigma_2$ can have no transposition in common with $\sigma_1$, so $\sigma_2 = (2\ 3)(4\ 5)(6\ 1)$. The element $\sigma_3$ must have no transposition in common with $\sigma_2$ and one in common with $\sigma_1$, so $\sigma_3 = (1\ 2)(3\ 5)(4\ 6)$. The element $\sigma_4$ must have one transposition in common with $\sigma_1$ and $\sigma_2$ but none in common with $\sigma_3$, so $\sigma_4 = (3\ 4)(6\ 1)(2\ 5)$. Finally, $\sigma_5$ must have one transposition in common with $\sigma_1,\sigma_2,\sigma_3$ but none in common with $\sigma_4$, so we get $\sigma_5 = (1\ 2)(4\ 5)(6\ 3)$. So we get our explicit outer automorphism of $\Sg_6$:
+(So for the transpositions $\tau_1,\hdots, \tau_5$, if $i < j$, then $\tau_i^2 = 1$, $(\tau_i\tau_j)^2=1$ if $j \ne i+1$, and $(\tau_i\tau_j)^3=1$ if $j = i+1$.) We want to find $\sigma_1 ,\hdots,\sigma_5$ with the same relations. Then we can get a homomorphism $\Sg_6\longrightarrow\Sg_6$ by $\tau_i \mapsto \sigma_i$. This automorphism will not be inner since the $\sigma_i$ are not transpositions. So each $\sigma_i$ is of the form $(*\ *)(*\ *)(*\ *)$ (a product of three transpositions), since the product will be of order $3$ or order $2$. Consider $\sigma_1 = (1\ 2)(3\ 4)(5\ 6)$. Then $\sigma_2$ can have no transposition in common with $\sigma_1$, so $\sigma_2 = (2\ 3)(4\ 5)(6\ 1)$. The element $\sigma_3$ must have no transposition in common with $\sigma_2$ and one in common with $\sigma_1$, so $\sigma_3 = (1\ 2)(3\ 5)(4\ 6)$. The element $\sigma_4$ must have one transposition in common with $\sigma_1$ and $\sigma_2$ but none in common with $\sigma_3$, so $\sigma_4 = (3\ 4)(6\ 1)(2\ 5)$. Finally, $\sigma_5$ must have one transposition in common with $\sigma_1,\sigma_2,\sigma_3$ but none in common with $\sigma_4$, so we get $\sigma_5 = (1\ 2)(4\ 5)(6\ 3)$. So we get our explicit outer automorphism of $\Sg_6$:
 \begin{align*}
 (1\ 2) &\mapsto (1\ 2)(3\ 4)(5\ 6),\\
 (2\ 3) &\mapsto (2\ 3)(4\ 5)(6\ 1),\\
@@ -1684,7 +1682,7 @@ $$
 No other symmetric groups have nontrivial outer automorphism group. Let $G = \Sg_n$. Suppose $\sigma\in \Aut(G)$ takes transpositions to transpositions. Then $\sigma$ is inner. We can reconstruct $n$ points from the transpositions (though $n=3$ takes some more work), by knowing the transpositions, so any $\sigma $ also acts on the $n$ points of $\Sg_n$ and must be an inner automorphism of $\Sg_n$. Are there automorphisms that do not preserve transpositions? The number of transpositions of $\Sg_n $ is $n(n-1)/2$, and the number of products of two transpositions is $n(n-1)(n-2)(n-3)/2^32!$. The number of products of three transpositions is similarly derived.
 \begin{center}
 \begin{tabular}{cccccccc} 
-	%\toprule
+	%\longrightarrowprule
     {$G$} & {$\#$ transpositions} & {$\#$ products of two transpositions} & {$\#$ products of three transpositions} \\
     \midrule
     {$\Sg_1$} & $0$ & $0$ & $0$ \\ 
@@ -1701,7 +1699,7 @@ No other symmetric groups have nontrivial outer automorphism group. Let $G = \Sg
 We notice that the number of transpositions is the same as the number of products of three transpositions for $\Sg_6$. If an outer automorphism takes transpositions to some other conjugacy class, these conjugacy classes must have the same order. This happens for $\Sg_6$. Extending this table, we get
 \begin{center}
 \begin{tabular}{cccccccc} 
-	%\toprule
+	%\longrightarrowprule
     {$G$} & {$\# \{ (*\ *)\}$} & {$\# \{ (*\ *)(*\ *))\}$} & {$\# \{ (*\ *)(*\ *)(*\ *)\}$} & {$\# \{ (*\ *)(*\ *)(*\ *)(*\ *)\}$} \\
     \midrule
     {$\Sg_1$} & $0$ & $0$ & $0$ & $0$\\ 
@@ -1737,7 +1735,7 @@ $\alpha,\beta,\gamma,\hdots$ is to take all words on $\alpha,\beta,\gamma,\hdots
 
 Suppose $M$ is a monoid. We form the smallest equivalence relation $\sim$ on $M$ such that if $x\sim a$ and $y\sim b$ then $xy \sim ab$ and $yx \sim ba$ for all $x,y,a,b\in M$.
 
-Now we form a free group by taking a free monoid on $\alpha, \alpha\inv,\beta,\beta\inv,\hdots$ and modding out by $\sim$ such that $\alpha\alpha\inv \sim \alpha\inv\alpha \sim 1$, etc. If $G$ is a group with elements $\alpha,\beta,\gamma$, we have a unique homomorphism $F(a,b,c) \to G$ defined by $a\mapsto \alpha$, $b\mapsto \beta$, $c\mapsto \gamma$, etc. for more generators. (This is the universal property.) Again, the rank is well-defined in the same way (the free group on $2$ generators is distinct from the free group on $3$ generators, for example).
+Now we form a free group by taking a free monoid on $\alpha, \alpha\inv,\beta,\beta\inv,\hdots$ and modding out by $\sim$ such that $\alpha\alpha\inv \sim \alpha\inv\alpha \sim 1$, etc. If $G$ is a group with elements $\alpha,\beta,\gamma$, we have a unique homomorphism $F(a,b,c) \longrightarrow G$ defined by $a\mapsto \alpha$, $b\mapsto \beta$, $c\mapsto \gamma$, etc. for more generators. (This is the universal property.) Again, the rank is well-defined in the same way (the free group on $2$ generators is distinct from the free group on $3$ generators, for example).
 
 Let's try to write down the elements of a free group. In the free monoid, we might have elements like $1,\alpha,\beta,\alpha\inv,\beta\inv,\alpha^2,\alpha\beta,\alpha\beta\inv, \alpha\alpha\inv$, etc. In the free monoid, the element $\alpha\alpha\inv$ is distinct from $1$, but in the free group, $\alpha\alpha\inv =1$. Another element like $\alpha\alpha\beta\beta\inv \alpha\inv\beta\alpha\inv$ is just $\alpha\beta\alpha\inv$ in the free group. Every word is equivalent to a reduced word (that does not contain $xx\inv$ or $x\inv x$). 
 
@@ -1854,7 +1852,7 @@ We contract this graph by annihilating the bottom blue line, and then we get a p
 
 Suppose $G$ is index $k$ in $F_n$ (the free group on $n$ generators). How many generators does $G$ have? We draw the graph for $G$ with $k$ points and $nk$ edges. The Euler characteristic of the graph is $\chi= k-kn$, so $\chi$ does not change when we contract an edge of the graph. So the graph with one point has characteristic $\chi = k-nk$, which is $1-\textrm{the number of loops}$. So the number of loops is $1 + nk - k$, and the number of loops is the number of generators.
 
-Suppose we have a map $F_2\surjto \Sg_3$. (Recall that $\Sg_3$ has two generators $a$ and $b$ satisfying $a^2=1$, $b^2=1$, and $(ab)^3 = 1$.) Suppose we want to find the generators for the kernel of this map. ``Well that sounds like a completely daft question: I just told you the relations that give you $\Sg_3$ are these three elements, so surely the kernel is just the free group on these three elements: $a^2$, $b^2$, and $(ab)^3$. Well, no: that's wrong.'' These three elements do not generate the kernel, but these elements together with their conjugates do (the kernel must be normal, and these elements do not generate a normal subgroup). The subgroup is index $6$, so the kernel should be a free group on $7$ generators. 
+Suppose we have a map $F_2\twoheadrightarrow \Sg_3$. (Recall that $\Sg_3$ has two generators $a$ and $b$ satisfying $a^2=1$, $b^2=1$, and $(ab)^3 = 1$.) Suppose we want to find the generators for the kernel of this map. ``Well that sounds like a completely daft question: I just told you the relations that give you $\Sg_3$ are these three elements, so surely the kernel is just the free group on these three elements: $a^2$, $b^2$, and $(ab)^3$. Well, no: that's wrong.'' These three elements do not generate the kernel, but these elements together with their conjugates do (the kernel must be normal, and these elements do not generate a normal subgroup). The subgroup is index $6$, so the kernel should be a free group on $7$ generators. 
 
 To find these generators, we write down an action of $F_2$ on $6$ points:
 \begin{center}
@@ -1914,136 +1912,5 @@ where
 \zeta &= bababa.
 \end{align*}
 So the set of seven generators is $\{a^2,\, a\inv b^2a, \,\alpha,\,\beta,\,\gamma,\,\delta,\,\zeta\}$.
-\section{Other definitions}
-\end{document}
 
-$$
-\begin{tikzpicture}[x=1cm,y=1cm]
-\def\Factor{1}
-\node[minimum size=0.2cm,
-shape=circle,
-fill=green!50,
-font=\footnotesize] 
-(a 1 1) at (\Factor*1,-\Factor*1) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=green!50,
-font=\footnotesize] 
-(a 1 2) at (\Factor*1,-\Factor*2) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=green!50,
-font=\footnotesize] 
-(a 1 3) at (\Factor*1,-\Factor*3) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=green!50,
-font=\footnotesize] 
-(a 1 4) at (\Factor*1,-\Factor*4) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=green!50,
-font=\footnotesize] 
-(a 1 5) at (\Factor*1,-\Factor*5) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 2 1) at (\Factor*2,-\Factor*1) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 2 2) at (\Factor*2,-\Factor*2) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 2 3) at (\Factor*2,-\Factor*3) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 2 4) at (\Factor*2,-\Factor*4) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 2 5) at (\Factor*2,-\Factor*5) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 3 1) at (\Factor*3,-\Factor*1) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 3 2) at (\Factor*3,-\Factor*2) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 3 3) at (\Factor*3,-\Factor*3) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 3 4) at (\Factor*3,-\Factor*4) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 3 5) at (\Factor*3,-\Factor*5) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 4 1) at (\Factor*4,-\Factor*1) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 4 2) at (\Factor*4,-\Factor*2) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 4 3) at (\Factor*4,-\Factor*3) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 4 4) at (\Factor*4,-\Factor*4) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 4 5) at (\Factor*4,-\Factor*5) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 5 1) at (\Factor*5,-\Factor*1) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 5 2) at (\Factor*5,-\Factor*2) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 5 3) at (\Factor*5,-\Factor*3) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 5 4) at (\Factor*5,-\Factor*4) {};
-\node[minimum size=0.2cm,
-shape=circle,
-fill=black!50,
-font=\footnotesize] 
-(a 5 5) at (\Factor*5,-\Factor*5) {};
-\end{tikzpicture}
-$$
+\end{document}

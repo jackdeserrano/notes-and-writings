@@ -1,6 +1,3 @@
-
-% Last updated: ~ January 2022
-% I retypeset the pdf on April 29, 2022 to update the style.
 \documentclass[11pt, oneside,margin=1in]{article}
 
 \def\jtitle{Rings and modules}
@@ -483,9 +480,9 @@ Suppose $R$ is noncommutative. We can still invert all elements of $S$ in a univ
 Can all elements of $R\left[S\inv\right]$ be written $rs\inv$? Is $s\inv r = r_1s_1\inv$ for some $r_1$ and $s_1$? Is $rs_1 =sr_1$? This is called the \defn{right Ore condition}\index{right Ore condition}, and if it is satisfied things are much simpler. You also want $sr=0\implies \exists\: s_1 \in S,\, rs_1=0$.
 
 \section{Free modules}
-Suppose $R$ is a ring. One defines the multiplication in the \defn{opposite ring}\index{opposite ring} $\op R$ of $R$ as follows:
+Suppose $R$ is a ring. One defines the multiplication in the \defn{opposite ring}\index{opposite ring} $R\op$ of $R$ as follows:
 \begin{align*}
-	r_1 \times_{\op R} r_2 := r_2 \times_R r_1.
+	r_1 \times_{R\op} r_2 := r_2 \times_R r_1.
 \end{align*}
 
 If $M$ and $N$ are left $R$-modules, then $\Hom_R\left( M,N \right) $ acts on the right: if $f\in\Hom_R\left( M,N \right)$, then we want $\left( rm \right) f=r\left( mf \right) $. In general, $\Hom_R\left( M,N \right) $ is not an $R$-module. If $M$ and $N$ are two-sided modules, then one can make $\Hom_R\left( M,N \right) $ a two-sided $R$-module. 
@@ -1001,7 +998,7 @@ A Dirichlet $L$--series, for example, is given by
 \begin{align*}
 	L(s)=\sum_{n\ge 1} \frac{\chi(n)}{n^s}.
 \end{align*}
-These were introduced by Dirichlet in his proof of Dirichlet's theorem\footnote{See \url{https://arxiv.org/abs/0808.1408}.}.
+These were introduced by Dirichlet in his proof of Dirichlet's theorem.\footnote{See \url{https://arxiv.org/abs/0808.1408}.}
 
 One can do Fourier analysis on finite abelian groups $M$ with Dirichlet characters. One notices that Dirichlet characters $\chi_i$ and $\chi_j$ are orthogonal if $i\ne j$. We define an inner product on complex functions on $M$ by
 \begin{align*}
@@ -1612,7 +1609,7 @@ Consider the polynomial $z^3 + z + 1$. What is the sum of the fifth powers of th
 
 Newton's identities also show up in Adams operations\index{Adams operations} of $K$-theory. Let $V$ be a vector space acted on by a group $G$. The tensor product $V\tensor V$ is acted on by $G$. This tensor product splits as a direct sum of two vector spaces acted on by $G$: one has $V\tensor V = \Sigma^2 V \oplus \Lambda^2 V$ where $\Sigma^2$ is the \defn{symmetric square}\index{symmetric square} and $\Lambda ^2$ is the \defn{alternating square}\index{alternating square}. The summand $\Sigma^2 V$ is spanned by things of the form $a\tensor b + b\tensor a$ and $\Lambda^2 V$ is spanned by things of the form $a\tensor b - b\tensor a$, so if $\dim V = n$, then $\dim (\Sigma ^2 V) = n (n+1)/2$ and $\dim(\Lambda^2V) = n (n-1)/2$. The \defn{Adams operation} is given by $\Psi^2V = \Sigma^2 V - \Lambda^2 V$. One ``[takes] the semiring of all vector spaces under direct sum and tensor product and [forces] it to be a ring by decreeing that [one] can subtract vector spaces.'' This difference is called a \defn{virtual vector space}\index{virtual vector space}. 
 
-The group $G$ clearly cannot act on this non--vector space. Nevertheless, one can consider the trace of $g\in G$ on $\Psi^2 (V)$. One sees that $\Tr g$ on $\Sigma^2 V$ is $\sum_{i\le j} \lambda_i\lambda_j$ where the $\lambda_i$s are the eigenvalues of $g$ on $V$. The trace of $g$ on $\Lambda^2 V$ is $\sum_{i<j} \lambda_i\lambda_j$. So the trace of $g$ on $\Psi^2 V$ is (by the additivity of the trace) $\sum_{i} \lambda_i^2=p_2$. One may also consider the $n$th Adams operation $\Psi^nV$---where one considers $V^{\tensor n}$---in which the trace of an element is given by $p_n$.
+The group $G$ clearly cannot act on this non--vector space. Nevertheless, one can consider the trace of $g\in G$ on $\Psi^2 (V)$. One sees that $\tr g$ on $\Sigma^2 V$ is $\sum_{i\le j} \lambda_i\lambda_j$ where the $\lambda_i$s are the eigenvalues of $g$ on $V$. The trace of $g$ on $\Lambda^2 V$ is $\sum_{i<j} \lambda_i\lambda_j$. So the trace of $g$ on $\Psi^2 V$ is (by the additivity of the trace) $\sum_{i} \lambda_i^2=p_2$. One may also consider the $n$th Adams operation $\Psi^nV$---where one considers $V^{\tensor n}$---in which the trace of an element is given by $p_n$.
 
 Consider $\Ag_3$ acting on $x$, $y$, and $z$. What are the invariant polynomials? Examples include $e_1$, $e_2$, and $e_3$. Suppose $g$ swaps $x$ and $y$ and $f$ is invariant under $\Ag_3$. Then 
 \begin{align*}

@@ -1,5 +1,3 @@
-
-% Last updated: ~ February 2022
 \documentclass[11pt, oneside,margin=1in]{article}
 
 \def\jtitle{Complex analysis}
@@ -18,7 +16,7 @@
     \vspace*{\fill}
 \fi
 \maketitle
-These notes are based on Richard Borcherds's YouTube series on complex analysis\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj537_iYA5QrvwhvMlpkJ1yGN}.}.
+These notes are based on Richard Borcherds's YouTube series on complex analysis.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj537_iYA5QrvwhvMlpkJ1yGN}.}
 \ifams
 	\vspace*{\fill}
 \fi
@@ -59,7 +57,7 @@ converges only if $\Re(s) > 1$. However, $\zeta$ has an analytic continuation to
 
 Recall the construction of the Mandelbrot set: Fix a complex number $c$. Let $z_0=0$, and consider the sequence $\{z_0, z_1 = z_0^2 + c, z_2 = z_1^2 + c,\hdots\}$. If this sequence is bounded, then $c$ is in the Mandelbrot set. Despite having such a simple definition, the Mandelbrot set is incredibly intricate. The study of things like the Mandelbrot set is complex dynamics.
 
-``If you want to check whether a textbook on complex analysis is good or not, there's a very simple test: you check to see if it has a section on the gamma function and a section on elliptic functions. If it doesn't have these sections, then the author doesn't really understand complex analysis. [Reading such a textbook] is like reading a book on music by somebody who is tone deaf.'' Dr. Borcherds recommends something like \underline{Complex Analysis} by Lars Ahlfors. 
+``If you want to check whether a textbook on complex analysis is good or not, there's a very simple test: you check to see if it has a section on the gamma function and a section on elliptic functions. If it doesn't have these sections, then the author doesn't really understand complex analysis. [Reading such a textbook] is like reading a book on music by somebody who is tone-deaf.'' Dr. Borcherds recommends something like \underline{Complex Analysis} by Lars Ahlfors. 
 
 \section{Arithmetic}
 Operations on complex numbers are defined in the obvious way:
@@ -80,7 +78,7 @@ Recall that complex conjugation (given by $\overline{a+ib} = a-ib$) preserves al
 \begin{align*}
 	\frac{\Xi}{\overline{\Xi}}.
 \end{align*}
-``[This] wins the prize for the most awful mathematical notation of all time.''
+``[This] wins the prize for the most awful mathematical notation of all time.'' % Doesn't really have the same effect in TeX
 
 Another useful notion is the norm: $\left\lvert z \right\rvert =\sqrt{z\overline{z}} $. In particular, we have $\left\lvert zw \right\rvert = \left\lvert z \right\rvert \cdot \left\lvert w \right\rvert$ and $\left\lvert z-w \right\rvert \le \left\lvert z \right\rvert +\left\lvert w \right\rvert $.
 
@@ -172,7 +170,7 @@ The function
 \begin{align*}
 	\tan z: = \frac{\sin z}{\cos z}
 \end{align*}
-is defined in the obvious way. On the upper half plane, $\tan z \approx i$ and on the lower half plane, $\tan z \approx -i$. Near the real axis $\tan z$ oscillates like it does in the real case. (In real analysis one thinks of $\sin$ and $\cos$ bounded and $\tan$ being ``wild,'' and in complex analysis it is approximately the opposite.)
+is defined in the obvious way. On the upper half-plane, $\tan z \approx i$ and on the lower half-plane, $\tan z \approx -i$. Near the real axis, $\tan z$ oscillates as it does in the real case. (In real analysis, one thinks of $\sin$ and $\cos$ bounded and $\tan$ being ``wild,'' and, in complex analysis, it is approximately the opposite.)
 
  \begin{exercise}\label{}\text{}
 Express $\arccos z$ using $\log$ and $\sqrt{} $.
@@ -192,7 +190,7 @@ Suppose $w=u+iv$ is a function of $z=x+iy$ (where $u$ and $v$ are functions of $
  \begin{align*}
 	 \mat{u(x,y) \\ v (x,y)} = \mat{u (x_0,y_0) \\ v (x_0,y_0)} + \mat{\partial u/\partial x&\partial u/\partial y\\ \partial v/\partial x&\partial v / \partial y}\mat{x-x_0\\y-y_0} + \mathrm{error}.
 \end{align*}
-We can approximate $w$ as a linear function. There's nothing really complex going on yet. Above is differentiability of real functions in two variables. 
+We can approximate $w$ as a linear function. There's nothing really complex going on yet. Above is the differentiability of real functions in two variables. 
 
 Now we seek a complex derivative. The function $w$ is differentiable if 
 \begin{align*}
@@ -276,7 +274,7 @@ In particular,
 \end{align*}
 This is the Laplace equation, and functions that satisfy it are called harmonic functions. It has a physical interpretation: it gives the steady state heat of some planar region. (Equivalently one writes $\nabla u=0$.) 
 
-We use this to find solutions to the Laplace equation by taking holomorphic function and taking its real or imaginary part.
+We use this to find solutions to the Laplace equation by taking a holomorphic function and taking its real or imaginary part.
 \begin{example}[ ]\label{}\text{}
 Find all harmonic polynomials in $x$ and $y$. The polynomials that result from taking the real and imaginary parts of powers of $z = x+iy$ are harmonic, and they happen to be a basis for harmonic polynomials.
 \end{example}
@@ -291,7 +289,7 @@ is holomorphic. Hence the real part of this is $e^x(x\cos y - y\sin y)$. This is
 
 Is any harmonic function $u$ the real part of some holomorphic function $w = u+iv$? It is useful to take $u$ as a function on an open set $U\subset \C$. The answer depends on $U$. 
 
-We are trying to solve the Cauchy--Riemann equations. They determine $v$ up to a constsnt. 
+We are trying to solve the Cauchy--Riemann equations. They determine $v$ up to a constant. 
 
 \begin{problem}
 	Given $f$ and $g$ functions of $x$ and $y$, can we solve $\partial v/\partial x = f$ and $\partial v/\partial y = g$?
@@ -572,7 +570,7 @@ Now let $V$ be the largest open subset of $U$ with $f=0$ on $V$. Then $V$ is clo
 
 Now suppose $f=g$ on some set $S$ with a limit point in $U$. Then $f-g=0$ on $S$, so $f-g=0$ (otherwise we get a nonzero holomorphic function with roots having a limit point in $U$). So $f=g$. \hfill \qed
 
-This is true for analytic real functions. 
+This is true for real analytic functions. 
 
 Suppose $f$ is holomorphic on an open nonempty set $V$ and $U\supseteq V$ is connected. Then there is at most one way to extend $f$ to $U$. This ``extension'' is called the function's  \defn{analytic continuation}\index{analytic continuation}.
 
@@ -992,7 +990,7 @@ If $f$ has a pole at $z=0$ then $1/f$ is holomorphic at $z=0$.
 
 Jahnke and Emde's book\footnote{See \underline{Tables of Functions with Formulae and Curves} fig. 5, fig. 49, fig. 55, fig. 150, etc.} illustrates functions such as the gamma function, Jacobi/Weierstrass elliptic functions, and the Riemann zeta function. (Order-two poles are ``fatter'' than order-one poles.)
 
-A function with an essential singularity is $f(z)=\sum_{k\in \Z}a_kz^k$ in which the number of terms with a negative exponent might not be finite. Expanding $e^{1/z} +e^z$ as a Laurent series, you see that something like this occurs. Any function with an essential singularity has this property\footnote{See \url{https://youtu.be/MbPOKnwgL-8?t=702}.}.
+A function with an essential singularity is $f(z)=\sum_{k\in \Z}a_kz^k$ in which the number of terms with a negative exponent might not be finite. Expanding $e^{1/z} +e^z$ as a Laurent series, you see that something like this occurs. Any function with an essential singularity has this property.\footnote{See \url{https://youtu.be/MbPOKnwgL-8?t=702}.}
 
 \begin{figure}
 	\begin{center}
@@ -1069,14 +1067,10 @@ So $\Gamma(s)$ is bounded for $\alpha \le \Re s \le \beta$ where $0<\alpha<\beta
 \end{remark}
 
 \begin{remark}
-	\begin{align*}
-		\Gamma(1/2) &= \sqrt{\pi}
-	\end{align*}
+		$\Gamma(1/2) = \sqrt{\pi}$.
 \end{remark}
 \begin{remark}
-	\begin{align*}
-		\Gamma(s)\ne 0
-	\end{align*}
+		$\Gamma(s)\ne 0$.
 \end{remark}
 \begin{proposition}[ ]\label{}\text{}
 The function $\Gamma(s)$ is the only meromorphic function such that
@@ -1160,12 +1154,12 @@ Suppose $f:U\longrightarrow U$. We can compose $f$ with a M\"obius transformatio
 \end{align*}
 and $f'(0)$ and $(f\inv)' (0)$ have absolute value at most $1$, so $\abs{f'(0)} = 1$. And $f'(0)=g (0)$, so $g$ is constant and $f$ is linear. Therefore, $f(z)=\exp (i\theta)z$. That is, all symmetries of $U$ are M\"obius transformations.
 
-What about the structure of this group? First, notice that we can identify it with the upper-half plane by
+What about the structure of this group? First, notice that we can identify it with the upper half-plane by
 \begin{align*}
 	w &\longmapsto \frac{z-i}{z+i}\\
 	i\frac{1+w}{1-w} &\longmapsfrom z.
 \end{align*}
-So we get a group of three-dimensional symmetries of the upper-half plane. These are given by $\PSL_2(\R)$, which acts on the upper-half plane by 
+So we get a group of three-dimensional symmetries of the upper half-plane. These are given by $\PSL_2(\R)$, which acts on the upper half-plane by 
 \begin{align*}
 	\mat{a&b\\c&d}(\tau) = \frac{a\tau + b}{c\tau +d}.
 \end{align*}
@@ -1174,7 +1168,7 @@ The more profound idea here is to find a group $\Gamma\subseteq \PSL_2(\Z)$ and 
 \section{Elliptic functions}
 Elliptic functions are doubly-periodic functions. Recall that a doubly-periodic function $\varphi$ satisfies $\varphi(z) = \varphi (z+\omega_1) = \varphi  (z+\omega_2)$ for two $\R$--linearly independent numbers $\omega_1,\omega_2\in \C$. 
 
-Are there holomorphic elliptic functions? Well, no: If $\varphi$ is holomorphic and elliptic then it is constant, since $\varphi$ is bounded in the fundamental domain in the lattice generated by two linearly independent periods (which is compact if you include the boundary points) and $\varphi$ is continuous. That is, $\varphi$ is bounded on $\C$ by periodicity. So, by \cref{lvl}, $\varphi$ is constant.
+Are there holomorphic elliptic functions? Well, no: If $\varphi$ is holomorphic and elliptic, then it is constant, since $\varphi$ is bounded in the fundamental domain in the lattice generated by two linearly independent periods (which is compact if you include the boundary points) and $\varphi$ is continuous. That is, $\varphi$ is bounded on $\C$ by periodicity. So, by \cref{lvl}, $\varphi$ is constant.
 
 Let's find a meromorphic function $\varphi$ such that $\varphi(z) = \varphi (m\omega_1 + n\omega_2 + z)$ for all $m,n\in\Z$ (that is, $\varphi$ is doubly-periodic). Here, we get a group of translations isomorphic to $\Z\oplus\Z$. A straightforward way to get a function $\varphi$ invariant under a group is to take the average of some function $\psi$:  
  \begin{align*}
@@ -1303,7 +1297,7 @@ is elliptic.
 
 The function $\zeta$ defined this way is an example of a Mittag--Leffler series.
 
-Any elliptic function with no poles is constant, and this fact generates legions of identities\footnote{See \underline{A Course of Modern Analysis}.}. Some light hand-waving\footnote{See \url{https://youtu.be/p1dts9PrDtI?t=1243}.} shows that
+Any elliptic function with no poles is constant, and this fact generates legions of identities.\footnote{See \underline{A Course of Modern Analysis}.} Some light hand-waving\footnote{See \url{https://youtu.be/p1dts9PrDtI?t=1243}.} shows that
 \begin{align*}
 	(\wp'(z)) ^2 = 4(\wp(z)) ^3 - g_2\wp(z) -  g_3.
 \end{align*}
@@ -1367,8 +1361,8 @@ The integral has logarithmic singularities at $\Lambda$, but these ``ambiguities
 \end{align*}
 where
 \begin{align*}
-	\eta_1 &:= -\frac{\pi^2\vartheta_1'''}{12\omega_1\vartheta_1'};\\
-	\eta_2 &:= - \frac{\pi^2\omega_2\vartheta_1'''}{12\omega_1^2\vartheta_1'}- \frac{\pi i }{2\omega_1}.
+	\eta_1 &:= -\frac{\pi^2\vartheta_1^{(3)}}{12\omega_1\vartheta_1'};\\
+	\eta_2 &:= - \frac{\pi^2\omega_2\vartheta_1^{(3)}}{12\omega_1^2\vartheta_1'}- \frac{\pi i }{2\omega_1}.
 \end{align*}
 Dr. Borcherds writes this as
 \begin{align*}
@@ -1411,7 +1405,7 @@ Notice that $\wp^{(n)} (z-\beta)$ has a pole of order $n+2$, so we can use these
 \end{align*}
 has poles of order $1$ at $\alpha$ and $\beta$. We use a function of this kind to ``move all poles to one point.'' Therefore, we can assume that the function has one pole of order $1$. Now, recall that the sum of the residues must be $0$, so $f$ must be holomorphic and constant.
 
-These Weierstrass functions have trigonometric analogues in $1$-dimensional lattices\footnote{See \url{https://en.wikipedia.org/wiki/Weierstrass_functions}.}. Recall:
+These Weierstrass functions have trigonometric analogues in $1$-dimensional lattices.\footnote{See \url{https://en.wikipedia.org/wiki/Weierstrass_functions}.} Recall:
 \begin{align*}
 	\wp(z) =  \frac{1}{z^2} + \sum_{\lambda\ne 0}^{} \left( \frac{1}{(z-\lambda) ^2} - \frac{1}{\lambda^2} \right). 
 \end{align*}

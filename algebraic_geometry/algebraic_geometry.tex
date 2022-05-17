@@ -1,0 +1,2143 @@
+\documentclass[11pt, oneside,margin=1in]{article}
+
+\def\jtitle{Algebraic geometry}
+\def\jlecturer{Richard Borcherds}
+\def\jterm{}
+
+\usepackage[course]{jack}
+
+
+
+\title{Algebraic geometry}
+\author{Jack DeSerrano}
+
+\begin{document}
+\ifams
+    \topskip0pt
+    \vspace*{\fill}
+\fi
+\maketitle
+These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} Dr. Borcherds refers to Hartshorne's \underline{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} I tend to use Grothendieck's EGA.
+\tableofcontents
+\ifams
+	\vspace*{\fill}
+\fi
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/borcherds}
+\caption{Richard Borcherds.}
+\end{center}
+\end{figure}
+\text{}
+\newpage
+\section{Varieties}
+\subsection{Introduction}
+\begin{problem}
+	Classify all Pythagorean triples.
+\end{problem}
+We would like to solve
+\begin{align*}
+	x^2 + y^2 = z^2
+\end{align*}
+where $x$, $y$, and $z$ are integers. We shall assume that $x$, $y$, and $z$ are coprime. We know that $x^2$, $y^2$, and $z^2$ are $0$ or $1$ mod $4$, and, analyzing the equation, we see that $z$ must be odd and $x$ and $y$ must have opposite parities. Without loss of generality, we shall let $y$ be odd, and, therefore, $x$ even.
+
+We can rearrange this as follows:
+\begin{align*}
+	y^2 = (z-x) (z+x).
+\end{align*}
+Notice that $z-x$ is prime to $z+x$. Therefore, we can write $r^2 := z-x$ and $s^2 := z+x$, so
+\begin{align*}
+	z &= \frac{r^2+s^2}{2};\\
+	x &= \frac{s^2-r^2}{2};\\
+	y&=rs.
+\end{align*}
+Here, $r$ and $s$ are odd and coprime.
+
+Let us look at this problem from a geometric perspective. Again, we would like to solve
+\begin{align*}
+	x^2+y^2=z^2
+\end{align*}
+in the integers. Write $X:= x/z$ and $Y := y/z$, so
+\begin{align*}
+	X^2 + Y^2 =1.
+\end{align*}
+Now, we would like to find rational points on the unit circle. Pick a rational point $(X,Y)$ on the unit circle and draw a line between it and $(-1,0)$. Call the point at which this line intersects the $y$-axis $(0,t)$.
+
+One sees that
+\begin{align*}
+	t = \frac{Y}{X+1}.
+\end{align*}
+Therefore, since $Y = t(X+1)$ and $X^2 + Y^2 = 1$,
+\begin{align*}
+	(X+1) ((t^2+1) X + t^2-1) =0.
+\end{align*}
+One finds that the nontrivial solution to this quadratic gives
+\begin{align*}
+	X &= \frac{1-t^2}{1+t^2};\\
+	Y &=\frac{2t}{1+t^2}.
+\end{align*}
+This gives a correspondence between the points on the unit circle that are not $(-1,0)$ and points on the $y$-axis. This is called a birational equivalence\index{birational equivalence}---roughly, an equivalence except on subsets of codimension at least $1$. 
+
+This also gives rise to the infamous Weierstrass substitution: Write $\cos \theta := X$, so $\sin \theta = Y$ and $t= \tan \theta/2$. Then, if one has an integral in $\sin \theta$ and $\cos \theta$, one can let $t = \tan\theta/2$ and use these rational expressions for $\cos\theta$ and $\sin \theta$.
+
+Try $t=1/2$. Then $X=3/5$ and $Y=4/5$, so we find that $3^2 + 4^2 = 5^2$.
+
+From the geometric perspective, we see that the circle forms a group (that one can identify with the group of rotations). Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are points on the circle. Then, if the group operation is $\cdot$, one finds that
+\begin{align*}
+	(x_1,y_1) \cdot (x_2,y_2) = (x_1x_2-y_1y_2, x_1y_2+x_2y_1).
+\end{align*}
+Of course, this comes from the once well-known identities
+\begin{align*}
+	\cos(\alpha+\beta) &=\cos\alpha \cos\beta- \sin \alpha \sin \beta;\\
+	\sin(\alpha + \beta) &= \sin\alpha \cos\beta + \cos \alpha \sin \beta.
+\end{align*}
+This is one of the simplest examples of an algebraic group\index{algebraic group}. One can think of this as a functor
+\begin{align*}
+	G : \catn{Ring} \longrightarrow \catn{Grp}.
+\end{align*}
+That is, we can take a commutative ring $R$ to the set of pairs $(x,y)\in \R^2$ such that $x^2+y^2=1$. We define the group operation as above; the identity is given by the point $(1,0)$ and $(x,y) ^{-1} = (x,-y)$.
+
+Notice that $G(\R)$ is the unit circle. What about $G(\C)$? Well, notice that $x^2+y^2 =1$ factorizes into
+\begin{align*}
+	(x+iy) (x-iy) = 1.
+\end{align*}
+Note that $x$ and $y$ are complex. Set $z := x+iy$, and we get the pair $(z,z^{-1})$. That is, this group is the set of all nonzero complex numbers.
+
+There are many ways to view a circle:
+\begin{enumerate}
+	\item A subset of $\R^2$;
+	\item A polynomial $x^2 + y^2 -1$ (these first two things define an algebraic set);
+	\item The ideal $(x^2+y^2-1)\subset \R[x,y]$;
+	\item The ring $\R[x,y] / (x^2+y^2-1)$ (this is the coordinate ring\index{coordinate ring} of $S^1$);
+	\item A (smooth) manifold;
+	\item An algebraic group;
+	\item A functor $\catn{Ring}\longrightarrow \catn{Grp}$ or $\catn{Ring} \longrightarrow \catn{Set}$.
+\end{enumerate}
+
+\subsection{Two cubic curves}
+Consider the curve
+\begin{align*}
+	y^2 = x^3 + x^2.
+\end{align*}
+Suppose $(x,y)$ is a rational point on this curve. Draw a line between this point and $(0,0)$. The slope of this line is $y/x=t$. If we choose a line through $(0,0)$ with rational slope, it will meet the cubic curve at one other rational point. That is, $(x,y)$ being rational corresponds to $t$ being rational. This is almost a one-to-one correspondence: $(0,0)$ corresponds to $t = \pm 1$. Using the equation of the cubic, one gets that $x=t^2-1$ and $y=t^3-t$. This is another birational equivalence.
+
+One can think of this cubic curve as a copy of the rational line except that two of the points on the rational line are identified and mapped to the same point. This is a \index{resolution of a singularity}resolution of a singularity. This resolution is done by \index{blowing up}blowing up. Hironaka proved that blowing up resolves singularities in characteristic zero.\footnote{``Resolution of singularities of an algebraic variety over a field of characteristic zero. I,'' 1964.}
+
+\begin{example}[ ]\label{}\text{}
+Find all rational points on 
+\begin{align*}
+	x^n+y^n = 1.
+\end{align*}
+Writing $x=X/Z$ and $y=Y/Z$ gives
+\begin{align*}
+	X^n + Y^n = Z^n.
+\end{align*}
+This is Fermat's last theorem, so finding rational points on curves can be hard.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+There are two glass spheres: one of radius $1$ and the other of radius $2$. Find two other glass spherees of rational radius that sum to the same value.\footnote{From \underline{The Canterbury Puzzles}, Henry Dudeney, problem 20.} That is, we want to solve
+\begin{align*}
+	x^3 + y^3 = 1^3 + 2^3 = 9
+\end{align*}
+in $\Q -\{1,2\}$. Dudeney found that
+\begin{align*}
+	x &= \frac{415280564497}{348671682660};\\
+	y&= \frac{676702467503}{348671682660};
+\end{align*}
+formed another solution. How does one get this, though?
+
+First, one draws the curve. We have two rational points on the curve already: $(1,2)$ and $(2,1)$. The tangent to $(1,2)$, for example, intersects the curve at a rational point: $(-17/7, 20/7)$. We require the coordinates be positive, though. So we draw a line between this point and $(2,1)$. The third intersection with the curve will also have rational coordinates. We determine that it is $(-271/ 438, 919/438)$. We continue this process and eventually get Dudeney's solution. 
+\end{example}
+
+This curve is not birational to a line. If a curve is birational to a line, it must be a complex sphere if one ignores some points. The curve $x^3 + y^3 =9$ looks like a torus with one point removed. Therefore, this example is fundamentally harder than the first curve and the circle.
+
+We have an algebraic operation on this curve: Given two rational points $\alpha$ and $\beta$, we get another rational point $\alpha\cdot \beta$ by taking the third intersection of the curve and the line between $\alpha$ and $\beta$. If $\alpha$ and $\beta$ are the same point, we take the tangent to that point. Sometimes, though, we find that the line doesn't intersect with a third point. Defining a point at infinity solves this. (More on this in projective geometry.)
+
+This operation defines a group. We let the identity be the point at infinity. We define the group law by $\alpha+\beta+\gamma = 0$ if and only if $\alpha$, $\beta$, and $\gamma$ lie on the same line. (The ``negative operation'' is what forms a group.) The operation is clearly commutative. What about associativity? It is very difficult to show that assocaitivity holds with coordinates. However, it turns out that
+\begin{align*}
+	\alpha_1+\alpha_2+\cdots = \beta_1+\beta_2+\cdots
+\end{align*}
+if and only if there is a rational function $f$ with poles at the $\alpha_i$ and roots at the $\beta_i$. One can normally define a group structure like this on a curve.
+
+Elliptic curves are the one-dimensional case of abelian varieties: algebraic, projective groups.
+\begin{warn}
+	Abelian linear groups are not abelian. ``Abelian linear group'' is an old name for ``symplectic group.'' 
+\end{warn}
+
+\subsection{B\'ezout, Pappus, Pascal}
+\begin{theorem}[B\'ezout, Newton\protect\footnotemark]
+	\footnotetext{\underline{Principia}, Sect. VI, Lemma XXVI.}\label{}\index{B\'ezout's theorem}\text{}
+Two curves of degrees $m$ and $n$ have at most $mn$ points of intersection unless they have a common component. Two curves of degrees $m$ and $n$ in the plane have $mn$ points of intersection over $\C$ counting points at infinity and multiplicities.
+\end{theorem}
+
+Suppose the curves are given by $f(x,y)=0$ and $g(x,y)=0$ of degrees $m$ and $n$ respectively. One can assume that the number of intersection points does not change if we perturb $f$ and $g$. Write $f=p_1\cdots p_m$ and $g = q_1\cdots q_n$ as products of linear factors. Then $f$ and $g$ are a union of $m$ and $n$ lines respectively, and the result follows.
+
+There are problems with this argument, though: How do we know that perturbing $f$ and $g$ doesn't change the number of points of intersection, for example? Proofs like this were very common in algebraic geometry before Zariski and Weil.
+
+We shall prove this theorem later.
+
+\begin{theorem}[Pappus]\label{}\index{Pappus's theorem}\text{}
+Take two lines in the plane. Choose three collinear points and label them $1$, $2$, and $3$. Choose three more collinear points and label them $1$, $2$, and $3$. From the first line to the second, connect $1$ with $2$ and $2$ with $1$, $1$ with $3$ and $3$ with $1$, and $2$ with $3$ and $3$ with $2$. The three points of intersection are collinear.
+\end{theorem}
+
+\begin{remark}
+	Pappus's theorem is equivalent to commutativity. That is, a division ring is a field if and only if Pappus's theorem holds.
+\end{remark}
+
+\begin{theorem}[Pascal]\label{}\index{Pascal's theorem}\text{}
+Take an ellipse and choose six points on it. Label two points $1$, two points $2$, and two points $3$. Connect them as in the statement of Pappus's theorem. The three points of intersection are collinear. 
+\end{theorem}
+
+\begin{remark}
+	Pappus's theorem is a sort of degenerate case of Pascal's theorem.
+\end{remark}
+
+\begin{proof}
+Label the lines $1$ through $6$ in the order described in the statement. Choose $6$ linear polynomials $p_1,\hdots, p_{6}$ such that $p_j = 0$ on line $j$. Consider the polynomials $p_1p_3p_5$ and $p_2p_4p_6$. These vanish at all six points. The polynomial $p_1p_3p_5 - \lambda p_2p_4p_6$ also vanishes at all $6$ points. Choose $\lambda$ such that $p_1p_3p_5 - \lambda p_2p_4p_6$ vanishes at a seventh point of the conic. This polynomial has degree $3$ and the conic has degree $2$. Therefore, by B\'ezout's theorem, there are at most $2\cdot 3 = 6<7$ intersection points unless the conic and the polynomial have a common component. The conic does not split into smaller-degree polynomials, so the only way the conic and the polynomial can have a common component is if the conic is contained in the polynomial. Thus, the degree-$3$ curve is the union of a conic and a line, and this line is Pascal's line since $p_1p_3p_5$ and $p_2p_4p_6$ vanish at the points of intersection and the points are normally not on the conic. 
+\end{proof}
+
+
+
+\subsection{Kakeya sets}
+A \defn{Kakeya set}\index{Kakeya set} is a set of points that contains a unit line in every direction. Examples include the radius-$1/2$ circle and the height-$1$ equilateral triangle. Kakeya conjuectured that the smallest-area Kakeya set was the three-pointed deltoid.
+
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{images/kakeya_deltoid}
+		\caption{The three-pointed deltoid.}
+	\end{center}
+\end{figure}
+
+However, Besicovitch proved that there is no nonzero lower bound for the area of a Kakeya set. Thomas Wolff made the following conjecture that was proved by Dvir in 2008.\footnote{See \url{https://arxiv.org/abs/0803.2336}.}
+\begin{theorem}[Wolff, Dvir]\label{}\index{}\text{}
+The size of a Kakeya set over a finite field $F$ is bounded below by $c_n\left\lvert F \right\rvert ^n$.
+\end{theorem}
+Dvir proved this with $$c_n = \frac{1}{n!}.$$ The first step was to show that a Kakeya set cannot lie in a hypersurface of small degree. The second step was to show that, if a set is small, one can find a hypersurface of small degree containing it.
+
+First, we claim that a Kakeya set in $F^n$ cannot lie in a hypersurface of degree $d<\left\lvert F \right\rvert $. Suppose $f$ is a polynomial of degree $d<\left\lvert F \right\rvert $ defining a hypersurface. Let $f_d$ be the highest-degree component. For any $v$, one can find $x$ such that $f(x+vt)$ vanishes for all $t$. This means that the roots of $f$ form a Kakeya set. Therefore, the coefficient $f_d(v)$ of $t^d$ vanishes. This is true for all $v$ and $f_d$ has degree less than $\left\lvert F \right\rvert $, so $f_d=0$. Thus, $f=0$.
+
+Observe that the polynomials of degree less than or equal to $\left\lvert F \right\rvert -1$ form a vector space of dimension $\binom{n+\left\lvert F \right\rvert -1}{n}$. Therefore, one can find a hypersurface of degree at most $\left\lvert F \right\rvert -1$ vanishing on any set with less than $\binom{n+\left\lvert F \right\rvert -1}{n}$ points.
+
+Thus, one concludes that Kakeya sets have at least $\binom{n+\left\lvert F \right\rvert -1}{n}$ points. This quantity is 
+\begin{align*}
+	\binom{n+\left\lvert F \right\rvert -1}{n} &= \frac{(\left\lvert F \right\rvert ) \cdots (\left\lvert F \right\rvert +n-1)}{n!} \\
+						   &\ge \frac{\left\lvert F \right\rvert ^n}{n!}
+\end{align*}
+as required.
+
+The following example is sometimes said to be the beginning of higher-dimensional algebraic geometry.
+
+\begin{example}[$27$ lines on a cubic surface]\label{}\text{}
+Cayley and Salmon proved that any nonsingular cubic surface has exactly $27$ lines on it. Consider the surface
+\begin{align*}
+	w^3 + x^3 +y^3 + z^3 = 0 \subset \mathbf{P}^3.
+\end{align*}
+(Projective space is the set of quadruples $(w,x,y,z)$ modulo the equivalence relation $(w,x,y,z)\sim  (\lambda w, \lambda x, \lambda y,\lambda z)$ for $\lambda\ne 0$. That is, if $z\ne 0$, one can take $\{(w,x,y,1)\} \isomto  \mathbf{C}^3$. One can see that $\mathbf{P}^3$ is covered by four copies of affine space.) The line $(a,-a,b,-b)$ is on this surface. We can permute the coordinates and multiply by a cube root of unity. This gives $3^3 = 27$ lines.  
+\end{example}
+
+\subsection{Affine space and the Zariski topology}
+Let $K$ be a field. Then \index{affine space}affine space is almost the vector space $K^n$. The automorphisms of this vector space are all invertible linear transformations, given by $\GL_{n}(K)$. The automorphisms of affine space which one denotes $\A^n(K)$ include $\GL_{n}(K)$ and translations $x \longmapsto x+v$. Therefore, the group of automorphisms of affine space is of dimension $n(n+1)$ and consists of matrices of the form
+\begin{align*}
+	\mat{*&*&*\\ \text{}*&*&*\\0&0&1}
+\end{align*}
+where the $2\times 2$ matrix in the top left has nonzero determinant. Roughly speaking, a vector space has an origin and an affine space does not. That is, one has a forgetful functor from vector spaces to affine spaces that forgets about the origin. One goes the other way by choosing an arbitrary origin. 
+
+\iffalse Consider the three-dimensional pre-Einstein space in which we live. This is affine space blakdnkjdn Wait it has a metric\fi
+
+\index{affine geometry}Affine geometry can be thought of as the study of the properties of affine space invariant under affine symmetries: invariant under translations and linear transformations. \iffalse Let us list some well-defined things in affine geometry:
+\begin{itemize}
+	\item Points;
+	\item Lines;
+	\item Parallel lines;
+	\item Conics;
+	\item Polynomial functions.
+\end{itemize}
+The following things are not well-defined.
+\begin{itemize}
+	\item Circles;
+	\item Angles;
+	\item Lengths.
+\end{itemize}\fi Points, lines, parallel lines, conics, and polynomial functions are well defined in affine geometry. One realizes that circles, angle, and lengths, for example, are not well defined.
+
+Algebraic geometry tends to use the \index{coordinate ring}coordinate ring of $\mathbf{A}^n(K)$; that is, polynomials on the affine space: $K[x_1,\hdots, x_n]$. Given a coordinate ring, one can get an affine space $\A^n(K)$ by taking the set of all $K$-algebra homomorphisms from the polynomial ring to $K$. The automorphism groups of these two things are the same, for example.
+
+\begin{definition}[Algebraic set]\label{}\text{}
+An \defn{algebraic set}\index{algebraic set} in $\mathbf{A}^n(K)$ is the set of common roots of a set of polynomials in $K[x_1,\hdots, x_n]$.
+\end{definition}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $f=x^2+y^2-1$. Then the algebraic set is a circle. Suppose we have $\{x-\alpha,y-\beta\}$. Then the algebraic set is $\{(\alpha,\beta)\}$.
+\end{example}
+
+Algebraic sets are closed under intersections. If $C_1,C_2,\hdots $ are the set of roots of $P_1,P_2,\hdots$ respectively, then $C_1\cap C_2\cap \cdots $ is the set of roots of $P_1\cup P_2\cup \cdots$. They are also closed under finite unions. If $C_1$ and $C_2$ are the sets of roots of $\{f_1,f_2,\hdots\}$ and $\{g_1,g_2,\hdots\}$, then $C_1\cup C_2$ is the set of roots of $\{f_ig_j\}$.
+
+If a collection of sets is closed under intersections and finite unions, they form the closed sets of a topology. Therefore, \index{algebraic set}algebraic sets are the closed sets of the Zariski topology. (The intersections do not need to be of countably many sets.)
+
+What are the closed sets of the affine line $\mathbf{A}^1(K)$? The line is the set of roots of $0$. Any finite set consists of the roots of a polynomial $(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)$. One can check that $\mathbf{A}^1(K)$ and finite sets are the only closed sets. One notes that this topology is not Hausdorff.
+
+What about $\mathbf{A}^2(K)$? We have sets of points $\{(\alpha,\beta)\}$ that is the set of common roots of $\{x-\alpha, y-\beta\}$. We also have any algebraic curve $f(x,y) =0$. Therefore, a typical closed set in $\mathbf{A}^2(K)$ consists of finitely many algebraic curves and points. One notices that the Zariski topology on $\mathbf{A}^2(K)$ is not the product topology on $\mathbf{A}^1(K)\times \mathbf{A}^1(K)$. The latter is a finite number of vertical lines, horizontal lines, and points.
+
+\begin{example}[Determinantal variety]\label{}\text{}
+One can think of $\mathbf{A}^{mn}(K)$ as the vector space of linear maps $K^m \longrightarrow K^n$ or of $m\times n$ matrices of dimension $mn$. An algebraic set is given by all linear maps of rank at most $r$ for some $r$. This gives the \index{determinantal variety}determinantal variety. This set is given by the vanishing of all $(r+1)\times  (r+1)$ minors of an $m\times n $ matrix. For example, the subset of surjective maps $K^m\longrightarrow K^n$ is open in the Zariski topology.
+\end{example}
+
+\subsection{Noetherian spaces}
+\begin{definition}[ ]\label{}\text{}
+A \defn{Noetherian ring}\index{Noetherian ring} $R$ satisfies one of these three equivalent conditions:
+\begin{enumerate}
+	\item Every ideal of $R$ is finitely generated;
+	\item Every nonempty set of ideals has a maximal element;
+	\item Every increasing chain of ideals stabilizes. 
+\end{enumerate}
+\end{definition}
+
+\begin{example}[ ]\label{}\text{}
+The ring $K[x_1,\hdots, x_n]$ is Noetherian. Hilbert originally proved this. Noether gave a much simpler proof as follows. She showed that if $R$ is Noetherian, then $R[x]$ is Noetherian. Consider $I_0\subseteq I_1\subseteq\cdots$ of $R$ where $I_n$ is given by the leading coefficients of polynomials of degree less than or equal to $n$ in an ideal $I\subseteq R$. We know that $I_N=I_{N+1}=\cdots$ for some $N$ since $R$ is Noetherian. Take finite sets of polynomials $S_0,S_1,\hdots, S_N$ where $S_k$ contains polynomials of degree $k$ whose leading coefficients generate $I_k$. One can check $S_0,\hdots, S_N$ generate $I$. 
+\end{example}
+
+\begin{definition}[ ]\label{}\text{}
+A topological space is a \defn{Noetherian topological space}\index{Noetherian topological space} if, equivalently,
+\begin{enumerate}
+	\item The closed sets satisfy the descending chain condition, so any decreasing chain of closed sets stabilizes;
+	\item Any nonempty collection of closed sets has a minimal element.
+\end{enumerate}
+\end{definition}
+ \begin{remark}
+ 	The affine space $\mathbf{A}^n(K)$ with the Zariski topology is Noetherian. Closed sets of $\mathbf{A}^n(K)$ correspond to some ideals of the coordinate ring $K[x_1,\hdots, x_n]$. (Any closed set is determined by the ideal of functions vanishing on it.)
+ \end{remark}
+
+Noetherian spaces are weird. The Noetherian condition is equivalent to saying that every open set is (quasi)compact. (Bourbaki changed the definition of ``compact'' to mean compact and Hausdorff, but it turned out that there were non-Hausdorff compact sets, so they used the term ``quasicompact.''\index{compact}\index{quasicompact}\footnote{See \underline{General Topology}, \S 9.I, p. 83.}) 
+
+\begin{exercise}\label{}\text{}
+Show that if a topological space is Noetherian and Hausdorff then it is finite.
+\end{exercise}
+
+\begin{definition}[ ]\label{}\text{}
+A topological space is called an \defn{irreducible topological space}\index{irreducible topological space} if it is nonempty and not the union of two proper closed subsets.
+\end{definition}
+
+Recall that a typical closed set of $\mathbf{A}^2(K)$ is a finite number of curves and points. The curves are irreducible. An affine line, for example, is irreducible since any two nonempty closed sets intersect. This space seems to be the union of a finite number of irreducible subsets.
+
+\begin{theorem}[ ]\label{}\index{}\text{}
+Any Noetherian space is a finite union of irreducible subspaces.
+\end{theorem}
+
+\begin{proof}
+This follows from Noetherian induction. Every closed subset is a finite union of irreducibles. If not, pick a minimal counterexample $C$. If $C$ is irreducible, then we are done, since we have a contradiction. If $C$ is not irreducible, then we can write $C=C_1\cup C_2$ where $C_1$ and $C_2$ are smaller closed subsets. By induction, $C_1$ and $C_2$ are finite unions of irreducibles and, therefore, $C$ is. This is a contradiction. 
+\end{proof}
+
+\begin{corollary}[ ]\label{}\text{}
+Every algebraic set is a finite union of irreducible algebraic sets.
+\end{corollary}
+
+\begin{remark}
+	Irreducible algebraic sets are sort of (provisionally) \index{algebraic variety}algebraic varieties.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Consider the variety $xy=1$ and the set of nonzero points in $\mathbf{A}^1$. The temporary definition of an algebraic variety means that the set of nonzero points is not an algebraic variety. However, one sees that these two objects are isomorphic. We shall address this later.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the algebraic set $\{x^2+y^2 -2z^2=0, 2x^2 - y^2 - z^2=0\}$. This turns out to be a union of four irreducible subsets (lines): $x=y=z$, $x=-y=z$, $x=-y=-z$, and $x=y=-z$. The intersection of irreducible subsets does not need to be irreducible.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Take $xy=0$. This is reducible but connected. Now, consider $xy=1$. This is irreducible, and it certainly doesn't look connected. However, it is connected in the Zariski topology (of course, it isn't in the Euclidean topology).
+\end{example}
+
+
+\subsection{Weak Nullstellensatz}
+
+Let us study the relationship between subsets of an affine space $\mathbf{A}^n$ and ideals of $K[x_1,\hdots, x_n]$. One can map a subset $Y$ to the ideal $\II(Y)$ given by polynomials vanishing on $Y$. Conversely, an ideal $\mathfrak{a}$ can be mapped to a subset $\ZZ(\mathfrak a)$ given by the set of roots of $\mathfrak{a}$. What is the relationship between these two maps? Well, $\ZZ(\II(Y))$ is the closure of $Y$ in the Zariski topology. Further, $\II(\ZZ(\mathfrak{a}))\ne \mathfrak{a}$. For example, take $\mathfrak{a}=(x^2)\subset K[x]$. Then $\ZZ(\mathfrak{a}) = \{0\}$, so $\II(\ZZ(\mathfrak{a})) =(x)\ne (x^2)$. More generally, if $f^n\in \mathfrak{a}$, then $f\in \II(\ZZ(\mathfrak a))$. So $\sqrt{\mathfrak{a}} \subseteq \II(\ZZ(\mathfrak{a}))$. Recall that\index{radical of an ideal}
+\begin{align*}
+	\sqrt{\mathfrak{a}} := \{ r\in R : r^n \in \mathfrak{a} \textrm{ for some $n$}\}.
+\end{align*}
+Also recall that the radical is an ideal.
+
+\begin{problem}
+	Does $\sqrt{\mathfrak{a}}= \II(\ZZ(\mathfrak{a})) $ hold?
+\end{problem}
+
+No. Take $\mathfrak{a} = (x^2 + 1) \subset \R[x]$. Notice that $\ZZ(\mathfrak{a})= \emptyset$, so $\II(\ZZ(\mathfrak{a})) = \mathbf{R}[x]\ne \mathfrak{a}$. (This has to do with $\mathbf{R}$ not being algebraically closed.) However, if $\Omega$ is algebraically closed, then the equality holds. (This will be Hilbert's \index{Nullstellensatz}Nullstellensatz.) 
+
+\begin{problem}
+	What are the maximal ideals of $K[x_1,\hdots, x_n]$?
+\end{problem}
+
+There are some obvious ones. Take $(a_1,\hdots, a_n)\in \mathbf{A}^n$. Consider the ideal $(x_1-a_1,\hdots, x_n-a_n)$. This consists of the functions vanishing on $(a_1,\hdots, a_n)$. It is maximal because its quotient by the ring is $K$. Are these all maximal ideals? No. But it is true if $K$ is algebraically closed. This is the \index{weak Nullstellensatz}weak Nullstellensatz  (as opposed to the \index{strong Nullstellensatz}strong Nullstellensatz above). Let us prove this.
+
+First, we shall show that if $K$ is a field and finitely generated as an algebra over $k$, then $K$ is a finitely generated module over $k$. We're going to cheat by assuming that $k$ is uncountable. Notice that $K$ is of at most countable dimension as a module since it is finitely generated as an algebra. If $x\in K$ is transcendental over $k$, then the elements $1/(x-a)$ for $a\in k$ form an uncountable, linearly independent set. This is a contradiction. Therefore, all $x\in K$ are algebraic over $k$. Since $K$ is finitely generated as an algebra, $K$ is finitely generated as a module (or vector space). (One does not require $k$ to be uncountable: The finite number of generators of $K$ only have poles on a finite number of irreducible subsets of the affine space over $k$, but there are an infinite number of such irreducible subsets.)
+
+Suppose $I$ is a maximal ideal of $k[x_1,\hdots, x_n]$. We want to show that $I = (x_1-a_1,\hdots, x_n-a_n)$ for some $(a_1,\hdots, a_n)$. Put $K = k[x_1,\hdots, x_n]/I$, which is a field since $I$ is maximal. The field $K$ is also finitely generated by an algebra (generated by $x_1,\hdots, x_n$). By  the previous ``lemma,'' $K$ is finitely generated as a module; that is, $K$ is algebraic over $k$. But $k$ is algebraically closed, so $k=K$. Therefore, each $x_i\in K$, so $x_i=a_i$ for some $a_i\in k$. This implies that $I\supseteq (x_1-a_1,\hdots, x_n-a_n)$. So $I = (x_1-a_1,\hdots, x_n-a_n)$. The weak Nullstellensatz follows.
+
+
+\subsection{Strong Nullstellensatz}
+
+Suppose $K$ is an algebraically closed field. Recall the weak and strong Nullstellensatz.\index{Nullstellensatz}\index{weak Nullstellensatz}\index{strong Nullstellensatz}
+
+\begin{theorem}[Weak Nullstellensatz]\label{}\index{}\text{}
+The maximal ideals of $K[x_1,\hdots, x_n]$ correspond to points in affine space.
+\end{theorem}
+
+\begin{theorem}[Strong Nullstellensatz]\label{}\index{}\text{}
+Suppose $\mathfrak{a}\subseteq K[x_1,\hdots, x_n]$ is an ideal. Then 
+\begin{align*}
+	\II(\ZZ(\mathfrak{a})) = \sqrt{\mathfrak{a}} .
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+It is straightforward to show that $\sqrt{\mathfrak{a}} \subseteq \II(\ZZ(\mathfrak{a}))$. We shall employ the Rabinowitsch trick.\footnote{See ``Zum Hilbertschen Nullstellensatz,'' 1929.} Suppose $\mathfrak{a}$ is generated by $f_1,\hdots, f_m$ and $f\in \II(\ZZ(\mathfrak{a}))$. We want to show $f\in \II(\ZZ(\mathfrak{a}))$. This means that $f$ vanishes if $f_1,\hdots, f_m$ vanish. Therefore, $f_1,\hdots, f_m$ and $1-x_0f$ have no common roots in $\mathbf{A}^{n+1}$ (bringing in another variable is the trick of Rabinowitsch). Apply the weak Nullstellensatz to $\mathbf{A}^{n+1}$. Therefore, $f_1,\hdots, f_m, 1-x_0f$ generate the unit ideal. That is, $(f_1,\hdots,f_m,1-x_0f) = (1) = K[x_0,\hdots, x_n]$, hence $1 = g_0(1-x_0f)+g_1f_1 +\cdots + g_mf_m$ for some $g_i$. Put $x_0=1/f$, so $1=g_1f_1+\cdots +g_mf_m$ where $g_i \in K[x_1,\hdots, x_n, 1/f]$. Clearing denominators, one has
+\begin{align*}
+	f^N = h_1f_1+\cdots + h_mf_m
+\end{align*}
+where $h_i=g_if^N\in K[x_1,\hdots, x_n]$. That is, $f\in \sqrt{(f_1,\hdots, f_m)} $.
+\end{proof}
+
+Hilbert's Nullstellensatz gives a correspondence between affine space $\mathbf{A}^n$ and the ring $K[x_1,\hdots, x_n]$. Points correspond to maximal ideals. Algebraic sets correspond to radical ideals $\mathfrak{a} = \sqrt{\mathfrak{a}} $. More generally, closed subschemes correspond to ideals.
+
+\begin{example}[ ]\label{}\text{}
+Consider the line $y=0$ that corresponds to the ideal $(y)$ and the parabola $y=x^2$ that corresponds to the ideal $(y-x^2)$. These are radical ideals. One takes the intersection of these two varieties by taking $(y-x^2, y)$. This ideal is not radical, since $\sqrt{(y, x^2)}=(x,y)$ as an ideal which corresponds to $(0,0)$ as a point in affine space.
+\end{example}
+
+
+\begin{example}[Nilpotent matrices]\label{}\text{}
+Recall that $A\in \MM_n(K)$ is nilpotent if $A^n = 0$. One can think of $\MM_n(K)$ as $\mathbf{A}^{n^2}$. If $A = (a_{ij})$, then $A^n$ is something complicated, but suppose its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{n^2}$. Does $I=\sqrt{I} $ hold? No. If $A$ is nilpotent, then all of its eigenvalues are $0$, so its trace is $0$. But $\sum_{j}^{} a_{jj}\notin I$ since $I$ is generated by homogeneous polynomials of degree $n$ and $\sum_{j}^{} a_{jj} \in \sqrt{I} $ by the Nullstellensatz.
+
+Take $n=2$. If 
+\begin{align*}
+	A = \mat{a&b\\c&d}
+\end{align*}
+is nilpotent, then
+\begin{align*}
+	A^2 = \mat{a^2 + bc&b(a+d)\\c (a+d) &d^2 + bc} = 0.
+\end{align*}
+Hence $I=   (a^2+bc,\, b(a+d), \,c (a+d),\,d^2 + bc)$. Some power of $a+d$ is an element of $I$. What is the smallest such power? Exercise: Show that $(a+d)^2\notin I$ but $(a+d)^3\in I$.
+\end{example}
+
+\begin{example}[Commuting matrices]\label{}\text{}
+Write $A=(a_{ij})$ and $B=(b_{ij})$. Then $AB-BA$ is something; let its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{2n^2}$. Whether or not $I=\sqrt{I} $ holds is an open problem. The question of whether an ideal $I\subset R$ is radical is the same as asking whether $R/I$ has nilpotent elements. (The space of pairs of commuting matrices is a notoriously difficult space to study.)
+\end{example}
+
+
+\subsection{The Lasker--Noether theorem}
+Recall that algebraic sets correspond to radical ideals of $K[x_1,\hdots, x_n]$. Also, an algebraic set is a finite union of irreducible algebraic sets. Irreducible algebraic sets correspond to prime ideals. (Recall that an ideal $\mathfrak{p}\subseteq R$ is prime if $R/\mathfrak{p}$ is an integral domain.)
+
+\begin{theorem}[ ]\label{}\index{}\text{}
+A radical ideal is a finite intersection of prime ideals.
+\end{theorem}
+
+This is a translation of the previously-mentioned result into ring-theoretic language.
+\begin{theorem}[Lasker]\label{}\index{}\text{}
+An ideal of $K[x_1,\hdots, x_n]$ is a finite intersection of primary ideals.
+\end{theorem}
+\begin{theorem}[Noether]\label{}\index{}\text{}
+This holds for ideals of Noetherian rings.
+\end{theorem}\index{Lasker--Noether theorem}
+\iffalse
+\begin{remark}
+	Emmanuel Lasker was World Chess Champion for 27 years, which is the longest anyone has held this title. He proved the theorem above during his reign.
+\end{remark}
+\fi
+
+\begin{definition}\label{}\text{}
+An ideal $\mathfrak{p}\subseteq R$ is \defn{primary}\index{primary ideal} if and only if $ab\in \mathfrak{p}$ implies $a\in \mathfrak{p}$ or $b^n\in \mathfrak{p}$ for some $n$.
+\end{definition}
+
+Alternatively, suppose if $ab=0$ where $a\in R$ and $b\in R/\mathfrak{p}$ then $b=0$ or $a^n=0$ for some $n$. Then $R/\mathfrak{p}$ is \defn{coprimary}\index{coprimary module}. The module $R/\mathfrak{p}$ is coprimary if and only if $\mathfrak{p}$ is primary.
+
+\begin{definition}[ ]\label{}\text{}
+A module $M$ is coprimary if it has at most one associated prime.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+An \defn{associated prime}\index{associated prime} $\mathfrak{p}$ of a module $M$ over $R$ is a prime ideal such that $M$ contains a submodule isomorphic to $R/\mathfrak{p}$.
+\end{definition}
+\begin{remark}
+If $R$ is Noetherian, these two defintions of coprimary are equivalent for finitely generated modules.
+\end{remark}
+
+If one has modules $M\supseteq N$, $N$ is primary if and only if $M/N$ is coprimary.
+
+\begin{theorem}[Lasker--Noether]\label{}\index{}\text{}
+Let $M$ be a finitely generated module over a Noetherian ring $R$. The ideal $(0)$ is an intersection of primary submodules of $M$. Equivalently, $M$ is contained in a finite direct sum of coprimary modules.
+\end{theorem}
+
+For $\mathbf{Z}$-modules, coprimary modules include $\mathbf{Z}^n$ where $\mathfrak{p}=(0)$ and any finite group of order $p^f$ where $\mathfrak{p} = (p)$. Recall that abelian groups are a direct sum of free abelian groups and groups of prime power order.
+
+\subsection{The Lasker--Noether theorem}
+The video in which Dr. Borcherds proves the Lasker--Noether theorem is incomprehensible, so this section comes from a video from his series on commutative algebra.\footnote{The link: \url{https://www.youtube.com/watch?v=GLmXzrusM2M}.}
+
+Let $M$ be a finitely generated module over a Noetherian ring $R$. Recall that $M$ is coprimary if it has at most one associated prime. We shall prove that
+\begin{align*}
+	M \subseteq \bigoplus_{\mathfrak{p}\in \Ass M} M_{\mathfrak{p}}
+\end{align*}
+where each $M_{\mathfrak{p}}$ is coprimary with associated prime $ \mathfrak{p}$. 
+
+There is no such thing as a primary module. The original version of the theorem says that if $I\subseteq R$ is an ideal, then $I$ is a finite intersection of primary ideals. Lasker originially proved this for polynomial rings over fields $K$ or $\mathbf{Z}$. His proof was incredibly long. Noether generalized the result to all Noetherian rings. Her proof was notably simpler.
+
+The second version is as follows. Suppose we have modules $N\subseteq M$. Then $N$ is a finite intersection of primary submodules.
+
+\begin{definition}[ ]\label{}\text{}
+A submodule $X$ is called a \defn{primary submodule}\index{primary submodule} of $M$ if $rm\in X$ implies $m\in X$ or $r^nM\subseteq X$ for some $n>0$.
+\end{definition}
+
+Notice that if $M=R$, then a submodule is an ideal, and this becomes Lasker's definition of a primary ideal. One notes that this is not a property of $X$; it is a property of how $X$ is embedded in $M$. In particular, it is a property of the quotient $Y:= M/X$. If $r$ is a zero divisor of $Y$, then $r^nY=0$ for some $n>0$. The module $Y$ with this property is coprimary. We will show that this definition and the one mentioned eariler are equivalent for finitely generated modules.
+
+The third version of the Lasker--Noether theorem says that
+\begin{align*}
+	M \subseteq \prod_{\mathfrak{p}\in \Ass M} M_{\mathfrak{p}}
+\end{align*}
+where $M_{\mathfrak{p}}$ is coprimary. In fact, the second version implies this one. 
+
+Take $N=0$, so $0 = \bigcap J_{\mathfrak{p} }$ where $J_{\mathfrak{p}}$ is a primary submodule. That is, the natural map $M \longrightarrow \prod M/J_{\mathfrak{p}}$ is injective (the kernel is the intersection that is $0$). Although $J_{\mathfrak{p}}$ is a primary submodule, the quotient is coprimary.
+
+We have two definitions for ``coprimary'':
+\begin{enumerate}
+	\item There is at most one associated prime;
+	\item $rm = 0$ implies $m=0$ or $r^nM=0$ for some $n>0$.
+\end{enumerate}
+
+Suppose $n\ne 0$ and $m\in M$. Put $\mathfrak{p} = \Ann(m)$. Then the second definition implies $\mathfrak{p} \subseteq \sqrt{\Ann (M)} $. If $\mathfrak{p}$ is prime, then $\Ann(M)\subseteq \Ann (m)= \mathfrak{p}$, so $\sqrt{\Ann(M)}\subseteq \mathfrak{p} $. That is, if $\mathfrak{p}\in \Ass M$, $\mathfrak{p} = \sqrt{\Ann (M)} $. Thus, there is at most $1$ associated prime given by the radical of the annihilator of $M$. So 2. implies 1.
+
+Assume $\Ann M=0$. Put $\Ass M = \{\mathfrak{p}\}$. This associated prime contains $\Ann (m)$ given $m\ne 0$. Therefore, we need to show that $\mathfrak{p}$ is nilpotent. Suppose $a\in \mathfrak{p}$ is nilpotent. Then the localization $M[a^{-1}]$ is nonzero. If $x\in M$ is $0$ in $M[a^{-1}]$ , then $xa^n=0$ for some $n$. That is, $M[a^{-1}]=0$ implies $a^n \in \Ann M$ for some $n$ since some power kills any element of $M$ and $M$ is finitely generated. But $\Ann M=0$ by assumption, so $a$ is nilpotent. 
+
+Since $M[a^{-1}]\ne 0$, one has $\Ass (M[a^{-1}])\ne \emptyset$ (primes of $R[a^{-1}]$). Pick $T\in \Ass (M[a^{-1}])$, an ideal of $R[a^{-1}]$. Let $\mathfrak{q}$ be the preimage of $T$ in $R$. (Recall we have $R\longrightarrow  R[a^{-1}]$, $\mathfrak{q}\longrightarrow T$, $\mathfrak{q}\subseteq R$, and $T\subseteq R[a^{-1}]$.) Both $T$ and $\mathfrak{q}$ are primes, and $\mathfrak{q}$ is the union of $\Ann(m)\subseteq \Ann (ma)\subseteq \Ann (ma^2)\subseteq \cdots$. (One verifies that $\mathfrak{q}$ is everything that annihilates $ma^n$.) This is an increasing sequence in a Noetherian ring, so it stabilizes. Therefore, $\mathfrak{q}=\Ann(ma^n)$ for some $n$. Hence, $\mathfrak{q}\in \Ass(M)$ since it is prime and the annihilator of some element in $M$. But $a\in \mathfrak{p}$ and $a\notin \mathfrak{q}$ because $a$ is a unit of $M[a^{-1}]$ and if $a\in \mathfrak{q}$ then $M[a^{-1}]=0$. So $\mathfrak{p}\ne \mathfrak{q}$, so $M$ has at least $2$ associated primes. Contradiction. So 1. implies 2.
+
+Now, we prove the Lasker--Noether theorem that 
+\begin{align*}
+	M\subseteq \prod_{\mathfrak{p} \in \Ass M} M_{\mathfrak{p}}
+\end{align*}
+where $M_{\mathfrak{p}}$ is coprimary.  
+
+If it is not true, pick a maximal submodule $N$ such that $M/N$ is not contained in a product of coprimary ideals. We may assume that $N=0$ by modding out by $N$. Notice that $M$ is not coprimary, so it has $2$ submodules $M_1\isomto R/\mathfrak{p}_1$ and $M_2\isomto R/\mathfrak{p}_2$ where $\mathfrak{p}_1\ne \mathfrak{p}_2$ are primes. Then, for $x\in R/\mathfrak{p}_1- \{0\}$, $\Ann(x)= \mathfrak{p}_1$, and similarly for $\mathfrak{p}_2$. Therefore, $M_1\cap M_2=0$. Consider this exact sequence:
+\begin{align*}
+	M_1\cap M_2 \longrightarrow M\longrightarrow M/M_1 \oplus M/M_2.
+\end{align*}
+Since the intersection is zero, the second arrow is injective. Moreover, we assumed that $0$ is the maximal submodule not a product of coprimary modules, so each quotient is contained in a product of coprimary modules. Therefore, $M$ is contained in a product of coprimary modules. The Lasker--Noether theorem follows.
+
+Take $M=R/I$. We have 
+\begin{align*}
+	R/I = M \subseteq \prod_{} R/I_{\mathfrak{p}}.
+\end{align*}
+We know that the $R/I_{\mathfrak{p}}$, so $I_\mathfrak{p}$ must be primary in Lasker's sense. Therefore, $I=\bigcap I_\mathfrak{p}$.
+\subsection{Quotients of varieties by groups}
+Recall that any algebraic set $Y$ has a coordinate ring $K[x_1,\hdots, x_n]/\II(Y)$. This coordinate ring is an algebra over $K$, is finitely generated, and has no nilpotent elements. Further, a ring with these three properties corresponds to an algebraic set by the Nullstellensatz. (This algebraic set is not unique; it depends on the choice of generators. The corresponding algebraic sets are isomorphic in a sense.) One can think of algebraic sets up to some kind of isomorphism as being equivalent to rings with these three properties. The category of algebraic sets is equivalent to the opposite category of coordinate rings. 
+
+Suppose $Y$ is an algebraic set acted on by a group $G$. Can we form a quotient $Y/G$? One cannot form a quotient by identifying points of $Y$ with elements of $G$. One views this problem from the perspective of coordinate rings. 
+
+If the group $G$ acts on the algebraic set $Y$, it will act on the corresponding coordinate ring. Therefore, we look at the ring of invariants $(K[x_1,\hdots,x_n]/\II(Y))^G$. If the invariant ring satisfies the three previous properties, then it is the coordinate ring of an algebraic set, so it is reasonable to call it $Y/G$.
+
+This invariant ring is clearly a $K$-algebra. It has no nilpotent elements, either. But is it finitely generated? Hilbert proved that it is in many cases, but Nagata proved that that's not always the case.\footnote{``On the fourteenth problem of Hilbert,'' 1958, \url{https://web.archive.org/web/20131102202816/http://www.mathunion.org/ICM/ICM1958/Main/icm1958.0459.0462.ocr.pdf}.}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $G=\Sg_n$ acts on $\mathbf{A}^n$ by permuting coordinates. Then $K[x_1,\hdots, x_n]^G$ is the ring of invariant functions generated by the elementary invariant polynomials. Hence, one sees that $\mathbf{A}^n/\Sg_n\isomto \mathbf{A}^n$. (This works out so nicely because $\Sg_n$ is a reflection group.)
+\end{example}
+
+
+If $\Zmod 2$ acts on the real line by $x\longmapsto -x$, one might think that the quotient is a half-closed interval. This is what one gets by identifying points under the group, but, by the construction above, it's the real line. One identifies $2$ and $-2$, but also identifies $2i$ and $-2i$ (these are real points of the quotient).
+
+
+ \begin{example}[ ]\label{}\text{}
+Suppose $\GL_{n}(K)$ acts on $K^n$. The orbits are either $0$ or everything else, so one is led to believe that the quotient will have two points. However, it only has one, since the only invariant polynomials acted on by $\GL_{n}(K)$ are constants. That is, we get the field $K$: the coordinate ring of a point.
+\end{example}
+
+\begin{example}[Classical invariant theory]\label{}\text{}
+The group $G=\SL_{2}(\mathbf{C})$ acts on binary quantics (binary forms) $a_nx^n + a_{n-1}x^{n-1}y + \cdots +a_0y^n$. We have $(a_0,\hdots, a_n)\in \mathbf{A}^{n+1}$. What is the quotient $\mathbf{A}^{n+1}/\SL_{2}(\mathbf{C})$? The coordinate ring of this will be all polynomials in $a_n,a_{n-1},\hdots$ invariant under $\SL_{2}(\mathbf{C})$. These are called \index{invariants}invariants. 
+
+Take $a_2x^2 + a_1xy + a_0y^2$. A typical invariant is the discriminant, given by $a_1^2 - 4a_0a_2$. Paul Gordan proved that the ring of invariants was finitely generated.\footnote{See \underline{Mathematics of the 19th Century: Mathematical Logic, Algebra, Number Theory, Probability Theory}, 2001, p. 85.} Gordan was known as the ``king of invariant theory.'' His proof was convoluted, but Hilbert figured out a way to prove that rings of invariants were finitely generated. We shall look at this in the next section.
+\end{example}
+
+\subsection{Hilbert's finiteness theorem}
+Let $A$ be the ring $K[x_1,\hdots, x_n]$. Let $G$ be a group acting on $K^n$ spanned by $x_1,\hdots, x_n$. That is, the group $G$ acts on $A$. We consider $A^G$: the invariant elements of $A$ under the action of $G$. Is $A^G$ finitely generated as a $K$-algebra?
+
+\begin{theorem}[Hilbert]\label{}\index{Hilbert's finiteness theorem}\text{}
+The invariant ring $A^G$ is finitely generated as a $K$-algebra if $G$ is finite and $\chr K = 0$.
+\end{theorem}
+\begin{remark}
+	Hilbert proved this for almost any reductive group. The restriction on the characteristic of $K$ is not necessary, but it simplifies the proof.
+\end{remark}
+
+Notice that $A$ is graded by degree, so $A = A_0\oplus A_1\oplus A_2\oplus \cdots$. Let $I$ be the ideal of $A$ generated by the homogeneous elements of $A^G$ of degree greater than $0$. Notice that $I$ is finitely generated as an ideal. We can assume that $I$ has a finite number of generators in $A^G$, and they are homogeneous. 
+
+Suppose $I=(i_1,\hdots,i_n)$ as above. We would like to show that these elements generate $A^G$ as a $K$-algebra. Suppose $A=K[x,y]$ and $I = (y)$. Even though $I$ is finitely generated as an ideal, the ring it gives is not finitely generated as a ring or algebra (it is generated by $y, xy, x^2y,\hdots$). 
+
+The ring of invariants $A^G$ of $A$ has a Reynolds operator\index{Reynolds operator} $\rho$. The Reynolds operator $\rho(a)$ of $a$ is the average of $a$ under $G$, so
+\begin{align*}
+	\rho(a) = \frac{1}{\left\lvert G \right\rvert } \sum_{g\in G}^{} g(a).
+\end{align*}
+(Notice that we needed that $G$ is finite and $\chr K = 0$.) It has the following properties:
+\begin{itemize}
+	\item $\rho(1)=1$;
+	\item $\rho(a+b) = \rho (a)+\rho (b)$;
+	\item $\rho(ab) = a\rho (b)=\rho(a)\rho (b)$ if $\rho(a)=a$.
+\end{itemize}
+Notice that $\rho$ is not a homomorphism of algebras. However, $\rho$ is an $A^G$-module homomorphism from $A$ to $A^G$.
+
+We shall prove Hilbert's theorem by induction on the degree to show that if $x\in A^G$ is homogeneous then $x$ is in the algebra generated by $i_1,\hdots,i_n$. This is trivial for degree $0$. Suppose $\deg x > 0$. One has
+\begin{align*}
+	x=a_1i_1 + \cdots +a_ni_n
+\end{align*}
+for some homogeneous $a_i\in A$ since $x$ is in the ideal generated by $i_1,\hdots, i_n$. The $a_i$ need not be in $A^G$, though. One gets
+\begin{align*}
+	x &= \rho(x)\\ 
+	  &= \rho(a_1)i_1 + \cdots +\rho(a_n)i_n
+\end{align*}
+since $x\in A^G$ and $\rho(i_j)=i_j$. Notice that $\rho(a_j) \in A^G$ by the properties of the Reynolds operator and $i_j\in A^G$ by assumption. So $x$ is a polynomial in elements of $A^G$ of smaller degree; that is, $\deg \rho(a_j)<\deg x$. Therefore, by induction, $x$ is in the algebra generated by $i_1,\hdots, i_n$. Hilbert's finiteness theorem follows.
+
+Suppose $G$ is compact and $K=\mathbf{R}$ or $K=\mathbf{C}$. The same proof works. One defines 
+\begin{align*}
+	\rho(a) = \frac{1}{\vol (G)}\int_{G}^{} g(a) 
+\end{align*}		
+with respect to Haar measure on the group. Hilbert studied the case $G=\SL_{n}(\mathbf{C})$. Here, one can apply Weyl's unitarian trick. Note that $\SL_{n}(\mathbf{C})\supset \SU_n(\mathbf{C})$, and $\SU_n(\mathbf{C})$ is compact. Complex actions of $\SL_{n}(\mathbf{C})$ on finite-dimensional complex vector spaces $V$ are ``the same'' as actions of $\SU_n(\mathbf{C})$ on $V$. (The complexification of the Lie algebra of $\SU_n(\mathbf{C})$ is the same as the Lie algebra of $\SL_{n}(\mathbf{C})$.) 
+
+Let's study Nagata's counterexample. Take the group
+\begin{align*}
+	k = \left\{ \mat{1&*\\0&1} \right\} 
+\end{align*}
+which acts on $k^2$. (This comes up in counterexamples often. It is a unipotent action in which all eigenvalues are $1$.) Now, $k^{16}$ acts on $k^{32}$. Take $G$ to be a ``generic'' $13$-dimensional subspace of $k^{16}$. 
+
+\subsection{Three examples of quotients}
+\begin{example}[Cyclic quotient singularity]\label{}\index{cyclic quotient singularity}\text{}
+Take $\mathbf{A}^2$ whose coordinate ring is $K[x,y]$. Let $G=\Zmod n$. Suppose $G$ is generated by $\sigma$ of order $6$. Let $\zeta$ be an $n$th root of unity. Then $G$ acts on the coordinate ring by $\sigma x = \zeta x$ and $\sigma y = \zeta y$. What is the quotient of $\mathbf{A}^2$ by $G$? One needs the invariants of $K[x,y]$. Notice that 
+\begin{align*}
+	\sigma(x^iy^j) &= \zeta^{i+j} x^iy^j
+\end{align*}
+which is $x^iy^j$ if and only if $i+j\equiv 0\pmod n$. Therefore, the ring of invariants has a basis $x^iy^j$ satsifying the condition mentioned. If $n=3$, the ring of invariants is generated by $z_0:=x^3$, $z_1:=x^2y$, $z_2:=xy^2$, and $z_3:=y^3$. These are not independent: one notices that
+\begin{align*}
+	z_iz_j = z_kz_\ell
+\end{align*}
+if $i+j=k+\ell$. Hence, the ring of invariants is
+\begin{align*}
+	K[z_0,z_1,z_2,z_3] / (z_1z_2-z_0z_3, z_1^2 z_0z_2, z_2^2-z_1z_3). 
+\end{align*}
+\end{example}
+
+\begin{example}[Parameter space of cyclohexane]\label{}\index{parameter space}\text{}
+\iffalse In a parameter space, points correspond to ``configurations''---some algebraic subset of a variety, for example.\fi Points correspond to ``configurations'' in a parameter space. The centre of each carbon atom is specified by three numbers. Therefore, $\mathbf{A}^{18}$ is the parameter space for six carbon atoms. However, there are some conditions the atoms in cyclohexane must satisfy. Any two adjacent carbon atoms are at a fixed distance. If the first two carbon atoms are at $(x_1,y_1,z_1)$ and $(x_2,y_2,z_2)$, then we require $(x_1-x_2)^2 + (y_1-y_2)^2 + (z_1-z_2)^2=\lambda$ where $\lambda$ is a constant. Thus, we have six quadrics for these distances. Furthermore, bond angles must be fixed. These angles can be specified by the distances between every other carbon atom, so we get six more quadrics. One is led to believe that the parameter space is of dimension $18-6-6$, but we have translations and rotations. Therefore, one ought to take the space of (lower bound) dimension $18-6-6$ and mod out by the group of translations and rotations. There are three degrees of freedom and the group of rotations is three-dimensional, so the group by which we quotient out is of dimension $6$. 
+
+What is the dimension of this parameter space? The obvious guess is $ (18-6-6) - (3+3)=0$, but this is wrong. Hermann Sachse (1890) discovered two distinct conformations of cyclohexane (``chair'' and ``boat''). The ``boat'' conformation is flexible, so to speak, and the ``chair'' conformation is rigid. Therefore, the parameter space has (at least) one point corresponding to the ``chair'' conformation and one $1$-dimensional component corresponding to the ``boat'' conformation. That is, the na\"ive guess for the dimension of the quotient was wrong.
+\end{example}
+\iffalse
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{images/cyclohexane_conformations}
+		\caption{The conformations of cyclohexane.}
+	\end{center}
+\end{figure}
+\fi
+\begin{example}[Moduli space of elliptic curves]\label{}\text{}
+A \index{moduli space}moduli space is a space whose points correspond to isomorphism classes of things. (It is tradition to use ``parameter space'' when the thing is embedded in something else and ``moduli space'' otherwise.) An \index{elliptic curve}elliptic curve over $\mathbf{C}$ is a nonsingular curve topologically isomorphic to a torus. Any elliptic curve in the form \[ y^2=x^3+ax^2+bx+c = (x-\alpha) (x-\beta) (x-\gamma).\] One can make some changes of variables to get the elliptic curve into the form
+\begin{align*}
+	y^2 = x(x-1) (x-\lambda),\ \lambda \ne 0,1.
+\end{align*}
+(Note that this does not change the isomorphism classes.) One gets the impression that elliptic curves are classified by numbers $\lambda$, but this is invariant under $\lambda\longmapsto 1/\lambda$ and $\lambda \longmapsto 1-\lambda$. Therefore, it is also invariant under
+\begin{align*}
+	\lambda &\longmapsto \frac{1}{1-\lambda};\\
+	\lambda&\longmapsto \frac{\lambda}{\lambda-1};\\
+	\lambda&\longmapsto \frac{\lambda-1}{\lambda};
+\end{align*}
+etc. These six transformations form a group isomorphic to $\Sg_3$. We get this affine variety $\mathbf{A}^1 - \{0,1\}$ modulo $\Sg_3$. This is an affine variety: if $\lambda\in \mathbf{A}^1-\{0,1\}$, one can think of this set as the curve $\lambda(\lambda-1)\mu = 1\subset\mathbf{A}^2$. What is this space $(\mathbf{A}^1 - \{0,1\}) / \Sg_3$, exactly? The coordinate ring is $K[\lambda, 1/\lambda, 1/(\lambda-1)]$, so we consider the subring of this invariant under $\Sg_3$. The simplest invariant element is 
+\begin{align*}
+	j(\lambda) =  \frac{2^8(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}.
+\end{align*}
+It turns out that $K[\lambda, 1/\lambda, 1/(\lambda-1)]^{\Sg_3} \isomto K[j]$. This is the so-called \index{$j$-invariant}$j$-invariant of an elliptic curve.
+\end{example}
+
+
+\subsection{Dimension}
+
+Dimension\index{dimension} first was thought of as the number of parameters needed to define a point. However, this fails: Cantor showed that $\mathbf{R}^2$ and $\mathbf{R}$ have the same number of points. Peano and Hilbert showed that there are continuous maps from $\mathbf{R}$ onto $\mathbf{R}^2$. So, in a sense, one does not need two parameters to describe points in $\mathbf{R}^2$. (This does make sense if one looks at smooth manifolds.)
+
+The second attempt was the \index{Lebesgue covering dimension}Lebesgue covering dimension: A set has dimension at most $n$ if every open cover has a refinement such that each point is in at most $n+1$ sets. This works for Euclidean space but isn't all that useful in algebraic geometry.
+
+The next definition is due to Brouwer, Menger, and Urysohn: The boundary of a topological space should have smaller dimension than the topological space. A topological space has dimension at most $n$, then, if all points have arbitrarily small neighbourhoods whose boundary has dimension less than $n$. Traditionally, this definition is used for separable metric spaces, and the spaces one encounters in algebraic geometry are not separable or metrizable. However, this definition works well for definitions of algebraic sets. (This is called \index{inductive dimension}inductive dimension, by the way.) If $\dim$ is the inductive dimension, one has
+\begin{align*}
+	\dim \emptyset := -1.
+\end{align*}
+
+Next, one has the \defn{Krull dimension}\index{Krull dimension}: The supremum of the numbers $n$ for which there is a chain
+\begin{align*}
+	Z_0\subsetneq Z_1\subsetneq \cdots \subsetneq Z_n
+\end{align*}
+of irreducible subsets. This only works well for Noetherian spaces. All Hausdorff spaces have Krull dimension $0$. Note that, in the case of Noetherian spaces, the Brouwer--Menger--Urysohn (inductive) dimension is the same as the Krull dimension.
+
+\begin{remark}
+	One uses the Krull dimension over the inductive dimension for historical reasons.
+\end{remark}
+
+One gets various variations on the \index{Hausdorff dimension}Hausdorff dimension, which is determined by counting the number of balls used to cover a metric space and then seeing what happens to the number of balls as the radii tend to $0$. (Interestingly, Hausdorff dimensions do not need to be integers; they don't need to be rational, either.) It isn't really relevant here, though.
+
+One might consider transfinite dimensions\index{transfinite dimension}. Again, this isn't pertinent here.
+
+One also has the \index{deviation of a poset}deviation of a poset. A poset has deviation at most an ordinal $\alpha$ if, for all descending chains, almost all intervals of the chain have deviation less than $\alpha$. For Noetherian rings, one looks at a poset of ideals; then, the deviation is the Krull dimension. This works well for modules and noncommutative rings. Notice that some posets do not have a deviation: for example, $\mathbf{Q}$. This means that there are some weird non-Noetherian commutative rings that do not have a deviation. (For non-Noetherian rings, there doesn't seem to be a good definition for ``dimension.'')
+
+Now, we move on to algebraic definitions. The idea is that a set of high dimension has many functions on it.
+
+Suppose $B$ is a variety over a field $K$. Look at the field of fractions of the coordinate ring of $B$. Set the dimension of $B$ to be the transcendence degree of the field of fractions. (Recall that the transcendence degree is the largest number of algebraically indepdent elements in the field.) If $B=\mathbf{A}^2$, the coordinate ring is $K[x,y]$, so the field of fractions is rational functions in two variables. This, clearly, has transcendence degree $2$. This works for algebraic varieties, but it doesn't work for more general objects in algebraic geometry: for example, for non-irreducible algebraic sets (which don't have a field of fractions). This doesn't work well for schemes, either: $\Spec \Z$ should have dimension $1$, but this definition gives $0$.
+
+Next, one has the \index{Hilbert polynomial}Hilbert polynomial. This works for local rings $A$. (Recall that a ring is a \index{local ring}local ring if it has a unique maximal ideal $\mathfrak{m}$.) The (length of) dimension $\dim(A/\mathfrak{m}^k)$ is a polynomial in $k$ for large $k$ of degree $d$. Hence, we define $\dim A := d$. Consider the local ring $K [\![x_1,\hdots, x_n]\!]$ which has the maximal ideal $\mathfrak{m} = (x_1,\hdots, x_n)$. The dimension of $A/\mathfrak{m}$ is $1$, of $A/\mathfrak{m}^2$ is $1+n$, of $A/\mathfrak{m}^3$ is $1+n+n(n+1)/2$, etc.
+
+One also considers the Gelfand--Kirillov dimension\index{Gelfand--Kirillov dimension} of a ring, which applies to finitely-generated algebras over a field. It is given by
+\begin{align*}
+	\limsup_{n} \log \dim R_n / \log n
+\end{align*}
+where $R_n$ is the subspace generated by monomials in some set of generators of length at most $n$. This isn't of much concern to us, either, since we are concerned with commutative rings and the Hilbert polynomial suffices.
+
+One can define the \index{dimension of the tangent space of a point}dimension of the tangent space of a point of a variety. This works for nonsingular varieties/schemes. For example, if one considers the point $(0,0)$ on the singular curve $y^2=x^3+x^2$, the tangent space will look two-dimensional though you want it to be one-dimensional. However, this is a useful concept because one can define the notion of a singular point with it: a space is nonsingular at a point if the dimension of the tangent space is equal to its dimension.
+
+One can also look at the minimum number of elements in a system of parameters. This works, but it's not intuitive. ``What's a system of parameters?'' A \index{system of parameters}system of parameters for a local Noetherian ring of Krull dimension $d$ with maximal ideal $\mathfrak{m}$ is a set of elements $z_1,\hdots, z_d$ that satisfies these equivalent conditions:
+\begin{enumerate}
+	\item $\mathfrak{m}$ is a minimal prime over $(z_1,\hdots, z_d)$;
+	\item The radical $\sqrt{(z_1,\hdots, z_d)}=\mathfrak{m} $;
+	\item Some power of $\mathfrak{m}$ is contained in $(z_1,\hdots, z_d)$;
+	\item $(z_1,\hdots, z_d)$ is $\mathfrak{m}$-primary.
+\end{enumerate}
+
+Finally, one has various notions of \index{homological dimension}homological dimension.
+
+\subsection{Projective space}
+
+\begin{definition}[ ]\label{}\text{}
+\defn{Projective space}\index{projective space} $\mathbf{P}^n(K)$ is the set of all $1$-dimensional subspaces of $K^{n+1}$.
+\end{definition}
+
+We use coordinates as follows: $(x_0:x_1:\cdots : x_n)\sim (\lambda x_0:\lambda x_1:\cdots:\lambda x_n)$ where not all $x_i=0$ and $\lambda\in K - \{0\}$.
+
+If $x_0\ne 0$, we can write
+\begin{align*}
+	(x_0:x_1:\cdots:x_n) = (1:y_1:\cdots : y_n)
+\end{align*}
+where $y_i = x_i/x_0$. Therefore, $\mathbf{P}^n \supset \mathbf{A}^n$. If $x_0=0$, we get a copy of $\mathbf{P}^{n-1}(K)$. So $\mathbf{P}^n(K)$ is a disjoint union $\mathbf{A}^n(K) \sqcup \mathbf{P}^{n-1}(K) $. We think of the points of $\mathbf{P}^{n-1}(K)$ as ``\index{point at infinity}points at infinity.''
+
+Consider $\mathbf{P}^n(\mathbf{R})$; we have $(x_0:\cdots:x_n)$, which we can rescale such that $x_0^2 +\cdots+x_n^2 = 1$. There are exactly two points, then, corresponding to the same line: $(x_0:\cdots:x_n)$ and $(-x_0:\cdots:-x_n)$. These correspond to antipodal points on the unit sphere. Hence, we have
+\begin{align*}
+	\mathbf{P}^n(\mathbf{R}) = S^n / \sim
+\end{align*}
+where $\sim$ identifies antipodal points. One sees that $\mathbf{P}^0(\mathbf{R})$ is a point and $\mathbf{P}^1(\mathbf{R})$ is the unit circle. The space $\mathbf{P}^2(\mathbf{R})$ is the simplest \index{non-orientable surface}non-orientable surface.
+
+Now, consider $(x_0:\cdots : x_n)\in \mathbf{P}^n(\mathbf{C})$. We can rescale this such that $\left\lvert x_0 \right\rvert ^2 + \cdots \left\lvert x_n \right\rvert ^2 = 1$, which gives the sphere $S^{2n+1}$. However, this point is equivalent to $(\lambda x_0:\cdots:\lambda x_n)$ whenever $\left\lvert \lambda \right\rvert =1$, which gives a copy of $S^1$. Thus, we get a map from $S^{2n+1}$ onto $\mathbf{P}^n(\mathbf{C})$ whose fibres are copies of $S^1$. This is a \index{fibration}fibration. For $n=1$, we get $\C \cup \{ \textrm{point}\}$, which is the Riemann sphere (topologically isomorphic to $S^2$). Thus, we get a fibration $S^1 \longrightarrow S^3 \longrightarrow S^2$ (this is the \index{Hopf fibration}Hopf fibration). Another example of a fibration is 
+\begin{align*}
+	S^1 \longrightarrow S^1\times S^2 \longrightarrow S^2,
+\end{align*}
+which is the projection onto $S^2$. So $S^3$ is a sort of ``twisted product'' $S^1\times S^2$.
+
+
+One can cover projective space with copies of affine space. Coordinates of $\mathbf{P}^n(K)$ are given by $(x_0:x_1:\cdots : x_n)$. If $x_0\ne 0$, we get a copy of affine space. Similarly, taking $x_1\ne 0$ gives another copy of affine space. So $\mathbf{P}^n(K)$ is covered by $n+1$ copies of $\mathbf{A}^n(K)$.
+
+Suppose an artist is trying to draw an object---say, a triangle. He must project it onto the plane that is his canvas. What properties are preserved by projection? Parallel lines are not preserved (think of a railway track). Straight lines are preserved, for example.
+
+One can approach geometry in two ways. Synthetic geometry is the axiomatic approach (think Euclid). Analytic geometry is the coordinate approach in which things are translated into algebra. The axioms for projective geometry follow:
+\begin{enumerate}
+	\item Any two distinct points meet a unique line;
+	\item Any two distinct lines in the same plane meet in one point;
+	\item Any line meets at least three points.
+\end{enumerate}
+Dimensions $0$ and $1$ are boring. For dimension $2$, we require any two lines meet at a unique point and any two points lie on a unique line. This is called a projective plane, and there are two types: Desarguesean\index{Desarguesean plane} and non-Desarguesean\index{non-Desarguesean plane} planes. One example of a projective plane is the Fano plane. 
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.1]{images/fano_plane.png}
+		\caption{The Fano plane.}
+	\end{center}
+\end{figure}
+We get plenty of examples for dimension greater than $2$ by taking projective space over a field or division ring. These are all of the examples of projective space in these dimensions. The difference between fields and division rings is that being in a field means that \index{Pappus's theorem}Pappus's theorem holds.
+
+\subsection{Desargues's theorem}
+\begin{theorem}[Desargues]\label{}\index{Desargues's theorem}\text{}
+If the three straight lines joining the corresponding vertices of two triangles $ABC$ and $\tilde A\tilde B\tilde C$ all meet in a point (the perspector), then the three intersections of pairs of corresponding sides lie on a straight line (the perspectrix). Equivalently, if two triangles are perspective from a point, they are perspective from a line.\footnote{Weisstein, Eric W. ``Desargues's Theorem.'' From \textsl{MathWorld}---A Wolfram Web Resource. \url{https://mathworld.wolfram.com/DesarguesTheorem.html}.}
+\end{theorem}
+\iffalse
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{images/desargues}
+		\caption{An illustration of Desargues's theorem.}
+	\end{center}
+\end{figure}
+\fi
+It is useful to think about these triangles in space. One sees that $AB$ and $\tilde A\tilde B$, $AC$ and $\tilde A\tilde C$, and $BC$ and $\tilde B\tilde C$ do meet. These three points all lie on the planes containing $ABC$ and $\tilde A\tilde B\tilde C$, so they lie on the intersection of these two planes, which is typically a line. ``So, if these triangles are not both contained in the same plane, then Desargues's theorem holds and, if they are contained in the same plane, then you can mumble something about taking limits and still deduce the theorem.''
+
+A projective space automatically satisfies this theorem if it has dimension at least $3$. However, there are some cases in which projective planes do not satisfy it. These counterexamples are called \index{non-Desarguesean plane}non-Desarguesean planes. In some sense, Desargues's theorem is equivalent to associativity of multiplication. One can introduce coordinates to form a ring for a projective space, and it turns out that the truth of Desargues's theorem is equivalent to associativity holding in the ring, just as Pappus's theorem is equivalent to commutativity. An example of a non-Desarguesean plane is a projective plane over a non-associative ring such as the octonions. (That is, synthetic projective geometry is almost analytic projective geometry, but not quite.)
+
+One also has duality for projective space. Any two distinct points meet in a line, and any two distinct lines meet in a point. That is, points are dual to lines: anything you can say about lines and points you can say about points and lines. There is a dual to Pascal's theorem. 
+
+One can think about this as duality of vector spaces. Points in projective space $\mathbf{P}^n$ correspond to lines in $\mathbf{A}^{n+1}$, which one thinks about as $k^{n+1}$. Lines in $\mathbf{P}^n$ correspond to planes in $k^{n+1}$. Consider the dual space $(k^{n+1})^*$ which is (non-canonically) isomorphic to $k^{n+1}$. The dual of a line in $\mathbf{A}^{n+1}$ is a hyperplane consisting of all linear transformations vanishing on it. So lines correspond to hyperplanes, planes corresponds to things of codimension $2$, etc., so hyperplanes correspond to lines, which are points of projective space.
+\subsection{Affine and projective varieties}
+
+Recall that affine space $\mathbf{A}^n$ corresponds to its coordinate ring $k[x_1,\hdots, x_n]$. An affine algebraic subset corresponds to a radical ideal $I=\sqrt{I} $.
+
+Projective space sort of corresponds to $k[x_0,\hdots, x_n]$ where one considers this a graded ring that is graded in the obvious way. Projective algebraic sets correspond\footnote{This correspondence ignores the ideal $(x_0,\hdots, x_n)$.} to graded radical ideals in which every element is a sum of homogeneous elements in the ideal.
+
+A cone over a projective variety in $\mathbf{P}^n$ sort of corresponds to an affine variety in $\mathbf{A}^{n+1}$ invariant under rescaling.
+
+Projective space is affine space together with points at infinity.
+\begin{example}[ ]\label{}\text{}
+Consider the affine variety $y=x^3$. To make this into a projective variety, instead of considering $(x,y) \in \mathbf{A}^2$, we consider $(x:y:z)\in \mathbf{P}^2$. The affine point $(x,y)$ corresponds to the projective point $(x:y:1)$. We need a homogenous polynomials, so we get $yz^2 = x^3$. What does this variety look like?
+
+Well, $\mathbf{P}^2$ is covered by $3$ copies of affine space, so we can either take $x\ne 0$, $y\ne 0$, or $z\ne 0$. In each case, we scale the nonzero component to make it $1$. If $x=1$, we have $(y,z)$, if $y=1$, we have $(x,z)$, and, if $z=1$, we have $(x,y)$. In the case $z=1$, we get the curve we had before: $y=x^3$. In the case $y=1$, we get $z^2 = x^3$. In the case $x=1$, we get $yz^2 = 1$. One can imagine these three curves, but how do they fit together? 
+
+If we take the point $(1,1)$ on the first curve, this corresponds to $(1:1:1)$ in projective space, which corresponds to $(1,1)$ on the other two curves. The point $(0,0)$ corresponds to $(0:0:1)$. On the second curve, we want to rescale such that $y=1$, but we can't, so this corresponds to a point at infinity, and so it is with the third (here, the point at infinity in the ``rightward'' direction). Now, consider the point $(0,0)$ on the second curve. Again, this corresponds to a point at infinity on the first curve and the other point at infinity on the third one. All other points are on all three curves. Notice that this curve has a singularity at a point at infinity.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the elliptic curve $y^2 = x^3+bx+c$. This is the affine representation. In the projective plane, we have three coordinates $(x:y:z)$, and we need to make this homogeneous, so we get $y^2z = x^3 + bxz^2 + cz^3$. In the case $z\ne 0$, we get the same curve: $y^2 = x^3 + bx + c$. In the case $z=0$, we get $x=0$, so the only point at infinity is the point $(0:\lambda:0)$. What does the curve look like near this point? Is this singular?
+
+For this, we consider the case $y=1$, so we get $z = x^3 + bxz^2 + cz^3$. The point at infinity in the original curve is the point $(0,0)$ here. If $x$ and $z$ are small, $z$ is $x^3$ plus something small, so around $(0,0)$ we get something that looks like $z=x^3$. So it is nonsingular. So the projective curve is nonsingular at the point at infinity.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider $y^2 = x^2 + 1$. Looking at the curve, one sees that the curve tends to a point where $x$ and $y$ are large and equal to the right, corresponding to $(1:1:0)$. We get another point $(1:-1:0)$. These are points at infinity. A straightforward check corroborates this. 
+\end{example}
+
+\begin{example}[Twisted cubic]\label{}\text{}
+In affine space $\mathbf{A}^3$, this is the set of points of the form $(t,t^2,t^3)$. The ideal that defines this curve is $(y-x^2, z-x^3)$. What is its closure in projective space $\mathbf{P}^3$?
+
+Here's the wrong answer: Take generators for the ideal and make them homogeneous: We get $ (wy-x^2,w^2z-x^3)$, which is a graded ideal in $k[w,x,y,z]$ and defines something in $\mathbf{P}^3$. The first ideal contains things like $y^2-zx$, but this second one doesn't (it also doesn't contain $z-xy$). In projective space, the closure of the twisted cubic is given by $(s^3:s^2t:st^2:t^3)$ (the curve above where $s=1$ and another point where $s=0$). The ideal of polynomials vanishing on this is $(wy-x^2, y^2-zx, wz- xy)$. What happens if you take the incorrect set of generators for the closure of the twisted cubic?
+
+That is, what happens when one takes $(wy-x^2, w^2z - x^3) \subset k[w,x,y,z]$? What algebraic set in $\mathbf{P}^3$ does it define? Projective space $\mathbf{P}^3$ is covered by four copies of affine space $\mathbf{A}^3$, corresponding to $w=1$, $x=1$, $y=1$, and $z=1$. In the case $w=1$, we get the twisted cubic with which we started. In the case $x=1$, we get $wy=1$ and $w^2z = 1$, which is a copy of the affine $z$-line minus a point (the original curve minus a point). In the case $y=1$, we get $w=x^2$ and $w^2z=x^3$, so $x^3(zx-1)=0$. Hence, we have a curve $zx=1$ which corresponds to the original curve and a triple line where $x=0=w$. That is, what happens when we make this na\"ive choice of generators is that we pick up something strange at infinity.
+
+That this contains two components corresponds to the following decomposition:
+\begin{align*}
+	(wy-x^2, w^2z - x^3) = (wy-x^2,y^2-xz, wz-xy) \cap  (wy-x^2, w^2, wx).
+\end{align*}
+\end{example}
+
+
+\subsection{Products of varieties}
+
+Clearly, one has
+\begin{align*}
+	\mathbf{A}^m \times \mathbf{A}^n = \mathbf{A}^{m+n}
+\end{align*}
+where $((x_1,\hdots,x_m),(y_1,\hdots,y_n))\longmapsto  (x_1,\hdots, x_m,y_1,\hdots, y_n)$. In terms of coordinate rings, this is $k[x_1,\hdots,x_m]\tensor_k k[y_1,\hdots, y_n]$, which is more or less $k[x_1,\hdots, x_m,y_1,\hdots, y_m]$. Suppose we have algebraic sets $X$ and $Y$ with corresponding ideals $I$ and $J$. Then $X\times Y$ is the ideal $(I,J)$.
+
+Notice:
+\begin{align*}
+	\mathbf{P}^m \times \mathbf{P}^n\ne \mathbf{P}^{m+n}.
+\end{align*}
+This isn't true even topologically: $\mathbf{P}^1(\mathbf{R})\times \mathbf{P}^1(\mathbf{R})\isomto S^1\times S^1$ is the torus, while $\mathbf{P}^2(\mathbf{R})$ is non-orientable. Similarly, $\mathbf{P}^1(\mathbf{C})\times \mathbf{P}^1(\mathbf{C})\isomto S^2\times S^2$ whose second homology group is $\HH^2(S^2\times S^2) =  \mathbf{Z}\oplus \mathbf{Z}$, while $\mathbf{P}^2(\mathbf{C})$ is the union of a point, $\mathbf{C}$, and $\mathbf{C}^2$ whose second homology group is $\mathbf{Z}$. While the convenient equality doesn't hold between these two objects, they are birational.
+
+Let's try to map $((x_0:\cdots:x_m), (y_0:\cdots:y_n))\longmapsto (x_0:\cdots:x_m:y_1:\cdots:y_n)$. Well, this isn't even well defined. To get such a map, we need everything to be of the same degree in $x$ and $y$:
+\begin{align*}
+	((x_0:\cdots:x_m), (y_0:\cdots:y_n))\longmapsto (x_0y_0:x_1y_0:\cdots:x_my_0:\cdots: x_0y_1:\cdots:x_my_n).
+\end{align*}
+This gives us the non-surjective map $\mathbf{P}^m\times \mathbf{P}^n\longrightarrow \mathbf{P}^{mn+m+n}$. This is a closed subset. Write an element in the image $(w_{00}:w_{10}:\cdots: w_{m0} : \cdots: w_{mn})$. We have some relations: $w_{ij} = x_iy_j$, so $w_{ij}w_{pq}=w_{iq}w_{pj}$. 
+
+Suppose one has $v\in k^{m+1}$ and $w\in k^{n+1}$. Then one has $v\tensor w \in k^{m+1}\tensor k^{n+1}$. This is, more or less, the map above.
+
+We want to show that the map from $\mathbf{P}^m\times \mathbf{P}^n$ to vectors $(w_{00}:\cdots:w_{mn})$ satisfying $w_{ij}w_{pq}=w_{iq}w_{pj}$ is surjective. One assumes $w_{00}=1$ without loss of generality. Then $w_{pq} = w_{0q}w_{p0}=y_qx_p$. Thus, the $w_{pq}$s are determined by $ w_{0q}$ and $w_{p0}$. We can fix these to be whatever we would like by choosing $x$ and $y$ correctly, assuming $x_0=y_0=1$. Therefore, this map, called the \index{Segre embedding}Segre embedding, is surjective.
+
+\begin{example}[Segre embedding]\label{seg}\text{}
+We have
+\begin{align*}
+	\mathbf{P}^1\times \mathbf{P}^1\longrightarrow \mathbf{P}^{1+1+1}
+\end{align*}
+given by $((x_0:x_1), (y_0:y_1)) \longmapsto (x_0y_0:x_0y_1: x_1y_0: x_1y_1) =:(w_0:w_1:w_2:w_3)$. We get one relation: $w_0w_3=w_1w_2$. This is a quadric in $\mathbf{P}^3$. Over an algebraically closed field with characteristic not $2$, any two nonsingular quadrics are isomorphic. That is, any quadric in $\mathbf{P}^3$ is isomorphic to $\mathbf{P}^1\times \mathbf{P}^1$. In particular, it has two sets of lines on it. 
+
+Suppose we take a sphere $x^2+y^2+z^2=1$. We claim that this has two sets of straight lines on it. Indeed, it does over $\mathbf{C}$. Example: $x=1$, $y=iz$. Exercise: Find all straight lines on this sphere over $\mathbf{C}$. (Writing this as $(x+iy) (x-iy)= (1-z) (1+z)$ puts into the form of the quadric above.)
+\end{example}
+
+
+\subsection{The Veronese surface and the variety of lines in space}
+\begin{example}[Veronese surface]\label{}\text{}
+\index{Veronese surface} The Veronese surface is given by
+\begin{align*}
+	(x^2:xy:xz:y^2:yz:z^2)\in  \mathbf{P}^5.
+\end{align*}
+One can think of this as a map $\mathbf{P}^2\longrightarrow \mathbf{P}^5$ where
+\begin{align*}
+	(x:y:z) \longmapsto (x^2:xy:xz:y^2:yz:z^2).	
+\end{align*}
+This is clearly not surjective. Write this point as $(w_{00}:w_{01}:w_{02}:w_{11}:w_{12}:w_{22})$. One has $w_{ij}w_{pq} = w_{ip}w_{jq}$. Accounting for these relations, the map is surjective. One can also think of this as a map $\mathbf{A}^3\longrightarrow \mathbf{A}^6$ where $\mathbf{A}^6 = \Sigma^2\mathbf{A}^3$ is thought of as the symmetric square of $\mathbf{A}^3$. Note that $\dim \Sigma^2\mathbf{A}^n = n(n+1)/2$. One can also consider maps $\mathbf{A}^3\longrightarrow \Sigma^3 \mathbf{A}^3$ and $\mathbf{A}^m \longrightarrow \Sigma^n \mathbf{A}^m$. The images of these maps are \index{Veronese variety}Veronese varieties.
+\end{example}
+
+\begin{example}[Variety of lines in $\mathbf{P}^3$]\label{}\text{}
+We expect this variety to be of dimension $4$. A line in $\mathbf{P}^3$ corresponds to a two-dimensional subspace of $k^4$. This is a special case of a \index{Grassmannian}Grassmannian. A Grassmannian $\Gr(m,n)$ is the set of $m$-dimensional subspaces of the vector space $k^{m+n}$. The Grassmannians $\Gr(0,m)=\Gr (m,0)$ are points. The Grassmannian $\Gr(1,m)$ is projective space $\mathbf{P}^m$. Finally, $\Gr(m,n)\isomto \Gr (n,m)$. The first is an $m$-dimensional subspace of $k^{m+n}$; its dual $(k^{m+n})^*\isomto k^{m+n}$ gives an $n$-dimensional subspace. So $\Gr(m,1)\isomto \Gr(1,m)$. The first nontrivial case of this is $\Gr(2,2)$, which is the two-dimensional subspaces of $k^4$.
+
+Grassmannians are special cases of \index{Hilbert scheme}Hilbert schemes: Schemes whose points correspond to certain configurations (algebraic sets, subschemes) of projective space satisfying certain conditions; the simplest condition is that this should be a linear subspace.
+
+We would like to make $\Gr(2,2)$ a projective variety. We shall embed $\Gr(2,2)$ into $\mathbf{P}^5$. Pick a line in $\mathbf{P}^3$ which corresponds to a point of $\Gr(2,2)$. Pick two points $(a_0:a_1:a_2:a_3)$ and $(b_0:b_1:b_2:b_3)$ on the line. Consider the matrix
+\begin{align*}
+	\mat{a_0&a_1&a_2&a_3\\b_0&b_1&b_2&b_3}.
+\end{align*}
+Let $S_{ij}$ be the determinant of the columns $i$ and $j$. We get $(S_{01}:S_{02}:S_{03}:S_{12}:S_{13}:S_{23}) \in \mathbf{P}^5$. This point depends on only the line. The map we get is not surjective, since $\Gr(2,2)$ is dimension $4$ and $\mathbf{P}^5$ is dimension $5$. Therefore, there must be a relation between these determinants. This is the \index{Plucker relation}Plucker relation:
+\begin{align*}
+	S_{01}S_{23}-S_{02}S_{13}+S_{03}S_{12}=0.
+\end{align*}
+There are no other relations.
+
+We want to show that the map from $\Gr(2,2)$ to solutions to the Plucker relation is surjective. Some $S_{ij}$ must be nonzero, so we can assume it is $1$. Without loss of generality, assume that $S_{01}=1$. Then $S_{01}S_{23}$ is some combination of the other determinants, and $S_{23}$ is determined by them. We get a matrix
+\begin{align*}
+	\mat{1&0&-S_{12}&-S_{13}\\0&1&S_{02}&S_{03}}
+\end{align*}
+which gives a line in $\Gr(2,2)$ with image a given point of $\mathbf{P}^5$.
+\end{example}
+
+One can use this to find the cohomology of a quadric in $\mathbf{P}^5(\mathbf{C})$. The Grassmannian is a union of subsets:
+\begin{align*}
+	&\mat{1&0&*&*\\0&1&*&*};\\
+	&\mat{1&*&0&*\\0&0&1&*};\\
+	&\mat{1&*&*&0\\0&0&0&1};\\
+	&\mat{0&1&0&*\\0&0&1&*};\\
+	&\mat{0&1&*&0\\0&0&0&1};\\
+	&\mat{0&0&1&0\\0&0&0&1}.
+\end{align*}\iffalse
+\begin{align*}
+	&\mat{0&0&1&0\\0&0&0&1}.
+\end{align*}
+\fi
+These correspond to $\mathbf{A}^4$, $\mathbf{A}^3$, $\mathbf{A}^2$, $\mathbf{A}^2$, $\mathbf{A}^1$, and $\mathbf{A}^0$ respectively. One also uses this to determine how many points $\Gr(2,2)$ has over a finite field $k$. If $q=\left\lvert k \right\rvert $, then $\Gr(2,2)$ has $q^0 + q^1 + 2q^2 + q^3+q^4$ points. One sees that $\mathbf{P}^4$ has $q^0+q^1+q^2+q^3+q^4$ points.
+
+This strongly suggests there is a relationship between the cohomology groups of a variety over $\mathbf{C}$ and the number of points of that variety over a finite field. This is the concern of the Weil conjectures.
+
+
+\subsection{Grassmannians}
+
+The Grassmannian $\Gr(2,2)$ can be thought of as the two-dimensional subspaces of $k^4$, or, alternatively, lines in space. Grassmannians $\Gr(m,n)$ are injective maps $k^m \longrightarrow k^{m+n}$.
+One can show that
+\begin{align*}
+	\Gr(m,n) \subseteq  \mathbf{P}^{\binom{m+n}{m}-1}.
+\end{align*}
+
+Suppose we are given an $m$-dimensional subspace of $k^{m+n}$. Pick $m$ vectors spanning it. This gives an $m\times(m+n)$ matrix:
+\begin{align*}
+	\mat{a_1&\cdots &a_{m+n}\\b_1&\cdots &b_{m+n}\\&\vdots}.
+\end{align*}
+Pick any $m$ columns and consider the determinant of these columns. This generates $\binom{m+n}{m}$ numbers. Call them $p_{{i_1},\hdots,{i_m}}$. These give a point in $\mathbf{P}^{\binom{m+n}{m} - 1}$. 
+
+Instead, suppose $V\subseteq W$ is a subspace of $W$ with with dimension $m$. Suppose $W$ has dimension $m+n$. Then we have a map from the $m$th exterior power of $V$ to the $m$th exterior power of $W$:
+\begin{align*}
+	\Lambda^m V \longrightarrow  \Lambda ^m W.
+\end{align*}
+The first space has dimension $1$ and the second has dimension $\binom{m+n}{m}$. A one-dimensional subspace of something corresponds to the projective space of that thing: $\mathbf{P}(\Lambda^m W)$. This map is not surjective. We have the Plucker relations:
+\begin{align*}
+	0 &= \sum_{\lambda}^{} (-1)^\lambda p_{i_1,\hdots, i_{m-1},j_\lambda} p_{j_1,\hdots, j_{\lambda -1},j_{\lambda+1},\hdots, j_{m+1}}.
+\end{align*}
+These give quadric relations that make the map from $\Gr(m,n)$ to the roots of the Plucker relations surjective. We can assume, say, that $p_{1,\hdots, m} = 1$. Then, we can find a point of $\Gr(m,n)$ with given values of $p_{1,\hdots, r-1,r+1,\hdots, m,s}$. The Plucker relations determine all of the other $p$s.
+
+Grassmannians have applications.
+\begin{enumerate}
+	\item Grassmannians are covered by affine spaces that can be used to determine their cohomologies.
+	\item One has the Littlewood--Richardson rule\index{Littlewood--Richardson rule} that gives the product of the cohomology of a Grassmannian.
+	\item One has \index{line complex}line complexes. The quadric line complex is given as follows. Take $\Gr(2,2)\subset  \mathbf{P}^5$. Intersect $\Gr(2,2)$ with a quadric.
+	\item The Grassmannian $\Gr(m,n)$ is a quotient \[\frac{\GL_{m+n}(k)}{\mat{*&*\\0&*}}.\] The group $\GL_{m+n}(k)$ is affine and the second is, too, though $\Gr(m,n)$ is not affine; it is projective, however. Quotients of affine varieties do not need to be affine or projective: take 
+		\begin{align*}
+			k^2 - (0,0) =  \frac{\GL_{2}(k) }{\mat{1&*\\0&1}}.
+		\end{align*}
+	\item Grothendieck used Grassmannians in his construction of Hilbert schemes. A \index{Hilbert scheme}Hilbert scheme paramaterizes subschemes of projective space: Take the coordinate ring $k[x_0,\hdots, x_n]$ of projective space and consider graded ideals $I = \bigoplus_j I_j$. Subschemes sort of correspond to graded ideals, so one tries to classify graded ideals and show that they correspond to points of a projective scheme. The dimension $\dim (I_j)$ is a polynomial in $j$ for $j$ large. Suppose $I_d$ generates $I_{d+1},I_{d+2},\hdots$. Then $I_d \subseteq S_d$ (degree $d$ monomials). This gives a point of a Grassmannian, which is itself a projective variety in a larger projective space.
+\end{enumerate}
+
+We would like to say that lines in $\mathbf{P}^3$ ``naturally'' correspond to points of $\Gr(2,2)\subset  \mathbf{P}^5$. What does ``natural'' mean? Grothendieck looked at functors from commutative rings $R$: maps $F$ from $R$ to lines in $\mathbf{P}^3(R)$, maps from $R$ to $\Gr(2,2)$ over $R$, maps $G$ from $R$ to $R$-valued points of a quadric given by the Plucker relation. Grothendieck showed that these are isomorphic as functors. Suppose $\phi: R\longrightarrow  S$ is a ring homomorphism. Then we have maps $F(R) \longrightarrow F(S)$ and $G(R) \longrightarrow G(S)$ that make this commute:
+\[
+\begin{tikzcd}
+F(R) \arrow[d, -,double equal sign distance,double]\arrow[r] &F(S) \arrow[d, -,double equal sign distance,double] \\ G(R)\arrow[r] & G(S).
+\end{tikzcd}
+\]
+Grothendieck showed that any scheme is defined by its functors of points.
+\subsection{Projective space bundles}
+Recall the definition of a fibre bundle: A fibre bundle\index{fibre bundle} is a space that looks like a product locally. Specifically, a fibre bundle is a structure $(E,B, \pi, F)$ where $E$, $B$, and $F$ are topological spaces and $\pi:E\longrightarrow B$ is a continuous surjective map that, in small regions of $E$, behaves like a projection from $B\times F$ to $B$. For sufficiently small open sets $U$:
+\begin{center}
+	\begin{tikzcd}
+		F \ar[r] & E\ar[d] & F\times U \ar[d]\\
+			 &B&U\ar[l,hook'].
+	\end{tikzcd}
+\end{center}
+
+Take $B=S^1$ and $F=\mathbf{R}$. Then we can map $S^1\times \mathbf{R}$ onto $S^1$, which would look like a cylinder mapping onto a circle with fibres copies of $\mathbf{R}$. One can twist this construction, mapping a M\"obius strip onto $S^1$. One can think of the fibres as copies of $\R$. Locally, this looks like a product: The preimage of a little section of the circle looks like $\R$ times that little section.
+
+Fibre bundles are ``twisted products.'' Often, the fibre is a vector space; in this case, we talk about a \index{vector bundle}vector bundle. If the fibre is a copy of projective space, we talk about a \index{projective space bundle}projective space bundle.
+
+\begin{example}[Hirzebruch surface]\label{}\text{}
+\index{Hirzebruch surface}Consider the space
+\begin{align*}
+	(\mathbf{A}^2 - \{0\}) \times (\mathbf{A}^2 - \{0\}).
+\end{align*}
+Act on this by $G_m\times G_m$; think of $G_m$ as $\mathbf{C}^*$. The quotient $(\mathbf{A}^2 - \{0\})/G_m$ where $\lambda \in G_m$ acts by $(x,y)\longmapsto  (\lambda x,\lambda y)$ is the projective line $\mathbf{P}^1$. Pick a point $(\lambda,\mu)\in  G_m\times G_m$; now, act on a point $(s,t,x,y)$ by
+\begin{align*}
+	(s,t,x,y)\longmapsto  (\lambda s, \lambda t,\mu x,\lambda^{-\alpha}\mu y),\ \alpha\in  \mathbf{Z}.
+\end{align*}
+The quotient defined by this action is a Hirzebruch surface. One has a map
+\begin{align*}
+	F := \frac{(\mathbf{A}^2-\{0\})\times (\mathbf{A}^2-\{0\})}{G_m\times G_m} \longrightarrow \mathbf{P}^1
+\end{align*}
+given by
+\begin{align*}
+	(s,t,x,y)\longmapsto  (s:t).
+\end{align*}
+The fibre at any point is also isomorphic to $\mathbf{P}^1$. This is a product locally, but it isn't globally. We have a surface that is a fibre bundle over $\mathbf{P}^1$ with fibres also $\mathbf{P}^1$.
+\end{example}
+
+\begin{example}[Scroll]\label{}\text{}
+\index{scroll}Act on the space
+\begin{align*}
+	(\mathbf{A}^2- \{0\}) \times (\mathbf{A}^n - \{0\})
+\end{align*}
+by $G_m\times G_m$ where $(\lambda,\mu)$ acts on $(s,t,x_1,\hdots, x_n)$ by 
+\begin{align*}
+	(s,t,x,y)\longmapsto  (\lambda s, \lambda t, \lambda^{-\alpha_1}\mu x_1,\hdots, \lambda^{-\alpha_n}\mu x_n), \ \alpha_i\in \mathbf{Z}.
+\end{align*}
+We get a map from the scroll to the projective line: 
+\begin{align*}
+	\frac{(\mathbf{A}^2-\{0\}) \times (\mathbf{A}^n-\{0\})}{G_m\times G_m} \longrightarrow \mathbf{P}^1
+\end{align*}
+given by
+\begin{align*}
+	(s,t,x_1,\hdots, x_n) \longmapsto (s:t).
+\end{align*}
+Here, the fibres are copies of $\mathbf{P}^{n-1}$. Grothendieck showed that, if one has a vector bundle over the projective line,  one can replace each vector space that is a fibre with the corresponding vector space, and this gives a projective bundle over $\mathbf{P}^1$. This construction covers all such vector bundles.
+
+Let us map this to projective space. Assume that all of the $\alpha_i>0$. Consider the monomials $s^it^{\alpha_j-1}x_j$. One can take these as the coordinates of a point in $\mathbf{P}^{\left( \sum_{}^{} \alpha_j+1 \right) - 1}$.
+\end{example}
+
+\index{abstract variety}Abstract varieties were invented by Andr\'e Weil to take the Jacobian of a curve to formulate his Weil conjectures. A differentiable manifold was viewed as a subset of $\mathbf{R}^n$ defined by some equations. For instance, $S^2$ is the set of points $x^2+y^2+z^2=1$ in $\mathbf{R}^3$. However, this isn't a differentiable manifold, really; it is a differentiable manifold together with an embedding into Euclidean space. Now, one covers $S^2$ with charts\index{chart}: a top hemisphere and a bottom hemisphere, each of which looks like an open disk in Euclidean space, glued together. 
+
+The old algebrogeometric view was that a variety is a subset of $\mathbf{P}^n$ defined by equations. The new one: Take some affine varieties and glue them together. One might have considered $\mathbf{P}^1$ as a subset of projective space (itself). Alternatively, one can glue together two copies of $\mathbf{A}^1$, so $\mathbf{P}^1=\mathbf{A}^1\cup \mathbf{A}^1$. The projective line is given by $(x:y)$, the first copy of $\mathbf{A}^1$ is given by $(1:y)$, and the second is given by $(x:1)$. For both copies, we consider the subset $\mathbf{A}^1-\{0\}$. Then, if we have $x$ in the first copy and $y$ in the second, we map 
+\begin{align*}
+	x\longmapsto \frac{1}{y}.
+\end{align*}
+The ``gluing'' given by $x\longmapsto y$ is kind of funny: you get a line with two origins; this is a non-Hausdorff manifold and a non-projective abstract variety. If one eliminates this phenomenon, all dimension-$1$ abstract varieties are projective. One needs to exclude singularities in dimension $2$. There are some abstract nonsingular non-projective varities in dimension $3$. \index{Chow's lemma}Chow's lemma says that an abstract complete variety is pretty close to a projective variety. 
+
+\subsection{Toric varieties}
+\index{toric variety}Toric varieties give an easy way to construct examples of projective varieties.
+
+\begin{example}[Constructing affine varieties from cones: dimension $2$]\label{}\text{}
+Consider the coordinate ring of $k^*\times k^*$, namely $k[x,x^{-1},y,y^{-1}]$. One gets a square lattice of monomials. One defines subrings by drawing cones:
+\begin{center}
+	\phantom{\includegraphics[scale=0.8]{images/subring_cone.pdf}}
+\end{center}
+A subring given by a cone has the following properties:
+\begin{enumerate}
+	\item It is a $k$-algebra;
+	\item It has no nilpotent elements;
+	\item If the cone is rational, it is a finitely-generated algebra.
+\end{enumerate}
+If these three conditions are met, this gives the coordinate ring of an affine variety. The orange and green cones correspond to $\mathbf{A}^2$ and the blue cone corresponds to a double cone as drawn above. 
+
+Suppose we have an orange cone and a larger red cone that contains the orange cone. One sees that the orange ring is a subring of the red ring. Since we have a map from the orange ring to the red ring, we have a map from the red variety to the orange variety. We can get around this problem using duality. 
+
+If one has a cone in $\mathbf{Z}^2$, one can look at the dual cone: the corresponding cone in $(\mathbf{Z}^2)^*=\mathbf{Z}^2$. The orange dual cone contains the red dual cone. The idea: For each cone $C$ in $\mathbf{Z}^2$, look at the dual cone and take the corresponding ring. This gives a variety of $C$.
+
+Consider a degenerate cone (a vertical line). The dual of this cone is the upper half plane. The coordinate ring of this is $k[x,x^{-1},y]$, which corresponds to $k^*\times k$. This is the ring corresponding to the line.
+
+Consider a quadrant. Its dual is the same quadrant whose coordinate ring is $k[x,y]$, so this corresponds to the affine plane or $k\times k$. Now, one sees that sub--- is preserved under taking coordinate rings of cones. (That is, $k^*\times k$ is a subring of $k\times k$ and, correspondingly, the line is a subcone of the quadrant.)
+\end{example}
+
+		One can do the same with more cones. Consider the following cones in $1$ dimension: An upward line at the origin, a downward line at the origin, and their intersection (a point). The lines are self-dual, but the dual of the point is the entire line. The lines correspond to $k[x]$ and $k[x^{-1}]$ respectively, thus $\mathbf{A}^1$, and the point corresponds to $k[x,x^{-1}]$, thus $\mathbf{A}^1 - \{0\}$. Take these affine varieties and glue them together. One gets $\mathbf{P}^1$. 
+
+
+Now, in two dimensions, take four distinct quadrants. One gets four varieties which are isomorphic to $\mathbf{A}^2$. We are gluing them together along various subvarieties. The right horizontal one corresponds to $\mathbf{A}^2 - \mathbf{A}^1 = \mathbf{A}^1 \times (\mathbf{A}^1 - \{0\})$. The picture we have is just two copies of the picture we had in the one-dimensional case, so we get $\mathbf{P}^1\times \mathbf{P}^1$. The variety $\mathbf{P}^1 \times \mathbf{P}^1$ as a toric variety is drawn like this. How do we get $\mathbf{P}^2$?
+
+Consider these cones:
+\begin{center}
+	\phantom{\includegraphics[scale=0.8]{images/toric_proj_plane.pdf}}
+\end{center}
+Looking at the dual cone, we see that the orange and blue cones correspond to $\mathbf{A}^2$.  Again, we see that the green and orange cones are glued together by the variety $\mathbf{A}^2 - \mathbf{A}^1$. So $\mathbf{P}^2$ is $\mathbf{A}^2\cup \mathbf{A}^2\cup \mathbf{A}^2$ glued along copies of $\mathbf{A}^1\times (\mathbf{A}^1-\{0\})$.
+
+Consider this more exotic example:
+\begin{center}
+	\phantom{\includegraphics[scale=0.4]{images/cone_seq}}
+\end{center}
+One can take an infinite sequence of cones and glue together copies of $2$-dimensional affine space according to this sequence. What projective variety does one get? Well, one doesn't get one: It is too big. The resulting thing is not \index{quasicompact}quasicompact, and all projective varieties or their open subsets are quasicompact. Instead, it gives an \index{abstract variety}abstract variety. Varieties one gets like this are called toric varieties: They contain a torus as a dense subvariety.
+
+In the drawing above, notice that there is a single point contained in all of the cones. The variety of this point is, looking at the dual cone, $k[x,x^{-1},y,y^{-1}]$. This is the coordinate ring of a torus. Why is this called a torus?
+
+One knows that, in algebraic topology, a torus is $S^1\times S^1$, or, more generally, $(S^1)^n$. Over $\mathbf{R}$, $S^1$ is the set of points $x^2 + y^2 = 1$. Over $\mathbf{C}$, this is $(x+iy) (x-iy)=1$ or $z_1z_2=1$. This is a hyperbola, which is $\mathbf{C}-\{0\}$. Hence, one can think of $\mathbf{C}^*$ as an analogue of $S^1$. Therefore, one can call $(\mathbf{C}^*)^n$ a torus. In the theory of algebraic groups, $(\mathbf{C}^*)^n$ plays the same role that $(S^1)^n$ plays is the theory of compact Lie groups. 
+
+\subsection{Categories}
+
+A category has objects and morphisms. They are named after their objects. Here are some examples.
+	\begin{center}
+\begin{tabular}{cc}
+    Objects & Morphisms\\
+    \midrule
+    Sets & Functions\\
+    Groups & Group homomorphisms\\
+    Topological spaces & Continuous maps\\
+    Commutative rings & Ring homomorphisms
+\end{tabular}
+\end{center}
+A category has a collection of objects. For any two objects, one has a collection of morphisms between them. Given objects $A$, $B$, and $C$, a morphism $f$ from $A$ to $B$, and a morphism $g$ from $B$ to $C$, one has a morphism $g\circ f$ from $A$ to $C$. For every object $A$, there is an identity morphism $I_A$. This identity must behave as one expects. Composition of morphisms must be associative when defined.
+
+A theme of category theory is to focus on morphisms between objects, and not the objects themselves. How does one define products? The definitions of products of sets, groups, topological spaces, etc. are notably different. Suppose $A$ and $B$ are two objects. Suppose $C$ is another object with morphisms to $A$ and $B$. Then there is a unique morphism from $C$ to $A\times B$. This is universal:
+\begin{center}
+	\begin{tikzcd}
+		C \ar[ddr] \ar[dr, dashed] \ar[drr] \\
+		& A\times B \ar[r] \ar[d] & B\\
+		& A
+	\end{tikzcd}
+\end{center}
+One can check that products of sets, groups, rings, topological spaces, etc. satisfy this universal property. The product is not unique but it is unique up to unique isomorphism.
+
+Suppose $X$ and $Y$ both satisfy the universal property above. Since $Y$ is a product and $X$ maps to $A$ and $B$, there is a unique map from $X$ to $Y$ that makes the diagram commute. Reverse the roles of $X$ and $Y$ to get a unique map from $Y$ to $X$. The composition of these two unique morphisms is a map from $Y$ to itself that makes the diagram commute; by unicity, this morphism must be the identity of $Y$. Reverse the roles of $X$ and $Y$.
+
+We would like to make varieties or algebraic sets into a category. One can use \index{regular map}regular maps, which are somewhat analogous to smooth maps in differential geometry and defined everywhere, or one can use \index{rational map}rational maps, which are not defined everywhere.
+
+Given a category $\mathcal{C} $, its opposite $\mathcal{C}\op$ is $\mathcal{C} $ with all arrows reversed. The morphisms of ${\mathcal{C}}\op $ from $A$ to $B$ are the same as the morphisms of $\mathcal{C} $ from $B$ to $A$. Affine varieties with regular maps is somewhat dual to finitely-generated algebras over $k$ with no nilpotent elements. (Affine schemes have the same correspondence to commutative rings.)
+
+A map of varieties $V\longrightarrow W$ does not give a map from a coordinate ring of $V$ to that of $W$; it gives a map from functions on $W$ to functions on $V$.
+
+
+\subsection{Regular functions}
+An affine variety $Y\subseteq \mathbf{A}^n$\index{affine variety} is defined by an ideal $I$ and the coordinate ring of $Y$ is $k[x_1,\hdots,x_n]/I$, which one thinks of as polynomial functions on affine space restricted to $Y$. This coordinate ring is the \index{ring of regular functions}ring of regular functions on $Y$.
+
+We would like to define regular functions when $U$ is an open subset of an affine variety $Y$. Such open sets are called \index{quasiaffine variety}quasiaffine varieties.
+
+\begin{example}[Quasiaffine varieties]\label{}\text{}
+Take $U=\mathbf{A}^1-\{0\}$. We have seen that $U$ is isomorphic to the hyperbola of points $xy=1$ in $\mathbf{A}^2$. This quasiaffine variety is an affine variety disguised.
+
+Take $U=\mathbf{A}^2-\{(0,0)\}$. We will see that this is not isomorphic to an affine variety.
+\end{example}
+
+What do we want the regular functions on $U$ to be? If $U=\mathbf{A}^1-\{0\}$, we want $x^{-1}$ to be regular on $U$. Hence, we want the ring to be $k[x,x^{-1}]$. We define a regular function\index{regular function} on $U$ to be a function that is locally regular at all points $p\in U$. (A function $f$ is \index{locally regular}locally regular at $p$ if $f=g/h$ in some neighbourhood of $p$ where $g$ and $h$ are polynomials and $h$ is nonzero at $p$. Note that $g$ and $h$ depend on $p$.) 
+
+\begin{problem}
+	Suppose $Y$ is affine. Are regular functions regular? Note that the first ``regular'' means ``regular at each point'' and the second means that they are polynomials on affine space.
+\end{problem}
+
+Suppose $Y=U_1\cup U_2\cup \cdots \cup U_m$ is a union of open subsets. Let $f$ be a function on $Y$ that is regular on all $U_i$s. Therefore, $f=g_i/h_i$ on $U_i$ where $h_i\ne 0 $ on $U_i$. Is $f$ a polynomial? Observe that $1= a_1h_1 + a_2h_2 + \cdots +a_mh_m\pmod I$ for some polynomials $a_i$. This is because $Y$ is covered by the $U_i$s; thus, no point of $Y$ is outside of all $U_i$s, and no maximal ideal of $k[x_1,\hdots,x_n]$ containing $I$ contains all of the $h_i$s; so $(h_1,h_2,\hdots, h_m, I)=(1)$. This relation gives
+\begin{align*}
+	f &= a_1h_1f + a_2h_2f + \cdots + a_mh_mf \pmod I\\
+	  &= a_1g_1 + a_2g_2+\cdots + a_mg_m \pmod I.
+\end{align*}
+Define $f:= a_1g_1+\cdots + a_mg_m$. We want to check that $h_if = g_i$ on $U_i$: Since $h_if = h_ia_1g_1 +\cdots + h_ia_mg_m$ and $h_ig_j = h_jg_i$, one gets
+\begin{align*}
+	h_if &= h_ia_1g_1 +\cdots + h_ia_mg_m\\
+	     &= g_ia_1h_1 + \cdots + g_ia_mh_m\\
+	     &= g_i(a_1h_1+\cdots+a_mh_m)\pmod I\\
+	     &= g_i \pmod I.
+\end{align*}
+Therefore, the local and global conditions for regularity are equivalent.
+
+Suppose $U$ is a \index{quasiprojective variety}quasiprojective variety, so it is an open subset of a projective variety. (Every quasiaffine variety is a quasiprojective variety.) Notice that a quasiprojective variety is covered by open affine subvarieties. A function on a quasiprojective variety is  \index{regular function}regular if it is \index{locally regular}locally regular.
+
+Given a quasiprojective variety $Y$, one has a \index{ring of regular functions}ring of regular functions $\mathscr{O}(U)$ for each open subset $U\subset Y$. 
+
+Suppose $U= U_1\cup U_2\cup \cdots$. One has the following properties:
+\begin{enumerate}
+	\item If $f\in \mathscr{O}(U) $ vanishes on $\mathscr{O}(U_i) $, then $f = 0$;
+	\item If $f_i\in \mathscr{O}(U_i) $ and $f_i = f_j$ on $U_i\cap U_j$, then there exists $f\in \mathscr{O}(U) $ such that $f \big |_{U_i} = f_i$.
+\end{enumerate}
+These are the defining conditions of a \index{sheaf}sheaf.
+
+\begin{example}[ ]\label{}\text{}
+Let us find the regular functions on $\mathbf{P}^1$. The regular functions on $\mathbf{A}^1$ is $k[x]$. We cover the projective line with two copies of the affine line: $\mathbf{P}^1 = \mathbf{A}^1\cup \mathbf{A}^1$. To specify a regular function $f\in \mathbf{P}^1$, pick regular functions on $\mathbf{A}^1$ and $\mathbf{A}^1$ that are the same on the intersection $\mathbf{A}^1-\{0\}$. The ring of regular functions on $\mathbf{A}^1-\{0\}$ is $k[x,x^{-1}]$. One can identify the ring of regular functions of the second copy of $\mathbf{A}^1$, $k[y]$, with $k[x^{-1}]$. We need to pick $f$ that is a polynomial in $x$ and a function that is a polynomial in $x^{-1}$ that are the same in $k[x,x^{-1}]$. Thus, $f$ is constant.
+\end{example}
+
+\subsection{Morphisms of varieties}
+Suppose $X$ and $Y$ are quasiprojective varieties. We want to define a regular map $f:X\longrightarrow Y$. This should be a ``nice'' function from points of $X$ to points of $Y$. ``Nice'' functions from $h:Y\longrightarrow k$ are regular functions, so the composition $h\circ f$ should be regular.
+
+Suppose $U$ is open in $Y$. Then $f^{-1}(U)$ is open in $X$. Let $g: U\longrightarrow k$ be a regular function. Then $f$ is called a morphism if the composition $g\circ f$ is regular on $f^{-1}(U)$. Indeed, the composition of two morphisms is a morphism. Quasiprojective varieties and this morphism comprise a category.
+
+\begin{warn}
+	This is a morphism of \index{ringed space}ringed spaces. A \defn{ringed space}\index{ringed space} is a topological space with a sheaf of rings. We have seen that regular functions on open sets form a sheaf of rings. This definition fails for schemes: one needs to use a morphism of locally ringed spaces.
+\end{warn}
+
+\begin{example}[Ringed spaces]\label{}\text{}
+	 Topological manifolds: Take continuous functions on every open set. Then, one can take $C^1$ manifolds, $C^2$ manifolds, etc., and $C^\infty$ manifolds (smooth manifolds), in which the ringed space structure is given by smooth functions on every open set. Continuing, one can take analytic manifolds $C^\omega$, and then smooth algebraic varieties over $\mathbf{C}$ or $\mathbf{R}$. These are more or less inclusions. Topological manifolds are ``floppy,'' while smooth algebraic varieties are ``rigid.'' There is a significant change in behaviour between smooth manifolds and analytic manifolds.  
+
+	 All of these are \index{locally ringed space}locally ringed spaces.
+\end{example}
+
+Suppose $X$ is a topological space together with a sheaf of rings. For each open set $U$ of $X$, we have a ring $\mathscr{O}(U)$. If we have open sets $U\subseteq V$, we have a restriction map $\mathscr{O} (U)  \longleftarrow \mathscr{O}(V)$. The local ring\index{local ring} at a point $p\in X$ is, informally, ``functions defined near $p$.'' More precisely, an element of a local ring is given by an open set $U$ such that $p\in U$ and a function $f\in \mathscr{O}(U)$ defined on $U$. We define an equivalence relation by $(f,U)\sim  (g,V)$ if there exists $W\subseteq U\cap V$ and $p\in W$  so $f=g$ on $W$. The set of equivalence classes is a ring called the \index{local ring}local ring at $p$. Indeed, this is a local ring with maximal ideal functions vanishing at $p$.
+
+\begin{example}[ ]\label{}\text{}
+Consider the hyperbola $xy=1$ and the points $\mathbf{A}^1-\{0\}$. We can define a morphism from the hyperbola by $(x,y)\longmapsto x$ and one in the other direction by $x\longmapsto (x,x^{-1})$. These maps are inverses of each other, so these two objects are isomorphic in the category of quasiprojective varieties.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the curve $C: y^2=x^3$. There is a map $\mathbf{A}^1\longrightarrow C$ given by $t\longmapsto (t^2,t^3)$. This morphism of varieties is a continuous bijection, so it an isomorphism of sets. Further, its inverse is continuous, so it is a homeomorphism of topological spaces. However, it is not an isomorphism of varieties. We might try to define $t = y/x$, but this is not regular at $x=0$.
+\end{example}
+
+\subsection{Affine algebraic sets and commutative rings}
+
+\begin{theorem}[ ]\label{}\index{}\text{}
+Suppose $Y$ is affine. Then morphisms $X\longrightarrow Y$ are the same as ring homomorphisms $\mathscr{O}(Y)  \longrightarrow \mathscr{O}(X)$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\varphi \in \Mor(X,Y)$. This gives a ring homomorphism from $\mathscr{O}(Y) $ to $\mathscr{O}(X)$. An element of $\mathscr{O}(Y)$ is a regular function, just some $\psi\in \Mor(Y, \mathbf{A}^1)$, and this will map to $\psi\circ\varphi$. This works for all $Y$. The problem is constructing a map from $\Hom_{}(\mathscr{O}(Y), \mathscr{O}(X))$ to $\Mor(X,Y)$. 
+
+Suppose $h\in \Hom_{}(\mathscr{O}(Y),\mathscr{O}(X) )$. Think of $\mathscr{O}(Y)$ as $k[x_1,\hdots, x_n]/I$ for some ideal $I$ since $Y$ is affine. Construct $\psi:X\longrightarrow Y$ as follows. For $p\in X$, one has $(h(x_1)(p),\hdots, h(x_n) (p))\in k^n$. This defines a map $X\longrightarrow \mathbf{A}^n$, which is $\psi$. One needs to check that the image of $\psi$ is in $Y$, and this follows from $h(I)=0$. Also, one needs to check that $\psi$ is a morphism, and this follows from $x_i\circ\psi$ being regular on $X$.
+
+The two functions defined above are inverses of each other.
+\end{proof}
+\begin{remark}
+This means that affine varieties over $k$ are ``the same as'' finitely-generated algebras over $k$ with no nilpotent elements. That is, the category of affine varieties over $k$ is dually equivalent to the category of finitely-generated $k$-algebras.
+
+Therefore, products of varieties correspond to coproducts of algebras. The coproduct is the dual of the product:
+\begin{center}
+        \begin{tikzcd}
+                T \\
+                & R\tensor S \ar[ul, dashed] & R\ar[l]\ar[llu]\\
+                & S\ar[u] \ar[uul]
+        \end{tikzcd}
+\end{center}
+\end{remark}
+\begin{warn}
+	This fails over non-perfect fields: If $K$ is an inseparable extension of $k$, then $K\tensor_k K$ might have nilpotent elements. 
+\end{warn}
+
+\begin{example}[Algebraic groups]\label{}\text{}
+An \defn{algebraic group}\index{algebraic group} $G$ is an algebraic variety together with a morphism $G\times G\longrightarrow G$ (product) with an inverse morphism $G\longrightarrow G$ and an identity morphism from a point to $G$. The variety $\mathbf{A}^1$ with product
+\begin{align*}
+	(x,y)\longmapsto x+y
+\end{align*}
+is an algebraic group $G\textsubscript{a}$ with inverse
+\begin{align*}
+	x\longmapsto -x
+\end{align*}
+and identity $0$. Now, let us look at this from the point of view of rings. The coordinate ring of $\mathbf{A}^1$ is $k[z]$ and the coordinate ring of $\mathbf{A}^1\times \mathbf{A}^1$ is $k[x]\tensor k[y]$. The corresponding homomorphism is $z\longmapsto x+y$. That is, we have two maps: $k[x]\tensor k[x]\longrightarrow k[x]$ that is ring multiplication and $k[x]\longrightarrow k[x]\tensor k[x]$ that is the group operation. These look dual (cf. \index{Cartier duality}Cartier duality\footnote{See \url{https://en.wikipedia.org/wiki/Cartier_duality}.}).
+\end{example}
+
+\begin{example}[Another algebraic group: The multiplicative case: $G\textsubscript{m}$]\label{}\text{}
+The underlying variety is $\mathbf{A}^1 - \{0\}$ with group ring $k[x,x^{-1}]$ and product 
+\begin{align*}
+	(x,y)\longmapsto x\cdot y.
+\end{align*}
+The coproduct $k[x,x^{-1}] \longrightarrow k[x,x^{-1}]\tensor k[x,x^{-1}]$ is given by 
+\begin{align*}
+	x\longmapsto x\tensor x.
+\end{align*}
+\end{example}
+
+\begin{example}[$\GL_2(k)$: A non-commutative example]\label{}\text{}
+The product here is given by matrix multiplication and the inverse is given by the ordinary inverse. The coordinate ring is $$R:=k[a,b,c,d,(ad-bc) ^{-1}].$$ One can think of this as $$\frac{k[a,b,c,d,e]}{((ad-bc)e-1)}.$$ One has a homomorphism of rings $R\longrightarrow R\tensor R$ corresponding to the product where $a\longmapsto a_1a_2+b_1c_2$, etc. according to matrix multiplication. The inverse corresponds to a homomorphism of rings $R\longrightarrow R$ taking each entry to the appropriate entry of the inverse. These are called \defn{Hopf algebras}\index{Hopf algebra}: Things with a multiplication $R \longrightarrow  R\tensor R$, a comultiplication $R\tensor R\longrightarrow R$, and an antipode corresponding to the inverse and satisfying some axioms.
+\end{example}
+
+\subsection{The twisted cubic}
+We shall look at some examples of morphisms of varieties.
+
+\begin{example}[Twisted cubic]\label{}\text{}
+\index{twisted cubic}The twisted cubic is isomorphic to $\mathbf{P}^1$. Recall that the twisted cubic is given by points of the form $(w:x:y:z) = (s^3:s^2t:st^2:t^3)\in  \mathbf{P}^3$. One can also describe it as the roots of $wy=x^2$, $xz=y^2$, and $wz=xy$. We get a graded ring $k[w,x,y,z]$ modulo these polynomials.
+
+One has an isomorphism from $\mathbf{P}^1$ to the twisted cubic given by 
+\begin{align*}
+	(s:t) \longmapsto  (s^3:s^2t:st^2:t^3).
+\end{align*}
+This is an isomorphism of topological spaces. However, this might not be an isomorphism of algebraic sets. So we need to construct a regular map from the twisted cubic to $\mathbf{P}^1$. Cover the cubic with open affine sets $U_i$. Choose a function on each $U_i$ and check that they are the same on $U_i\cap U_j$.
+
+Projective space $\mathbf{P}^3$ is covered by four copies of $\mathbf{A}^3$, corresponding to the cases $w\ne 0$, $x\ne 0$, $y\ne 0$, and $z\ne 0$. The twisted cubic is covered by $2$ affine sets given by $w\ne 0$ and $z\ne 0$. For $w\ne 0$, we map
+\begin{align*}
+	(w:x:y:z)\longmapsto  (w:x).
+\end{align*}
+For $z\ne 0$, we map
+\begin{align*}
+	(w:x:y:z)\longmapsto  (y:z).
+\end{align*}
+For the intersection ($w\ne 0$ and $z\ne 0$), recall that $wz=xy$, so $(w:x)= (y:z)$, and, hence, we have a regular morphism from the cubic to $\mathbf{P}^1$. Indeed, this is the inverse of the map we gave earlier.
+\end{example}
+
+\begin{remark}
+	Two affine varieties are isomorphic if and only if the corresponding coordinate rings are isomorphic. The same statement is false for projective varieties and the corresponding graded rings: The graded ring corresponding to $\mathbf{P}^1$---namely, $k[x,y]$---and the graded ring corresponding to the twisted cubic are certainly not isomorphic.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Recall that $\mathbf{A}^1-\{0\}$ is affine, while $\mathbf{A}^2 - \{(0,0)\}$ is not. Let us find theregular functions on $\mathbf{A}^2 - \{(0,0)\}$ (morphisms from it to $\mathbf{A}^1$). Cover $\mathbf{A}^2-\{(0,0)\}$ by affine sets $U$ and $V$. Let $U$ be $\mathbf{A}^2$ without the $x$-axis and $V$ be $\mathbf{A}^2$ without the $y$-axis. The corresponding coordinate rings are $k[x,y,y^{-1}]$ and $k[x,x^{-1},y]$. The intersection $U\cap V$ has coordinate ring $k[x,x^{-1},y,y^{-1}]$. We have maps from $U\cap V$ to $U$ and from $U\cap V$ to $V$ that induce dual maps of the coordinate rings. These corresponding maps are injective, so finding elements in either ring with the same image in $k[x,x^{-1},y,y^{-1}]$ is straightforward: One gets $k[x,y]$ for the regulaar functions on $\mathbf{A}^2-\{(0,0)\}$. This is the same as the coordinate ring of $\mathbf{A}^2$.
+
+One has a morphism $\mathbf{A}^2-\{(0,0)\}\longrightarrow \mathbf{A}^2$ (the inclusion) that induces a map $k[x,y] \longleftarrow k[x,y]$. Since morphisms of affine varieties correspond to homomorphisms of coordinate rings, if $\mathbf{A}^2-\{(0,0)\}$ were affine, then $k[x,y]$ would be its coordinate ring. Since the homomorphism here is an isomorphism, $\mathbf{A}^2-\{(0,0)\}$ would have to be isomorphic to $\mathbf{A}^2$. Hence, $\mathbf{A}^2-\{(0,0)\}$ is not affine.
+\end{example}
+
+\begin{remark}
+	With $\mathbf{A}^1-\{0\}$, one is removing a subset of codimension $1$; with $\mathbf{A}^2-\{(0,0)\}$, one is removing a subset of codimension $2$. Roughly, if one removes a subset of codimension $1$ from an affine variety, it generally remains affine; this does not tend to happen for codimension greater than $1$.
+\end{remark}
+
+
+\subsection{Products of projective varieties}
+Suppose $A\subseteq \mathbf{P}^m$ and $B\subseteq \mathbf{P}^n$ are varieties. If we can find a product $\mathbf{P}^m\times \mathbf{P}^n$, it is not hard to find a product $A\times B$. We shall demonstrate that the product of two projective varieties is projective.
+
+Recall that \index{Segre embedding}we have the Segre embedding:
+\begin{align*}
+	\mathbf{P}^m\times \mathbf{P}^n\longrightarrow \mathbf{P}^{mn+m+n}.
+\end{align*}
+We want to find that the image is a product in the category of varieties. This embedding is given by
+\begin{align*}
+	((x_0:\cdots:x_m), (y_0:\cdots:y_n))\longmapsto (x_0y_0:x_1y_0:\cdots:x_my_0:\cdots: x_0y_1:\cdots:x_my_n).
+\end{align*}
+Write $(z_{00}:\cdots:z_{mn}):=(x_0y_0:x_1y_0:\cdots:x_my_0:\cdots: x_0y_1:\cdots:x_my_n)$. We have the relations
+\begin{align*}
+	z_{ij}z_{k\ell} = z_{i\ell}z_{kj}.
+\end{align*}
+
+Let us check that there is a morphism from the variety given by those relations to projective space. Suppose $z_{00}\ne 0$. Then we have a map from the Segre variety to $\mathbf{P}^m$ by
+\begin{align*}
+(z_{00}:\cdots:z_{mn})\longmapsto (z_{00}:z_{10}:\cdots:z_{m0})\in \mathbf{P}^m.	
+\end{align*}
+If $z_{01}\ne 0$, we have a similar map given by
+\begin{align*}
+	(z_{00}:\cdots:z_{mn})\longmapsto (z_{01}:z_{11}:\cdots:z_{m1})\in \mathbf{P}^m.
+\end{align*}
+Do these maps coincide intersect on the intersection of the two open subsets? Yes: We have the relations $z_{ij}z_{k\ell} = z_{i\ell}z_{kj}$. 
+
+Let $S$ be the Segre variety. If $C$ is a variety that maps to $\mathbf{P}^m$ and $\mathbf{P}^n$, we want to show that there is a unique map $C\longrightarrow S$:
+\begin{center}
+        \begin{tikzcd}
+                C \ar[ddr] \ar[dr, dashed] \ar[drr] \\
+                & S \ar[r] \ar[d] & \mathbf{P}^n\\
+                & \mathbf{P}^m
+        \end{tikzcd}
+\end{center}
+Cover $C$ by open affine varieties. If we have proved this works for affine varieties, we get maps from each open affine variety to $S$. By the unicity of the maps for the product, all of the maps must coincide on all of the intersections. Hence, one assumes that $C$ is affine without loss of generality.
+
+One also covers the projective spaces by open affine varieties. A morphism from $C$ to the open subset $x_0\ne 0$ of $\mathbf{P}^m$ is given by a set of regular functions on $C$: $\{f_0=1,f_1,\hdots, f_m\}$. Similarly, one from $C$ to the open subset $y_0\ne 0$ of $\mathbf{P}^n$ is given by $\{g_0=1,g_1,\hdots, g_n\}$. 
+
+In general, an affine variety will not map to the open subset $x_0\ne 0$ of $\mathbf{P}^m$. However, one can cover $C$ by smaller open subsets where each open subset maps to one of the standard open subsets of $\mathbf{P}^m$ and one of $\mathbf{P}^n$. Thus, one also assumes that the image of $C$ is in the open subset $x_0\ne 0$ of $\mathbf{P}^m$ (and similarly for $\mathbf{P}^n$).
+
+Now, we have a map 
+\begin{align*}
+	C\longrightarrow (f_0g_0:f_0g_1:\cdots:f_mg_n).
+\end{align*}
+One checks that this is well-defined, etc.
+
+\subsection{Automorphisms of space}
+
+\begin{problem}
+	What is the group of automorphisms of an algebraic set?
+\end{problem}
+
+Automorphism groups of algebraic sets tend to be trivial or uninteresting. However, affine and projective space happen to be quite symmetric.
+
+\begin{example}[Automorphisms of the affine line]\label{}\text{}
+The coordinate ring of $\mathbf{A}^1$ is $k[x]$, so morphisms $\mathbf{A}^1\longrightarrow \mathbf{A}^1$ correspond to algebra homomorphisms $k[x]\longrightarrow k[x]$ (that is, $x\longmapsto p(x)$). So morphisms from $\mathbf{A}^1$ to itself are polynomials with coefficients in $k$. These are invertible if $p(x) = ax+b$ for $a\ne 0$. Therefore, $\Aut(\mathbf{A}^1)$ is the $ax+b$ group, and one can identify this with
+\begin{align*}
+	\left\{ \mat{a&b\\0&1} \right\}. 
+\end{align*}
+This group is nonabelian and has a normal subgroup 
+\begin{align*}
+	\left\{\mat{ 1&b\\0&1} \right\} 
+\end{align*}
+isomorphic to the additive group $k$ (and whose quotient is isomorphic to the multiplicative group $k^*$).
+\end{example}
+
+\begin{example}[Automorphisms of the affine plane]\label{}\text{}
+The coordinate ring of $\mathbf{A}^2$ is $k[x,y]$. Some automorphisms include 
+\begin{align*}
+	(x,y)\longmapsto (ax+by+c, dx+ey+f) 
+\end{align*}
+where
+\begin{align*}
+	\mat{a&b\\d&e} \in \GL_{2}(k).
+\end{align*}
+The invertible map
+\begin{align*}
+	(x,y)\longmapsto  (x,y+p(x))
+\end{align*}
+is an automorphism. Hence, we have an infinite-dimensional abelian subgroup. One can do the same with $y$, compose these, etc. 
+\end{example}
+
+\begin{example}[Automorphisms of affine space]\label{}\text{}
+Consider this endomorphism of $\mathbf{A}^n$:
+\begin{align*}
+	x_i\longmapsto f_i(x_1,\hdots, x_n).
+\end{align*}
+When is this an automorphism? Consider the Jacobian determinant $\det (\partial f_i/\partial x_j)$. One has
+\begin{align*}
+	\det (\Jac FG) =  (\det \Jac F) (\det \Jac G).
+\end{align*}
+Therefore, if $FG = 1$, then $\det\Jac F$ is invertible. One conjectures that this is an automorphism if and only if the Jacobian is invertible. One direction is trivial, and the other is the \index{Jacobian conjecture}Jacobian conjecture: If $\det \Jac F$ is invertible then $F$ is an automorphism. This is open.
+\end{example}
+
+\begin{example}[Automorphisms of the projective line]\label{}\text{}
+One can restrict a map $\mathbf{P}^1\longrightarrow \mathbf{P}^1$ to a map $\mathbf{A}^1\longrightarrow \mathbf{P}^1$, and this gives a map from an open subset of $\mathbf{A}^1$ to $\mathbf{A}^1$. Hence, we have a regular map on an open subset of $\mathbf{A}^1$ given by a rational function $p(x)/q (x)$. These have inverses if they are of the form
+\begin{align*}
+	\frac{ax+b}{cx+d},\qquad \mat{a&b\\c&d}\in \GL_{2}(k).
+\end{align*}
+However, one has
+\[
+\mat{\alpha\\&\alpha} : x\longmapsto x,
+\]
+so we need to mod out by this. This gives $\PGL_2( k)$, which is of dimension $3$. This is parallel to what one sees in complex analysis.
+\end{example}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/serre}
+\caption{Jean-Pierre Serre.}
+\end{center}
+\end{figure}
+
+\begin{remark}
+	A paper by Serre\footnote{``G\'eom\'etrie alg\'ebrique et g\'eom\'etrie analytique'' (GAGA), 1956.} says, roughly, that analytic maps over projective manifolds tend to be algebraic whereas analytic things over affine manifolds are much more common than algebraic things.
+\end{remark}
+
+
+\begin{example}[An automorphism of the affine plane]\label{}\text{}
+Consider the endomorphism $\mathbf{A}^2\longrightarrow \mathbf{A}^2$ given by
+\begin{align*}
+	(x,y)\longmapsto  (x,xy).
+\end{align*}
+The image is not open, closed, or even locally closed. A theorem of Chevalley says that it must be a constructible set.\footnote{See EGA IV Th\'eor\`eme 1.8.4 (?).} For projective manifolds, the image of a closed set is closed.
+\end{example}
+
+
+\subsection{The Ax--Grothendieck theorem}
+
+\begin{remark}
+	[First-order logic]\index{first-order logic} In first-order logic, one uses the usual logical connectives $\land$, $\lor$, $\lnot$, $\implies$, etc. to make statements. Also, one can use the operations of the field or model in question. One may also quantify over all elements in the model $X$ (with ``for all $x\in X$, . . .'' or ``there exists $x\in X$, . . .'').
+
+	Here's an attempt at saying, ``$\Omega$ is algebraically closed'':
+	\begin{center}
+		\small For all polynomials $a_nX^n + \cdots + a_1X + a_0\in \Omega[X]$, there is a root.
+	\end{center}
+	This is not allowed in first-order logic: One cannot say ``For all polynomials . . . .'' Here's the closest one can get:
+	\begin{center}
+		\small For all polynomials of degree $n$, there is a root.
+	\end{center}
+	This is allowed because it is a statement on $n$ coefficients in $\Omega$. To say that $\Omega$ is algebraically closed takes infinitely many statements in first-order logic. One cannot quantify over all integers.
+\end{remark}
+\begin{definition}[ ]\label{}\text{}
+A theory is \defn{complete}\index{complete theory} if every statement in it is provable or disprovable.
+\end{definition}
+
+\begin{proposition}[ ]\label{}\text{}
+The theory of algebraically closed fields of a given characteristic is complete.
+\end{proposition}
+
+\begin{proof}
+There is a unique algebraically closed field of a given characteristic and cardinality $\mathfrak{c}$.
+\end{proof}
+
+\begin{remark}
+	This means that anything true for all algebraically closed fields of large characteristic is true for algebraically closed fields of characteristic $0$. One cannot say that $\Omega$ is of characteristic $0$ with one statement in first-order logic. One needs a countably infinite number of statements: For every prime number $p$, the statement
+	\begin{center}
+		\small For all $\omega\in \Omega$, $p\omega\ne 0$.
+	\end{center}
+	must be true. Suppose you have proved something for algebraically closed fields of characteristic $0$. This proof uses only a finite number of axioms; that is, this proof can only eliminate a finite number of characteristics. Therefore, true for algebraically closed and characteristic $0$ implies true for algebraically closed and large characteristic.
+
+	The converse is clearly true.
+\end{remark}
+
+\begin{theorem}[Ax--Grothendieck]\label{}\index{Ax--Grothendieck theorem}\text{}
+Let $V$ be a variety over an algebraically closed field $k$. Let $f:V\longrightarrow V$ be a regular map. If $f$ is injective, $f$ is surjective.
+\end{theorem}
+
+\begin{example}[$k$ must be algebraically closed]\label{}\text{}
+Consider $k= \mathbf{Q}$ and $f:\mathbf{A}^1\longrightarrow \mathbf{A}^1$ given by $f(x)=x^ 3$. This is injective but not surjective.
+\end{example}
+
+\begin{example}[The converse is false]\label{}\text{}
+Let $k=\mathbf{C}$ and $f(x)=x^2$. This is surjective but not injective.
+\end{example}
+
+\begin{proof}
+This is trivial if $k$ is finite. Also, this is true over any algebraic extension of a finite field: The coefficients of all equations defining a variety and those of a point lie in some finite field. It is true for algebraic closures of finite fields. Recall that a first-order statement is true for an algebraically closed field of characteristic zero if and only if it is true for algebraically closed fields of all sufficiently large characteristics. Also, if a first-order statement is true for one algebraically closed field of a given characteristic, it is true for all algebraically closed fields of that characteristic.
+\end{proof}
+
+\begin{remark}
+	A well-known example of proving something for positive characteristics and extending it to characteristic $0$ is Mori's bend-and-break argument.
+\end{remark}
+
+\subsection{Rational maps}
+
+Suppose $Y$ is an affine variety. The coordinate ring $\mathscr{O}(Y)$ is an integral domain. Hence, one can construct the field of fractions $K(Y)$. Its elements are called \defn{rational functions}\index{rational function} on $Y$.
+
+\begin{example}[ ]\label{}\text{}
+Suppose $Y=\mathbf{A}^2$. Then $\mathscr{O}(Y) = k[x,y]$ and $K(Y) =k(x,y)$. 
+\end{example}
+
+\begin{remark}
+	Regular functions on affine varieties are analogous to holomorphic functions on Riemann surfaces; rational functions correspond to meromorphic functions.
+\end{remark}
+
+Now, suppose $Y$ is a projective variety. The previous construction does not work because the ring of regular functions $\mathscr{O}(Y)$ is just $k$ (whose field of fractions is itself). Instead, a rational function is given by the following:
+ \begin{enumerate}
+	\item A dense affine open set $U$;
+	\item A rational function $f$ on $U$.
+\end{enumerate}
+One identifies $(f_1,U_1)$ and $(f_2,U_2)$ if $f_1=f_2$ on a dense open set containing $U_1$ and $U_2$. One gets the rational functions by taking a direct limit over dense open affine sets $U$ of the ring of regular functions on $U$. Therefore, the rational functions $K(Y)$ form a field.
+
+\begin{remark}
+	We are supposing that $Y$ is irreducible. One can define rational functions on a reducible algebraic set, but the rational functions do not form a field in that case.
+\end{remark}
+
+Suppose $X$ and $Y$ are varieties. A \defn{rational map}\index{rational map} $X\longrightarrow Y$ is a regular map $U\longrightarrow Y$ where $U$ is dense and open in $X$. One identifies $(f_1,U_1)$ and $(f_2,U_2)$ if $f_1=f_2$ on an open set contained in $U_1\cap U_2$.
+
+\begin{example}[ ]\label{}\text{}
+Rational maps $X\longrightarrow \mathbf{A}^1$ are rational functions on $X$.
+\end{example}
+
+Rational maps do not form a category: Composition does not need to be defined! For example, the composition of $0:\mathbf{A}^1\longrightarrow \mathbf{A}^1$ and $f:\mathbf{A}^1\longrightarrow \mathbf{A}^1$ given by $x\longmapsto 1/x$ is not defined.
+
+\begin{definition}[ ]\label{}\text{}
+A rational map is \defn{dominant}\index{dominant rational map} is a rational map whose image contains a dense open set.
+\end{definition}
+
+\begin{definition}
+	Two varieties are \defn{birational}\index{birational equivalence} if they are equivalent in the category whose morphisms are dominant rational maps.
+\end{definition}
+
+\begin{remark}
+	Birational equivalence is a cruder notion of equivalence than isomorphism.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Consider $\mathbf{A}^1$, $\mathbf{P}^1 $, the hyperbola $xy=1$ in $\mathbf{A}^2$, and the curve $x^3=y^2$. All of these are birational, though no two are isomorphic.
+
+The varieties $\mathbf{P}^1\times \mathbf{P}^1$, $\mathbf{P}^2$, $\mathbf{A}^2$, and $\mathbf{A}^2-\{(0,0)\}$ are birational but not isomorphic.
+\end{example}
+
+\begin{remark}
+	A variety that is birational to an affine space is called a \defn{rational variety}\index{rational variety}.
+\end{remark}
+
+\begin{problem}
+	Find a non-rational variety.
+\end{problem}
+
+\begin{example}[ ]\label{}\text{}
+Consider the curve $x^3+y^3=1$. Let us show that this is not birational to $\mathbf{A}^1$, and, more generally, that there is no dominant rational map from $\mathbf{A}^1$ onto it. Suppose we have a dominant map from $\mathbf{A}^1$ to the curve (this is non-constant). This means we have rational functions $x$ and $y$ with $x(t)^3+y (t)^3 =1$. Clearing denominators, we have 
+\begin{align*}
+	f(t)^3+g (t)^3=h (t)^3
+\end{align*}
+where $f$, $g$, and $h$ are coprime polynomials. Factoring, we get
+\begin{align*}
+	(f(t)+g (t)) (f(t)+\omega g (t)) (f(t) + \omega^2g (t)) = h(t)^3.
+\end{align*}
+The ring $k[t]$ in which these polynomials live is a UFD. Therefore, each term must be a cube (up to units, but the units are constants which are cubes in an algebraically closed field). Write
+\begin{align*}
+	h_1 (t)^3 h_2(t)^3  h_3(t)^3 = h (t)^3.
+\end{align*}
+One can eliminate $f$ and $g$ from the three equations one gets and a linear relation between $h_1^3$, $h_2^3$, and $h_3^3$ emerges. Multiplying by constants, one gets another relation between polynomials in which the sum of the cubes of the first two is the cube of the third. 
+
+This gives another equation of the form above. If $f$, $g$, and $h$ are not constants, then $h_1$, $h_2$, and $h_3$ have smaller degree. This is a contradiction.
+\end{example}
+
+\begin{remark}
+	This works for exponent greater than or equal to $3$. The result is false for exponent $2$:
+	\begin{align*}
+		(1-t^2)^2 +  (2t^2)^2 =  (1+t^2)^2.
+	\end{align*}
+	This corresponds to the fact that $x^2+y^2=1$ is rational.
+\end{remark}
+
+\begin{remark}
+	The variety $\mathbf{A}^1$ has genus $0$ and $x^3+y^3=1$ has genus $1$. We will prove that there is no non-constant map from something to something of higher genus.
+\end{remark}
+\subsection{Elliptic functions and cubic curves}
+
+We shall use elliptic functions to show that some cubic curves in the plane are not birational to the affine line.
+
+Recall that $\wp$ is elliptic, so $\wp(z+\lambda) = \wp(z)$ where $\lambda$ is a point in a lattice $\Lambda$. This doubly periodic function is not holomorphic; if such a function were holomorphic, it would be bounded in a fundamental domain, so bounded everywhere, hence constant by Liouville's theorem. 
+
+How does one find elliptic functions? One way is to take a function $g$ and sum over the lattice:
+\begin{align*}
+	f(z) :=  \sum_{\lambda\in \Lambda}^{} g (z+\lambda).
+\end{align*}
+This does not converge for $g(z) = 1/z$. This converges well for $g(z) = 1/z^3$ and borderline for $g(z)=1/z^2$ (that is, it doesn't converge for $1/z^2$, but does for $1/z^{2+\epsilon}$). Hence, we define
+ \begin{align*}
+	\wp(z) :=  \frac{1}{z^2} + \sum_{\lambda\ne 0}^{} \frac{1}{(z-\lambda)^2} - \frac{1}{\lambda^2}.
+\end{align*}
+One shows that this is doubly periodic by looking at its first derivative and noticing that it is doubly periodic and showing that the constant up to which $\wp$ is doubly periodic is $0$.
+
+Let's look at its Laurent expantion at $z=0$:
+\begin{align*}
+	\wp(z) = z^{-2} + 0 z + *z^2 + \cdots.
+\end{align*}
+Now, its derivative:
+\begin{align*}
+	\wp'(z) = -2z^{-3} + *z +\cdots.
+\end{align*}
+Square the derivative:
+\begin{align*}
+	(\wp'(z)) ^2 = 4z^{-6} + *z^{-2} + *z^0 + \cdots.
+\end{align*}
+Further,
+\begin{align*}
+	4(\wp(z)) ^3 = 4z^{-6} + *z^{-2} + \cdots.
+\end{align*}
+Hence,
+\begin{align*}
+	(\wp'(z)) ^2 = 4(\wp(z)) ^3 +  *\wp(z) + * + z.
+\end{align*}
+The first part is doubly periodic with no poles, and the whole thing vanishes at $z=0$. Therefore, one has
+\begin{align*}
+	(\wp'(z)) ^2 = 4(\wp(z)) ^3 - g_2 \wp(z) -  g_3.
+\end{align*}
+
+Why are these called elliptic functions? The arc length of an ellipse is given by 
+\begin{align*}
+	\int_{0}^{t} \frac{dx}{\sqrt{4x^3 - ax - b} }. 
+\end{align*}
+Such integrals are called elliptic integrals. One also has
+\begin{align*}
+	z = \int_{*}^{\wp} \frac{d\wp}{\sqrt{4\wp^3 -g_2\wp - g_3} }. 
+\end{align*}
+That is, the inverses of such functions are doubly periodic, so they were called elliptic functions.
+
+Now, consider the curve $C:y^2 = 4x^3 - g_2x-g_3$. Put $y=\wp'(z)$ and $x=\wp(z)$, and one sees that $(x,y)$ is on this curve. Hence, one has a map $\mathbf{C}-\Lambda \longrightarrow C$ given by
+\begin{align*}
+	z\longmapsto (\wp'(z),\wp (z)).
+\end{align*}
+It's somewhat unfortunate that we have to ignore the lattice, so we can define a map $f$ from $\mathbf{C}$ to the projective curve given by $C$ where $f(\Lambda) = \{\infty\}$. 
+
+We have a doubly periodic function on our hands, so we have a map from $\mathbf{C}/\Lambda$ to the projective curve. (This is a homeomorphism of topological spaces.) One notices that $\mathbf{C}/\Lambda$ is isomorphic to $S^1\times S^1$ as a topological space, so it is a torus.
+
+Any rational curve is the same as $\mathbf{P}^1$ up to a finite number of points. The variety $\mathbf{P}^1$ is isomorphic to $S^2$ and the curve $C$ is isomorphic to the torus $S^1\times S^1$. Therefore, the two are not birational.
+
+\begin{remark}
+	We constructed a doubly periodic function by taking (essentially) $\sum_{}^{} 1/(z-\lambda)^2 $. One can also do this for (singly) periodic functions by taking the almost-convergent $\sum_{}^{} 1/(z-\lambda)$ and reordering by absolute value. This is $\pi\cot (\pi z)$. Taking the logarithmic derivative gives the product formula of $\sin$.
+\end{remark}
+\subsection{Rationality of cubic surfaces}
+
+We have seen that cubic curves such as $x^3+y^3+z^3=0$ in $\mathbf{P}^2$ are not rational. Now, look at a cubic suface $w^3+x^3+y^3+z^3= 0$ in $\mathbf{P}^3$. One might argue that setting $w=0$ gives a cubic curve in $\mathbf{P}^2$ that isn't rational, but this doesn't work. In fact, it is rational.
+
+First, observe that it contains two not intersecting lines: $w+x=0, y+z=0$ and $w+y=0, x+\omega z=0$ where $\omega$ is a primitive cube root of unity. Pick one point on each line and connect them. The resulting line should intersect the surface at one other point (ignoring the possibility that it lies on the cubic surface). Therefore, we have sort of constructed a map from $\mathbf{P}^1\times \mathbf{P}^1$ to the cubic surface. This is a rational map that is not defined everywhere. One can conclude that this map is almost surjective. Does it have a rational inverse?
+
+Suppose there is a point on the third line that another line that goes through the first two lines intersects. This is a contradiction, since we assumed that the first two lines were skew. Hence, it is injective and (with some work) has a rational inverse; this strongly suggests that it's birational to $ \mathbf{P}^1\times \mathbf{P}^1$, and it is. Therefore, if a cubic surface has two not intersecting lines, it is birational to $\mathbf{P}^1\times \mathbf{P}^1$. Let's look at a different argument.
+
+Pick $6$ points in $\mathbf{P}^2$ in general position (in this case, no three points are on a line and not all are on a conic). The space of cubic functions in three variables is $10$ dimensional. Consider the cubics that vanish on all $6$ points. This gives a $4$ dimensional space. Suppose this is spanned by $f_1$, $f_2$, $f_3$, and $f_4$.
+
+Try to define a map $\mathbf{P}^2 \longrightarrow \mathbf{P}^3$ by 
+\begin{align*}
+	(x:y:z)\longmapsto  (f_1:f_2:f_3:f_4).
+\end{align*}
+However, this is not defined at the $6$ points. So this is a rational map, not a regular map. What is its image?
+
+One guesses that it's a hypersurface, so assume so. What is the degree of this hypersurface? Pick a line in $\mathbf{P}^3$, say $f_1=f_2=0$. Both $f_1$ and $f_2$ are cubics, so \index{B\'ezout's theorem}B\'ezout's theorem says that they have $9$ points of intersection. Six of these are the points with which we started, which leaves $3$ points. Therefore, the hypersurface has degree $168$ (just kidding: it has degree $3$).
+
+The dimension of the space of cubics in $\mathbf{P}^3$ has dimension $20$. Therefore, the dimension of the space of cubic surfaces is $19$.  (Think of each cubic surface as being a point in a parameter space. This parameter space is $\mathbf{P}^{19}$.) 
+
+The dimension of the parameter space of the six points is $6\cdot 2$. Further, $\dim (\Aut(\mathbf{P}^2))=8$ and $\dim(\Aut(\mathbf{P}^3)) =15$. The dimension of the space of cubic surfaces one gets by taking $6$ points in $\mathbf{P}^2$ is probably going to be $12+15-8=19$, which strongly suggests that one can get all nonsingular cubic surfaces from this construction. Dr. Borcherds states about this argument:
+\begin{center}
+	\small It's got more holes in [it] than a piece of Swiss cheese.
+\end{center}
+
+These kinds of arguments were typical of old school algebraic geometry. Proving this true claim takes a lot more work.
+
+\begin{problem}
+	How might one guess that there are $27$ lines on a cubic surface from this construction?
+\end{problem}
+
+Take $6$ points in $\mathbf{P}^2$ as before. The map above is indeterminate at these points, and there are lines on the cubic surface whose preimages are these points. That is, $6$ points give rise to $6$ lines on the cubic. One also gets $15$ lines in $\mathbf{P}^2$ through $2$ of the $6$ points whose images are lines on the cubic surface. Lastly, take a conic through five of the points. There are $6$ conics through $5$ points, and the image of each is a line on the cubic surface. Altogether, there are $27$ lines.
+\subsection{Blowing up a point}
+\index{blowing up} 
+
+\begin{example}[ ]\label{}\text{}
+Take the curve $y^2 = x^3 +x^2$. This has a singularity at $(0,0)$. Let $y=tx$. Then one has $t^2x^2 = x^3+x^2$, which factorizes as follows:
+\begin{align*}
+x^2(t^2 - (x+1)) =0.
+\end{align*}
+One gets $2$ curves in the $(x,t)$ plane: $t^2=x+1$ and $x=0$. We get rid of the singularity but pick up another curve. The curve $x=0$ is called the \defn{exceptional curve}\index{exceptional curve}. This is blowing up.
+\end{example}
+
+
+Suppose we want to blow up the $(x,y)$ plane $\mathbf{A}^2$ at $(0,0)$. We introduce two new variables $(X:Y)\in  \mathbf{P}^1$. Consider the points $((x,y),  (X:Y))$ in $\mathbf{A}^2\times \mathbf{P}^1$ such that 
+\begin{align*}
+	xY = Xy.
+\end{align*}
+If $(x,y)\ne (0,0)$, there is one point of $\mathbf{P}^1$ to which it corresponds. If $(x,y)= (0,0)$, any point in $\mathbf{P}^1$ satisfies this. This subset of $\mathbf{A}^2\times \mathbf{P}^1$ is called the \index{blow up}blow up of $\mathbf{A}^2$ at a point (this is a \index{quasiprojective variety}quasiprojective variety). We get a map from the blow up to $\mathbf{A}^2$ given by
+\begin{align*}
+	((x,y), (X:Y)) \longmapsto (x,y).
+\end{align*}
+The preimage of a nonzero point in $\mathbf{A}^2$ is one point and that of $(0,0)$ is $\mathbf{P}^1$. The projective line $\mathbf{P}^1$ is covered by two affine lines: $X = 1$ and $Y=1$. If $X=1$, then we have the transformation $xY=y$, and, if $Y=1$, we have $x = Xy$.
+
+This generalizes. Take $\mathbf{A}^n$ with coordinates $(x_1,\hdots, x_n)$ and $\mathbf{P}^{n-1}$ with coordinates $(X_1:\cdots : X_n)$. Consider the subvariety of $\mathbf{A}^n\times \mathbf{P}^{n-1}$ given by the relation $x_iX_j = x_jX_i$ for all $i$ and $j$. This maps onto $\mathbf{A}^n$. The inverse image of $(x_1,\hdots, x_n)$ is a point if it's not $(0,\hdots, 0)$ and $\mathbf{P}^{n-1}$ if it is. The space $\mathbf{P}^{n-1}$ is covered by affine subsets of the form $X_i=1$, so we get $X_j = x_j/x_i$. That is, the effect of blowing up on the subset $X_i$ is introducing new coordinates by dividing the original coordinates by $x_i$.
+
+\begin{example}[Resolving a singularity]\label{ressing}\text{}
+We haven't formally defined \index{singularity}singularities yet, but they're fairly straightforward to understand. The curve $y^2=x^3$ has a singular point at $(0,0)$. Let us blow up at $(0,0)$. Let $y=xt$, so 
+\begin{align*}
+	x^2(t^2-x)=0.
+\end{align*}
+In the $(x,t)$ plane, one has the exceptional curve $x=0$ and the curve $t^2=x$. These curves have no singular points.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the surface $x^2+y^2=z^2$ (a cone). There is a singularity at $(0,0,0)$. Let us blow up at $(0,0,0)$. Choose to divide by $z$, so $y=zs$ and $x=zt$. One gets
+\begin{align*}
+	z^2(t^2+s^2-1)=0.
+\end{align*}
+In the $(z,s,t)$ plane, the surface in question transforms into a cylinder given by $t^2+s^2-1$ and the exceptional plane $z=0$. The singularity has been resolved.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider $y^8=z^5$. Blow this up once: If one divides $y$ by $z$, let $z=yt$. Then
+\begin{align*}
+	y^5(t^5-y^3)=0.
+\end{align*}
+The curve $y=0$ is exceptional, and $t^5-y^3$ still has a singularity, so blow it up again. Let $y= ts$. Therefore,
+\begin{align*}
+	t^3(s^3-t^2)=0.
+\end{align*}
+The curve $t=0$ is exceptional, and one blows up $s^3=t^2 $ by letting $t=su$, which means that $s=0$ and $s=u^2$ (see \cref{ressing}). Finally, the singularity has been resolved. 
+\end{example}
+
+\begin{example}[Pinch point\index{pinch point}]\label{ppoint}\text{}
+Consider $xy^2=z^2$. (This is called the \defn{Whitney umbrella}\index{Whitney umbrella}.) The points on the $x$ axis are the only singular points. The point $(0,0,0)$ seems to be worse off than the rest of them, so we blow it up. Take the variety $\mathbf{A}^3 \times \mathbf{P}^2$ with coordinates $((x,y,z),  (X:Y:Z))$. Choose one of the projective coordinates to be $0$ such that one of the affine pieces covers it. Dividing by $x$, we let $y=xY$ and $z=xZ$. Then, we get
+\begin{align*}
+	x^2(xY^2-Z^2)=0.
+\end{align*}
+Hence, we have transformed the singularity into an exceptional curve and another singularity. Notice that the new singularity is the same as the one with which we started. Oh no. Well, we can blow up a line, not just a point.
+
+Take coordinates $(x,y,z)$, and, instead of taking $\mathbf{P}^2$, take $\mathbf{P}^1$ with coordinates $(s:t)$. Assert $yt=zs$. We have $xy^2=z^2$, so if we blow up along this line, we should choose $s=1$ or $t=1$. Choose $s=1$. Then $yt=z$. Thus, $y^2=0$ or $x=t^2$.
+\end{example}
+
+\begin{warn}
+	One needs to define ``worst singularity'' in a very precise manner, as corroborated in \cref{ppoint}. 
+\end{warn}
+
+\subsection{More on blow ups}
+\begin{example}[Blowing up a point of $\R^2$]\label{}\text{}
+Blow up $(0,0)\in  \mathbf{R}^2$. Consider the coordinates $(x,y)$, and introduce new coordinates $(s:t) \in \mathbf{P}^1$. Take the set of points $((x,y), (s:t)) \in \mathbf{R}^2\times \mathbf{P}^1$ such that $xt=ys$. Every nonzero point in $\mathbf{R}^2$ corresponds to a unique point of the blow up and the zero point of $\mathbf{R}^2$ blows up to $\mathbf{P}^1(\mathbf{R})\isomto S^1$  (one can think of this having a point for every possible direction through the point). Hence, we have a map from the blow up to $\mathbf{P}^1(\mathbf{R})$ given by
+\begin{align*}
+	((x,y),  (s:t)) \longmapsto (s:t).
+\end{align*}
+The preimage of a point $(s:t) \in \mathbf{P}^1$ is a copy of $\mathbf{R}$. Let $E$ be the blow up. Then one has a map $E\longrightarrow S^1$ whose fibres are $\mathbf{R}$. One might guess that this might be a cylinder, but that's not right: The blow up is non-orientable\index{non-orientable surface}. Therefore, it is homeomorphic to an open M\"obius strip. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let us construct a map 
+\begin{align*}
+	\mathbf{P}^1\times \mathbf{P}^1\longrightarrow \mathbf{P}^2.
+\end{align*}
+One might try with $((x_0:x_1),(y_0:y_1)) \longmapsto (x_0y_0:x_1y_0:x_0y_1)$. This is not defined if $x_0=y_0=0$, but we can make it so by blowing up $\mathbf{P}^1\times \mathbf{P}^1$ at $((0:1), (0:1) )$. Cover it with a copy of $\mathbf{A}^2$ with coordinates $(x_0,y_0)$ given by the points $x_1=1,y_1=1$. One blows up at $(0,0)$ and finds there is a map from this blown up plane to $\mathbf{P}^2$: Write $x_0=ty_0$, so $(x_0y_0:x_1y_0:x_0y_1)$ becomes $(ty_0^2:x_1y_0:ty_0y_1)$ or $(ty_0:x_1:ty_1)$. This is a good point of $\mathbf{P}^2$.
+
+Therefore, one gets a regular map from the blow up of $\mathbf{P}^1\times \mathbf{P}^1$ to $\mathbf{P}^2$ from a rational map $\mathbf{P}^1\times \mathbf{P}^1\longrightarrow \mathbf{P}^2$.
+
+\begin{remark}
+	This regular map is not an isomorphism. The point $(0:0:1)\in  \mathbf{P}^2$ is the image of the line $y_0=0$ in $\mathbf{P}^1\times \mathbf{P}^1$ and $(0:1:0)\in \mathbf{P}^2$ is the image of the line $x_0=0$. This map is just the map one gets by blowing up these two points of $\mathbf{P}^2$. That is, the blow up of $\mathbf{P}^1\times \mathbf{P}^1$ at one point is the blow up of $\mathbf{P}^2$ at two points.
+\end{remark}
+\end{example}
+
+The geometric meaning of blowing up a point is taking it to the projective space over its tangent space. We have seen that we can blow up a line, and, more generally, we can blow up a subvariety $X$; the geometric interpretation here is mapping a point in $X$ to the projective space over the normal space at that point. 
+
+We can also blow up an ideal or a \index{quasicoherent sheaf}quasicoherent sheaf of graded algebras. One can construct a projective variety from a graded algebra. Suppose we have a graded algebra for every point in the variety and replace every point by the projective space of the corresponding graded algebra. That's a blow up. But how does one assign a graded algebra to every point of the variety? The nice way to do this is through a quasicoherent sheaf of graded algebras. (More on that in the next chapter.) This corresponds to the projective space of a graded algebra at each point.
+
+There is one straightforward example to consider: Suppose the variety is a point. Then a quasicoherent sheaf of graded algebras is a graded algebra, say $k[x_0,\hdots,x_n]$. Blowing up a point along this sheaf is the usual construction of $\mathbf{P}^n$.
+
+\begin{example}[ ]\label{introsing}\text{}
+Consider the affine plane $\mathbf{A}^2$ with coordinate ring $k[x,y]$. Blowing up a point $(0,0)\in  \mathbf{A}^2$ corresponds to blowing up the ideal $(x,y)$. Suppose $g_1,\hdots, g_n\in k[x,y]$ generate an ideal. Take the set of all pairs $((x,y), (g_1:\cdots:g_n))$ in $\mathbf{A}^2\times \mathbf{P}^{n-1}$ where $x$ and $y$ are not in the subvariety generated by the $g_i$. Take the closure of the image of $\mathbf{A}^2- V$ in $\mathbf{A}^2\times \mathbf{P}^{n-1}$.
+
+Take $I=(x^2,y^2)$. Then, take 
+\begin{align*}
+	(x,y)\longmapsto  ((x,y), (x^2:y^2)) \in \mathbf{A}^2\times \mathbf{P}^1.
+\end{align*}
+Write the elements in the image $((x,y),  (s:t))$. The projective line is covered by two copies of the affine line. Take $s=1$. Notice that $x^2t = y^2s$ so $x^2t=y^2$. This is the Whitney umbrella\index{Whitney umbrella}.
+\end{example}
+
+\begin{warn}
+	One must be careful about blowing up. While Hironaka showed that blowing up always resolves singularities in characteristic $0$, if you blow up the wrong thing, you may introduce new singularities, as was demonstrated at the end of \cref{introsing}.
+\end{warn}
+
+\subsection{The Atiyah flop}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.15]{images/atiyah}
+\caption{Michael Atiyah.}
+\end{center}
+\end{figure}
+Consider the hypersurface $xy=zt$ in $\mathbf{A}^4$. This looks like a cone over $\mathbf{P}^1\times \mathbf{P}^1$: One looks at the corresponding variety of points $(x:y:z:t)\in \mathbf{P}^3$ satisfying $xy=zt$. This is a quadric in projective space, which gives a product $\mathbf{P}^1\times \mathbf{P}^1$ (cf. \cref{seg}). In particular, this variety has a singularity at $(0,0,0,0)$ that is the singular point of the cone.
+
+One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x,y,z,t),  (X:Y:Z:T)) \in \mathbf{A}^4\times \mathbf{P}^3$ satisfying $xy=zt$, $xY=Xy$, $xZ = Xz$, etc. Take the image of the nonzero points in $\mathbf{A}^4$ under
+\[
+	(x,y,z,t)\longmapsto  ((x,y,z,t),  (X:Y:Z:T))
+	\]
+	Taking the Zariski closure of the image, one also has the equation $XY=ZT$. Every nonzero point of $\mathbf{A}^4$ corresponds to a unique point in the blow up $\mathbf{A}^4\times \mathbf{P}^3$ while $(0,0,0,0)$ corresponds to a copy of $\mathbf{P}^1\times \mathbf{P}^1$. This is not singular\iffalse, since, along $X=1$, it becomes $Y=ZT$ in the coordinates $(x,Y,Z,T)$\fi.
+
+	One can also resolve this by blowing up to $\mathbf{P}^1$: Blow up along the line $y=t=0$. Consider the points $((x,y,z,t),  (X:Z)) \in \mathbf{A}^4\times \mathbf{P}^1$. Blowing up, we get the equations $xy=zt$ and $xZ=Xz$. However, taking the closure of the image of $\mathbf{A}^4$, we get the equation $tZ = Xy$, too. Say $X=1$. Then $y=tZ$, $z=xZ$, and $xy=tz$, which reduces to affine $3$-space. Hence, the blow up non-singular. The point $(0,0,0,0)$ is blown up to $\mathbf{P}^1$. (One can also blow up along $x=z=0$, which results in a distinct resolution to $\mathbf{P}^1$.)
+
+	The birational map from the first resolution to the second resolution is called the \defn{Atiyah flop}\index{Atiyah flop}.\footnote{This explanation from Wikipedia is slightly more clear: Let $Y$ be the zeros of $xy=zw$ in $\mathbf{A}^4$, and let $V$ be the blowup of $Y$ at the origin. The exceptional locus of this blowup is isomorphic to $\mathbf{P}^1\times \mathbf{P}^1$ and can be blown down to $\mathbf{P}^1$ in two different ways, giving varieties $X_1$ and $X_2$. The natural birational map from $X_1$ to $X_2$ is the Atiyah flop.}
+	\begin{figure} 
+		\begin{center}
+			\includegraphics[scale=0.53]{images/flop_1}
+			\caption{An illustration of a flop.}
+		\end{center}
+	\end{figure}
+
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.53]{images/atiyah_flop}
+			\caption{An illustration of the Atiyah flop.}
+		\end{center}
+	\end{figure}
+
+	This shows that there is no minimal way to resolve singularities in general. If one wants to find a minimal model---a ``smallest possible'' resolution of singularities---the best thing to do is to allow ``mild'' singularities in it. (More precisely, one allows \index{terminal singularity}terminal singularities.)
+\subsection{Singular points}
+Suppose $p$ is a point of a variety $V$. The point $p$ is called \defn{singular}\index{singular point} if the tangent space at $p$ has the wrong dimension (that is, the dimension is greater than the dimension of $V$).
+
+Let $p=(0,\hdots, 0)\in  \mathbf{A}^n$ and $V$ the set of points at which an irreducible polynomial $f$ vanishes. Then the \defn{tangent space}\index{tangent space} at $p$ is given by the roots of the linear part of $f$. For example, if this irreducible polynomial is $x-2y-3x^2+4xy =0$, the tangent space is given by $x-2y=0$.
+
+Let $f(x,y)=0$ be a plane curve. Saying that $(0,0)$ is singular is equivalent to saying that $f(0,0)=0$ and the linear terms vanish. If the linear terms vanish, the tangent space is $\mathbf{A}^2$, which is the wrong dimension.
+
+\begin{example}[ ]\label{}\text{}
+For the curves $y^2 = x^3$ and $y^2 = x^3+x^2$, the tangent spaces at $(0,0)$ are two dimensional.
+\end{example}
+
+If one has $f(x_1,\hdots, x_n) =0$, then saying that $(0,\hdots, 0)$ is singular is equivalent to saying that $f(0,\hdots,0)=0$ and the linear terms vanish: 
+\begin{align*}
+	\frac{\partial f}{\partial x_i}(0,\hdots, 0) =0.
+\end{align*}
+
+Suppose $V\subseteq \mathbf{A}^n$ is the zero set of polynomials $f_1,\hdots$. Take $p=(0,\hdots, 0)$, so all $f_i$ vanish at $p$. The tangent space is the common roots of all linear parts of $f_1,\hdots$. The dimension of the tangent space is given by the rank of the Jacobian:
+\begin{align*}
+	\dim(\textrm{tangent space at $p$}) = n-\rank \frac{\partial f_i}{\partial x_j}.
+\end{align*}
+This is difficult to compute in general, which is why we started with codimension-$1$ hypersurfaces. However, one sees that the subset of singular points is closed: the condition for a matrix having rank less than a fixed constant is a closed condition on the entries. Therefore, the condition for the tangent space having the wrong dimension is closed.
+
+\begin{warn}
+	For varieties, the set of singular points is closed, but this does not hold for schemes.
+\end{warn}
+
+\begin{proposition}[ ]\label{}\text{}
+The nonsingular points of a variety are dense.
+\end{proposition}
+
+The nonsingular points comprise an open set, so one needs to show that the set of nonsingular points is nonempty. 
+
+\begin{example}[ ]\label{}\text{}
+Consider the variety $x^3+y^3=1$. Over $\mathbf{C}$, there are no singular points. However, over a field of characteristic $3$, all points are singular. What goes wrong: $x^3+y^3-1=(x+y-1)^3$ is not irreducible over $\mathbf{F}_{3}$.
+\end{example}
+
+
+First, we reduce to the case of hypersurfaces. The key is that every variety $V$ is birational to a hypersurface. Consider the function field $K$ of the variety $V$. Choose $x_1,\hdots, x_n$ such that $K$ is separable over $k(x_1,\hdots, x_n)$. Then it is generated by $1$ element, so $K=k(x_1,\hdots, x_n,y)$ and $f(x_1,\hdots, x_n,y)=0$ for some $f$.
+
+Consider the hypersurface $f(x_1,\hdots, x_n)=0$ where $f$ is irreducible. Also, suppose that the field $k$ over which we are working is algebraically closed. If all points are singular, then 
+\begin{align*}
+	\frac{\partial f}{\partial x_i} =0
+\end{align*}
+at all points of $V$. But $\deg \partial f/\partial x_i< \deg f$, and, since $f$ is irreducible, $f\mid \partial f/\partial x_i$, so $\partial f/\partial x_i =0$. This implies that $f=0$ in characteristic $0$ and that $f$ is a linear combination of $p$th powers of monomials in characteristic $p$. This implies that $f=g^p$, so $f=0$  (since $k$ is algebraically closed).
+
+ \begin{remark}\label{convvv}
+	At nonsingular points over $\mathbf{R}$ or $\mathbf{C}$, a variety $V$ looks like a smooth manifold locally.
+\end{remark}
+
+\begin{example}[The converse of \cref{convvv}]\label{}\text{}
+Consider $y^2=x^3$ over $\mathbf{R}$. This is a topological manifold.
+\end{example}
+
+\subsection{The Zariski tangent space}
+
+We would like to determine a definition of ``tangent space'' that does not depend on how one embeds the variety $V$ into affine space.
+
+ \begin{definition}[ ]\label{}\text{}
+The \index{tangent space}tangent space at a point is the dual of the \index{cotangent space}cotangent space at that point.
+\end{definition}
+
+\begin{remark}
+	From the perspective of differential geometry, this definition seems circular. However, while the tangent space is fundamental in differential geometry, the cotangent space is fundamental in algebraic geometry.
+\end{remark}
+
+One defines the cotangent space as $\mathfrak{m}/\mathfrak{m}^2$ where $\mathfrak{m}$ is the maximal ideal of the local ring\index{local ring} at the point---the ring of functions of the form $f/g$ where $g\ne 0$ there. Hence, one might think of $\mathfrak{m}$ as functions vanishing at the point. The local ring at a point does not depend on the embedding of the variety as desired, but is this definition the same as the earlier one?
+
+Consider $p= (0,\hdots, 0)$ for simplicity and $V\subseteq \mathbf{A}^n$ with coordinates $(x_1,\hdots, x_n)$. The maximal ideal $\mathfrak{m}$ is generated by $x_1,\hdots,x_n$, so $V$ is the set of zeros of functions $f_1,\hdots, f_n$. Now $\mathfrak{m}$ is $(x_1,\hdots, x_n)$ modulo $(f_1,\hdots, f_n)$ and all monomials of degree greater than or equal to $2$. This is the vector space spanned by $x_1,\hdots, x_n$ modulo the linear parts of the $f_i$s. This is the dual of the tangent space. Therefore, the new definition is compatible with the old one.
+
+\begin{remark}
+	This definition works for any local ring $R$: The quotient $\mathfrak{m}/\mathfrak{m}^2$ is a vector space over $R/\mathfrak{m}$. The space $\mathfrak{m}/\mathfrak{m}^2$ is called the \defn{Zariski cotangent space}\index{Zariski cotangent space} of the local ring. The \defn{Zariski tangent space}\index{Zariski tangent space}, naturally, is the dual of this.
+\end{remark}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/zariski}
+\caption{Oscar Zariski.}
+\end{center}
+\end{figure}
+
+
+Let $R$ be a local ring. The quotient $\mathfrak{m}/\mathfrak{m}^2$ is an $R/\mathfrak{m}$--vector space whose dual $(\mathfrak{m}/\mathfrak{m}^2) ^*$ can be seen as ring homomorphisms 
+\begin{align*}
+	R\longrightarrow k[\epsilon]/(\epsilon^2).
+\end{align*}
+The target here is a two-dimensional vector space with a basis $\{1,\epsilon\}$ and $\epsilon^2=0$. This takes $\mathfrak{m}^2$ to $(0)$ and $\mathfrak{m}$ to multiples of $\epsilon$. A ring $k[x_1,\hdots, x_n]/I$ often corresponds to a variety or algebraic set. However, this only works if $I$ is reduced (has no nilpotents), and $\epsilon$ is nilpotent. 
+
+It actually corresponds to the scheme $\Spec k[\epsilon]/(\epsilon^2)$. The only prime ideal of $k[\epsilon]/(\epsilon^2)$ is $(\epsilon^2)$, so one might say its spectrum looks like a point; however, it is better thought of as a point with a tangent vector corresponding to the point $\epsilon$.
+
+Consider vector fields on a smooth manifold $V$ over $\mathbf{R}$. Look at the ring of smooth functions $C(V)$. The space of vector fields is a $C(V)$-module. Define the module $W$ of cotangent vector fields to be the dual of the module of vector fields. Recall, from differential geometry, that there is a map
+\begin{align*}
+	d:C(V) \longrightarrow W
+\end{align*}
+where $f$ maps to its $1$-form. Note that $d$ is not linear; it satisfies Leibniz's rule. 
+
+Instead of considering $C(V)$, we might consider $R=k[x_1,\hdots, x_n]/I$.\footnote{See \url{https://en.wikipedia.org/wiki/Kähler_differential}.} We want to find a map $d$ from $R$ to an $R$-module $W$ that one thinks of as the module of cotangent vectors.
+
+Note that $W$ is generated over $R$ by elements $dr$ for $r\in R$. One asserts $dr=0$ for $r\in k$ and Leibniz's rule. Define $W$ to be the module with these generators and relations.
+
+\begin{example}[ ]\label{}\text{}
+Take $R=k[x_1,\hdots, x_n]$. Then $W$ is the free module on $dx_1,\hdots, dx_n$. One defines the module of tangent vector fields by $\Hom_{R}(W, R)$.
+\end{example}
+
+\begin{remark}
+	The module $W$ is free only when the cotangent bundle is a sum of trivial bundles. Otherwise, $W$ is quite hard to compute.
+\end{remark}
+
+Consider the homomorphism $R\tensor R\longrightarrow R$.\footnote{For now, $\tensor=\tensor_k$.} Let $\mathfrak{h}$ be the kernel of this homomorphism. Write $W = \mathfrak{h}/\mathfrak{h}^2$. (Note that $\mathfrak{h}$ is an ideal of $R\tensor R$.) Define 
+\begin{align*}
+	d :R\longrightarrow W
+\end{align*}
+by $dr = 1\tensor r - r\tensor 1$. The set $W$ is an $R$-module: $R$ acts by multiplication on the left $R$ in $R\tensor R$. Leibniz's rule holds. However, one needs to check the universal property.
+
+That is, suppose there is an $R$-module $M$ with a map $d:R\longrightarrow M$ satisfying Leibniz's rule and a map from $R$ to $W$. One wants to show that there is a unique map such that
+\begin{center}
+	\begin{tikzcd}
+		R \ar[r, "d"] \ar[dr, swap, "d"]&M\\&W\ar[u,dashed]
+	\end{tikzcd}
+\end{center}
+commutes. One has $\mathfrak{h}\subseteq R\tensor R\longrightarrow R$, a map $R\longrightarrow \mathfrak{h}$, and a map $d:R\longrightarrow M$. One can define $f:R\tensor R\longrightarrow M$ by $a\tensor b \longmapsto a(db)$. This gives a map $f:\mathfrak{h}\longrightarrow M$. However, we want a map from $\mathfrak{h}/\mathfrak{h}^2$ to $M$, so we check that $f$ is $0$ on $\mathfrak{h}^2$.
+
+Pick $\sum_{i}^{} s_i\tensor t_i\in \mathfrak{h}$ and $\sum_{j}^{} u_j\tensor v_j\in \mathfrak{h}$. So $\sum_{i}^{} s_it_i=0$ and $\sum_{j}^{} u_jv_j=0$. Now
+\begin{align*}
+	f \left( \left( \sum_{i}^{} s_i\tensor t_i \right)\tensor \left( \sum_{j}^{} u_j\tensor v_j \right)  \right)&= \sum_{i,\,j}^{} s_iu_j\, d(t_iv_j) \\
+														   &= \left( \sum_{i}^{} s_i\, dt_i \right) \underbrace{\left( \sum_{j}^{} u_jv_j \right)}_{0} + \underbrace{\left( \sum_{i}^{} s_it_i \right)}_{0} \left( \sum_{j}^{} u_j\, dv_j \right) \\
+														   &=0
+\end{align*}
+as desired.
+
+From here, it is straightforward to show that $W$ is the universal module with a map $R\longrightarrow W$ satisfying Leibniz's rule.
+
+
+\begin{remark}
+	A local ring is \defn{regular}\index{regular local ring} if the dimension of the Zariski tangent space is the dimension of the local ring. A variety is nonsingular at a point if its local ring is regular.
+\end{remark}
+\subsection{Du Val singularities}
+A \index{Du Val singularity}Du Val singularity may also be called a \index{simple surface singularity}simple surface singularity, a \index{Kleinian singularity}Kleinian singularity, a \index{rational double point}rational double point, or a \index{canonical singularity}canonical singularity in dimension $2$.
+
+Take a finite group $G$ acting on $\mathbf{C}^2$. Take $\mathbf{C}^2/G$. For reasonable groups $G$, this gives a variety that has a singular point at the origin. Recall that the quotient is the ring of invariants of the coordinate ring of $\C$ under $G$: $k[x,y]^G$. 
+
+Suppose $G=\Zmod n$ is generated by $\sigma$. Suppose further that $\sigma x = \zeta x$ and $\sigma y =\zeta^{-1}y$ where $\zeta$ is a primitive $n$th root of unity. Invariants under this action are given by $X =x^n$, $Y=y^n$, and $Z=xy$. Hence, one has
+\begin{align*}
+	k[x,y]^G = k[X,Y,Z] / (Z^n- XY).
+\end{align*}
+The Du Val singularities are classified as follows:
+\begin{enumerate}
+	\item $\Ag_n$ (Cyclic singularities): $x^2+y^2+z^{n+1}=0$;
+	\item $\D_n$ (Dihedral singularities): $x^2+zy^2+z^{n-1}=0$;
+	\item $\E_6$ (Tetrahedral singularity): $x^2+y^3+z^4=0$;
+	\item $\E_7$ (Octahedral singularity): $x^2+y^3+yz^3=0$;
+	\item $\E_8$ (Icosahedral singularity): $x^2+y^3+z^5=0$.
+\end{enumerate}
+The icosahedral singularity is not given by the icosahedral group of order $60$ acting on $\mathbf{C}^2$. The binary icosahedral group of order $120$ acts on $\mathbf{C}^2$ and gives this. 
+\begin{remark}
+	For the remainder of this section, we work in characteristic $0$ and the only singular point is $(0,0,0)$.
+\end{remark}
+\begin{example}[Resolving the icosahedral singularity]\label{}\text{}
+The idea is to blow up the singular point until we don't get a singular point back. Consider the variety $x^2+y^3+z^5=0$. Let us introduce coordinates in $\mathbf{P}^2$ given by $(x_1:y_1:z_1)$. Assert $xy_1=x_1y$, $xz_1=x_1z$, and $yz_1=y_1z$. The projective plane $\mathbf{P}^2$ is covered by $3$ copies of $\mathbf{A}^2$ given by $x_1=1$, $y_1=1$, and $z_1=1$. Making $x_1=1$ means we have $y=y_1z$ and $z=xz_1$. This gives 
+\begin{align*}
+	x^2+x^3y_1^3+x^5z_1^5=0.
+\end{align*}
+One checks that $1+xy_1^3 + x^3z_1^5=0$ is nonsingular. For $y_1=1$, one gets something similar:
+\begin{align*}
+	x_1^2y^2 + y^3 +y^5z_1^5=0.
+\end{align*}
+Again, this is nonsingular. Now, suppose $z_1=1$. Then $x=x_1z$ and $y=y_1z$, so
+\begin{align*}
+	x_1^2z^2 + y_1^3z^3 + z^5 =0.
+\end{align*}
+Checking derivatives, one sees that $x_1^2 + y_1^3z+z^3=0$ is singular at $x_1=y_1=z=0$.
+
+Now, let us blow up $x_1^2+y_1^3z+z^3=0$. Introduce coordinates in $\mathbf{P}^2$ given by $(x_2:y_2:z_2)$. Again, one covers $\mathbf{P}^2$ with $3$ copies of $\mathbf{A}^2$ corresponding to $x_2=1$, $y_2=1$, and $z_2=1$. One sees that there are no singularities corresponding to $x_2=1$ or $z_2=1$.For $y_2=1$, one makes the substitutions $z=y_1z_2$ and $x_1=x_2y_1$ to get
+\begin{align*}
+	x_2^2y_1^2 + y_1^4z_2+y_1^3z_2^3=0.
+\end{align*}
+One finds that $x_2^2+y_1^2z_2+z_1z_2^3=0$ has one singularity at $(0,0,0)$. (Determining the ``complexity'' of a singularity is challenging: While this singularity looks ``as bad'' as the last one, it's ``simpler'' by some mysterious invariant.)
+
+Blow up $x_2^2+y_1^2z_2+z_1z_2^3=0$. Introduce coordinates in $\mathbf{P}^2$ given by $(x_3:y_3:z_3)$. Cover $\mathbf{P}^2$ by $3$ copies of $\mathbf{A}^2$ given by $x_3=1$, $y_3=1$, and $z_3=1$. One has no singularities for $x_3=1$. For $y_3=1$, one gets the equation 
+\begin{align*}
+	x_3^2+y_1z_3+y_1^2z_3^3 =0
+\end{align*}
+and finds that the only singularity is at $x_3=y_1=z_3=0$. For $z_3=1$, one gets
+\begin{align*}
+	x_3^2+y_3^2z_2+y_3z_2^2 =0
+\end{align*}
+and sees that there is a singularity at $x_3=y_3=z_2=0$.
+
+Let us look at the singularity of $x_3^2+y_1z_3+y_1^2z_3^3 =0 $. Introduce coordinates of $\mathbf{P}^2$ given by $(x_4:y_4:z_4)$ and cover $\mathbf{P}^2$ by $x_4=1$, $y_4=1$, and $z_4=1$. Each of the corresponding varieties have no singularities.
+
+Now, let us consider the singularity of $x_3^2+y_3^2z_2+y_3z_2^2 =0$. Introduce coordinates $(x_5:y_5:z_5)$ of $\mathbf{P}^2$. The variety given by $x_5=1$ has no singularities. However, that given by $y_5=1$ has $2$ singularities: $x_5=0$, $y_3=0$, $z_5=0,-1$. That given by $z_5=1$ also has $2$ singularities: $x_5=0$, $z_2=0$, $y_5=0,-1$. Two of these singularities are really the same, so one gets three singularities. 
+When one blows up these three varities, the singularities all resolve.
+\end{example} 
+
+After $8$ blowups, we ended up with something nonsingular. Each blowup gives an exceptional curve that looks like $\mathbf{P}^1$. If one considers how they intersect and takes the dual, one gets the $\E_8$ Dynkin diagram. 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.3]{images/simply_laced}
+		\caption{Simply-laced Dynkin diagrams.}
+	\end{center}
+\end{figure}
+\subsection{Examples of resolutions}
+\begin{example}[ ]\label{}\text{}
+Consider $x^4+y^4=z^2$.\footnote{Fermat showed that this equation has no integer solutions, demonstrating Fermat's last theorem for $n=4$.} Differentiating, one gets $4x^3=0$, $4y^3=0$, and $2z=0$. Therefore, the only singularity here is at $(0,0,0)$. Let us blow up the point $(0,0,0)$. Hence, we work in $\mathbf{A}^3\times \mathbf{P}^2$, introducing new coordinates $(X:Y:Z)$ in $\mathbf{P}^2$. We assert $xY=Xy$, $xZ=Xz$, and $yZ=Yz$. Cover $\mathbf{P}^2$ by three copies of $\mathbf{A}^2$ corresponding to $Z=1$, $Y=1$, and $X=1$. For the first case, one gets 
+\begin{align*}
+	z^2X^4+z^2Y^4=1.
+\end{align*}
+This is nonsingular. For the second case, one gets
+\begin{align*}
+	y^2X^4+y^2=Z^2.
+\end{align*}
+This has singularities whenever $y=Z=0$. A similar thing happens with $X=1$. (What's happening is that there is a projective line of singular points.)
+
+\begin{remark}
+	A singularity's ``complexity'' has more to do with its codimension than its dimension.
+\end{remark}
+
+Let us blow up $y^2X^4+y^2=Z^2$ along $y=Z=0$. Introduce coordinates $(s:t)$ where $sZ=ty$. With $s=1$, one gets 
+\begin{align*}
+	X^4 + 1=t^2,
+\end{align*}
+which is nonsingular. One also gets a nonsingular variety with $t=1$.
+\end{example}
+
+
+\begin{example}[Blowing up can make the singularity worse]\label{}\text{}
+Consider $x^2-yz=0$. Instead of blowing up at the conical singularity $(0,0,0)$, blow up along $y=z=0$. Introduce coordinates $(Y:Z)$ of $\mathbf{P}^1$ where $yZ=Yz$. Take $Y=1$. Then, one gets
+\begin{align*}
+	x^2-y^2Z=0,
+\end{align*}
+which is the more complicated \index{Whitney umbrella}Whitney umbrella.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+The ring $\mathbf{Z}\!\left[\sqrt{-3}\right]$ does not have unique factorization:
+\begin{align*}
+	2\cdot 2 = (1+\sqrt{-3} ) (1-\sqrt{-3} ).
+\end{align*}
+Even though it is the coordinate ring of a scheme, pretend that $\mathbf{Z}\!\left[\sqrt{-3}\right]$ is the coorindate ring of a variety. This ring has a maximal ideal $(2,\sqrt{-3}-1 )$. If one, somehow, thinks of maximal ideals as points, one wants to show that the variety has a singular point at that maximal ideal. Let us look at the local ring $R=\Z_{(2)} \!\!\left[ \sqrt{-3}  \right] $ whose maximal ideal is $\mathfrak{m}=(2,\sqrt{-3}-1 )$. One sees that \begin{align*}
+	R/\mathfrak{m} = \mathbf{F}_{2}.
+\end{align*}
+Further, $R/\mathfrak{m}^2$ has order $8$, so $\mathfrak{m}/\mathfrak{m}^2$ is a $2$-dimensional vector space over $R/\mathfrak{m}$. (Recall that $\mathfrak{m}/\mathfrak{m}^2$ is the \index{Zariski cotangent space}Zariski cotangent space at $\mathfrak{m}$.) The \index{Krull dimension}Krull dimension of $R$ is $1$ since the only prime ideals of $R$ are $(0)$ and its maximal ideals. One notices that this is smaller than the dimension of the cotangent space at $\mathfrak{m}$, so $\mathfrak{m}$ corresponds to a ``singular point.''
+
+\begin{remark}
+	The existence of a singular point is somehow related to unique factorization failing. However, there are some rings of algebraic integers with no singular points in which unique factorization fails. 
+\end{remark}
+
+Now, we will resolve this singularity. One can blow up, but we won't do that. To resolve a singularity in number theory, one might take the \defn{normalization}\index{normalization} (i.e. \defn{integral closure}\index{integral closure}) of the ring. The integral closure of $\Z\!\left[ \sqrt{-3}  \right] $ is
+\begin{align*}
+	\Z \!\left[ \frac{1+\sqrt{-3} }{2} \right] = \Z[\omega] .
+\end{align*}
+Since $\omega^2+\omega+1=0$, $\omega$ is an algebraic integer in the field of fractions of $\Z\!\left[ \sqrt{-3}  \right] $. This integral closure has unique factorization, and its points are nonsingular.
+\end{example}
+
+\begin{example}[Application of resolutions]\label{}\text{}
+Recall that
+\begin{align*}
+	\Gamma(s) :=  \int_{0}^{\infty} e^{-t}t^{s-1}  \, dt
+\end{align*}
+	converges for $\Re (s)>0$ and can be extended to a mermorphic function of $s$ by integrating by parts. Suppose that $f(x_1,\hdots,x_n)$ is a polynomial and $\varphi(x_1,\hdots, x_n)$ is a smooth function with compact support. Then
+	\begin{align*}
+		\int_{0}^{\infty} \left\lvert f(x_1,\hdots, x_n) \right\rvert ^s\varphi(x_1,\hdots,x_n)  \, dx_1\cdots dx_n 
+	\end{align*}
+	will be a holomorphic function of $s$ for $s$ large enough. Can one continue this to all $s$? This is more or less the situation of $\Gamma$.\footnote{Let's ignore that $e^{-t}$ does not have compact support.} The problems here occur at the roots of $f$, which correspond to hypersurfaces with singularities.
+	
+	Atiyah suggested to use Hironaka's theorem to resolve the singularities of $\{f=0\}$. What one ends up with isn't really nonsingular, since blowing up introduces exceptional curves. These exceptional curves don't really matter, though, since they cross transversally. That is, when one blows up, one gets singularities $x_1\cdots x_k=0$ (one gets hyperplanes intersecting orthogonal to each other). Therefore, we reduce to 
+	\begin{align*}
+		\int_{}^{}  \left\lvert x_1\cdots x_n \right\rvert^s\varphi(x_1,\hdots,x_n)   \, dx_1\cdots dx_n =0 
+	\end{align*}
+	This splits into integrals of the form
+	\begin{align*}
+		\int\left\lvert x_1 \right\rvert ^sf(x_1)\, dx_1=0,
+	\end{align*}
+	which one can do with integration by parts, just as one does with $\Gamma$. Hence, one can continue integrals of the form above. Bernstein came up with a much more simpler way of showing this using Bernstein (or Bernstein--Sato) polynomials.
+\end{example}
+
+\subsection{Completions}
+
+\subsection{Resultants}
+\subsection{Proper maps}
+\subsection{Survey of curves}
+\subsection{Hurwitz curves}
+\subsection{Examples of Hurwitz curves}
+\subsection{Resolution of curve singularities}
+\subsection{Newton's rotating ruler}
+\subsection{Hilbert polynomials}
+\subsection{The degree of a projective variety}
+\subsection{B\'ezout's theorem}
+
+
+\section{Schemes}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/groth}
+\caption{Alexander Grothendieck.}
+\end{center}
+\end{figure}
+
+\subsection{Introduction}
+\subsection{\'Etale spaces}
+\subsection{Exactness and sheaves}
+\subsection{$f\inv$ and $f_*$}
+\subsection{Definition of a scheme}
+\subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
+\subsection{More examples of $\Spec R$}
+\subsection{Localization}
+\subsection{$\Spec R$ is a locally ringed space}
+\subsection{Morphisms of affine schemes}
+\subsection{Gluing schemes}
+\subsection{$\Proj S$}
+\subsection{The functor of points}
+\subsection{Irreducible, reduced, integral, connected}
+\subsection{Quasicompact, Noetherian}
+\subsection{Morphisms of finite type}
+\subsection{Finite, quasifinite}
+\subsection{Immersions}
+\subsection{Products}
+\subsection{Groups schemes}
+\subsection{Separated morphisms}
+\subsection{Valuation rings}
+\subsection{Valuations and separation}
+\subsection{Proper morphisms}
+\subsection{Proper morphisms and valuations}
+\subsection{Abstract and projective varieties}
+\subsection{Quasicoherent sheaves}
+\subsection{Examples of quasicoherent sheaves}
+\subsection{Invertible sheaves over the projective line}
+\subsection{$f^*$ and $f_*$}
+\subsection{Coherent sheaves}
+\subsection{The line bundles $\mathscr O(n)$ on projective space}
+\subsection{Vector bundles on the projective line}
+\subsection{Coherent sheaves on projective space}
+\subsection{Divisors on a Riemann surface}
+\subsection{Weil and Cartier divisors}
+\subsection{Comparison of Weil and Cartier divisors}
+\subsection{Comparison of Cartier divisors and $\Pic$}
+\subsection{Divisors and Dedekind domains}
+\subsection{Examples of $\Pic X$}
+\subsection{Morphisms to projective space}
+\subsection{Very ample sheaves}
+\subsection{Linear systems}
+\subsection{$\Proj S$}
+\subsection{Blowing up schemes}
+\subsection{Differential operators}
+\subsection{Cotangent bundle}
+\subsection{The canonical sheaf}
+\section{The Riemann--Roch theorem}
+\subsection{Introduction}
+\subsection{Genus $0$}
+\subsection{Genus $1$}
+\subsection{Structure of genus-$1$ curves}
+\subsection{Genus-$2$ curves}
+\subsection{Genus-$3$ curves}
+\subsection{Plane curves}
+\subsection{Proof of the Riemann--Roch theorem}
+\section{The Weil conjectures}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/weil}
+\caption{Andr\'e Weil.}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{images/deligne}
+\caption{Pierre Deligne.}
+\end{center}
+\end{figure}
+\subsection{Introduction}
+\subsection{Functional equation}
+\subsection{Riemann hypothesis}
+\subsection{Fermat hypersurfaces}
+\subsection{Lefschetz trace formula}
+\subsection{\'Etale cohomology of a curve}
+\subsection{\'Etale morphisms}
+\section{Complex surfaces}
+\subsection{Introduction}
+\subsection{Minimal surfaces}
+\subsection{Rational surfaces}
+\subsection{Ruled surfaces}
+\subsection{Kodaira: dimension $0$}
+\subsection{Kodaira: dimensions $1$ and $2$}
+\section{The Chow ring}
+\subsection{Introduction}
+\subsection{Chern classes}
+\printindex
+\end{document}
