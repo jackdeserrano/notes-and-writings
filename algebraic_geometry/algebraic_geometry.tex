@@ -2117,10 +2117,64 @@ One has the following maps:
 	R\ar[r]&\widehat{R}\ar[r] &\cdots\ar[r] & R/\mathfrak{m}^2 \ar[r]& R/\mathfrak{m} = k.
 \end{tikzcd}
 \]
-One can think of successive maps looking at a point in a finer neighbourhood..
+One can think of successive maps looking at a point in a finer neighbourhood.
 
 
 \subsection{Resultants}
+
+This section will concern elimination theory. Andr\'e Weil's \underline{Foundations of Algebraic Geometry} has an infamous footnote:
+\begin{center}
+	\small The device that follows, which, it may be hoped, finally eliminates from algebraic geometry the last traces of elimination-theory, is borrowed from C. Chevalley's Princeton lectures.
+\end{center}
+This is quite funny next to the following line from a poem by Shreeram Abhyankar:
+\begin{center}
+	\small Eliminate the eliminators of elimination theory!
+\end{center}
+
+		Suppose you have two polynomials, say $x^3y^4 - 7x^2-xy^8$ and $3x^2y^5+4y^2+x^4y^7$. Now, suppose you want to eliminate $y$. The variable $x$ should satisfy a polynomial of degree $9\cdot 11$. Here's the general problem: Suppose
+		\begin{align*}
+			f(x)&=a_mx^m+\cdots +  a_1x+a_0;\\
+			g(x)&=b_nx^n+\cdots +  b_1x+b_0.
+		\end{align*}
+What is the condition for $f$ and $g$ to have a common root? Temporarily suppose that $a_m\ne 0$ and $b_n\ne 0$. Then the condition is $f(x)p (x)=g (x)q (x)$ where $\deg p<n$ and $\deg q<m$. If $f$ and $g$ have a common root $\alpha$, one has
+\begin{align*}
+	p(x)&= \frac{g(x)}{x-\alpha};\\
+	q(x)&= \frac{f(x)}{x-\alpha}.
+\end{align*}
+The equation $f(x)p (x)=g (x)q (x)$ gives homogeneous linear equations. The condition for homogeneous equations having a nontrivial solution is that some determinant vanishes. What we want is the determinant of this matrix:
+\begin{align*}
+	\mat{a_m & \cdots & a_0 && &&\\ & a_m & \cdots & a_0& &&\\ &&&\ddots&&&\\&&&a_m & \cdots & a_0\\&&&&a_m & \cdots & a_0\\b_n & \cdots & b_0 && &&\\ & b_n & \cdots & b_0& &&\\ &&&\ddots&&&\\&&&b_n & \cdots & b_0\\&&&&b_n & \cdots & b_0 }
+\end{align*}
+This $ (m+n)\times  (m+n)$ matrix is called the \defn{Sylvester matrix}\index{Sylvester matrix} and its determinant is called the \defn{resultant}\index{resultant}\footnote{The prefix ``ant'' indicates that the resultant is some invariant and that Sylvester probably named it.} of $f$ and $g$.
+
+\begin{remark}\label{ifffffffffff}
+	One can think of the case where the leading coefficient of a polynomial $f$ is $0$ as $f$ having a root at infinity: One expects
+	\begin{align*}
+		f(x) = a_mx^m+\cdots+a_1x+a_0
+	\end{align*}
+	to have $m$ roots, but it doesn't if $a_m=0$. One makes up for this by saying that $f$ has a root at infinity. One way to think about this is looking at the homogeneous polynomial
+	\begin{align*}
+		a_mx^my^0 + a_{m-1}x^{m-1}y^1+\cdots +a_1x^1y^{m-1} +a_0x^0y^m
+	\end{align*}
+	and considering a root to be a point $(x:y)\in  \mathbf{P}^1 = k\cup \{\infty\}$. The resultant is $0$ if and only if the homogenized polynomials have a common root in $\mathbf{P}^1$.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+The polynomial $f(x)=ax^2+bx+c=0$ has a double root if it and its derivative have a root in common (this is true for all polynomials). Let $g(x)=2ax+b$ be the derivative of $f$. One sees that the resultant of $f$ and $g$ is
+\begin{align*}
+	\det\mat{a&b&c\\2a&b&0\\0&2a&b} = a(b^2-4ac).
+\end{align*}
+The factor $(b^2-4ac)$ is the well-known quadratic discriminant, and the factor $a$ corresponds to the case when the leading coefficient is $0$, as discussed in \cref{ifffffffffff}.  
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let us see when $f(x)=x^3+bx+c$. Write $g (x)= 3x^2 + b$ for the derivative of $f$. Then the resultant of $f$ and $g$ is
+\begin{align*}
+	\det\mat{1&0&b&c&0\\0&1&0&b&c\\3&0&b&0&0\\0&3&0&b&0\\0&0&3&0&b}&= 4b^3+27c^2.
+\end{align*}
+Notice that the definition of the resultant allows for sign inaccuracy; indeed, the discriminant of a cubic is $-(4b^3+27c^2)$.
+\end{example}
+
 \subsection{Proper maps}
 \subsection{Survey of curves}
 \subsection{Hurwitz curves}
