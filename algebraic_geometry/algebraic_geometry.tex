@@ -2022,7 +2022,7 @@ Recall that
 	
 	Atiyah suggested to use Hironaka's theorem to resolve the singularities of $\{f=0\}$. What one ends up with isn't really nonsingular, since blowing up introduces exceptional curves. These exceptional curves don't really matter, though, since they cross transversally. That is, when one blows up, one gets singularities $x_1\cdots x_k=0$ (one gets hyperplanes intersecting orthogonal to each other). Therefore, we reduce to 
 	\begin{align*}
-		\int_{}^{}  \left\lvert x_1\cdots x_n \right\rvert^s\varphi(x_1,\hdots,x_n)   \, dx_1\cdots dx_n =0 
+		\int_{}^{}  \left\lvert x_1\cdots x_n \right\rvert^s\varphi(x_1,\hdots,x_n)   \, dx_1\cdots dx_n =0.
 	\end{align*}
 	This splits into integrals of the form
 	\begin{align*}
@@ -2032,6 +2032,93 @@ Recall that
 \end{example}
 
 \subsection{Completions}
+The completion of $R=k[x]$ is the formal power series ring $k[\![x]\!]$. \iffalse How does one get this, though? Take the ideal $I=(x)$. Then
+\begin{align*}
+	R/I&= k;\\
+	R/I^2 &= \{a_0+a_1x:a_0,a_1\in k\};\\
+	R/I^3 &= \{a_0+a_1x+a_2x^2:a_0,a_1,a_2\in k\};
+\end{align*}
+etc. An element One has a sequence
+\[
+\begin{tikzcd}
+	\cdots \ar[r] &R/I^4\ar[r] &R/I^3\ar[r]&R/I^2 \ar[r] &R/I\\
+		      &&\widehat{R}\ar[lu]\ar[u]\ar[ru]
+\end{tikzcd}
+\]
+\fi Let's see how one gets this.
+
+Consider the ideal $I=(x)$. Notice that there is a natural surjective map $\varphi_n :R/I^{n+1} \longrightarrow R/I^{n}$. One says that the sequence
+\[
+\begin{tikzcd}
+	\cdots\ar[r] &R/I^{n+1}\ar[r,"\varphi_n"]&R/I^n \ar[r] &\cdots\ar[r] &R/I^2 \ar[r,"\varphi_1"] &R/I 
+\end{tikzcd}
+\]
+forms a \defn{projective system}\index{projective system} indexed by the natural numbers.
+The completion of $R$ at $I$ is the \defn{projective limit}\index{projective limit} or \defn{inverse limit}\index{inverse limit} of the system $(R/I^n, \varphi_n)$; that is, an element of the completion
+\begin{align*}
+	\widehat{R}_I = \widehat{R} := \varprojlim (R/I^n, \varphi_n)
+\end{align*}
+is a sequence $z=(\hdots, z_n,\hdots,z_1)$ with $z_n\in R/I^n$ and $\varphi_n (z_n)=z_{n-1}$ if $n\ge 2$. This naturally extends to all rings $R$ and their ideals.
+
+\begin{example}[ ]\label{}\text{}
+Let $p$ be a prime number. Take $R=\mathbf{Z}$ and $\mathfrak{p}=(p)$. Then the completion $\widehat{R}_\mathfrak{p} = \mathbf{Z}_p$ is the $p$-adic integers.
+\end{example}
+
+In algebraic geometry, one likes to consider the completion of a local ring $R$ at its maximal ideal $\mathfrak{m}$.
+
+The natural map $R\longrightarrow \widehat{R}$ is injective if $R$ is Noetherian.
+
+\begin{example}[The natural map does not need to be injective]\label{}\text{}
+\begin{enumerate}
+	\item Let $R$ be all smooth functions on $\mathbf{R}$.\footnote{Note that $R$ isn't local.} Let $I=(x)$ be functions vanishing at $0$. Then the completion $\widehat{R}_I$ is given by power series. However, the natural map is not injective: Consider
+		\begin{align*}
+			f(x):=
+			 \begin{cases}
+				 e^{-1/x^2}&x\ne 0\\
+				 0&x=0,
+			\end{cases}
+		\end{align*}
+		which is in the kernel of the natural map.
+	\item Let $R = k [\![x,x^{1/2},x^{1/4},\hdots]\!]$. Let $I=(x,x^{1/2}, x^{1/4},\hdots)$. (Note that $I=I^2$.) Then $\widehat{R}_I = k$.
+\end{enumerate}
+\end{example}
+
+An application of completions of rings is \defn{Hensel's lemma}\index{Hensel's lemma}. There are many different ``Hensel's lemmas'' that depend on the context, but here's the main idea: Solutions in $R/\mathfrak{m}$ can be lifted to solutions in $\widehat{R}$ under some conditions.
+
+\begin{example}[Factorizing polynomials]\label{}\text{}
+Suppose $f(z)\equiv g_0(z) h_0(z)\pmod{\mathfrak{m}}$ where $g_0,h_0\in k[z]$ and $f\in R[z]$. Then this lifts to a factorization $f(z)=g (z)h (z)$ in $R[z]$ if $g_0$ and $h_0$ are coprime in $k[z]$.
+\end{example}
+
+\begin{esquisse}
+	Suppose $f\equiv gh\pmod{\mathfrak{m}^n}$. Try to find elements $a,b\in \mathfrak{m}^{n+1}/\mathfrak{m}^{n+2}$ such that $f\equiv (g+a) (h+b)\pmod { \mathfrak{m}^{n+1}}$. One needs to solve an equation $g_0b+h_0a = *$, which one can solve if $g_0$ and $h_0$ are coprime. (This is related to the fact that two coprime polynomials over a field generate the unit ideal.)
+\end{esquisse}
+
+\begin{example}[ ]\label{}\text{}
+Consider the curve $y^2 = x^3+x^2$. Looking closely at its singularity, one wants to say that the curve is a union of lines that intersect there. However, one struggles to see this looking at the local ring. If the local ring allowed for this, then it would have zero divisors, and it doesn't. The local ring isn't ``aware'' that the curve seems to split into two components near the origin. However, the completion is. 
+
+Let $R$ be the local ring at $(0,0)$. Let $\widehat{R} = k [\![x,y]\!]/(y^2-x^3-x^2)$. Notice that $y^2-x^3-x^2\equiv (y-x) (y+x)\pmod {I^3}$. One lifts this to a product of power series $(y-x+\cdots) (y+x+\cdots)$. This corresponds to the components.
+\end{example}
+
+\begin{remark}
+	One says that the varieties $y^2=x^3+x^2$ and $y^2=x^2$ are \defn{analytically isomorphic}\index{analytic isomorphism}; that is, the completions of their local rings are isomorphic.
+\end{remark}
+
+\begin{remark}
+	The completion $\widehat{R}$ has zero divisors though $R$ does not. There are examples of reduced rings whose completions are not reduced.
+\end{remark}
+
+\begin{remark}
+	There is a variation on completion called \defn{Henselization}\index{Henselization} that is better behaved.
+\end{remark}
+
+One has the following maps:
+\[
+\begin{tikzcd}
+	R\ar[r]&\widehat{R}\ar[r] &\cdots\ar[r] & R/\mathfrak{m}^2 \ar[r]& R/\mathfrak{m} = k.
+\end{tikzcd}
+\]
+One can think of successive maps looking at a point in a finer neighbourhood..
+
 
 \subsection{Resultants}
 \subsection{Proper maps}
