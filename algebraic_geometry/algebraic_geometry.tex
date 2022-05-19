@@ -2143,7 +2143,7 @@ What is the condition for $f$ and $g$ to have a common root? Temporarily suppose
 \end{align*}
 The equation $f(x)p (x)=g (x)q (x)$ gives homogeneous linear equations. The condition for homogeneous equations having a nontrivial solution is that some determinant vanishes. What we want is the determinant of this matrix:
 \begin{align*}
-	\mat{a_m & \cdots & a_0 && &&\\ & a_m & \cdots & a_0& &&\\ &&&\ddots&&&\\&&&a_m & \cdots & a_0\\&&&&a_m & \cdots & a_0\\b_n & \cdots & b_0 && &&\\ & b_n & \cdots & b_0& &&\\ &&&\ddots&&&\\&&&b_n & \cdots & b_0\\&&&&b_n & \cdots & b_0 }
+	\mat{a_m & \cdots & a_0 && &&\\ & a_m & \cdots & a_0& &&\\ &&&\ddots&&&\\&&&a_m & \cdots & a_0\\&&&&a_m & \cdots & a_0\\b_n & \cdots & b_0 && &&\\ & b_n & \cdots & b_0& &&\\ &&&\ddots&&&\\&&&b_n & \cdots & b_0\\&&&&b_n & \cdots & b_0 }.
 \end{align*}
 This $ (m+n)\times  (m+n)$ matrix is called the \defn{Sylvester matrix}\index{Sylvester matrix} and its determinant is called the \defn{resultant}\index{resultant}\footnote{The prefix ``ant'' indicates that the resultant is some invariant and that Sylvester probably named it.} of $f$ and $g$.
 
@@ -2160,7 +2160,7 @@ This $ (m+n)\times  (m+n)$ matrix is called the \defn{Sylvester matrix}\index{Sy
 \end{remark}
 
 \begin{example}[ ]\label{}\text{}
-The polynomial $f(x)=ax^2+bx+c=0$ has a double root if it and its derivative have a root in common (this is true for all polynomials). Let $g(x)=2ax+b$ be the derivative of $f$. One sees that the resultant of $f$ and $g$ is
+The polynomial $f(x)=ax^2+bx+c$ has a double root if it and its derivative have a root in common (this is true for all polynomials). Let $g(x)=2ax+b$ be the derivative of $f$. One sees that the resultant of $f$ and $g$ is
 \begin{align*}
 	\det\mat{a&b&c\\2a&b&0\\0&2a&b} = a(b^2-4ac).
 \end{align*}
