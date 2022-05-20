@@ -2176,6 +2176,67 @@ Notice that the definition of the resultant allows for sign inaccuracy; indeed, 
 \end{example}
 
 \subsection{Proper maps}
+Suppose $f$ and $g$ are homogeneous polynomials in $z_1$ and $z_2$ with coefficients in $k[y_1,\hdots, y_\ell]$. One might think of $f$ and $g$ as hypersurfaces $H_f$ and $H_g$ in $\mathbf{A}^\ell\times \mathbf{P}^1$. Consider the projection $\mathbf{A}^\ell\times \mathbf{P}^1\longrightarrow \mathbf{A}^\ell$. The condition that the resultants of $f$ and $g$ vanish (that is, the condition that $f$ and $g$ have a common root in $\mathbf{P}^1$) is that a point is in the image of $H_f\cap H_g\longrightarrow \mathbf{A}^\ell$. The image is comprised of the roots of the resultant (a polynomial in $k[y_1,\hdots,y_\ell]$). This is closed.
+
+\begin{remark}
+	It is a common mistake to think that the image of a closed set under a projection is closed.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+The projection $\mathbf{A}^1\times \mathbf{A}^1 \longrightarrow \mathbf{A}^1$ is not closed: Consider $\{xy=1\}\longmapsto \mathbf{A}^1-\{0\}$.
+\end{example}
+
+\begin{exercise}\label{}\text{}
+Show that the image of a polynomial under $\mathbf{R}^n\longrightarrow \mathbf{R}$ does not need to be closed.
+\end{exercise}
+
+We have seen that $\mathbf{P}^n(\mathbf{R})$ and $\mathbf{P}^n(\mathbf{C})$ are compact in the usual topology. Projective space over a field is compact in the Zariski topology, but even affine space over a field is compact in this setting.
+
+\begin{problem}
+	What is the correct analogue of compactness?
+\end{problem}
+
+First, let us digress. A map of topological spaces $X\longrightarrow Y$ is \defn{proper}\index{proper map} if it is continuous and universally closed. (Recall that a map is \defn{universally proper}\index{universally proper morphism} if $X\times W\longrightarrow Y\times W$ is closed for all $W$.) Notice that this is equivalent to saying that $X\longrightarrow Y$ is continuous and closed and has compact fibres.
+
+Maps of Hausdorff spaces are proper if and only if they are continuous and the preimage of a compact set is compact.
+
+A map of varieties $X\longrightarrow Y$ is called \defn{proper}\index{proper map} if it is universally closed for the Zariski topology on the product $X\times Y$. 
+
+Now, we have somewhat of an analogue: Saying that a map from $X$ to a point is proper is like saying that $X$ is compact. We would like to show that, if $X$ is a projective variety, then maps from $X$ to a point is proper. One can reduce this to showing that $\mathbf{P}^n\times \mathbf{A}^m\longrightarrow \mathbf{A}^m$ is closed.
+
+First, let us show that $\mathbf{P}^1\times \mathbf{A}^m\longrightarrow \mathbf{A}^m$. Suppose that $S$ is closed in $\mathbf{P}^1\times \mathbf{A}^m$. Then $S$ is given by the roots of polynomials $f_1,\hdots, f_\ell$ in $x,y, z_1,\hdots,z_m$. Consider 
+\begin{align*}
+	&s_1f_1+s_2f_2+\cdots+s_\ell f_\ell;\\
+	&t_1f_1+t_2f_2+\cdots+t_\ell f_\ell.
+\end{align*}
+These are homogeneous polynomials in $x$ and $y$ with coefficients that are polynomials in $s_1,\hdots,s_\ell,t_1,\hdots, t_\ell,z_1,\hdots, z_m$. The projection of $S$ to $\mathbf{A}^m$ is given by the points where these polynomials have a common root---given by roots of all of the coefficients of all of the monomials in $s_1,\hdots,s_\ell,t_1,\hdots, t_\ell$ of the resultant. One can show that this implies that a map from $\mathbf{P}^1$ to a point is proper.
+
+Showing that maps from $\mathbf{P}^n$ to a point are proper would be straightforward if $\mathbf{P}^n$ was a product of $\mathbf{P}^1$s: One knows that maps from $\mathbf{P}^{n-1}\times \mathbf{P}^1$ to a point are proper, since
+\begin{align*}
+	\mathbf{P}^{n-1} \times \mathbf{P}^1\times X\longrightarrow X
+\end{align*}
+is closed. (This follows from $\mathbf{P}^{n-1}\times X\longrightarrow X$ being closed.) 
+
+Even though $\mathbf{P}^n\ne \mathbf{P}^{n-1}\times \mathbf{P}^1$, one can still use this. The blow up of $\mathbf{P}^n$ at a point is a nontrivial $\mathbf{P}^1$-bundle over $\mathbf{P}^{n-1}$.\footnote{That is, it looks like a product of $\mathbf{P}^1$ and something even if it doesn't globally. There might be some ``twisting'' going on.} Let us show that this is true, first.
+
+The map $\mathbf{P}^{n}\longrightarrow \mathbf{P}^{n-1}$ isn't defined everywhere, but is still a sort of correspondence. Consider the ``graph'' $G\subseteq \mathbf{P}^n\times \mathbf{P}^{n-1}$ of this map.\footnote{Note that this map is not a function.} This is the set of pairs $((x_0:\cdots:x_n), (y_1:\cdots:y_n))$ such that $x_iy_j=x_jy_i$ for all $i$ and $j$. The map $G\longrightarrow \mathbf{P}^n$ is an isomorphism except that it maps $\mathbf{P}^{n-1}$ to $(1:0:\cdots:0)$. This means that $G$ is the blowup of $\mathbf{P}^n$ at this point. Further, $G\longrightarrow \mathbf{P}^{n-1}$ is locally a map from a product of $\mathbf{P}^1$ and an affine set to the same affine set. Thus, $G\longrightarrow \mathbf{P}^{n-1}$ is proper.
+
+One gets the diagram
+\[
+\begin{tikzcd}[column sep = 8 em, row sep = 5 em]
+	G \ar[r, "\textrm{surjective}" \iffalse twoheadrightarrow\fi] \ar[d,swap,"\textrm{proper}"] \ar[dr, "\textrm{proper}"] & \mathbf{P}^n\ar[d]\\
+	\mathbf{P}^{n-1}\ar[r,"\textrm{proper }\\ \textrm{by induction}", swap] &\textrm{point,}
+\end{tikzcd}
+\]
+whence it follows that the rightmost arrow is proper.
+
+\begin{remark}
+	This illustrates the technique of using blow up to turn a rational map into a regular map.
+\end{remark}
+
+\begin{remark}
+	For $n=2$, the set $G$ is called a \defn{ruled surface}\index{ruled surface} over $\mathbf{P}^1$; that is, it is a surface $G$ where the fibres of $G\longrightarrow \mathbf{P}^1$ are copies of $\mathbf{P}^1$. The set $\mathbf{P}^1\times \mathbf{P}^1$ is also a ruled surface over $\mathbf{P}^1$.\footnote{Ruled surfaces over $\mathbf{P}^1$ are \index{Hirzebruch surface}Hirzebruch surfaces.}
+\end{remark}
 \subsection{Survey of curves}
 \subsection{Hurwitz curves}
 \subsection{Examples of Hurwitz curves}
