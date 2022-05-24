@@ -1,16 +1,18 @@
-\documentclass[11pt, oneside,margin=1in]{article}
-
-\def\jtitle{Algebraic geometry}
-\def\jlecturer{Richard Borcherds}
-\def\jterm{}
-\def\jauthor{Jack DeSerrano}
-
-\usepackage[course]{jack}
+\documentclass [11 pt, oneside, margin = 1 in] {article}
 
 
+\def \jtitle {Algebraic geometry}
+\def \jlecturer {Richard Borcherds}
+\def \jterm {}
+\def \jauthor {Jack DeSerrano}
 
-\title{Algebraic geometry}
-\author{Jack DeSerrano}
+
+\usepackage [course] {jack}
+
+
+
+\title {Algebraic geometry}
+\author {Jack DeSerrano}
 
 \begin{document}
 \ifams
@@ -33,7 +35,10 @@ These notes are based on some of Richard Borcherds's YouTube series on algebraic
 \end{figure}
 \text{}
 \newpage
+
+
 \section{Varieties}
+
 \subsection{Introduction}
 \begin{problem}
 	Classify all Pythagorean triples.
@@ -200,11 +205,8 @@ Take an ellipse and choose six points on it. Label two points $1$, two points $2
 Label the lines $1$ through $6$ in the order described in the statement. Choose $6$ linear polynomials $p_1,\hdots, p_{6}$ such that $p_j = 0$ on line $j$. Consider the polynomials $p_1p_3p_5$ and $p_2p_4p_6$. These vanish at all six points. The polynomial $p_1p_3p_5 - \lambda p_2p_4p_6$ also vanishes at all $6$ points. Choose $\lambda$ such that $p_1p_3p_5 - \lambda p_2p_4p_6$ vanishes at a seventh point of the conic. This polynomial has degree $3$ and the conic has degree $2$. Therefore, by B\'ezout's theorem, there are at most $2\cdot 3 = 6<7$ intersection points unless the conic and the polynomial have a common component. The conic does not split into smaller-degree polynomials, so the only way the conic and the polynomial can have a common component is if the conic is contained in the polynomial. Thus, the degree-$3$ curve is the union of a conic and a line, and this line is Pascal's line since $p_1p_3p_5$ and $p_2p_4p_6$ vanish at the points of intersection and the points are normally not on the conic. 
 \end{proof}
 
-
-
 \subsection{Kakeya sets}
 A \defn{Kakeya set}\index{Kakeya set} is a set of points that contains a unit line in every direction. Examples include the radius-$1/2$ circle and the height-$1$ equilateral triangle. Kakeya conjuectured that the smallest-area Kakeya set was the three-pointed deltoid.
-
 
 \begin{figure}
 	\begin{center}
@@ -353,7 +355,6 @@ Take $xy=0$. This is reducible but connected. Now, consider $xy=1$. This is irre
 
 
 \subsection{Weak Nullstellensatz}
-
 Let us study the relationship between subsets of an affine space $\mathbf{A}^n$ and ideals of $K[x_1,\hdots, x_n]$. One can map a subset $Y$ to the ideal $\II(Y)$ given by polynomials vanishing on $Y$. Conversely, an ideal $\mathfrak{a}$ can be mapped to a subset $\ZZ(\mathfrak a)$ given by the set of roots of $\mathfrak{a}$. What is the relationship between these two maps? Well, $\ZZ(\II(Y))$ is the closure of $Y$ in the Zariski topology. Further, $\II(\ZZ(\mathfrak{a}))\ne \mathfrak{a}$. For example, take $\mathfrak{a}=(x^2)\subset K[x]$. Then $\ZZ(\mathfrak{a}) = \{0\}$, so $\II(\ZZ(\mathfrak{a})) =(x)\ne (x^2)$. More generally, if $f^n\in \mathfrak{a}$, then $f\in \II(\ZZ(\mathfrak a))$. So $\sqrt{\mathfrak{a}} \subseteq \II(\ZZ(\mathfrak{a}))$. Recall that\index{radical of an ideal}
 \begin{align*}
 	\sqrt{\mathfrak{a}} := \{ r\in R : r^n \in \mathfrak{a} \textrm{ for some $n$}\}.
@@ -378,7 +379,6 @@ Suppose $I$ is a maximal ideal of $k[x_1,\hdots, x_n]$. We want to show that $I 
 
 
 \subsection{Strong Nullstellensatz}
-
 Suppose $K$ is an algebraically closed field. Recall the weak and strong Nullstellensatz.\index{Nullstellensatz}\index{weak Nullstellensatz}\index{strong Nullstellensatz}
 
 \begin{theorem}[Weak Nullstellensatz]\label{}\index{}\text{}
@@ -424,7 +424,6 @@ Hence $I=   (a^2+bc,\, b(a+d), \,c (a+d),\,d^2 + bc)$. Some power of $a+d$ is an
 \begin{example}[Commuting matrices]\label{}\text{}
 Write $A=(a_{ij})$ and $B=(b_{ij})$. Then $AB-BA$ is something; let its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{2n^2}$. Whether or not $I=\sqrt{I} $ holds is an open problem. The question of whether an ideal $I\subset R$ is radical is the same as asking whether $R/I$ has nilpotent elements. (The space of pairs of commuting matrices is a notoriously difficult space to study.)
 \end{example}
-
 
 \subsection{The Lasker--Noether theorem}
 Recall that algebraic sets correspond to radical ideals of $K[x_1,\hdots, x_n]$. Also, an algebraic set is a finite union of irreducible algebraic sets. Irreducible algebraic sets correspond to prime ideals. (Recall that an ideal $\mathfrak{p}\subseteq R$ is prime if $R/\mathfrak{p}$ is an integral domain.)
@@ -527,6 +526,7 @@ Take $M=R/I$. We have
 	R/I = M \subseteq \prod_{} R/I_{\mathfrak{p}}.
 \end{align*}
 We know that the $R/I_{\mathfrak{p}}$, so $I_\mathfrak{p}$ must be primary in Lasker's sense. Therefore, $I=\bigcap I_\mathfrak{p}$.
+
 \subsection{Quotients of varieties by groups}
 Recall that any algebraic set $Y$ has a coordinate ring $K[x_1,\hdots, x_n]/\II(Y)$. This coordinate ring is an algebra over $K$, is finitely generated, and has no nilpotent elements. Further, a ring with these three properties corresponds to an algebraic set by the Nullstellensatz. (This algebraic set is not unique; it depends on the choice of generators. The corresponding algebraic sets are isomorphic in a sense.) One can think of algebraic sets up to some kind of isomorphism as being equivalent to rings with these three properties. The category of algebraic sets is equivalent to the opposite category of coordinate rings. 
 
@@ -652,7 +652,6 @@ It turns out that $K[\lambda, 1/\lambda, 1/(\lambda-1)]^{\Sg_3} \isomto K[j]$. T
 
 
 \subsection{Dimension}
-
 Dimension\index{dimension} first was thought of as the number of parameters needed to define a point. However, this fails: Cantor showed that $\mathbf{R}^2$ and $\mathbf{R}$ have the same number of points. Peano and Hilbert showed that there are continuous maps from $\mathbf{R}$ onto $\mathbf{R}^2$. So, in a sense, one does not need two parameters to describe points in $\mathbf{R}^2$. (This does make sense if one looks at smooth manifolds.)
 
 The second attempt was the \index{Lebesgue covering dimension}Lebesgue covering dimension: A set has dimension at most $n$ if every open cover has a refinement such that each point is in at most $n+1$ sets. This works for Euclidean space but isn't all that useful in algebraic geometry.
@@ -703,7 +702,6 @@ One can also look at the minimum number of elements in a system of parameters. T
 Finally, one has various notions of \index{homological dimension}homological dimension.
 
 \subsection{Projective space}
-
 \begin{definition}[ ]\label{}\text{}
 \defn{Projective space}\index{projective space} $\mathbf{P}^n(K)$ is the set of all $1$-dimensional subspaces of $K^{n+1}$.
 \end{definition}
@@ -767,8 +765,8 @@ A projective space automatically satisfies this theorem if it has dimension at l
 One also has duality for projective space. Any two distinct points meet in a line, and any two distinct lines meet in a point. That is, points are dual to lines: anything you can say about lines and points you can say about points and lines. There is a dual to Pascal's theorem. 
 
 One can think about this as duality of vector spaces. Points in projective space $\mathbf{P}^n$ correspond to lines in $\mathbf{A}^{n+1}$, which one thinks about as $k^{n+1}$. Lines in $\mathbf{P}^n$ correspond to planes in $k^{n+1}$. Consider the dual space $(k^{n+1})^*$ which is (non-canonically) isomorphic to $k^{n+1}$. The dual of a line in $\mathbf{A}^{n+1}$ is a hyperplane consisting of all linear transformations vanishing on it. So lines correspond to hyperplanes, planes corresponds to things of codimension $2$, etc., so hyperplanes correspond to lines, which are points of projective space.
-\subsection{Affine and projective varieties}
 
+\subsection{Affine and projective varieties}
 Recall that affine space $\mathbf{A}^n$ corresponds to its coordinate ring $k[x_1,\hdots, x_n]$. An affine algebraic subset corresponds to a radical ideal $I=\sqrt{I} $.
 
 Projective space sort of corresponds to $k[x_0,\hdots, x_n]$ where one considers this a graded ring that is graded in the obvious way. Projective algebraic sets correspond\footnote{This correspondence ignores the ideal $(x_0,\hdots, x_n)$.} to graded radical ideals in which every element is a sum of homogeneous elements in the ideal.
@@ -807,9 +805,7 @@ That this contains two components corresponds to the following decomposition:
 \end{align*}
 \end{example}
 
-
 \subsection{Products of varieties}
-
 Clearly, one has
 \begin{align*}
 	\mathbf{A}^m \times \mathbf{A}^n = \mathbf{A}^{m+n}
@@ -841,7 +837,6 @@ given by $((x_0:x_1), (y_0:y_1)) \longmapsto (x_0y_0:x_0y_1: x_1y_0: x_1y_1) =:(
 
 Suppose we take a sphere $x^2+y^2+z^2=1$. We claim that this has two sets of straight lines on it. Indeed, it does over $\mathbf{C}$. Example: $x=1$, $y=iz$. Exercise: Find all straight lines on this sphere over $\mathbf{C}$. (Writing this as $(x+iy) (x-iy)= (1-z) (1+z)$ puts into the form of the quadric above.)
 \end{example}
-
 
 \subsection{The Veronese surface and the variety of lines in space}
 \begin{example}[Veronese surface]\label{}\text{}
@@ -895,9 +890,7 @@ These correspond to $\mathbf{A}^4$, $\mathbf{A}^3$, $\mathbf{A}^2$, $\mathbf{A}^
 
 This strongly suggests there is a relationship between the cohomology groups of a variety over $\mathbf{C}$ and the number of points of that variety over a finite field. This is the concern of the Weil conjectures.
 
-
 \subsection{Grassmannians}
-
 The Grassmannian $\Gr(2,2)$ can be thought of as the two-dimensional subspaces of $k^4$, or, alternatively, lines in space. Grassmannians $\Gr(m,n)$ are injective maps $k^m \longrightarrow k^{m+n}$.
 One can show that
 \begin{align*}
@@ -939,6 +932,7 @@ F(R) \arrow[d, -,double equal sign distance,double]\arrow[r] &F(S) \arrow[d, -,d
 \end{tikzcd}
 \]
 Grothendieck showed that any scheme is defined by its functors of points.
+
 \subsection{Projective space bundles}
 Recall the definition of a fibre bundle: A fibre bundle\index{fibre bundle} is a space that looks like a product locally. Specifically, a fibre bundle is a structure $(E,B, \pi, F)$ where $E$, $B$, and $F$ are topological spaces and $\pi:E\longrightarrow B$ is a continuous surjective map that, in small regions of $E$, behaves like a projection from $B\times F$ to $B$. For sufficiently small open sets $U$:
 \begin{center}
@@ -1049,7 +1043,6 @@ In the drawing above, notice that there is a single point contained in all of th
 One knows that, in algebraic topology, a torus is $S^1\times S^1$, or, more generally, $(S^1)^n$. Over $\mathbf{R}$, $S^1$ is the set of points $x^2 + y^2 = 1$. Over $\mathbf{C}$, this is $(x+iy) (x-iy)=1$ or $z_1z_2=1$. This is a hyperbola, which is $\mathbf{C}-\{0\}$. Hence, one can think of $\mathbf{C}^*$ as an analogue of $S^1$. Therefore, one can call $(\mathbf{C}^*)^n$ a torus. In the theory of algebraic groups, $(\mathbf{C}^*)^n$ plays the same role that $(S^1)^n$ plays is the theory of compact Lie groups. 
 
 \subsection{Categories}
-
 A category has objects and morphisms. They are named after their objects. Here are some examples.
 	\begin{center}
 \begin{tabular}{cc}
@@ -1154,7 +1147,6 @@ Consider the curve $C: y^2=x^3$. There is a map $\mathbf{A}^1\longrightarrow C$ 
 \end{example}
 
 \subsection{Affine algebraic sets and commutative rings}
-
 \begin{theorem}[ ]\label{}\index{}\text{}
 Suppose $Y$ is affine. Then morphisms $X\longrightarrow Y$ are the same as ring homomorphisms $\mathscr{O}(Y)  \longrightarrow \mathscr{O}(X)$.
 \end{theorem}
@@ -1294,7 +1286,6 @@ Now, we have a map
 One checks that this is well-defined, etc.
 
 \subsection{Automorphisms of space}
-
 \begin{problem}
 	What is the group of automorphisms of an algebraic set?
 \end{problem}
@@ -1373,9 +1364,7 @@ Consider the endomorphism $\mathbf{A}^2\longrightarrow \mathbf{A}^2$ given by
 The image is not open, closed, or even locally closed. A theorem of Chevalley says that it must be a constructible set.\footnote{See EGA IV Th\'eor\`eme 1.8.4 (?).} For projective manifolds, the image of a closed set is closed.
 \end{example}
 
-
 \subsection{The Ax--Grothendieck theorem}
-
 \begin{remark}
 	[First-order logic]\index{first-order logic} In first-order logic, one uses the usual logical connectives $\land$, $\lor$, $\lnot$, $\implies$, etc. to make statements. Also, one can use the operations of the field or model in question. One may also quantify over all elements in the model $X$ (with ``for all $x\in X$, . . .'' or ``there exists $x\in X$, . . .'').
 
@@ -1432,7 +1421,6 @@ This is trivial if $k$ is finite. Also, this is true over any algebraic extensio
 \end{remark}
 
 \subsection{Rational maps}
-
 Suppose $Y$ is an affine variety. The coordinate ring $\mathscr{O}(Y)$ is an integral domain. Hence, one can construct the field of fractions $K(Y)$. Its elements are called \defn{rational functions}\index{rational function} on $Y$.
 
 \begin{example}[ ]\label{}\text{}
@@ -1517,8 +1505,8 @@ This gives another equation of the form above. If $f$, $g$, and $h$ are not cons
 \begin{remark}
 	The variety $\mathbf{A}^1$ has genus $0$ and $x^3+y^3=1$ has genus $1$. We will prove that there is no non-constant map from something to something of higher genus.
 \end{remark}
-\subsection{Elliptic functions and cubic curves}
 
+\subsection{Elliptic functions and cubic curves}
 We shall use elliptic functions to show that some cubic curves in the plane are not birational to the affine line.
 
 Recall that $\wp$ is elliptic, so $\wp(z+\lambda) = \wp(z)$ where $\lambda$ is a point in a lattice $\Lambda$. This doubly periodic function is not holomorphic; if such a function were holomorphic, it would be bounded in a fundamental domain, so bounded everywhere, hence constant by Liouville's theorem. 
@@ -1581,8 +1569,8 @@ Any rational curve is the same as $\mathbf{P}^1$ up to a finite number of points
 \begin{remark}
 	We constructed a doubly periodic function by taking (essentially) $\sum_{}^{} 1/(z-\lambda)^2 $. One can also do this for (singly) periodic functions by taking the almost-convergent $\sum_{}^{} 1/(z-\lambda)$ and reordering by absolute value. This is $\pi\cot (\pi z)$. Taking the logarithmic derivative gives the product formula of $\sin$.
 \end{remark}
-\subsection{Rationality of cubic surfaces}
 
+\subsection{Rationality of cubic surfaces}
 We have seen that cubic curves such as $x^3+y^3+z^3=0$ in $\mathbf{P}^2$ are not rational. Now, look at a cubic suface $w^3+x^3+y^3+z^3= 0$ in $\mathbf{P}^3$. One might argue that setting $w=0$ gives a cubic curve in $\mathbf{P}^2$ that isn't rational, but this doesn't work. In fact, it is rational.
 
 First, observe that it contains two not intersecting lines: $w+x=0, y+z=0$ and $w+y=0, x+\omega z=0$ where $\omega$ is a primitive cube root of unity. Pick one point on each line and connect them. The resulting line should intersect the surface at one other point (ignoring the possibility that it lies on the cubic surface). Therefore, we have sort of constructed a map from $\mathbf{P}^1\times \mathbf{P}^1$ to the cubic surface. This is a rational map that is not defined everywhere. One can conclude that this map is almost surjective. Does it have a rational inverse?
@@ -1613,9 +1601,9 @@ These kinds of arguments were typical of old school algebraic geometry. Proving 
 \end{problem}
 
 Take $6$ points in $\mathbf{P}^2$ as before. The map above is indeterminate at these points, and there are lines on the cubic surface whose preimages are these points. That is, $6$ points give rise to $6$ lines on the cubic. One also gets $15$ lines in $\mathbf{P}^2$ through $2$ of the $6$ points whose images are lines on the cubic surface. Lastly, take a conic through five of the points. There are $6$ conics through $5$ points, and the image of each is a line on the cubic surface. Altogether, there are $27$ lines.
+
 \subsection{Blowing up a point}
 \index{blowing up} 
-
 \begin{example}[ ]\label{}\text{}
 Take the curve $y^2 = x^3 +x^2$. This has a singularity at $(0,0)$. Let $y=tx$. Then one has $t^2x^2 = x^3+x^2$, which factorizes as follows:
 \begin{align*}
@@ -1755,6 +1743,7 @@ One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x
 	\end{figure}
 
 	This shows that there is no minimal way to resolve singularities in general. If one wants to find a minimal model---a ``smallest possible'' resolution of singularities---the best thing to do is to allow ``mild'' singularities in it. (More precisely, one allows \index{terminal singularity}terminal singularities.)
+
 \subsection{Singular points}
 Suppose $p$ is a point of a variety $V$. The point $p$ is called \defn{singular}\index{singular point} if the tangent space at $p$ has the wrong dimension (that is, the dimension is greater than the dimension of $V$).
 
@@ -1809,7 +1798,6 @@ Consider $y^2=x^3$ over $\mathbf{R}$. This is a topological manifold.
 \end{example}
 
 \subsection{The Zariski tangent space}
-
 We would like to determine a definition of ``tangent space'' that does not depend on how one embeds the variety $V$ into affine space.
 
  \begin{definition}[ ]\label{}\text{}
@@ -1890,6 +1878,7 @@ From here, it is straightforward to show that $W$ is the universal module with a
 \begin{remark}
 	A local ring is \defn{regular}\index{regular local ring} if the dimension of the Zariski tangent space is the dimension of the local ring. A variety is nonsingular at a point if its local ring is regular.
 \end{remark}
+
 \subsection{Du Val singularities}
 A \index{Du Val singularity}Du Val singularity may also be called a \index{simple surface singularity}simple surface singularity, a \index{Kleinian singularity}Kleinian singularity, a \index{rational double point}rational double point, or a \index{canonical singularity}canonical singularity in dimension $2$.
 
@@ -1956,6 +1945,7 @@ After $8$ blowups, we ended up with something nonsingular. Each blowup gives an 
 		\caption{Simply-laced Dynkin diagrams.}
 	\end{center}
 \end{figure}
+
 \subsection{Examples of resolutions}
 \begin{example}[ ]\label{}\text{}
 Consider $x^4+y^4=z^2$.\footnote{Fermat showed that this equation has no integer solutions, demonstrating Fermat's last theorem for $n=4$.} Differentiating, one gets $4x^3=0$, $4y^3=0$, and $2z=0$. Therefore, the only singularity here is at $(0,0,0)$. Let us blow up the point $(0,0,0)$. Hence, we work in $\mathbf{A}^3\times \mathbf{P}^2$, introducing new coordinates $(X:Y:Z)$ in $\mathbf{P}^2$. We assert $xY=Xy$, $xZ=Xz$, and $yZ=Yz$. Cover $\mathbf{P}^2$ by three copies of $\mathbf{A}^2$ corresponding to $Z=1$, $Y=1$, and $X=1$. For the first case, one gets 
@@ -2121,7 +2111,6 @@ One can think of successive maps looking at a point in a finer neighbourhood.
 
 
 \subsection{Resultants}
-
 This section will concern elimination theory. Andr\'e Weil's \underline{Foundations of Algebraic Geometry} has an infamous footnote:
 \begin{center}
 	\small The device that follows, which, it may be hoped, finally eliminates from algebraic geometry the last traces of elimination-theory, is borrowed from C. Chevalley's Princeton lectures.
@@ -2255,7 +2244,7 @@ Given three points $\lambda_1,\lambda_2,\lambda_3$ in the projective line, there
 \begin{align*}
 	\tau\longmapsto \frac{a\tau+b}{c\tau+d}
 \end{align*}
-that takes $\lambda_1$ to $0$, $\lambda_2$ to $1$, and $\lambda_3$ to $\infty$. Adding in a fourth point $\lambda_4$, this will be taken to some $\lambda$. Thus, any elliptic curve is defined by a number $\lambda$ and the equation $y^2=x(x-1) (x-\lambda)$. Different values of $\lambda$ can give the same algebraic curve: There is a group of order $6$ permuting $0$, $1$, and $\infty$ given by one of these transformations:
+that takes $\lambda_1$ to $0$, $\lambda_2$ to $1$, and $\lambda_3$ to $\infty$. A fourth point $\lambda_4$ will be taken to some $\lambda$. Thus, any elliptic curve is defined by a number $\lambda$ and the equation $y^2=x(x-1) (x-\lambda)$. Different values of $\lambda$ can give the same algebraic curve: There is a group of order $6$ permuting $0$, $1$, and $\infty$ given by one of these transformations:
 \begin{align*}
 	\lambda&\longmapsto\lambda;\\
 	\lambda&\longmapsto 1-\lambda;\\
@@ -2284,7 +2273,7 @@ One takes $6$ points in $\mathbf{C}$ and a curve that is ramified to order $2$ o
 \begin{align*}
 	y^2 = (x-a_1)\cdots (x-a_{2n})
 \end{align*}
-has Euler characteristic $\chi = 2+2n-4n +2 = 4-2n$, so its genus is $g=n-1$ (since $\chi = 2-2g$). Curves of the form above are called \defn{hyperelliptic curves}\index{hyperelliptic curve}. All genus-$2$ curves are hyperelliptic. Classifying genus $2$ curves is equivalent to taking $6$ distinct points in $\mathbf{P}^1$ modulo the action of the group $\PSL_{2}(\mathbf{C})$ given by
+has Euler characteristic $\chi = 2+2n-4n +2 = 4-2n$, so its genus is $g=n-1$ (since $\chi = 2-2g$). Curves of the form above are called \defn{hyperelliptic curves}\index{hyperelliptic curve}. All genus-$2$ curves are hyperelliptic. Classifying genus-$2$ curves is equivalent to taking $6$ distinct points in $\mathbf{P}^1$ modulo the action of the group $\PSL_{2}(\mathbf{C})$ given by
 \begin{align*}
 	\tau \longmapsto \frac{a\tau+b}{c\tau+d}.
 \end{align*}
@@ -2351,7 +2340,6 @@ In particular, $G$ is generated by $\alpha$, $\beta$, and $\gamma$ where $\alpha
 A \defn{Hurwitz curve}\index{Hurwitz curve} is a genus-$g$ curve with $84(g-1)$ automorphisms.
 \end{definition}
 
-
 \subsection{Examples of Hurwitz curves}
 One gets interesting information about genus $0$ or $1$ from the arguments of the previous section. If the genus is $g=0$, then the orbifold Euler characteristic is positive. The smallest orbifold Euler characteristic one gets is 
 \begin{align*}
@@ -2385,7 +2373,31 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 \begin{remark}
 	In characteristic $p\ne 0$, the Euler characteristic behaves much differently than it does in characteristic $0$.\footnote{One defines the Euler characteristic in characteristic $p$ using \'etale cohomology.} Hence, the Hurwitz bound does not hold: The double cover of the projective line $y^2=x^p-x$ branched at all points defined over $\F_p$ has genus $g = (p-1)/2$ but is acted on by the group $\SL_{2}(\Z/p\Z)$ of order $p^3-p$.
 \end{remark}
+
 \subsection{Resolution of curve singularities}
+We have seen that function fields of transcendence degree $1$ sort of correspond to nonsingular projective curves.\footnote{Hartshorne constructs a curve directly from a function field.} 
+
+If a function field has transcendence degree $1$, then it is of the form $k(x,y)$ where $x$ is transcendental over $k$ and $f(x,y)=0$ for some $f$, which gives a possibly singular projective curve. We shall demonstrate that one can resolve the singularities of $f(x,y)=0$ by repeated blow ups.\footnote{We assert $\chr k =0$, though the result holds in all characteristics.}
+
+Assume that the singular point is $(0,0)\in  \mathbf{A}^2$. Consider the lowest-degree terms, say $a_ny^n + a_{n-1}xy^{n-1} + \cdots + a_1 x^{n-1}y + a_0 x^n$. The number $n$ is the \defn{multiplicity}\index{multiplicity of a singularity} of the singularity. The roots of this homogeneous polynomial given by the lowest-degree terms are in $\mathbf{P}^1$ and correspond to the ``directions'' of the singularity. Blowing up this point means separating these directions. Therefore, $1$ blow up reduces multiplicities unless all of the points are the same. In the latter case, this homogeneous polynomial is of the form $a_n(y+\alpha x)^n$.
+
+Make the change of variables $y\longmapsto y-\alpha x$. Then, the degree-$n$ terms are given by only $y^n$.
+
+\begin{example}[ ]\label{}\text{}
+Let us blow up $y^2+x^9 + x^3y^5$ at $(0,0)$. This corresponds to either $x\longmapsto xy$, which does not produce any singularities, or $y\longmapsto xy$. In this case, one gets
+\begin{align*}
+	y^2 + x^7 + x^6y^5=0.
+\end{align*}
+One sees that, under this change of variables, monomials of the form $y^nx^\alpha$ are invariant (by $y^nx^\alpha\longmapsto y^nx^{\alpha+n}$ and dividing out by the common $x^n$). In general, one has $y^{n-\ell}x^\alpha \longmapsto y^{n-\ell}x^{\alpha-\ell}$. Hence, one can blow up until at least $1$ monomial has degree $n$. Then, one is in the previous case in which multiplicities can be reduced by blowing up.
+\end{example}
+
+However, one sees that the monomials of degree $n$ might be another $n$th power. Nevertheless, either the process terminates or the polynomial is transformed into a power series. In the latter case, the original polynomial is divisible by some $m$th power of a power series where $m\ge 2$.\footnote{An example of this is $f(x,y)= (y^2-y+x^2)^2$.} This is not possible, though, since the original polynomial $f(x,y)$ doesn't have repeated factors.\footnote{It is actually an irreducible curve.} Therefore, one has an algorithm for resolving singularities of an algebraic curve by blowing up.
+
+\begin{remark}
+	Subschemes can be defined by a polynomial with repeated factors; in this case, their singularities cannot be resolved by blowing up.
+\end{remark}
+
+
 \subsection{Newton's rotating ruler}
 \subsection{Hilbert polynomials}
 \subsection{The degree of a projective variety}
@@ -2393,6 +2405,7 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 
 
 \section{Schemes}
+
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.8]{images/groth}
@@ -2448,6 +2461,8 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 \subsection{Differential operators}
 \subsection{Cotangent bundle}
 \subsection{The canonical sheaf}
+
+
 \section{The Riemann--Roch theorem}
 \subsection{Introduction}
 \subsection{Genus $0$}
@@ -2457,19 +2472,24 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 \subsection{Genus-$3$ curves}
 \subsection{Plane curves}
 \subsection{Proof of the Riemann--Roch theorem}
+
+
 \section{The Weil conjectures}
+
 \begin{figure}
-\begin{center}
-\includegraphics[scale=0.8]{images/weil}
-\caption{Andr\'e Weil.}
-\end{center}
+	\begin{center}
+		\includegraphics[scale=0.8]{images/weil}
+		\caption{Andr\'e Weil.}
+	\end{center}
 \end{figure}
+
 \begin{figure}
-\begin{center}
-\includegraphics[scale=0.8]{images/deligne}
-\caption{Pierre Deligne.}
-\end{center}
+	\begin{center}
+		\includegraphics[scale=0.8]{images/deligne}
+		\caption{Pierre Deligne.}
+	\end{center}
 \end{figure}
+
 \subsection{Introduction}
 \subsection{Functional equation}
 \subsection{Riemann hypothesis}
@@ -2477,6 +2497,7 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 \subsection{Lefschetz trace formula}
 \subsection{\'Etale cohomology of a curve}
 \subsection{\'Etale morphisms}
+
 \section{Complex surfaces}
 \subsection{Introduction}
 \subsection{Minimal surfaces}
@@ -2484,8 +2505,11 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 \subsection{Ruled surfaces}
 \subsection{Kodaira: dimension $0$}
 \subsection{Kodaira: dimensions $1$ and $2$}
+
+
 \section{The Chow ring}
 \subsection{Introduction}
 \subsection{Chern classes}
+
 \printindex
 \end{document}
