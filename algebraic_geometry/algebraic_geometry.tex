@@ -2397,8 +2397,47 @@ However, one sees that the monomials of degree $n$ might be another $n$th power.
 	Subschemes can be defined by a polynomial with repeated factors; in this case, their singularities cannot be resolved by blowing up.
 \end{remark}
 
-
 \subsection{Newton's rotating ruler}
+Consider a polynomial $f(x,y)\in  \mathbf{C}[x,y]$ that is not a polynomial in $x$. Newton proved that $y$ is a power series in $x^{1/N}$ for some $N$. These are called \defn{Puiseux series}\index{Puiseux series}.\footnote{Puiseux series can have negative exponents, too.}
+
+\begin{example}[ ]\label{}\text{}
+If $f(x,y) = y^2-x^2 -x^3$, then
+\begin{align*}
+	y &= x\sqrt{1+x}\\
+	  &= x \left( 1 + \frac{1}{2}x^{1/2} + \cdots \right). 
+\end{align*}
+\end{example}
+
+\begin{esquisse}
+	Suppose that $f$ has a $y^n$ term but not $y^i$ for $i<n$. Draw a square lattice of monomials. Mark all monomials $x^iy^j$ that occur in $f$. Get a ruler.\footnote{This ruler will become Newton's rotating ruler.} Place it vertically on the left of the lattice. Rotate it counterclockwise about the $y^n$ pointuntil it reaches the first marked point. Draw a line through these points. Rotate about this point. Repeat. This process will generate a \defn{Newton polygon}\index{Newton polygon}.
+
+	One notices that the line that one draws might not pass through a point on each horizontal. Hence, one introduces extra points by $x\longmapsto x^{1/r}$ for a suitable $r$. Write the next monomial through which the line crosses $y^{n-1}x^m$. One can call the terms on the first line of the Newton polygon (which, now, passes through a point on each horizontal) the ``smallest-degree terms.'' Put $\deg y = m$ and $\deg x = 1$. The monomials on this line give a homogeneous polynomial in $y$ and $x^m$. Factorize this to $(y-\alpha x^m) (y-\beta x^m)\cdots$. Then, with $y\longmapsto y+\alpha x^m$, this polynomial becomes $y(y-\gamma x^m)\cdots$. Notice that there is no term in $x^{mn}$.
+
+	Now, with $y\longmapsto x^my$, all of the terms are divisible by $x^{mn}$, so one divides out by $x^{mn}$. One sees that all of the points on that line are pushed all the way to the left. Now, if any of the coefficients are nonzero, then the exponent on $y$ is less than $n$; then, one repeats with this smaller exponent. This happens when the first root in the factorization has multiplicity less than $n$. Hence, one focuses on the case when the multiplicity of this root is $n$.\footnote{Nomrally, this occurs when $n=1$.}
+
+	In this case, the coefficient on $y^n$ is $1$. Further, every other coefficient on the line is $0$. Then, Newton's ruler has not met a marked point, so it rotates on. Therefore, either $n$ is decreased or the ruler is rotated counterclockwise. This rotation process\footnote{The rotation process here corresponds to $y\longmapsto y + *x^m$.} either continues ad infinitum or the smallest power of $y$ is reduced. There are finitely many times that one can reduce the exponent on $y$, so the rotation process will continue forever.
+
+	When it continues on and on, one sees that the following sequence of variable changes is happening:
+	\begin{align*}
+		y &\longmapsto y + *x;\\
+		y &\longmapsto y + *x^2;\\
+		y &\longmapsto y + *x^3;
+	\end{align*}
+	etc. That is, one has $y\longmapsto y + *x + *x^2 + *x^3 + \cdots$. Then, all monomials $y^ix^j$ for $i< n$ vanish. Now, the series is divisible by $y$, so the original $f(x,y)$ is divisible by $y$ minus some power series in $x^{1/r}$ for some $r$. Thus, $y$ is a power series in $x^{1/r}$ that satisfies $f(x,y)=0$.
+\end{esquisse}
+
+\begin{corollary}[ ]\label{}\text{}
+The field of Puiseux series 
+\begin{align*}
+	K = \bigcup_{n>0} \mathbf{C} (\!(x^{1/n})\!)
+\end{align*}
+is algebraically closed.
+\end{corollary}
+
+If one has a polynomial in $y$ whose coefficients are Puiseux series in $x$, its roots are Puiseux series. That is, $K$ is algebraically closed.
+
+The field $K$ is a \defn{quasifinite field}\index{quasifinite field}. That is, its absolute Galois group is $\widehat{\mathbf{Z}}$, which is the absolute Galois group of $\mathbf{F}_{p}$.
+
 \subsection{Hilbert polynomials}
 \subsection{The degree of a projective variety}
 \subsection{B\'ezout's theorem}
