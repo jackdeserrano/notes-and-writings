@@ -2413,7 +2413,7 @@ If $f(x,y) = y^2-x^2 -x^3$, then
 
 	One notices that the line that one draws might not pass through a point on each horizontal. Hence, one introduces extra points by $x\longmapsto x^{1/r}$ for a suitable $r$. Write the next monomial through which the line crosses $y^{n-1}x^m$. One can call the terms on the first line of the Newton polygon (which, now, passes through a point on each horizontal) the ``smallest-degree terms.'' Put $\deg y = m$ and $\deg x = 1$. The monomials on this line give a homogeneous polynomial in $y$ and $x^m$. Factorize this to $(y-\alpha x^m) (y-\beta x^m)\cdots$. Then, with $y\longmapsto y+\alpha x^m$, this polynomial becomes $y(y-\gamma x^m)\cdots$. Notice that there is no term in $x^{mn}$.
 
-	Now, with $y\longmapsto x^my$, all of the terms are divisible by $x^{mn}$, so one divides out by $x^{mn}$. One sees that all of the points on that line are pushed all the way to the left. Now, if any of the coefficients are nonzero, then the exponent on $y$ is less than $n$; then, one repeats with this smaller exponent. This happens when the first root in the factorization has multiplicity less than $n$. Hence, one focuses on the case when the multiplicity of this root is $n$.\footnote{Nomrally, this occurs when $n=1$.}
+	Now, with $y\longmapsto x^my$, all of the terms are divisible by $x^{mn}$, so one divides out by $x^{mn}$. One sees that all of the points on that line are pushed all the way to the left. Now, if any of the coefficients are nonzero, then the exponent on $y$ is less than $n$; then, one repeats with this smaller exponent. This happens when the first root in the factorization has multiplicity less than $n$. Hence, one focuses on the case when the multiplicity of this root is $n$.\footnote{Typically, this occurs when $n=1$.}
 
 	In this case, the coefficient on $y^n$ is $1$. Further, every other coefficient on the line is $0$. Then, Newton's ruler has not met a marked point, so it rotates on. Therefore, either $n$ is decreased or the ruler is rotated counterclockwise. This rotation process\footnote{The rotation process here corresponds to $y\longmapsto y + *x^m$.} either continues ad infinitum or the smallest power of $y$ is reduced. There are finitely many times that one can reduce the exponent on $y$, so the rotation process will continue forever.
 
@@ -2439,6 +2439,68 @@ If one has a polynomial in $y$ whose coefficients are Puiseux series in $x$, its
 The field $K$ is a \defn{quasifinite field}\index{quasifinite field}. That is, its absolute Galois group is $\widehat{\mathbf{Z}}$, which is the absolute Galois group of $\mathbf{F}_{p}$.
 
 \subsection{Hilbert polynomials}
+Suppose $M=\bigoplus_{n}M_n$ is a finitely-generated graded module over a graded ring $R = k[z_1,\hdots, z_m]/I$ where $\deg z_i = d_i >0$. If $R$ is the graded ring of some projective variety, the ``growth rate'' of the $M_n$s might give some information about the variety.
+
+Consider
+\begin{align*}
+	f_M(z) :=  \sum_{n}^{} z^n\dim_k(M_n)
+\end{align*}
+where $\dim_k(M_n)$ is the dimension of $M_n$ as a $k$--vector space. First, notice that $f_M$ is a \index{rational function}rational function. Consider the exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r]&\ker z_m \ar[r] & M \ar[r,"\times z_m"]& M(d_m) \ar[r] & M(d_m)/z_m M \ar[r]& 0. 
+\end{tikzcd}
+\]
+Note that $M(d_m)$ means $M$ with its grading shifted by $d_m$. Since this is an exact sequence of vector spaces, one gets a relation between the dimensions of these vector spaces. Furthermore, $\ker z_m$ and $M(d_m)/z_m M$ are $R/(z_m)$-modules. Also,
+\begin{align*}
+	f_{M(d_m)}(z) = z^{d_m} f_M(z).
+\end{align*}
+Thus, by induction, $(1-z^{-d_m})f_M$ is a rational function. Further, $f_M$ is a rational function with denominator dividing $(1-z^{d_1})\cdots(1-z^{d_m})$.
+
+Let us focus on the case $d_i=1$ for all $i$. Then, the denominator is $(1-z)^m$, and the coefficients of $x_i$ for $i\ge 0$ in the expansion of $1/(1-z)^m$ are given by a polynomial in $i$. Therefore, $\dim_k (M_n)$ is a polynomial in $n$ for $n>0$ large. This is called the \defn{Hilbert polynomial}\index{Hilbert polynomial} of $M$. It describes how rapidly the graded pieces of $M$ grow in large degree.
+
+Write $g(n) := \dim_k(M_n)$ for the Hilbert polynomial of $M$. Though its coefficients are not necessarily integers, the restriction
+\begin{align*}
+	g:\mathbf{Z}\longrightarrow \mathbf{Z}
+\end{align*}
+is well defined; that is, $g$ is integer-valued. Let us see what integer-valued polynomials look like. Clearly, $a_mz^m + \cdots + a_1z + a_0$ is an integer if $z$ is an integer and $a_i$ is an integer for all $i$. However, an integer-valued function does not need integral coefficients: Consider
+\begin{align*}
+	\frac{z(z-1)}{2}.
+\end{align*}
+
+Notice that the binomial coefficients
+\begin{align*}
+	1 &= \binom{z}{0};\\
+	z &= \binom{z}{1};\\
+	\frac{z(z-1)}{2} &= \binom{z}{2};\\
+	\frac{z(z-1) (z-2)}{3!}&= \binom{z}{3};
+\end{align*}
+are integer-valued. We shall demonstrate that these span the integer-valued polynomials. Write 
+\begin{align*}
+	g_n(z) := \binom{z}{n}.
+\end{align*}
+Then
+\begin{center}
+	\begin{tabular}{cccccccc}
+		$z$&0&1&2&3&4&5\\
+    		\midrule
+		 $g_0(z)$& $1$ &     &     &    \\
+		 $g_1(z)$& $0$ & $1$ &     &    \\
+		 $g_2(z)$& $0$ & $0$ & $1$ &    \\
+		 $g_3(z)$& $0$ & $0$ & $0$ & $1$\\
+		 $g_4(z)$& $0$ & $0$ & $0$ & $0$ & $1$\\
+		 $g_5(z)$& $0$ & $0$ & $0$ & $0$ & $0$ & $1$
+	\end{tabular}
+\end{center}
+Suppose $f(n)$ is a degree-$\ell$ integer-valued polynomial. Then, one can choose coefficients such that
+\begin{align*}
+	f(n) -  a_0g_0(n) -  a_1g_1(n) - \cdots - a_\ell g_\ell (n) =0
+\end{align*}
+for $n = 0,\hdots, \ell$. The above is a polynomial of degree $\ell$ that vanishes at $\ell + 1$ points, so it is $0$. Notice that the leading coefficient of $f$ is $a_\ell n^\ell / \ell!$ where $a_\ell$ is an integer.\footnote{This integer will give the degree of projective varities.}
+
+\begin{remark}
+In the construction of the Hilbert polynomial, we used $\dim_k(M_n)$ because it was additive on short exact sequences. Any other measure of the ``size'' of $M_n$ that is additive on short exact sequences can give a variation on the Hilbert polynomial of $M$.	
+\end{remark}
 \subsection{The degree of a projective variety}
 \subsection{B\'ezout's theorem}
 
