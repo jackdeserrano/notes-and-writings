@@ -2501,7 +2501,92 @@ for $n = 0,\hdots, \ell$. The above is a polynomial of degree $\ell$ that vanish
 \begin{remark}
 In the construction of the Hilbert polynomial, we used $\dim_k(M_n)$ because it was additive on short exact sequences. Any other measure of the ``size'' of $M_n$ that is additive on short exact sequences can give a variation on the Hilbert polynomial of $M$.	
 \end{remark}
+
 \subsection{The degree of a projective variety}
+\index{degree of a projective variety}
+Suppose that $V\subseteq \PP^n$ is a projective variety. If $V$ is a hypersurface, it is given by $f(x_0,\hdots,x_n)=0$ for a polynomial $f$. One defines
+\begin{align*}
+	\deg V := \deg f.
+\end{align*}
+
+\iffalse
+Most of the time, if $V$ has codimension greater than $1$, then $\deg V$ is the number of intersection points of $V$ with a hyperplane section $H$ or the number of intersections of $V$ with a linear variety of codimension $\dim V$. However, one requires the hyperplane section or linear variety to be in ``general position,'' whatever that means.
+\fi
+
+One used to define $\deg V$ in terms of intersections with hyperplane sections or linear varieties, but these ``definitions'' had many caveats to them.
+
+Suppose $V$ corresponds to an ideal $I$ of $k [x_0,\hdots, x_n]=R$ (that is, $V$ is the set of roots of $I$). Now, $R/I$ is a graded ring, so it has a Hilbert polynomial. The degree of this Hilbert polynomial is $\dim V$. This is closely related to the following theorem from commutative algebra.
+
+\begin{theorem}[ ]\label{}\index{}\text{}
+Let $R$ be a local ring with maximal ideal $\mathfrak{m}$. Then $\dim R$ is $1$ plus the degree of the Hilbert polynomial of $\mathfrak{m}^n / \mathfrak{m}^{n+1}$.
+\end{theorem}
+
+If $d:=\dim V$, the leading coefficient of the Hilbert polynomial is $\alpha z^d/d!$ where $\alpha\in \Z$. One defines
+\begin{align*}
+	\deg V := \alpha.
+\end{align*}
+Notice that $\alpha>0$ since the Hilbert polynomial takes on positive values for large inputs.
+
+\begin{remark}
+	The degree defined this way is a well-defined invariant of a projective variety together with its embedding in projective space.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $V=\mathbf{P}^n$. Hence, one considers the graded ring $k[x_0,\hdots,x_n]/(0)=k[x_0,\hdots,x_n]$. The Hilbert polynomial of this is
+\begin{align*}
+	\binom{n+z}{n} = \frac{z^n}{n!} + \cdots.
+\end{align*}
+(This counts the monomials of degree $z$.) One sees that $\dim V = n$ and $\deg V = 1$. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider a hypersurface of a degree-$d$ polynomial $f(x_0,\hdots, x_n)$. Now, one considers $k[x_0,\hdots, x_n]/(f)$. The Hilbert polynomial of this is
+\begin{align*}
+	\binom{n+z}{n} - \binom{n+z-d}{n}  = d \frac{z^{n-1}}{(n-1)!} + \cdots,
+\end{align*}
+so the dimension of the hypersurface is $n-1$ and the degree of the hypersurface is $d$.
+\end{example}
+
+\begin{example}[Twisted cubic]\label{}\text{}
+\index{twisted cubic} Recall that the twistic cubic is given by
+\begin{align*}
+	wz &= xy;\\
+	x^2 &= wy;\\
+	y^2 &= xz.
+\end{align*}
+One can kill off $x^2$, $y^2$, and $xy$, so a basis for the relevant quotient ring is $\{w^iz^{z- i}, w^ixz^{z- i -1}, w^iyz^{z-i-1}\}$. There are $( z+ 1)+z +  z = 3z + 1$ of these, so the Hilbert polynomial is $3z+1$. Therefore, the twisted cubic has dimension $1$ and degree $3$.
+\end{example}
+
+\begin{remark}
+	The twisted cubic is isomorphic to the projective line, which is of degree $1$. Thus, the degree depends on the embedding.
+\end{remark}
+
+The \defn{Euler polynomial}\index{Euler polynomial} of $V$, $\chi(V)$, is the constant term of the Hilbert polynomial. The Euler polynomial depends on only the abstract variety, not on the variety's embedding. It is the Euler characteristic of the sheaf of rings of $V$. People didn't use $\chi(V)$; they used the \defn{arithmetic genus}\index{arithmetic genus}:
+\begin{align*}
+	(-1)^{\dim V}  (\chi(V)-1).
+\end{align*}
+The Euler characteristic is ``better,'' though, since
+\begin{align*}
+	\chi(V\times W) = \chi (V)\chi (W).
+\end{align*}
+
+\begin{problem}
+	Determine the arithmetic genus of a plane curve of degree $d$.
+\end{problem}
+
+The Hilbert polynomial of this plane curve is
+\begin{align*}
+	\binom{2+z}{2} - \binom{2+z-d}{2} = dz + 1 - \frac{(2-d) (1-d)}{2},
+\end{align*}
+so the arithmetic genus is $(2-d) (1-d)/2$.
+
+Robin Hartshorne proved the following theorem.\footnote{``Connectedness of the Hilbert scheme,'' 1963.}
+
+\begin{theorem}[Hartshorne]\label{}\index{}\text{}
+Let $S$ be a Noetherian prescheme, let $n$ be an integer, and let $p(z)\in\Q [z]$ be a polynomial. If $S$ is connected, then the Hilbert scheme $\Hilb^p(\mathbf{P}^n_S/S)$ is connected.
+\end{theorem}
+
+This implies that the Hilbert polynomial is, essentially, the only continuous invariant of things in projective space.
 \subsection{B\'ezout's theorem}
 
 
