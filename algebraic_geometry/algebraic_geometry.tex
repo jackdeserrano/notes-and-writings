@@ -174,6 +174,8 @@ Elliptic curves are the one-dimensional case of abelian varieties: algebraic, pr
 \end{warn}
 
 \subsection{B\'ezout, Pappus, Pascal}
+\label{s_3}
+
 \begin{theorem}[B\'ezout, Newton\protect\footnotemark]
 	\footnotetext{\underline{Principia}, Sect. VI, Lemma XXVI.}\label{}\index{B\'ezout's theorem}\text{}
 Two curves of degrees $m$ and $n$ have at most $mn$ points of intersection unless they have a common component. Two curves of degrees $m$ and $n$ in the plane have $mn$ points of intersection over $\C$ counting points at infinity and multiplicities.
@@ -2587,7 +2589,104 @@ Let $S$ be a Noetherian prescheme, let $n$ be an integer, and let $p(z)\in\Q [z]
 \end{theorem}
 
 This implies that the Hilbert polynomial is, essentially, the only continuous invariant of things in projective space.
+
 \subsection{B\'ezout's theorem}
+Here is B\'ezout's theorem in its simplest form.
+\begin{theorem}[B\'ezout]\label{b_1}\index{B\'ezout's theorem}\text{}
+Curves of degrees $m$ and $n$ intersect at $mn$ points.
+\end{theorem}
+However, this is wrong as stated. Two distinct parallel lines, for example, do not intersect. To patch this, one includes points at infinity (that is, one works in projective space). The curves $y=0$ and $y=x^2+1$ do not intersect over $\R$, but they do over $\C$. Thus, one needs to work over an algebraically closed field. Thirdly, the curves must not have components in common. Further, the curves $y=0$ and $y=x^2$ intersect at one point, so one needs to consider multiplicities.\footnote{Things get even more complicated here when one considers, for example, $y^3-x^4=0$ and $y^5 - x^6=0$.} It is challenging, though, to define ``multiplicity.''
+
+Let's try again.
+
+\begin{theorem}[B\'ezout]\label{b_2}\index{B\'ezout's theorem}\text{}
+Two distinct irreducible curves in $\mathbf{P}^2\mathbf{C}$ of degress $m$ and $n$ intersect at $mn$ points up to multiplicity.
+\end{theorem}
+
+Further, one might want that $n$ distinct hypersurfaces in $\mathbf{P}^n\mathbf{C}$ of degrees $d_1,\hdots, d_n$ usually\footnote{That is, when the intersections are not of the wrong dimension.} intersect at $d_1\cdots d_n$.
+
+One might ask whether the intersection of two algebraic sets of degrees $m$ and $n$ is of degree $mn$, setting aside the definition of the degree of an algebraic set. Oftentimes, it is.\footnote{Recall the informal ``perturbation proof'' from \cref{s_3}. Even though it doesn't prove anything, it gives one the impression that B\'ezout's theorem is true, and it extends to higher dimensions.} 
+
+Now, one recalls the theory of finitely-generated modules over Noetherian rings. Suppose $M$ is a finitely-generated module over a Noetherian ring $R$. One can filter $M$
+\begin{align*}
+	0=M_0 \subset M_1\subset \cdots\subset M_n=M
+\end{align*}
+such that $M_i/M_{i-1} \isomto R/\mathfrak{p}$ where $\mathfrak{p}$ is a prime ideal.
+\begin{esquisse}
+	Choose $I$ maximal among ideals such that $R/I$ is isomorphic to a submodule of $M$. Check that $I$ is prime. Set $M_1\isomto R/I$. Induction.
+\end{esquisse}
+
+One would like to define the multiplicity of $R/\mathfrak{p}$ in $M$ to be the number of times $R/\mathfrak{p}\isomto M_i/M_{i-1}$.
+
+\begin{example}[ ]\label{}\text{}
+Take $R=\mathbf{Z}$ and $M$ a finite (abelian) group. Then $R/\mathfrak{p} \isomto \Z/2\Z,\Z/3\Z,$ etc. If $\# M = p_1^{n_1}\cdots p_\ell^{n_\ell}$, the number of times $\Z/p_1\Z$ is in $M$ is $n_1$. 
+\end{example}
+
+\begin{example}[ ]\label{fail_1}\text{}
+Let $M=\mathbf{Z}$. In the filtration $0=M_0\subset M_1=\mathbf{Z}$, $\mathbf{Z}/2\mathbf{Z}$ doesn't occur. However, in the filtration $0\subset 2\mathbf{Z}\subset \mathbf{Z}$, $\mathbf{Z}/2\mathbf{Z}$ occurs once.
+\end{example}
+
+\begin{remark}
+	Therefore, one cannot define ``multiplicity'' as above for all primes: It depends on the filtration.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Let $M$ be a finitely-generated module over $\mathbf{Z}$. Then the multiplicity of $\mathbf{Z}/(0)$ in $M$ is defined: It is the rank of $M$, which one might determine by tensoring with $\mathbf{Q}$ and taking the dimension of the resulting vector space.
+\end{example}
+
+Look at the prime ideals $\mathfrak{p}_1,\mathfrak{p}_2,\hdots$ with $R/\mathfrak{p}_i$ in a filtration of $M$. If $\mathfrak{p}_j$ is minimal, one gets a well-behaved multiplicity. Notice that, in \cref{fail_1}, $(0)$ is minimal but $(2)$ is not. If $\mathfrak{p}$ is minimal, its \defn{multiplicity}\index{multiplicity of an ideal} is the length of $M_\mathfrak{p}$ over $R_\mathfrak{p}$, where $R_\mathfrak{p}$ is the localization of $R$ at $\mathfrak{p}$, etc.
+
+Let $R=\mathbf{C}[x,y]$. Prime ideals of $R$ correspond to points, curves, and the plane. Suppose one draws the prime ideals that occur in a filtration of an $R$-module $M$. The minimal primes are ``maximal varieties.''\footnote{That is, if one has a point and a curve that intersects that point, the minimal prime there is the curve.} One might think of this set of primes as the annihilator of $M$, an ideal that corresponds to an algebraic set that splits up into irreducible subsets that correspond to the minimal primes.
+
+There is a similar theorem for graded modules over graded rings, in which the only difference is that one might shift the degree of $R/\mathfrak{p}$ by an integer $\ell$. 
+
+Now, let us state and prove B\'ezout's theorem.
+
+\begin{theorem}[B\'ezout]\label{b_3}\index{B\'ezout's theorem}\text{}
+Let $Y$ be a variety in $\mathbf{P}^n$. Let $H$ be a hypersurface given by $f(x_0,\hdots, x_n)=0$. Suppose that $Y$ is not contained in $H$. Then 
+\begin{align*}
+	\sum_{j}^{} \mult(Y, H; Z_j) \deg (Z_j) = \deg  (Y)\deg (H)
+\end{align*}
+where $Y\cap H$ is a union of irreducible components $Z_j$ and $\mult(Y,H;Z_j)$ is the multiplicity of the intersection of $Y$ and $H$ at $Z_j$.
+\end{theorem}
+
+\begin{proof}
+Consider the exact sequence of modules
+\[
+\begin{tikzcd}
+	0\ar[r] & k[x_0,\hdots,x_n] / I_Y \ar[r, "\times f"] & k[x_0,\hdots, x_n] /I_Y \ar[r] & k[x_0,\hdots, x_n]/(I_Y, f)\ar[r] &0
+\end{tikzcd}
+\]
+in which the degree of the second term is shifted by $-\deg f$. Note that the Hilbert polynomials of these terms are related: The Hilbert polynomial of the last term is $P_Y(z) - P_Y (z-d)$ where $d=\deg f$. The Hilbert polynomial of $Y$ is
+\begin{align*}
+	P_Y(z) =  \frac{\deg(Y)z^{\dim Y}}{(\dim Y)^!}+\cdots
+\end{align*}
+and
+\begin{align*}
+	P_Y(z-d) =  \frac{\deg(Y) (z-d)^{\dim Y}}{(\dim Y)!}+\cdots.
+\end{align*}
+Thus, the leading term of $P_Y(z)-P_Y (z-d)$ is $d\deg(Y) z^{\dim Y-1}/ (\dim Y- 1)!$, so the Hilbert polynomial of $k[x_0,\hdots,x_n]/(I_Y,f)$ has leading term
+\begin{align*}
+	\deg(H)\deg (Y)  \frac{z^{\dim Y\cap H}}{(\dim Y\cap H)!}.
+\end{align*}
+This implies that $\dim (Y\cap H) =\dim (Y)-1$. 
+
+The module $M=k[x_0,\hdots, x_n]/(I_Y, f)$ has a filtration 
+\begin{align*}
+	0  = M_0\subset M_1\subset\cdots \subset M_k = M
+\end{align*}
+such that the quotients are of the form $R/\mathfrak{q}_i(\ell_i)$ for some graded prime ideal $\mathfrak{q}_i$. Shifting by $\ell_i$ does not change the leading coefficient since it is comes with the dominant term asymptotically. Thus, the Hilbert polynomial of each $R/\mathfrak{q}_i(\ell_i)$ has leading term 
+\[
+	\frac{\deg (Z_i)}{(\dim Z_i)!}z^{\dim Z_i}.
+\]
+Quoting dimension theory, $\dim Z_i = \dim (Y)-1$. Hence, 
+\begin{align*}
+	\deg(H)\deg (Y) =  \sum_{j}^{} \deg(Z_j) \mult (R/\mathfrak{q}_j(\ell_j) \textrm{ in $k[x_0,\hdots, x_n]/(I_Y,f)$}).
+\end{align*}
+The claim is that this last term is the multiplicity of the corresponding intersection.
+
+Quoting Dr. Borcherds, ``There's an old joke about a target shooter who got 100 percent in his target shooting. First, he would fire at the target. Whenever one of his bullets hit, he would draw a circle around it to indicate that that was the target he was firing at.'' We shall employ the same technique. Notice that we haven't defined the multiplicity of an intersection yet: In the spirit of the target shooter, we define the multiplicity of an intersection such that the result holds. 
+\end{proof}
 
 
 \section{Schemes}
