@@ -2699,6 +2699,112 @@ Quoting Dr. Borcherds, ``There's an old joke about a target shooter who got 100 
 \end{figure}
 
 \subsection{Introduction}
+Affine varieties over a field $k$ correspond to commutative rings $R$ that satisfy the following properties:
+\begin{enumerate}
+	\item $R$ is a $k$-algebra;
+	\item $R$ is finitely-generated as an algebra;
+	\item $R$ is reduced.
+\end{enumerate}
+The coordinate ring of an affine variety has these properties. Further, one can construct an affine variety from a commutative ring with these properties.
+
+The coordinate ring of a line $k[x]$ behaves similarly to $\mathbf{Z}$ or algebraic number fields such as $\mathbf{Z}[i]$. It was noticed in the nineteenth century that the theory of algebraic number fields was very similar to the theory of curves over finite fields. Hence, one wants algebraic geometry to include these things, so we don't want to require that $R$ is an algebra over a field. 
+
+One might want to consider the localization of the ring of rational functions $k(x)$ at the ideal $(x)$. However, this is not finitely-generated as an algebra.
+
+Further, one might want to intersect curves $y=x^2$ and $y=0$. Then, one considers the ring $k[x,y]/(y,x^2-y) \isomto k[x]/ (x^2)$. Classically, one replaces this with $k[x]/(x) = k$. However, when one does this, one loses information about the intersection. This replacement is the coordinate ring of a point, and while these curves intersect at a point, that point is really a ``double point.'' The ring $k[x]/(x^2)$ is two-dimensional, so it keeps track of the ``double point''; however, it has nilpotent elements.
+
+One sees the benefit in abandoning these extra conditions. Hence, one wants to define some generalization of an affine variety that corresponds to commutative rings. We shall call these mysterious things ``affine schemes.''\index{affine scheme} However, to define them, one needs to look into the theory of sheaves.
+
+\index{sheaf}Sheaves were introduced by Jean Leray circa 1950. Thereafter, Jean-Pierre Serre and Henri Cartan used them to study analytic varieties. Serre introduced sheaves to algebraic geometry in his famous ``Faisceaux Algébriques Cohérents'' of 1955.\footnote{FAC is a superb introduction to sheaf theory.}
+
+Prior to the introduction of sheaves, people found all sorts of invariants in algebraic geometry. Take, for example, the \index{arithmetic genus}arithmetic genus, which didn't seem to depend on a surface's embedding in projective space. It was hard to define or compute, though: One of its definitions was
+\begin{align*}
+	p\textsubscript{a} = \binom{\mu_0-1}{2} - (\mu_0 - 4) \epsilon_0 + \frac{\epsilon_1}{2} - \epsilon_0+2t
+\end{align*}
+where these numbers are some rather strangely-defined invariants.\footnote{This was the definition for two dimensions. Good luck with generalizing it.} With sheaves, the arithmetic genus of a surface is
+\begin{align*}
+	p\textsubscript{a} = \chi -1
+\end{align*}
+where the Euler characteristic $\chi$ is given by an alternating sum of dimensions of sheaf cohomology groups.
+
+Another such invariant was the \defn{irregularity}\index{irregularity of a surface} of a surface. The regularity was a weird thing that was related to the difference between the arithmetic and geometric genuses. However, with sheaves, it is, simply, the dimension of the first sheaf cohomology group of the structure sheaf. One extends this to higher dimensions by considering the dimension of higher sheaf cohomology groups. More generally, one defines the \defn{Hodge number}\index{Hodge number} 
+\begin{align*}
+	{\h}^{pq}(X) := \dim \HH^q(X,\Omega^p) 
+\end{align*}
+as the dimension of the $q$th homohology group of a sheaf of $p$-forms over a surface.
+
+\begin{example}[Motivation]\label{}\text{}
+Suppose $X$ is a topological space with an open set $U$. Let $\mathscr{F}(U)$ be the continuous functions from $U$ to $\mathbf{R}$. That is, $\mathscr{F}$ goes from open sets to abelian groups. One will call $\mathscr{F}$ a (pre)sheaf of abelian groups. 
+
+If $V$ and $U$ are open sets and $V\subseteq U$, there is a restriction map
+\begin{align*}
+	\rho_{UV} : \mathscr{F}(U)  \longrightarrow \mathscr{F}(V).
+\end{align*}
+Given open sets $W\subseteq V\subseteq U$, the restriction map $\rho$ makes
+\[
+\begin{tikzcd}
+	\mathscr{F}(U)\ar[r,"\rho"] \ar[dr,"\rho", swap] &  \mathscr{F}(V)\ar[d,"\rho"] \\
+						   & \mathscr{F}(W)
+\end{tikzcd}
+\]
+commute. That is, $\rho_{UW} = \rho_{VW} \rho_{UV}$. Further, $\rho_{UU}$ is the identity.
+
+A \defn{presheaf}\index{presheaf} of abelian groups is a map
+\begin{align*}
+	\mathscr{F} : \catn{Op}_X \longrightarrow \catn{Ab}
+\end{align*}
+together with restriction maps $\rho_{UV} : \mathscr{F}(U) \longrightarrow  \mathscr{F}(V)$ for all open sets $U\subseteq V$ satisfying the above conditions. 
+\end{example}
+
+One can think of $\mathscr{F}$ as a contravariant functor from $\catn{Op}_X$ to $\catn{Ab}$. The objects of $\catn{Op}_X$ are open sets; further, there is $1$ morphism $U\longrightarrow V$ if $U\subseteq V$ and $0$ otherwise. One sees that $\mathscr{F}$ is assigning an abelian group to every open set and giving a map from the abelian group of $V$ to the abelian group of $U$ whenever $U\subseteq V$.
+
+\begin{remark}
+	This indicates that one can replace $\catn{Op}_X$ with another category and still define presheaves (and similarly for $\catn{Ab}$). Grothendieck did this to define \'etale cohomology.
+\end{remark}
+
+\begin{example}[Presheaves]\label{}\text{}
+\begin{enumerate}
+	\item Let $X$ be a smooth manifold. Let $\mathscr{F}(U)$ be the smooth vector fields on $U$. Not only is $\mathscr{F}$ a presheaf, $\mathscr{F}$ is a sheaf.
+	\item Let $X$ be an affine variety. Let $\mathscr{F}(U)$ be the regular functions on $U$.
+	\item Let $X$ be a Riemann surface. Let $\mathscr{F}(U)$ be the holomorphic functions on $U$. Riemann surfaces can be viewed as complex manifolds, smooth real manifolds, or topological manifolds. One gets different sheaves of functions from these perspectives.
+	\item Let $\mathscr{F}(U) = A$ be a fixed abelian group. This is a presheaf.\footnote{This is not true for all definitions of ``presheaf.'' For example, Hartshorne adds the condition that $\mathscr{F}(\emptyset) = 0$.}
+\end{enumerate}
+\end{example}
+
+
+Suppose $U$ is a union of open sets $U_\alpha$. A presheaf $\mathscr{F}$ is \defn{separated}\index{separated presheaf} if the image of $f$ in all $\rho_{UU_\alpha}$ is $0$ implies $f=0$ for all $f\in \mathscr{F}(U)$. 
+
+Suppose that $\mathscr{F}$ is separated. Suppose $f_\alpha,f_\beta\in \mathscr{F}(U_\beta)$ have the same image in $\mathscr{F}(U_\alpha\cap U_\beta)$. If one can find $f\in \mathscr{F}(U)$ with images $f_\alpha$ in $\mathscr{F}(U_\alpha)$, then $\mathscr{F}$ is a \defn{sheaf}\index{sheaf}.
+
+\begin{example}[Presheaves that are not sheaves]\label{}\text{}
+\begin{enumerate}
+	\item Let $\mathscr{F}(U) = A$ for a fixed abelian group $A\ne 0$. A sheaf satisfies $\mathscr{F}(\emptyset) = 0$.
+	\item Let
+		\begin{align*}
+			\mathscr{F}(U) = 
+			 \begin{cases}
+				 0&U=\emptyset\\
+				 A&\textrm{otherwise.}
+			\end{cases}
+		\end{align*}
+		Let $U = U_1\sqcup U_2$. Then $\mathscr{F}(U) =A$, but, if $\mathscr{F}$ were a sheaf, then $\mathscr{F}(U) =  \mathscr{F}(U_1)\times \mathscr{F}(U_2) = A\times A$.
+\end{enumerate}
+
+A presheaf $\mathscr{F}$ is a sheaf if the following sequence is exact:
+\[
+\begin{tikzcd}
+	\displaystyle 0 \ar[r] & \mathscr{F}(U) \ar[r] & \prod_\alpha  \mathscr{F}(U_\alpha) \ar[r, yshift = 0.5 ex] \ar[r, yshift = -0.5 ex] & \prod_{\alpha,\beta}  \mathscr{F}(U_\alpha\cap U_\beta).
+\end{tikzcd}
+\]
+Note that 
+\[
+\begin{tikzcd}
+	A\ar[r] &A\times A \ar[r, yshift = 0.5 ex] \ar[r, yshift = -0.5 ex] & 0 
+\end{tikzcd}
+\]
+is not exact.
+\end{example}
+
 \subsection{\'Etale spaces}
 \subsection{Exactness and sheaves}
 \subsection{$f\inv$ and $f_*$}
