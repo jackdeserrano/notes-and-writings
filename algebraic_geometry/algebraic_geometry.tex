@@ -629,7 +629,7 @@ What is the dimension of this parameter space? The obvious guess is $ (18-6-6) -
 \iffalse
 \begin{figure}
 	\begin{center}
-		[scale=0.5]{images/cyclohexane_conformations}
+		\includegraphics[scale=0.5]{images/cyclohexane_conformations}
 		\caption{The conformations of cyclohexane.}
 	\end{center}
 \end{figure}
@@ -2812,6 +2812,88 @@ is not exact.
 By the way, an element $s\in \mathscr{F}(U)$ is called a \defn{section}\index{section} and an element $s\in \mathscr{F}(X)$ is called a \defn{global section}\index{global section}.
 
 \subsection{\'Etale spaces}
+Sheaves seem to be an unnecessarily complicated and abstract way to describe functions on a space. Of course, this isn't the case.
+
+\begin{example}[ ]\label{}\text{}
+The points of the affine line $\mathbf{C}$ correspond to the maximal ideals of the ring $\mathbf{C}[x]$.\footnote{The point $\alpha\in \mathbf{C}$ corresponds to the maximal ideal $(x-\alpha)$.} Given $f\in \mathbf{C}[x]$, define
+\begin{align*}
+	D_f := \{\alpha : f(\alpha)\ne 0\}.
+\end{align*}
+Then, open sets have a basis $\{D_f\}$ in the Zariski topology. Further, the ring of regular functions of an open set is given as follows: 
+\begin{align*}
+	\mathscr{F}(D_f) = \{g/f^n: g\in \C[x]\}
+\end{align*}
+
+Let us replace $\mathbf{C}[x]$ with $\mathbf{Z}$. The maximal ideals of $\mathbf{Z}$ are given by
+\begin{align*}
+	\specmax\mathbf{Z} = \{(2),  (3),\hdots\}.
+\end{align*}
+This set is called the \defn{maximal spectrum}\index{maximal spectrum} of $\mathbf{Z}$. Given $f\in \mathbf{Z}$, define 
+\begin{align*}
+	D_f := \{\mathfrak{m}: f\notin  \mathfrak{m}\}.
+\end{align*}
+Then, one gets a basis of open sets $\{D_f\}$. Now, define
+\begin{align*}
+	\mathscr{F}(D_f) := \{ g/f^n : g\in \mathbf{Z}\}.
+\end{align*}
+
+One pretends that an integer is a function on the space $\specmax \mathbf{Z}$. One notes the difference, though: $f\in \C[x]$ has values in $\mathbf{C}$ at all points of $\mathbf{C} = \mathbf{C}[x]/(x-\alpha)$, but $f\in \mathbf{Z}$ has values in $\mathbf{Z}/(p)$, which varies as the point varies. Nevertheless, $\mathscr{F}$ satisfies the sheaf property.\footnote{This fact comes down to the fundamental theorem of arithmetic.}
+\end{example}
+
+Sheaves of sets behave similarly to sets; likewise, sheaves of abelian groups behave similarly to abelian groups. Hence, one can form a category of sheaves of sets and of sheaves of abelian groups. Given sheaves $\mathscr{F}$ and $\mathscr{G}$, one has a morphism by defining a morphism $\mathscr{F}(U) \longrightarrow \mathscr{G}(U)$ for all open sets $U$ that is compatible with the restriction map: Given open sets $V\subseteq U$,
+\[
+\begin{tikzcd}
+	\mathscr{F}(U)\ar[d,"\rho", swap] \ar[r]&  \mathscr{G}(U)  \ar[d,"\rho"] \\
+	\mathscr{F}(V) \ar[r]&  \mathscr{G}(V)
+\end{tikzcd}
+\]
+commutes. Hence, sheaves comprise a category.
+
+The category of sheaves of sets is a sort of weak model of set theory. It is called a \defn{topos}\index{topos}: One does set theory with sheaves over a topological space instead of sets.
+
+Suppose
+\[
+\begin{tikzcd}
+	0\ar[r]&A\ar[r]&B\ar[r]&C\ar[r]&0
+\end{tikzcd}
+\]
+is an exact sequence of abelian groups. What this means is clear. Now, what does it mean for
+\[
+\begin{tikzcd}
+        0\ar[r]&\mathscr{A}\ar[r]&\mathscr{B}\ar[r]&\mathscr{C}\ar[r]&0,
+\end{tikzcd}
+\]
+a sequence of sheaves, to be exact? The obvious guess is that
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{A}(U)\ar[r]&\mathscr{B}(U)\ar[r]&\mathscr{C}(U)\ar[r]&0
+\end{tikzcd}
+\]
+is exact for all open sets $U$. This is wrong: While this is okay for saying that $\mathscr{A}\longrightarrow \mathscr{B}$ is injective, it is not for saying that $\mathscr{B} \longrightarrow \mathscr{C}$ is surjective.
+
+\begin{example}[ ]\label{}\text{}
+Let $X$ be a circle. Let $X_1=X$ and $X_2$ be a circle winding around $X$ twice. Let $\mathscr{F}_1(U)$ be the sections from $U$ to $X_1$ and $\mathscr{F}_2(U)$ be the sections from $U$ to $X_2$. These are sheaves. There is a natural surjective map from $X_2$ to $X_1$ (and a map from $X_1$ to $X$), whence one gets a natural map $\mathscr{F}_2\longrightarrow \mathscr{F}_1$. Note that $\mathscr{F}_2(X) \longrightarrow \mathscr{F}_1(X)$ is not surjective: $\mathscr{F}_1(X)$ is a point and $\mathscr{F}_2(X)$ is empty, since there are no continuous maps from $X$ to $X_2$ that are sections of it.
+
+Hence, one has two different ways to talk about surjectivity depending on whether one looks at $X_2\longrightarrow X_1$ or $\mathscr{F}_2(X) \longrightarrow \mathscr{F}_1(X)$. These correspond to local and global notions respectively, and it turns out that one should work with a local definition. 
+\end{example}
+
+Suppose one has a continuous map from $A$ to $X$. One can construct a sheaf by letting $\mathscr{F}(U)$ be continuous sections from $U$ to $A$. Suppose further that one has a continuous map from $B$ to $X$. If $\mathscr{F}$ is the ``sheaf of $A$'' and $\mathscr{G}$ is the ``sheaf of $B$,'' a continuous map from $A$ to $B$ such that
+\[
+\begin{tikzcd}
+	A \ar[d]\ar[r] &B\ar[dl]\\X
+\end{tikzcd}
+\]
+commutes induces a map $\mathscr{F}\longrightarrow \mathscr{G}$. The map $\mathscr{F}(X) \longrightarrow \mathscr{G}(X)$ does not need to be surjective if $A\longrightarrow B$ is surjective.
+
+\begin{problem}
+	Does a sheaf $\mathscr{F}$ come from a map $A\longrightarrow X$ for some $A$?
+\end{problem}
+
+The answer is ``yes,'' even if one replaces ``sheaf'' with ``presheaf.'' Now, we shall construct the \index{\'etale space}\'etale space of the presheaf $\mathscr{F}$. 
+
+Given a space $X$, we want to construct a space $A$ mapping to $X$ that has something to do with $\mathscr{F}$. First, given $x\in X$, we want to determine the fibre of $A$ above $x$. A point $p$ of the fibre is given by a section $f\in \mathscr{F}(U)$ for some open neighbourhood $U$ of $p$. One says that $f$ and $g$ are the same point of the fibre if the images of $f$ and $g$ in $V$ are the same for some small $V$ containing $p$. Thus, if one thinks of $\mathscr{F}$ as the continuous sections of something, then the fibre is, roughly, equivalence classes of sections.
+
+Now, endow $A$ with a topology. A basis of open sets is given as follows: Suppose $f\in \mathscr{F}(U)$. For every $p\in U$, take the image of $f$ in the fibre above $p$. The union of these images is an open set. These open sets give a basis for the topology. One calls $A$ the \defn{\'etale space}\index{\'etale space} of $\mathscr{F}$. Note that a map $A\longrightarrow X$ is \defn{\'etale} if, for all $\alpha\in A$, there is a neighbourhood $V$ of $\alpha$ such that the map from $V$ to $\img X$ is a homeomorphism.
 \subsection{Exactness and sheaves}
 \subsection{$f\inv$ and $f_*$}
 \subsection{Definition of a scheme}
