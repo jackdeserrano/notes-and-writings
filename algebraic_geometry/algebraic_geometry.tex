@@ -2894,7 +2894,113 @@ The answer is ``yes,'' even if one replaces ``sheaf'' with ``presheaf.'' Now, we
 Given a space $X$, we want to construct a space $A$ mapping to $X$ that has something to do with $\mathscr{F}$. First, given $x\in X$, we want to determine the fibre of $A$ above $x$. A point $p$ of the fibre is given by a section $f\in \mathscr{F}(U)$ for some open neighbourhood $U$ of $p$. One says that $f$ and $g$ are the same point of the fibre if the images of $f$ and $g$ in $V$ are the same for some small $V$ containing $p$. Thus, if one thinks of $\mathscr{F}$ as the continuous sections of something, then the fibre is, roughly, equivalence classes of sections.
 
 Now, endow $A$ with a topology. A basis of open sets is given as follows: Suppose $f\in \mathscr{F}(U)$. For every $p\in U$, take the image of $f$ in the fibre above $p$. The union of these images is an open set. These open sets give a basis for the topology. One calls $A$ the \defn{\'etale space}\index{\'etale space} of $\mathscr{F}$. Note that a map $A\longrightarrow X$ is \defn{\'etale} if, for all $\alpha\in A$, there is a neighbourhood $V$ of $\alpha$ such that the map from $V$ to $\img X$ is a homeomorphism.
+
 \subsection{Exactness and sheaves}
+\begin{example}[ ]\label{}\text{}
+Let $X=\mathbf{R}$ and let $\mathscr{F}$ be the sheaf of smooth functions, so $\mathscr{F}(U)$ comprises the smooth functions on $U$. One can think about the fibre above $0$ as germs of smooth functions at $0$. Let $A = \Et ( \mathscr{F})$ be the \'etale space of $\mathscr{F}$. 
+
+Note that $A$ is not Hausdorff: Consider the fibres $f=0$ and $g$, where $g$ is a smooth function that is $0$ to the left of $0$ and has infinitely many bumps to the right. 
+One sees that $f$ and $g$ are distinct points of the fibre above $0$ since there are no open neighbourhoods of $0$ in which they are the same. However, any open neighbourhoods of $f$ and $g$ have a point in common.
+
+If $\mathscr{G}$ is the sheaf of analytic functions, then $\Et(\mathscr{G})$ is Hausdorff.
+\end{example}
+
+From any presheaf $\mathscr{F}$, one gets an \'etale space. From any \'etale space, one gets a sheaf of sections $\mathscr{F}\sh$. The sheaf $\mathscr{F}\sh$ is called the \defn{sheafification}\index{sheafification} of the presheaf $\mathscr{F}$. Note the following properties:
+\begin{enumerate}
+	\item If $\mathscr{F}$ is a presheaf and $\mathscr{G}$ is a sheaf and one has a map $\mathscr{F}\longrightarrow \mathscr{G}$, one has a unique sheaf morphism such that
+		\[
+		\begin{tikzcd}
+			\mathscr{F} \ar[r] \ar[d] & \mathscr{G}\\
+			\mathscr{F}\sh \ar[ur, dashed]
+		\end{tikzcd}
+		\]
+		commutes.
+	\item If $\mathscr{F}$ is a sheaf, then $\mathscr{F}\longrightarrow \mathscr{F}\sh$ is an isomorphism. 
+	\item If $A\longrightarrow X$ is \'etale and $\mathscr{F}$ is the sheaf of sections, then
+		\begin{align*}
+			\Et ( \mathscr{F} ) \isomto A.
+		\end{align*}
+\end{enumerate}
+
+Thus, sheaves over $X$ are sort of equivalent to \'etale spaces $A\longrightarrow X$.\footnote{Sheaves are called ``sheaves'' because the \'etale space of a sheaf is the union of its fibres (stalks). Note that the definition of ``sheaf'' is ``a bundle of grain stalks laid lengthwise and tied together after reaping.''} In particular, a morphism of sheaves $\mathscr{F}\longrightarrow \mathscr{G}$ is an isomorphism if and only if the corresponding morphism of \'etale spaces is an isomorphism if and only if it is an isomorphism for all stalks. Let us digress to clarify some useful definitions.
+
+ \begin{definition}[ ]\label{}\text{}
+Let $\mathscr{F}$ be a presheaf on $X$. Let $x\in X$. The \defn{stalk}\index{stalk} of $\mathscr{F}$ at $x$ is the set
+\begin{align*}
+	\mathscr{F}_x := \varinjlim_{U\ni x} \mathscr{F}(U).
+\end{align*}
+Equivalently,
+\begin{align*}
+	\mathscr{F}_x = \{(U,s) : U\ni x, s\in  \mathscr{F}(U)\} / \sim
+\end{align*}
+where $(U_1,s_1)\sim(U_2,s_2) $ if and only if there exists an open set $U_3 \subset U_1\cap U_2$ with $x\in U_3$ and $s_1\big |_{U_3} = s_2\big |_{U_3}$.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+The \defn{germ}\index{germ} of $s\in \mathscr{F}(U)$ at a point $x$ is the equivalence class of $(s,U) \in  \mathscr{F}_x$.
+\end{definition}
+
+\begin{example}[Sheafification]\label{}\text{}
+Let $\mathscr{F}$ be the constant presheaf; that is,
+\begin{align*}
+	\mathscr{F}(U) := A
+\end{align*}
+for some fixed abelian group $A$. The fibre at each point is $A$. Hence, one sees that the \'etale space is $X\times A \longrightarrow X$ where $A$ has the discrete topology. Hence, $\mathscr{F}\sh(U)$ is continuous maps $U\longrightarrow A$. Since $A$ has the discrete topology, $\mathscr{F}\sh(U)=A$ if $U$ is connected and nonempty.\footnote{Apparently, the connectedness of the empty set is contested.} Further, $\mathscr{F}\sh(\emptyset ) = 0$. If $U$ has two open components, then $\mathscr{F}\sh(U) = A\times A$. 
+\end{example}
+
+A sequence of sheaves on $X$
+\[
+\begin{tikzcd}
+	\mathscr{F} \ar[r] &\mathscr{G}\ar[r] &\mathscr{H}
+\end{tikzcd}
+\]
+is exact if it is exact on the fibres (stalks). Similarly, a morphism of sheaves $\mathscr{F}\longrightarrow \mathscr{G}$ is injective/surjective if it is on the fibres (stalks).
+
+\begin{example}[Skyscraper sheaf]\label{}\text{}
+Fix $x\in X$ and an abelian group $A$. Define
+\begin{align*}
+	\mathscr{F}(U) := 
+	 \begin{cases}
+		 A & x\in U\\
+		 0&\textrm{otherwise.}
+	\end{cases}
+\end{align*}
+This is a sheaf called the \defn{skyscraper sheaf}\index{skyscraper sheaf} of $\mathscr{F}$ at $x$. Let $\mathscr{G}$ be the sheaf of smooth functions on $\mathbf{R}$. Given $\alpha\in \mathbf{R}$, one gets a map 
+\[
+\begin{tikzcd}
+	0\ar[r] & \mathscr{G}\ar[r, "\times \alpha"] &\mathscr{G}.
+\end{tikzcd}
+\]
+At all nonzero points, the corresponding map of fibres is an isomorphism, so the second arrow is an isomorphism except at $0$. One sees that
+\[
+\begin{tikzcd}
+	0\ar[r] &\mathscr{G}\ar[r,"\times \alpha"] &\mathscr{G}\ar[r] &\mathscr{F}\ar[r] &0
+\end{tikzcd}
+\]
+is exact where $\alpha = 0$ and $A=\mathbf{R}$, since, for nonzero $\alpha$, one gets the sequence of fibres
+\[
+\begin{tikzcd}
+	0 \ar[r] & B\ar[r, "\times \alpha"] & B\ar[r] &0
+\end{tikzcd}
+\]
+where $B$ is a space of all germs of functions at $0$ and the second arrow is an isomorphism, and, for $\alpha = 0$, one gets
+\[
+\begin{tikzcd}
+	0\ar[r] & B\ar[r,"\times\alpha"] & B\ar[r] & \mathbf{R}\ar[r] & 0.
+\end{tikzcd}
+\]
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the sequence
+\[
+\begin{tikzcd}
+	0 \ar[r] & 2\pi i \mathbf{Z} \ar[r] & \textrm{holomorphic functions} \ar[r, "\exp"] &\textrm{holomorphic functions $\ne 0$} \ar[r] & 0
+\end{tikzcd}
+\]
+where $2\pi i \mathbf{Z}$ is, really, the constant sheaf of $2\pi i \mathbf{Z}$ (and the rest of the things are sheaves, too).\footnote{``Holomorphic functions $\ne 0$'' means (the sheaf of) holomorphic functions that do not vanish anywhere.} This is an exact sequence of sheaves because it is exact on fibres (the third arrow is surjective since one can take $\log$ in the neighbourhood of a point). However, it is not exact on sections of open sets: Take $U = \mathbf{C}-\{0\}$ and let $f(z)=z$ be the nonzero holomorphic function. Then, there must be a function $g$ such that $\exp g = z$ at all points. One recalls that this doesn't work: $\log$ is not holomorphic.
+\end{example}
+
 \subsection{$f\inv$ and $f_*$}
 \subsection{Definition of a scheme}
 \subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
