@@ -2742,7 +2742,7 @@ Suppose $X$ is a topological space with an open set $U$. Let $\mathscr{F}(U)$ be
 
 If $V$ and $U$ are open sets and $V\subseteq U$, there is a restriction map
 \begin{align*}
-	\rho_{UV} : \mathscr{F}(U)  \longrightarrow \mathscr{F}(V).
+	\rho_{U}^V : \mathscr{F}(U)  \longrightarrow \mathscr{F}(V).
 \end{align*}
 Given open sets $W\subseteq V\subseteq U$, the restriction map $\rho$ makes
 \[
@@ -2751,13 +2751,13 @@ Given open sets $W\subseteq V\subseteq U$, the restriction map $\rho$ makes
 						   & \mathscr{F}(W)
 \end{tikzcd}
 \]
-commute. That is, $\rho_{UW} = \rho_{VW} \rho_{UV}$. Further, $\rho_{UU}$ is the identity.
+commute. That is, $\rho_{U}^W = \rho_{V}^W \rho_{U}^V$. Further, $\rho_{U}^U$ is the identity.
 
 A \defn{presheaf}\index{presheaf} of abelian groups is a map
 \begin{align*}
-	\mathscr{F} : \free(\catn{Op}_X) \longrightarrow \free(\catn{Ab})
+	\mathscr{F} : \textrm{open subsets of $X$} \longrightarrow \textrm{abelian groups}
 \end{align*}
-together with restriction maps $\rho_{UV} : \mathscr{F}(U) \longrightarrow  \mathscr{F}(V)$ for all open sets $U\subseteq V$ satisfying the above conditions. 
+together with restriction maps $\rho_{U}^V : \mathscr{F}(U) \longrightarrow  \mathscr{F}(V)$ for all open sets $U\subseteq V$ satisfying the above conditions. 
 \end{example}
 
 One can think of $\mathscr{F}$ as a contravariant functor from $\catn{Op}_X$ to $\catn{Ab}$. The objects of $\catn{Op}_X$ are open sets; further, there is $1$ morphism $U\longrightarrow V$ if $U\subseteq V$ and $0$ otherwise. One sees that $\mathscr{F}$ is assigning an abelian group to every open set and giving a map from the abelian group of $V$ to the abelian group of $U$ whenever $U\subseteq V$.
@@ -2776,7 +2776,7 @@ One can think of $\mathscr{F}$ as a contravariant functor from $\catn{Op}_X$ to 
 \end{example}
 
 
-Suppose $U$ is a union of open sets $U_\alpha$. A presheaf $\mathscr{F}$ is \defn{separated}\index{separated presheaf} if the image of $f$ in all $\rho_{UU_\alpha}$ is $0$ implies $f=0$ for all $f\in \mathscr{F}(U)$. 
+Suppose $U$ is a union of open sets $U_\alpha$. A presheaf $\mathscr{F}$ is \defn{separated}\index{separated presheaf} if the image of $f$ in all $\rho_{U}^{U_\alpha}$ is $0$ implies $f=0$ for all $f\in \mathscr{F}(U)$. 
 
 Suppose that $\mathscr{F}$ is separated. Suppose $f_\alpha,f_\beta\in \mathscr{F}(U_\beta)$ have the same image in $\mathscr{F}(U_\alpha\cap U_\beta)$. If one can find $f\in \mathscr{F}(U)$ with images $f_\alpha$ in $\mathscr{F}(U_\alpha)$, then $\mathscr{F}$ is a \defn{sheaf}\index{sheaf}.
 
@@ -2998,10 +2998,80 @@ Consider the sequence
 	0 \ar[r] & 2\pi i \mathbf{Z} \ar[r] & \textrm{holomorphic functions} \ar[r, "\exp"] &\textrm{holomorphic functions $\ne 0$} \ar[r] & 0
 \end{tikzcd}
 \]
-where $2\pi i \mathbf{Z}$ is, really, the constant sheaf of $2\pi i \mathbf{Z}$ (and the rest of the things are sheaves, too).\footnote{``Holomorphic functions $\ne 0$'' means (the sheaf of) holomorphic functions that do not vanish anywhere.} This is an exact sequence of sheaves because it is exact on fibres (the third arrow is surjective since one can take $\log$ in the neighbourhood of a point). However, it is not exact on sections of open sets: Take $U = \mathbf{C}-\{0\}$ and let $f(z)=z$ be the nonzero holomorphic function. Then, there must be a function $g$ such that $\exp g = z$ at all points. One recalls that this doesn't work: $\log$ is not holomorphic.
+where $2\pi i \mathbf{Z}$ is, really, the constant sheaf of $2\pi i \mathbf{Z}$ (and the rest of the things are sheaves, too).\footnote{``Holomorphic functions $\ne 0$'' means ``(the sheaf of) holomorphic functions that do not vanish anywhere.''} This is an exact sequence of sheaves because it is exact on fibres (the third arrow is surjective since one can take $\log$ in the neighbourhood of a point). However, it is not exact on sections of open sets: Take $U = \mathbf{C}-\{0\}$ and let $f(z)=z$ be the nonzero holomorphic function. Then, there must be a function $g$ such that $\exp g = z$ at all points. One recalls that this doesn't work: $\log$ is not holomorphic.
 \end{example}
 
-\subsection{$f\inv$ and $f_*$}
+\subsection{$f_*$ and $f^{-1}$}
+Suppose $f:X\longrightarrow Y$ is a continuous map of topological spaces. Let $\catn{Sh}_X$ be the category of sheaves of abelian groups on $X$. We shall define functors $f_* : \catn{Sh}_X \longrightarrow \catn{Sh}_Y$ and $f^{-1} : \catn{Sh}_Y \longrightarrow \catn{Sh}_X$.
+
+Recall that a sheaf $\mathscr{F}$ on $X$ can be viewed as a map from the open sets of $X$ to abelian groups or as an \'etale space over $X$.
+
+If $U$ is an open subset of $Y$, then
+\begin{align*}
+	f_*(\mathscr{F}) (U) :=  \mathscr{F}(f^{-1}(U))
+\end{align*}
+where $f^{-1}(U)$ is the preimage of $U$ under $f$.
+
+\begin{example}[ ]\label{}\text{}
+Let $Y$ be a point. Let $\mathscr{F}$ be a sheaf on $X$. The space $Y$ has $1$ nonempty open set, so a sheaf on $Y$ is a group. Therefore,
+\begin{align*}
+	f_*(\mathscr{F}) (Y) =  \mathscr{F}(X)
+\end{align*}
+comprises the global sections of $\mathscr{F}$.
+\end{example}
+
+One sees that $f_*$ does not preserve surjectivity: If $\mathscr{F}_1\longrightarrow \mathscr{F}_2$ is a surjective morphism of sheaves, then $f_*(\mathscr{F}_1)\longrightarrow f_*(\mathscr{F}_2)$ does not need to be surjective.
+
+Suppose
+\[
+\begin{tikzcd}
+	0 \ar[r] &\mathscr{A} \ar[r] &\mathscr{B} \ar[r] &\mathscr{C}\ar[r]&0
+\end{tikzcd}
+\]
+is an exact sequence of sheaves on $X$. Then
+\[
+\begin{tikzcd}
+	0 \ar[r]&f_*(\mathscr{A}) \ar[r] &f_*(\mathscr{B}) \ar[r] &f_*(\mathscr{C})
+\end{tikzcd}
+\]
+is exact. 
+
+Suppose $p$ is a point of $Y$. The elements of the fibre of $f_*(\mathscr{B})$ above $p$ are given by elements of $f_*(\mathscr{B})(U)$ where $U\ni p$; this set is given by $\mathscr{F}(f^{-1}(U))$ where $f^{-1}(U)$ denotes the premiage. Given an exact sequence sequence of sheaves
+\[
+\begin{tikzcd}
+	 0 \ar[r] &\mathscr{A} \ar[r] &\mathscr{B} \ar[r] &\mathscr{C}\ar[r]&0
+\end{tikzcd}
+\]
+and an element in $f_*(\mathscr{B})$ that is in the kernel of the third arrow, it must be the image of something in $f_*(\mathscr{A})$. Thus, the resulting sequence is exact.
+
+Let $\mathscr{G}$ be a sheaf on $Y$. The sheaf $\mathscr{G}$ corresponds to an \'etale space $B$ over $Y$. so there is a local homeomorphism $B\longrightarrow Y$. One has a pullback square
+\[
+\begin{tikzcd}
+	B\times_Y X \ar[r] \ar[d] & B\ar[d]\\
+	X \ar[r] & Y
+\end{tikzcd}
+\]
+whose kernel is the subset of $B\times_Y X$ consisting of points that have the same image in $Y$. Alternatively, if $p$ is a point in $X$, then the fibre above $p$ of $B\times Y X$ is the same as the fibre above $f(p)$ of $B$. The check that $B$ is \'etale over $Y$ implies that $B\times_Y X$ is \'etale over $X$ is straightforward, so $B\times_Y X$ gives a sheaf. One defines $f^{-1}(\mathscr{G})$ to be the sheaf of the \'etale space $B\times_Y X\longrightarrow X$.
+
+\begin{remark}
+	The functor $f^{-1}$ preserves exactness.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $X\subseteq Y$. If $\mathscr{G}$ is a sheaf on $Y$, then $f^{-1}(\mathscr{G})$ can be thought of as the restriction of $\mathscr{G}$ to $X$. The fibre of $f^{-1}(\mathscr{G})$ at $p\in X$ is the fibre of $\mathscr{G}$ at $p\in Y$.
+\end{example}
+
+Notice that $f^{-1}$ is left adjoint to $f_*$: Suppose $\mathscr{F}$ is a sheaf on $X$ and $\mathscr{G}$ is a sheaf on $Y$. Then $f^{-1}(\mathscr{G})$ is a sheaf on $X$ and $f_*(\mathscr{F})$ is a sheaf on $Y$. One has maps
+\[
+\begin{tikzcd}
+	f^{-1}(\mathscr{G}) \ar[d]& \mathscr{G}\ar[d]\\
+	\mathscr{F} & f_*(\mathscr{F}).
+\end{tikzcd}
+\]
+Informally, adjointness means that these maps are the same in some sense. One might see this via the fact that maps $f^{-1}(\mathscr{G})\longrightarrow \mathscr{F}$ and $\mathscr{G}\longrightarrow f_*(\mathscr{F})$ are somehow the same as collections of maps $\mathscr{G}(V) \longrightarrow \mathscr{F}(U)$ whenever one has open sets $U\subseteq X$ and $V\subseteq Y$ with $f(U)\subseteq V$; these maps must be compatible with the restriction maps.
+
+If $F$ is left adjoint to $G$, then $F$ preserves right exactness and $G$ preserves left exactness. Since $f^{-1}$ is left adjoint to $f_*$, one sees that $f_*$ is left exact (as we showed) and $f^{-1}$ is right exact (as we showed). Note, however, that we showed that $f^{-1}$ is exact (that is, it is also left exact).
+
 \subsection{Definition of a scheme}
 \subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
 \subsection{More examples of $\Spec R$}
