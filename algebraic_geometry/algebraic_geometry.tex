@@ -20,7 +20,7 @@
     \vspace*{\fill}
 \fi
 \maketitle
-These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} Dr. Borcherds refers to Hartshorne's \underline{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} I tend to use Grothendieck's EGA.
+These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} Dr. Borcherds refers to Hartshorne's \underline{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} I tend to use Grothendieck's EGA. Unless stated otherwise, rings are assumed to be commutative.
 \tableofcontents
 \ifams
 	\vspace*{\fill}
@@ -3073,6 +3073,99 @@ Informally, adjointness means that these maps are the same in some sense. One mi
 If $F$ is left adjoint to $G$, then $F$ preserves right exactness and $G$ preserves left exactness. Since $f^{-1}$ is left adjoint to $f_*$, one sees that $f_*$ is left exact (as we showed) and $f^{-1}$ is right exact (as we showed). Note, however, that we showed that $f^{-1}$ is exact (that is, it is also left exact).
 
 \subsection{Definition of a scheme}
+Alexander Grothendieck introduced schemes in the 1950s. At this time, mathematicians such as Weil, Serre, Chevalley, and Grothendieck were experimenting with the foundations of algebraic geometry and looking at potential generalizations of algebraic varieties. The figure below illustrates generalizations of projective varieties.
+\begin{center}
+\begin{tikzpicture}[level 1/.style = {sibling distance = 5 cm}, level 4/.style = {sibling distance = 5 cm}]
+	\node {Projective variety}[edge from parent fork down]
+		child { node {Abstract variety\index{abstract variety} (Weil)}
+			child {node {Scheme (Grothendieck)\index{scheme}}
+				child {node {Locally ringed space\index{locally ringed space}}
+					child {node{Locally ringed topos\index{locally ringed topos}}}}
+				child {node {Algebraic space\index{algebraic space}}
+					child {node{Stack\index{stack}}}}
+				}
+		};
+\end{tikzpicture}
+\end{center}
+
+Smooth manifolds, complex manifolds, and topological maniforlds are examples of locally ringed spaces.
+A quotation of János Kollár that is found in \underline{The Princeton Companion to Mathematics} sums up the theory of stacks: 
+\begin{center}
+	\small The study of stacks is strongly recommended to people who would have been flagellants in earlier times. (367)
+\end{center}
+
+\begin{definition}[ ]\label{}\text{}
+A \defn{scheme}\index{scheme} is a \index{locally ringed space}locally ringed space that is locally isomorphic to an \index{affine scheme}affine scheme.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+A \defn{ringed space}\index{ringed space} is a space $X$ together with a sheaf of rings.
+\end{definition}
+
+\begin{example}[Ringed space]\label{}\text{}
+	A smooth manifold with the sheaf of smooth functions is a ringed space.
+\end{example}
+
+\begin{definition}[ ]\label{}\text{}
+A \defn{locally ringed space}\index{locally ringed space} is a ringed space in which all stalks are local rings.
+\end{definition}
+
+\begin{remark}
+	The maximal ideal corresponding to a stalk sort of corresponds to functions that vanish at the point.
+\end{remark}
+
+\begin{example}[Ringed space that isn't locally ringed]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{O}$ be a presheaf on $X$ given by $\mathscr{O}(U) := R$ for a fixed ring $R$. Then, $\mathscr{O}\sh(U)$ comprises functions $U\longrightarrow R$ where one gives $R$ the discrete topology. The local ring at $p\in X$ is isomorphic to $R$; hence, if $R$ is not a local ring, the corresponding ringed space is not locally ringed. 
+\end{example}
+
+\begin{definition}[ ]\label{}\text{}
+An \defn{affine scheme}\index{affine scheme} is isomorphic to the spectrum $\Spec R$ of a ring $R$. The spectrum $\Spec R$ is a locally ringed space whose points are the prime ideals of $R$ and whose topology is given by a basis of open sets
+\begin{align*}
+	U_r = \{\mathfrak{p} \textrm{ prime}: \mathfrak{p}\not\ni r\}
+\end{align*}
+for $r\in R$; the sheaf of $\Spec R$ is given by
+\begin{align*}
+	\mathscr{O}(U_r) := R[r ^{-1}].
+\end{align*}
+\end{definition}
+
+\begin{remark}
+	One needs to define the sheaf on only the open sets $U_r$. Open sets that are not of this form tend to be unimportant and the action of the sheaf on the basis determines everything. By the way, it is not trivial that $\mathscr{O}$ is a sheaf.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+\begin{enumerate}
+	\item Let $R$ be a field. Then, $\Spec R$ has $1$ point $0$ and $\mathscr{O}(0)= R$.
+	\item Let $R=\mathbf{Z}$. Then, the points of $\Spec R$ are $(0),  (2),  (3),\hdots$. One sees that $U_r$ is either $\emptyset$ or $\Spec R$ minus a finite number of nonzero primes.\footnote{Not only is $\Spec R$ not necessarily Hausdorff, its points don't need to be closed: $(0)$ is not closed.} Also,
+		 \begin{align*}
+		 	\mathscr{O}(U_r) = \{ m/r^k\}.
+		 \end{align*}
+		 Further, the local ring at $(0)$ is $\mathbf{Q}$ and the local ring at $(p)$ is
+		 \begin{align*}
+		 	\mathbf{Z}_{(p)} := \{ m/n:p\nmid n\}.
+		 \end{align*}
+	 \item Let $R=\mathbf{C}[z]$. Then, $\Spec R$ has points $(0)$ and $(z-\alpha)$ for $\alpha\in \mathbf{C}$. One sees that 
+\begin{align*}
+	U_f = \{ (z-\alpha) : f (\alpha)\ne 0\}
+\end{align*}
+is either $\emptyset$ or $\Spec R$ minus a finite number of points. Also, $\mathscr{O}(U_f)$ consists of rational functions $g/f^k$ that have no poles on $D_f$. Further, the local ring at $(0)$ is $\mathbf{C}(z)$ and the local ring at $(z-\alpha)$ comprises rational functions with no poles at $\alpha$.
+\end{enumerate}
+\end{example}
+
+Let us see why the locally ringed space $\Spec R$ is called the ``spectrum.'' First, the spectrum of an atom is related to the spectrum of a linear operator on a Hilbert space. 
+
+Second, the eigenvalues of a matrix $A$ correspond to the maximal ideals of $\mathbf{C}[A]\isomto \mathbf{C}[z]/(\mu(z))$ where $\mu$ is the minimal polynomial of $A$. 
+
+Now, let $X$ be compact and Hausdorff. Let $R=C(X)$ be the ring of continuous real-valued functions on $X$. Then, the points of $X$ correspond to the (closed) maximal ideals of $R$ and the topology is given by $U_f$ (the open set of maximal ideals that do not contain $f$) for all $f$.
+
+Hence, one says that the maximal ideals of a commutative ring form a topological space defined in this way. An obvious question arises:
+\begin{center}
+	\small Why prime ideals instead of maximal ideals, then?
+\end{center}
+Maximal ideals work just fine in specific settings, but not in general: Suppose $f:R\longrightarrow S$ is a homomorphism of rings. One wants to define a map $\Spec S \longrightarrow \Spec R$ given by $\mathfrak{m} \longmapsto f^{-1}(\mathfrak{m})$. However, $f^{-1}(\mathfrak{m})$ does not need to be maximal.\footnote{Let $f:\mathbf{Z} \longrightarrow \mathbf{Q}$ be the inclusion. Then $\mathfrak{m}=(0)$ is maximal in $\mathbf{Q}$ since $\mathbf{Q}$ is a field, but $f^{-1}(\mathfrak{m}) = (0)$ is not maximal in $\mathbf{Z}$ since $\mathbf{Z}$ is not a field.}
+
+An $R$-ideal $\mathfrak{m}$ is maximal if and only if $R/\mathfrak{m}$ is a field. One sees that $R/f^{-1}(\mathfrak{m})$ is a subring of the field $S/\mathfrak{m}$, so one finds that $R/f^{-1}(\mathfrak{m})$ is an integral domain, but not necessarily a field. Recall that an $R$-ideal $\mathfrak{p}$ is prime if and only if $R/\mathfrak{p}$ is an integral domain. Therefore, if $\mathfrak{p}$ is a prime ideal, then $f^{-1}(\mathfrak{p})$ is prime. This is why Grothendieck considered prime ideals instead of maximal ideals.
+
 \subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
 \subsection{More examples of $\Spec R$}
 \subsection{Localization}
