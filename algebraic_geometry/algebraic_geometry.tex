@@ -3167,6 +3167,34 @@ Maximal ideals work just fine in specific settings, but not in general: Suppose 
 An $R$-ideal $\mathfrak{m}$ is maximal if and only if $R/\mathfrak{m}$ is a field. One sees that $R/f^{-1}(\mathfrak{m})$ is a subring of the field $S/\mathfrak{m}$, so one finds that $R/f^{-1}(\mathfrak{m})$ is an integral domain, but not necessarily a field. Recall that an $R$-ideal $\mathfrak{p}$ is prime if and only if $R/\mathfrak{p}$ is an integral domain. Therefore, if $\mathfrak{p}$ is a prime ideal, then $f^{-1}(\mathfrak{p})$ is prime. This is why Grothendieck considered prime ideals instead of maximal ideals.
 
 \subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
+Consider $\C[x,y]$.\footnote{One can consider $\Omega[x,y]$ for any algebraically closed $\Omega$.} There are three types of prime ideals:
+\begin{enumerate}
+	\item For any $(\alpha,\beta)\in  \mathbf{C}^2$, the maximal ideal $(x-\alpha,y-\beta)$ is prime;
+	\item If $f(x,y)$ is irreducible, then $(f(x,y))$ is prime; 
+	\item $(0)$.
+\end{enumerate}
+The local ring at $(0)$ is $\mathbf{C}(x,y)$. The local ring at $(x-\alpha, y-\beta)$ consists of rational functions whose denominators are nonzero at $(\alpha,\beta)$. The local ring at $\mathfrak{p} = (f(x,y))$ comprises all rational functions whose denominators are not divisible by $f$ (rational functions that are regular at almost all points).
+
+\begin{definition}[ ]\label{}
+The ring $R$ is a \defn{discrete valuation ring}\index{discrete valuation ring} if it is a PID that has a unique nonzero maximal ideal $\mathfrak{m}(R)$. The field $R/\mathfrak{m}(R)$ is the \defn{residue field}\index{residue field} of $R$. 
+\end{definition}
+
+\begin{remark}
+The localization $\mathbf{C}[x,y]_\mathfrak{p}$ is a discrete valuation ring. Therefore, every element in the localization can be written as a power of $f$ times a unit.	
+\end{remark}
+
+Now, let $R$ be a discrete valuation ring (for example, $\mathbf{Z}_{(2)}$). One sees that $\mathfrak{m}(R) =  (2) $. The other ideals of $R$ are $(0)$ and $(2^n)$.\footnote{Note that the ideal $(0)$ is prime, not maximal, and $(2^n)$ is neither prime nor maxmial.} Hence, $\Spec R$ has two points.\footnote{The space $\Spec R$ is the \defn{Sierpi\'nski space}\index{Sierpi\'nski space}; that is, it is a topological space with two points, of which only one is closed.} The local ring at $(2)$ is $R$ and the stalk at $(0)$ is the field of fractions of $R$ (that is, $\mathbf{Q}$).
+
+Now, let us consider $\Spec \mathbf{Z}[x] $. There is a ring homomorphism $\mathbf{Z}\longrightarrow \mathbf{Z}[x]$, so there is a map $\Spec \mathbf{Z}[x] \longrightarrow \Spec \mathbf{Z}$.\footnote{Recall that the generic point $(0)$ in $\Spec \mathbf{Z}$ contains all of the other points of $\Spec\mathbf{Z}$ in its closure.} The fibre above $(2)$ is $\Spec\mathbf{F}_{2}[x]$, which is the closure of the generic point $(2)$. The same thing happens for all prime numbers $p$. For the fibre above $(0)$, one looks at ideals whose intersection with $\mathbf{Z}$ is $(0)$, so one tensors with $\mathbf{Q}$ to get a map
+\begin{align*}
+	\mathbf{Z}[x]/\mathfrak{p}\tensor \mathbf{Q}\longrightarrow \mathbf{Q}(\alpha). 
+\end{align*}
+The image of $x$ under this map is some algebraic integer. The corresponding prime ideals shall be of the form $(f(x))$ where $f(x) $ is irreducible in $\mathbf{Z}[x]$. These prime ideals corresponding to irreducibles in $\mathbf{Z}[x]$, essentially, comprise $\Spec \mathbf{Q}[x]$. Thus, the closure of the generic point (the fibre above $(0)$) consists of $(x),  (x+1), (x+2),\hdots,  (x^2+1),\hdots$. These points correspond to algebraic numbers up to the action of $\Gal (\overline{\mathbf{Q}}/\mathbf{Q})$.
+
+However, this isn't what $\Spec \mathbf{Z}[x]$ looks like. One thinks about $\Spec \mathbf{Z}[x]$ as a surface with points, vertical lines, and horizontal lines that illuminate algebraic number theory happening when they intersect.\footnote{See \url{https://youtu.be/WirufRI1_Uo?t=957}.} 
+
+The local ring at $(2,x)$ consists of rational functions whose denominator has an odd constant term. The local ring at $(2)$ consists of rational functions whose denominator has an odd coefficient. The local ring at $(0)$ is $\mathbf{Q}(x)$.
+
 \subsection{More examples of $\Spec R$}
 \subsection{Localization}
 \subsection{$\Spec R$ is a locally ringed space}
