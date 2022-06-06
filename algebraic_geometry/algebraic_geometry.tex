@@ -3183,7 +3183,7 @@ The ring $R$ is a \defn{discrete valuation ring}\index{discrete valuation ring} 
 The localization $\mathbf{C}[x,y]_\mathfrak{p}$ is a discrete valuation ring. Therefore, every element in the localization can be written as a power of $f$ times a unit.	
 \end{remark}
 
-Now, let $R$ be a discrete valuation ring (for example, $\mathbf{Z}_{(2)}$). One sees that $\mathfrak{m}(R) =  (2) $. The other ideals of $R$ are $(0)$ and $(2^n)$.\footnote{Note that the ideal $(0)$ is prime, not maximal, and $(2^n)$ is neither prime nor maxmial.} Hence, $\Spec R$ has two points.\footnote{The space $\Spec R$ is the \defn{Sierpi\'nski space}\index{Sierpi\'nski space}; that is, it is a topological space with two points, of which only one is closed.} The local ring at $(2)$ is $R$ and the stalk at $(0)$ is the field of fractions of $R$ (that is, $\mathbf{Q}$).
+Now, let $R$ be a discrete valuation ring (for example, $\mathbf{Z}_{(2)}$). One sees that $\mathfrak{m}(R) =  (2) $. The other ideals of $R$ are $(0)$ and $(2^n)$.\footnote{Note that the ideal $(0)$ is prime, not maximal, and $(2^n)$ is neither prime nor maxmial.} Hence, $\Spec R$ has two points.\footnote{The space $\Spec R$ is the \defn{Sierpi\'nski space}\index{Sierpi\'nski space}; that is, it is the topological space with two points, of which only one is closed.} The local ring at $(2)$ is $R$ and the stalk at $(0)$ is the field of fractions of $R$ (that is, $\mathbf{Q}$).
 
 Now, let us consider $\Spec \mathbf{Z}[x] $. There is a ring homomorphism $\mathbf{Z}\longrightarrow \mathbf{Z}[x]$, so there is a map $\Spec \mathbf{Z}[x] \longrightarrow \Spec \mathbf{Z}$.\footnote{Recall that the generic point $(0)$ in $\Spec \mathbf{Z}$ contains all of the other points of $\Spec\mathbf{Z}$ in its closure.} The fibre above $(2)$ is $\Spec\mathbf{F}_{2}[x]$, which is the closure of the generic point $(2)$. The same thing happens for all prime numbers $p$. For the fibre above $(0)$, one looks at ideals whose intersection with $\mathbf{Z}$ is $(0)$, so one tensors with $\mathbf{Q}$ to get a map
 \begin{align*}
@@ -3196,6 +3196,39 @@ However, this isn't what $\Spec \mathbf{Z}[x]$ looks like. One thinks about $\Sp
 The local ring at $(2,x)$ consists of rational functions whose denominator has an odd constant term. The local ring at $(2)$ consists of rational functions whose denominator has an odd coefficient. The local ring at $(0)$ is $\mathbf{Q}(x)$.
 
 \subsection{More examples of $\Spec R$}
+\begin{example}[ ]\label{}\text{}
+We have seen that $\Spec \mathbf{C}[x]$ looks like $\mathbf{C}$ with a generic point corresponding to the ideal $(0)$. This is not the case for $\mathbf{R}[x]$: While polynomials of the form $x-\alpha$ are irreducible, polynomials $x^2 + ax + b$ with two complex conjugate roots $\beta\pm \gamma i$ are also irreducible. Hence, one should also add in points that correspond to pairs of real numbers. Thus, $\Spec \mathbf{R}[x]$ consists of the orbits of $\mathbf{C}$ under complex conjugation---under $\Gal(\mathbf{C}/\mathbf{R})$---plus a generic point.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider the ring of Gaussian integers $\mathbf{Z}[i]$. The principal ideal domain $\mathbf{Z}[i]$ has three flavours of prime ideals. To determine them, one takes a prime ideal in $\mathbf{Z}$ and figures out how it splits in $\mathbf{Z}[i]$. Observe how the following prime numbers factorize in $\mathbf{Z}[i]$:
+\begin{align*}
+	2 &= -i (1+i)^2;\\ 
+	3 &= 3;\\
+	5 &= (2+i) (2-i).
+\end{align*}
+The first case is unique to $2$; the second case happens for all $p\equiv 3\pmod 4$; and the third case happens for all $p\equiv 1\pmod 4$.
+
+There is a map $\mathbf{Z}\longrightarrow \mathbf{Z}[i]$, so there is a map $\Spec \mathbf{Z}[i]\longrightarrow \Spec \mathbf{Z}$. The fibre above $(2)$ is $(1+i)$; the fibre above $(3)$ is $(3)$; and the fibre above $(5)$ is $\{(2+i),  (2-i)\}$. Similarly, the fibre above $(13)$ is $\{(3+2i),  (3-2i)\}$. One can think of the generic point $(0)$ as a curve that goes through all of these points. One might see that $\Spec \mathbf{Z}$ is similar to an affine line.\footnote{Note that $\mathbf{Z}[i]$ is a PID.}
+\end{example}
+
+\begin{remark}
+	Given a geometric object (a ringed space) $X$, the \defn{Picard group}\index{Picard group} $\Pic X$ is the group of line bundles on $X$.\footnote{``Roughly speaking, a line bundle is a way of assigning a $1$-dimensional vector space to each point.''} Given an algebraic number field $K$, the \defn{ideal class group}\index{ideal class group} $\Cl_K$ of $K$---the group of fractional ideals modulo principal fractional ideals---correspond to a Picard group in some way.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Let us consider the spectrum of the localization $\C[x,y]_{(x,y)}$. First, $(0)$ is the generic point of $\Spec \C[x,y]_{(x,y)}$. Second, $(x,y)$ is the maximal ideal of this localization, so it gives a closed point. Further, one has points $(f(x,y))$ for $f(x,y)=0$. If one draws the spectra of $\mathbf{C}[x,y]$ and the localization we are considering, one notices that the latter looks like a magnification of the former at one point.
+\end{example}
+
+\begin{problem}
+	What is $\Spec \text{}(0)$?
+\end{problem}
+
+The points of $\Spec R$ are the prime ideals of $R$. However, $(0)$ is not an integral domain, and it is its only ideal, so $\Spec \text{}(0)$ is empty. It has one open set, namely $\emptyset$. One defines the structure sheaf on $\Spec R$ by $\mathscr{O}(\emptyset) :=  (0)$.
+
+\begin{example}[$\Spec (R\times S)$]
+	The prime ideals of $R\times S$ are homomorphisms to integral domains. Either $S$ maps to $(0)$ or $R$ maps to $(0)$, so the primes of $R\times S$ are the primes of $R$ with the primes of $S$. It follows that $\Spec (R\times S)$ is a disjoint union $\Spec R\times \Spec S$. The corresponding structure sheaf is defined in the obvious way.
+\end{example}
 \subsection{Localization}
 \subsection{$\Spec R$ is a locally ringed space}
 \subsection{Morphisms of affine schemes}
