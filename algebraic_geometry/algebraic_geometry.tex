@@ -3229,7 +3229,62 @@ The points of $\Spec R$ are the prime ideals of $R$. However, $(0)$ is not an in
 \begin{example}[$\Spec (R\times S)$]
 	The prime ideals of $R\times S$ are homomorphisms to integral domains. Either $S$ maps to $(0)$ or $R$ maps to $(0)$, so the primes of $R\times S$ are the primes of $R$ with the primes of $S$. It follows that $\Spec (R\times S)$ is a disjoint union $\Spec R\times \Spec S$. The corresponding structure sheaf is defined in the obvious way.
 \end{example}
+
 \subsection{Localization}
+Suppose $R$ is a commutative ring and $S$ is a multiplicative subset of $R$. Suppose further that one wants to invert all elements of $S$. We shall construct a ring $R[S^{-1}]$ such that there is a universal homomorphism $R\longrightarrow R[S^{-1}]$ under which the image of $S$ consists of invertible elements. One takes
+\begin{align*}
+	R[S^{-1}] := \frac{R[t_1,t_2,\hdots]}{(s_1t_1-1,s_2t_2-1,\hdots)}.
+\end{align*}
+
+Let's determine the kernel $I$ of the map $R\longrightarrow R[S^{-1}]$. If $rs=0$ for some $s\in S$, then $r\in I$. Define
+\begin{align*}
+	I := \{r\in R: rs=0\textrm{ for some $s\in S$}\}.
+\end{align*}
+One can check that $I$ is an ideal. Further, $I$ is the kernel of $R\longrightarrow R[S^{-1}]$.
+
+First, one assumes that $S$ has no zero divisors and copies the construction of $\mathbf{Q}$ from $\mathbf{Z}$: One sees that
+\begin{align*}
+	R[S^{-1}] = \left\{ (r,s) =  \frac{r}{s} : r\in R, s\in S \right\}/\sim 
+\end{align*}
+where $r_1/s_1 \sim r_2/s_2$ if and only if $r_1s_2 = r_2s_1$. Then, one defines 
+\begin{align*}
+	\frac{r_1}{s_1}+\frac{r_2}{s_2} &:= \frac{r_1s_2+r_2s_1}{s_1s_2};\\
+	\frac{r_1}{s_1}\cdot\frac{r_2}{s_2}&:= \frac{r_1r_2}{s_1s_2}.
+\end{align*}
+The checks that $\sim$ is an equivalence relation and that these operations well-define a ring are relatively mundane, except for checking that $\sim$ is transitive: Suppose 
+\begin{align*}
+	\frac{r_1}{s_1}&\sim \frac{r_2}{s_2};\\
+	\frac{r_2}{s_2}&\sim \frac{r_3}{s_3}.
+\end{align*}
+Then, $r_1s_2=r_2s_1$ and $r_2s_3=r_3s_2$. These equations imply $r_1s_2s_3=r_3s_2s_1$, so
+\begin{align*}
+	s_2(r_1s_3-r_3s_1)=0.
+\end{align*}
+Therefore, $r_1s_3=r_3s_1$ and $r_1/s_1\sim r_3/s_3$ if $s_2$ is not a zero divisor.
+
+Now, suppose $S$ has zero divisors. Then, replace $R$ by $R/I$. The image of $S$ in $R/I$ has no zero divisors, so one can form $R/I[S^{-1}]$. One defines $R[S^{-1}]$ to be this ring. 
+
+There is a one-step construction: Define
+\begin{align*}
+\frac{r_1}{s_1}\sim \frac{r_2}{s_2}	
+\end{align*}
+if $(r_1s_2-r_2s_1)s=0$ for some $s$. The construction above, however, is more intuitive and gives a clearer picture of things.
+
+Now, suppose $S$ is the complement of a prime ideal $\mathfrak{p}$.\footnote{Exercise: Show that $S$ is multiplicative.} One writes
+\begin{align*}
+	R[S^{-1}] = R_{\mathfrak{p}}.
+\end{align*}
+This is the \defn{localization}\index{localization} of $R$ at $\mathfrak{p}$.
+
+\begin{remark}
+	If $R=\mathbf{C}[x]$, the dimension of the spectrum of $R/(0)$ is $1$ and that of $R_{(0)}$ is $0$. Further, the dimension of the spectrum of $R/(x-\alpha)$ is $0$ and that of $R_{(x-\alpha) }$ is $1$.
+
+	If $R=\mathbf{C}[x,y]$, the dimension of the spectrum of $R/(0)$ is $2$ and that of $R_{(0)}$ is $0$. Furthermore, the dimensions of the spectra of $R/(f)$ and $R_{(f)}$ are $1$. Lastly, the dimension of the spectrum of $R/(x-\alpha, y-\beta)$ is $0$ and that of $R_{(x-\alpha,y-\beta)}$ is $2$. 
+\end{remark}
+
+\begin{remark}
+	Taking $R/\mathfrak{p}$ makes $\mathfrak{p}$ minimal and taking $R_{\mathfrak{p}}$ makes $\mathfrak{p}$ maximal.
+\end{remark}
 \subsection{$\Spec R$ is a locally ringed space}
 \subsection{Morphisms of affine schemes}
 \subsection{Gluing schemes}
