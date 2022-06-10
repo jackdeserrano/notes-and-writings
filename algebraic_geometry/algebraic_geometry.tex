@@ -2809,7 +2809,7 @@ Note that
 is not exact.
 \end{example}
 
-By the way, an element $s\in \mathscr{F}(U)$ is called a \defn{section}\index{section} and an element $s\in \mathscr{F}(X)$ is called a \defn{global section}\index{global section}.
+By the way, an element $s\in \mathscr{F}(U)$ is called a \defn{section}\index{section} and an element $s\in \mathscr{F}(X)=: \Gamma(\mathscr{F})$ is called a \defn{global section}\index{global section}.
 
 \subsection{\'Etale spaces}
 Sheaves seem to be an unnecessarily complicated and abstract way to describe functions on a space. Of course, this isn't the case.
@@ -3338,7 +3338,49 @@ Thus, $\Spec R$ satisfies the sheaf property.
 \end{problem}
 
 Well, this is the direct limit of $\mathscr{O}(D_{f_i})= R[f_i ^{-1}]$ where the $D_{f_i}$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
+
 \subsection{Morphisms of affine schemes}
+One might define morphisms of schemes to be morphisms of ringed spaces, but this is wrong. One defines a morphism of schemes to be a morphism of locally ringed spaces. 
+
+Let $X$ and $Y$ be topological spaces. Let $f:X\longrightarrow Y$ be continuous. Let $\mathscr{O}_X$ on $X$ be the sheaf of rings of continuous real-valued functions on $X$. Define a sheaf of rings $\mathscr{O}_Y$ on $Y$ analogously. Suppose that $U$ (resp. $V$) is an open set of $X$ (resp. $Y$) and $f(U)\subseteq V$. This induces a restriction map $\mathscr{O}_Y(V) \longrightarrow \mathscr{O}_X(U)$.
+
+Hence, a morphism of ringed spaces consists of a continuous map $X\longrightarrow Y$ and, for all $U$ and $V$ such that $f(U)\subseteq V$, a map $\mathscr{O}_Y(V) \longrightarrow \mathscr{O}_X(U)$ that is compatible with restrictions. This is a morphism of sheaves of rings $\mathscr{O}_Y\longrightarrow f_*(\mathscr{O}_X)$ or $f^{-1}(\mathscr{O}_Y)\longrightarrow \mathscr{O}_X$.
+
+A homomorphism of rings $R\longrightarrow S$ induces a morphism of ringed spaces $\Spec S \longrightarrow \Spec R$. This morphism of ringed spaces induces a morphism of rings $\Gamma(\mathscr{O}_{\Spec R})\longrightarrow \Gamma(\mathscr{O}_{\Spec S})$.\footnote{Recall that $\Gamma(\mathscr{F})$ denotes the set of global sections of a sheaf $\mathscr{F}$.} We have seen that $\Gamma(\mathscr{O}_{\Spec R})$ (resp. $\Gamma(\mathscr{O}_{\Spec S})$) is a complicated way of talking about $R$ (resp. $S$). Hence, the morphism of ringed spaces $\Spec S \longrightarrow \Spec R$ gives a homomorphism of rings $R\longrightarrow S$.
+
+The composition of the maps taking homomorphisms of rings to morphisms of ringed spaces and morphisms of ringed spaces to homomorphisms of rings is the identity. However, the first map is injective, but not necessarily surjective, and the second map is surjective, but not necessarily injective.
+
+\begin{example}[ ]\label{}\text{}
+Let $R= \mathbf{Z}_{(p)}$ and $S=\mathbf{Q}$. There is $1$ homomorphism of rings $R\longrightarrow S$. The spectrum of $R$ has two points: $1$ corresponding to $(p)$ and $1$ corresponding to $ (0)$. The stalk at $(0)$ is $\mathbf{Q}$ and that at $(p)$ is $R$. The spectrum of $S$ has one point at which the stalk is $S$. There is a natural map $f:\Spec S \longrightarrow \Spec R$ given by $(0)\longmapsto  (0)$. This defines the morphism of locally ringed spaces topologically, so one still needs to define it on sheaves. One can identify $\mathscr{O}_{\Spec S}$ with $S=\mathbf{Q}$ since $\Spec S$ has one point whose stalk is $S=\mathbf{Q}$. Further, one sees that $f^{-1}(\mathscr{O}_{\Spec R})= \mathbf{Q}$, so one gets the identity map $\mathbf{Q}\longrightarrow \mathbf{Q}$ that gives the morphism of locally ringed spaces.
+
+There is another morphism of locally ringed spaces, though: Consider $g:(0)\longmapsto  (p)$. One sees that $g^{-1}(\mathscr{O}_{\Spec R})= \mathbf{Z}_{(p)}$. One defines a map from $g^{-1}(\mathscr{O}_{\Spec R})$ to the stalk at $(0)$, namely $\mathbf{Q}$, via the natural embedding.\footnote{The first morphism is ``good'' and this one is ``bad.''} 
+\end{example}
+
+One wants to add a condition to exclude these ``bad'' morphisms of locally ringed spaces. A homomorphism of local rings $f:R\longrightarrow S$ is deemed \defn{local}\index{local homomorphism} if the preimage of the maximal ideal of $S$ under $f$ is the maximal ideal of $R$.
+
+\begin{example}[Not all homomorphisms of local rings are local]\label{}\text{}
+Consider the homomorphism $f:\mathbf{Z}_{(p)} \longrightarrow \mathbf{Q}$. The maximal ideal of $ \mathbf{Z}_{(p)}$ is $(p)$, and that of $\mathbf{Q}$ is $(0)$. However, $f^{-1}(0)=  (0)\ne  (p)$. 
+\end{example}
+
+Hence, a \index{morphism of locally ringed spaces}morphism of locally ringed spaces is a morphism of ringed spaces such that every induced homomorphism of local rings is a local homomorphism. If $R\longrightarrow S$ is a homomorphism of rings, $\Spec S\longrightarrow \Spec R$ is a morphism of locally ringed spaces.
+
+Suppose that $A$ and $B$ are rings. Suppose further that there is a morphism of locally ringed spaces $f:\Spec B\longrightarrow \Spec A$. One asks if this morphism comes from a ring homomorphism $A\longrightarrow B$: Certainly, this morphism induces a homomorphism $\varphi : A\longrightarrow B$. Consider $\mathfrak{p}\in \Spec B$, so
+\[
+\begin{tikzcd}
+	B \ar[d] & A \ar[l,"\varphi", swap] \ar[d] \\ B_{\mathfrak{p}} &A_{f(\mathfrak{p}) } \ar[l]
+\end{tikzcd}
+\]
+commutes.
+One does not have $f(\mathfrak{p}) = \varphi ^{-1}(\mathfrak{p})$ in general, but, if the bottom arrow is a local homomorphism, one can pull back $\mathfrak{p}$ from $B_{\mathfrak{p}}$ to $B$ to $\varphi^{-1}(\mathfrak{p})$, and the preimage of $\mathfrak{p}$ in the bottom arrow is the maximal ideal of $A_{f(\mathfrak{p}) }$, which pulls back to $f(\mathfrak{p})$. Hence, if the bottom arrow is a local homomorphism, $f(\mathfrak{p}) = \varphi^{-1}(\mathfrak{p})$. This implies that $f$ is induced by $\varphi : A\longrightarrow B$.
+
+Thus, homomorphisms of rings $R\longrightarrow S$ correspond to morphisms of locally ringed spaces $\Spec S \longrightarrow \Spec R$. Precisely, the category of rings is equivalent to the opposite of the category of affine schemes.
+
+Suppose $X$ and $Y$ are schemes. Cover $Y$ by open affine subschemes. Then, cover $X$ by open affine subschemes such that the image of every such subscheme is in an open affine subscheme of $Y$. That is, for every open affine subscheme in the cover, choose a map to some open affine subscheme of $Y$. These are things with which one can work since they are given by homomorphisms of rings. Now, one chekcs that these are compatible on all intersections.
+
+\begin{example}[ ]\label{}\text{}
+Let us show that the scheme corresponding to $\mathbf{C}^2 - \{(0,0)\}$ is not affine. There is a natural map from the scheme of $\mathbf{C}^2-\{(0,0)\}$ to $\Spec \mathbf{C}[x,y]$. The rings of global functions for these are both $\mathbf{C}[x,y]$. This is an isomorphism, so the schemes above would have to be isomorphic if they were both affine. So, $\mathbf{C}^2-\{(0,0)\}$ is not affine. 
+\end{example}
+
 \subsection{Gluing schemes}
 \subsection{$\Proj S$}
 \subsection{The functor of points}
