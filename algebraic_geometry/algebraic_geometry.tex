@@ -3285,7 +3285,59 @@ This is the \defn{localization}\index{localization} of $R$ at $\mathfrak{p}$.
 \begin{remark}
 	Taking $R/\mathfrak{p}$ makes $\mathfrak{p}$ minimal and taking $R_{\mathfrak{p}}$ makes $\mathfrak{p}$ maximal.
 \end{remark}
+
 \subsection{$\Spec R$ is a locally ringed space}
+First, note that one can define a sheaf on a set $X$ by defining it on elements $U_i$ of a basis. One wants the basis to be closed under intersection. To demonstrate this, one checks the sheaf condition for covers of a basis element $U_i$ by basis elements $U_j$. This is left as an exercise.
+
+\iffalse
+One handles basis elements that do not have this property in the following way.
+
+\begin{example}[ ]\label{}\text{}
+Let $R=\mathbf{C}[x,y]$. Consider the open sets $U_1 = D_x$ and $U_2 = D_y$.
+\end{example}
+\fi
+
+Suppose one is given a basis $D_f = \bigcup_ i D_{f_i}$. One checks the sheaf condition as follows: First, notice that one can replace $R$ by $R[f^{-1}]$, since $\Spec R[f^{-1}]= D_f$. That is, one can assume that $D_f = \Spec R$. Hence, one supposes that $\{D_{f_i}\}_i$ covers $\Spec R$. Consider the ideal $(f_1,\hdots, f_n)$. Since there is no prime ideal that contains $(f_1,\hdots, f_n)$, one sees that $(f_1,\hdots, f_n)=R$. Particularly, 
+\begin{align*}
+	\alpha_1f_1 + \cdots +\alpha_nf_n = 1
+\end{align*}
+for some $\alpha_i\in R$. This implies that $\Spec R$ is \index{quasicompact}quasicompact.\footnote{``Which means the same as `compact' unless you're French.'' Also, this is something like a \index{partition of unity}partition of unity.}
+
+Now, given $r\in R = \mathscr{O}(\Spec R)$, one needs to show that if $r$ is $0$ in $D_{f_i}$ for all $i$, then $r=0$. One sees that the image of $r$ in $R[f_i^{-1}]$ is $0$. Equivalently, $f_i^{n_i} r = 0$ for some $n_i$. Also, $\sum_{i=1}^{n} \alpha_if_i=1$ as above. Replacing $f_i^{n_i}$ by $f_i$ since $D_{f_i}=D_{f_i^{n_i}}$, one assumes that $f_ir = 0$ for all $i$. Thus,
+\begin{align*}
+	r &= r \sum_{i=1}^{n} \alpha_if_i\\
+	  &= \sum_{i=1}^{n} \alpha_i f_ir\\
+	  &= 0.
+\end{align*}
+
+Suppose $\Spec R = \bigcup_i D_{f_i}$.
+Recall that $\mathscr{O}(D_{f_i})=R[f_i^{-1}]$. Suppose that $r_i/f_i^{n_i}\in \mathscr{O}(D_{f_i})$ where
+\begin{align*}
+	\frac{r_i}{f_i^{n_i}} \sim \frac{r_j}{f_j^{n_j}}
+\end{align*}
+in $R[f_i^{-1},f_j^{-1}]$. By definition, $(f_if_j)^{n_{ij}}(f_j^{n_j}r_i - r_j f_i^{n_i})=0$. One wants to show that there exists $r\in R$ such that $r\sim r_i/f_i^{n_i}$ in $R[f_i^{-1}]$. Equivalently, $f_i^{m_i}(f_i^{n_i} r - r_i)=0$ in $R$ for some $m_i$.
+
+First, note that one can replace $f_i^{\ell}$ by $f_i$. Therefore, $f_if_j(r_if_j - r_jf_i)=0$. Now, define $s_i := r_if_i$, so $s_i f_j^2 - s_jf_i^2=0$, and $s_if_j - s_j f_i =0$. Let's summarize.
+
+Given $\alpha_i$, $f_i$, and $s_i$ with $\sum_{i}^{} \alpha_if_i=1$ and $f_is_j - f_js_i=0$, one wants to find an $r$ such that $f_jr = s_j$. Suppose $r\in R$ satisfies this. Then,
+\begin{align*}
+	r &= r \sum_{i}^{} \alpha_if_i\\
+	  &= \sum_{i}^{} \alpha_i f_ir\\
+	  &= \sum_{i}^{} a_is_i.
+\end{align*}
+Define $r:= \sum_{i}^{} \alpha_is_i$. Then,
+\begin{align*}
+	f_j r &= f_j \sum_{i}^{} \alpha_is_i\\
+	      &= \sum_{i}^{} \alpha_i f_i s_j\\
+	      &= s_j.
+\end{align*}
+Thus, $\Spec R$ satisfies the sheaf property.
+
+\begin{problem}
+	What is the stalk of $\Spec R$ at a point $\mathfrak{p}$?
+\end{problem}
+
+Well, this is the direct limit of $\mathscr{O}(D_{f_i})= R[f_i ^{-1}]$ where the $D_{f_i}$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
 \subsection{Morphisms of affine schemes}
 \subsection{Gluing schemes}
 \subsection{$\Proj S$}

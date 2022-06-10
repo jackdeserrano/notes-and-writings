@@ -466,12 +466,12 @@ Let $R=\Z$. ``Suppose you . . . want to kill the prime $2$ and get rid of it.'' 
 $$
 \Spec (R\left[ 1/3,1/5,1/7,1/9,\hdots\right]) = \{ (2), (0)\}
 $$
-which can be written as $R_{(2)} = R \left[S\inv\right]$ where $S=\ol{(2)}$. 
+which can be written as $R_{(2)} = R \left[S\inv\right]$ where $S={(2)}^\complement$. 
 \end{example}
 
 More generally, if $\mf p$ is a prime ideal of any ring $R$, then the \defn{localization}\index{localization} of $R$ at $\mf p$ is
 $$
-R_{\mf p} = R\left[ S\inv\right], \quad S = \ol {\mf p}.
+R_{\mf p} = R\left[ S\inv\right], \quad S = {\mf p}^\complement.
 $$
 The ring $R_{\mf p} $ is an example of a \defn{local ring}\index{local ring}: it has a unique maximal ideal.
 
@@ -501,7 +501,7 @@ The rank is also well defined if $R$ is a finite--dimensional vector space over 
 Let $k$ be a field and  $R=\MM_n(k)$. One takes  $\rank(R^n) := (\dim_k(R^n))/(\dim_k(R))$.
 \end{example}
 \begin{example}[Nonzero ring with rank not well defined]\label{}
-Pick any ring $S\ne\{0\}$. Pick any right $S$-module $M$ with $M\isomto M\oplus M$. (Take $M=\bigoplus S$, for instance.) Then $R = \End_S(M)$ acts on $M$ on the left. If $M = \bigoplus S$, then $R$ is ``$\infty\times\infty$ matrices,'' though not quite. Take \begin{align*}
+Pick any ring $S\ne\{0\}$. Pick any right $S$-module $M$ with $M\isomto M\oplus M$. (Take $M=\bigoplus S$, for instance.) Then $R = \End_S(M)$ acts on $M$ on the left. If $M = \bigoplus S$, then $R$ is almost ``$\infty\times\infty$ matrices,'' but not quite. Take \begin{align*}
 	\mat{s_1\\s_2\\s_3\\ \vdots} \in M
 \end{align*}
 where almost all $s_i=0$. Every element in $R$ acting on elements in $M$ must have almost all entries $0$ in each of its columns. So $M$ is acted on the right by $S$ and on the left by $R$. Further, $M\isomto M\oplus M$ as right $S$-modules. This isomorphism works as follows:
@@ -703,7 +703,7 @@ so $C=B/\img A$. One can think of $C$ as the colimit of $0$ and $f$:
 A \arrow[r, "f", shift left]\arrow[r, "0", shift right, swap] & B \arrow[r]& C
 \end{tikzcd}
 \]
-(a coequalizer). So $\tensor Y$ preserves right exactness (left adjoints preserve right exactness and right adjoints preserve left exactness).
+(a coequalizer). So $\cdot\tensor Y$ preserves right exactness (left adjoints preserve right exactness and right adjoints preserve left exactness).
 \end{proof}
 
 \begin{example}[Calculating tensor products]\label{}
@@ -759,7 +759,7 @@ So $\Zmod m\tensor \Zmod n$ is $ (\Zmod n) / (\img_{\times m} (\Zmod n))$, so
 \end{align*}
 \end{example}
 
-We have seen that $\tensor Y$ preserves right exactness, but it also preserves (even infinite) direct sums: one can show this by seeing that direct sums are colimits or directly. The functor $\Hom_{}(Y, *)$ is right adjoint, so it preserves left exactness and products (these are limits). (See \cref{projmod}.) 
+We have seen that $\cdot \tensor Y$ preserves right exactness, but it also preserves (even infinite) direct sums: one can show this by seeing that direct sums are colimits or directly. The functor $\Hom_{}(Y, \cdot)$ is right adjoint, so it preserves left exactness and products (these are limits). (See \cref{projmod}.) 
 
 Any finitely generated abelian group is a direct sum of cyclic groups, so working out their tensor products is straightforward:
 \begin{align*}
@@ -970,7 +970,7 @@ Notice that $(A\oplus B) ^* \isomto A^*\oplus B^*$ and $M$ is a direct sum of cy
 Why choose $\Q/\Z$ as the dualizing module? We needed the elements of order dividing $n$ in the module to form a cyclic subgroup of order $n$. We might have used $S^1$, $\R/\Z$, or even $\C^\times$.
 
 \begin{example}[Dual of $(\Zmod 8)^\times$]\label{}
-	(Notice that the usual notation for the unit ring conflicts with notation for duals. If context isn't enough to clarify things we use $(\ \cdot\ )^\times$ for the unit ring.) Take $\C^\times$ to be the dualizing module. There are $4$ homomorphisms from $(\Zmod 8) ^\times$ to $\C^\times$:
+	(Notice that the usual notation for the unit ring conflicts with notation for duals. If context isn't enough to clarify things we use $(\cdot)^\times$ for the unit ring.) Take $\C^\times$ to be the dualizing module. There are $4$ homomorphisms from $(\Zmod 8) ^\times$ to $\C^\times$:
 	\begin{center}
 \begin{tabular}{cccccccc}
 	%\toprule
