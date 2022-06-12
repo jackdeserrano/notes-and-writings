@@ -3554,7 +3554,124 @@ Consider $(1+\sqrt{-5} ) /2\in R[2^{-1}]$ and $(1-\sqrt{-5} ) /3\in R[3^{-1}]$. 
 \begin{remark}
 	The nonprincipal ideals of $R=\mathbf{Z}[\sqrt{-5}] $ are invertible modules. Invertible modules correspond to line bundles over schemes. Classifying points of the projective line over $\Spec R$ (or any scheme) involves classifying invertible modules.
 \end{remark}
+
 \subsection{$\Proj S$}
+Let $k$ be an algebraically closed field. Let $S=k[x_0,\hdots, x_n]/I$ be a finitely-generated graded algebra over $k$ where $I$ is graded. Projective space $\mathbf{P}^n(k)$ corresponds to the graded ring $k[x_0,\hdots, x_n] /(0)= k[x_0,\hdots, x_n]$: The points in $\mathbf{P}^n(k)$ are given by $(x_0:\cdots:x_n)\sim (\lambda x_0:\cdots:\lambda x_n)\ne (0:\cdots:0)$. These correspond to homogeneous ``maximal'' ideals in the set of ideals not containing $(x_0,\hdots, x_n)$. The point $(1:0:\cdots:0)$ corresponds to the ideal $(x_1,\hdots, x_n)$.
+
+A basis of open sets is given by the sets $U_f$ that contain the ``maximal'' ideals not containing the homogeneous polynomial $f$ of positive degree. If $f=x_0$, then $U_f$ is given by the points $(1:x_1:\cdots:x_n)$, which is $\mathbf{A}^n(k)$. In general, $U_f$ is the complement of the hypersurface $f\ne 0$ in $\mathbf{P}^n(k)$.
+
+The ring of regular functions on open sets is given by
+\begin{align*}
+	\mathscr{O}(U_f) := k[ x_0,\hdots, x_n,f^{-1}]^0
+\end{align*}
+where $\cdot^0$ denotes degree-$0$ elements. If $f=x_0$, then $\mathscr{O}(U_f) = k[ x_0,\hdots, x_n,x_0^{-1}]^0$. One can think of this as
+\begin{align*}
+	k \left[ \frac{x_1}{x_0}, \hdots, \frac{x_n}{x_0} \right] \isomto k[x_1,\hdots, x_n]. 
+\end{align*}
+
+This construction gives a locally ringed space. The stalk of a point $\mathfrak{m}$ is the localization
+\begin{align*}
+	k[x_0,\hdots, x_n]^0_\mathfrak{m}.
+\end{align*}
+This gives rise to a correspondence between finitely-generated reduced $k$-algebras and projective varieties over $k$. Such an algebra $k[x_0,\hdots, x_n]/I$ corresponds to a subset of $\mathbf{P}^n(k)$ with $I=0$.
+
+Let us copy this construction for graded rings
+\begin{align*}
+	S = \bigoplus_{n\ge 0}S_n.
+\end{align*}
+Notice that $S_0$ does not need to be a field, $S$ does not need to be finitely-generated, and $S$ may have nilpotent elements.
+One shall call the scheme that is constructed from the graded ring the \defn{Proj}\index{Proj} of $S$ or {$\Proj S$}.
+
+The points of $\Proj S$ shall be given by
+\begin{align*}
+	\left\{ \textrm{prime ideals $\mathfrak{p}$} : \mathfrak{p} \nsupseteq \bigoplus_{n>0}S_n\right\}. 
+\end{align*}
+A basis of open sets is given by $\left\{U_f : \textrm{$f$ is homogeneous of positive degree}\right\}$ where $U_f$ is the set of prime ideals as above that do not contain $f$.\footnote{Informally, this is given by the points where $f$ does not vanish.} As before, the regular functions are given by
+\begin{align*}
+	\mathscr{O}(U_f) := S[f ^{-1}]^0.
+\end{align*}
+
+\begin{exercise}\label{}\text{}
+Show that $\Proj S$ is a scheme.
+\end{exercise}
+
+In fact, $U_f$ is an open affine subset isomorphic to $\Spec(S[f^{-1}]^0)$. If $f_1,\hdots, f_m$ generate $\bigoplus_{n>0}S_n$ as an ideal, then $\Proj S$ is covered by $U_{f_i}$. 
+
+\begin{example}[ ]\label{}\text{}
+Suppose $S=R[x_0,x_1]$. Then, $\Proj S$ is covered by $U_{x_0}$ and $U_{x_1}$. Notice that
+\begin{align*}
+	U_{x_0} &= R\left[ \frac{x_1}{x_0} \right] ;\\
+	U_{x_1} &= R \left[ \frac{x_0}{x_1} \right] .
+\end{align*}
+Further,
+\begin{align*}
+	U_{x_0} \cap U_{x_1} &= U_{x_0x_1}\\
+			     &= R [x_0,x_1,x_0^{-1},x_1^{-1}]^0\\
+			     &= R \left[ \frac{x_0}{x_1},\frac{x_1}{x_0} \right] .
+\end{align*}
+Write $y:=x_0/x_1$. Then, there are maps
+\[
+\begin{tikzcd}
+	R[y] \ar[dr] && R[y^{-1}] \ar[dl]\\
+		     &R[y,y^{-1}]
+\end{tikzcd}
+\]
+that induce maps
+\[
+\begin{tikzcd}
+	\Spec R[y] &&\Spec R[y^{-1}]\\
+		   &\Spec R[y,y^{-1}]\ar[ur]\ar[ul].
+\end{tikzcd}
+\]
+We are gluing together two copies of the affine line over the affine line minus the origin to get $\Proj S$. Hence, $\Proj S $ is the $\mathbf{P}^1(R)$ that was constructed in the previous section.
+
+\end{example}
+
+\begin{remark}
+	The construction $\Proj S$ gives a generalization of the construction of $\mathbf{P}^1(R)$ to $n$ dimensions.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Let us determine the $k$-valued points of $\mathbf{P}^n(k) = \Proj k[ x_0,\hdots, x_n]$. One considers morphisms $\varphi$ such that
+\[
+\begin{tikzcd}
+	\Spec k \ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n(k) \ar[dl] \\
+					  &\Spec k
+\end{tikzcd}
+\]
+commutes. More generally, if $R$ is a $k$-algebra, then one can consider morphisms such that
+\[
+\begin{tikzcd}
+\Spec R\ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n(k) \ar[dl] \\
+                                          &\Spec k	
+\end{tikzcd}
+\]
+commutes. For the sake of simplicity, let $R$ be a local ring with maximal ideal $\mathfrak{m}$. Then, $\mathfrak{m}$ is in the closure of all other points. Suppose one has a morphism $f:\Spec R\longrightarrow S$ where $S$ is a scheme that is covered by open sets. The closure of the image of all other points of $\Spec R$ must contain $f(\mathfrak{m})$, so, if $f(\mathfrak{m}) \subseteq U$, then $f(\Spec R)\subseteq U$.
+
+Now, $\mathbf{P}^n(k)$ is covered by $\{U_{x_0}, \hdots, U_{x_n}\}$ where 
+\begin{align*}
+	U_{x_j} = \Spec k \left[ \frac{x_0}{x_j},\hdots, \frac{x_{j-1}}{x_j}, \frac{x_{j+1}}{x_j},\hdots, \frac{x_n}{x_j} \right] = \mathbf{A}^n(k), 
+\end{align*}
+so morphisms $\Spec R\longrightarrow D_{x_j}$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $D_{x_j}$s together and sees that morphisms $\varphi$ such that 
+\[
+\begin{tikzcd}
+	\Spec R\ar[dr]\ar[rr,"\varphi"] &&\mathbf{P}^n(k)\ar[dl]\\
+				       &\Spec k
+\end{tikzcd}
+\]
+commutes correspond to points $(r_0:\cdots:r_n)$ such that some $r_i$ are invertible and $(r_0:\cdots:r_n) \sim (\lambda r_0:\cdots:\lambda r_n)$ when $\lambda$ is invertible.
+\end{example}
+
+\begin{remark}
+	Morphisms of varieties $V\longrightarrow W$ correspond to morphisms of schemes $\varphi$ such that
+	\[
+	\begin{tikzcd}
+		S\ar[rr,"\varphi"] \ar[dr] && T\ar[ld] \\
+					   &\Spec k
+	\end{tikzcd}
+	\]
+	commutes.	
+\end{remark}
 \subsection{The functor of points}
 \subsection{Irreducible, reduced, integral, connected}
 \subsection{Quasicompact, Noetherian}
