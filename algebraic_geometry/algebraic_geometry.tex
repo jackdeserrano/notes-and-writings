@@ -3088,7 +3088,7 @@ Alexander Grothendieck introduced schemes in the 1950s. At this time, mathematic
 \end{tikzpicture}
 \end{center}
 
-Smooth manifolds, complex manifolds, and topological maniforlds are examples of locally ringed spaces.
+Smooth manifolds, complex manifolds, and topological manifolds are examples of locally ringed spaces.
 A quotation of János Kollár that is found in \underline{The Princeton Companion to Mathematics} sums up the theory of stacks: 
 \begin{center}
 	\small The study of stacks is strongly recommended to people who would have been flagellants in earlier times. (367)
@@ -3382,6 +3382,178 @@ Let us show that the scheme corresponding to $\mathbf{C}^2 - \{(0,0)\}$ is not a
 \end{example}
 
 \subsection{Gluing schemes}
+One can think of a smooth manifold as open subsets of $\mathbf{R}^n$ glued together. Similarly, one gets a scheme by gluing together copies of open affine schemes.
+
+\begin{example}[ ]\label{gluing_1}\text{}
+Let us glue together $2$ copies of $\Spec k[x]$. The affine line $\mathbf{A}^1(k)$ is the points of $k$ minus a generic point, so one considers the open subset got by discarding the origin. This is the affine scheme of $k[x,x^{-1}]$. One has
+\iffalse
+\[
+\begin{tikzcd}
+	\Spec k[x] &&\Spec k[x]\\
+		   &\Spec k[x,x^{-1}]\ar[ul]\ar[ur] 
+\end{tikzcd}
+\]
+and
+\fi
+\[
+\begin{tikzcd}
+	k[x]\ar[dr] && k[x] \ar[dl]\\
+		    &k[x,x^{-1}].
+\end{tikzcd}
+\]
+One can choose $x\longmapsto x$ or $x\longmapsto x^{-1}$ for either arrow. If both arrows are the identity, one gets ``a line with two origins.'' If one arrow is the identity and the other isn't, one gets $\mathbf{P}^1(k)$.
+\end{example}
+
+\begin{problem}
+	What are the morphisms to $k[x]$?
+\end{problem}
+
+The ring $k[x]$ corresponds to the affine line. If one wants to consider morphisms from the affine line to itself, one wants to consider the ring homomorphisms $\varphi$ such that
+\[
+\begin{tikzcd}
+	k[x] \ar[rr, "\varphi"] &&k[x] \\
+			       &k\ar[lu] \ar[ru]
+\end{tikzcd}
+\]
+commutes, not all ring homomorphisms $k[x] \longrightarrow k[x]$.\footnote{One wants $\varphi(k)=k$.} In terms of schemes, one wants
+\[
+\begin{tikzcd}
+	\Spec k[x] \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+				   &\Spec k
+\end{tikzcd}
+\]
+to commute.\footnote{That is, we're working over $\Spec k$.} Given a ring $R$, if one wants to know when
+\[
+\begin{tikzcd}
+\Spec R \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+                                   &\Spec k	
+\end{tikzcd}
+\]
+commutes, one wants maps $\varphi$ such that
+\[
+\begin{tikzcd}
+	R && k[x] \ar[ll,  "\varphi",  swap] \\
+	  &k \ar[ul]\ar[ur]
+\end{tikzcd}
+\]
+commutes. This is equivalent to choosing elements of $R$ or global sections of $\Spec R$. That is, for affine algebras over $k$, morphisms to $\Spec k[x]$ correspond to functions on $R$. The same holds for all schemes $X$: Morphisms such that
+\[
+\begin{tikzcd}
+	X \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+                                   &\Spec k    
+\end{tikzcd}
+\]
+commutes correspond to regular functions on $X$.
+
+Let us do this with the two examples from \cref{gluing_1}.
+
+\begin{example}[Line with two origins]\label{}\text{}
+This scheme is covered by two affine lines. One takes to coordinate rings of each affine line and takes an element of each that correspond on the intersection. That is, one looks at the images of elements under
+\[
+\begin{tikzcd}
+	k[x]\ar[dr] && k[x] \ar[dl]\\
+	&k[x,x^{-1}]
+\end{tikzcd}
+\]
+where these arrows are the inclusions. This is $k[x]$, so $k[x]$ is the coordinate ring of the scheme.\footnote{Therefore, this scheme is not affine. If it were, then it must be $\Spec k[x]$, and the map from $k[x]$ to it would have to be an isomorphism. This map is not an isomorphism since it maps two points (the ``origins'') to one point in $k[x]$.}
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Now, let's do this for $\mathbf{P}^1(k)$. One considers the images of elements under
+\[
+\begin{tikzcd}
+        k[x]\ar[dr] && k[x^{-1}] \ar[dl]\\
+        &k[x,x^{-1}]
+\end{tikzcd}
+\]
+where these arrows are the inclusions.\footnote{The arrow on the right is the same as the map $k[x]\longrightarrow k[x]$ given by $x\longmapsto x^{-1}$.} One sees that the coordinate ring of $\mathbf{P}^1(k)$ is $k$.\footnote{Again, this scheme is not affine.}
+\end{example}
+
+\begin{remark}
+	As above, the process of gluing affine schemes does not need to result in an affine scheme.
+\end{remark}
+
+Let us try to determine the morphisms to $\mathbf{P}^1(k)$. First, let us consider the morphisms $\varphi$ such that 
+\[
+\begin{tikzcd}
+	\Spec k \ar[dr]\ar[rr,"\varphi"] && \mathbf{P}^1(k)\ar[dl]\\
+					 &\Spec k
+\end{tikzcd}
+\]
+commutes. Since $\Spec k$ is, really, a point, morphisms $\varphi$ should correspond to points of $\mathbf{P}^1(k)$ as with classical varieties: $\mathbf{P}^1(k)$ is the union of $\mathbf{A}^1(k)$ and $\mathbf{A}^1(k)$ glued along an open subset, so the morphisms $\varphi$ are a union of two copies of morphisms from $\Spec k$ to $\mathbf{A}^1(k)$ over $\Spec k$ modulo an equivalence relation, namely $\alpha\sim \alpha ^{-1}$ for $\alpha\ne 0$, which gives $k$ together with a point at infinity.
+
+\begin{problem}
+	What about $\mathbf{P}^1(R)$?
+\end{problem}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $R=\mathbf{Z}$. Then, one considers morphisms $\varphi$ such that
+\[
+\begin{tikzcd}
+	\Spec \mathbf{Z} \ar[rd]\ar[rr,"\varphi"] &&\mathbf{P}^1(\mathbf{Z})\ar[ld]\\
+						  &\Spec \mathbf{Z}
+\end{tikzcd}
+\]
+commutes.
+Here's a wrong guess: $\mathbf{P}^1(\mathbf{Z})$ is a union of two copies of $\mathbf{A}^1(\mathbf{Z})$ identified along a subset, so morphisms $\varphi$ are given by a union of two copies of morphisms from $\Spec \mathbf{Z}$ to $\mathbf{A}^1(\mathbf{Z})$ (viz., $\mathbf{Z}$) in which $\alpha\sim \alpha^{-1}$ when $\alpha$ has an inverse. This doesn't work because $\Spec \mathbf{Z}$ is not a point.
+
+The open subsets of $\Spec \mathbf{Z}$ are $\emptyset$ and $\Spec \mathbf{Z}[m^{-1}]$ for $m\in \mathbf{Z}$. One is gluing together the affine lines over $\mathbf{Z}$ ($\Spec \mathbf{Z}[x]$ and $\Spec \mathbf{Z}[x^{-1}]$) along $\Spec \mathbf{Z}[x,x^{-1}]$:
+\[
+\begin{tikzcd}
+	\Spec \mathbf{Z}[x] &&\Spec \mathbf{Z}[x^{-1}]\\
+			    &\Spec \mathbf{Z}[x,x^{-1}]. \ar[ru]\ar[lu]
+\end{tikzcd}
+\]
+One also wants to glue together the open subsets $\Spec \mathbf{Z}[m^{-1}]$ and $\Spec \mathbf{Z}[n^{-1}]$:
+\[
+\begin{tikzcd}
+	\Spec \mathbf{Z}[m^{-1}] &&\Spec \mathbf{Z}[n^{-1}]\\
+	&\Spec \mathbf{Z}[(mn)^{-1}]. \ar[ru]\ar[lu]
+\end{tikzcd}
+\]
+The union of these open subsets over $\Spec \mathbf{Z}[(mn)^{-1}]$ is $\Spec \mathbf{Z}$; similarly, the union of $\Spec \mathbf{Z}[x]$ and $\Spec \mathbf{Z}[x^{-1}]$ over $\Spec \mathbf{Z}[x,x^{-1}]$ is $\mathbf{P}^1(\mathbf{Z})$. One wants to define a map $\Spec \mathbf{Z}\longrightarrow \mathbf{P}^1(\mathbf{Z})$ given by
+\[
+\begin{tikzcd}
+	\Spec \mathbf{Z}[x] &&\Spec \mathbf{Z}[x^{-1}]\\
+	&\Spec \mathbf{Z}[x,x^{-1}] \ar[ru]\ar[lu]\\
+	\Spec \mathbf{Z}[m^{-1}]\ar[uu, dashed]  &&\Spec \mathbf{Z}[n^{-1}]\ar[uu, dashed]\\
+	&\Spec \mathbf{Z}[(mn)^{-1}].\ar[uu, dashed] \ar[ru]\ar[lu]
+\end{tikzcd}
+\]
+A morphism $\Spec \mathbf{Z}[m^{-1}]\longrightarrow \Spec \mathbf{Z}[x]$ is a homomorphism of rings $\mathbf{Z}[x]\longrightarrow \mathbf{Z}[m^{-1}]$, so this will be something of the form $x\longmapsto a/m^{\ell_1}$; similarly, the rightmost dashed arrow corresponds to a homomorphism of rings $\mathbf{Z}[x^{-1}] \longrightarrow \mathbf{Z}[n^{-1}]$ given by $x^{-1}\longmapsto b/n^{\ell_2}$. Thus, $(a/m^{\ell_1}) ^{-1}=b/n^{\ell_2}$, since one can interpret $\mathbf{Z}[m^{-1}]$ and $\mathbf{Z}[n^{-1}]$ as subsets of $\mathbf{Q}$ where the restriction maps are the identity, so
+\begin{align*}
+	\frac{ab}{m^{\ell_1}n^{\ell_2}}=1
+\end{align*}
+in $\Spec \mathbf{Z}[(mn) ^{-1}]$.
+
+If $mn\ne 0$ and $q:= a/m^{\ell_1}$, $q$ can be an arbitrary nonzero rational number, so the points correspond to nonzero rational numbers. If $mn=0$, this corresponds to the points $0$ and $\infty$ in the projective plane.
+
+Altogether, morphisms $\varphi$ correspond to pairs of integers $(i:j)$ where $i$ and $j$ are coprime and $(i:j)\sim  (\lambda i :\lambda j)$ if $\lambda$ is a unit.\footnote{Notice the similarity to the definition of the projective line over a field: The coprime condition corresponds to the condition that the numbers are not both zero.}
+\end{example}
+
+This does not work for all rings.
+
+\begin{example}[ ]\label{}\text{}
+Consider $R=\mathbf{Z}[\sqrt{-5} ]$.\footnote{Famously, $2\cdot 3 = (1+\sqrt{-5} ) (1-\sqrt{-5} )$, so $R$ is not a UFD.} One considers morphisms $\varphi$ such that
+\[
+\begin{tikzcd}
+	\Spec R \ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^1(R)\ar[dl]\\
+				       &\Spec R
+\end{tikzcd}
+\]
+commutes. Since $2$ and $3$ are coprime, $\Spec R$ is covered by $\Spec R[2^{-1}]$ and $\Spec R[3^{-1}]$, so one considers
+\[
+\begin{tikzcd}
+	R[2^{-1}] \ar[rd] && R[3^{-1}] \ar[dl]\\
+			  &R[6^{-1}].
+\end{tikzcd}
+\]
+Consider $(1+\sqrt{-5} ) /2\in R[2^{-1}]$ and $(1-\sqrt{-5} ) /3\in R[3^{-1}]$. The product of the images of these things is $1$, so these are inverses in $R[6^{-1}]$. For the first element, one has $(1+\sqrt{-5}:2 ) \in \mathbf{P}^1(R)$, but $(1+\sqrt{-5}, 2 ) \ne R$ is not a principal ideal. The element $(1+\sqrt{-5}:2 )$ is an ``extra'' point of $\mathbf{P}^1(R)$. 
+\end{example}
+
+\begin{remark}
+	The nonprincipal ideals of $R=\mathbf{Z}[\sqrt{-5}] $ are invertible modules. Invertible modules correspond to line bundles over schemes. Classifying points of the projective line over $\Spec R$ (or any scheme) involves classifying invertible modules.
+\end{remark}
 \subsection{$\Proj S$}
 \subsection{The functor of points}
 \subsection{Irreducible, reduced, integral, connected}
