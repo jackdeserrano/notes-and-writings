@@ -3652,7 +3652,7 @@ Now, $\mathbf{P}^n(k)$ is covered by $\{U_{x_0}, \hdots, U_{x_n}\}$ where
 \begin{align*}
 	U_{x_j} = \Spec k \left[ \frac{x_0}{x_j},\hdots, \frac{x_{j-1}}{x_j}, \frac{x_{j+1}}{x_j},\hdots, \frac{x_n}{x_j} \right] = \mathbf{A}^n(k), 
 \end{align*}
-so morphisms $\Spec R\longrightarrow D_{x_j}$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $D_{x_j}$s together and sees that morphisms $\varphi$ such that 
+so morphisms $\Spec R\longrightarrow U_{x_j}$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $U_{x_j}$s together and sees that morphisms $\varphi$ such that 
 \[
 \begin{tikzcd}
 	\Spec R\ar[dr]\ar[rr,"\varphi"] &&\mathbf{P}^n(k)\ar[dl]\\
@@ -3672,8 +3672,99 @@ commutes correspond to points $(r_0:\cdots:r_n)$ such that some $r_i$ are invert
 	\]
 	commutes.	
 \end{remark}
+
 \subsection{The functor of points}
+There are two ideas that we shall consider herein. The first is this:
+\begin{center}
+	\small One should focus on morphisms of schemes, not schemes.
+\end{center}
+For example, one should focus on morphisms $\mathbf{A}^n(k)\longrightarrow \Spec k$ rather than $\mathbf{A}^n(k)$ itself. Here's one from more recent memory: Do not focus on $S\longrightarrow \mathbf{A}^n(k)$; focus on morphisms such that
+\[
+\begin{tikzcd}
+	S\ar[d] \ar[r] &\mathbf{A}^n(k)\ar[dl]\\
+	\Spec k
+\end{tikzcd}
+\]
+commutes. Over a field, this doesn't make too much of a difference, but one can consider these things over any base scheme $S$. That is, one can consider morphisms $\varphi$ such that
+\[
+\begin{tikzcd}
+	 A\ar[r,"\varphi"]\ar[d]&B\ar[dl]\\
+        S
+\end{tikzcd}
+\]
+commutes.
+
+\begin{example}[ ]\label{}\text{}
+One can think of an elliptic curve $y^2 = x^3+ax+b$ as a subset of $\mathbf{C}^2$ if one fixes $a$ and $b$. However, one can think of it as a subset of $\mathbf{C}^4$ where $a$ and $b$ are not fixed.
+
+One can map $\mathbf{C}^4\longrightarrow \mathbf{C}^2$ in the obvious way, and that makes $\mathbf{C}^2$ the ``base scheme.'' One can think of the subset of $\mathbf{C}^4$ as a family of curves parameterized by the base scheme $\mathbf{C}^2$.
+\end{example}
+
+\begin{remark}
+	Any scheme has a unique map to $\Spec \mathbf{Z}$, so ``schemes'' is, roughly, the same as ``schemes over $\Spec \mathbf{Z}$.''\footnote{That is, $\Spec \mathbf{Z}$ is a terminal object in the category of affine schemes.}
+\end{remark}
+
+An extension of this philosophy\footnote{This philosophy is due to Grothendieck.} is seen in the notion of a \index{complete variety}complete variety: One does not define complete varieties; one defines proper maps of schemes.
+
+Here's the second idea: 
+\begin{center}
+	\small A scheme is a contravariant functor from the category of schemes to the category of sets.
+\end{center}
+Let $X$ be a scheme (over $S$). Let $\eta_X$ be the functor from schemes to sets where $\eta_X(T)$ comprises the morphisms $T\longrightarrow X$ (over $S$). This functor is contravariant. Write
+\begin{align*}
+	\tilde \eta_X(R) := \eta_X (\Spec R).
+\end{align*}
+If $R_1\longrightarrow R_2$ is a homomorphism of rings, then one gets a map $\tilde \eta_X(R_1)\longrightarrow \tilde \eta_X(R_2)$. Thus, $\tilde\eta$ is a covariant functor from the category of rings to the category of sets. If $X=\Spec \mathbf{Z}[x]$, then $\tilde \eta_X(R)=R$.
+
+\begin{remark}
+	Informally, $\eta_X(T)$ gives the points of $X$ with values in $T$.
+\end{remark}
+
+\begin{problem}\text{}
+	\begin{enumerate}
+		\item Let $X$ be a scheme. What functor $\eta_X$ does $X$ represent?
+		\item Given a functor from the category of schemes or the category of rings to the category of sets, is it represented by a scheme?
+	\end{enumerate}
+\end{problem}
+
+\begin{example}[ ]\label{}\text{}
+Let $X=\Spec \mathbf{Z}$. There is a unique map from any scheme $S$ to $\Spec \mathbf{Z}$. This represents the functor $\eta_X$ where $\eta_X(T)$ is a $1$-point set.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $X = \Spec \mathbf{Z}\sqcup \Spec \mathbf{Z}$. No, $\eta_X(T)$ is not a $2$-point set in general. It is a $2$-point set only if $T$ is connected. In general, $\eta_X(T)$ corresponds to the subsets of $T$ that are clopen.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $X=\Spec \mathbf{Z}[x,y]$. One sees that $\tilde \eta_X(R) = R^2$. Correspondingly, $\eta_X(T)$ is given by pairs of elements that are regular functions on $T$.
+
+If $X = \Spec \mathbf{Z}[x,y]/(y^2-x^3-x)$, then
+\begin{align*}
+	\tilde \eta_X(R) =  \left\{ x,y\in R^2 :  y^2-x^3-x=0\right\}.
+\end{align*}
+One can think of $\tilde\eta_X$ as a functor from rings to elliptic curves over $R$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $X=\Spec \mathbf{Z}[x] / (x^n-1)$. Then, 
+ \begin{align*}
+	\tilde \eta_X(R) =  \left\{ \textrm{$n$th roots of unity in $R$}\right\} 
+\end{align*}
+is a group under multiplication. Thus, $\tilde\eta_X$ can be viewed as a functor from rings to groups. This is an example of an \index{algebraic group}algebraic group scheme.
+\end{example}
+
+\begin{remark}
+	Scheme morphisms $X\longrightarrow Y$ correspond to ``functor morphisms'' (natural transformations) $\eta_X\longrightarrow \eta_Y$. That is, the category of schemes is contained in the category of functors.
+\end{remark}
+
+Suppose that one wants to ``classify'' elliptic curves. Can one find a scheme such that, say, its points correspond to elliptic curves over $k$? Yes: One can construct a scheme whose points are a given set. Consider a functor $f$ where $f(S)$ consists of ``nice'' families over elliptic curves over $S$.\footnote{A ``nice'' family is a flat one, thanks to Grothendieck. Elliptic curves over schemes have not been defined.} This functor cannot be represented by a scheme. To see this, let's take a step back.
+
+Can one represent $2$-point sets by a scheme? That is, one wants a scheme $X$ whose points with values in $S$ are families of $2$-point sets over $S$. If $S=\Spec k$, then $f(S)$ should be a point. However, one can have a double cover of a set that gives nontrivial two point sets (given by the fibre above each point). That is, a $2$-point set has an automorphism.\footnote{Grothendieck discovered that the existence of automorphisms is an obstruction to constructing ``nice'' families, and, in some sense, it is the only obstruction.} 
+
+Elliptic curves have automorphisms. One can kill the automorphisms by making the points of order $3$ distinct. One can circumvent this problem without killing the automorphisms via the theory of stacks.
+
 \subsection{Irreducible, reduced, integral, connected}
+
 \subsection{Quasicompact, Noetherian}
 \subsection{Morphisms of finite type}
 \subsection{Finite, quasifinite}
