@@ -261,6 +261,7 @@
 \DeclareMathOperator* {\argmin} {arg min}	% arg min
 \DeclareMathOperator* {\colim} {colim}		% colimit
 \DeclareMathOperator* {\lcm} {lcm}		% least common multiple
+\DeclareMathOperator {\agm} {agm}		% arithmetic-geometric mean
 \DeclareMathOperator {\Aut} {Aut}			% automorphism group
 \DeclareMathOperator {\Ag} {A}			% alternating group, etc.
 \DeclareMathOperator {\Ass} {Ass}			% set of associated primes of module (assassin)
@@ -669,7 +670,11 @@
 			\theoremstyle{thm}
 			\newtheorem{thm}{Theorem}
 			\numberwithin{thm}{section}
-			\newtheorem{theorem}[thm]{Theorem}
+			\ifassg	% if this is in an assignment, ignore sections
+				\newtheorem{theorem}{Theorem}
+			\else
+				\newtheorem{theorem}[thm]{Theorem}		
+			\fi
 			\newtheorem{lemma}[thm]{Lemma}
 			\newtheorem{corollary}[thm]{Corollary}
 			\newtheorem{algorithm}[thm]{Algorithm}

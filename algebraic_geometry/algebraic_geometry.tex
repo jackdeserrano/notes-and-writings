@@ -1457,7 +1457,7 @@ Rational maps $X\longrightarrow \mathbf{A}^1$ are rational functions on $X$.
 Rational maps do not form a category: Composition does not need to be defined! For example, the composition of $0:\mathbf{A}^1\longrightarrow \mathbf{A}^1$ and $f:\mathbf{A}^1\longrightarrow \mathbf{A}^1$ given by $x\longmapsto 1/x$ is not defined.
 
 \begin{definition}[ ]\label{}\text{}
-A rational map is \defn{dominant}\index{dominant rational map} is a rational map whose image contains a dense open set.
+A rational map is \defn{dominant}\index{dominant rational map} if its image contains a dense open set.
 \end{definition}
 
 \begin{definition}
@@ -3764,7 +3764,69 @@ Can one represent $2$-point sets by a scheme? That is, one wants a scheme $X$ wh
 Elliptic curves have automorphisms. One can kill the automorphisms by making the points of order $3$ distinct. One can circumvent this problem without killing the automorphisms via the theory of stacks.
 
 \subsection{Irreducible, reduced, integral, connected}
+Suppose $S$ is a scheme. The scheme $S$ is \defn{integral}\index{integral scheme} if it is reduced and irreducible. The scheme $S$ is \defn{reduced}\index{reduced scheme} if all stalks (which are local rings) are reduced. The scheme $S$ is \defn{irreducible}\index{irreducible scheme} if it is not a union of $2$ proper closed subsets and $S$ is nonempty. An irreducible scheme is \defn{connected}\index{connected scheme}: The only clopen sets of $S\ne \emptyset$ are $S$ and $\emptyset$.
 
+\begin{example}[ ]\label{}\text{}
+The scheme $\Spec k[x]/(x^2)$ is irreducible but not reduced. The scheme $\Spec k[x,y]/(x,y)$ is reducible and reduced. The scheme $\Spec k[x]/(x^2-x)$ is disconnected but reduced.
+\end{example}
+
+The scheme $\Spec R$ is reduced if and only if $R$ is reduced. Suppose $r^n =0$ for some nonzero $r\in R$. Pick a maximal ideal $\mathfrak{p}\supseteq \Ann r$. One can check that $r\ne 0$ in $R_\mathfrak{p}$, so $R_\mathfrak{p}$ is not reduced. Conversely, if $R_\mathfrak{p}$ is not reduced, then $(r/\alpha)^n=0$ for some nonzero $r\in R_\mathfrak{p}$. Thus, $\beta r^n =0$ for some $\beta\notin \mathfrak{p}$, so $(\beta r)^n=0$ and $\beta r\ne 0$, so $R$ is not reduced. 
+
+\begin{proposition}[ ]\label{}\text{}
+Let $S$ be a scheme. The following are equivalent:
+\begin{enumerate}
+	\item $S$ is reduced;
+	\item $S_\mathfrak{p}$ is reduced for all points $\mathfrak{p}$;
+	\item Every open affine subscheme is reduced;
+	\item $S$ is covered by reduced open affine subschemes.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+	Being reduced is a local property.
+\end{remark}
+
+\begin{remark}
+	Being integral, being irreducible, and being connected are not local properties: The points of the $2$-point scheme $\Spec (k\times k)$ are integral, connected, and irreducible, though $\Spec(k\times k)$ is neither integral, connected, nor irreducible. These are global properties.
+\end{remark}
+
+The scheme $\Spec R$ is connected if and only if $R$ has no idempotents other than $0$ and $1$ and $R\ne 0$. Suppose $r^2 = r$ nontrivially. Then, $\Spec R$ is a disjoint union of sets $U\sqcup V$ where $U = \left\{ \textrm{$\mathfrak{p}$ prime}: \mathfrak{p}\ni r \right\} $ and $V = \left\{\textrm{$\mathfrak{p}$ prime}: \mathfrak{p} \ni 1-r \right\}$. That is, $\Spec R$ is disconnected. Conversely, suppose $\Spec R$ is a disjoint union of open sets $U\sqcup V$. Choose $r$ to be $1$ on $U$,\footnote{That is, its image in the local rings is $1$.} so $1-r$ is $0$ in $U$ and $1$ in $V$ and $r(1-r)=0$.
+
+The scheme $\Spec R$ is integral if and only if $R$ is an integral domain. The proof that if $R$ is an integral domain then $\Spec R$ is integral is straightforward. Suppose $\Spec R$ is reduced and $rs=0$ in $R$. Then, the scheme $\Spec R$ is a union of sets $U\cup V$ where $U = \left\{ \textrm{$\mathfrak{p}$ prime}: \mathfrak{p}\ni r \right\} $ and $V = \left\{\textrm{$\mathfrak{p}$ prime}: \mathfrak{p} \ni s \right\}$. The sets $U$ and $V$ are closed and $\Spec R$ is irreducible, so one can suppose that all prime ideals contain $r$ without loss of generality. This implies that $r$ is nilpotent.\footnote{See \cref{below}.} Since $R$ is reduced, $r=0$.
+\begin{proposition}[ ]\label{below}\text{}
+Let $\mathfrak{N}=\sqrt{(0)} $ be the nilradical of $R$. Then,
+\begin{align*}
+	\mathfrak{N} = \bigcap_{\textrm{$\mathfrak{p}$ prime ideal}} \mathfrak{p}.
+\end{align*}
+\end{proposition}
+\begin{esquisse}
+	If $r^n =0$, then $r$ is an element of all prime ideals. Now, suppose $r^n\ne 0$ for all $n$. Consider the multiplicative subset $M = \{1,r,r^2,\hdots\}$. By supposition, $M\cap (0)=\emptyset$. Pick a maximal element $I$ in the set of ideals that contain $0$ and are disjoint from $M$.\footnote{Zorn's lemma.} One sees that $I$ is prime, so $r$ is not in some prime ideal.
+\end{esquisse}
+
+Irreducible closed subsets of a scheme correspond to closures of sets. Let $C$ be an irreducible closed subset of $\Spec R$. Define $I$ to be the intersection of the ideals contained in $C$. The ideal $I$ is prime. Since $\overline{I}$ consists of the ideals that contain $I$, $C\subseteq \overline{I}$. Conversely, if $U_f$ is an open set such that $I\subseteq U_f$, then $f\notin I$. Therefore, $f\notin J$ for some $J\in C$, so $J\subseteq U_f$ and $I\subseteq \overline{C}$. Since $C$ is closed, $I\subseteq C$ and $\overline{I}\subseteq C$, so $C=\overline{I}$.
+
+\begin{example}[ ]\label{}\text{}
+Let $G=\mathbf{Z}/4\mathbf{Z}$. Consider the group rings
+\begin{align*}
+	\mathbf{Z}[G] \subseteq \mathbf{Q}[G] \subseteq \mathbf{C}[G].
+\end{align*}
+One can think of this as $\mathbf{Z}[z]/(z^4-1)$. The spectrum of the group ring has $4$ points: $(z-1)$, $(z+1)$, $(z-i)$, and $(z+i)$. These correspond to idempotents:
+\begin{align*}
+	&\frac{1+z+z^2+z^3}{4};\\
+	&\frac{1iz+z^2-z^3}{4};\\
+	&\frac{1 -iz-z^2 + iz^3}{4};\\
+	&\frac{1+iz-z^2-iz^3}{4}.
+\end{align*}
+(These are the $4$ irreducible idempotents. There are $16$ idempotents.) Thus, the points of the spectrum correspond to the $4$ complex representations of $G$. Over $\mathbf{Q}$, the spectrum has points $(z-1)$, $(z+1)$, and $(z^2+1)$. There is a map $\mathbf{Q}[G] \longrightarrow \mathbf{C}[G]$, so there is a morphism that takes $(z\pm1)$ to itself and $(z\pm i)$ to $(z^2+1)$. Over $\mathbf{Z}$, the representations of $G$ are complicated.
+\end{example}
+
+\begin{remark}
+	Notice:
+	\begin{align*}
+		\mathbf{Z}[G] / (2) &=  \mathbf{F}_{2}[z]/(z^4-1) =  \mathbf{F}_{2}[z] /(z-1)^4
+	\end{align*}
+	is not reduced.
+\end{remark}
 \subsection{Quasicompact, Noetherian}
 \subsection{Morphisms of finite type}
 \subsection{Finite, quasifinite}
