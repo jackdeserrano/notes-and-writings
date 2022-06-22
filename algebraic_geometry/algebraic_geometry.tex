@@ -3827,7 +3827,89 @@ One can think of this as $\mathbf{Z}[z]/(z^4-1)$. The spectrum of the group ring
 	\end{align*}
 	is not reduced.
 \end{remark}
+
 \subsection{Quasicompact, Noetherian}
+A scheme $S$ is \defn{Noetherian}\index{Noetherian scheme} if it is quasicompact and locally Noetherian. A scheme $S$ is \defn{quasicompact}\index{quasicompact scheme} if the underlying topological space is (quasi)compact. A scheme $S$ is \defn{locally Noetherian}\index{locally Noetherian scheme} if it can be covered by open affine subschemes of the form $\Spec R_i$ where $R_i$ is a Noetherian ring.
+
+\begin{remark}
+	All affine schemes $\Spec R$ are quasicompact.
+\end{remark}
+
+Suppose $\Spec R$ is covered by open sets $U_{f_i}$. Then, no maximal ideal contains all $f_i$s, so $(f_i)$ is $R$. Therefore, $\sum_{i}^{} \alpha_if_i=1$ for some $\alpha_i$ of which almost all are $0$. In particular,
+\begin{align*}
+	\sum_{j=1}^{n} \alpha_{j}f_{\sigma(j) },
+\end{align*}
+so $\Spec R$ is covered by $\{U_{f_{\sigma(j)}}\}$.
+
+\begin{remark}
+	A scheme $S$ is quasicompact if and only if $S$ can be covered by a finite number of open sets of the form $\Spec R_i$.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+The schemes of projective and affine varieties are quasicompact. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+A disjoint union of a countable number of schemes is not quasicompact in general. One example of this is the \index{Hilbert scheme}Hilbert scheme.
+\end{example}
+
+Recall that a topological space $X$ is \index{Noetherian topological space}Noetherian if and only if every nonempty collection of open sets has a maximal element; equivalently, it satisfies the descending chain condition for closed sets. One does not define a scheme to be Noetherian if and only if the underlying topological space is Noetherian: Suppose $R = k[x_1,x_2,\hdots]/(x_1^2,x_2^2,\hdots)$. Then, $\Spec R$ consists of the point $(x_1,x_2,\hdots)$ and, therefore, is Noetherian as a topological space. However, this point is not finitely generated, so $R$ is not Noetherian.
+
+One says that $S$ is \index{locally Noetherian scheme}locally Noetherian if it is covered by open affine subschemes of the form $\Spec R_i$ where $R_i$ is Noetherian. Since a Noetherian scheme is a locally Noetherian, quasicompact scheme, a Noetherian scheme is a scheme that is covered by a finite number of $\Spec R_i$s where $R_i$ is Noetherian.
+
+\begin{example}[ ]\label{}\text{}
+Projective varieties are Noetherian. Hilbert schemes are locally Noetherian.
+\end{example}
+
+\begin{problem}
+	Should one restrict to Noetherian schemes?
+\end{problem}
+
+Most schemes are Noetherian in practice and the theory of Noetherian schemes is simpler than that of schemes. However, some schemes are not Noetherian and show up, e.g. the spectrum of a non-discrete valuation ring.
+
+\begin{remark}
+	Being locally Noetherian is a local property, so, if $\Spec R$ is covered by open affine subschemes of Noetherian rings, then $R$ is Noetherian. Here's the key: Being an ideal is a local property: Suppose $r\in R$ and $I$ is an ideal of $R$. The following things are equivalent.
+	\begin{enumerate}
+		\item $r\in I$;
+		\item $r\in I[f_i^{-1}]\le R[f_i^{-1}]$ where $\{U_{f_i}\}$ covers $\Spec R$;
+		\item $r\in I_\mathfrak{p}\le R_\mathfrak{p}$ for all maximal ideals $\mathfrak{p}$.
+	\end{enumerate}
+	1. implies 2. and 2. implies 3. are trivial. Consider
+	\begin{align*}
+		J := \{ s : rs \in I\}.
+	\end{align*}
+	If $\mathfrak{m}$ is a maximal ideal, then $r\in I_\mathfrak{m}$ implies $\alpha(\beta r - t) =0$ for all $\alpha,\beta\notin \mathfrak{m}$ and $t\in I$. This, in turn, implies $\alpha\beta r\in I$, so $J$ is not contained in $\mathfrak{m}$: $\alpha\beta\in J-\mathfrak{m}$. Therefore, $J=R$, so $r\in I$. That is, 3. implies 1.
+
+Suppose that $\Spec R$ is covered by open sets $U_{f_i}$. Then, an $R$-ideal is determined by its images $I[f_i^{-1}]$ in the rings $R[f_i]$. Thus, if $R$ has an increasing sequence of ideals $I_1\subseteq I_2\subseteq \cdots$, one can consider $I_1[f_i^{-1}]\subseteq I_2[f_i^{-1}]\subseteq\cdots$. If $R[f_i]$ is Noetherian for all $i$, then these chains terminate. Since $\Spec R$ is covered by finitely many of the $U_{f_i}$s, $I_1\subseteq I_2\subseteq \cdots$ terminates. That is, $R$ is Noetherian.  
+\end{remark}
+
+\begin{remark}
+	Being Noetherian somewhat corresponds to being finite-dimensional. Note the word ``somewhat'': $R = k[x_1,x_2,\hdots]/(x_1^2,x_2^2,\hdots)$ is a finite-dimensional non-Noetherian ring. Local Noetherian rings are finite-dimensional. However, look at this example of Nagata of an infinite-dimensional Noetherian ring:
+	\vspace{1 em}\\ % Make an environment for this
+		\small Let $k$ be a field and let $x_1,\hdots, x_n,\hdots$ be infinitely many algebraically independent elements over $k$. Let $m_1,\hdots, m_i,\hdots$ be a sequence of natural numbers such that $0<m_i-m_{i-1} < m_{i+1}-m_i$ for all $i$. Let $\mathfrak{p}_i$ be the prime ideal of $k[x_1,\hdots, x_n,\hdots]$ generated by all the $x_j$ such that $m_i\le j<m_{i+1}$, and let $S$ be the intersection of complements of $\mathfrak{p}_i$ in $k[x_1,\hdots, x_n,\hdots]$. Then, the ring $R = k[x_1,\hdots, x_n,\hdots]_S$ is an infinite-dimensional Noetherian ring.\footnote{\underline{Local Rings}, A1.}\normalsize
+	\vspace{1 em}
+
+	Counterexamples like this shot down the hopes that Noetherian rings were the ``nice'' rings to study in scheme theory. Perhaps Grothendieck's notion of an excellent ring is that which one should study.
+\end{remark}
+
+\begin{definition}[ ]\label{}\text{}
+A ring $A$ is a \defn{chain ring}\index{chain ring} if, for any two prime ideals $\mathfrak{p}\ne \mathfrak{q}$ of $A$, the lengths of any two unsaturated chains 
+\begin{align*}
+	\mathfrak{p} = \mathfrak{p}_0 \subset \mathfrak{p}_1\subset\cdots\subset \mathfrak{p}_n=\mathfrak{q}
+\end{align*}
+are the same. A ring $A$ is a \defn{universal chain ring}\index{universal chain ring} if any polynomial ring $A[T_1,\hdots, T_k]$ is a chain ring.
+\end{definition}
+
+
+\begin{definition}[ ]\label{}\text{}
+A ring $A$ is \defn{excellent}\index{excellent ring} if the following axioms hold.
+\begin{enumerate}
+	\item The ring $A$ is a universal chain ring;
+	\item The formal fibres of $A$ are geometrically regular: For any prime ideal $\mathfrak{p}$ of $A$ and any homomorphism from $A$ to a field $k$, the ring $\widehat{A_\mathfrak{p}}\tensor_A k$ is regular;
+	\item For any integral finite $A$-algebra $B$, there exists a nonzero $\beta\in B$ such that $B[\beta^{-1}]$ is regular.\footnote{\url{https://encyclopediaofmath.org/wiki/Excellent_ring}.}
+\end{enumerate}
+\end{definition}
+
 \subsection{Morphisms of finite type}
 \subsection{Finite, quasifinite}
 \subsection{Immersions}
