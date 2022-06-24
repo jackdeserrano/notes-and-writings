@@ -21,3 +21,5 @@ Please inform me about any errors in the notes or otherwise with an issue. One s
 Thank you to Dr. Richard Borcherds, Khan Academy, and Dr. Benedict Gross for providing me with most of the content of these notes and, particularly, teaching me. 
 
 I am working on some lengthy notes on algebraic geometry that I hope to complete by the fall of 2022. 
+
+SDG.

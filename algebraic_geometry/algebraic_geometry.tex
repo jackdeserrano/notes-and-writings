@@ -1375,13 +1375,15 @@ The image is not open, closed, or even locally closed. A theorem of Chevalley sa
 	[First-order logic]\index{first-order logic} In first-order logic, one uses the usual logical connectives $\land$, $\lor$, $\lnot$, $\implies$, etc. to make statements. Also, one can use the operations of the field or model in question. One may also quantify over all elements in the model $X$ (with ``for all $x\in X$, . . .'' or ``there exists $x\in X$, . . .'').
 
 	Here's an attempt at saying, ``$\Omega$ is algebraically closed'':
-	\begin{center}
-		\small For all polynomials $a_nX^n + \cdots + a_1X + a_0\in \Omega[X]$, there is a root.
-	\end{center}
+	\begin{quote}
+		\small 
+		For all polynomials $a_nX^n + \cdots + a_1X + a_0\in \Omega[X]$, there is a root.
+	\end{quote}
 	This is not allowed in first-order logic: One cannot say ``For all polynomials . . . .'' Here's the closest one can get:
-	\begin{center}
-		\small For all polynomials of degree $n$, there is a root.
-	\end{center}
+	\begin{quote}
+		\small 
+		For all polynomials of degree $n$, there is a root.
+	\end{quote}
 	This is allowed because it is a statement on $n$ coefficients in $\Omega$. To say that $\Omega$ is algebraically closed takes infinitely many statements in first-order logic. One cannot quantify over all integers.
 \end{remark}
 \begin{definition}[ ]\label{}\text{}
@@ -1398,9 +1400,10 @@ There is a unique algebraically closed field of a given characteristic and cardi
 
 \begin{remark}
 	This means that anything true for all algebraically closed fields of large characteristic is true for algebraically closed fields of characteristic $0$. One cannot say that $\Omega$ is of characteristic $0$ with one statement in first-order logic. One needs a countably infinite number of statements: For every prime number $p$, the statement
-	\begin{center}
-		\small For all $\omega\in \Omega$, $p\omega\ne 0$.
-	\end{center}
+	\begin{quote}
+		\small 
+		For all $\omega\in \Omega$, $p\omega\ne 0$.
+	\end{quote}
 	must be true. Suppose you have proved something for algebraically closed fields of characteristic $0$. This proof uses only a finite number of axioms; that is, this proof can only eliminate a finite number of characteristics. Therefore, true for algebraically closed and characteristic $0$ implies true for algebraically closed and large characteristic.
 
 	The converse is clearly true.
@@ -1596,9 +1599,10 @@ One guesses that it's a hypersurface, so assume so. What is the degree of this h
 The dimension of the space of cubics in $\mathbf{P}^3$ has dimension $20$. Therefore, the dimension of the space of cubic surfaces is $19$.  (Think of each cubic surface as being a point in a parameter space. This parameter space is $\mathbf{P}^{19}$.) 
 
 The dimension of the parameter space of the six points is $6\cdot 2$. Further, $\dim (\Aut(\mathbf{P}^2))=8$ and $\dim(\Aut(\mathbf{P}^3)) =15$. The dimension of the space of cubic surfaces one gets by taking $6$ points in $\mathbf{P}^2$ is probably going to be $12+15-8=19$, which strongly suggests that one can get all nonsingular cubic surfaces from this construction. Dr. Borcherds states about this argument:
-\begin{center}
-	\small It's got more holes in [it] than a piece of Swiss cheese.
-\end{center}
+\begin{quote}
+	\small 
+	It's got more holes in [it] than a piece of Swiss cheese.
+\end{quote}
 
 These kinds of arguments were typical of old school algebraic geometry. Proving this true claim takes a lot more work.
 
@@ -2118,13 +2122,15 @@ One can think of successive maps looking at a point in a finer neighbourhood.
 
 \subsection{Resultants}
 This section will concern elimination theory. Andr\'e Weil's \underline{Foundations of Algebraic Geometry} has an infamous footnote:
-\begin{center}
-	\small The device that follows, which, it may be hoped, finally eliminates from algebraic geometry the last traces of elimination-theory, is borrowed from C. Chevalley's Princeton lectures.
-\end{center}
+\begin{quote}
+	\small 
+	The device that follows, which, it may be hoped, finally eliminates from algebraic geometry the last traces of elimination-theory, is borrowed from C. Chevalley's Princeton lectures.
+\end{quote}
 This is quite funny next to the following line from a poem by Shreeram Abhyankar:
-\begin{center}
-	\small Eliminate the eliminators of elimination theory!
-\end{center}
+\begin{quote}
+	\small 
+	Eliminate the eliminators of elimination theory!
+\end{quote}
 
 		Suppose you have two polynomials, say $x^3y^4 - 7x^2-xy^8$ and $3x^2y^5+4y^2+x^4y^7$. Now, suppose you want to eliminate $y$. The variable $x$ should satisfy a polynomial of degree $9\cdot 11$. Here's the general problem: Suppose
 		\begin{align*}
@@ -3090,9 +3096,10 @@ Alexander Grothendieck introduced schemes in the 1950s. At this time, mathematic
 
 Smooth manifolds, complex manifolds, and topological manifolds are examples of locally ringed spaces.
 A quotation of János Kollár that is found in \underline{The Princeton Companion to Mathematics} sums up the theory of stacks: 
-\begin{center}
-	\small The study of stacks is strongly recommended to people who would have been flagellants in earlier times. (367)
-\end{center}
+\begin{quote}
+	\small 
+	The study of stacks is strongly recommended to people who would have been flagellants in earlier times. (367)
+\end{quote}
 
 \begin{definition}[ ]\label{}\text{}
 A \defn{scheme}\index{scheme} is a \index{locally ringed space}locally ringed space that is locally isomorphic to an \index{affine scheme}affine scheme.
@@ -3159,9 +3166,10 @@ Second, the eigenvalues of a matrix $A$ correspond to the maximal ideals of $\ma
 Now, let $X$ be compact and Hausdorff. Let $R=C(X)$ be the ring of continuous real-valued functions on $X$. Then, the points of $X$ correspond to the (closed) maximal ideals of $R$ and the topology is given by $U_f$ (the open set of maximal ideals that do not contain $f$) for all $f$.
 
 Hence, one says that the maximal ideals of a commutative ring form a topological space defined in this way. An obvious question arises:
-\begin{center}
-	\small Why prime ideals instead of maximal ideals, then?
-\end{center}
+\begin{quote}
+	\small 
+	Why prime ideals instead of maximal ideals, then?
+\end{quote}
 Maximal ideals work just fine in specific settings, but not in general: Suppose $f:R\longrightarrow S$ is a homomorphism of rings. One wants to define a map $\Spec S \longrightarrow \Spec R$ given by $\mathfrak{m} \longmapsto f^{-1}(\mathfrak{m})$. However, $f^{-1}(\mathfrak{m})$ does not need to be maximal.\footnote{Let $f:\mathbf{Z} \longrightarrow \mathbf{Q}$ be the inclusion. Then $\mathfrak{m}=(0)$ is maximal in $\mathbf{Q}$ since $\mathbf{Q}$ is a field, but $f^{-1}(\mathfrak{m}) = (0)$ is not maximal in $\mathbf{Z}$ since $\mathbf{Z}$ is not a field.}
 
 An $R$-ideal $\mathfrak{m}$ is maximal if and only if $R/\mathfrak{m}$ is a field. One sees that $R/f^{-1}(\mathfrak{m})$ is a subring of the field $S/\mathfrak{m}$, so one finds that $R/f^{-1}(\mathfrak{m})$ is an integral domain, but not necessarily a field. Recall that an $R$-ideal $\mathfrak{p}$ is prime if and only if $R/\mathfrak{p}$ is an integral domain. Therefore, if $\mathfrak{p}$ is a prime ideal, then $f^{-1}(\mathfrak{p})$ is prime. This is why Grothendieck considered prime ideals instead of maximal ideals.
@@ -3675,9 +3683,10 @@ commutes correspond to points $(r_0:\cdots:r_n)$ such that some $r_i$ are invert
 
 \subsection{The functor of points}
 There are two ideas that we shall consider herein. The first is this:
-\begin{center}
-	\small One should focus on morphisms of schemes, not schemes.
-\end{center}
+\begin{quote}
+	\small 
+	One should focus on morphisms of schemes, not schemes.
+\end{quote}
 For example, one should focus on morphisms $\mathbf{A}^n(k)\longrightarrow \Spec k$ rather than $\mathbf{A}^n(k)$ itself. Here's one from more recent memory: Do not focus on $S\longrightarrow \mathbf{A}^n(k)$; focus on morphisms such that
 \[
 \begin{tikzcd}
@@ -3707,9 +3716,10 @@ One can map $\mathbf{C}^4\longrightarrow \mathbf{C}^2$ in the obvious way, and t
 An extension of this philosophy\footnote{This philosophy is due to Grothendieck.} is seen in the notion of a \index{complete variety}complete variety: One does not define complete varieties; one defines proper maps of schemes.
 
 Here's the second idea: 
-\begin{center}
-	\small A scheme is a contravariant functor from the category of schemes to the category of sets.
-\end{center}
+\begin{quote}
+	\small 
+	A scheme is a contravariant functor from the category of schemes to the category of sets.
+\end{quote}
 Let $X$ be a scheme (over $S$). Let $\eta_X$ be the functor from schemes to sets where $\eta_X(T)$ comprises the morphisms $T\longrightarrow X$ (over $S$). This functor is contravariant. Write
 \begin{align*}
 	\tilde \eta_X(R) := \eta_X (\Spec R).
@@ -3885,9 +3895,10 @@ Suppose that $\Spec R$ is covered by open sets $U_{f_i}$. Then, an $R$-ideal is 
 
 \begin{remark}
 	Being Noetherian somewhat corresponds to being finite-dimensional. Note the word ``somewhat'': $R = k[x_1,x_2,\hdots]/(x_1^2,x_2^2,\hdots)$ is a finite-dimensional non-Noetherian ring. Local Noetherian rings are finite-dimensional. However, look at this example of Nagata of an infinite-dimensional Noetherian ring:
-	\vspace{1 em}\\ % Make an environment for this
-		\small Let $k$ be a field and let $x_1,\hdots, x_n,\hdots$ be infinitely many algebraically independent elements over $k$. Let $m_1,\hdots, m_i,\hdots$ be a sequence of natural numbers such that $0<m_i-m_{i-1} < m_{i+1}-m_i$ for all $i$. Let $\mathfrak{p}_i$ be the prime ideal of $k[x_1,\hdots, x_n,\hdots]$ generated by all the $x_j$ such that $m_i\le j<m_{i+1}$, and let $S$ be the intersection of complements of $\mathfrak{p}_i$ in $k[x_1,\hdots, x_n,\hdots]$. Then, the ring $R = k[x_1,\hdots, x_n,\hdots]_S$ is an infinite-dimensional Noetherian ring.\footnote{\underline{Local Rings}, A1.}\normalsize
-	\vspace{1 em}
+\begin{quote}
+\small
+Let $k$ be a field and let $x_1,\hdots, x_n,\hdots$ be infinitely many algebraically independent elements over $k$. Let $m_1,\hdots, m_i,\hdots$ be a sequence of natural numbers such that $0<m_i-m_{i-1} < m_{i+1}-m_i$ for all $i$. Let $\mathfrak{p}_i$ be the prime ideal of $k[x_1,\hdots, x_n,\hdots]$ generated by all the $x_j$ such that $m_i\le j<m_{i+1}$, and let $S$ be the intersection of complements of $\mathfrak{p}_i$ in $k[x_1,\hdots, x_n,\hdots]$. Then, the ring $R = k[x_1,\hdots, x_n,\hdots]_S$ is an infinite-dimensional Noetherian ring.\footnote{\underline{Local Rings}, A1.}
+\end{quote}
 
 	Counterexamples like this shot down the hopes that Noetherian rings were the ``nice'' rings to study in scheme theory. Perhaps Grothendieck's notion of an excellent ring is that which one should study.
 \end{remark}
@@ -3911,6 +3922,41 @@ A ring $A$ is \defn{excellent}\index{excellent ring} if the following axioms hol
 \end{definition}
 
 \subsection{Morphisms of finite type}
+Morphisms of finite type are not finite morphisms. If $R\longrightarrow S$ is a homomorphism of rings where $S$ is a finitely-generated $R$-algebra, the induced morphism of schemes $\Spec S \longrightarrow \Spec R$ is a morphism of finite type. The consideration of finitely-generated rings $R$ is too restricted and taken on by algebraic number theory.
+
+A \defn{morphism of finite type}\index{morphism of finite type} is a morphism of schemes that is quasicompact and locally of finite type. A morphism of schemes $X\longrightarrow Y$ is \defn{quasicompact}\index{quasicompact morphism} if and only if the preimage of an open quasicompact subscheme of $Y$ is quasicompact in $X$. A morphism of schemes $\varphi: X\longrightarrow Y$ is \defn{locally of finite type}\index{locally of finite type morphism} if and only if, for all $\alpha\in X$, there exist an open affine subscheme $U\ni \alpha$ and an open affine subscheme $V \ni \varphi(\alpha)$ such that $\varphi(U)\subseteq V$ and $\mathscr{O}(U)$ is a finitely-generated $\mathscr{O}(V)$-algebra.
+
+\begin{example}[ ]\label{}\text{}
+Let $Y=\Spec k$ be a point and let $X$ be a line with infinitely many origins (cf. \cref{gluing_1}). The morphism $X\longrightarrow Y$ is locally of finite type but not of finite type.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $X =\Spec k[z_1,z_2,\hdots]$. The morphism $X \longrightarrow \Spec k$ is not locally of finite type.
+\end{example}
+
+If $Y=\Spec k$ and $X $ is the scheme of a variety over $k$, then $X$ is covered by a finite number of $\Spec R_i$ where $R_i$ is a finitely-generated $k$-algebra. Therefore, $X \longrightarrow Y$ is of finite type. \index{abstract variety}Abstract varieties over $k$ approximately correspond to schemes $X$ over $\Spec k$ such that $X\longrightarrow \Spec k$ is (locally) of finite type\footnote{``Locally'' depends on one's definition of ``abstract variety.''} and $X$ is integral (reduced and irreducible). 
+
+Morphisms of finite type are somewhat related to fibres being finite-dimensional. Notice the word ``somewhat,'' again: The morphism $\Spec k[z] \longrightarrow \Spec k$ is of finite type. The localization $\Spec k[z]_{(z)}$ is not finitely-generated as a $k$-algebra, so the map $\Spec k[z]_{(z)} \longrightarrow \Spec k$ is not of finite type.
+
+\begin{theorem}[Hilbert]\label{htheo}\index{Hilbert's theorem}\text{}
+Suppose that $S$ is a finitely-generated $R$-algebra. If $R$ is Noetherian, then $S$ is Noetherian.
+\end{theorem}
+
+\begin{remark}
+	\cref{htheo} can be translated into the language of schemes: Suppose $X\longrightarrow Y$ is a morphism of finite type. If $Y$ is Noetherian, then $X$ is Noetherian. If $Y$ is locally Noetherian, then $X$ is locally Noetherian.
+\end{remark}
+
+\begin{remark}
+	Most properties of morphisms (quasicompactness, for example) are preserved under composition.
+\end{remark}
+
+\begin{remark}
+	Most properties of morphisms $X\longrightarrow Y$ (being of finite type, for example) are local on $Y$.
+\end{remark}
+
+\begin{remark}
+	Sometimes, properties of morphisms are local on fibres. This holds for morphisms locally of finite type, but not for morphisms of finite type.
+\end{remark}
 \subsection{Finite, quasifinite}
 \subsection{Immersions}
 \subsection{Products}
