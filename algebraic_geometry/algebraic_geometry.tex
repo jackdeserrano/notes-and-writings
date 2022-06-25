@@ -2469,7 +2469,7 @@ Note that $M(d_m)$ means $M$ with its grading shifted by $d_m$. Since this is an
 \end{align*}
 Thus, by induction, $(1-z^{-d_m})f_M$ is a rational function. Further, $f_M$ is a rational function with denominator dividing $(1-z^{d_1})\cdots(1-z^{d_m})$.
 
-Let us focus on the case $d_i=1$ for all $i$. Then, the denominator is $(1-z)^m$, and the coefficients of $x_i$ for $i\ge 0$ in the expansion of $1/(1-z)^m$ are given by a polynomial in $i$. Therefore, $\dim_k (M_n)$ is a polynomial in $n$ for $n>0$ large. This is called the \defn{Hilbert polynomial}\index{Hilbert polynomial} of $M$. It describes how rapidly the graded pieces of $M$ grow in large degree.
+Let us focus on the case $d_i=1$ for all $i$. Then, the denominator is $(1-z)^m$, and the coefficients of $z_i$ for $i\ge 0$ in the expansion of $1/(1-z)^m$ are given by a polynomial in $i$. Therefore, $\dim_k (M_n)$ is a polynomial in $n$ for $n>0$ large. This is called the \defn{Hilbert polynomial}\index{Hilbert polynomial} of $M$. It describes how rapidly the graded pieces of $M$ grow in large degree.
 
 Write $g(n) := \dim_k(M_n)$ for the Hilbert polynomial of $M$. Though its coefficients are not necessarily integers, the restriction
 \begin{align*}
@@ -2823,11 +2823,11 @@ Sheaves seem to be an unnecessarily complicated and abstract way to describe fun
 \begin{example}[ ]\label{}\text{}
 The points of the affine line $\mathbf{C}$ correspond to the maximal ideals of the ring $\mathbf{C}[x]$.\footnote{The point $\alpha\in \mathbf{C}$ corresponds to the maximal ideal $(x-\alpha)$.} Given $f\in \mathbf{C}[x]$, define
 \begin{align*}
-	D_f := \{\alpha : f(\alpha)\ne 0\}.
+	U_f := \{\alpha : f(\alpha)\ne 0\}.
 \end{align*}
-Then, open sets have a basis $\{D_f\}$ in the Zariski topology. Further, the ring of regular functions of an open set is given as follows: 
+Then, open sets have a basis $\{U_f\}$ in the Zariski topology. Further, the ring of regular functions of an open set is given as follows: 
 \begin{align*}
-	\mathscr{F}(D_f) = \{g/f^n: g\in \C[x]\}
+	\mathscr{F}(U_f) = \{g/f^n: g\in \C[x]\}
 \end{align*}
 
 Let us replace $\mathbf{C}[x]$ with $\mathbf{Z}$. The maximal ideals of $\mathbf{Z}$ are given by
@@ -2836,11 +2836,11 @@ Let us replace $\mathbf{C}[x]$ with $\mathbf{Z}$. The maximal ideals of $\mathbf
 \end{align*}
 This set is called the \defn{maximal spectrum}\index{maximal spectrum} of $\mathbf{Z}$. Given $f\in \mathbf{Z}$, define 
 \begin{align*}
-	D_f := \{\mathfrak{m}: f\notin  \mathfrak{m}\}.
+	U_f := \{\mathfrak{m}: f\notin  \mathfrak{m}\}.
 \end{align*}
-Then, one gets a basis of open sets $\{D_f\}$. Now, define
+Then, one gets a basis of open sets $\{U_f\}$. Now, define
 \begin{align*}
-	\mathscr{F}(D_f) := \{ g/f^n : g\in \mathbf{Z}\}.
+	\mathscr{F}(U_f) := \{ g/f^n : g\in \mathbf{Z}\}.
 \end{align*}
 
 One pretends that an integer is a function on the space $\specmax \mathbf{Z}$. One notes the difference, though: $f\in \C[x]$ has values in $\mathbf{C}$ at all points of $\mathbf{C} = \mathbf{C}[x]/(x-\alpha)$, but $f\in \mathbf{Z}$ has values in $\mathbf{Z}/(p)$, which varies as the point varies. Nevertheless, $\mathscr{F}$ satisfies the sheaf property.\footnote{This fact comes down to the fundamental theorem of arithmetic.}
@@ -3155,7 +3155,7 @@ for $r\in R$; the sheaf of $\Spec R$ is given by
 \begin{align*}
 	U_f = \{ (z-\alpha) : f (\alpha)\ne 0\}
 \end{align*}
-is either $\emptyset$ or $\Spec R$ minus a finite number of points. Also, $\mathscr{O}(U_f)$ consists of rational functions $g/f^k$ that have no poles on $D_f$. Further, the local ring at $(0)$ is $\mathbf{C}(z)$ and the local ring at $(z-\alpha)$ comprises rational functions with no poles at $\alpha$.
+is either $\emptyset$ or $\Spec R$ minus a finite number of points. Also, $\mathscr{O}(U_f)$ consists of rational functions $g/f^k$ that have no poles on $U_f$. Further, the local ring at $(0)$ is $\mathbf{C}(z)$ and the local ring at $(z-\alpha)$ comprises rational functions with no poles at $\alpha$.
 \end{enumerate}
 \end{example}
 
@@ -3301,25 +3301,25 @@ First, note that one can define a sheaf on a set $X$ by defining it on elements 
 One handles basis elements that do not have this property in the following way.
 
 \begin{example}[ ]\label{}\text{}
-Let $R=\mathbf{C}[x,y]$. Consider the open sets $U_1 = D_x$ and $U_2 = D_y$.
+Let $R=\mathbf{C}[x,y]$. Consider the open sets $U_1 = U_x$ and $U_2 = U_y$.
 \end{example}
 \fi
 
-Suppose one is given a basis $D_f = \bigcup_ i D_{f_i}$. One checks the sheaf condition as follows: First, notice that one can replace $R$ by $R[f^{-1}]$, since $\Spec R[f^{-1}]= D_f$. That is, one can assume that $D_f = \Spec R$. Hence, one supposes that $\{D_{f_i}\}_i$ covers $\Spec R$. Consider the ideal $(f_1,\hdots, f_n)$. Since there is no prime ideal that contains $(f_1,\hdots, f_n)$, one sees that $(f_1,\hdots, f_n)=R$. Particularly, 
+Suppose one is given a basis $U_f = \bigcup_ i U_{f_i}$. One checks the sheaf condition as follows: First, notice that one can replace $R$ by $R[f^{-1}]$, since $\Spec R[f^{-1}]= U_f$. That is, one can assume that $U_f = \Spec R$. Hence, one supposes that $\{U_{f_i}\}_i$ covers $\Spec R$. Consider the ideal $(f_1,\hdots, f_n)$. Since there is no prime ideal that contains $(f_1,\hdots, f_n)$, one sees that $(f_1,\hdots, f_n)=R$. Particularly, 
 \begin{align*}
 	\alpha_1f_1 + \cdots +\alpha_nf_n = 1
 \end{align*}
 for some $\alpha_i\in R$. This implies that $\Spec R$ is \index{quasicompact}quasicompact.\footnote{``Which means the same as `compact' unless you're French.'' Also, this is something like a \index{partition of unity}partition of unity.}
 
-Now, given $r\in R = \mathscr{O}(\Spec R)$, one needs to show that if $r$ is $0$ in $D_{f_i}$ for all $i$, then $r=0$. One sees that the image of $r$ in $R[f_i^{-1}]$ is $0$. Equivalently, $f_i^{n_i} r = 0$ for some $n_i$. Also, $\sum_{i=1}^{n} \alpha_if_i=1$ as above. Replacing $f_i^{n_i}$ by $f_i$ since $D_{f_i}=D_{f_i^{n_i}}$, one assumes that $f_ir = 0$ for all $i$. Thus,
+Now, given $r\in R = \mathscr{O}(\Spec R)$, one needs to show that if $r$ is $0$ in $U_{f_i}$ for all $i$, then $r=0$. One sees that the image of $r$ in $R[f_i^{-1}]$ is $0$. Equivalently, $f_i^{n_i} r = 0$ for some $n_i$. Also, $\sum_{i=1}^{n} \alpha_if_i=1$ as above. Replacing $f_i^{n_i}$ by $f_i$ since $U_{f_i}=U_{f_i^{n_i}}$, one assumes that $f_ir = 0$ for all $i$. Thus,
 \begin{align*}
 	r &= r \sum_{i=1}^{n} \alpha_if_i\\
 	  &= \sum_{i=1}^{n} \alpha_i f_ir\\
 	  &= 0.
 \end{align*}
 
-Suppose $\Spec R = \bigcup_i D_{f_i}$.
-Recall that $\mathscr{O}(D_{f_i})=R[f_i^{-1}]$. Suppose that $r_i/f_i^{n_i}\in \mathscr{O}(D_{f_i})$ where
+Suppose $\Spec R = \bigcup_i U_{f_i}$.
+Recall that $\mathscr{O}(U_{f_i})=R[f_i^{-1}]$. Suppose that $r_i/f_i^{n_i}\in \mathscr{O}(U_{f_i})$ where
 \begin{align*}
 	\frac{r_i}{f_i^{n_i}} \sim \frac{r_j}{f_j^{n_j}}
 \end{align*}
@@ -3345,7 +3345,7 @@ Thus, $\Spec R$ satisfies the sheaf property.
 	What is the stalk of $\Spec R$ at a point $\mathfrak{p}$?
 \end{problem}
 
-Well, this is the direct limit of $\mathscr{O}(D_{f_i})= R[f_i ^{-1}]$ where the $D_{f_i}$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
+Well, this is the direct limit of $\mathscr{O}(U_{f_i})= R[f_i ^{-1}]$ where the $U_{f_i}$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
 
 \subsection{Morphisms of affine schemes}
 One might define morphisms of schemes to be morphisms of ringed spaces, but this is wrong. One defines a morphism of schemes to be a morphism of locally ringed spaces. 
@@ -3863,7 +3863,8 @@ The schemes of projective and affine varieties are quasicompact.
 A disjoint union of a countable number of schemes is not quasicompact in general. One example of this is the \index{Hilbert scheme}Hilbert scheme.
 \end{example}
 
-Recall that a topological space $X$ is \index{Noetherian topological space}Noetherian if and only if every nonempty collection of open sets has a maximal element; equivalently, it satisfies the descending chain condition for closed sets. One does not define a scheme to be Noetherian if and only if the underlying topological space is Noetherian: Suppose $R = k[x_1,x_2,\hdots]/(x_1^2,x_2^2,\hdots)$. Then, $\Spec R$ consists of the point $(x_1,x_2,\hdots)$ and, therefore, is Noetherian as a topological space. However, this point is not finitely generated, so $R$ is not Noetherian.
+Recall that a topological space $X$ is \index{Noetherian topological space}Noetherian if and only if every nonempty collection of open sets has a maximal element; equivalently, it satisfies the descending chain condition for closed sets. 
+One does not define a scheme to be Noetherian if and only if the underlying topological space is Noetherian: Suppose $R = k[z_1,z_2,\hdots]/(z_1^2,z_2^2,\hdots)$. Then, $\Spec R$ consists of the point $(z_1,z_2,\hdots)$ and, therefore, is Noetherian as a topological space. However, this point is not finitely generated, so $R$ is not Noetherian.
 
 One says that $S$ is \index{locally Noetherian scheme}locally Noetherian if it is covered by open affine subschemes of the form $\Spec R_i$ where $R_i$ is Noetherian. Since a Noetherian scheme is a locally Noetherian, quasicompact scheme, a Noetherian scheme is a scheme that is covered by a finite number of $\Spec R_i$s where $R_i$ is Noetherian.
 
@@ -3894,10 +3895,10 @@ Suppose that $\Spec R$ is covered by open sets $U_{f_i}$. Then, an $R$-ideal is 
 \end{remark}
 
 \begin{remark}
-	Being Noetherian somewhat corresponds to being finite-dimensional. Note the word ``somewhat'': $R = k[x_1,x_2,\hdots]/(x_1^2,x_2^2,\hdots)$ is a finite-dimensional non-Noetherian ring. Local Noetherian rings are finite-dimensional. However, look at this example of Nagata of an infinite-dimensional Noetherian ring:
+	Being Noetherian somewhat corresponds to being finite-dimensional. Note the word ``somewhat'': $R = k[z_1,z_2,\hdots]/(z_1^2,z_2^2,\hdots)$ is a finite-dimensional non-Noetherian ring. Local Noetherian rings are finite-dimensional. However, look at this example of Nagata of an infinite-dimensional Noetherian ring:
 \begin{quote}
 \small
-Let $k$ be a field and let $x_1,\hdots, x_n,\hdots$ be infinitely many algebraically independent elements over $k$. Let $m_1,\hdots, m_i,\hdots$ be a sequence of natural numbers such that $0<m_i-m_{i-1} < m_{i+1}-m_i$ for all $i$. Let $\mathfrak{p}_i$ be the prime ideal of $k[x_1,\hdots, x_n,\hdots]$ generated by all the $x_j$ such that $m_i\le j<m_{i+1}$, and let $S$ be the intersection of complements of $\mathfrak{p}_i$ in $k[x_1,\hdots, x_n,\hdots]$. Then, the ring $R = k[x_1,\hdots, x_n,\hdots]_S$ is an infinite-dimensional Noetherian ring.\footnote{\underline{Local Rings}, A1.}
+Let $k$ be a field and let $z_1,\hdots, z_n,\hdots$ be infinitely many algebraically independent elements over $k$. Let $m_1,\hdots, m_i,\hdots$ be a sequence of natural numbers such that $0<m_i-m_{i-1} < m_{i+1}-m_i$ for all $i$. Let $\mathfrak{p}_i$ be the prime ideal of $k[z_1,\hdots, z_n,\hdots]$ generated by all the $z_j$ such that $m_i\le j<m_{i+1}$, and let $S$ be the intersection of complements of $\mathfrak{p}_i$ in $k[z_1,\hdots, z_n,\hdots]$. Then, the ring $R = k[z_1,\hdots, z_n,\hdots]_S$ is an infinite-dimensional Noetherian ring.\footnote{\underline{Local Rings}, A1.}
 \end{quote}
 
 	Counterexamples like this shot down the hopes that Noetherian rings were the ``nice'' rings to study in scheme theory. Perhaps Grothendieck's notion of an excellent ring is that which one should study.
@@ -3957,7 +3958,60 @@ Suppose that $S$ is a finitely-generated $R$-algebra. If $R$ is Noetherian, then
 \begin{remark}
 	Sometimes, properties of morphisms are local on fibres. This holds for morphisms locally of finite type, but not for morphisms of finite type.
 \end{remark}
+
 \subsection{Finite, quasifinite}
+Suppose $R\longrightarrow S$ is a ring homomorphism. One can consider $S$ being finitely-generated as an $R$-algebra or as an $R$-module. If $S$ is finitely-generated as an $R$-module, then it is as an $R$-algebra. As in the previous section, the first case corresponds to the induced morphism of schemes being of finite type. The second case corresponds to a \index{finite morphism}finite morphism.
+
+Suppose $\varphi:X\longrightarrow Y$ is a morphism of schemes. The morphism $\varphi$ is a \defn{finite morphism}\index{finite morphism} if $Y$ is covered by open affine subschemes $V_i = \Spec R_i$ such that $\varphi^{-1}(V_i) =\Spec S_i$ is an open affine subscheme where $S_i$ is a finite $R_i$-module. 
+
+\begin{proposition}
+If $\varphi:X\longrightarrow Y$ is a finite morphism, then all fibres are finite and discrete.
+\end{proposition}
+
+It suffices to prove the result for finite morphisms $\varphi: \Spec S\longrightarrow \Spec R$. Suppose $\tilde\varphi :R\longrightarrow S$ is a homomorphism of rings. Suppose further that $\mathfrak{p}$ is prime in $R$ and $S$ is a finitely-generated $R$-module. There are finitely many primes $\mathfrak{q}$ of $S$ such that $\tilde\varphi^{-1}(\mathfrak{q})=\mathfrak{p}$: 
+
+One can assume that $\mathfrak{p}=(0)$ by taking $R \longmapsto R/\mathfrak{p}$ and $S\longmapsto S/\mathfrak{p}S$. One can also take the field of fractions of $R$, so one assumes that $R$ is a field. Therefore, $S$ is a finite-dimensional $R$--vector space, hence an Artinian ring. Since $S$ is Artinian, it has a finite number of prime ideals (which are maximal and open in $\Spec R$). This completes the sketch of the proof.
+
+\begin{proposition}[SGA I Prop. 2.1]\label{}\text{}
+Let $A\longrightarrow B$ be a local homomorphism and $\mathfrak{m}$ the maximal ideal of $A$. The following conditions are equivalent.
+\begin{enumerate}
+	\item $B/\mathfrak{m}B$ is of finite dimension over $k=A/\mathfrak{m}$.
+	\item $\mathfrak{m}B$ is an ideal of definition and $B/\mathfrak{r}(B) = k (B)$ is an extension of $k=k(A)$.
+	\item The completion $\widehat{B}$ of $B$ is finite over the completion $\widehat{A}$ of $A$.
+\end{enumerate}
+\end{proposition}
+
+One calls $B$ \defn{quasifinite}\index{quasifinite ring} over $A$.
+\begin{definition}[SGA I 2]\label{qf_1}\text{}
+A morphism $\varphi:X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $\alpha\in X$ if $\mathscr{O}_\alpha$ is quasifinite over $\mathscr{O}_{\varphi (\alpha)}$. Equivalently, $\alpha$ is isolated in its fibre $\varphi^{-1}(\alpha)$.\footnote{``The fibres are finite and discrete.''}
+\end{definition}
+\begin{definition}[EGA II 6.2]\label{qf_2}\text{} 
+	A morphism $\varphi: X \longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $\alpha\in X$ if it is quasifinite in the sense of \cref{qf_1} and of finite type. 
+\end{definition}
+\begin{definition}[\underline{Algebraic Geometry} p. 91]\label{qf_3}\text{}
+A morphism $\varphi : X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} if, for all $\alpha\in Y$, $\varphi^{-1}(\alpha)$ is finite.\footnote{``The fibres are finite.''}
+\end{definition}
+\begin{remark}
+	The morphism $\Spec k[z,z^{-1}]\longrightarrow \Spec k[z]$ has finite fibres, so it is quasifinite, but it is not finite: $k[z,z^{-1}]$ is not a finitely-generated $k[z]$-module.
+\end{remark}
+\begin{remark}
+	Finiteness implies quasifiniteness\footnote{With \cref{qf_2}.} implies being of finite type implies being locally of finite type and quasicompactness.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Let $X$ be the spectrum of the ring of integers of an algebraic number field, say $\Spec \mathbf{Z}[i]$. The morphism $X\longrightarrow \Spec \mathbf{Z}$ is finite since $\mathbf{Z}[i]$ is a finitely-generated $\mathbf{Z}$-module. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+The morphism $\Spec k(z) \longrightarrow \Spec k[z]$ has finite fibres. Therefore, it is quasicompact with respect to \cref{qf_1} and \cref{qf_3}, but not \cref{qf_2}.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+The morphism $\Spec k[z]_{(z)} \longrightarrow \Spec k$ induced by $k\longrightarrow k[z]_{(z) }$ is quasifinite with respect to \cref{qf_3} but not \cref{qf_1}. That is, it is finite, but not discrete.
+\end{example}
+
+
+
 \subsection{Immersions}
 \subsection{Products}
 \subsection{Groups schemes}
