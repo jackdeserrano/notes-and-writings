@@ -3991,7 +3991,7 @@ A morphism $\varphi:X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite 
 \begin{definition}[\underline{Algebraic Geometry} p. 91]\label{qf_3}\text{}
 A morphism $\varphi : X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} if, for all $\alpha\in Y$, $\varphi^{-1}(\alpha)$ is finite.\footnote{``The fibres are finite.''}
 \end{definition}
-\begin{remark}
+\begin{remark}\label{qfnf_1}
 	The morphism $\Spec k[z,z^{-1}]\longrightarrow \Spec k[z]$ has finite fibres, so it is quasifinite, but it is not finite: $k[z,z^{-1}]$ is not a finitely-generated $k[z]$-module.
 \end{remark}
 \begin{remark}
@@ -4010,9 +4010,120 @@ The morphism $\Spec k(z) \longrightarrow \Spec k[z]$ has finite fibres. Therefor
 The morphism $\Spec k[z]_{(z)} \longrightarrow \Spec k$ induced by $k\longrightarrow k[z]_{(z) }$ is quasifinite with respect to \cref{qf_3} but not \cref{qf_1}. That is, it is finite, but not discrete.
 \end{example}
 
-
-
 \subsection{Immersions}
+Topological spaces have open sets and closed sets. Analogously, schemes have open immersions and closed immersions. 
+
+Suppose that $Y$ is a scheme. One can interpret an open subset $U$ of $Y$ as a scheme by defining $\mathscr{O}_U (V):=\mathscr{O}_Y(V)$ for all open sets $V$ of $U$. The morphism $\phi : U\longrightarrow Y$ is an open immersion.
+
+\begin{definition}[ ]\label{}\text{}
+Let $\varphi:X\longrightarrow Y$ be a morphism of locally ringed spaces. The morphism $\varphi$ is an \defn{open immersion}\index{open immersion of locally ringed spaces} if and only if $\varphi$ is a homeomorphism of $X$ onto an open subset of $Y$ and the map $\varphi^{-1}(\mathscr{O}_Y)\longrightarrow \mathscr{O}_X$ is an isomorphism.
+\end{definition}
+
+A morphism of schemes $X\longrightarrow Y$ is an \defn{open immersion}\index{open immersion of schemes} if and only if it is an open immersion of locally ringed spaces.\footnote{A scheme morphism $X\longrightarrow Y$ is an open immersion if and only if it is of the form $X\longrightarrow U\longrightarrow Y$ where the first arrow is an isomorphism and the second arrow is of the form $\phi$ above.}
+
+\begin{example}[ ]\label{op_im_ex}\text{}
+The morphism described in \cref{qfnf_1} is an open immersion. The inclusion $\mathbf{A}^1 \longrightarrow \mathbf{P}^1$ is an open immersion.
+\end{example}
+
+\begin{remark}
+	\cref{op_im_ex} demonstrates that open immersions do not need to be finite. 
+\end{remark}
+
+\begin{remark}
+	Trivially, open immersions are locally of finite type. A quasicompact open immersion is quasifinite in the sense of \cref{qf_2}: An open immersion is quasicompact if and only if it is of finite type if and only if it is quasifinite.
+\end{remark}
+
+\begin{remark}
+	Open immersions have closed, discrete fibres. If $X$ is Noetherian, then an open immersion $X\longrightarrow Y$ is quasifinite, since all open subsets of $X$ are quasicompact.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Let $Y:= \Spec k[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathfrak{p}$. The morphism $\varphi : X\longrightarrow Y$ is an open immersion since the complement of a point is open, but it is not quasicompact: $\varphi^{-1}(Y)=X$ and $X$ is not quasicompact: There is no finite subcover for $\{U_f\}$.
+\end{example}
+
+Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothendieck pointed out a sort of converse.
+
+\begin{definition}[Stacks project Definition 17.24.1]\label{}\text{}
+Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}_{\mathscr{O}_X}\longrightarrow \catn{Mod}_{\mathscr{O}_X}$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 28.26.1]\label{}\text{}
+Let $X$ be a scheme. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is \defn{ample}\index{ample sheaf} if and only if $X$ is quasicompact and, for all $\alpha\in X$, there exists a natural number $n\ge 1$ and a global section $s\in \Gamma(X, \mathscr{L}^{\tensor n})$ such that $\alpha \in X_s := \{  \beta\in X :\img s\notin \mathfrak{m}_\beta \mathscr{L}_\beta \}$ and $X_s$ is affine.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 29.37.1]\label{}\text{}
+Let $\varphi:X\longrightarrow S$ be a morphism of schemes. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is $\varphi$--\defn{relatively ample}\index{relatively ample sheaf} if $\varphi$ is quasicompact and, for all affine open $V\subset S$, the restriction of $\mathscr{L}$ to the open subscheme $\varphi ^{-1}(V)$ of $X$ is ample.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 29.40.1]\label{}\text{}
+Let $\varphi : X\longrightarrow S$ be a morphism of schemes. One says that $\varphi$ is \defn{quasiprojective}\index{quasiprojective morphism} if and only if $\varphi$ is of finite type and there exists a $\varphi$--relatively ample invertible $\mathscr{O}_X$-module.
+\end{definition}
+
+\begin{theorem}[EGA III Th\'eor\`eme 4.4.3, \guillemotleft Main theorem\guillemotright\ de Zariski]\label{mtdz}\index{main theorem de Zariski}\text{}
+Suppose that $Y$ is a Noetherian scheme, $\varphi: X\longrightarrow Y$ is a quasiprojective morphism, and $\tilde X$ is the set of points $\alpha\in X$ that are isolated in their fibre $\varphi^{-1}(\varphi(\alpha))$. The set $\tilde X$ is an open subset of $X$ and the induced subscheme is isomorphic to an open subset of a scheme $\tilde Y$ that is finite over $Y$.\footnote{``The morphism $X\longrightarrow Y$ can be factored as $X\longrightarrow Z\longrightarrow Y$ where the first arrow is an open immersion and the second arrow is finite.'' These conditions can be strengthened and simplified: ``If everything in sight is Noetherian and separable, . . . .''}
+\end{theorem}
+
+A typical example of a closed immersion is $\Spec R/I\longrightarrow \Spec R$. In general, a closed immersion $X\longrightarrow Y$ looks like the following locally: $Y$ is covered affine $Y_i$s and the morphisms $X\cap Y_i\longrightarrow Y_i$ look like $\Spec R_i/I_i \longrightarrow \Spec R_i$.
+
+\begin{definition}[Stacks project Definition 17.4.1]\label{}\text{}
+Let $(X,\mathscr{O}_X)$ be a ringed space. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_X$-modules. One says that $\mathscr{F}$ is \defn{generated by global sections}\index{generation by global sections} if and only if there exists a set $I$ and a global section $s_i\in \Gamma(X,\mathscr{F})$ for all $i\in I$ such that the map
+\begin{align*}
+	\bigoplus_{i\in I}\mathscr{O}_X \longrightarrow \mathscr{F},
+\end{align*}
+the map associated to $s_i$ on the summand corresponding to $i$, is surjective.
+\end{definition}
+
+
+\begin{definition}[Stacks project 17.8.1]\label{}\text{}
+Let $(X,\mathscr{O}_X)$ be a ringed space. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_X$-modules. One says that $\mathscr{F}$ is \defn{locally generated by sections}\index{local generation by sections} if and only if, for all $\alpha\in X$, there exists an open neighbourhood $U$ such that $\mathscr{F}\big |_U$ is globally generated as a sheaf of $\mathscr{O}_U$-modules.
+\end{definition}
+
+\begin{remark}
+	That is, there exists a set $I$ and a section $s_i\in \mathscr{F}(U)$ for all $i\in I$ such that the associated map
+	\begin{align*}
+		\bigoplus_{i\in I}\mathscr{O}_U\longrightarrow \mathscr{F}\big|_U
+	\end{align*}
+	is surjective.
+\end{remark}
+
+\begin{definition}[Stacks project Definition 26.4.1]\label{}\text{}
+Let $\varphi : X\longrightarrow Y$ be a morphism of locally ringed spaces. The morphism $\varphi$ is a \defn{closed immersion}\index{closed immersion of locally ringed spaces} if and only if the following conditions hold.
+\begin{enumerate}
+	\item The morphism $\varphi$ is a homeomorphism of $X$ onto a closed subset of $Y$.
+	\item The map $\phi : \mathscr{O}_Y \longrightarrow \varphi_* \mathscr{O}_X$ is surjective.
+	\item The $\mathscr{O}_Y$-module $\mathscr{I} = \ker \phi$ is locally generated by sections.
+\end{enumerate}
+\end{definition}
+
+A morphism of schemes is a \defn{closed immersion}\index{closed immersion of schemes} if and only if it is a closed immersion of locally ringed spaces. This construction is ``local,'' and closed immersions are finite since $R/I$ is a finitely-generated $R$-module. 
+
+\begin{example}[ ]\label{ci_1}\text{}
+The morphism $\Spec k[z]/(z) \longrightarrow \Spec k[z]$ is a closed immersion whose image is the ``origin.'' However, $\Spec k[z] /(z^n)\longrightarrow \Spec k[z]$ is a closed immersion with the same image. Thus, a closed immersion is not determined by the closed subset $\varphi (X)\subset Y$. 
+\end{example}
+
+\begin{remark}
+	Closed immersions correspond to closed subschemes up to isomorphism.
+\end{remark}
+
+\begin{problem}
+	Given a closed subset, what closed subschemes correspond to it?
+\end{problem}
+
+In general, there is more than one closed subscheme that corresponds to a closed subset; however, there is a ``minimal'' closed subscheme associated to a closed subset. Here's the construction.
+
+Consider $\Spec R$ and a closed subset given by $I$. One sees that $\Spec R/ \sqrt{I} $ is a subscheme of $\Spec R$. Further, $\Spec R/\sqrt{I} $ is a reduced scheme. These fit together to give a reduced subscheme assocaited to any closed subset.
+
+\begin{warn}
+	An intersection of $2$ reduced closed subschemes does not need to be reduced.
+\end{warn}
+
+\begin{example}
+Let $Y = k[z_1,z_2]$, $X_1 = k[z_1,z_2]/(z_2)$, and $X_2 = k[z_1,z_2] / (z_2-z_1^2)$. Then, 
+\begin{align*}
+	X_1\cap X_2 = k[z_1,z_2] / (z_2,z_2-z_1^2) \isomto k[z]/(z^2)
+\end{align*}
+is not reduced.
+\end{example}
 \subsection{Products}
 \subsection{Groups schemes}
 \subsection{Separated morphisms}
