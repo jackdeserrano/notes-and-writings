@@ -4124,8 +4124,111 @@ Let $Y = k[z_1,z_2]$, $X_1 = k[z_1,z_2]/(z_2)$, and $X_2 = k[z_1,z_2] / (z_2-z_1
 \end{align*}
 is not reduced.
 \end{example}
+
 \subsection{Products}
-\subsection{Groups schemes}
+Suppose that $X$ and $Y$ are objects in a category $\mathcal{C} $. The product $X\times Y$ is the universal element with morphisms to $X$ and $Y$: That is, if $Z$ is an object with morphisms to $X$ and $Y$, there is a unique morphism $\varphi$ such that
+\[
+\begin{tikzcd}
+	&Z\ar[d,dashed, "\varphi"] \ar[dr]\ar[dl] \\
+	X& X\times Y\ar[l]\ar[r]&Y
+\end{tikzcd}
+\]
+commutes.
+Products are unique up to isomorphism. Let us work toward showing that products of schemes over a base scheme $S$ exist: That is, as above,
+\[
+\begin{tikzcd}
+	&Z\ar[dl] \ar[dr] \ar[d,dashed,"\varphi"] \\
+	X\ar[dr]&X\times_S Y \ar[l]\ar[r] &Y\ar[dl]\\
+	 &S
+\end{tikzcd}
+\]
+commutes.
+
+Let us begin with the affine case.
+Recall that affine schemes correspond to rings. 
+If $A$ and $B$ are $R$-algebras,\footnote{One wants to work over a base ring.} the tensor product $A\tensor_R B$ is the universal element that makes
+\[
+\begin{tikzcd}
+	&C \\
+	A\ar[ur] \ar[r]& A\tensor_R B\ar[u,dashed,swap,"\varphi"] & B\ar[l]\ar[ul]\\
+		 & R \ar[ur]\ar[ul]
+\end{tikzcd}
+\]
+commute.
+
+If $M$ and $N$ are $R$-modules, the tensor product $M\tensor_R N$ is universal for bilinear maps: That is, given a bilinear map of modules $M\times N \longrightarrow X$, one gets a linear map where
+\[
+\begin{tikzcd}[column sep = 4 em, row sep = 3 em]
+	M\times N \ar[r, "\textrm{bilinear}"]\ar[d,swap,"\textrm{bilinear}"]& X\\
+	M\tensor_R N \ar[ur,swap,dashed,"\textrm{linear}"]
+\end{tikzcd}
+\]
+commutes. One generates $M\tensor_R N$ by elements $m\tensor n$ modulo relations that make the map $M\times N \longrightarrow M\tensor_R N$ bilinear: $(m_1+m_2)\tensor n = m_1\tensor n + m_2\tensor n$, $(rm)\tensor n = r (m\tensor n)$, etc. for $n$. 
+
+If $A$ and $B$ are $R$-algebras, $A\tensor_R B$ is an $R$-algebra by $(a_1\tensor b_1)(a_2\tensor b_2)=a_1a_2\tensor b_1b_2$. This is universal. One sees that $A\tensor_R B$ is a coproduct (pushout) in the category of commutative rings. Therefore, $\Spec (A\tensor_R B)$ is the product in the category of affine schemes:
+\[
+\begin{tikzcd}
+	\Spec (A\tensor_R B)\ar[r]\ar[d] & \Spec B\ar[d]\\
+	\Spec A\ar[r] &\Spec R.
+\end{tikzcd}
+\]
+
+Suppose $X$ and $S$ are affine schemes and $Y$ is a non-affine scheme. Cover $Y$ by open affine schemes $Y_i$ and glue together the schemes $X\times_S Y_i$. 
+
+Suppose that $S$ is affine and $X$ and $Y$ are non-affine schemes. Cover $X$ by open affine schemes $X_i$ and glue together $X_i \times_S Y$.
+
+Finally, cover $S$ by open affine schemes $S_i$ and let $X_i$ (resp. $Y_i$) be the preimage of $S_i$ in $X$  (resp. $Y$). Form products $X_i\times_{S_j}Y_k$ and glue them together.
+
+\begin{remark}
+	The product $\mathbf{A}^1\times_k \mathbf{A}^1$ does not have the product topology.\footnote{Notice that $k[z_1]\tensor_k k[z_2] = (k\tensor_k k) [ z_1,z_2] \isomto k[z_1,z_2]$, so $\mathbf{A}^1\times_k \mathbf{A}^1$ is $\mathbf{A}^2$.}
+\end{remark}
+
+\begin{remark}
+	The product $\mathbf{A}^1\times_k\mathbf{A}^1$ does not have the same set as the product of sets $\mathbf{A}^1\times \mathbf{A}^1$.
+\end{remark}
+
+\begin{remark}
+	The product of two points does not need to be a point.\footnote{That is, a scheme whose underlying topological space is a point.} Suppose that $K$ and $L$ are algebraic extensions of a field $k$. First, notice that $\Spec K$, $\Spec L$, and $\Spec k$ are points. Now, suppose $K$ is a separable extension of $k$. Then, $K = k[z]/(\rho(z))$ where $\rho$ is irreducible without repeated roots. Thus,
+	\begin{align*}
+		K\tensor_k L &= L[z]/(\rho(z)) \\
+			     &= L[z]/(\rho_1(z)\cdots\rho_\ell (z))
+	\end{align*}
+	where $\rho_i$ is irreducible over $L$. By the Chinese remainder theorem,
+	\begin{align*}
+		K\tensor_k L \isomto L[z] /(\rho_1(z)) \times \cdots\times L[z]/(\rho_\ell(z))
+	\end{align*}
+	is a product of fields that corresponds to a disjoint union of spectra. Hence, $\Spec(K\tensor_k L)$ is a finite, discrete set with $1$ point for every irreducible factor $\rho_i$ of $\rho$ over $L$.
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Notice that
+\begin{align*}
+	\mathbf{Q}\left[\sqrt{2} \right] \tensor_\mathbf{Q} \mathbf{Q}\left[\sqrt{3} \right] = \mathbf{Q}\left[\sqrt{2} ,\sqrt{3} \right].
+\end{align*}
+However,
+\begin{align*}
+	\mathbf{Q}[i] \tensor_\mathbf{Q} \mathbf{Q}[i] &= \mathbf{Q}[i] \times \mathbf{Q}[i].
+\end{align*}
+\end{example}
+
+\begin{example}[$K$ and $L$ are inseparable over $k$]\label{}\text{}
+Let $K=L= \mathbf{F}_{p}(t)$ and $k = \mathbf{F}_{p}(t^p)$. Then, $[K:k] = p$ and 
+\begin{align*}
+	K = k[z] /(z^p - t^p).
+\end{align*}
+Now, 
+\begin{align*}
+	K\tensor _kL &= L[z]/(z^p-t^p)\\&= L[z]/ (z-t)^p,
+\end{align*}
+so $z-t$ is nilpotent in $K\tensor _k L$. Thus, $K\tensor _k L$ is not a product of fields. In particular, $K\tensor_k L$ is not reduced.
+\end{example}
+\begin{remark}
+	``One sees that $\Spec k\times \Spec k$ can be large.'' However, one has
+	\begin{align*}
+		\Spec k\times_{\Spec k} \Spec k = \Spec k.
+	\end{align*}
+\end{remark}
+\subsection{Group schemes}
 \subsection{Separated morphisms}
 \subsection{Valuation rings}
 \subsection{Valuations and separation}
