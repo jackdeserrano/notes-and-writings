@@ -4228,7 +4228,88 @@ so $z-t$ is nilpotent in $K\tensor _k L$. Thus, $K\tensor _k L$ is not a product
 		\Spec k\times_{\Spec k} \Spec k = \Spec k.
 	\end{align*}
 \end{remark}
+
 \subsection{Group schemes}
+Recall that a group $G$ is a set with a product $\mu:G\times G\longrightarrow G$, an identity $\rho:1\longrightarrow G$, and an inverse $\cdot ^{-1} : G\longrightarrow G$ such that
+\[
+\begin{tikzcd}[column sep = 3 em, row sep = 3 em]
+	G\times G \times G \ar[r, "\id\times \mu"] \ar[d, "\mu\times \id"] & G\times G\ar[d,"\mu"]\\
+	G\times G \ar[r,"\mu"] & G
+\end{tikzcd}
+\]
+and
+\[
+\begin{tikzcd}[column sep = 3 em, row sep = 3 em]
+	G\times 1 \ar[r, "\id\times \rho"]\ar[dr] &G\times G\ar[d, "\mu"]& 1\times G \ar[l, "\rho\times \id", swap] \ar[dl]\\
+						  & G
+\end{tikzcd}
+\]
+and
+\[
+\begin{tikzcd}[column sep = 3 em, row sep = 3 em]
+	G\ar[r] \ar[d] & G\times G\ar[d,"\mu"]\\
+	1\ar[r] & G
+\end{tikzcd}
+\]
+commute. This makes sense for any category that has a product and a terminal object $1$. 
+Hence, one defines groups in the category of schemes over a fixed scheme $S$; one calls such a thing a \defn{group scheme}\index{group scheme} over $S$. If $G$ is a group scheme over $S$, the morphisms $G\longrightarrow T$ over $S$ form a group denoted $G(T)$. By abuse of notation, $G(R) = G(\Spec R)$.
+One sees that $G$ is a contravariant (resp. covariant) functor from the category of schemes (resp. rings) to the category of groups.
+
+\begin{example}[ ]\label{ga}\text{}
+Suppose $S=\Spec \mathbf{Z}$. Suppose further that $G\textsubscript{a}(R)=G(R)$ is the additive group of $R$. 
+Then, $G=\Spec \mathbf{Z}[z]$ since $\Hom_{}(\mathbf{Z}[z], R)=R$. The map $G\times G\longrightarrow G$ corresponds to $\mathbf{Z}[z] \longrightarrow \mathbf{Z}[z]\tensor \mathbf{Z}[z]$ where $z\longmapsto z\tensor 1 + 1\tensor z$. The map $1\longrightarrow G$ corresponds to $z\longmapsto 0$ and the map $G\longrightarrow G$ corresponds to $z\longmapsto -z$.
+
+Note that one does not have to consider $S=\Spec \mathbf{Z}$ and that one can consider the pullback
+\[
+\begin{tikzcd}
+	G\times_{\Spec \mathbf{Z}} \Spec \mathbf{F}_{p} \ar[r]\ar[d] & G\ar[d]\\
+	\Spec \mathbf{F}_{p} \ar[r] & \Spec \mathbf{Z}.
+\end{tikzcd}
+\]
+This gives a group scheme over $\Spec \mathbf{F}_{p}$. The underlying scheme in this case is $\Spec \mathbf{F}_{p}[z]$. The maps that define the group scheme structure are similar.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Suppose $R$ is an $\mathbf{F}_{p}$-algebra. Let 
+\begin{align*}
+	\alpha_p(R) = \{ \xi\in R : \xi^p =0\}.
+\end{align*}
+This is a group under addition, so $\alpha_p$ is a functor. Consider the scheme $\Spec \mathbf{F}_{p}[z]/(z^p)$. One can identify elements of this group with morphisms $\Spec R \longrightarrow \Spec \mathbf{F}_{p}[z]/(z^p)$. This makes $\alpha_p$ a scheme. There is a map $\Spec \mathbf{F}_{p}[z]/(z^p)\longrightarrow \Spec \mathbf{F}_{p}[z]$, so $\Spec \mathbf{F}_{p}[z]/(z^p)$ is a closed subscheme of $\Spec \mathbf{F}_{p}[z]$, so $\alpha_p$ is a closed subgroup of the group $G \textsubscript{a}$ in the second part of \cref{ga}. Notice that $\alpha_p \longrightarrow \Spec \mathbf{F}_{p}$ is a finite morphism since $\mathbf{F}_{p}[z]/(z^p)$ is a finite $\mathbf{F}_{p}$-module. The order of $\alpha_p$ is given by
+\begin{align*}
+	\left\lvert \alpha_p \right\rvert := \dim_{\mathbf{F}_{p}} \mathbf{F}_{p}[z]/(z^p) =p.
+\end{align*}
+One can say that the group scheme $\alpha_p$ is a ``group scheme of order $p$.''\footnote{The order shall be more difficult to define when one is not working over a field.}
+
+Note that $\mathbf{F}_{p}[z]/(z^p)$ has nilpotent elements, so $\Spec \mathbf{F}_{p}[z]/(z^p)$ is a non-reduced scheme. This is another example of a fibered product of reduced schemes being non-reduced.
+\end{example}
+
+There are two other ways to get a ``group scheme of order $p$.'' The first way is to take the group $\mathbf{Z}/p\mathbf{Z}$ and construct a scheme of $p$ discrete points with some group scheme structure. If $A=\mathbf{Z}$, the coordinate ring of this is $\mathbf{Z}[\beta_1,\hdots, \beta_p]$ where $\beta_{i}\beta_j =\delta_{ij}\beta_i $ and $\sum_{i}^{} \beta_i=1$. One can construct a group scheme from any finite group.
+
+\begin{remark}
+	Notice that $\mathbf{Z}/p\mathbf{Z}(R)$ does not need to have $p$ points if $R$ has nontrivial idempotents.
+\end{remark}
+
+The second way is to take the functor $G\textsubscript{m}(R)=R^*$ which is represented by $\Spec \mathbf{Z}[z,z^{-1}]$. Again, $G\textsubscript{m}\times G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z\tensor z$, $G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z^{-1}$, and $1\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto 1$.
+This also has a closed subgroup $\mu_p$ which comprises the $p$th roots of unity. This is represented by
+\begin{align*}
+	\Spec \mathbf{Z}[z]/(z^p-1) \subset \Spec \mathbf{Z}[z,z^{-1}].
+\end{align*}
+Again, reduce mod $p$: Consider $\mu_p$ over $\mathbf{F}_{p}$. This is represented by
+\begin{align*}
+	\mathbf{F}_{p}[z]/(z^p-1) =  \mathbf{F}_{p}/(z-1) ^p
+\end{align*}
+which has nilpotent elements. 
+In general, $\mu_p(R)$ comprises the $p$th roots of unity in $R$.
+
+One has three ``group schemes of order $p$'': $\mathbf{Z}/p\mathbf{Z}$ takes rings without idempotents to the cyclic group of order $p$; $\mu_p$ takes an $\mathbf{F}_{p}$-algebra to its $p$th roots of unity; and $\alpha_p$ takes an $\mathbf{F}_{p}$-algebra to its points that are killed by $z^p$.
+
+\begin{exercise}[Cartier duality]\label{cduality}\text{}
+\index{Cartier duality}Suppose that $\Spec R$ is a group scheme. The ring structure of $R$ gives maps $R\tensor R\longrightarrow R$ and $1\longrightarrow R$. The group scheme structure gives maps $R\longrightarrow R\tensor R$, $R\longrightarrow 1$, and $R\longrightarrow R$. 
+Suppose that $R$ is a finite-dimensional $k$--vector space. Consider $R^* = \Hom_{k}(R, k)$. Dualizing reverses all of the arrows above, and one sees that $\Spec R^*$ is an \index{algebraic group scheme}.
+
+Determine the duals of $\alpha_p$, $\mu_p$, and $\mathbf{Z}/p\mathbf{Z}$.
+\end{exercise}
+
 \subsection{Separated morphisms}
 \subsection{Valuation rings}
 \subsection{Valuations and separation}
