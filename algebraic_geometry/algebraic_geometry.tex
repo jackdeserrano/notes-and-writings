@@ -212,7 +212,7 @@ A \defn{Kakeya set}\index{Kakeya set} is a set of points that contains a unit li
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[scale=0.5]{images/kakeya_deltoid}
+		\includegraphics[scale=0.4]{images/kakeya_deltoid}
 		\caption{The three-pointed deltoid.}
 	\end{center}
 \end{figure}
@@ -221,16 +221,21 @@ However, Besicovitch proved that there is no nonzero lower bound for the area of
 \begin{theorem}[Wolff, Dvir]\label{}\index{}\text{}
 The size of a Kakeya set over a finite field $F$ is bounded below by $c_n\left\lvert F \right\rvert ^n$.
 \end{theorem}
-Dvir proved this with $$c_n = \frac{1}{n!}.$$ The first step was to show that a Kakeya set cannot lie in a hypersurface of small degree. The second step was to show that, if a set is small, one can find a hypersurface of small degree containing it.
+Dvir proved this with $c_n = (n!)\inv$. The first step was to show that a Kakeya set cannot lie in a hypersurface of small degree. The second step was to show that, if a set is small, one can find a hypersurface of small degree containing it.
 
 First, we claim that a Kakeya set in $F^n$ cannot lie in a hypersurface of degree $d<\left\lvert F \right\rvert $. Suppose $f$ is a polynomial of degree $d<\left\lvert F \right\rvert $ defining a hypersurface. Let $f_d$ be the highest-degree component. For any $v$, one can find $x$ such that $f(x+vt)$ vanishes for all $t$. This means that the roots of $f$ form a Kakeya set. Therefore, the coefficient $f_d(v)$ of $t^d$ vanishes. This is true for all $v$ and $f_d$ has degree less than $\left\lvert F \right\rvert $, so $f_d=0$. Thus, $f=0$.
 
-Observe that the polynomials of degree less than or equal to $\left\lvert F \right\rvert -1$ form a vector space of dimension $\binom{n+\left\lvert F \right\rvert -1}{n}$. Therefore, one can find a hypersurface of degree at most $\left\lvert F \right\rvert -1$ vanishing on any set with less than $\binom{n+\left\lvert F \right\rvert -1}{n}$ points.
+Write 
+\[
+	\operatorname{C}(n,k) := \binom{n}{k}.
+\]
+The polynomials of degree less than or equal to $\left\lvert F \right\rvert -1$ form a vector space of dimension $\operatorname{C} ({n+\left\lvert F \right\rvert -1},{n})$. Therefore, one can find a hypersurface of degree at most $\left\lvert F \right\rvert -1$ vanishing on any set with less than $\operatorname{C}({n+\left\lvert F \right\rvert -1},{n})$ points.
 
-Thus, one concludes that Kakeya sets have at least $\binom{n+\left\lvert F \right\rvert -1}{n}$ points. This quantity is 
+Thus, one concludes that Kakeya sets have at least $\operatorname{C}({n+\left\lvert F \right\rvert -1},{n})$ points. This quantity is 
 \begin{align*}
-	\binom{n+\left\lvert F \right\rvert -1}{n} &= \frac{(\left\lvert F \right\rvert ) \cdots (\left\lvert F \right\rvert +n-1)}{n!} \\
-						   &\ge \frac{\left\lvert F \right\rvert ^n}{n!}
+	\operatorname{C}({n+\left\lvert F \right\rvert -1},{n}) &=\binom{n+\left\lvert F \right\rvert -1}{n}\\
+	&= \frac{(\left\lvert F \right\rvert ) \cdots (\left\lvert F \right\rvert +n-1)}{n!} \\
+	&\ge \frac{\left\lvert F \right\rvert ^n}{n!}
 \end{align*}
 as required.
 
@@ -677,7 +682,7 @@ One gets various variations on the \index{Hausdorff dimension}Hausdorff dimensio
 
 One might consider transfinite dimensions\index{transfinite dimension}. Again, this isn't pertinent here.
 
-One also has the \index{deviation of a poset}deviation of a poset. A poset has deviation at most an ordinal $\alpha$ if, for all descending chains, almost all intervals of the chain have deviation less than $\alpha$. For Noetherian rings, one looks at a poset of ideals; then, the deviation is the Krull dimension. This works well for modules and noncommutative rings. Notice that some posets do not have a deviation: for example, $\mathbf{Q}$. This means that there are some weird non-Noetherian commutative rings that do not have a deviation. (For non-Noetherian rings, there doesn't seem to be a good definition for ``dimension.'')
+Also, one can consider the \index{deviation of a poset}deviation of a poset. A poset has deviation at most an ordinal $\alpha$ if, for all descending chains, almost all intervals of the chain have deviation less than $\alpha$. For Noetherian rings, one looks at a poset of ideals; then, the deviation is the Krull dimension. This works well for modules and noncommutative rings. Notice that some posets do not have a deviation: for example, $\mathbf{Q}$. This means that there are some weird non-Noetherian commutative rings that do not have a deviation. (For non-Noetherian rings, there doesn't seem to be a good definition for ``dimension.'')
 
 Now, we move on to algebraic definitions. The idea is that a set of high dimension has many functions on it.
 
@@ -764,7 +769,7 @@ It is useful to think about these triangles in space. One sees that $AB$ and $\t
 
 A projective space automatically satisfies this theorem if it has dimension at least $3$. However, there are some cases in which projective planes do not satisfy it. These counterexamples are called non-Desarguesean planes. In some sense, Desargues's theorem is equivalent to associativity of multiplication. One can introduce coordinates to form a ring for a projective space, and it turns out that the truth of Desargues's theorem is equivalent to associativity holding in the ring, just as Pappus's theorem is equivalent to commutativity. An example of a non-Desarguesean plane is a projective plane over a non-associative ring such as the octonions. (That is, synthetic projective geometry is almost analytic projective geometry, but not quite.)
 
-One also has duality for projective space. Any two distinct points meet in a line, and any two distinct lines meet in a point. That is, points are dual to lines: anything you can say about lines and points you can say about points and lines. There is a dual to Pascal's theorem. 
+One has duality for projective space, too. Any two distinct points meet in a line, and any two distinct lines meet in a point. That is, points are dual to lines: anything you can say about lines and points you can say about points and lines. There is a dual to Pascal's theorem. 
 
 One can think about this as duality of vector spaces. Points in projective space $\mathbf{P}^n$ correspond to lines in $\mathbf{A}^{n+1}$, which one thinks about as $k^{n+1}$. Lines in $\mathbf{P}^n$ correspond to planes in $k^{n+1}$. Consider the dual space $(k^{n+1})^*$ which is (non-canonically) isomorphic to $k^{n+1}$. The dual of a line in $\mathbf{A}^{n+1}$ is a hyperplane consisting of all linear transformations vanishing on it. So lines correspond to hyperplanes, planes corresponds to things of codimension $2$, etc., so hyperplanes correspond to lines, which are points of projective space.
 
@@ -877,12 +882,12 @@ which gives a line in $\Gr(2,2)$ with image a given point of $\mathbf{P}^5$.
 
 One can use this to find the cohomology of a quadric in $\mathbf{P}^5(\mathbf{C})$. The Grassmannian is a union of subsets:
 \begin{align*}
-	&\mat{1&0&*&*\\0&1&*&*};\\
-	&\mat{1&*&0&*\\0&0&1&*};\\
-	&\mat{1&*&*&0\\0&0&0&1};\\
-	&\mat{0&1&0&*\\0&0&1&*};\\
-	&\mat{0&1&*&0\\0&0&0&1};\\
-	&\mat{0&0&1&0\\0&0&0&1}.
+	&\mat{1&0&*&*\\0&1&*&*};
+	\quad\mat{1&*&0&*\\0&0&1&*};\\
+	&\mat{1&*&*&0\\0&0&0&1};
+	\quad\mat{0&1&0&*\\0&0&1&*};\\
+	&\mat{0&1&*&0\\0&0&0&1};
+	\quad\mat{0&0&1&0\\0&0&0&1}.
 \end{align*}\iffalse
 \begin{align*}
 	&\mat{0&0&1&0\\0&0&0&1}.
@@ -896,20 +901,21 @@ This strongly suggests there is a relationship between the cohomology groups of 
 The Grassmannian $\Gr(2,2)$ can be thought of as the two-dimensional subspaces of $k^4$, or, alternatively, lines in space. Grassmannians $\Gr(m,n)$ are injective maps $k^m \longrightarrow k^{m+n}$.
 One can show that
 \begin{align*}
-	\Gr(m,n) \subseteq  \mathbf{P}^{\binom{m+n}{m}-1}.
+	\Gr(m,n) \subseteq  \mathbf{P}^{\operatorname{C}({m+n},{m})-1}.
 \end{align*}
 
 Suppose we are given an $m$-dimensional subspace of $k^{m+n}$. Pick $m$ vectors spanning it. This gives an $m\times(m+n)$ matrix:
 \begin{align*}
 	\mat{a_1&\cdots &a_{m+n}\\b_1&\cdots &b_{m+n}\\&\vdots}.
 \end{align*}
-Pick any $m$ columns and consider the determinant of these columns. This generates $\binom{m+n}{m}$ numbers. Call them $p_{{i_1},\hdots,{i_m}}$. These give a point in $\mathbf{P}^{\binom{m+n}{m} - 1}$. 
+Pick any $m$ columns and consider the determinant of these columns. This generates $\operatorname{C}({m+n},{m})$ numbers. Call them $p_{{i_1},\hdots,{i_m}}$. These give a point in $\mathbf{P}^{\operatorname{C}({m+n},{m}) - 1}$. 
 
-Instead, suppose $V\subseteq W$ is a subspace of $W$ with with dimension $m$. Suppose $W$ has dimension $m+n$. Then we have a map from the $m$th exterior power of $V$ to the $m$th exterior power of $W$:
+Instead, suppose $V\subseteq W$ is a subspace of $W$ with with dimension $m$. Suppose $W$ has dimension $m+n$. Then, one has a map from the $m$th exterior power of $V$ to the $m$th exterior power of $W$:
 \begin{align*}
 	\Lambda^m V \longrightarrow  \Lambda ^m W.
 \end{align*}
-The first space has dimension $1$ and the second has dimension $\binom{m+n}{m}$. A one-dimensional subspace of something corresponds to the projective space of that thing: $\mathbf{P}(\Lambda^m W)$. This map is not surjective. We have the Plucker relations:
+The first space has dimension $1$ and the second has dimension $\operatorname{C}({m+n},{m})$. A one-dimensional subspace of something corresponds to the projective line over that thing: $\mathbf{P}(\Lambda^m W)$. This map is not surjective. 
+One has the Plucker relations:
 \begin{align*}
 	0 &= \sum_{\lambda}^{} (-1)^\lambda p_{i_1,\hdots, i_{m-1},j_\lambda} p_{j_1,\hdots, j_{\lambda -1},j_{\lambda+1},\hdots, j_{m+1}}.
 \end{align*}
@@ -920,11 +926,15 @@ Grassmannians have applications.
 	\item Grassmannians are covered by affine spaces that can be used to determine their cohomologies.
 	\item One has the Littlewood--Richardson rule\index{Littlewood--Richardson rule} that gives the product of the cohomology of a Grassmannian.
 	\item One has \index{line complex}line complexes. The quadric line complex is given as follows. Take $\Gr(2,2)\subset  \mathbf{P}^5$. Intersect $\Gr(2,2)$ with a quadric.
-	\item The Grassmannian $\Gr(m,n)$ is a quotient \[\frac{\GL_{m+n}(k)}{\mat{*&*\\0&*}}.\] The group $\GL_{m+n}(k)$ is affine and the second is, too, though $\Gr(m,n)$ is not affine; it is projective, however. Quotients of affine varieties do not need to be affine or projective: take 
+	\item The Grassmannian $\Gr(m,n)$ is a quotient 
+		\[
+			{\GL_{m+n}(k)}/{\mat{*&*\\0&*}}.
+		\] 
+		The group $\GL_{m+n}(k)$ is affine and the second is, too, though $\Gr(m,n)$ is not affine; it is projective, however. Quotients of affine varieties do not need to be affine or projective: take 
 		\begin{align*}
-			k^2 - (0,0) =  \frac{\GL_{2}(k) }{\mat{1&*\\0&1}}.
+			k^2 - (0,0) =  {\GL_{2}(k) }/{\mat{1&*\\0&1}}.
 		\end{align*}
-	\item Grothendieck used Grassmannians in his construction of Hilbert schemes. A \index{Hilbert scheme}Hilbert scheme parameterizes subschemes of projective space: Take the coordinate ring $k[x_0,\hdots, x_n]$ of projective space and consider graded ideals $I = \bigoplus_j I_j$. Subschemes sort of correspond to graded ideals, so one tries to classify graded ideals and show that they correspond to points of a projective scheme. The dimension $\dim (I_j)$ is a polynomial in $j$ for $j$ large. Suppose $I_d$ generates $I_{d+1},I_{d+2},\hdots$. Then $I_d \subseteq S_d$ (degree $d$ monomials). This gives a point of a Grassmannian, which is itself a projective variety in a larger projective space.
+	\item Grothendieck used Grassmannians in his construction of Hilbert schemes. A \index{Hilbert scheme}Hilbert scheme parameterizes subschemes of projective space. Take the coordinate ring $k[x_0,\hdots, x_n]$ of projective space and consider graded ideals $I = \bigoplus_j I_j$. Subschemes sort of correspond to graded ideals, so one tries to classify graded ideals and show that they correspond to points of a projective scheme. The dimension $\dim (I_j)$ is a polynomial in $j$ for $j$ large. Suppose $I_d$ generates $I_{d+1},I_{d+2},\hdots$. Then $I_d \subseteq S_d$ (degree $d$ monomials). This gives a point of a Grassmannian, which is itself a projective variety in a larger projective space.
 \end{enumerate}
 
 We would like to say that lines in $\mathbf{P}^3$ ``naturally'' correspond to points of $\Gr(2,2)\subset  \mathbf{P}^5$. What does ``natural'' mean? Grothendieck looked at functors from commutative rings $R$: maps $F$ from $R$ to lines in $\mathbf{P}^3(R)$, maps from $R$ to $\Gr(2,2)$ over $R$, maps $G$ from $R$ to $R$-valued points of a quadric given by the Plucker relation. Grothendieck showed that these are isomorphic as functors. Suppose $\phi: R\longrightarrow  S$ is a ring homomorphism. Then we have maps $F(R) \longrightarrow F(S)$ and $G(R) \longrightarrow G(S)$ that make this commute:
@@ -951,35 +961,32 @@ Fibre bundles are ``twisted products.'' Often, the fibre is a vector space; in t
 \begin{example}[Hirzebruch surface]\label{}\text{}
 \index{Hirzebruch surface}Consider the space
 \begin{align*}
-	(\mathbf{A}^2 - \{0\}) \times (\mathbf{A}^2 - \{0\}).
+	(\mathbf{A}^2 - \{0\})^2 = (\mathbf{A}^2 - \{0\}) \times (\mathbf{A}^2 - \{0\}).
 \end{align*}
-Act on this by $G_m\times G_m$; think of $G_m$ as $\mathbf{C}^*$. The quotient $(\mathbf{A}^2 - \{0\})/G_m$ where $\lambda \in G_m$ acts by $(x,y)\longmapsto  (\lambda x,\lambda y)$ is the projective line $\mathbf{P}^1$. Pick a point $(\lambda,\mu)\in  G_m\times G_m$; now, act on a point $(s,t,x,y)$ by
+Act on this by $G\textsubscript{m}\times G\textsubscript{m}$.\footnote{For now, $G\textsubscript{m}$ is $\mathbf{C}^*$.} The quotient $(\mathbf{A}^2 - \{0\})/G\textsubscript{m}$ where $\lambda \in G\textsubscript{m}$ acts by $(x,y)\longmapsto  (\lambda x,\lambda y)$ is the projective line $\mathbf{P}^1$. Pick a point $(\lambda,\mu)\in  G\textsubscript{m}\times G\textsubscript{m}$; now, act on a point $(s,t,x,y)$ by
 \begin{align*}
 	(s,t,x,y)\longmapsto  (\lambda s, \lambda t,\mu x,\lambda^{-\alpha}\mu y),\ \alpha\in  \mathbf{Z}.
 \end{align*}
 The quotient defined by this action is a Hirzebruch surface. One has a map
 \begin{align*}
-	F := \frac{(\mathbf{A}^2-\{0\})\times (\mathbf{A}^2-\{0\})}{G_m\times G_m} \longrightarrow \mathbf{P}^1
+	F := (\mathbf{A}^2-\{0\})^2/({G\textsubscript{m}\times G\textsubscript{m}})\longrightarrow \mathbf{P}^1
 \end{align*}
 given by
 \begin{align*}
 	(s,t,x,y)\longmapsto  (s:t).
 \end{align*}
-The fibre at any point is also isomorphic to $\mathbf{P}^1$. This is a product locally, but it isn't globally. We have a surface that is a fibre bundle over $\mathbf{P}^1$ with fibres also $\mathbf{P}^1$.
+The fibre at any point is also isomorphic to $\mathbf{P}^1$. This is a product locally, but it isn't globally. We have a surface that is a fibre bundle over $\mathbf{P}^1$ with fibres in $\mathbf{P}^1$.
 \end{example}
 
-\begin{example}[Scroll]\label{}\text{}
-\index{scroll}Act on the space
-\begin{align*}
-	(\mathbf{A}^2- \{0\}) \times (\mathbf{A}^n - \{0\})
-\end{align*}
-by $G_m\times G_m$ where $(\lambda,\mu)$ acts on $(s,t,x_1,\hdots, x_n)$ by 
+\begin{example}[Scrolls]\label{}\text{}
+\index{scroll}
+Act on the space $(\mathbf{A}^2-\{0\})^2$ by $G\textsubscript{m}\times G\textsubscript{m}$ where $(\lambda,\mu)$ acts on $(s,t,x_1,\hdots, x_n)$ by 
 \begin{align*}
 	(s,t,x,y)\longmapsto  (\lambda s, \lambda t, \lambda^{-\alpha_1}\mu x_1,\hdots, \lambda^{-\alpha_n}\mu x_n), \ \alpha_i\in \mathbf{Z}.
 \end{align*}
 We get a map from the scroll to the projective line: 
 \begin{align*}
-	\frac{(\mathbf{A}^2-\{0\}) \times (\mathbf{A}^n-\{0\})}{G_m\times G_m} \longrightarrow \mathbf{P}^1
+	{(\mathbf{A}^2-\{0\})^2}/({G\textsubscript{m}\times G\textsubscript{m}}) \longrightarrow \mathbf{P}^1
 \end{align*}
 given by
 \begin{align*}
@@ -987,10 +994,10 @@ given by
 \end{align*}
 Here, the fibres are copies of $\mathbf{P}^{n-1}$. Grothendieck showed that, if one has a vector bundle over the projective line,  one can replace each vector space that is a fibre with the corresponding vector space, and this gives a projective bundle over $\mathbf{P}^1$. This construction covers all such vector bundles.
 
-Let us map this to projective space. Assume that all of the $\alpha_i>0$. Consider the monomials $s^it^{\alpha_j-1}x_j$. One can take these as the coordinates of a point in $\mathbf{P}^{\left( \sum_{}^{} \alpha_j+1 \right) - 1}$.
+Let us map this to projective space. Assume that $\alpha_i>0$. Consider the monomials $s^it^{\alpha_j-1}x_j$. One can take these as the coordinates of a point in $\mathbf{P}^{\left( \sum_{}^{} \alpha_j+1 \right) - 1}$.
 \end{example}
 
-\index{abstract variety}Abstract varieties were invented by Andr\'e Weil to take the Jacobian of a curve to formulate his Weil conjectures. A differentiable manifold was viewed as a subset of $\mathbf{R}^n$ defined by some equations. For instance, $S^2$ is the set of points $x^2+y^2+z^2=1$ in $\mathbf{R}^3$. However, this isn't a differentiable manifold, really; it is a differentiable manifold together with an embedding into Euclidean space. Now, one covers $S^2$ with charts\index{chart}: a top hemisphere and a bottom hemisphere, each of which looks like an open disk in Euclidean space, glued together. 
+\index{abstract variety}Abstract varieties were invented by Andr\'e Weil to take the Jacobian of a curve to formulate his Weil conjectures. A differentiable manifold was viewed as a subset of $\mathbf{R}^n$ defined by some equations. For instance, $S^2$ is the set of points $x^2+y^2+z^2=1$ in $\mathbf{R}^3$. However, this isn't a differentiable manifold, really; it is a differentiable manifold together with an embedding into Euclidean space. Now, one covers $S^2$ with charts\index{chart}: A top hemisphere and a bottom hemisphere, each of which looks like an open disk in Euclidean space, glued together. 
 
 The old view was that a variety is a subset of $\mathbf{P}^n$ defined by equations. The new one: Take some affine varieties and glue them together. One might have considered $\mathbf{P}^1$ as a subset of projective space (itself). Alternatively, one can glue together two copies of $\mathbf{A}^1$, so $\mathbf{P}^1=\mathbf{A}^1\cup \mathbf{A}^1$. The projective line is given by $(x:y)$, the first copy of $\mathbf{A}^1$ is given by $(1:y)$, and the second is given by $(x:1)$. For both copies, we consider the subset $\mathbf{A}^1-\{0\}$. Then, if we have $x$ in the first copy and $y$ in the second, we map 
 \begin{align*}
@@ -1047,7 +1054,7 @@ One knows that, in algebraic topology, a torus is $S^1\times S^1$, or, more gene
 \subsection{Categories}
 A category has objects and morphisms. They are named after their objects. Here are some examples.
 	\begin{center}
-\begin{tabular}{cc}
+\begin{tabular}{lr}
     Objects & Morphisms\\
     \midrule
     Sets & Functions\\
@@ -1352,7 +1359,7 @@ so we need to mod out by this. This gives $\PGL_2( k)$, which is of dimension $3
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.8]{images/serre}
+\includegraphics[scale=0.7]{images/serre}
 \caption{Jean-Pierre Serre.}
 \end{center}
 \end{figure}
@@ -1557,7 +1564,7 @@ The first part is doubly periodic with no poles, and the whole thing vanishes at
 
 Why are these called elliptic functions? The arc length of an ellipse is given by 
 \begin{align*}
-	\int_{0}^{t} \frac{dx}{\sqrt{4x^3 - ax - b} }. 
+	\int_{0}^{t} \frac{ds}{\sqrt{4s^3 - as - b} }. 
 \end{align*}
 Such integrals are called elliptic integrals. Write
 \begin{align*}
@@ -1733,7 +1740,7 @@ One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x
 \[
 	(x,y,z,t)\longmapsto  ((x,y,z,t),  (X:Y:Z:T))
 	\]
-	Taking the Zariski closure of the image, one also has the equation $XY=ZT$. Every nonzero point of $\mathbf{A}^4$ corresponds to a unique point in the blow up $\mathbf{A}^4\times \mathbf{P}^3$ while $(0,0,0,0)$ corresponds to a copy of $\mathbf{P}^1\times \mathbf{P}^1$. This is not singular\iffalse, since, along $X=1$, it becomes $Y=ZT$ in the coordinates $(x,Y,Z,T)$\fi.
+	Taking the Zariski closure of the image, one has the equation $XY=ZT$. Every nonzero point of $\mathbf{A}^4$ corresponds to a unique point in the blow up $\mathbf{A}^4\times \mathbf{P}^3$ while $(0,0,0,0)$ corresponds to a copy of $\mathbf{P}^1\times \mathbf{P}^1$. This is not singular\iffalse, since, along $X=1$, it becomes $Y=ZT$ in the coordinates $(x,Y,Z,T)$\fi.
 
 	One can also resolve this by blowing up to $\mathbf{P}^1$: Blow up along the line $y=t=0$. Consider the points $((x,y,z,t),  (X:Z)) \in \mathbf{A}^4\times \mathbf{P}^1$. Blowing up, we get the equations $xy=zt$ and $xZ=Xz$. However, taking the closure of the image of $\mathbf{A}^4$, we get the equation $tZ = Xy$, too. Say $X=1$. Then $y=tZ$, $z=xZ$, and $xy=tz$, which reduces to affine $3$-space. Hence, the blow up non-singular. The point $(0,0,0,0)$ is blown up to $\mathbf{P}^1$. (One can also blow up along $x=z=0$, which results in a distinct resolution to $\mathbf{P}^1$.)
 
@@ -1747,7 +1754,7 @@ One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x
 
 	\begin{figure}
 		\begin{center}
-			\includegraphics[scale=0.53]{images/atiyah_flop}
+			\includegraphics[scale=0.5]{images/atiyah_flop}
 			\caption{An illustration of the Atiyah flop.}
 		\end{center}
 	\end{figure}
@@ -1860,7 +1867,7 @@ Take $R=k[x_1,\hdots, x_n]$. Then $W$ is the free module on $dx_1,\hdots, dx_n$.
 	The module $W$ is free only when the cotangent bundle is a sum of trivial bundles. Otherwise, $W$ is quite hard to compute.
 \end{remark}
 
-Consider the homomorphism $R\tensor R\longrightarrow R$.\footnote{For now, $\tensor=\tensor_k$.} Let $\mathfrak{h}$ be the kernel of this homomorphism. Write $W = \mathfrak{h}/\mathfrak{h}^2$. (Note that $\mathfrak{h}$ is an ideal of $R\tensor R$.) Define 
+Consider the homomorphism $R\tensor R\longrightarrow R$.\footnote{For now, $\tensor\equiv\tensor_k$.} Let $\mathfrak{h}$ be the kernel of this homomorphism. Write $W = \mathfrak{h}/\mathfrak{h}^2$. (Note that $\mathfrak{h}$ is an ideal of $R\tensor R$.) Define 
 \begin{align*}
 	d :R\longrightarrow W
 \end{align*}
@@ -1890,7 +1897,7 @@ From here, it is straightforward to show that $W$ is the universal module with a
 \end{remark}
 
 \subsection{Du Val singularities}
-A \index{Du Val singularity}Du Val singularity may also be called a \index{simple surface singularity}simple surface singularity, a \index{Kleinian singularity}Kleinian singularity, a \index{rational double point}rational double point, or a \index{canonical singularity}canonical singularity in dimension $2$.
+A \index{du Val singularity}du Val singularity may be called a \index{simple surface singularity}simple surface singularity, a \index{Kleinian singularity}Kleinian singularity, a \index{rational double point}rational double point, or a \index{canonical singularity}canonical singularity in dimension $2$.
 
 Take a finite group $G$ acting on $\mathbf{C}^2$. Take $\mathbf{C}^2/G$. For reasonable groups $G$, this gives a variety that has a singular point at the origin. Recall that the quotient is the ring of invariants of the coordinate ring of $\C$ under $G$: $k[x,y]^G$. 
 
@@ -1898,15 +1905,21 @@ Suppose $G=\Zmod n$ is generated by $\sigma$. Suppose further that $\sigma x = \
 \begin{align*}
 	k[x,y]^G = k[X,Y,Z] / (Z^n- XY).
 \end{align*}
-The Du Val singularities are classified as follows:
-\begin{enumerate}
-	\item $\Ag_n$ (Cyclic singularities): $x^2+y^2+z^{n+1}=0$;
-	\item $\D_n$ (Dihedral singularities): $x^2+zy^2+z^{n-1}=0$;
-	\item $\E_6$ (Tetrahedral singularity): $x^2+y^3+z^4=0$;
-	\item $\E_7$ (Octahedral singularity): $x^2+y^3+yz^3=0$;
-	\item $\E_8$ (Icosahedral singularity): $x^2+y^3+z^5=0$.
-\end{enumerate}
-The icosahedral singularity is not given by the icosahedral group of order $60$ acting on $\mathbf{C}^2$. The binary icosahedral group of order $120$ acts on $\mathbf{C}^2$ and gives this. 
+
+Du Val singularities are classified as follows:
+\begin{center}
+	\begin{tabular}{llr}
+		Name		& Notation	& Singularity\\
+		\midrule
+		Cyclic		& $\Ag_n$	& $x^2+y^2+z^{n+1}=0$\\
+		Dihedral		& $\D_n$		& $x^2+zy^2+z^{n-1}=0$\\
+		Tetrahedral	& $\E_6$		& $x^2+y^3+z^4=0$\\
+		Octahedral	& $\E_7$		& $x^2+y^3+yz^3=0$\\
+		Icosahedral	& $\E_8$		& $x^2+y^3+z^5=0$
+	\end{tabular}
+\end{center}
+
+The binary icosahedral group of order $120$---not the icosahedral group of order $60$---acts on $\mathbf{C}^2$ and gives the icosahedral singularity. 
 \begin{remark}
 	For the remainder of this section, we work in characteristic $0$ and the only singular point is $(0,0,0)$.
 \end{remark}
@@ -1943,7 +1956,7 @@ and sees that there is a singularity at $x_3=y_3=z_2=0$.
 
 Let us look at the singularity of $x_3^2+y_1z_3+y_1^2z_3^3 =0 $. Introduce coordinates of $\mathbf{P}^2$ given by $(x_4:y_4:z_4)$ and cover $\mathbf{P}^2$ by $x_4=1$, $y_4=1$, and $z_4=1$. Each of the corresponding varieties have no singularities.
 
-Now, let us consider the singularity of $x_3^2+y_3^2z_2+y_3z_2^2 =0$. Introduce coordinates $(x_5:y_5:z_5)$ of $\mathbf{P}^2$. The variety given by $x_5=1$ has no singularities. However, that given by $y_5=1$ has $2$ singularities: $x_5=0$, $y_3=0$, $z_5=0,-1$. That given by $z_5=1$ also has $2$ singularities: $x_5=0$, $z_2=0$, $y_5=0,-1$. Two of these singularities are really the same, so one gets three singularities. 
+Now, let us consider the singularity of $x_3^2+y_3^2z_2+y_3z_2^2 =0$. Introduce coordinates $(x_5:y_5:z_5)$ of $\mathbf{P}^2$. The variety given by $x_5=1$ has no singularities. However, that given by $y_5=1$ has $2$ singularities: $x_5=0$, $y_3=0$, $z_5=0,-1$. That given by $z_5=1$ has $2$ singularities, too: $x_5=0$, $z_2=0$, $y_5=0,-1$. Two of these singularities are really the same, so one gets three singularities. 
 When one blows up these three varieties, the singularities all resolve.
 \end{example} 
 
@@ -1951,7 +1964,7 @@ After $8$ blowups, we ended up with something nonsingular. Each blowup gives an 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[scale=0.3]{images/simply_laced}
+		\includegraphics[scale=0.225]{images/simply_laced}
 		\caption{Simply-laced Dynkin diagrams.}
 	\end{center}
 \end{figure}
@@ -2012,13 +2025,13 @@ Since $\omega^2+\omega+1=0$, $\omega$ is an algebraic integer in the field of fr
 \begin{example}[Application of resolutions]\label{}\text{}
 Recall that
 \begin{align*}
-	\Gamma(s) :=  \int_{0}^{\infty} e^{-t}t^{s-1}  \, dt
+	\Gamma(s) :=  \int_{0}^{\infty}\exp(-t)t^{s-1}  \, dt
 \end{align*}
-	converges for $\Re (s)>0$ and can be extended to a meromorphic function of $s$ by integrating by parts. Suppose that $f(x_1,\hdots,x_n)$ is a polynomial and $\varphi(x_1,\hdots, x_n)$ is a smooth function with compact support. Then
+	converges for $\Re (s)>0$ and can be extended to a meromorphic function of $s$ by integrating by parts. Suppose that $f(x_1,\hdots,x_n)$ is a polynomial and $\varphi(x_1,\hdots, x_n)$ is a smooth function with compact support. Then,
 	\begin{align*}
 		\int_{0}^{\infty} \left\lvert f(x_1,\hdots, x_n) \right\rvert ^s\varphi(x_1,\hdots,x_n)  \, dx_1\cdots dx_n 
 	\end{align*}
-	will be a holomorphic function of $s$ for $s$ large enough. Can one continue this to all $s$? This is more or less the situation of $\Gamma$.\footnote{Let's ignore that $e^{-t}$ does not have compact support.} The problems here occur at the roots of $f$, which correspond to hypersurfaces with singularities.
+	will be a holomorphic function of $s$ for $s$ large enough. The question of whether one can continue this to all $s$ is, more or less, the situation of $\Gamma$.\footnote{Indeed, $\exp({-t})$ does not have compact support.} The problems here occur at the roots of $f$, which correspond to hypersurfaces with singularities.
 	
 	Atiyah suggested to use Hironaka's theorem to resolve the singularities of $\{f=0\}$. What one ends up with isn't really nonsingular, since blowing up introduces exceptional curves. These exceptional curves don't really matter, though, since they cross transversally. That is, when one blows up, one gets singularities $x_1\cdots x_k=0$ (one gets hyperplanes intersecting orthogonal to each other). Therefore, we reduce to 
 	\begin{align*}
@@ -2374,7 +2387,7 @@ If $g=1$, then $\chi=0$. One can get this if there are no conical singularities,
 		\begin{align*}
 			x^3y + y^3z + z^3x=0.
 		\end{align*}
-		Indeed, this is nonsingular, and it is the only genus-$3$ curve whose automorphism group has order $84(g-1)=168$ up to isomorphism. Further, this automorphism group is the simple group $\PSL_{2}(\mathbf{F}_{7})$.\footnote{This is the smallest simple group after $\Ag_5$.} There is a manifest order-$3$ automorphism: $x\longmapsto y\longmapsto z\longmapsto x$. One also has order-$7$ automorphisms given by
+		Indeed, this is nonsingular, and it is the only genus-$3$ curve whose automorphism group has order $84(g-1)=168$ up to isomorphism. Further, this automorphism group is the simple group $\PSL_{2}(\mathbf{F}_{7})$.\footnote{This is the smallest simple group after $\Ag_5$.} There is a manifest order-$3$ automorphism: $x\longmapsto y\longmapsto z\longmapsto x$. There are also order-$7$ automorphisms given by
 		\begin{align*}
 			x&\longmapsto \zeta^4x;\\
 			y&\longmapsto \zeta^2y;\\
@@ -3074,7 +3087,7 @@ Notice that $f^{-1}$ is left adjoint to $f_*$: Suppose $\mathscr{F}$ is a sheaf 
 	\mathscr{F} & f_*(\mathscr{F}).
 \end{tikzcd}
 \]
-Informally, adjointness means that these maps are the same in some sense. One might see this via the fact that maps $f^{-1}(\mathscr{G})\longrightarrow \mathscr{F}$ and $\mathscr{G}\longrightarrow f_*(\mathscr{F})$ are somehow the same as collections of maps $\mathscr{G}(V) \longrightarrow \mathscr{F}(U)$ whenever one has open sets $U\subseteq X$ and $V\subseteq Y$ with $f(U)\subseteq V$; these maps must be compatible with the restriction maps.
+Informally, ``adjointness'' means that these maps are the same in some sense. One might see this via the fact that maps $f^{-1}(\mathscr{G})\longrightarrow \mathscr{F}$ and $\mathscr{G}\longrightarrow f_*(\mathscr{F})$ are somehow the same as collections of maps $\mathscr{G}(V) \longrightarrow \mathscr{F}(U)$ whenever one has open sets $U\subseteq X$ and $V\subseteq Y$ with $f(U)\subseteq V$; these maps must be compatible with the restriction maps.
 
 If $F$ is left adjoint to $G$, then $F$ preserves right exactness and $G$ preserves left exactness. Since $f^{-1}$ is left adjoint to $f_*$, one sees that $f_*$ is left exact (as we showed) and $f^{-1}$ is right exact (as we showed). Note, however, that we showed that $f^{-1}$ is exact (that is, it is also left exact).
 
@@ -4037,7 +4050,7 @@ The morphism described in \cref{qfnf_1} is an open immersion. The inclusion $\ma
 	Open immersions have closed, discrete fibres. If $X$ is Noetherian, then an open immersion $X\longrightarrow Y$ is quasifinite, since all open subsets of $X$ are quasicompact.
 \end{remark}
 
-\begin{example}[ ]\label{}\text{}
+\begin{example}[ ]\label{remember}\text{}
 Let $Y:= \Spec k[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathfrak{p}$. The morphism $\varphi : X\longrightarrow Y$ is an open immersion since the complement of a point is open, but it is not quasicompact: $\varphi^{-1}(Y)=X$ and $X$ is not quasicompact: There is no finite subcover for $\{U_f\}$.
 \end{example}
 
@@ -4074,7 +4087,7 @@ the map associated to $s_i$ on the summand corresponding to $i$, is surjective.
 \end{definition}
 
 
-\begin{definition}[Stacks project 17.8.1]\label{}\text{}
+\begin{definition}[Stacks project Definition 17.8.1]\label{}\text{}
 Let $(X,\mathscr{O}_X)$ be a ringed space. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_X$-modules. One says that $\mathscr{F}$ is \defn{locally generated by sections}\index{local generation by sections} if and only if, for all $\alpha\in X$, there exists an open neighbourhood $U$ such that $\mathscr{F}\big |_U$ is globally generated as a sheaf of $\mathscr{O}_U$-modules.
 \end{definition}
 
@@ -4290,7 +4303,7 @@ There are two other ways to get a ``group scheme of order $p$.'' The first way i
 \end{remark}
 
 The second way is to take the functor $G\textsubscript{m}(R)=R^*$ which is represented by $\Spec \mathbf{Z}[z,z^{-1}]$. Again, $G\textsubscript{m}\times G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z\tensor z$, $G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z^{-1}$, and $1\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto 1$.
-This also has a closed subgroup $\mu_p$ which comprises the $p$th roots of unity. This is represented by
+This has a closed subgroup $\mu_p$ which comprises the $p$th roots of unity. This is represented by
 \begin{align*}
 	\Spec \mathbf{Z}[z]/(z^p-1) \subset \Spec \mathbf{Z}[z,z^{-1}].
 \end{align*}
@@ -4305,12 +4318,95 @@ One has three ``group schemes of order $p$'': $\mathbf{Z}/p\mathbf{Z}$ takes rin
 
 \begin{exercise}[Cartier duality]\label{cduality}\text{}
 \index{Cartier duality}Suppose that $\Spec R$ is a group scheme. The ring structure of $R$ gives maps $R\tensor R\longrightarrow R$ and $1\longrightarrow R$. The group scheme structure gives maps $R\longrightarrow R\tensor R$, $R\longrightarrow 1$, and $R\longrightarrow R$. 
-Suppose that $R$ is a finite-dimensional $k$--vector space. Consider $R^* = \Hom_{k}(R, k)$. Dualizing reverses all of the arrows above, and one sees that $\Spec R^*$ is an \index{algebraic group scheme}.
+Suppose that $R$ is a finite-dimensional $k$--vector space. Consider $R^* = \Hom_{k}(R, k)$. Dualizing reverses all of the arrows above, and one sees that $\Spec R^*$ is an \index{algebraic group scheme}algebraic group scheme.
 
 Determine the duals of $\alpha_p$, $\mu_p$, and $\mathbf{Z}/p\mathbf{Z}$.
 \end{exercise}
 
 \subsection{Separated morphisms}
+Two fundamental properties in analysis are compactness and being Hausdorff. 
+\begin{quote}
+	\small What is the appropriate analogue of these properties for schemes?
+\end{quote}
+Something that one should consider is that projective space is compact while affine space is not.
+
+\iffalse Being Hausdorff corresponds to being \index{separated}separated and compactness corresponds to \index{completeness}completeness, which corresponds to the notion of a\index{proper morphism}proper morphism.\fi
+
+Recall the following definition from general topology.
+
+ \begin{definition}[ ]\label{}\text{}
+A topological space $X$ is \defn{Hausdorff}\index{Hausdorff topological space} if and only if the diagonal $\Delta\subset X\times X$ is closed.
+\end{definition}
+
+Here's the scheme-theoretic analogue.
+
+\begin{definition}[ ]\label{}\text{}
+A scheme $X$ is \defn{separated}\index{separated scheme} if and only if the morphism $\Delta : X\longrightarrow X\times X$ (with the Zariski topology) is a \index{closed immersion of schemes}closed immersion (equivalently, the image of $\Delta$ is closed).
+\end{definition}
+
+ \begin{definition}[ ]\label{}\text{}
+A morphism of schemes $X\longrightarrow S$ is a \defn{separated morphism}\index{separated morphism} if and only if $\Delta_{X/S} : X\longrightarrow X\times_S X$ is a closed immersion.
+\end{definition}
+
+\begin{remark}
+	A scheme $X$ is separated if and only if $X\longrightarrow \Spec \mathbf{Z}$ is a separated morphism. 
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $A$ and $B$ are rings and $\varphi: \Spec A\longrightarrow \Spec B$ is a morphism of schemes. Then, $\varphi$ is separated. 
+
+Define $X = \Spec A$ and $Y=\Spec B$. Then, 
+\[
+\begin{tikzcd}
+	&X\ar[d, "\Delta_{X/Y}"] \\
+	X\ar[dr] & X\times_Y X \ar[l]\ar[r] & X\ar[dl]\\
+		 &Y
+\end{tikzcd}
+\]
+commutes. Therefore,
+\[
+\begin{tikzcd}
+	&A\\
+	A\ar[r]&A\tensor_B A\ar[u] &A\ar[l]\\
+	       &B \ar[ur]\ar[ul]
+\end{tikzcd}
+\]
+commutes. Now, $A\tensor_B A\longrightarrow  A$ is surjective (that is, $A = (A\tensor_BA)/I$), so $\Delta_{X/Y}$ is a closed immersion.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $X$ and $Y$ are the lines with two origins. Though $X$ and $Y$ are not separated schemes, the morphism $X\longrightarrow Y$ is separated: The diagonal morphism $\Delta_{X/Y} :X\longrightarrow X\times_YX$ is the identity, which is a closed immersion.
+\end{example}
+
+\begin{remark}
+	Schemes were called ``preschemes'' and separated schemes were called ``schemes.''
+\end{remark}
+
+\begin{definition}
+	A morphism of schemes $X\longrightarrow S$ is \defn{quasiseparated}\index{quasiseparated morphism} if and only if $\Delta_{X/S}$ is quasicompact.
+\end{definition}
+
+\begin{example}[ ]\label{}\text{}
+Let $X_1=X_2 = \Spec k[z_1,z_2,\hdots]= \mathbf{A}^\omega$. Glue $X_1$ and $X_2$ along $\mathbf{A}^\omega - \{(0,0,\hdots) \}$. Call the resulting scheme $X$. Then, if $S=\Spec k$, consider 
+\[
+\begin{tikzcd}
+	&X \ar[d, "\Delta_{X/S}"]\\
+	X\ar[dr] & X\times_SX \ar[l]\ar[r] & X\ar[dl]\\
+		 & S.
+\end{tikzcd}
+\]
+Now, $X_1\times_S X_2\subset X\times_S X$ is an affine scheme, so it is quasicompact. The preimage $(\Delta_{X/S}) ^{-1} (X_1\times_S X_2)$ is $\mathbf{A}^\omega - \{(0,0,\hdots) \}$ which is not quasicompact by \cref{remember}. 
+\end{example}
+\iffalse
+\begin{remark}
+	The intersection of $2$ open affine sets is not open affine in general.
+\end{remark}
+\fi
+
+Suppose that $\varphi : X\longrightarrow S$ is separated and $S$ is affine. If $U$ and $V$ are open and affine, then $U\cap V$ is open and affine.
+
+One sees that $U\times_SV$ is open and affine in $X\times_SX$ since $U$, $V$, and $S$ are open and affine. Furthermore, $U\cap V$ is the preimage $(\Delta_{X/S}) ^{-1} (U\times_S V)$. The preimage of an open and affine set is open and affine. Therefore, since $\Delta_{X/S}$ is a closed immersion, $U\cap V$ is affine and open.
+
 \subsection{Valuation rings}
 \subsection{Valuations and separation}
 \subsection{Proper morphisms}
