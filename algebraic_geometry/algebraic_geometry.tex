@@ -600,7 +600,7 @@ since $x\in A^G$ and $\rho(i_j)=i_j$. Notice that $\rho(a_j) \in A^G$ by the pro
 
 Suppose $G$ is compact and $K=\mathbf{R}$ or $K=\mathbf{C}$. The same proof works. One defines 
 \begin{align*}
-	\rho(a) = \frac{1}{\vol (G)}\int_{G}^{} g(a) 
+	\rho(a) = \frac{1}{\vol (G)}\int_{G}^{} g(a) \, d\mu
 \end{align*}		
 with respect to Haar measure on the group. Hilbert studied the case $G=\SL_{n}(\mathbf{C})$. Here, one can apply Weyl's unitarian trick. Note that $\SL_{n}(\mathbf{C})\supset \SU_n(\mathbf{C})$, and $\SU_n(\mathbf{C})$ is compact. Complex actions of $\SL_{n}(\mathbf{C})$ on finite-dimensional complex vector spaces $V$ are ``the same'' as actions of $\SU_n(\mathbf{C})$ on $V$. (The complexification of the Lie algebra of $\SU_n(\mathbf{C})$ is the same as the Lie algebra of $\SL_{n}(\mathbf{C})$.) 
 
@@ -2452,7 +2452,7 @@ If $f(x,y) = y^2-x^2 -x^3$, then
 \end{esquisse}
 
 \begin{corollary}[ ]\label{}\text{}
-The field of Puiseux series 
+The field of Puiseux series\index{Puiseux series}
 \begin{align*}
 	K = \bigcup_{n>0} \mathbf{C} (\!(x^{1/n})\!)
 \end{align*}
@@ -4408,6 +4408,76 @@ Suppose that $\varphi : X\longrightarrow S$ is separated and $S$ is affine. If $
 One sees that $U\times_SV$ is open and affine in $X\times_SX$ since $U$, $V$, and $S$ are open and affine. Furthermore, $U\cap V$ is the preimage $(\Delta_{X/S}) ^{-1} (U\times_S V)$. The preimage of an open and affine set is open and affine. Therefore, since $\Delta_{X/S}$ is a closed immersion, $U\cap V$ is affine and open.
 
 \subsection{Valuation rings}
+Let $R$ be an integral domain and let $k$ be its field of fractions. Then, $R$ is a \defn{valuation ring}\index{valuation ring} if and only if, for all nonzero elements $\alpha\in k$, one has $\alpha$ or $\alpha^{-1}$ in $R$.
+
+\begin{example}[Valuation rings]\label{}\text{}
+The ring $k [\![z]\!]$ is a valuation ring. Localizations $\mathbf{Z}_\mathfrak{p}$ are valuation rings.
+\end{example}
+
+Suppose that $\alpha$ and $\beta$ are nonzero elements of a valuation ring $R$. Then, $\alpha\mid \beta$ or $\beta\mid \alpha$. In particular, $R$ is a local ring, so the non-units of $R$ comprise an $R$-ideal.
+
+Suppose that $R$ is a valuation ring with field of fractions $k$. Then, $G = k^*/R^*$ is a totally-ordered group called the \defn{valuation group}\index{valuation group} of $R$. There exists a homomorphism $v : k^* \longrightarrow G$ called a \defn{valuation}\index{valuation} of $k$. If $G=\mathbf{Z}$, then $R$ is a \defn{discrete valuation ring}\index{discrete valuation ring}.
+
+Discrete valuation rings are principal ideal domains with ideals $(0)$ and $(\alpha)$ where $v(\alpha)\in \Z_{\ge 0}$. 
+
+Suppose $f\in k[\![z]\!]$. Then, $v(f)$ is the order of the root of $f$ at $0$.
+
+\begin{proposition}[ ]\label{}\text{}
+Suppose that $R$ is a valuation ring. The following conditions are equivalent:
+\begin{enumerate}
+	\item $R$ is a discrete valuation ring.
+	\item $R$ is Noetherian.
+	\item $R$ is a principal ideal domain.
+\end{enumerate}
+\end{proposition}
+
+Suppose that $R$ is a discrete valuation ring. Then, the two prime ideals of $R$ are $(0)$ and $\mathfrak{p}= (\ell)$ where $v(\ell)=1$. Therefore, $\Spec R$ has a closed point $\mathfrak{p}$ and a generic point $(0)$. One can think of $\Spec R$ as a short smooth curve.
+
+\begin{definition}[ ]\label{}\text{}
+Let $R$ be a valuation ring with valuation group $G$. Then, the \defn{rank}\index{rank of a valuation ring} of $R$ is given by
+\begin{align*}
+	\rank R := \dim_\mathbf{Q} (G\tensor_\mathbf{Z}\mathbf{Q}).
+\end{align*}
+\end{definition}
+
+\begin{remark}
+	Discrete valuation rings have rank $1$.
+\end{remark}
+
+\begin{example}[Non-discrete valuation rings]\label{}\text{}
+\begin{enumerate}
+	\item The ring of \index{Puiseux series}Puiseux series
+		\begin{align*}
+			R = \bigcup_{n>0} k[\![z^{1/n}]\!]
+		\end{align*}
+		whose field of fractions is
+		\begin{align*}
+			k = \bigcup_{n>0} k (\!(z^{1/n})\!)
+		\end{align*}
+		is a valuation ring with valuation group $\mathbf{Q}$. It is a rank-$1$ valuation ring that is not a discrete valuation ring. 
+	\item Let $G$ be a totally-ordered group. The set of formal power series
+		\begin{align*}
+			\sum_{g\ge 0}^{} a_gz^g
+		\end{align*}
+		such that $\{g\in G: a_g\ne 0\}$ is well-ordered is a valuation ring $R$ with valuation group $G$. If $G=\mathbf{C}$, then $R$ has uncountable rank.
+\end{enumerate}
+\end{example}
+
+Let $\mathfrak{p}_0$ be a point on a nonsingular surface $X$. Let $Y$ be the blow up of $X$ at $\mathfrak{p}_0$. The image of $\mathfrak{p}_0$, $\mathbf{P}^1\subset Y$, is a codimension-$1$ variety, so its local ring is a discrete valuation ring. Now, pick a point $\mathfrak{p}_j$ in the blow up of $\mathfrak{p}_{j-1}$ for $j\ge 1$. Then,
+\begin{align*}
+	R = \bigcup_j R_{\mathfrak{p}_j}
+\end{align*}
+is a non-discrete valuation ring.
+
+Suppose that $C$ is a curve over a field $k$. Let $K$ be the function field of $C$. One reconstructs a complete nonsingular model of $C$ by letting the points of $C$ be the valuation rings of $K$ containing $k$ (excluding $K$).\footnote{See \underline{Algebraic Geometry} 1.6.} For curves, these valuation rings are discrete valuation rings.
+
+Suppose that $C$ is a variety of dimension bigger than $1$ with function field $K$. The \defn{Zariski--Riemann space}\index{Zariski--Riemann space} is the set of valuation rings of $K$ that contain $k$. One can think of this as a ``nonsingular'' model of $C$.\footnote{Look up ``Zariski's local uniformization theorem.''} Locally, it is quite complicated.
+
+The points of a scheme correspond to the prime ideals of a ring. The points of a Zariski--Riemann space correspond to the valuations of a field. One can endow schemes and Zariski--Riemann spaces with the Zariski topology and one can give both a ringed space structure. However, Zariski--Riemann spaces are given by only integral domains and are complicated locally.\footnote{As opposed to schemes, which are given by rings and are, locally, affine schemes.} Here's a quotation of Grothendieck from his correspondence with Serre that illustrates his detestation of non-discrete valuations:
+\begin{quote}
+	\small I have proposed several times in vain that VI (Valuations) should be purely and simply thrown out; although since then I have come to understand why resolution of singularities is useful, I nevertheless remain of the opinion that VI should be removed, or at the very least moved from its current position to the end of the book, among the things ``not to be read.'' Its current central position will mislead the reader as to the right ideas and methods. Even concerning the resolution of singularities, which to be perfectly honest is not yet finished even in dimension $2$ (because of unequal characteristics), I really have the impression that the whole question will have to be taken up again with an approach entirely different from Zariski's, and it would be premature to predict whether and in what form valuations will be needed; I suspect not at all. In these circumstances, the importance given to valuations in the current plan, for the sole reason that this concept was central to Krull and Zariski (who have also done better things) is anti-Bourbaki. (Oct. 19, 1961)
+\end{quote}
+
 \subsection{Valuations and separation}
 \subsection{Proper morphisms}
 \subsection{Proper morphisms and valuations}
