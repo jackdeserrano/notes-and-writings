@@ -1145,7 +1145,7 @@ Suppose $U$ is open in $Y$. Then $f^{-1}(U)$ is open in $X$. Let $g: U\longright
 	 All of these are \index{locally ringed space}locally ringed spaces.
 \end{example}
 
-Suppose $X$ is a topological space together with a sheaf of rings. For each open set $U$ of $X$, we have a ring $\mathscr{O}(U)$. If we have open sets $U\subseteq V$, we have a restriction map $\mathscr{O} (U)  \longleftarrow \mathscr{O}(V)$. The local ring\index{local ring} at a point $p\in X$ is, informally, ``functions defined near $p$.'' More precisely, an element of a local ring is given by an open set $U$ such that $p\in U$ and a function $f\in \mathscr{O}(U)$ defined on $U$. We define an equivalence relation by $(f,U)\sim  (g,V)$ if there exists $W\subseteq U\cap V$ and $p\in W$  so $f=g$ on $W$. The set of equivalence classes is a ring called the \index{local ring}local ring at $p$. Indeed, this is a local ring with maximal ideal functions vanishing at $p$.
+Suppose $X$ is a topological space together with a sheaf of rings. For each open set $U$ of $X$, we have a ring $\mathscr{O}(U)$. If we have open sets $U\subseteq V$, we have a restriction map $\mathscr{O} (U)  \longleftarrow \mathscr{O}(V)$. The local ring\index{local ring} at a point $p\in X$ is, informally, ``functions defined near $p$.'' More precisely, an element of a local ring is given by an open set $U$ such that $p\in U$ and a function $f\in \mathscr{O}(U)$ defined on $U$. We define an equivalence relation by $(f,U)\sim  (g,V)$ if there exists $W\subseteq U\cap V$ and $p\in W$  so $f=g$ on $W$. The set of equivalence classes is a ring called the \index{local ring}local ring at $\mathfrak{p}$. Indeed, this is a local ring with maximal ideal functions vanishing at $\mathfrak{p}$.
 
 \begin{example}[ ]\label{}\text{}
 Consider the hyperbola $xy=1$ and the points $\mathbf{A}^1-\{0\}$. We can define a morphism from the hyperbola by $(x,y)\longmapsto x$ and one in the other direction by $x\longmapsto (x,x^{-1})$. These maps are inverses of each other, so these two objects are isomorphic in the category of quasiprojective varieties.
@@ -2473,10 +2473,10 @@ Consider
 where $\dim_k(M_n)$ is the dimension of $M_n$ as a $k$--vector space. First, notice that $f_M$ is a \index{rational function}rational function. Consider the exact sequence
 \[
 \begin{tikzcd}
-	0\ar[r]&\ker z_m \ar[r] & M \ar[r,"\times z_m"]& M(d_m) \ar[r] & M(d_m)/z_m M \ar[r]& 0. 
+	0\ar[r]&\Ker z_m \ar[r] & M \ar[r,"\times z_m"]& M(d_m) \ar[r] & M(d_m)/z_m M \ar[r]& 0. 
 \end{tikzcd}
 \]
-Note that $M(d_m)$ means $M$ with its grading shifted by $d_m$. Since this is an exact sequence of vector spaces, one gets a relation between the dimensions of these vector spaces. Furthermore, $\ker z_m$ and $M(d_m)/z_m M$ are $R/(z_m)$-modules. Also,
+Note that $M(d_m)$ means $M$ with its grading shifted by $d_m$. Since this is an exact sequence of vector spaces, one gets a relation between the dimensions of these vector spaces. Furthermore, $\Ker z_m$ and $M(d_m)/z_m M$ are $R/(z_m)$-modules. Also,
 \begin{align*}
 	f_{M(d_m)}(z) = z^{d_m} f_M(z).
 \end{align*}
@@ -2688,7 +2688,7 @@ and
 \begin{align*}
 	P_Y(z-d) =  \frac{\deg(Y) (z-d)^{\dim Y}}{(\dim Y)!}+\cdots.
 \end{align*}
-Thus, the leading term of $P_Y(z)-P_Y (z-d)$ is $d\deg(Y) z^{\dim Y-1}/ (\dim Y- 1)!$, so the Hilbert polynomial of $k[x_0,\hdots,x_n]/(I_Y,f)$ has leading term
+Thus, the leading term of $P_Y(z)-P_Y (z-d)$ is $d = \deg(Y) z^{\dim Y-1}/ (\dim Y- 1)!$, so the Hilbert polynomial of $k[x_0,\hdots,x_n]/(I_Y,f)$ has leading term
 \begin{align*}
 	\deg(H)\deg (Y)  \frac{z^{\dim Y\cap H}}{(\dim Y\cap H)!}.
 \end{align*}
@@ -2730,11 +2730,11 @@ Affine varieties over a field $k$ correspond to commutative rings $R$ that satis
 \end{enumerate}
 The coordinate ring of an affine variety has these properties. Further, one can construct an affine variety from a commutative ring with these properties.
 
-The coordinate ring of a line $k[x]$ behaves similarly to $\mathbf{Z}$ or algebraic number fields such as $\mathbf{Z}[i]$. It was noticed in the nineteenth century that the theory of algebraic number fields was very similar to the theory of curves over finite fields. Hence, one wants algebraic geometry to include these things, so we don't want to require that $R$ is an algebra over a field. 
+The coordinate ring of a line $k[z]$ behaves similarly to $\mathbf{Z}$ or algebraic number fields such as $\mathbf{Z}[i]$. It was noticed in the nineteenth century that the theory of algebraic number fields was very similar to the theory of curves over finite fields. Hence, one wants algebraic geometry to include these things, so we don't want to require that $R$ is an algebra over a field. 
 
-One might want to consider the localization of the ring of rational functions $k(x)$ at the ideal $(x)$. However, this is not finitely-generated as an algebra.
+One might want to consider the localization of the ring of rational functions $k(z)$ at the ideal $(z)$. However, this is not finitely-generated as an algebra.
 
-Further, one might want to intersect curves $y=x^2$ and $y=0$. Then, one considers the ring $k[x,y]/(y,x^2-y) \isomto k[x]/ (x^2)$. Classically, one replaces this with $k[x]/(x) = k$. However, when one does this, one loses information about the intersection. This replacement is the coordinate ring of a point, and while these curves intersect at a point, that point is really a ``double point.'' The ring $k[x]/(x^2)$ is two-dimensional, so it keeps track of the ``double point''; however, it has nilpotent elements.
+Further, one might want to intersect curves $y=x^2$ and $y=0$. Then, one considers the ring $k[z_1,z_2]/(z_2,z_1^2-z_2) \isomto k[z]/ (z^2)$. Classically, one replaces this with $k[z]/(z) = k$. However, when one does this, one loses information about the intersection. This replacement is the coordinate ring of a point, and while these curves intersect at a point, that point is really a ``double point.'' The ring $k[z]/(z^2)$ is two-dimensional, so it keeps track of the ``double point''; however, it has nilpotent elements.
 
 One sees the benefit in abandoning these extra conditions. Hence, one wants to define some generalization of an affine variety that corresponds to commutative rings. We shall call these mysterious things ``affine schemes.''\index{affine scheme} However, to define them, one needs to look into the theory of sheaves.
 
@@ -2834,29 +2834,29 @@ By the way, an element $s\in \mathscr{F}(U)$ is called a \defn{section}\index{se
 Sheaves seem to be an unnecessarily complicated and abstract way to describe functions on a space. Of course, this isn't the case.
 
 \begin{example}[ ]\label{}\text{}
-The points of the affine line $\mathbf{C}$ correspond to the maximal ideals of the ring $\mathbf{C}[x]$.\footnote{The point $\alpha\in \mathbf{C}$ corresponds to the maximal ideal $(x-\alpha)$.} Given $f\in \mathbf{C}[x]$, define
+The points of the affine line $\mathbf{C}$ correspond to the maximal ideals of the ring $\mathbf{C}[z]$.\footnote{The point $\alpha\in \mathbf{C}$ corresponds to the maximal ideal $(z-\alpha)$.} Given $f\in \mathbf{C}[z]$, define
 \begin{align*}
-	U_f := \{\alpha : f(\alpha)\ne 0\}.
+	U(f) := \{\alpha : f(\alpha)\ne 0\}.
 \end{align*}
-Then, open sets have a basis $\{U_f\}$ in the Zariski topology. Further, the ring of regular functions of an open set is given as follows: 
+Then, open sets have a basis $\{U(f)\}$ in the Zariski topology. Further, the ring of regular functions of an open set is given as follows: 
 \begin{align*}
-	\mathscr{F}(U_f) = \{g/f^n: g\in \C[x]\}
+	\mathscr{F}(U(f)) = \{g/f^n: g\in \C[z]\}
 \end{align*}
 
-Let us replace $\mathbf{C}[x]$ with $\mathbf{Z}$. The maximal ideals of $\mathbf{Z}$ are given by
+Let us replace $\mathbf{C}[z]$ with $\mathbf{Z}$. The maximal ideals of $\mathbf{Z}$ are given by
 \begin{align*}
 	\specmax\mathbf{Z} = \{(2),  (3),\hdots\}.
 \end{align*}
 This set is called the \defn{maximal spectrum}\index{maximal spectrum} of $\mathbf{Z}$. Given $f\in \mathbf{Z}$, define 
 \begin{align*}
-	U_f := \{\mathfrak{m}: f\notin  \mathfrak{m}\}.
+	U(f) := \{\mathfrak{m}: f\notin  \mathfrak{m}\}.
 \end{align*}
-Then, one gets a basis of open sets $\{U_f\}$. Now, define
+Then, one gets a basis of open sets $\{U(f)\}$. Now, define
 \begin{align*}
-	\mathscr{F}(U_f) := \{ g/f^n : g\in \mathbf{Z}\}.
+	\mathscr{F}(U(f)) := \{ g/f^n : g\in \mathbf{Z}\}.
 \end{align*}
 
-One pretends that an integer is a function on the space $\specmax \mathbf{Z}$. One notes the difference, though: $f\in \C[x]$ has values in $\mathbf{C}$ at all points of $\mathbf{C} = \mathbf{C}[x]/(x-\alpha)$, but $f\in \mathbf{Z}$ has values in $\mathbf{Z}/(p)$, which varies as the point varies. Nevertheless, $\mathscr{F}$ satisfies the sheaf property.\footnote{This fact comes down to the fundamental theorem of arithmetic.}
+One pretends that an integer is a function on the space $\specmax \mathbf{Z}$. One notes the difference, though: $f\in \C[z]$ has values in $\mathbf{C}$ at all points of $\mathbf{C} = \mathbf{C}[z]/(z-\alpha)$, but $f\in \mathbf{Z}$ has values in $\mathbf{Z}/(p)$, which varies as the point varies. Nevertheless, $\mathscr{F}$ satisfies the sheaf property.\footnote{This fact comes down to the fundamental theorem of arithmetic.}
 \end{example}
 
 Sheaves of sets behave similarly to sets; likewise, sheaves of abelian groups behave similarly to abelian groups. Hence, one can form a category of sheaves of sets and of sheaves of abelian groups. Given sheaves $\mathscr{F}$ and $\mathscr{G}$, one has a morphism by defining a morphism $\mathscr{F}(U) \longrightarrow \mathscr{G}(U)$ for all open sets $U$ that is compatible with the restriction map: Given open sets $V\subseteq U$,
@@ -2910,9 +2910,9 @@ commutes induces a map $\mathscr{F}\longrightarrow \mathscr{G}$. The map $\maths
 
 The answer is ``yes,'' even if one replaces ``sheaf'' with ``presheaf.'' Now, we shall construct the \index{\'etale space}\'etale space of the presheaf $\mathscr{F}$. 
 
-Given a space $X$, we want to construct a space $A$ mapping to $X$ that has something to do with $\mathscr{F}$. First, given $x\in X$, we want to determine the fibre of $A$ above $x$. A point $p$ of the fibre is given by a section $f\in \mathscr{F}(U)$ for some open neighbourhood $U$ of $p$. One says that $f$ and $g$ are the same point of the fibre if the images of $f$ and $g$ in $V$ are the same for some small $V$ containing $p$. Thus, if one thinks of $\mathscr{F}$ as the continuous sections of something, then the fibre is, roughly, equivalence classes of sections.
+Given a space $X$, we want to construct a space $A$ mapping to $X$ that has something to do with $\mathscr{F}$. First, given $\zeta\in X$, we want to determine the fibre of $A$ above $\zeta$. A point $p$ of the fibre is given by a section $f\in \mathscr{F}(U)$ for some open neighbourhood $U$ of $p$. One says that $f$ and $g$ are the same point of the fibre if the images of $f$ and $g$ in $V$ are the same for some small $V$ containing $p$. Thus, if one thinks of $\mathscr{F}$ as the continuous sections of something, then the fibre is, roughly, equivalence classes of sections.
 
-Now, endow $A$ with a topology. A basis of open sets is given as follows: Suppose $f\in \mathscr{F}(U)$. For every $p\in U$, take the image of $f$ in the fibre above $p$. The union of these images is an open set. These open sets give a basis for the topology. One calls $A$ the \defn{\'etale space}\index{\'etale space} of $\mathscr{F}$. Note that a map $A\longrightarrow X$ is \defn{\'etale} if, for all $\alpha\in A$, there is a neighbourhood $V$ of $\alpha$ such that the map from $V$ to $\img X$ is a homeomorphism.
+Now, endow $A$ with a topology. A basis of open sets is given as follows: Suppose $f\in \mathscr{F}(U)$. For every $p\in U$, take the image of $f$ in the fibre above $p$. The union of these images is an open set. These open sets give a basis for the topology. One calls $A$ the \defn{\'etale space}\index{\'etale space} of $\mathscr{F}$. Note that a map $A\longrightarrow X$ is \defn{\'etale} if, for all $\alpha\in A$, there is a neighbourhood $V$ of $\alpha$ such that the map from $V$ to $\Image X$ is a homeomorphism.
 
 \subsection{Exactness and sheaves}
 \begin{example}[ ]\label{}\text{}
@@ -2944,19 +2944,19 @@ From any presheaf $\mathscr{F}$, one gets an \'etale space. From any \'etale spa
 Thus, sheaves over $X$ are sort of equivalent to \'etale spaces $A\longrightarrow X$.\footnote{Sheaves are called ``sheaves'' because the \'etale space of a sheaf is the union of its fibres (stalks). Note that the definition of ``sheaf'' is ``a bundle of grain stalks laid lengthwise and tied together after reaping.''} In particular, a morphism of sheaves $\mathscr{F}\longrightarrow \mathscr{G}$ is an isomorphism if and only if the corresponding morphism of \'etale spaces is an isomorphism if and only if it is an isomorphism for all stalks. Let us digress to clarify some useful definitions.
 
  \begin{definition}[ ]\label{}\text{}
-Let $\mathscr{F}$ be a presheaf on $X$. Let $x\in X$. The \defn{stalk}\index{stalk} of $\mathscr{F}$ at $x$ is the set
+Let $\mathscr{F}$ be a presheaf on $X$. Let $\zeta\in X$. The \defn{stalk}\index{stalk} of $\mathscr{F}$ at $\zeta$ is the set
 \begin{align*}
-	\mathscr{F}_x := \varinjlim_{U\ni x} \mathscr{F}(U).
+	\mathscr{F}_\zeta := \varinjlim_{U\ni \zeta} \mathscr{F}(U).
 \end{align*}
 Equivalently,
 \begin{align*}
-	\mathscr{F}_x = \{(U,s) : U\ni x, s\in  \mathscr{F}(U)\} / \sim
+	\mathscr{F}_\zeta= \{(U,s) : U\ni \zeta, s\in  \mathscr{F}(U)\} / \sim
 \end{align*}
-where $(U_1,s_1)\sim(U_2,s_2) $ if and only if there exists an open set $U_3 \subset U_1\cap U_2$ with $x\in U_3$ and $s_1\big |_{U_3} = s_2\big |_{U_3}$.
+where $(U_1,s_1)\sim(U_2,s_2) $ if and only if there exists an open set $U_3 \subset U_1\cap U_2$ with $\zeta\in U_3$ and $s_1\big |_{U_3} = s_2\big |_{U_3}$.
 \end{definition}
 
 \begin{definition}[ ]\label{}\text{}
-The \defn{germ}\index{germ} of $s\in \mathscr{F}(U)$ at a point $x$ is the equivalence class of $(s,U) \in  \mathscr{F}_x$.
+The \defn{germ}\index{germ} of $s\in \mathscr{F}(U)$ at a point $\zeta$ is the equivalence class of $(s,U) \in  \mathscr{F}_\zeta$.
 \end{definition}
 
 \begin{example}[Sheafification]\label{}\text{}
@@ -2976,15 +2976,15 @@ A sequence of sheaves on $X$
 is exact if it is exact on the fibres (stalks). Similarly, a morphism of sheaves $\mathscr{F}\longrightarrow \mathscr{G}$ is injective/surjective if it is on the fibres (stalks).
 
 \begin{example}[Skyscraper sheaf]\label{}\text{}
-Fix $x\in X$ and an abelian group $A$. Define
+Fix $\zeta \in X$ and an abelian group $A$. Define
 \begin{align*}
 	\mathscr{F}(U) := 
 	 \begin{cases}
-		 A & x\in U\\
+		 A & \zeta\in U\\
 		 0&\textrm{otherwise.}
 	\end{cases}
 \end{align*}
-This is a sheaf called the \defn{skyscraper sheaf}\index{skyscraper sheaf} of $\mathscr{F}$ at $x$. Let $\mathscr{G}$ be the sheaf of smooth functions on $\mathbf{R}$. Given $\alpha\in \mathbf{R}$, one gets a map 
+This is a sheaf called the \defn{skyscraper sheaf}\index{skyscraper sheaf} of $\mathscr{F}$ at $\zeta$. Let $\mathscr{G}$ be the sheaf of smooth functions on $\mathbf{R}$. Given $\alpha\in \mathbf{R}$, one gets a map 
 \[
 \begin{tikzcd}
 	0\ar[r] & \mathscr{G}\ar[r, "\times \alpha"] &\mathscr{G}.
@@ -3070,7 +3070,7 @@ Let $\mathscr{G}$ be a sheaf on $Y$. The sheaf $\mathscr{G}$ corresponds to an \
 	X \ar[r] & Y
 \end{tikzcd}
 \]
-whose kernel is the subset of $B\times_Y X$ consisting of points that have the same image in $Y$. Alternatively, if $p$ is a point in $X$, then the fibre above $p$ of $B\times Y X$ is the same as the fibre above $f(p)$ of $B$. The check that $B$ is \'etale over $Y$ implies that $B\times_Y X$ is \'etale over $X$ is straightforward, so $B\times_Y X$ gives a sheaf. One defines $f^{-1}(\mathscr{G})$ to be the sheaf of the \'etale space $B\times_Y X\longrightarrow X$.
+whose kernel is the subset of $B\times_Y X$ consisting of points that have the same image in $Y$. Alternatively, if $p$ is a point in $X$, then the fibre above $p$ of $B\times_Y X$ is the same as the fibre above $f(p)$ of $B$. The check that $B$ is \'etale over $Y$ implies that $B\times_Y X$ is \'etale over $X$ is straightforward, so $B\times_Y X$ gives a sheaf. One defines $f^{-1}(\mathscr{G})$ to be the sheaf of the \'etale space $B\times_Y X\longrightarrow X$.
 
 \begin{remark}
 	The functor $f^{-1}$ preserves exactness.
@@ -3087,7 +3087,7 @@ Notice that $f^{-1}$ is left adjoint to $f_*$: Suppose $\mathscr{F}$ is a sheaf 
 	\mathscr{F} & f_*(\mathscr{F}).
 \end{tikzcd}
 \]
-Informally, ``adjointness'' means that these maps are the same in some sense. One might see this via the fact that maps $f^{-1}(\mathscr{G})\longrightarrow \mathscr{F}$ and $\mathscr{G}\longrightarrow f_*(\mathscr{F})$ are somehow the same as collections of maps $\mathscr{G}(V) \longrightarrow \mathscr{F}(U)$ whenever one has open sets $U\subseteq X$ and $V\subseteq Y$ with $f(U)\subseteq V$; these maps must be compatible with the restriction maps.
+Informally, ``adjointness'' means that these maps are the same (in some sense). One might see this via the fact that maps $f^{-1}(\mathscr{G})\longrightarrow \mathscr{F}$ and $\mathscr{G}\longrightarrow f_*(\mathscr{F})$ are somehow the same as collections of maps $\mathscr{G}(V) \longrightarrow \mathscr{F}(U)$ whenever one has open sets $U\subseteq X$ and $V\subseteq Y$ with $f(U)\subseteq V$; these maps must be compatible with the restriction maps.
 
 If $F$ is left adjoint to $G$, then $F$ preserves right exactness and $G$ preserves left exactness. Since $f^{-1}$ is left adjoint to $f_*$, one sees that $f_*$ is left exact (as we showed) and $f^{-1}$ is right exact (as we showed). Note, however, that we showed that $f^{-1}$ is exact (that is, it is also left exact).
 
@@ -3135,30 +3135,30 @@ A \defn{locally ringed space}\index{locally ringed space} is a ringed space in w
 \end{remark}
 
 \begin{example}[Ringed space that isn't locally ringed]\label{}\text{}
-Let $X$ be a topological space. Let $\mathscr{O}$ be a presheaf on $X$ given by $\mathscr{O}(U) := R$ for a fixed ring $R$. Then, $\mathscr{O}\sh(U)$ comprises functions $U\longrightarrow R$ where one gives $R$ the discrete topology. The local ring at $p\in X$ is isomorphic to $R$; hence, if $R$ is not a local ring, the corresponding ringed space is not locally ringed. 
+Let $X$ be a topological space. Let $\mathscr{O}$ be a presheaf on $X$ given by $\mathscr{O}(U) := R$ for a fixed ring $R$. Then, $\mathscr{O}\sh(U)$ comprises functions $U\longrightarrow R$ where one gives $R$ the discrete topology. The local ring at $\mathfrak{p}\in X$ is isomorphic to $R$; hence, if $R$ is not a local ring, the corresponding ringed space is not locally ringed. 
 \end{example}
 
 \begin{definition}[ ]\label{}\text{}
 An \defn{affine scheme}\index{affine scheme} is isomorphic to the spectrum $\Spec R$ of a ring $R$. The spectrum $\Spec R$ is a locally ringed space whose points are the prime ideals of $R$ and whose topology is given by a basis of open sets
 \begin{align*}
-	U_r = \{\mathfrak{p} \textrm{ prime}: \mathfrak{p}\not\ni r\}
+	U(r) = \{\mathfrak{p} \textrm{ prime}: \mathfrak{p}\not\ni r\}
 \end{align*}
 for $r\in R$; the sheaf of $\Spec R$ is given by
 \begin{align*}
-	\mathscr{O}(U_r) := R[r ^{-1}].
+	\mathscr{O}(U(r)) := R[r ^{-1}].
 \end{align*}
 \end{definition}
 
 \begin{remark}
-	One needs to define the sheaf on only the open sets $U_r$. Open sets that are not of this form tend to be unimportant and the action of the sheaf on the basis determines everything. By the way, it is not trivial that $\mathscr{O}$ is a sheaf.
+	One needs to define the sheaf on only the open sets $U(r)$. Open sets that are not of this form tend to be unimportant and the action of the sheaf on the basis determines everything. By the way, it is not trivial that $\mathscr{O}$ is a sheaf.
 \end{remark}
 
 \begin{example}[ ]\label{}\text{}
 \begin{enumerate}
 	\item Let $R$ be a field. Then, $\Spec R$ has $1$ point $0$ and $\mathscr{O}(0)= R$.
-	\item Let $R=\mathbf{Z}$. Then, the points of $\Spec R$ are $(0),  (2),  (3),\hdots$. One sees that $U_r$ is either $\emptyset$ or $\Spec R$ minus a finite number of nonzero primes.\footnote{Not only is $\Spec R$ not necessarily Hausdorff, its points don't need to be closed: $(0)$ is not closed.} Also,
+	\item Let $R=\mathbf{Z}$. Then, the points of $\Spec R$ are $(0),  (2),  (3),\hdots$. One sees that $U(r)$ is either $\emptyset$ or $\Spec R$ minus a finite number of nonzero primes.\footnote{Not only is $\Spec R$ not necessarily Hausdorff, its points don't need to be closed: $(0)$ is not closed.} Also,
 		 \begin{align*}
-		 	\mathscr{O}(U_r) = \{ m/r^k\}.
+		 	\mathscr{O}(U(r)) = \{ m/r^k\}.
 		 \end{align*}
 		 Further, the local ring at $(0)$ is $\mathbf{Q}$ and the local ring at $(p)$ is
 		 \begin{align*}
@@ -3166,9 +3166,9 @@ for $r\in R$; the sheaf of $\Spec R$ is given by
 		 \end{align*}
 	 \item Let $R=\mathbf{C}[z]$. Then, $\Spec R$ has points $(0)$ and $(z-\alpha)$ for $\alpha\in \mathbf{C}$. One sees that 
 \begin{align*}
-	U_f = \{ (z-\alpha) : f (\alpha)\ne 0\}
+	U(f)= \{ (z-\alpha) : f (\alpha)\ne 0\}
 \end{align*}
-is either $\emptyset$ or $\Spec R$ minus a finite number of points. Also, $\mathscr{O}(U_f)$ consists of rational functions $g/f^k$ that have no poles on $U_f$. Further, the local ring at $(0)$ is $\mathbf{C}(z)$ and the local ring at $(z-\alpha)$ comprises rational functions with no poles at $\alpha$.
+is either $\emptyset$ or $\Spec R$ minus a finite number of points. Also, $\mathscr{O}(U(f))$ consists of rational functions $g/f^k$ that have no poles on $U(f)$. Further, the local ring at $(0)$ is $\mathbf{C}(z)$ and the local ring at $(z-\alpha)$ comprises rational functions with no poles at $\alpha$.
 \end{enumerate}
 \end{example}
 
@@ -3176,7 +3176,7 @@ Let us see why the locally ringed space $\Spec R$ is called the ``spectrum.'' Fi
 
 Second, the eigenvalues of a matrix $A$ correspond to the maximal ideals of $\mathbf{C}[A]\isomto \mathbf{C}[z]/(\mu(z))$ where $\mu$ is the minimal polynomial of $A$. 
 
-Now, let $X$ be compact and Hausdorff. Let $R=C(X)$ be the ring of continuous real-valued functions on $X$. Then, the points of $X$ correspond to the (closed) maximal ideals of $R$ and the topology is given by $U_f$ (the open set of maximal ideals that do not contain $f$) for all $f$.
+Now, let $X$ be compact and Hausdorff. Let $R=C(X)$ be the ring of continuous real-valued functions on $X$. Then, the points of $X$ correspond to the (closed) maximal ideals of $R$ and the topology is given by $U(f)$ (the open set of maximal ideals that do not contain $f$) for all $f$.
 
 Hence, one says that the maximal ideals of a commutative ring form a topological space defined in this way. An obvious question arises:
 \begin{quote}
@@ -3185,40 +3185,40 @@ Hence, one says that the maximal ideals of a commutative ring form a topological
 \end{quote}
 Maximal ideals work just fine in specific settings, but not in general: Suppose $f:R\longrightarrow S$ is a homomorphism of rings. One wants to define a map $\Spec S \longrightarrow \Spec R$ given by $\mathfrak{m} \longmapsto f^{-1}(\mathfrak{m})$. However, $f^{-1}(\mathfrak{m})$ does not need to be maximal.\footnote{Let $f:\mathbf{Z} \longrightarrow \mathbf{Q}$ be the inclusion. Then $\mathfrak{m}=(0)$ is maximal in $\mathbf{Q}$ since $\mathbf{Q}$ is a field, but $f^{-1}(\mathfrak{m}) = (0)$ is not maximal in $\mathbf{Z}$ since $\mathbf{Z}$ is not a field.}
 
-An $R$-ideal $\mathfrak{m}$ is maximal if and only if $R/\mathfrak{m}$ is a field. One sees that $R/f^{-1}(\mathfrak{m})$ is a subring of the field $S/\mathfrak{m}$, so one finds that $R/f^{-1}(\mathfrak{m})$ is an integral domain, but not necessarily a field. Recall that an $R$-ideal $\mathfrak{p}$ is prime if and only if $R/\mathfrak{p}$ is an integral domain. Therefore, if $\mathfrak{p}$ is a prime ideal, then $f^{-1}(\mathfrak{p})$ is prime. This is why Grothendieck considered prime ideals instead of maximal ideals.
+An $R$-ideal $\mathfrak{m}$ is maximal if and only if $R/\mathfrak{m}$ is a field. One sees that $R/f^{-1}(\mathfrak{m})$ is a subring of the field $S/\mathfrak{m}$, so one finds that $R/f^{-1}(\mathfrak{m})$ is an integral domain, but not necessarily a field. An $R$-ideal $\mathfrak{p}$ is prime if and only if $R/\mathfrak{p}$ is an integral domain. Therefore, if $\mathfrak{p}$ is a prime ideal, then $f^{-1}(\mathfrak{p})$ is prime. This is why Grothendieck considered prime ideals instead of maximal ideals.
 
-\subsection{$\Spec \C[x,y]$ and $\Spec \Z[x]$}
-Consider $\C[x,y]$.\footnote{One can consider $\Omega[x,y]$ for any algebraically closed $\Omega$.} There are three types of prime ideals:
+\subsection{$\Spec \C[z_1,z_2]$ and $\Spec \Z[z]$}
+Consider $\C[z_1,z_2]$.\footnote{One can consider $\Omega[z_1,z_2]$ for any algebraically closed $\Omega$.} There are three types of prime ideals:
 \begin{enumerate}
-	\item For any $(\alpha,\beta)\in  \mathbf{C}^2$, the maximal ideal $(x-\alpha,y-\beta)$ is prime;
-	\item If $f(x,y)$ is irreducible, then $(f(x,y))$ is prime; 
+	\item For any $(\alpha,\beta)\in  \mathbf{C}^2$, the maximal ideal $(z_1-\alpha,z_2-\beta)$ is prime;
+	\item If $f(z_1,z_2)$ is irreducible, then $(f(z_1,z_2))$ is prime; 
 	\item $(0)$.
 \end{enumerate}
-The local ring at $(0)$ is $\mathbf{C}(x,y)$. The local ring at $(x-\alpha, y-\beta)$ consists of rational functions whose denominators are nonzero at $(\alpha,\beta)$. The local ring at $\mathfrak{p} = (f(x,y))$ comprises all rational functions whose denominators are not divisible by $f$ (rational functions that are regular at almost all points).
+The local ring at $(0)$ is $\mathbf{C}(z_1,z_2)$. The local ring at $(z_1-\alpha, z_2-\beta)$ consists of rational functions whose denominators are nonzero at $(\alpha,\beta)$. The local ring at $\mathfrak{p} = (f(z_1,z_2))$ comprises all rational functions whose denominators are not divisible by $f$ (rational functions that are regular at almost all points).
 
 \begin{definition}[ ]\label{}
-The ring $R$ is a \defn{discrete valuation ring}\index{discrete valuation ring} if it is a PID that has a unique nonzero maximal ideal $\mathfrak{m}(R)$. The field $R/\mathfrak{m}(R)$ is the \defn{residue field}\index{residue field} of $R$. 
+The ring $R$ is a \defn{discrete valuation ring}\index{discrete valuation ring} if and only if it is a PID that has a unique nonzero maximal ideal $\mathfrak{m}(R)$. The field $R/\mathfrak{m}(R)$ is the \defn{residue field}\index{residue field} of $R$. 
 \end{definition}
 
 \begin{remark}
-The localization $\mathbf{C}[x,y]_\mathfrak{p}$ is a discrete valuation ring. Therefore, every element in the localization can be written as a power of $f$ times a unit.	
+The localization $\mathbf{C}[z_1,z_2]_\mathfrak{p}$ is a discrete valuation ring. Therefore, every element in the localization can be written as a power of $f$ times a unit.	
 \end{remark}
 
 Now, let $R$ be a discrete valuation ring (for example, $\mathbf{Z}_{(2)}$). One sees that $\mathfrak{m}(R) =  (2) $. The other ideals of $R$ are $(0)$ and $(2^n)$.\footnote{Note that the ideal $(0)$ is prime, not maximal, and $(2^n)$ is neither prime nor maxmial.} Hence, $\Spec R$ has two points.\footnote{The space $\Spec R$ is the \defn{Sierpi\'nski space}\index{Sierpi\'nski space}; that is, it is the topological space with two points, of which only one is closed.} The local ring at $(2)$ is $R$ and the stalk at $(0)$ is the field of fractions of $R$ (that is, $\mathbf{Q}$).
 
-Now, let us consider $\Spec \mathbf{Z}[x] $. There is a ring homomorphism $\mathbf{Z}\longrightarrow \mathbf{Z}[x]$, so there is a map $\Spec \mathbf{Z}[x] \longrightarrow \Spec \mathbf{Z}$.\footnote{Recall that the generic point $(0)$ in $\Spec \mathbf{Z}$ contains all of the other points of $\Spec\mathbf{Z}$ in its closure.} The fibre above $(2)$ is $\Spec\mathbf{F}_{2}[x]$, which is the closure of the generic point $(2)$. The same thing happens for all prime numbers $p$. For the fibre above $(0)$, one looks at ideals whose intersection with $\mathbf{Z}$ is $(0)$, so one tensors with $\mathbf{Q}$ to get a map
+Now, let us consider $\Spec \mathbf{Z}[z] $. There is a ring homomorphism $\mathbf{Z}\longrightarrow \mathbf{Z}[z]$, so there is a map $\Spec \mathbf{Z}[z] \longrightarrow \Spec \mathbf{Z}$.\footnote{Recall that the generic point $(0)$ in $\Spec \mathbf{Z}$ contains all of the other points of $\Spec\mathbf{Z}$ in its closure.} The fibre above $(2)$ is $\Spec\mathbf{F}_{2}[z]$, which is the closure of the generic point $(2)$. The same thing happens for all prime numbers $p$. For the fibre above $(0)$, one looks at ideals whose intersection with $\mathbf{Z}$ is $(0)$, so one tensors with $\mathbf{Q}$ to get a map
 \begin{align*}
-	\mathbf{Z}[x]/\mathfrak{p}\tensor \mathbf{Q}\longrightarrow \mathbf{Q}(\alpha). 
+	\mathbf{Z}[z]/\mathfrak{p}\tensor \mathbf{Q}\longrightarrow \mathbf{Q}(\alpha). 
 \end{align*}
-The image of $x$ under this map is some algebraic integer. The corresponding prime ideals shall be of the form $(f(x))$ where $f(x) $ is irreducible in $\mathbf{Z}[x]$. These prime ideals corresponding to irreducibles in $\mathbf{Z}[x]$, essentially, comprise $\Spec \mathbf{Q}[x]$. Thus, the closure of the generic point (the fibre above $(0)$) consists of $(x),  (x+1), (x+2),\hdots,  (x^2+1),\hdots$. These points correspond to algebraic numbers up to the action of $\Gal (\overline{\mathbf{Q}}/\mathbf{Q})$.
+The image of $z$ under this map is some algebraic integer. The corresponding prime ideals shall be of the form $(f(z))$ where $f(z) $ is irreducible in $\mathbf{Z}[z]$. These prime ideals corresponding to irreducibles in $\mathbf{Z}[z]$, essentially, comprise $\Spec \mathbf{Q}[z]$. Thus, the closure of the generic point (the fibre above $(0)$) consists of $(z),  (z+1), (z+2),\hdots,  (z^2+1),\hdots$. These points correspond to algebraic numbers up to the action of $\Gal (\overline{\mathbf{Q}}/\mathbf{Q})$.
 
-However, this isn't what $\Spec \mathbf{Z}[x]$ looks like. One thinks about $\Spec \mathbf{Z}[x]$ as a surface with points, vertical lines, and horizontal lines that illuminate algebraic number theory happening when they intersect.\footnote{See \url{https://youtu.be/WirufRI1_Uo?t=957}.} 
+However, this isn't what $\Spec \mathbf{Z}[z]$ looks like. One thinks about $\Spec \mathbf{Z}[z]$ as a surface with points, vertical lines, and horizontal lines that illuminate algebraic number theory happening when they intersect.\footnote{See \url{https://youtu.be/WirufRI1_Uo?t=957}.} 
 
-The local ring at $(2,x)$ consists of rational functions whose denominator has an odd constant term. The local ring at $(2)$ consists of rational functions whose denominator has an odd coefficient. The local ring at $(0)$ is $\mathbf{Q}(x)$.
+The local ring at $(2,z)$ consists of rational functions whose denominator has an odd constant term. The local ring at $(2)$ consists of rational functions whose denominator has an odd coefficient. The local ring at $(0)$ is $\mathbf{Q}(z)$.
 
 \subsection{More examples of $\Spec R$}
 \begin{example}[ ]\label{}\text{}
-We have seen that $\Spec \mathbf{C}[x]$ looks like $\mathbf{C}$ with a generic point corresponding to the ideal $(0)$. This is not the case for $\mathbf{R}[x]$: While polynomials of the form $x-\alpha$ are irreducible, polynomials $x^2 + ax + b$ with two complex conjugate roots $\beta\pm \gamma i$ are also irreducible. Hence, one should also add in points that correspond to pairs of real numbers. Thus, $\Spec \mathbf{R}[x]$ consists of the orbits of $\mathbf{C}$ under complex conjugation---under $\Gal(\mathbf{C}/\mathbf{R})$---plus a generic point.
+We have seen that $\Spec \mathbf{C}[z]$ looks like $\mathbf{C}$ with a generic point corresponding to the ideal $(0)$. This is not the case for $\mathbf{R}[z]$: While polynomials of the form $z-\alpha$ are irreducible, polynomials $z^2 + az + b$ with two complex conjugate roots $\beta\pm \gamma i$ are also irreducible. Hence, one should also add in points that correspond to pairs of real numbers. Thus, $\Spec \mathbf{R}[z]$ consists of the orbits of $\mathbf{C}$ under complex conjugation---under $\Gal(\mathbf{C}/\mathbf{R})$---plus a generic point.
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
@@ -3238,7 +3238,7 @@ There is a map $\mathbf{Z}\longrightarrow \mathbf{Z}[i]$, so there is a map $\Sp
 \end{remark}
 
 \begin{example}[ ]\label{}\text{}
-Let us consider the spectrum of the localization $\C[x,y]_{(x,y)}$. First, $(0)$ is the generic point of $\Spec \C[x,y]_{(x,y)}$. Second, $(x,y)$ is the maximal ideal of this localization, so it gives a closed point. Further, one has points $(f(x,y))$ for $f(x,y)=0$. If one draws the spectra of $\mathbf{C}[x,y]$ and the localization we are considering, one notices that the latter looks like a magnification of the former at one point.
+Let us consider the spectrum of the localization $\C[z_1,z_2]_{(z_1,z_2)}$. First, $(0)$ is the generic point of $\Spec \C[z_1,z_2]_{(z_1,z_2)}$. Second, $(z_1,z_2)$ is the maximal ideal of this localization, so it gives a closed point. Further, one has points $(f(z_1,z_2))$ for $f(z_1,z_2)=0$. If one draws the spectra of $\mathbf{C}[z_1,z_2]$ and the localization that we are considering, one notices that the latter looks like a magnification of the former at one point.
 \end{example}
 
 \begin{problem}
@@ -3298,9 +3298,9 @@ Now, suppose $S$ is the complement of a prime ideal $\mathfrak{p}$.\footnote{Exe
 This is the \defn{localization}\index{localization} of $R$ at $\mathfrak{p}$.
 
 \begin{remark}
-	If $R=\mathbf{C}[x]$, the dimension of the spectrum of $R/(0)$ is $1$ and that of $R_{(0)}$ is $0$. Further, the dimension of the spectrum of $R/(x-\alpha)$ is $0$ and that of $R_{(x-\alpha) }$ is $1$.
+	If $R=\mathbf{C}[z]$, the dimension of the spectrum of $R/(0)$ is $1$ and that of $R_{(0)}$ is $0$. Further, the dimension of the spectrum of $R/(z-\alpha)$ is $0$ and that of $R_{(z-\alpha) }$ is $1$.
 
-	If $R=\mathbf{C}[x,y]$, the dimension of the spectrum of $R/(0)$ is $2$ and that of $R_{(0)}$ is $0$. Furthermore, the dimensions of the spectra of $R/(f)$ and $R_{(f)}$ are $1$. Lastly, the dimension of the spectrum of $R/(x-\alpha, y-\beta)$ is $0$ and that of $R_{(x-\alpha,y-\beta)}$ is $2$. 
+	If $R=\mathbf{C}[z_1,z_2]$, the dimension of the spectrum of $R/(0)$ is $2$ and that of $R_{(0)}$ is $0$. Furthermore, the dimensions of the spectra of $R/(f)$ and $R_{(f)}$ are $1$. Lastly, the dimension of the spectrum of $R/(z_1-\alpha, z_2-\beta)$ is $0$ and that of $R_{(z_1-\alpha,z_2-\beta)}$ is $2$. 
 \end{remark}
 
 \begin{remark}
@@ -3314,25 +3314,25 @@ First, note that one can define a sheaf on a set $X$ by defining it on elements 
 One handles basis elements that do not have this property in the following way.
 
 \begin{example}[ ]\label{}\text{}
-Let $R=\mathbf{C}[x,y]$. Consider the open sets $U_1 = U_x$ and $U_2 = U_y$.
+Let $R=\mathbf{C}[z_1,z_2]$. Consider the open sets $U_1 = U(z_1)$ and $U_2 = U(z_2)$.
 \end{example}
 \fi
 
-Suppose one is given a basis $U_f = \bigcup_ i U_{f_i}$. One checks the sheaf condition as follows: First, notice that one can replace $R$ by $R[f^{-1}]$, since $\Spec R[f^{-1}]= U_f$. That is, one can assume that $U_f = \Spec R$. Hence, one supposes that $\{U_{f_i}\}_i$ covers $\Spec R$. Consider the ideal $(f_1,\hdots, f_n)$. Since there is no prime ideal that contains $(f_1,\hdots, f_n)$, one sees that $(f_1,\hdots, f_n)=R$. Particularly, 
+Suppose that one is given a basis $U(f) = \bigcup_ i U(f_i)$. One checks the sheaf condition as follows: First, notice that one can replace $R$ by $R[f^{-1}]$, since $\Spec R[f^{-1}]= U(f)$. That is, one can assume that $U(f) = \Spec R$. Hence, one supposes that $\{U(f_i)\}_i$ covers $\Spec R$. Consider the ideal $(f_1,\hdots, f_n)$. Since there is no prime ideal that contains $(f_1,\hdots, f_n)$, one sees that $(f_1,\hdots, f_n)=R$. Particularly, 
 \begin{align*}
 	\alpha_1f_1 + \cdots +\alpha_nf_n = 1
 \end{align*}
-for some $\alpha_i\in R$. This implies that $\Spec R$ is \index{quasicompact}quasicompact.\footnote{``Which means the same as `compact' unless you're French.'' Also, this is something like a \index{partition of unity}partition of unity.}
+for some $\alpha_i\in R$. This implies that $\Spec R$ is \index{quasicompact}quasicompact.\footnote{``Which means the same as `compact' unless you're French.'' This decomposition is something like a \index{partition of unity}partition of unity, by the way.}
 
-Now, given $r\in R = \mathscr{O}(\Spec R)$, one needs to show that if $r$ is $0$ in $U_{f_i}$ for all $i$, then $r=0$. One sees that the image of $r$ in $R[f_i^{-1}]$ is $0$. Equivalently, $f_i^{n_i} r = 0$ for some $n_i$. Also, $\sum_{i=1}^{n} \alpha_if_i=1$ as above. Replacing $f_i^{n_i}$ by $f_i$ since $U_{f_i}=U_{f_i^{n_i}}$, one assumes that $f_ir = 0$ for all $i$. Thus,
+Now, given $r\in R = \mathscr{O}(\Spec R)$, one needs to show that if $r$ is $0$ in $U({f_i})$ for all $i$, then $r=0$. One sees that the image of $r$ in $R[f_i^{-1}]$ is $0$. Equivalently, $f_i^{n_i} r = 0$ for some $n_i$. Also, $\sum_{i=1}^{n} \alpha_if_i=1$ as above. Replacing $f_i^{n_i}$ by $f_i$ since $U(f_i)=U({f_i^{n_i}})$, one assumes that $f_ir = 0$ for all $i$. Thus,
 \begin{align*}
 	r &= r \sum_{i=1}^{n} \alpha_if_i\\
 	  &= \sum_{i=1}^{n} \alpha_i f_ir\\
 	  &= 0.
 \end{align*}
 
-Suppose $\Spec R = \bigcup_i U_{f_i}$.
-Recall that $\mathscr{O}(U_{f_i})=R[f_i^{-1}]$. Suppose that $r_i/f_i^{n_i}\in \mathscr{O}(U_{f_i})$ where
+Suppose that $\Spec R = \bigcup_i U({f_i})$.
+Recall that $\mathscr{O}(U({f_i}))=R[f_i^{-1}]$. Suppose that $r_i/f_i^{n_i}\in \mathscr{O}(U({f_i}))$ where
 \begin{align*}
 	\frac{r_i}{f_i^{n_i}} \sim \frac{r_j}{f_j^{n_j}}
 \end{align*}
@@ -3358,7 +3358,7 @@ Thus, $\Spec R$ satisfies the sheaf property.
 	What is the stalk of $\Spec R$ at a point $\mathfrak{p}$?
 \end{problem}
 
-Well, this is the direct limit of $\mathscr{O}(U_{f_i})= R[f_i ^{-1}]$ where the $U_{f_i}$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
+Well, this is the direct limit of $\mathscr{O}(U({f_i}))= R[f_i ^{-1}]$ where the $U({f_i})$s form a basis for the open sets containing $\mathfrak{p}$. This is the localization $R_{\mathfrak{p}}$. This is a local ring, so $\Spec R$ is a locally ringed space.
 
 \subsection{Morphisms of affine schemes}
 One might define morphisms of schemes to be morphisms of ringed spaces, but this is wrong. One defines a morphism of schemes to be a morphism of locally ringed spaces. 
@@ -3399,68 +3399,68 @@ Thus, homomorphisms of rings $R\longrightarrow S$ correspond to morphisms of loc
 Suppose $X$ and $Y$ are schemes. Cover $Y$ by open affine subschemes. Then, cover $X$ by open affine subschemes such that the image of every such subscheme is in an open affine subscheme of $Y$. That is, for every open affine subscheme in the cover, choose a map to some open affine subscheme of $Y$. These are things with which one can work since they are given by homomorphisms of rings. Now, one chekcs that these are compatible on all intersections.
 
 \begin{example}[ ]\label{}\text{}
-Let us show that the scheme corresponding to $\mathbf{C}^2 - \{(0,0)\}$ is not affine. There is a natural map from the scheme of $\mathbf{C}^2-\{(0,0)\}$ to $\Spec \mathbf{C}[x,y]$. The rings of global functions for these are both $\mathbf{C}[x,y]$. This is an isomorphism, so the schemes above would have to be isomorphic if they were both affine. So, $\mathbf{C}^2-\{(0,0)\}$ is not affine. 
+Let us show that the scheme corresponding to $\mathbf{C}^2 - \{(0,0)\}$ is not affine. There is a natural map from the scheme of $\mathbf{C}^2-\{(0,0)\}$ to $\Spec \mathbf{C}[z_1,z_2]$. The rings of global functions for these are both $\mathbf{C}[z_1,z_2]$. This is an isomorphism, so the schemes above would have to be isomorphic if they were both affine. So, $\mathbf{C}^2-\{(0,0)\}$ is not affine. 
 \end{example}
 
 \subsection{Gluing schemes}
 One can think of a smooth manifold as open subsets of $\mathbf{R}^n$ glued together. Similarly, one gets a scheme by gluing together copies of open affine schemes.
 
 \begin{example}[ ]\label{gluing_1}\text{}
-Let us glue together $2$ copies of $\Spec k[x]$. The affine line $\mathbf{A}^1(k)$ is the points of $k$ minus a generic point, so one considers the open subset got by discarding the origin. This is the affine scheme of $k[x,x^{-1}]$. One has
+Let us glue together $2$ copies of $\Spec k[z]$. The affine line $\mathbf{A}^1(k)$ is the points of $k$ minus a generic point, so one considers the open subset got by discarding the origin. This is the affine scheme of $k[z,z^{-1}]$. One has
 \iffalse
 \[
 \begin{tikzcd}
-	\Spec k[x] &&\Spec k[x]\\
-		   &\Spec k[x,x^{-1}]\ar[ul]\ar[ur] 
+	\Spec k[z] &&\Spec k[z]\\
+		   &\Spec k[z,z^{-1}]\ar[ul]\ar[ur] 
 \end{tikzcd}
 \]
 and
 \fi
 \[
 \begin{tikzcd}
-	k[x]\ar[dr] && k[x] \ar[dl]\\
-		    &k[x,x^{-1}].
+	k[z]\ar[dr] && k[z] \ar[dl]\\
+		    &k[z,z^{-1}].
 \end{tikzcd}
 \]
-One can choose $x\longmapsto x$ or $x\longmapsto x^{-1}$ for either arrow. If both arrows are the identity, one gets ``a line with two origins.'' If one arrow is the identity and the other isn't, one gets $\mathbf{P}^1(k)$.
+One can choose $z\longmapsto z$ or $z\longmapsto z^{-1}$ for either arrow. If both arrows are the identity, one gets ``a line with two origins.'' If one arrow is the identity and the other isn't, one gets $\mathbf{P}^1(k)$.
 \end{example}
 
 \begin{problem}
-	What are the morphisms to $k[x]$?
+	What are the morphisms to $k[z]$?
 \end{problem}
 
-The ring $k[x]$ corresponds to the affine line. If one wants to consider morphisms from the affine line to itself, one wants to consider the ring homomorphisms $\varphi$ such that
+The ring $k[z]$ corresponds to the affine line. If one wants to consider morphisms from the affine line to itself, one wants to consider the ring homomorphisms $\varphi$ such that
 \[
 \begin{tikzcd}
-	k[x] \ar[rr, "\varphi"] &&k[x] \\
+	k[z] \ar[rr, "\varphi"] &&k[z] \\
 			       &k\ar[lu] \ar[ru]
 \end{tikzcd}
 \]
-commutes, not all ring homomorphisms $k[x] \longrightarrow k[x]$.\footnote{One wants $\varphi(k)=k$.} In terms of schemes, one wants
+commutes, not all ring homomorphisms $k[z] \longrightarrow k[z]$.\footnote{One wants $\varphi(k)=k$.} In terms of schemes, one wants
 \[
 \begin{tikzcd}
-	\Spec k[x] \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+	\Spec k[z] \ar[dr] \ar[rr] &&\Spec k[z] \ar[dl]\\
 				   &\Spec k
 \end{tikzcd}
 \]
 to commute.\footnote{That is, we're working over $\Spec k$.} Given a ring $R$, if one wants to know when
 \[
 \begin{tikzcd}
-\Spec R \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+\Spec R \ar[dr] \ar[rr] &&\Spec k[z] \ar[dl]\\
                                    &\Spec k	
 \end{tikzcd}
 \]
 commutes, one wants maps $\varphi$ such that
 \[
 \begin{tikzcd}
-	R && k[x] \ar[ll,  "\varphi",  swap] \\
+	R && k[z] \ar[ll,  "\varphi",  swap] \\
 	  &k \ar[ul]\ar[ur]
 \end{tikzcd}
 \]
-commutes. This is equivalent to choosing elements of $R$ or global sections of $\Spec R$. That is, for affine algebras over $k$, morphisms to $\Spec k[x]$ correspond to functions on $R$. The same holds for all schemes $X$: Morphisms such that
+commutes. This is equivalent to choosing elements of $R$ or global sections of $\Spec R$. That is, for affine algebras over $k$, morphisms to $\Spec k[z]$ correspond to functions on $R$. The same holds for all schemes $X$: Morphisms such that
 \[
 \begin{tikzcd}
-	X \ar[dr] \ar[rr] &&\Spec k[x] \ar[dl]\\
+	X \ar[dr] \ar[rr] &&\Spec k[z] \ar[dl]\\
                                    &\Spec k    
 \end{tikzcd}
 \]
@@ -3469,25 +3469,25 @@ commutes correspond to regular functions on $X$.
 Let us do this with the two examples from \cref{gluing_1}.
 
 \begin{example}[Line with two origins]\label{}\text{}
-This scheme is covered by two affine lines. One takes to coordinate rings of each affine line and takes an element of each that correspond on the intersection. That is, one looks at the images of elements under
+This scheme is covered by two affine lines. One takes the coordinate rings of each affine line and takes elements from each that correspond on the intersection. That is, one looks at the images of elements under
 \[
 \begin{tikzcd}
-	k[x]\ar[dr] && k[x] \ar[dl]\\
-	&k[x,x^{-1}]
+	k[z]\ar[dr] && k[z] \ar[dl]\\
+	&k[z,z^{-1}]
 \end{tikzcd}
 \]
-where these arrows are the inclusions. This is $k[x]$, so $k[x]$ is the coordinate ring of the scheme.\footnote{Therefore, this scheme is not affine. If it were, then it must be $\Spec k[x]$, and the map from $k[x]$ to it would have to be an isomorphism. This map is not an isomorphism since it maps two points (the ``origins'') to one point in $k[x]$.}
+where these arrows are the inclusions. This is $k[z]$, so $k[z]$ is the coordinate ring of the scheme.\footnote{Therefore, this scheme is not affine. If it were, then it would be $\Spec k[z]$, and the map from $k[z]$ to it would have to be an isomorphism. This map is not an isomorphism since it maps two points (the ``origins'') to one point in $k[z]$.}
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
 Now, let's do this for $\mathbf{P}^1(k)$. One considers the images of elements under
 \[
 \begin{tikzcd}
-        k[x]\ar[dr] && k[x^{-1}] \ar[dl]\\
-        &k[x,x^{-1}]
+        k[z]\ar[dr] && k[z^{-1}] \ar[dl]\\
+        &k[z,z^{-1}]
 \end{tikzcd}
 \]
-where these arrows are the inclusions.\footnote{The arrow on the right is the same as the map $k[x]\longrightarrow k[x]$ given by $x\longmapsto x^{-1}$.} One sees that the coordinate ring of $\mathbf{P}^1(k)$ is $k$.\footnote{Again, this scheme is not affine.}
+where these arrows are the inclusions.\footnote{The arrow on the right is the same as the map $k[z]\longrightarrow k[z,z\inv]$ given by $z\longmapsto z^{-1}$.} One sees that the coordinate ring of $\mathbf{P}^1(k)$ is $k$.\footnote{Again, this scheme is not affine.}
 \end{example}
 
 \begin{remark}
@@ -3518,11 +3518,11 @@ Suppose $R=\mathbf{Z}$. Then, one considers morphisms $\varphi$ such that
 commutes.
 Here's a wrong guess: $\mathbf{P}^1(\mathbf{Z})$ is a union of two copies of $\mathbf{A}^1(\mathbf{Z})$ identified along a subset, so morphisms $\varphi$ are given by a union of two copies of morphisms from $\Spec \mathbf{Z}$ to $\mathbf{A}^1(\mathbf{Z})$ (viz., $\mathbf{Z}$) in which $\alpha\sim \alpha^{-1}$ when $\alpha$ has an inverse. This doesn't work because $\Spec \mathbf{Z}$ is not a point.
 
-The open subsets of $\Spec \mathbf{Z}$ are $\emptyset$ and $\Spec \mathbf{Z}[m^{-1}]$ for $m\in \mathbf{Z}$. One is gluing together the affine lines over $\mathbf{Z}$ ($\Spec \mathbf{Z}[x]$ and $\Spec \mathbf{Z}[x^{-1}]$) along $\Spec \mathbf{Z}[x,x^{-1}]$:
+The open subsets of $\Spec \mathbf{Z}$ are $\emptyset$ and $\Spec \mathbf{Z}[m^{-1}]$ for $m\in \mathbf{Z}$. One is gluing together the affine lines over $\mathbf{Z}$ ($\Spec \mathbf{Z}[z]$ and $\Spec \mathbf{Z}[z^{-1}]$) along $\Spec \mathbf{Z}[z,z^{-1}]$:
 \[
 \begin{tikzcd}
-	\Spec \mathbf{Z}[x] &&\Spec \mathbf{Z}[x^{-1}]\\
-			    &\Spec \mathbf{Z}[x,x^{-1}]. \ar[ru]\ar[lu]
+	\Spec \mathbf{Z}[z] &&\Spec \mathbf{Z}[z^{-1}]\\
+			    &\Spec \mathbf{Z}[z,z^{-1}]. \ar[ru]\ar[lu]
 \end{tikzcd}
 \]
 One also wants to glue together the open subsets $\Spec \mathbf{Z}[m^{-1}]$ and $\Spec \mathbf{Z}[n^{-1}]$:
@@ -3532,16 +3532,16 @@ One also wants to glue together the open subsets $\Spec \mathbf{Z}[m^{-1}]$ and 
 	&\Spec \mathbf{Z}[(mn)^{-1}]. \ar[ru]\ar[lu]
 \end{tikzcd}
 \]
-The union of these open subsets over $\Spec \mathbf{Z}[(mn)^{-1}]$ is $\Spec \mathbf{Z}$; similarly, the union of $\Spec \mathbf{Z}[x]$ and $\Spec \mathbf{Z}[x^{-1}]$ over $\Spec \mathbf{Z}[x,x^{-1}]$ is $\mathbf{P}^1(\mathbf{Z})$. One wants to define a map $\Spec \mathbf{Z}\longrightarrow \mathbf{P}^1(\mathbf{Z})$ given by
+The union of these open subsets over $\Spec \mathbf{Z}[(mn)^{-1}]$ is $\Spec \mathbf{Z}$; similarly, the union of $\Spec \mathbf{Z}[z]$ and $\Spec \mathbf{Z}[z^{-1}]$ over $\Spec \mathbf{Z}[z,z^{-1}]$ is $\mathbf{P}^1(\mathbf{Z})$. One wants to define a map $\Spec \mathbf{Z}\longrightarrow \mathbf{P}^1(\mathbf{Z})$ given by
 \[
 \begin{tikzcd}
-	\Spec \mathbf{Z}[x] &&\Spec \mathbf{Z}[x^{-1}]\\
-	&\Spec \mathbf{Z}[x,x^{-1}] \ar[ru]\ar[lu]\\
+	\Spec \mathbf{Z}[z] &&\Spec \mathbf{Z}[z^{-1}]\\
+	&\Spec \mathbf{Z}[z,z^{-1}] \ar[ru]\ar[lu]\\
 	\Spec \mathbf{Z}[m^{-1}]\ar[uu, dashed]  &&\Spec \mathbf{Z}[n^{-1}]\ar[uu, dashed]\\
 	&\Spec \mathbf{Z}[(mn)^{-1}].\ar[uu, dashed] \ar[ru]\ar[lu]
 \end{tikzcd}
 \]
-A morphism $\Spec \mathbf{Z}[m^{-1}]\longrightarrow \Spec \mathbf{Z}[x]$ is a homomorphism of rings $\mathbf{Z}[x]\longrightarrow \mathbf{Z}[m^{-1}]$, so this will be something of the form $x\longmapsto a/m^{\ell_1}$; similarly, the rightmost dashed arrow corresponds to a homomorphism of rings $\mathbf{Z}[x^{-1}] \longrightarrow \mathbf{Z}[n^{-1}]$ given by $x^{-1}\longmapsto b/n^{\ell_2}$. Thus, $(a/m^{\ell_1}) ^{-1}=b/n^{\ell_2}$, since one can interpret $\mathbf{Z}[m^{-1}]$ and $\mathbf{Z}[n^{-1}]$ as subsets of $\mathbf{Q}$ where the restriction maps are the identity, so
+A morphism $\Spec \mathbf{Z}[m^{-1}]\longrightarrow \Spec \mathbf{Z}[z]$ is a homomorphism of rings $\mathbf{Z}[z]\longrightarrow \mathbf{Z}[m^{-1}]$, so this will be something of the form $z\longmapsto a/m^{\ell_1}$; similarly, the rightmost dashed arrow corresponds to a homomorphism of rings $\mathbf{Z}[z^{-1}] \longrightarrow \mathbf{Z}[n^{-1}]$ given by $z^{-1}\longmapsto b/n^{\ell_2}$. Thus, $(a/m^{\ell_1}) ^{-1}=b/n^{\ell_2}$, since one can interpret $\mathbf{Z}[m^{-1}]$ and $\mathbf{Z}[n^{-1}]$ as subsets of $\mathbf{Q}$ where the restriction maps are the identity, so
 \begin{align*}
 	\frac{ab}{m^{\ell_1}n^{\ell_2}}=1
 \end{align*}
@@ -3577,24 +3577,24 @@ Consider $(1+\sqrt{-5} ) /2\in R[2^{-1}]$ and $(1-\sqrt{-5} ) /3\in R[3^{-1}]$. 
 \end{remark}
 
 \subsection{$\Proj S$}
-Let $k$ be an algebraically closed field. Let $S=k[x_0,\hdots, x_n]/I$ be a finitely-generated graded algebra over $k$ where $I$ is graded. Projective space $\mathbf{P}^n(k)$ corresponds to the graded ring $k[x_0,\hdots, x_n] /(0)= k[x_0,\hdots, x_n]$: The points in $\mathbf{P}^n(k)$ are given by $(x_0:\cdots:x_n)\sim (\lambda x_0:\cdots:\lambda x_n)\ne (0:\cdots:0)$. These correspond to homogeneous ``maximal'' ideals in the set of ideals not containing $(x_0,\hdots, x_n)$. The point $(1:0:\cdots:0)$ corresponds to the ideal $(x_1,\hdots, x_n)$.
+Let $k$ be an algebraically closed field. Let $S=k[z_0,\hdots, z_n]/I$ be a finitely-generated graded algebra over $k$ where $I$ is graded. Projective space $\mathbf{P}^n(k)$ corresponds to the graded ring $k[z_0,\hdots, z_n] /(0)= k[z_0,\hdots,z_n]$: The points in $\mathbf{P}^n(k)$ are given by $(z_0:\cdots:z_n)\sim (\lambda z_0:\cdots:\lambda z_n)\ne (0:\cdots:0)$. These correspond to homogeneous ``maximal'' ideals in the set of ideals not containing $(z_0,\hdots,z_n)$. The point $(1:0:\cdots:0)$ corresponds to the ideal $(z_1,\hdots,z_n)$.
 
-A basis of open sets is given by the sets $U_f$ that contain the ``maximal'' ideals not containing the homogeneous polynomial $f$ of positive degree. If $f=x_0$, then $U_f$ is given by the points $(1:x_1:\cdots:x_n)$, which is $\mathbf{A}^n(k)$. In general, $U_f$ is the complement of the hypersurface $f\ne 0$ in $\mathbf{P}^n(k)$.
+A basis of open sets is given by the sets $U(f)$ that contain the ``maximal'' ideals not containing the homogeneous polynomial $f$ of positive degree. If $f=z_0$, then $U(f)$ is given by the points $(1:z_1:\cdots:z_n)$, which is $\mathbf{A}^n(k)$. In general, $U(f)$ is the complement of the hypersurface $f\ne 0$ in $\mathbf{P}^n(k)$.
 
 The ring of regular functions on open sets is given by
 \begin{align*}
-	\mathscr{O}(U_f) := k[ x_0,\hdots, x_n,f^{-1}]^0
+	\mathscr{O}(U(f)) := k[z_0,\hdots, z_n,f^{-1}]^0
 \end{align*}
-where $\cdot^0$ denotes degree-$0$ elements. If $f=x_0$, then $\mathscr{O}(U_f) = k[ x_0,\hdots, x_n,x_0^{-1}]^0$. One can think of this as
+where $\cdot^0$ denotes degree-$0$ elements. If $f=z_0$, then $\mathscr{O}(U(f)) = k[z_0,\hdots, z_n,z_0^{-1}]^0$. One can think of this as
 \begin{align*}
-	k \left[ \frac{x_1}{x_0}, \hdots, \frac{x_n}{x_0} \right] \isomto k[x_1,\hdots, x_n]. 
+	k \left[ \frac{z_1}{z_0}, \hdots, \frac{z_n}{z_0} \right] \isomto k[z_1,\hdots,z_n]. 
 \end{align*}
 
 This construction gives a locally ringed space. The stalk of a point $\mathfrak{m}$ is the localization
 \begin{align*}
-	k[x_0,\hdots, x_n]^0_\mathfrak{m}.
+	k[z_0,\hdots, z_n]^0_\mathfrak{m}.
 \end{align*}
-This gives rise to a correspondence between finitely-generated reduced $k$-algebras and projective varieties over $k$. Such an algebra $k[x_0,\hdots, x_n]/I$ corresponds to a subset of $\mathbf{P}^n(k)$ with $I=0$.
+This gives rise to a correspondence between finitely-generated reduced $k$-algebras and projective varieties over $k$. Such an algebra $k[z_0,\hdots, z_n]/I$ corresponds to a subset of $\mathbf{P}^n(k)$ with $I=(0)$.
 
 Let us copy this construction for graded rings
 \begin{align*}
@@ -3607,30 +3607,30 @@ The points of $\Proj S$ shall be given by
 \begin{align*}
 	\left\{ \textrm{prime ideals $\mathfrak{p}$} : \mathfrak{p} \nsupseteq \bigoplus_{n>0}S_n\right\}. 
 \end{align*}
-A basis of open sets is given by $\left\{U_f : \textrm{$f$ is homogeneous of positive degree}\right\}$ where $U_f$ is the set of prime ideals as above that do not contain $f$.\footnote{Informally, this is given by the points where $f$ does not vanish.} As before, the regular functions are given by
+A basis of open sets is given by $\left\{U(f) : \textrm{$f$ is homogeneous of positive degree}\right\}$ where $U(f)$ is the set of prime ideals as above that do not contain $f$.\footnote{Informally, one thinks of this as the set of points where $f$ does not vanish.} As before, the regular functions are given by
 \begin{align*}
-	\mathscr{O}(U_f) := S[f ^{-1}]^0.
+	\mathscr{O}(U(f)) := S[f ^{-1}]^0.
 \end{align*}
 
 \begin{exercise}\label{}\text{}
 Show that $\Proj S$ is a scheme.
 \end{exercise}
 
-In fact, $U_f$ is an open affine subset isomorphic to $\Spec(S[f^{-1}]^0)$. If $f_1,\hdots, f_m$ generate $\bigoplus_{n>0}S_n$ as an ideal, then $\Proj S$ is covered by $U_{f_i}$. 
+In fact, $U(f)$ is an open and affine subset isomorphic to $\Spec(S[f^{-1}]^0)$. If $f_1,\hdots, f_m$ generate $\bigoplus_{n>0}S_n$ as an ideal, then $\Proj S$ is covered by $\{U(f_1),\hdots,U(f_m)\}$. 
 
 \begin{example}[ ]\label{}\text{}
-Suppose $S=R[x_0,x_1]$. Then, $\Proj S$ is covered by $U_{x_0}$ and $U_{x_1}$. Notice that
+Suppose $S=R[z_0,z_1]$. Then, $\Proj S$ is covered by $U(z_0)$ and $U(z_1)$. Notice that
 \begin{align*}
-	U_{x_0} &= R\left[ \frac{x_1}{x_0} \right] ;\\
-	U_{x_1} &= R \left[ \frac{x_0}{x_1} \right] .
+	U(z_0) &= R\left[ \frac{z_1}{z_0} \right] ;\\
+	U(z_1)&= R \left[ \frac{z_0}{z_1} \right] .
 \end{align*}
 Further,
 \begin{align*}
-	U_{x_0} \cap U_{x_1} &= U_{x_0x_1}\\
-			     &= R [x_0,x_1,x_0^{-1},x_1^{-1}]^0\\
-			     &= R \left[ \frac{x_0}{x_1},\frac{x_1}{x_0} \right] .
+	U(z_0) \cap U(z_1) &= U(z_0z_1)\\
+			     &= R [z_0,z_1,z_0^{-1},z_1^{-1}]^0\\
+			     &= R \left[ \frac{z_0}{z_1},\frac{z_1}{z_0} \right] .
 \end{align*}
-Write $y:=x_0/x_1$. Then, there are maps
+Write $y:=z_0/z_1$. Then, there are maps
 \[
 \begin{tikzcd}
 	R[y] \ar[dr] && R[y^{-1}] \ar[dl]\\
@@ -3653,7 +3653,7 @@ We are gluing together two copies of the affine line over the affine line minus 
 \end{remark}
 
 \begin{example}[ ]\label{}\text{}
-Let us determine the $k$-valued points of $\mathbf{P}^n(k) = \Proj k[ x_0,\hdots, x_n]$. One considers morphisms $\varphi$ such that
+Let us determine the $k$-valued points of $\mathbf{P}^n(k) = \Proj k[ z_0,\hdots, z_n]$. One considers morphisms $\varphi$ such that
 \[
 \begin{tikzcd}
 	\Spec k \ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n(k) \ar[dl] \\
@@ -3669,11 +3669,11 @@ commutes. More generally, if $R$ is a $k$-algebra, then one can consider morphis
 \]
 commutes. For the sake of simplicity, let $R$ be a local ring with maximal ideal $\mathfrak{m}$. Then, $\mathfrak{m}$ is in the closure of all other points. Suppose one has a morphism $f:\Spec R\longrightarrow S$ where $S$ is a scheme that is covered by open sets. The closure of the image of all other points of $\Spec R$ must contain $f(\mathfrak{m})$, so, if $f(\mathfrak{m}) \subseteq U$, then $f(\Spec R)\subseteq U$.
 
-Now, $\mathbf{P}^n(k)$ is covered by $\{U_{x_0}, \hdots, U_{x_n}\}$ where 
+Now, $\mathbf{P}^n(k)$ is covered by $\{U({z_0}), \hdots, U(z_n)\}$ where 
 \begin{align*}
-	U_{x_j} = \Spec k \left[ \frac{x_0}{x_j},\hdots, \frac{x_{j-1}}{x_j}, \frac{x_{j+1}}{x_j},\hdots, \frac{x_n}{x_j} \right] = \mathbf{A}^n(k), 
+	U(z_j)= \Spec k \left[ \frac{z_0}{z_j},\hdots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j},\hdots, \frac{z_n}{z_j} \right] = \mathbf{A}^n(k), 
 \end{align*}
-so morphisms $\Spec R\longrightarrow U_{x_j}$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $U_{x_j}$s together and sees that morphisms $\varphi$ such that 
+so morphisms $\Spec R\longrightarrow U(z_j)$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $U(z_j)$s together and sees that morphisms $\varphi$ such that 
 \[
 \begin{tikzcd}
 	\Spec R\ar[dr]\ar[rr,"\varphi"] &&\mathbf{P}^n(k)\ar[dl]\\
@@ -3737,7 +3737,7 @@ Let $X$ be a scheme (over $S$). Let $\eta_X$ be the functor from schemes to sets
 \begin{align*}
 	\tilde \eta_X(R) := \eta_X (\Spec R).
 \end{align*}
-If $R_1\longrightarrow R_2$ is a homomorphism of rings, then one gets a map $\tilde \eta_X(R_1)\longrightarrow \tilde \eta_X(R_2)$. Thus, $\tilde\eta$ is a covariant functor from the category of rings to the category of sets. If $X=\Spec \mathbf{Z}[x]$, then $\tilde \eta_X(R)=R$.
+If $R_1\longrightarrow R_2$ is a homomorphism of rings, then one gets a map $\tilde \eta_X(R_1)\longrightarrow \tilde \eta_X(R_2)$. Thus, $\tilde\eta$ is a covariant functor from the category of rings to the category of sets. If $X=\Spec \mathbf{Z}[z]$, then $\tilde \eta_X(R)=R$.
 
 \begin{remark}
 	Informally, $\eta_X(T)$ gives the points of $X$ with values in $T$.
@@ -3759,17 +3759,17 @@ Let $X = \Spec \mathbf{Z}\sqcup \Spec \mathbf{Z}$. No, $\eta_X(T)$ is not a $2$-
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
-Let $X=\Spec \mathbf{Z}[x,y]$. One sees that $\tilde \eta_X(R) = R^2$. Correspondingly, $\eta_X(T)$ is given by pairs of elements that are regular functions on $T$.
+Let $X=\Spec \mathbf{Z}[z_1,z_2]$. One sees that $\tilde \eta_X(R) = R^2$. Correspondingly, $\eta_X(T)$ is given by pairs of elements that are regular functions on $T$.
 
-If $X = \Spec \mathbf{Z}[x,y]/(y^2-x^3-x)$, then
+If $X = \Spec \mathbf{Z}[z_1,z_2]/(z_2^2-z_1^3-z_1)$, then
 \begin{align*}
-	\tilde \eta_X(R) =  \left\{ x,y\in R^2 :  y^2-x^3-x=0\right\}.
+	\tilde \eta_X(R) =  \left\{ (z_1,z_2)\in R^2 :  z_2^2-z_1^3-z_1=0\right\}.
 \end{align*}
 One can think of $\tilde\eta_X$ as a functor from rings to elliptic curves over $R$.
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
-Let $X=\Spec \mathbf{Z}[x] / (x^n-1)$. Then, 
+Let $X=\Spec \mathbf{Z}[z] / (z^n-1)$. Then, 
  \begin{align*}
 	\tilde \eta_X(R) =  \left\{ \textrm{$n$th roots of unity in $R$}\right\} 
 \end{align*}
@@ -3780,7 +3780,7 @@ is a group under multiplication. Thus, $\tilde\eta_X$ can be viewed as a functor
 	Scheme morphisms $X\longrightarrow Y$ correspond to ``functor morphisms'' (natural transformations) $\eta_X\longrightarrow \eta_Y$. That is, the category of schemes is contained in the category of functors.
 \end{remark}
 
-Suppose that one wants to ``classify'' elliptic curves. Can one find a scheme such that, say, its points correspond to elliptic curves over $k$? Yes: One can construct a scheme whose points are a given set. Consider a functor $f$ where $f(S)$ consists of ``nice'' families over elliptic curves over $S$.\footnote{A ``nice'' family is a flat one, thanks to Grothendieck. Elliptic curves over schemes have not been defined.} This functor cannot be represented by a scheme. To see this, let's take a step back.
+Suppose that one wants to ``classify'' elliptic curves. Can one find a scheme such that, say, its points correspond to elliptic curves over $k$? Yes: One can construct a scheme whose points are a given set. Consider a functor $f$ where $f(S)$ consists of ``nice'' families over elliptic curves over $S$.\footnote{A ``nice'' family is a flat one, thanks to Grothendieck. Note that we have not defined elliptic curves over schemes.} This functor cannot be represented by a scheme. To see this, let's take a step back.
 
 Can one represent $2$-point sets by a scheme? That is, one wants a scheme $X$ whose points with values in $S$ are families of $2$-point sets over $S$. If $S=\Spec k$, then $f(S)$ should be a point. However, one can have a double cover of a set that gives nontrivial two point sets (given by the fibre above each point). That is, a $2$-point set has an automorphism.\footnote{Grothendieck discovered that the existence of automorphisms is an obstruction to constructing ``nice'' families, and, in some sense, it is the only obstruction.} 
 
@@ -3790,7 +3790,7 @@ Elliptic curves have automorphisms. One can kill the automorphisms by making the
 Suppose $S$ is a scheme. The scheme $S$ is \defn{integral}\index{integral scheme} if it is reduced and irreducible. The scheme $S$ is \defn{reduced}\index{reduced scheme} if all stalks (which are local rings) are reduced. The scheme $S$ is \defn{irreducible}\index{irreducible scheme} if it is not a union of $2$ proper closed subsets and $S$ is nonempty. An irreducible scheme is \defn{connected}\index{connected scheme}: The only clopen sets of $S\ne \emptyset$ are $S$ and $\emptyset$.
 
 \begin{example}[ ]\label{}\text{}
-The scheme $\Spec k[x]/(x^2)$ is irreducible but not reduced. The scheme $\Spec k[x,y]/(x,y)$ is reducible and reduced. The scheme $\Spec k[x]/(x^2-x)$ is disconnected but reduced.
+The scheme $\Spec k[z]/(z^2)$ is irreducible but not reduced. The scheme $\Spec k[z_1,z_2]/(z_1,z_2)$ is reducible and reduced. The scheme $\Spec k[z]/(z^2-z)$ is disconnected but reduced.
 \end{example}
 
 The scheme $\Spec R$ is reduced if and only if $R$ is reduced. Suppose $r^n =0$ for some nonzero $r\in R$. Pick a maximal ideal $\mathfrak{p}\supseteq \Ann r$. One can check that $r\ne 0$ in $R_\mathfrak{p}$, so $R_\mathfrak{p}$ is not reduced. Conversely, if $R_\mathfrak{p}$ is not reduced, then $(r/\alpha)^n=0$ for some nonzero $r\in R_\mathfrak{p}$. Thus, $\beta r^n =0$ for some $\beta\notin \mathfrak{p}$, so $(\beta r)^n=0$ and $\beta r\ne 0$, so $R$ is not reduced. 
@@ -3817,7 +3817,7 @@ The scheme $\Spec R$ is connected if and only if $R$ has no idempotents other th
 
 The scheme $\Spec R$ is integral if and only if $R$ is an integral domain. The proof that if $R$ is an integral domain then $\Spec R$ is integral is straightforward. Suppose $\Spec R$ is reduced and $rs=0$ in $R$. Then, the scheme $\Spec R$ is a union of sets $U\cup V$ where $U = \left\{ \textrm{$\mathfrak{p}$ prime}: \mathfrak{p}\ni r \right\} $ and $V = \left\{\textrm{$\mathfrak{p}$ prime}: \mathfrak{p} \ni s \right\}$. The sets $U$ and $V$ are closed and $\Spec R$ is irreducible, so one can suppose that all prime ideals contain $r$ without loss of generality. This implies that $r$ is nilpotent.\footnote{See \cref{below}.} Since $R$ is reduced, $r=0$.
 \begin{proposition}[ ]\label{below}\text{}
-Let $\mathfrak{N}=\sqrt{(0)} $ be the nilradical of $R$. Then,
+Let $\mathfrak{N}$ be the nilradical of $R$. Then,
 \begin{align*}
 	\mathfrak{N} = \bigcap_{\textrm{$\mathfrak{p}$ prime ideal}} \mathfrak{p}.
 \end{align*}
@@ -3826,7 +3826,7 @@ Let $\mathfrak{N}=\sqrt{(0)} $ be the nilradical of $R$. Then,
 	If $r^n =0$, then $r$ is an element of all prime ideals. Now, suppose $r^n\ne 0$ for all $n$. Consider the multiplicative subset $M = \{1,r,r^2,\hdots\}$. By supposition, $M\cap (0)=\emptyset$. Pick a maximal element $I$ in the set of ideals that contain $0$ and are disjoint from $M$.\footnote{Zorn's lemma.} One sees that $I$ is prime, so $r$ is not in some prime ideal.
 \end{esquisse}
 
-Irreducible closed subsets of a scheme correspond to closures of sets. Let $C$ be an irreducible closed subset of $\Spec R$. Define $I$ to be the intersection of the ideals contained in $C$. The ideal $I$ is prime. Since $\overline{I}$ consists of the ideals that contain $I$, $C\subseteq \overline{I}$. Conversely, if $U_f$ is an open set such that $I\subseteq U_f$, then $f\notin I$. Therefore, $f\notin J$ for some $J\in C$, so $J\subseteq U_f$ and $I\subseteq \overline{C}$. Since $C$ is closed, $I\subseteq C$ and $\overline{I}\subseteq C$, so $C=\overline{I}$.
+Irreducible closed subsets of a scheme correspond to closures of sets. Let $C$ be an irreducible closed subset of $\Spec R$. Define $I$ to be the intersection of the ideals contained in $C$. The ideal $I$ is prime. Since $\overline{I}$ consists of the ideals that contain $I$, $C\subseteq \overline{I}$. Conversely, if $U(f)$ is an open set such that $I\subseteq U(f)$, then $f\notin I$. Therefore, $f\notin J$ for some $J\in C$, so $J\subseteq U(f)$ and $I\subseteq \overline{C}$. Since $C$ is closed, $I\subseteq C$ and $\overline{I}\subseteq C$, so $C=\overline{I}$.
 
 \begin{example}[ ]\label{}\text{}
 Let $G=\mathbf{Z}/4\mathbf{Z}$. Consider the group rings
@@ -3895,7 +3895,7 @@ Most schemes are Noetherian in practice and the theory of Noetherian schemes is 
 	Being locally Noetherian is a local property, so, if $\Spec R$ is covered by open affine subschemes of Noetherian rings, then $R$ is Noetherian. Here's the key: Being an ideal is a local property: Suppose $r\in R$ and $I$ is an ideal of $R$. The following things are equivalent.
 	\begin{enumerate}
 		\item $r\in I$;
-		\item $r\in I[f_i^{-1}]\le R[f_i^{-1}]$ where $\{U_{f_i}\}$ covers $\Spec R$;
+		\item $r\in I[f_i^{-1}]\le R[f_i^{-1}]$ where $\{U({f_i})\}$ covers $\Spec R$;
 		\item $r\in I_\mathfrak{p}\le R_\mathfrak{p}$ for all maximal ideals $\mathfrak{p}$.
 	\end{enumerate}
 	1. implies 2. and 2. implies 3. are trivial. Consider
@@ -3918,7 +3918,7 @@ Let $k$ be a field and let $z_1,\hdots, z_n,\hdots$ be infinitely many algebraic
 \end{remark}
 
 \begin{definition}[ ]\label{}\text{}
-A ring $A$ is a \defn{chain ring}\index{chain ring} if, for any two prime ideals $\mathfrak{p}\ne \mathfrak{q}$ of $A$, the lengths of any two unsaturated chains 
+A ring $A$ is a \defn{chain ring}\index{chain ring} if, for any two prime $A$-ideals $\mathfrak{p}\ne \mathfrak{q}$, the lengths of any two unsaturated chains 
 \begin{align*}
 	\mathfrak{p} = \mathfrak{p}_0 \subset \mathfrak{p}_1\subset\cdots\subset \mathfrak{p}_n=\mathfrak{q}
 \end{align*}
@@ -4051,7 +4051,7 @@ The morphism described in \cref{qfnf_1} is an open immersion. The inclusion $\ma
 \end{remark}
 
 \begin{example}[ ]\label{remember}\text{}
-Let $Y:= \Spec k[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathfrak{p}$. The morphism $\varphi : X\longrightarrow Y$ is an open immersion since the complement of a point is open, but it is not quasicompact: $\varphi^{-1}(Y)=X$ and $X$ is not quasicompact: There is no finite subcover for $\{U_f\}$.
+Let $Y:= \Spec k[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathfrak{p}$. The morphism $\varphi : X\longrightarrow Y$ is an open immersion since the complement of a point is open, but it is not quasicompact: $\varphi^{-1}(Y)=X$ and $X$ is not quasicompact: There is no finite subcover for $\{U(f)\}$.
 \end{example}
 
 Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothendieck pointed out a sort of converse.
@@ -4061,7 +4061,7 @@ Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-m
 \end{definition}
 
 \begin{definition}[Stacks project Definition 28.26.1]\label{}\text{}
-Let $X$ be a scheme. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is \defn{ample}\index{ample sheaf} if and only if $X$ is quasicompact and, for all $\alpha\in X$, there exists a natural number $n\ge 1$ and a global section $s\in \Gamma(X, \mathscr{L}^{\tensor n})$ such that $\alpha \in X_s := \{  \beta\in X :\img s\notin \mathfrak{m}_\beta \mathscr{L}_\beta \}$ and $X_s$ is affine.
+Let $X$ be a scheme. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is \defn{ample}\index{ample sheaf} if and only if $X$ is quasicompact and, for all $\alpha\in X$, there exists a natural number $n\ge 1$ and a global section $s\in \Gamma(X, \mathscr{L}^{\tensor n})$ such that $\alpha \in X_s := \{  \beta\in X :\Image s\notin \mathfrak{m}_\beta \mathscr{L}_\beta \}$ and $X_s$ is affine.
 \end{definition}
 
 \begin{definition}[Stacks project Definition 29.37.1]\label{}\text{}
@@ -4104,7 +4104,7 @@ Let $\varphi : X\longrightarrow Y$ be a morphism of locally ringed spaces. The m
 \begin{enumerate}
 	\item The morphism $\varphi$ is a homeomorphism of $X$ onto a closed subset of $Y$.
 	\item The map $\phi : \mathscr{O}_Y \longrightarrow \varphi_* \mathscr{O}_X$ is surjective.
-	\item The $\mathscr{O}_Y$-module $\mathscr{I} = \ker \phi$ is locally generated by sections.
+	\item The $\mathscr{O}_Y$-module $\mathscr{I} = \Ker \phi$ is locally generated by sections.
 \end{enumerate}
 \end{definition}
 
@@ -4216,7 +4216,7 @@ Finally, cover $S$ by open affine schemes $S_i$ and let $X_i$ (resp. $Y_i$) be t
 \begin{example}[ ]\label{}\text{}
 Notice that
 \begin{align*}
-	\mathbf{Q}\left[\sqrt{2} \right] \tensor_\mathbf{Q} \mathbf{Q}\left[\sqrt{3} \right] = \mathbf{Q}\left[\sqrt{2} ,\sqrt{3} \right].
+	\mathbf{Q}[\sqrt{2} ] \tensor_\mathbf{Q} \mathbf{Q}[\sqrt{3} ] = \mathbf{Q}[\sqrt{2} ,\sqrt{3} p].
 \end{align*}
 However,
 \begin{align*}
@@ -4554,6 +4554,57 @@ Given $(z_0:z_1)$, there is exactly $1$ pair $(r_0:r_1)$ up to $\sim$.\footnote{
 \end{example}
 
 \subsection{Proper morphisms}
+Recall that a topological space $X$ is compact if and only if the continuous map $X\times Z\longrightarrow Z$ is closed for all $Z$.
+
+There is a relative notion: A continuous map of topological spaces $X\longrightarrow Y$ is \defn{proper}\index{proper map of topological spaces} if and only if $X\times Z\longrightarrow Y\times Z$ is closed for all $Z$. A topological space $X$ is compact if and only if all continuous maps with domain $X$ and target a point are proper.
+
+\begin{remark}[ ]\label{}\text{}
+A continuous map of topological spaces $X\longrightarrow Y$ is proper if and only if it is closed and its fibres are compact.
+\end{remark}
+
+\begin{remark}
+	Suppose that $Y$ is locally compact and Hausdorff. Then, a continuous map $X\longrightarrow Y$ is proper if and only if the preimage of any compact set is compact. 
+\end{remark}
+
+\begin{definition}[ ]\label{}\text{}
+A morphism $\varphi : X\longrightarrow Y$ is \defn{universally closed}\index{universally closed morphism} if and only if, for all morphisms $\psi : Z\longrightarrow Y$, there exists a closed morphism $\phi:X\times_Y Z\longrightarrow Y$ such that
+\[
+	\begin{tikzcd}[row sep = 3 em, column sep = 3 em]
+		X \times_Y Z \ar[d, "\phi"] \ar[r] & X\ar[d, "\varphi"]\\Z\ar[r,"\psi"] & Y
+	\end{tikzcd}	
+\]
+commutes.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+A morphism is \defn{proper}\index{proper morphism} if and only if it is separated, of finite type, and universally closed.
+\end{definition}
+
+Proper morphisms come from finite morphisms and projective morphisms. First, note that a finite morphism is a proper morphism (and a quasifinite morphism is not necessarily proper). Finite morphisms are separated and of finite type. Further, if $X\longrightarrow Y$ is finite, then the morphism $\phi$ in the diagram
+\[
+\begin{tikzcd}[row sep = 3 em, column sep = 3 em]
+	X\times_Y Z \ar[r]\ar[d,"\phi"] &X\ar[d]\\ Z\ar[r]&Y
+\end{tikzcd}
+\]
+is finite. Therefore, it suffices to show that finite morphisms are closed. Also, one can reduce to the affine case since one can cover $Y$ by open and affine subsets. Thus, it suffices to show that, if $\varphi: A\longrightarrow B$ is a ring homomorphism and $B$ is a finite $A$-module, then $\Spec B\longrightarrow \Spec A$ is closed. One factors this as $A\longrightarrow A/I$ where $I=\Ker \varphi$, which corresponds to a closed immersion of schemes. Hence, one assumes that $A\subseteq B$. A closed subset of $B$ is given by a $B$-ideal $J$. One gets
+\begin{align*}
+	A/(A\cap \varphi^{-1}(J)) \subseteq B/J,
+\end{align*}
+so $\Spec (A/(A\cap \varphi^{-1}(J)))$ is closed in $\Spec A$. Therefore, one needs to show that $\Spec B\longrightarrow \Spec A$ is surjective. This follows from \cref{cortogu}
+
+\begin{theorem}[Cohen--Seidenberg, ``Going up'']\label{goingup}\index{going up theorem}\text{}
+Suppose that $A$ is an integral ring extension of $B$. Suppose that $\mathfrak{p}$ is a prime $A$-ideal. Then, there exists a prime $B$-ideal $\mathfrak{q}$ such that 
+\begin{align*}
+	\mathfrak{q}\cap A = \mathfrak{p}.
+\end{align*}
+\end{theorem}
+
+\begin{corollary}\label{cortogu}
+	Suppose that $B$ is a finite $A$-module and $A\subseteq B$. Then, $\Spec B\longrightarrow \Spec A$ is surjective. 
+\end{corollary}
+
+Recall: If $X$ is a projective variety and $Y$ is a variety, then the morphism $X\times Y\longrightarrow Y$ is closed. We shall consider projective morphisms in more detail in the next section.
+
 \subsection{Proper morphisms and valuations}
 \subsection{Abstract and projective varieties}
 \subsection{Quasicoherent sheaves}
