@@ -449,7 +449,7 @@ For $k=4$:
 \end{align*}
 Here,
 \begin{align*}
-	240 = \frac{-2 \cdot 4}{B_4} = \frac{-2\cdot 4}{-1/30}
+	240 = \frac{-2 \cdot 4}{B_4} = \frac{-2\cdot 4}{-1/30.}
 \end{align*}
 For $k=6$:
 \begin{align*}
@@ -645,7 +645,7 @@ In particular, this shows that $j$ is the simplest modular function.
 \end{remark}
 
 \begin{theorem}[Picard]\label{}\index{}\text{}
-Suppose $f$ is a non-constant holomorphic function on $\C$. Then $f$ can miss out one complex number. That is, $f(\C) = \C$ or $f(\C)= \C \setminus  \{z\}$.
+Suppose $f$ is a non-constant holomorphic function on $\C$. Then $f$ can miss out one complex number. That is, $f(\C) = \C$ or $f(\C)= \C -  \{z\}$.
 \end{theorem}
 
 \begin{proof}
@@ -659,7 +659,7 @@ Now, let's consider the multivalued inverse of $j$:
 \begin{align*}
 	j^{-1} : \C \longrightarrow \H.
 \end{align*}
-It has branch points at $j(\tau)$ when $j'(\tau) = 0$: that is, $\tau = \omega,i$, or their conjugates under $\SL_{2}(\Z)$. Therefore, $j^{-1}$ has branch points at $0$ and $1728$. 
+It has branch points at $j(\tau)$ when $j'(\tau) = 0$: that is, $\tau = \omega$, $i$, or their conjugates under $\SL_{2}(\Z)$. Therefore, $j^{-1}$ has branch points at $0$ and $1728$. 
 
 Let $f:\C\longrightarrow \C$ be a holomorphic function. Suppose that $f(z) \ne 0,1728$ for all $z$. Then $j^{-1}(f(z)):\C\longrightarrow \H$ is holomorphic. Since $\left\lvert \exp(ij^{-1}(f(z))) \right\rvert <1$, $\exp(i j^{-1}(f(z)))$ is constant.
 \end{proof}
@@ -749,7 +749,7 @@ Well, $(\tan \pi i z)(\tan \pi z/y)$ is approximately $+1$ in the top-left and b
 So that ``proves'' that functional equation.
 
 \begin{exercise}\label{}\text{}
-Compute $\alpha_1,\beta,\alpha_2,\alpha_3,$ and $\alpha_4$.
+Compute $\alpha_1$, $\beta$, $\alpha_2$, $\alpha_3$, and $\alpha_4$.
 \end{exercise}
 
 \section{Theta functions}
@@ -1029,9 +1029,9 @@ The formula \begin{align*}
 \end{align*}
 is very similar to the Weyl denominator formula for a finite-dimensional Lie algebra:
 \begin{align*}
-	\sum_{w\in W}^{} \epsilon(w)e^{w (-\rho)} &= e^{-\rho} \prod_{\alpha \textrm{ positive root}}  (1-e^\alpha)^{\mult \alpha} \\&= e^{-\rho} \prod_{\alpha \textrm{ positive root}}  (1-e^\alpha)
+	\sum_{w\in W}^{} \varepsilon(w)e^{w (-\rho)} &= e^{-\rho} \prod_{\alpha \textrm{ positive root}}  (1-e^\alpha)^{\mult \alpha} \\&= e^{-\rho} \prod_{\alpha \textrm{ positive root}}  (1-e^\alpha)
 \end{align*}
-where $W$ is the Weyl group, $\epsilon$ is $\pm 1$ (given by the determinant of the action of $w$ on the Cartan subalgebra), and $\rho $ is a Weyl vector. It turns out that the product formula for the elliptic modular function $j$ really is somewhat analgous to this: It is the denominator formula for the infinite-dimensional monster Lie algebra where the $c_{mn}$s are the multiplicities of the roots of the monster Lie algebra.
+where $W$ is the Weyl group, $\varepsilon$ is $\pm 1$ (given by the determinant of the action of $w$ on the Cartan subalgebra), and $\rho $ is a Weyl vector. It turns out that the product formula for the elliptic modular function $j$ really is somewhat analgous to this: It is the denominator formula for the infinite-dimensional monster Lie algebra where the $c_{mn}$s are the multiplicities of the roots of the monster Lie algebra.
 
 If we have a function $\sum_{}^{} c_nq^n$ and we apply the Hecke operator $T_m$ to it, what do we get? Well, we get
 \begin{align*}
