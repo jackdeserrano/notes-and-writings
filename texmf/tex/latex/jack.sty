@@ -48,6 +48,7 @@
 \RequirePackage [framemethod = TikZ] {mdframed}
 \RequirePackage {mathtools}
 \RequirePackage {imakeidx}
+\RequirePackage {ifluatex}
 
 \makeatletter
 	\ifdefined\frontmatter
@@ -106,7 +107,7 @@
 \RequirePackage {esint}
 \RequirePackage [usestackEOL] {stackengine}
 \RequirePackage {soul}
-
+\RequirePackage {scalerel}
 
 
 \ifscr
@@ -118,15 +119,15 @@
         \setlength {\headheight} {15 pt} % Response to ``Package fancyhdr Warning: \headheight is too small''
 \fi
 
-\iffrench
+\ifluatex
     %\RequirePackage {frenchmath}
     %\RequirePackage [frenchmath] {newtxmath}
     \RequirePackage [math-style = french] {unicode-math}
+    \let\mathscr\relax   
 \else
     \RequirePackage {frenchmath}
 \fi
 
-\let\mathscr\relax
 \RequirePackage {eucal}
 \RequirePackage {mathrsfs}
 
@@ -154,7 +155,7 @@
 
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
 
-\usetikzlibrary {arrows, trees}
+\usetikzlibrary {arrows, trees, backgrounds}
 
 \tikzset {
 	commutative diagrams/.cd,
@@ -276,6 +277,7 @@
 
 \DeclareMathOperator* {\argmax} {arg max}	                % arg max
 \DeclareMathOperator* {\argmin} {arg min}                   % arg min
+\DeclareMathOperator* {\bigtimes} {\scalerel*{\times}{\bigotimes}}
 \DeclareMathOperator* {\colim} {colim}                      % colimit
 \DeclareMathOperator* {\lcm} {lcm}                          % least common multiple
 \DeclareMathOperator {\agm} {agm}                           % arithmetic-geometric mean
@@ -359,11 +361,14 @@
 \DeclareMathOperator {\Sg} {S}                              % symmetric group
 \DeclareMathOperator {\SL} {SL}                             % special linear group
 \DeclareMathOperator {\SO} {SO}                             % special orthogonal group
+\DeclareMathOperator {\Sp} {Sp}                              % symplectic group
 \DeclareMathOperator {\Spec} {Spec}                         % spectrum
 \DeclareMathOperator {\specmax} {Spec\textsubscript{max}}   % maximal spectrum
 \DeclareMathOperator {\spa} {span}                          % span
 \DeclareMathOperator {\SU} {SU}                             % special unitary group
 \DeclareMathOperator {\Syl} {Syl}                           % Sylow subgroup
+\let \Sym \relax
+\DeclareMathOperator {\Sym} {Sym}                           %
 \DeclareMathOperator {\T} {T}                               % Taylor polynomial
 \DeclareMathOperator {\Tor} {Tor}                           % Tor functor
 \DeclareMathOperator {\Tr} {Tr}                             % trace
@@ -641,12 +646,12 @@
 		\newcommand{\defn}[1]{{\iffalse\slshape \fi\bfseries{\color{darkcandyapplered} #1}}}			% keywords emphasized by bolded red
 		\newcommand{\frdefn}[1]{{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French keywords emphasized by bolded red with appropriate italicization
         
-            \iffrench   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
+            \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
             
                 \newtheoremstyle{thm}   % name
                     {1 em}              % space above
                     {1 em}              % space below
-                    {}                  % body font
+                    {\iffalse\itshape\fi}                  % body font
                     {0 em}              % indent amount
                     {\bfseries}         % theorem head font
                     {.}                 % punctuation after theorem head
@@ -813,6 +818,7 @@
 \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
 \makeatother
                             % consider making `\bfseries\scshape' when possible
+                            	\ifluatex
                             \makeatletter
                                 \renewcommand{\section}{\@startsection
                                     {section}           % name
@@ -831,7 +837,8 @@
                                     {-\baselineskip}        % before skip / -3.5ex \@plus -1ex \@minus -.2ex
                                     {0.5\baselineskip}      % after skip / 2.3ex \@plus .2ex
                                     {\centering\bfseries}}  % style
-                            \makeatother
+                            \makeatother	
+                            \fi 
                             
                             
         					\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
