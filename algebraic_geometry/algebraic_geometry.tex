@@ -35,7 +35,7 @@ These notes are based on some of Richard Borcherds's YouTube series on algebraic
 \newpage
 
 
-\section{Varieties.}
+\section{Varieties}
 
 \subsection{Introduction.}
 \begin{problem}
@@ -2802,7 +2802,7 @@ Quoting Dr. Borcherds, ``There's an old joke about a target shooter who got 100 
 \end{proof}
 
 
-\section{Schemes.}
+\section{Schemes}
 
 \begin{figure}
 \begin{center}
@@ -4083,7 +4083,7 @@ One can assume that $\mathfrak{p}=(0)$ by taking $R \longmapsto R/\mathfrak{p}$ 
 Let $A\longrightarrow B$ be a local homomorphism and $\mathfrak{m}$ the maximal ideal of $A$. The following conditions are equivalent.
 \begin{enumerate}
 	\item $B/\mathfrak{m}B$ is of finite dimension over $K=A/\mathfrak{m}$.
-	\item $\mathfrak{m}B$ is an ideal of definition and $B/\mathfrak{r}(B) = k (B)$ is an extension of $K=K(A)$.
+	\item $\mathfrak{m}B$ is an ideal of definition and $B/\mathfrak{r}(B) = K(B)$ is an extension of $K=K(A)$.
 	\item The completion $\widehat{B}$ of $B$ is finite over the completion $\widehat{A}$ of $A$.
 \end{enumerate}
 \end{proposition}
@@ -4151,7 +4151,7 @@ Let $Y:= \Spec K[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathf
 Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothnoendieck pointed out a sort of converse.
 
 \begin{definition}[Stacks project Definition 17.24.1]\label{}\text{}
-Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}_{\mathscr{O}_X}\longrightarrow \catn{Mod}_{\mathscr{O}_X}$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
+Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}({\mathscr{O}_X})\longrightarrow \catn{Mod}({\mathscr{O}_X})$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
 \end{definition}
 
 \begin{definition}[Stacks project Definition 28.26.1]\label{}\text{}
@@ -4379,7 +4379,7 @@ This gives a group scheme over $\Spec \mathbf{F}_{p}$. The underlying scheme in 
 \begin{example}[ ]\label{}\text{}
 Suppose $R$ is an $\mathbf{F}_{p}$-algebra. Let 
 \begin{align*}
-	\alpha_p(R) = \{ \xi\in R : \xi^p =0\}.
+	\alpha_p(R) = \{ r\in R : r^p =0\}.
 \end{align*}
 This is a group under addition, so $\alpha_p$ is a functor. Consider the scheme $\Spec \mathbf{F}_{p}[z]/(z^p)$. One can identify elements of this group with morphisms $\Spec R \longrightarrow \Spec \mathbf{F}_{p}[z]/(z^p)$. This makes $\alpha_p$ a scheme. There is a map $\Spec \mathbf{F}_{p}[z]/(z^p)\longrightarrow \Spec \mathbf{F}_{p}[z]$, so $\Spec \mathbf{F}_{p}[z]/(z^p)$ is a closed subscheme of $\Spec \mathbf{F}_{p}[z]$, so $\alpha_p$ is a closed subgroup of the group $G \textsubscript{a}$ in the second part of \cref{ga}. Notice that $\alpha_p \longrightarrow \Spec \mathbf{F}_{p}$ is a finite morphism since $\mathbf{F}_{p}[z]/(z^p)$ is a finite $\mathbf{F}_{p}$-module. The order of $\alpha_p$ is given by
 \begin{align*}
@@ -4874,10 +4874,202 @@ where $R$ is a valuation ring.\footnote{The unicity of such a lifting follows fr
 
 Choose $i$ such that $v(z_i)$ is minimized. Divide all $z_j$ by $z_i$. Then, $z_i \mid z_j$, so
 \begin{align*}
-	(z_0:\cdots:z_n)&\longmapsto \left( \frac{z_0}{z_i} : \cdots : 1 : \cdots: \frac{z_n}{z_i} \right) := (r_0:\cdots:1:\cdots:r_n).
+	(z_0:\cdots:z_n)&\longmapsto \left( \frac{z_0}{z_i} : \cdots : 1 : \cdots: \frac{z_n}{z_i} \right) =: (r_0:\cdots:1:\cdots:r_n).
 \end{align*}
 This gives such a lifting. Therefore, projective morphisms are proper.
+
 \subsection{Abstract varieties. Projective varieties.}
+\iffalse
+An \defn{abstract variety}\index{abstract variety} is a scheme of finite type over $\Spec K$ that is separated and integral.
+\fi
+
+\begin{definition}[Stacks project Definition 33.3.1]\label{}\text{}
+Let $K$ be a field. A \defn{variety}\index{variety} or \defn{abstract variety}\index{abstract variety} is a scheme $X$ over $K$ such that $X$ is integral and the structure morphism $X\longrightarrow \Spec K$ is separated and of finite type.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+A ring map $R\longrightarrow A$ is \defn{of finite presentation}\index{map of finite presentation} if and only if $A$ is isomorphic to $R[z_1,\hdots,z_n]/(\varphi_1,\hdots,\varphi_m)$ as an $R$-algebra for some integers $n$ and $m$ and some polynomials $\varphi_j$.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+Let $\mathscr{A}$ be an additive category. A \defn{chain complex}\index{chain complex} $(A_\bullet, d_\bullet)$ of $\mathscr{A}$ is a complex
+\[
+\begin{tikzcd}
+	\cdots \ar[r] & A_{n+1} \ar[r,"d_{n+1}"] & A_n \ar[r,"d_n"] & A_{n-1}\ar[r] &\cdots
+\end{tikzcd}
+\]
+of $\mathscr{A}$. That is, for all $i\in \mathbf{Z}$, one has an object $A_i$ of $\mathscr{A}$ and a morphism $d_i : A_i\longrightarrow A_{i-1}$ such that $d_{i-1}\circ d_i = 0$ for all $i$. One can write $A_\bullet$ for the chain complex $(A_\bullet, d_\bullet) $ where $(d_\bullet)$ is the implied family of morphisms. 
+
+A \defn{morphism of chain complexes}\index{morphism of chain complexes} $\varphi : A_\bullet \longrightarrow B_\bullet$ is a family of morphisms $\varphi_i :A_i\longrightarrow B_i$ such that the diagrams
+\[
+\begin{tikzcd}[row sep = 3 em, column sep = 3 em]
+	A_i \ar[r,"d_i"] \ar[d, "\varphi_i", swap] &A_{i-1}\ar[d,"\varphi_{i-1}"] \\B_i\ar[r,"d_i", swap] & B_{i-1}
+\end{tikzcd}
+\]
+commute.
+
+The category of chain complexes of $\mathscr{A}$ is denoted $\catn{Ch}(\mathscr{A})$. If $\mathscr{A}$ is abelian, then $\catn{Ch}(\mathscr{A})$ is abelian.
+\iffalse
+A \defn{homotopy}\index{chain complex homotopy} $\eta$ between a pair of morphisms $\varphi,\psi : A_\bullet\longrightarrow B_\bullet$ is a collection of morphisms $\eta_i : A_i\longrightarrow B_{i+1}$ such that
+\begin{align*}
+	\varphi_i - \psi_i = d_{i+1} \circ \eta_i + \eta_{i-1}\circ d_i
+\end{align*}
+for all $i$. The morphisms $\varphi$ and $\psi$ are \defn{homotopic}\index{chain complex homotopy} if and only if a homotopy between $\varphi$ and $\psi$ exists.
+\fi
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+For all $i\in \mathbf{Z}$, the $i$th \defn{homology group}\index{homology group of a chain complex} of a chain complex $A_\bullet$ in an abelian category $\mathscr{A}$ is given by
+\begin{align*}
+	\HH_i(A_\bullet) := \Ker  (d_i)/\Image (d_{i+1}).
+\end{align*}
+A morphism of chain complexes of $\mathscr{A}$ $\varphi: A_\bullet\longrightarrow B_\bullet$ induces a morphism 
+\begin{align*}
+	\HH_i(\varphi): \HH_i (A_\bullet) \longrightarrow\HH_i(B_\bullet). 
+\end{align*}
+This gives a functor
+\begin{align*}
+	H_i : \catn{Ch}(\mathscr{A}) \longrightarrow \mathscr{A}.
+\end{align*}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 12.13.4]\label{}\text{}
+A morphism of chain complexes $\varphi : A_\bullet \longrightarrow B_\bullet$ is a \defn{quasiisomorphism}\index{quasiisomorphism} if and only if the induced maps $H_i(\varphi)$ are isomorphisms for all $i$.
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 10.77.1]\label{}\text{}
+Let $R$ be a ring. An $R$-module $\mathscr{M}$ is \defn{projective}\index{projective module} if and only if the functor 
+\begin{align*}
+	\Hom_{R}(\mathscr{M}, \cdot): \catn{Mod}(R)  \longrightarrow \catn{Mod}(R)
+\end{align*}
+is an exact functor.
+\end{definition}
+
+\begin{remark}[Stacks project Lemma 10.77.2]
+	Let $R$ be a ring. Let $\mathscr{M}$ be an $R$-module. The following conditions are equivalent:
+	\begin{enumerate}
+		\item $\mathscr{M}$ is projective;
+		\item $\mathscr{M}$ is a direct summand of a free $R$-module;
+		\item $\Ext_R^1(\mathscr{M}, \mathscr{N}) =0$ for all $R$-modules $\mathscr{N}$.
+	\end{enumerate}
+\end{remark}
+
+ \begin{definition}[Stacks project Definition 10.134.1]\label{}\text{}
+Let $R\longrightarrow S$ be a ring map. The \defn{naive cotangent complex}\index{naive cotangent complex} $\operatorname{NL}_{S/R}$ is the chain complex 
+\begin{align*}
+	\operatorname{NL}_{S/R} := (I/I^2 \longrightarrow \Omega_{R[S]/R}\tensor_{R[S]} S)
+\end{align*}
+where $I/I^2$ is placed in homological degree $1$ and $\Omega_{R[S]/R} \tensor_{R[S]} S$ is placed in degree $0$. One denotes
+\begin{align*}
+	\HH_1(\operatorname{L}_{S/R}) = \Gamma_{S/R} := \HH_1 (\operatorname{NL}_{S/R})
+\end{align*}
+the homology in degree $1$.
+\end{definition}
+
+
+
+\begin{definition}[Stacks project Definition 10.137.1]\label{}\text{}
+A ring map $R\longrightarrow S$ is \defn{smooth}\index{smooth ring map} if and only if it is of finite presentation and the naive cotangent complex $\operatorname{NL}_{S/R}$ is quasiisomorphic to a finite projective $S$-module placed in degree $0$.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 10.137.6]\label{}\text{}
+Let $R$ be a ring. Given integrers $n\ge c\ge 0$ and $\varphi_1,\hdots,\varphi_c\in R[z_1,\hdots, z_n]$, one says that 
+\begin{align*}
+	S = R[z_1,\hdots, z_n] /(\varphi_1,\hdots, \varphi_c)
+\end{align*}
+is a \defn{standard smooth algebra}\index{standard smooth algebra} over $R$ if and only if the polynomial
+\begin{align*}
+	g = \det \left[ \frac{\partial \varphi_i}{\partial z_j} \right]_{1\le i,j\le c} 
+\end{align*}
+maps to an invertible element in $S$.
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 29.34.1]\label{}\text{}
+Let $\varphi : X\longrightarrow Y$ be a morphism of schemes.
+\begin{enumerate}
+	\item One says that $\varphi$ is \defn{smooth morphism}\index{smooth morphism} at $z\in X$ if and only if there exists an affine open neighbourhood $\Spec A = U\subset X$ of $z$ and an affine open $\Spec R = V\subset Y$ such that the induced ring map $R\longrightarrow A$ is smooth.
+	\item One says that $\varphi$ is \defn{smooth}\index{smooth morphism} if and only if $\varphi$ is smooth at every point of $X$.
+	\item Suppose that $\varphi$ is a morphism of affine schemes. One says that $\varphi$ is \defn{standard smooth}\index{standard smooth morphism} if and only if there exists a standard smooth ring map $R\longrightarrow R[z_1,\hdots,z_n]/(\varphi_1,\hdots,\varphi_c)$ such that $X\longrightarrow Y$ is isomorphic to 
+		\begin{align*}
+			\Spec (R[z_1,\hdots,z_n]/(\varphi_1,\hdots,\varphi_c)) \longrightarrow \Spec R.
+		\end{align*}
+\end{enumerate}
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 33.26.1]\label{}\text{}
+Let $X$ be a variety over a field $K$.
+\begin{enumerate}
+	\item One says that $X$ is an \defn{affine variety}\index{affine variety} if and only if $X$ is an affine scheme. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{A}^n(K)$ for some $n$.
+	\item One says that $X$ is a \defn{projective variety}\index{projective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is projective. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{P}^n(K)$ for some $n$.
+	\item One says that $X$ is a \defn{quasiprojective variety}\index{quasiprojective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is quasiprojective. Equivalently, $X$ is isomorphic to a locally closed subscheme of $\mathbf{P}^n(K)$ for some $n$.
+	\item One says that $X$ is a \defn{proper variety}\index{proper variety} if and only if the morphism $X\longrightarrow \Spec K$ is proper.
+	\item One says that $X$ is a \defn{smooth variety}\index{smooth variety} if and only if the morphism $X\longrightarrow \Spec K$ is smooth.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+A variety $X$ is \defn{complete}\index{complete variety} if and only if $X\longrightarrow \Spec K$ is proper.
+\end{definition}
+
+\begin{remark}
+	Therefore, projective varieties are complete.
+\end{remark}
+
+Andr\'e Weil introduced the notion of the \index{abstract variety}abstract variety to construct Jacobians of curves over fields of finite characteristic for the Riemann hypothesis. However, Chow demonstrated that the Jacobian varieties that Weil needed were projective. 
+
+Masayoshi Nagata showed that every abstract variety is an open subset of a complete variety.\footnote{``Imbedding of an abstract variety in a complete variety,'' 1962. Look up ``Nagata's compactification theorem.'' See also Stacks project Theorem 38.33.8.}
+
+In dimensions $0$ and $1$, all complete varieties are projective. In dimension $2$, all nonsingular complete varieties are projective. In dimension $3$, not all complete varieties are projective. 
+
+\begin{lemma}[Chow]\label{chow}\index{Chow's lemma}\text{}
+Suppose that $Y$ is a complete variety. There exists a projective variety $X$ such that $X\longrightarrow Y$ is an isomorphism on a dense open subset. 
+\end{lemma}
+
+\begin{example}[Complete, non-projective variety]\label{}\text{}
+The following dimension-$3$ example is due to Heisuke Hironaka. Suppose that $X$ is a dimension-$3$ complete variety. Choose $2$ curves $C_1$ and $C_2$ that intersect at a point. Blow up along $C_1$ such that each point of $C_1$ is replaced by a projective line. Blow up along the strict transform of $C_2$  (that is, do not blow up along the point of intersection). Consider lines $\ell_1$ and $\ell_2$ on $C_1$ and $C_2$. Now, if this is projective, then
+\begin{align*}
+	\deg \ell_1 >\deg \ell_2.
+\end{align*}
+At the point of intersection,
+\begin{align*}
+	\deg \ell_1 = \deg \ell_2 + \deg \ell
+\end{align*}
+where $\ell$ is the exceptional curve.
+
+Now, choose $2$ curves $C_1$ and $C_2$ that intersect at $2$ points, say $z_1$ and $z_2$. Blow up $C_1$ and $C_2$. At $z_1$, blow up $C_2$ first, and, at $z_2$, blow up $C_1$ first. 
+\begin{quote}
+	\small How?
+\end{quote}
+Remove $z_1$ and blow up $C_2$ first or remove $z_2$ and blow up $C_1$ first. Take these two objects and glue along the manifold in which one removes $z_1$ and $z_2$ and blows up $C_1$ and $C_2$.\footnote{The order does not matter here.} Blowing up along $C_1$ (resp. $C_2$) gives a line $\ell_1$ (resp. $\ell_2$). If this is projective, then
+\begin{align*}
+	\deg \ell_1 > \deg \ell_2
+\end{align*}
+and 
+\begin{align*}
+	\deg \ell_2 > \deg \ell_1
+\end{align*}
+depending on whether one blows up along $\ell_1$ or $\ell_2$ first. Therefore, this is not projective.
+\end{example}
+
+\begin{remark}
+	One can use a similar construction to give an algebraic space that is not a scheme.
+	
+	By the way, here's a currently-nonsense definition:
+
+	Let $X$ be a scheme contained in $\textrm{Sch}\textsubscript{fppf}$. An \defn{algebraic space}\index{algebraic space} over $X$ is a presheaf
+	\begin{align*}
+		\mathscr{F}: (\textrm{Sch}/S)_{\textrm{fppf}}^{\textrm{opp}}\longrightarrow \catn{Set}
+	\end{align*}
+	such that
+	\begin{enumerate}
+		\item $\mathscr{F}$ is a sheaf;
+		\item $\Delta : \mathscr{F}\longrightarrow \mathscr{F}\times \mathscr{F}$ is representable;
+		\item There exists a scheme $Y$ in $(\textrm{Sch}/S)\textsubscript{fppf}$ and a map $\eta_Y \longrightarrow \mathscr{F}$ that is surjective and \'etale. 
+	\end{enumerate}
+\end{remark}
 \subsection{Quasicoherent sheaves.}
 \subsection{Examples of quasicoherent sheaves.}
 \subsection{Invertible sheaves over the projective line.}
@@ -4891,7 +5083,7 @@ This gives such a lifting. Therefore, projective morphisms are proper.
 \subsection{A comparison of Weil divisors and Cartier divisors.}
 \subsection{A comparison of Cartier divisors and the Picard group.}
 \subsection{Divisors and Dedekind domains.}
-\subsection{Examples of\texorpdfstring{$\Pic X$}{Pic X}.}
+\subsection{Examples of \texorpdfstring{$\Pic X$}{Pic X}.}
 \subsection{Morphisms to projective space.}
 \subsection{Very ample sheaves.}
 \subsection{Linear systems.}
@@ -4902,7 +5094,7 @@ This gives such a lifting. Therefore, projective morphisms are proper.
 \subsection{The canonical sheaf.}
 
 
-\section{The Riemann--Roch theorem.}
+\section{The Riemann--Roch theorem}
 \subsection{Introduction.}
 \subsection{Genus \texorpdfstring{$0$}{0}.}
 \subsection{Genus \texorpdfstring{$1$}{1}.}
@@ -4913,7 +5105,7 @@ This gives such a lifting. Therefore, projective morphisms are proper.
 \subsection{The proof of the Riemann--Roch theorem.}
 
 
-\section{The Weil conjectures.}
+\section{The Weil conjectures}
 
 \begin{figure}
 	\begin{center}
@@ -4937,7 +5129,7 @@ This gives such a lifting. Therefore, projective morphisms are proper.
 \subsection{\'Etale cohomology of a curve.}
 \subsection{\'Etale morphisms.}
 
-\section{Complex surfaces.}
+\section{Complex surfaces}
 \subsection{Introduction.}
 \subsection{Minimal surfaces.}
 \subsection{Rational surfaces.}
@@ -4946,7 +5138,7 @@ This gives such a lifting. Therefore, projective morphisms are proper.
 \subsection{Kodaira: Dimensions \texorpdfstring{$1$ and $2$}{1 and 2}.}
 
 
-\section{The Chow ring.}
+\section{The Chow ring}
 \subsection{Introduction.}
 \subsection{Chern classes.}
 
