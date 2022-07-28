@@ -108,6 +108,7 @@
 \RequirePackage [usestackEOL] {stackengine}
 \RequirePackage {soul}
 \RequirePackage {scalerel}
+\RequirePackage {pgfplots}
 
 
 \ifscr
@@ -150,7 +151,7 @@
     \fi
 \fi
 
-\RequirePackage [colorlinks, linkcolor = RoyalBlue, citecolor = black, urlcolor = Blue] {hyperref}
+\RequirePackage [colorlinks, linkcolor = black, citecolor = black, urlcolor = Blue] {hyperref}
 \RequirePackage [capitalize, nameinlink] {cleveref}
 
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
@@ -225,7 +226,7 @@
 \newcommand {\abs} [1] {\left \lvert #1 \right \rvert}                          % absolute value
 \let\ang\relax
 \newcommand {\ang} [1] {\left \langle #1 \right \rangle}                        %
-\newcommand {\cat} [1] {\mathcal #1}                                            % category variable
+\newcommand {\cat} [1] {\mathscr #1}                                            % category variable
 \newcommand {\catn} [1] {\textsf{#1}}                                           % category
 
 \def\firstletter#1#2@{#1}
@@ -317,6 +318,7 @@
 \DeclareMathOperator {\Gal} {Gal}                           % Galois group
 \DeclareMathOperator {\GL} {GL}                             % general linear group
 \DeclareMathOperator {\Gr} {Gr}                             % Grassmannian
+\DeclareMathOperator {\Hess} {Hess}                         % Hessian
 \let\Hom\relax
 \DeclareMathOperator {\Hom} {Hom}                           % homomorphisms
 \DeclareMathOperator {\HH} {H}                              % homology group

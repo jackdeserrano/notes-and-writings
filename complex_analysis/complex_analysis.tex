@@ -477,11 +477,11 @@ If $g$ vanishes at $0$, we want to show that
 \begin{align*}
 	\int_{C}^{} \frac{g(z)}{z}  \, dz = 0. 
 \end{align*}
-Now we let $C$ be a circle of small radius $r$. Then if $\epsilon$ is an upper bound for $g$
+Now we let $C$ be a circle of small radius $r$. Then if $\varepsilon$ is an upper bound for $g$
 \begin{align*}
 	\int_{C}^{} \frac{g(z)}{z}  \, dz & \le \left\lvert C \right\rvert \sup \left\lvert g(z)/z \right\rvert \\
-					  &\le 2\pi r (\epsilon/r) \\
-					  &=2\pi \epsilon.
+					  &\le 2\pi r (\varepsilon/r) \\
+					  &=2\pi \varepsilon.
 \end{align*}
 \end{proof}
 
@@ -627,13 +627,13 @@ Uniform convergence is more like having
 \end{align*}
 for all $z$.
 \begin{definition}[Uniform convergence]\label{}\text{}
-A sequence of functions $(g_n)$ \defn{converges uniformly}\index{uniform convergence} to a function $g$ if for all $\epsilon > 0$ there exists a natural number $N$ such that for all $z$ and $n\ge N$
+A sequence of functions $(g_n)$ \defn{converges uniformly}\index{uniform convergence} to a function $g$ if for all $\varepsilon > 0$ there exists a natural number $N$ such that for all $z$ and $n\ge N$
 \begin{align*}
- \left\lvert g_n(z) - g (z) \right\rvert <\epsilon.
+ \left\lvert g_n(z) - g (z) \right\rvert <\varepsilon.
 \end{align*}
 \end{definition}
 
-A sequence of functions converges pointwise to $g$ if for all $\epsilon >0$ and all $z$ there exists a natural number $N$ such that for all $n\ge N$ we have $\left\lvert g_n(z) -g(z)\right\rvert <\epsilon$.
+A sequence of functions converges pointwise to $g$ if for all $\varepsilon >0$ and all $z$ there exists a natural number $N$ such that for all $n\ge N$ we have $\left\lvert g_n(z) -g(z)\right\rvert <\varepsilon$.
 
 \begin{remark}
 	If $g_n\to g$ uniformly then 
@@ -717,11 +717,11 @@ converges for $s=s_0$. Then it converges uniformly in a region that can be made 
 Let's take $s_0=0$. We know that $a_1+a_2+a_3+\cdots$ converges, and we want to show that \begin{align*}
 	\frac{a_1}{1^s} + \frac{a_2}{2^s} + \cdots
 \end{align*}
-converges uniformly in the region that can be made arbitrarily close to the region $\Re s > 0$. If $m$ is sufficiently large then the partial sums $a_m +\cdots +a_n$ will be less than some $\epsilon > 0$. We get 
+converges uniformly in the region that can be made arbitrarily close to the region $\Re s > 0$. If $m$ is sufficiently large then the partial sums $a_m +\cdots +a_n$ will be less than some $\varepsilon > 0$. We get 
 \begin{align*}
 	&\phantom{=}\ \ \left\lvert \frac{a_m}{m^s} + \frac{a_{m+1}}{(m+1)^s} + \cdots + \frac{a_n}{n^s} \right\rvert \\
 	&= a_m \left( \frac{1}{m^s} - \frac{1}{(m+1)^s} \right) + (a_m + a_{m+1}) \left( \frac{1}{(m+1)^s} -  \frac{1}{(m+2)^s} \right) + \cdots + (a_m + \cdots + a_n)  \frac{1}{n^s}\\
-	&\le \epsilon \frac{\left\lvert s \right\rvert }{\Re s} \left\lvert \frac{1}{m^s} \right\rvert, 
+	&\le \varepsilon \frac{\left\lvert s \right\rvert }{\Re s} \left\lvert \frac{1}{m^s} \right\rvert, 
 \end{align*}
 and this is bounded for some $s$ in the region approximating $\Re s> 0 $, so that Dirichlet series converges uniformly on that region. Hence these Dirichlet series are holomorphic for $\Re s > 0$.
 \end{proof}
@@ -801,9 +801,9 @@ But at $z=0$, $(\cos z) /z$ is infinite. Also, $e^{iz}/z$ is holomorphic except 
 \begin{align*}
  \int_{-\infty}^{\infty} \frac{\sin z}{z}  \, dz. 
 \end{align*}
-We want to show that the ``outside curved section'' approaches $0$. In the ``middle part'' of this section $\left\lvert e^{iz} \right\rvert $ is small and on the ``ends'' $\left\lvert 1/x \right\rvert $ is small. Pick $M\in \R$ such that $\left\lvert e^{iz} \right\rvert <\epsilon$ when $\Im z > M$. Then
+We want to show that the ``outside curved section'' approaches $0$. In the ``middle part'' of this section $\left\lvert e^{iz} \right\rvert $ is small and on the ``ends'' $\left\lvert 1/x \right\rvert $ is small. Pick $M\in \R$ such that $\left\lvert e^{iz} \right\rvert <\varepsilon$ when $\Im z > M$. Then
 \begin{align*}
-	\int_{\textrm{above $M$}}^{} f(z)  \, dz &\le \epsilon \pi\to 0
+	\int_{\textrm{above $M$}}^{} f(z)  \, dz &\le \varepsilon \pi\to 0
 \end{align*}
 and 
 \begin{align*}
@@ -962,11 +962,11 @@ A \defn{singularity}\index{singularity} of a function $f$ is a point where it $f
 		\end{align*}
 		is singular at $x=0$, but just change the $1$ to a $0$.
 \end{itemize}
-Suppose $f$ is holomorphic for $0<\abs{z} <\epsilon$. If $f$ is bounded here, then a singularity at $0$ is removable. To show this, put
+Suppose $f$ is holomorphic for $0<\abs{z} <\varepsilon$. If $f$ is bounded here, then a singularity at $0$ is removable. To show this, put
 \begin{align*}
 	g(w) := \frac{1}{2\pi i} \int_C \frac{f (z)}{z-w} \, dz.
 \end{align*}
-The function $g$ is holomorphic for $\abs w < \epsilon$, and if $f$ is bounded, then $f=g$ in the region $0<\abs{z} <\epsilon$.
+The function $g$ is holomorphic for $\abs w < \varepsilon$, and if $f$ is bounded, then $f=g$ in the region $0<\abs{z} <\varepsilon$.
 \end{example}
 
 A \defn{pole}\index{pole} is something that, locally, looks like $f(z)/z^n$ for $f$ holomorphic (this is for $z=0$). This looks like
@@ -1001,7 +1001,7 @@ A function with an essential singularity is $f(z)=\sum_{k\in \Z}a_kz^k$ in which
 
 The function $\exp(1/z)$ has an essential singularity, and so does $\exp(-1/z^2)$.
 
-If $f$ has an essential singularity at $0$, then $\{f(z):0<\abs{z}<\epsilon\}$ is dense in $\C$. Suppose $\alpha$ is not a limit point of values of $f(z)$. Then $\abs{f(z)-\alpha} > \delta$, so $\abs{1/(f(z)-\alpha)}$ is bounded, and $1/(f(z)-\alpha)$ is holomorphic. (See Great Picard's theorem.)
+If $f$ has an essential singularity at $0$, then $\{f(z):0<\abs{z}<\varepsilon\}$ is dense in $\C$. Suppose $\alpha$ is not a limit point of values of $f(z)$. Then $\abs{f(z)-\alpha} > \delta$, so $\abs{1/(f(z)-\alpha)}$ is bounded, and $1/(f(z)-\alpha)$ is holomorphic. (See Great Picard's theorem.)
 
 Now we're on to non-isolated singularities. Limits of singularities are one: Take, for example,
  \begin{align*}
@@ -1051,7 +1051,7 @@ So $\Gamma(s)$ is bounded for $\alpha \le \Re s \le \beta$ where $0<\alpha<\beta
 \begin{proof}
 \text{}
 \begin{enumerate}
-	\item Write $\varphi(s) := \Gamma (s)\Gamma (1-s)$. Notice that $\varphi(s) = - \varphi (s+1)$. Also, $\varphi$ has a pole of residue $1$ at $s=0$. Further, $\varphi(s)$ is rapidly decreasing in vertical strips $\alpha\le\Re s\le \beta$ where $\Im s>\epsilon$. The same is true for $\pi/\sin(\pi s)$. Therefore, $\psi(s) :=  \varphi(s) - \pi/\sin (\pi s)$ satisfies $\psi(s+1)=-\psi (s)$, is rapidly decreasing, and has no poles: it is holomorphic everywhere. Since $\psi$ is periodic and bounded in vertical strips, it is bounded. Therefore, by \cref{lvl} (Liouville), $\psi$ is constant. Since both functions are rapidly decreasing, $\psi = 0$.
+	\item Write $\varphi(s) := \Gamma (s)\Gamma (1-s)$. Notice that $\varphi(s) = - \varphi (s+1)$. Also, $\varphi$ has a pole of residue $1$ at $s=0$. Further, $\varphi(s)$ is rapidly decreasing in vertical strips $\alpha\le\Re s\le \beta$ where $\Im s>\varepsilon$. The same is true for $\pi/\sin(\pi s)$. Therefore, $\psi(s) :=  \varphi(s) - \pi/\sin (\pi s)$ satisfies $\psi(s+1)=-\psi (s)$, is rapidly decreasing, and has no poles: it is holomorphic everywhere. Since $\psi$ is periodic and bounded in vertical strips, it is bounded. Therefore, by \cref{lvl} (Liouville), $\psi$ is constant. Since both functions are rapidly decreasing, $\psi = 0$.
 	\item \begin{align*}
 			\Gamma(s)\Gamma (1-s) &=  \int_0^\infty e^{-t}t^{s-1} \, dt \int_0^\infty e^{-u} u^{1-(s-1)}\, du\\
 					      &= \int_0^\infty\int_0^\infty e^{- (t+u) } (t/u)^s t\inv \, dt\, du\\
