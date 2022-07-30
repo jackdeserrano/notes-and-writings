@@ -267,7 +267,7 @@ Cayley and Salmon proved that any nonsingular cubic surface has exactly $27$ lin
 \end{example}
 
 \subsection{Affine space. The Zariski topology.}
-Let $K$ be a field. Then \index{affine space}affine space is almost the vector space $K^n$. The automorphisms of this vector space are all invertible linear transformations, given by $\GL_{n}(K)$. The automorphisms of affine space which one denotes $\A^n(K)$ include $\GL_{n}(K)$ and translations $z \longmapsto z+v$. Therefore, the group of automorphisms of affine space is of dimension $n(n+1)$ and consists of matrices of the form
+Let $K$ be a field. Then \index{affine space}affine space is almost the vector space $K^n$. The automorphisms of this vector space are all invertible linear transformations, given by $\GL_{n}(K)$. The automorphisms of affine space which one denotes $\mathbf{A}^n_K$ include $\GL_{n}(K)$ and translations $z \longmapsto z+v$. Therefore, the group of automorphisms of affine space is of dimension $n(n+1)$ and consists of matrices of the form
 \begin{align*}
 	\mat{*&*&*\\ \text{}*&*&*\\0&0&1}
 \end{align*}
@@ -290,10 +290,10 @@ The following things are not well-defined.
 	\item Lengths.
 \end{itemize}\fi Points, lines, parallel lines, conics, and polynomial functions are well defined in affine geometry. One realizes that circles, angle, and lengths, for example, are not well defined.
 
-Algebraic geometry tends to use the \index{coordinate ring}coordinate ring of $\mathbf{A}^n(K)$; that is, polynomials on the affine space: $K[z_1,\hdots, z_n]$. Given a coordinate ring, one can get an affine space $\A^n(K)$ by taking the set of all $K$-algebra homomorphisms from the polynomial ring to $K$. The automorphism groups of these two things are the same, for example.
+Algebraic geometry tends to use the \index{coordinate ring}coordinate ring of $\mathbf{A}^n_K$; that is, polynomials on the affine space: $K[z_1,\hdots, z_n]$. Given a coordinate ring, one can get an affine space $\mathbf{A}^n_K$ by taking the set of all $K$-algebra homomorphisms from the polynomial ring to $K$. The automorphism groups of these two things are the same, for example.
 
 \begin{definition}[Algebraic set]\label{}
-An \defn{algebraic set}\index{algebraic set} in $\mathbf{A}^n(K)$ is the set of common roots of a set of polynomials in $K[z_1,\hdots, z_n]$.
+An \defn{algebraic set}\index{algebraic set} in $\mathbf{A}^n_K$ is the set of common roots of a set of polynomials in $K[z_1,\hdots, z_n]$.
 \end{definition}
 
 \begin{example}[ ]\label{}
@@ -304,9 +304,9 @@ Algebraic sets are closed under intersections. If $C_1,C_2,\hdots $ are the set 
 
 If a collection of sets is closed under intersections and finite unions, they form the closed sets of a topology. Therefore, \index{algebraic set}algebraic sets are the closed sets of the Zariski topology. (The intersections do not need to be of countably many sets.)
 
-What are the closed sets of the affine line $\mathbf{A}^1(K)$? The line is the set of roots of $0$. Any finite set consists of the roots of a polynomial $(z-\alpha_1)(z-\alpha_2)\cdots(z-\alpha_n)$. One can check that $\mathbf{A}^1(K)$ and finite sets are the only closed sets. One notes that this topology is not Hausdorff.
+What are the closed sets of the affine line $\mathbf{A}^1_K$? The line is the set of roots of $0$. Any finite set consists of the roots of a polynomial $(z-\alpha_1)(z-\alpha_2)\cdots(z-\alpha_n)$. One can check that $\mathbf{A}^1_K$ and finite sets are the only closed sets. One notes that this topology is not Hausdorff.
 
-What about $\mathbf{A}^2(K)$? We have sets of points $\{(\alpha,\beta)\}$ that is the set of common roots of $\{x-\alpha, y-\beta\}$. We also have any algebraic curve $f(x,y) =0$. Therefore, a typical closed set in $\mathbf{A}^2(K)$ consists of finitely many algebraic curves and points. One notices that the Zariski topology on $\mathbf{A}^2(K)$ is not the product topology on $\mathbf{A}^1(K)\times \mathbf{A}^1(K)$. The latter is a finite number of vertical lines, horizontal lines, and points.
+What about $\mathbf{A}^2_K$? We have sets of points $\{(\alpha,\beta)\}$ that is the set of common roots of $\{x-\alpha, y-\beta\}$. We also have any algebraic curve $f(x,y) =0$. Therefore, a typical closed set in $\mathbf{A}^2_K$ consists of finitely many algebraic curves and points. One notices that the Zariski topology on $\mathbf{A}^2_K$ is not the product topology on $\mathbf{A}^1_K\times \mathbf{A}^1_K$. The latter is a finite number of vertical lines, horizontal lines, and points.
 
 \begin{example}[Determinantal variety]\label{}
 One can think of $\mathbf{A}^{mn}(K)$ as the vector space of linear maps $K^m \longrightarrow K^n$ or of $m\times n$ matrices of dimension $mn$. An algebraic set is given by all linear maps of rank at most $r$ for some $r$. This gives the \index{determinantal variety}determinantal variety. This set is given by the vanishing of all $(r+1)\times  (r+1)$ minors of an $m\times n $ matrix. For example, the subset of surjective maps $K^m\longrightarrow K^n$ is open in the Zariski topology.
@@ -334,7 +334,7 @@ A topological space is a \defn{Noetherian topological space}\index{Noetherian to
 \end{enumerate}
 \end{definition}
  \begin{remark}
- 	The affine space $\mathbf{A}^n(K)$ with the Zariski topology is Noetherian. Closed sets of $\mathbf{A}^n(K)$ correspond to some ideals of the coordinate ring $K[z_1,\hdots, z_n]$. (Any closed set is determined by the ideal of functions vanishing on it.)
+ 	The affine space $\mathbf{A}^n_K$ with the Zariski topology is Noetherian. Closed sets of $\mathbf{A}^n_K$ correspond to some ideals of the coordinate ring $K[z_1,\hdots, z_n]$. (Any closed set is determined by the ideal of functions vanishing on it.)
  \end{remark}
 
 Noetherian spaces are weird. The Noetherian condition is equivalent to saying that every open set is (quasi)compact. (Bourbaki changed the definition of ``compact'' to ``compact and Hausdorff,'' but it turned out that there were non-Hausdorff compact sets, so they used the term ``quasicompact.''\index{compact}\index{quasicompact}\footnote{See \ul{General Topology}, \S 9.I, p. 83.}) 
@@ -347,7 +347,7 @@ Show that, if a topological space is Noetherian and Hausdorff, then it is finite
 A topological space is called an \defn{irreducible topological space}\index{irreducible topological space} if it is nonempty and not the union of two proper closed subsets.
 \end{definition}
 
-Recall that a typical closed set of $\mathbf{A}^2(K)$ is a finite number of curves and points. The curves are irreducible. An affine line, for example, is irreducible since any two nonempty closed sets intersect. This space seems to be the union of a finite number of irreducible subsets.
+Recall that a typical closed set of $\mathbf{A}^2_K$ is a finite number of curves and points. The curves are irreducible. An affine line, for example, is irreducible since any two nonempty closed sets intersect. This space seems to be the union of a finite number of irreducible subsets.
 
 \begin{theorem}[ ]\label{}\index{}
 Any Noetherian space is a finite union of irreducible subspaces.
@@ -733,7 +733,7 @@ Finally, one has various notions of \index{homological dimension}homological dim
 
 \subsection{Projective space.}
 \begin{definition}[ ]\label{}
-\defn{Projective space}\index{projective space} $\mathbf{P}^n(K)$ is the set of all $1$-dimensional subspaces of $K^{n+1}$.
+\defn{Projective space}\index{projective space} $\mathbf{P}^n_K$ is the set of all $1$-dimensional subspaces of $K^{n+1}$.
 \end{definition}
 
 We use coordinates as follows: $(z_0:z_1:\cdots : z_n)\sim (\lambda z_0:\lambda z_1:\cdots:\lambda x_n)$ where not all $z_i=0$ and $\lambda\in K - \{0\}$.
@@ -742,7 +742,7 @@ If $z_0\ne 0$, we can write
 \begin{align*}
 	(z_0:z_1:\cdots:z_n) = (1:y_1:\cdots : y_n)
 \end{align*}
-where $y_i = z_i/z_0$. Therefore, $\mathbf{P}^n \supset \mathbf{A}^n$. If $z_0=0$, we get a copy of $\mathbf{P}^{n-1}(K)$. Therefore, $\mathbf{P}^n(K)$ is a disjoint union $\mathbf{A}^n(K) \sqcup \mathbf{P}^{n-1}(K) $. One thinks of the points of $\mathbf{P}^{n-1}(K)$ as ``\index{point at infinity}points at infinity.''
+where $y_i = z_i/z_0$. Therefore, $\mathbf{P}^n \supset \mathbf{A}^n$. If $z_0=0$, we get a copy of $\mathbf{P}^{n-1}_K$. Therefore, $\mathbf{P}^n_K$ is a disjoint union $\mathbf{A}^n_K \sqcup \mathbf{P}^{n-1}_K $. One thinks of the points of $\mathbf{P}^{n-1}_K$ as ``\index{point at infinity}points at infinity.''
 
 Consider $\mathbf{P}^n(\mathbf{R})$. One has $(z_0:\cdots:z_n)$, which one can rescale such that $z_0^2 +\cdots+z_n^2 = 1$. There are exactly two points, then, corresponding to the same line: $(z_0:\cdots:z_n)$ and $(-z_0:\cdots:-z_n)$. These correspond to antipodal points on the unit sphere. Hence, one has
 \begin{align*}
@@ -757,7 +757,7 @@ Now, consider $(z_0:\cdots : z_n)\in \mathbf{P}^n(\mathbf{C})$. One can rescale 
 which is the projection onto $S^2$. Thus, $S^3$ is a sort of ``twisted product'' $S^1\times S^2$.
 
 
-One can cover projective space with copies of affine space. Coordinates of $\mathbf{P}^n(K)$ are given by $(z_0:z_1:\cdots : z_n)$. If $z_0\ne 0$, we get a copy of affine space. Similarly, taking $z_1\ne 0$ gives another copy of affine space. So $\mathbf{P}^n(K)$ is covered by $n+1$ copies of $\mathbf{A}^n(K)$.
+One can cover projective space with copies of affine space. Coordinates of $\mathbf{P}^n_K$ are given by $(z_0:z_1:\cdots : z_n)$. If $z_0\ne 0$, we get a copy of affine space. Similarly, taking $z_1\ne 0$ gives another copy of affine space. So $\mathbf{P}^n_K$ is covered by $n+1$ copies of $\mathbf{A}^n_K$.
 
 Suppose an artist is trying to draw an object---say, a triangle. He must project it onto the plane that is his canvas. What properties are preserved by projection? Parallel lines are not preserved (think of a railway track). Straight lines are preserved, for example.
 
@@ -3501,7 +3501,7 @@ Let us show that the scheme corresponding to $\mathbf{C}^2 - \{(0,0)\}$ is not a
 One can think of a smooth manifold as open subsets of $\mathbf{R}^n$ glued together. Similarly, one gets a scheme by gluing together copies of open affine schemes.
 
 \begin{example}[ ]\label{gluing_1}\text{}
-Let us glue together $2$ copies of $\Spec K[z]$. The affine line $\mathbf{A}^1(K)$ is the points of $K$ minus a generic point, so one considers the open subset got by discarding the origin. This is the affine scheme of $K[z,z^{-1}]$. One has
+Let us glue together $2$ copies of $\Spec K[z]$. The affine line $\mathbf{A}^1_K$ is the points of $K$ minus a generic point, so one considers the open subset got by discarding the origin. This is the affine scheme of $K[z,z^{-1}]$. One has
 \iffalse
 \[
 \begin{tikzcd}
@@ -3517,7 +3517,7 @@ and
 		    &K[z,z^{-1}].
 \end{tikzcd}
 \]
-One can choose $z\longmapsto z$ or $z\longmapsto z^{-1}$ for either arrow. If both arrows are the injection, one gets ``a line with two origins.'' If one arrow is the injection and the other isn't, one gets $\mathbf{P}^1(K)$.
+One can choose $z\longmapsto z$ or $z\longmapsto z^{-1}$ for either arrow. If both arrows are the injection, one gets ``a line with two origins.'' If one arrow is the injection and the other isn't, one gets $\mathbf{P}^1_K$.
 \end{example}
 
 \begin{problem}
@@ -3575,28 +3575,28 @@ where these arrows are the inclusions. This is $K[z]$, so $K[z]$ is the coordina
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
-Now, let's do this for $\mathbf{P}^1(K)$. One considers the images of elements under
+Now, let's do this for $\mathbf{P}^1_K$. One considers the images of elements under
 \[
 \begin{tikzcd}
         K[z]\ar[dr] && K[z^{-1}] \ar[dl]\\
         &K[z,z^{-1}]
 \end{tikzcd}
 \]
-where these arrows are the inclusions.\footnote{The arrow on the right is the same as the map $K[z]\longrightarrow K[z,z\inv]$ given by $z\longmapsto z^{-1}$.} One sees that the coordinate ring of $\mathbf{P}^1(K)$ is $K$.\footnote{Again, this scheme is not affine.}
+where these arrows are the inclusions.\footnote{The arrow on the right is the same as the map $K[z]\longrightarrow K[z,z\inv]$ given by $z\longmapsto z^{-1}$.} One sees that the coordinate ring of $\mathbf{P}^1_K$ is $K$.\footnote{Again, this scheme is not affine.}
 \end{example}
 
 \begin{remark}
 	As above, the process of gluing affine schemes does not need to result in an affine scheme.
 \end{remark}
 
-Let us try to determine the morphisms to $\mathbf{P}^1(K)$. First, let us consider the morphisms $\varphi$ such that 
+Let us try to determine the morphisms to $\mathbf{P}^1_K$. First, let us consider the morphisms $\varphi$ such that 
 \[
 \begin{tikzcd}
-	\Spec K \ar[dr]\ar[rr,"\varphi"] && \mathbf{P}^1(K)\ar[dl]\\
+	\Spec K \ar[dr]\ar[rr,"\varphi"] && \mathbf{P}^1_K\ar[dl]\\
 					 &\Spec K
 \end{tikzcd}
 \]
-commutes. Since $\Spec K$ is, really, a point, morphisms $\varphi$ should correspond to points of $\mathbf{P}^1(K)$ as with classical varieties: $\mathbf{P}^1(K)$ is the union of $\mathbf{A}^1(K)$ and $\mathbf{A}^1(K)$ glued along an open subset, so the morphisms $\varphi$ are a union of two copies of morphisms from $\Spec K$ to $\mathbf{A}^1(K)$ over $\Spec K$ modulo an equivalence relation, namely $\alpha\sim \alpha ^{-1}$ for $\alpha\ne 0$, which gives $K$ together with a point at infinity.
+commutes. Since $\Spec K$ is, really, a point, morphisms $\varphi$ should correspond to points of $\mathbf{P}^1_K$ as with classical varieties: $\mathbf{P}^1_K$ is the union of $\mathbf{A}^1_K$ and $\mathbf{A}^1_K$ glued along an open subset, so the morphisms $\varphi$ are a union of two copies of morphisms from $\Spec K$ to $\mathbf{A}^1_K$ over $\Spec K$ modulo an equivalence relation, namely $\alpha\sim \alpha ^{-1}$ for $\alpha\ne 0$, which gives $K$ together with a point at infinity.
 
 \begin{problem}
 	What about $\mathbf{P}^1(R)$?
@@ -3672,9 +3672,9 @@ Consider $(1+\sqrt{-5} ) /2\in R[2^{-1}]$ and $(1-\sqrt{-5} ) /3\in R[3^{-1}]$. 
 \end{remark}
 
 \subsection{The Proj construction.}
-Let $K$ be an algebraically closed field. Let $S=K[z_0,\hdots, z_n]/I$ be a finitely-generated graded $K$-algebra where $I$ is graded. Projective space $\mathbf{P}^n(K)$ corresponds to the graded ring $K[z_0,\hdots, z_n] /(0)= K[z_0,\hdots,z_n]$: The points in $\mathbf{P}^n(K)$ are given by $(z_0:\cdots:z_n)\sim (\lambda z_0:\cdots:\lambda z_n)\ne (0:\cdots:0)$. These correspond to homogeneous ``maximal'' ideals in the set of ideals not containing $(z_0,\hdots,z_n)$. The point $(1:0:\cdots:0)$ corresponds to the ideal $(z_1,\hdots,z_n)$.
+Let $K$ be an algebraically closed field. Let $S=K[z_0,\hdots, z_n]/I$ be a finitely-generated graded $K$-algebra where $I$ is graded. Projective space $\mathbf{P}^n_K$ corresponds to the graded ring $K[z_0,\hdots, z_n] /(0)= K[z_0,\hdots,z_n]$: The points in $\mathbf{P}^n_K$ are given by $(z_0:\cdots:z_n)\sim (\lambda z_0:\cdots:\lambda z_n)\ne (0:\cdots:0)$. These correspond to homogeneous ``maximal'' ideals in the set of ideals not containing $(z_0,\hdots,z_n)$. The point $(1:0:\cdots:0)$ corresponds to the ideal $(z_1,\hdots,z_n)$.
 
-A basis of open sets is given by the sets $U(f)$ that contain the ``maximal'' ideals not containing the homogeneous polynomial $f$ of positive degree. If $f=z_0$, then $U(f)$ is given by the points $(1:z_1:\cdots:z_n)$, which is $\mathbf{A}^n(K)$. In general, $U(f)$ is the complement of the hypersurface $f\ne 0$ in $\mathbf{P}^n(K)$.
+A basis of open sets is given by the sets $U(f)$ that contain the ``maximal'' ideals not containing the homogeneous polynomial $f$ of positive degree. If $f=z_0$, then $U(f)$ is given by the points $(1:z_1:\cdots:z_n)$, which is $\mathbf{A}^n_K$. In general, $U(f)$ is the complement of the hypersurface $f\ne 0$ in $\mathbf{P}^n_K$.
 
 The ring of regular functions on open sets is given by the degree-$0$ elements of $K[z_0,\hdots, z_n,f^{-1}]$:
 \begin{align*}
@@ -3689,7 +3689,7 @@ This construction gives a locally ringed space. The stalk of a point $\mathfrak{
 \begin{align*}
 	K[z_0,\hdots, z_n]^0_{\mathfrak{m}}.
 \end{align*}
-This gives rise to a correspondence between finitely-generated reduced $K$-algebras and projective varieties over $K$. Such an algebra $K[z_0,\hdots, z_n]/I$ corresponds to a subset of $\mathbf{P}^n(K)$ with $I=(0)$.
+This gives rise to a correspondence between finitely-generated reduced $K$-algebras and projective varieties over $K$. Such an algebra $K[z_0,\hdots, z_n]/I$ corresponds to a subset of $\mathbf{P}^n_K$ with $I=(0)$.
 
 Let us copy this construction for graded rings
 \begin{align*}
@@ -3748,17 +3748,17 @@ We are gluing together two copies of the affine line over the affine line minus 
 \end{remark}
 
 \begin{example}[ ]\label{}\text{}
-Let us determine the $K$-valued points of $\mathbf{P}^n(K) = \Proj K[ z_0,\hdots, z_n]$. One considers morphisms $\varphi$ such that
+Let us determine the $K$-valued points of $\mathbf{P}^n_K = \Proj K[ z_0,\hdots, z_n]$. One considers morphisms $\varphi$ such that
 \[
 \begin{tikzcd}
-	\Spec K \ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n(K) \ar[dl] \\
+	\Spec K \ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n_K \ar[dl] \\
 					  &\Spec K
 \end{tikzcd}
 \]
 commutes. More generally, if $R$ is a $K$-algebra, then one can consider morphisms such that
 \[
 \begin{tikzcd}
-\Spec R\ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n(K) \ar[dl] \\
+\Spec R\ar[rr,"\varphi"] \ar[dr] &&\mathbf{P}^n_K \ar[dl] \\
                                           &\Spec K	
 \end{tikzcd}
 \]
@@ -3766,14 +3766,14 @@ commutes. For the sake of simplicity, we consider local rings.
 
 Let $R$ be a local ring with maximal ideal $\mathfrak{m}$. Then, $\mathfrak{m}$ is in the closure of every other point of $\Spec R$. Suppose that one has a morphism $f:\Spec R\longrightarrow S$ where $S$ is a scheme that is covered by open sets. The closure of the image of all other points of $\Spec R$ must contain $f(\mathfrak{m})$, so, if $f(\mathfrak{m}) \subseteq U$, then $f(\Spec R)\subseteq U$.
 
-Now, $\mathbf{P}^n(K)$ is covered by $\{U({z_0}), \hdots, U(z_n)\}$ where 
+Now, $\mathbf{P}^n_K$ is covered by $\{U({z_0}), \hdots, U(z_n)\}$ where 
 \begin{align*}
-	U(z_j)= \Spec K \left[ \frac{z_0}{z_j},\hdots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j},\hdots, \frac{z_n}{z_j} \right] = \mathbf{A}^n(K), 
+	U(z_j)= \Spec K \left[ \frac{z_0}{z_j},\hdots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j},\hdots, \frac{z_n}{z_j} \right] = \mathbf{A}^n_K, 
 \end{align*}
 so morphisms $\Spec R\longrightarrow U(z_j)$ are given by points of $R^n$ $(r_0:\cdots:r_{j-1}:1:r_{j+1}:\cdots:r_n)$. One glues the $U(z_j)$s together and sees that morphisms $\varphi$ such that 
 \[
 \begin{tikzcd}
-	\Spec R\ar[dr]\ar[rr,"\varphi"] &&\mathbf{P}^n(K)\ar[dl]\\
+	\Spec R\ar[dr]\ar[rr,"\varphi"] &&\mathbf{P}^n_K\ar[dl]\\
 				       &\Spec K
 \end{tikzcd}
 \]
@@ -3797,10 +3797,10 @@ There are two ideas that we shall consider herein. The first is this:
 	\small 
 	One should focus on morphisms of schemes, not schemes.
 \end{quote}
-For example, one should focus on morphisms $\mathbf{A}^n(K)\longrightarrow \Spec K$ rather than $\mathbf{A}^n(K)$ itself. Here's one from more recent memory: Do not focus on $S\longrightarrow \mathbf{A}^n(K)$; focus on morphisms such that
+For example, one should focus on morphisms $\mathbf{A}^n_K\longrightarrow \Spec K$ rather than $\mathbf{A}^n_K$ itself. Here's one from more recent memory: Do not focus on $S\longrightarrow \mathbf{A}^n_K$; focus on morphisms such that
 \[
 \begin{tikzcd}
-	S\ar[d] \ar[r] &\mathbf{A}^n(K)\ar[dl]\\
+	S\ar[d] \ar[r] &\mathbf{A}^n_K\ar[dl]\\
 	\Spec K
 \end{tikzcd}
 \]
@@ -4153,7 +4153,7 @@ Let $Y:= \Spec K[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathf
 
 Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothnoendieck pointed out a sort of converse.
 
-\begin{definition}[Stacks project Definition 17.24.1]\label{}\text{}
+\begin{definition}[Stacks project Definition 17.24.1]\label{this oneno}\text{}
 Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}({\mathscr{O}_X})\longrightarrow \catn{Mod}({\mathscr{O}_X})$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
 \end{definition}
 
@@ -4832,7 +4832,7 @@ The \defn{symmetric algebra}\index{symmetric algebra} $\Sym \mathscr{F}$ is the 
 	\end{align*}
 \end{remark}
 
-\begin{definition}[Stacks project Definition 27.21.1]\label{}\text{}
+\begin{definition}[Stacks project Definition 27.21.1]\label{thatinfamousdef}\text{}
 Let $S$ be a scheme. Let $\mathscr{M}$ be a quasicoherent $\mathscr{O}_S$-module. One denotes 
 \begin{align*}
 	\pi : \mathbf{P}(\mathscr{M}) = \underline{\Proj}_S(\Sym \mathscr{M})\longrightarrow S
@@ -5005,9 +5005,9 @@ Let $\varphi : X\longrightarrow Y$ be a morphism of schemes.
 \begin{definition}[Stacks project Definition 33.26.1]\label{}\text{}
 Let $X$ be a variety over a field $K$.
 \begin{enumerate}
-	\item One says that $X$ is an \defn{affine variety}\index{affine variety} if and only if $X$ is an affine scheme. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{A}^n(K)$ for some $n$.
-	\item One says that $X$ is a \defn{projective variety}\index{projective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is projective. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{P}^n(K)$ for some $n$.
-	\item One says that $X$ is a \defn{quasiprojective variety}\index{quasiprojective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is quasiprojective. Equivalently, $X$ is isomorphic to a locally closed subscheme of $\mathbf{P}^n(K)$ for some $n$.
+	\item One says that $X$ is an \defn{affine variety}\index{affine variety} if and only if $X$ is an affine scheme. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{A}^n_K$ for some $n$.
+	\item One says that $X$ is a \defn{projective variety}\index{projective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is projective. Equivalently, $X$ is isomorphic to a closed subscheme of $\mathbf{P}^n_K$ for some $n$.
+	\item One says that $X$ is a \defn{quasiprojective variety}\index{quasiprojective variety} if and only if the structure morphism $X\longrightarrow \Spec K$ is quasiprojective. Equivalently, $X$ is isomorphic to a locally closed subscheme of $\mathbf{P}^n_K$ for some $n$.
 	\item One says that $X$ is a \defn{proper variety}\index{proper variety} if and only if the morphism $X\longrightarrow \Spec K$ is proper.
 	\item One says that $X$ is a \defn{smooth variety}\index{smooth variety} if and only if the morphism $X\longrightarrow \Spec K$ is smooth.
 \end{enumerate}
@@ -5204,7 +5204,7 @@ whose fibres are vector spaces that is locally trivial, so one can cover $M$ by 
 	\mathbf{R}^n \times U\ar[r] & U
 \end{tikzcd}
 \]
-locally, where $U$ is open. One can also use sheaves: It is a sheaf over $M$ that looks like $\bigoplus_{\textrm{finite}} \mathscr{O}_U$ where $U$ is open and $\mathscr{O}_U$ is the sheaf of regular functions on $U$. Also, one can use rings: If $R$ is a ring, a vector bundle is a locally free $R$-module\index{locally free module} $\mathscr{M}$: That is, $\mathscr{M}[f_i^{-1}] \isomto R[f_i^{-1}]^n$ where $\{U(f_i)\}$ covers $\Spec R$ (that is, $(f_1,f_2,\hdots)=R$).
+locally, where $U$ is open. One can also use sheaves: It is a sheaf over $M$ that looks like $\mathscr{O}_U^{\oplus n}$ where $U$ is open and $\mathscr{O}_U$ is the sheaf of regular functions on $U$. Also, one can use rings: If $R$ is a ring, a vector bundle is a locally free $R$-module\index{locally free module} $\mathscr{M}$: That is, $\mathscr{M}[f_i^{-1}] \isomto R[f_i^{-1}]^n$ where $\{U(f_i)\}$ covers $\Spec R$.\footnote{That is, $(f_1,f_2,\hdots)=(1)$.}
 
 \begin{example}[Vector bundles]\label{}\text{}
 We have seen that the tangent space of a sphere is a vector bundle.
@@ -5291,7 +5291,205 @@ where $U\subset X$ is open. Now, one defines the \defn{tensor product sheaf}\ind
 Note that the tensor product presheaf is not a sheaf even for line bundles over $\mathbf{P}^1$. Now, the tensor product of two $1$-dimensional vector spaces is $1$-dimensional, so one gets a line bundle from a product of two line bundles.
 
 The \defn{Picard group}\index{Picard group} is the group of isomorphism classes of line bundles under $\tensor$. This combines the ideal class group, which is $\Pic(\Spec R)$, line bundles over a scheme, and the $1$-dimensional characters of a group.
+
 \subsection{Invertible sheaves over the projective line.}
+First, note my poor choice of notation. Sometimes I use the script-style $\mathscr{M}$ for modules over a ring or for quasicoherent modules. Two very different things. I will change.
+
+\begin{definition}[Stacks project Definition 29.11.1]\label{}\text{}
+A scheme morphism $\varphi : X\longrightarrow Y$ is \defn{affine}\index{affine morphism} if and only if the preimage of every affine open set of $Y$ is an affine open set of $X$.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 27.6.1]\label{}\text{}
+Let $S$ be a scheme. Let $\mathscr{M}$ be a quasicoherent $\mathscr{O}_S$-module. The \defn{vector bundle associated to $\mathscr{M}$}\index{vector bundle associated to a module} is
+\begin{align*}
+	\mathbf{V}(\mathscr{M}) := \underline{\Spec}_S(\Sym \mathscr{M}).
+\end{align*}
+This vector bundle has extra structure: There is a grading
+\begin{align*}
+	\pi_* \mathscr{O}_{\mathbf{V}(\mathscr{M})} = \bigoplus_{n\ge 0}\Sym ^n \mathscr{M}
+\end{align*}
+that makes $\pi_*\mathscr{O}_{\mathbf{V}(\mathscr{M})}$ a graded $\mathscr{O}_S$-algebra. One recovers $\mathscr{M}$ from the degree-$1$ part of this. 
+\end{definition}
+
+\begin{definition}[Stacks project Definition 27.6.2]\label{}\text{}
+Let $S$ be a scheme. A \defn{vector bundle}\index{vector bundle over a scheme} $\pi:V\longrightarrow S$ over $S$ is an affine morphism of schemes such that $\pi_* \mathscr{O}_V$ is endowed with the structure of a graded $\mathscr{O}_S$-algebra 
+\begin{align*}
+	\pi_*\mathscr{O}_V = \bigoplus_{n\ge 0}\mathscr{M}_n
+\end{align*}
+such that $\mathscr{M}_0=\mathscr{O}_S$ and such that the maps
+\begin{align*}
+	\Sym^n \mathscr{M}_1\longrightarrow \mathscr{M}_n
+\end{align*}
+are isomorphisms for all $n\ge 0$. A  \defn{morphism of vector bundles over $S$}\index{morphism of vector bundles over a scheme} is a morphism $\varphi : V\longrightarrow V'$ such that the induced map
+\begin{align*}
+	\varphi^* : \pi_*' \mathscr{O}_{V'}\longrightarrow \pi_*\mathscr{O}_V
+\end{align*}
+is compatible with the given gradings.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 15.117.1]\label{}\text{}
+Let $A$ be a ring. An $A$-module $M$ is \defn{invertible}\index{invertible} if and only if the functor $(M\tensor_A \cdot) : \catn{Mod}(A) \longrightarrow \catn{Mod}(A)$ is an equivalence of categories.
+\end{definition}
+
+
+Recall \cref{thatinfamousdef} and \cref{this oneno}, too. Dr. Borcherds:
+\begin{quote}
+	\small The projective line over a field is, in algebraic geometry, something like the hydrogen atom in quantum mechanics. It's a very simple object which is complicated enough to exhibit some nontrivial phenomena and yet so easy [to work with] that you can calculate everything explicitly.
+\end{quote}
+So far, we have looked at quasicoherent sheaves on affine schemes. These are essentially the same as modules over rings.\footnote{``Talked about in a funny geometric language.''}
+\begin{proposition}[Stacks project Lemma 17.24.5]\label{lemma_{17}above}
+	Let $(X,\mathscr{O}_X)$ be a ringed space.
+	\begin{enumerate}
+		\item If $\mathscr{L}$ and $\mathscr{N}$ are invertible $\mathscr{O}_X$-modules, then so is $\mathscr{L}\tensor_{\mathscr{O}_X}\mathscr{N}$.
+		\item If $\mathscr{L}$ is an invertible $\mathscr{O}_X$-module, then so is $\Hom_{\mathscr{O}_X}(\mathscr{L}, \mathscr{O}_X)$ and the \index{evaluation map}evaluation map $\mathscr{L}\tensor_{\mathscr{O}_X} \Hom_{\mathscr{O}_X}(\mathscr{L}, \mathscr{O}_X)\longrightarrow \mathscr{O}_X$ is an isomorphism.
+	\end{enumerate}
+\end{proposition}
+ \begin{definition}[Stacks project Definition 17.24.9]\label{invertiblepic}\text{}
+Let $(X,\mathscr{O}_X)$ be a ringed space. The \defn{Picard group}\index{Picard group} $\Pic X$ of $X$ is the abelian group whose elements are isomorphism classes of invertible $\mathscr{O}_X$-modules with addition given by the tensor product.
+\end{definition}
+
+\begin{problem}
+	Find all invertible sheaves over $\mathbf{P}^1_K$. Invertible sheaves more-or-less line bundles. Two invertible sheaves give an invertible sheaf via the tensor product in \cref{lemma_{17}above}. Therefore, given \cref{invertiblepic} or the line bundle definition, this is equivalent to determining $\Pic(\mathbf{P}^1_K)$.
+\end{problem}
+
+Let us guess by identifying the obvious line bundles. First, $\mathbf{P}^n_K =\mathbf{P}^n$ is the set of lines in $K^{n+1}$. Therefore, there is a map from the points of $\mathbf{P}^n$ to the $1$-dimensional vector spaces over $K$ given by
+\begin{align*}
+	(z_0:\cdots :z_n)\longmapsto \left\{ (\lambda z_0,\hdots,\lambda z_n):\lambda \in K \right\}. 
+\end{align*}
+Informally, this is a line bundle $L$. One can consider $L^{\tensor n} =: L^n$ and $L^* =: L^{-1}$.\footnote{One takes the dual by taking the dual of every vector space.} Thus, one has $L^n$ for $n\in\mathbf{Z}$. The claim is that these give all of the invertible sheaves over $\mathbf{P}^1_K$.\footnote{We shall consider $\mathbf{P}^n_K$ soon.}
+
+Recall that one has $\mathbf{P}^1 = \mathbf{A}^1\cup \mathbf{A}^1$ via gluing. An invertible sheaf on $\mathbf{P}^1$ is given by an invertible sheaf over each copy of $\mathbf{A}^1$ and gluing them together on the intersection. First, one needs to determine the invertible sheaves on $\mathbf{A}^1$.
+
+Since $\mathbf{A}^1$ is affine, sheaves correspond to modules over the coordinate ring $K[z]$. Since $K[z]$ is a principal ideal domain, all invertible sheaves are trivial: Invertible sheaves correspond to finitely-generated modules and finitely-generated modules over principal ideal domains are not invertible except for $K[z]$.
+
+Now, one has modules $M_1=K[z_1]$ over $K[z_1]$ and $M_2 = K[z_2]$ over $K[z_2]$. One sets $z_2=z_1^{-1}$. The intersection here is $K[z_1,z_2]$, so one has module homomorphisms
+\[
+\begin{tikzcd}[sep = 3 em]
+	K[z_1] \ar[r] & K[z_1,z_2]\\
+		      &K[z_1,z_2]\ar[u,dashed]&K[z_2].\ar[l]
+\end{tikzcd}
+\]
+One wants to determine the $K[z_1,z_2]$-module isomorphisms between the two copies of $K[z_1,z_2]$ above. These isomorphisms correspond to the units of $K[z_1,z_2]$, which are given by $\alpha z_1^n$ for $\alpha\in K^*$ and $n\in \mathbf{Z}$. One can multiply by the units of $K[z_1]$ and $K[z_2]$ without changing the isomorphism classes, so one can assert that $\alpha = 1$. Fix $n\in \mathbf{Z}$. One sees that
+\[
+\begin{tikzcd}[sep = 3 em]
+	K[z_1]\ar[r]& K[z_1,z_2] \ar[d, "1\longmapsto z_2^n", swap] \\
+	&K[z_1,z_2] \ar[u,"1\longmapsto z_1^n",xshift = 1 em, swap] &K[z_2]\ar[l] 
+\end{tikzcd}
+\]
+gives the gluing of two modules. This gives a sheaf over $\mathbf{P}^1$ denoted $\mathscr{O}(n)$.
+
+Thus, every invertible sheaf over $\mathbf{P}^1$ is of the form $\mathscr{O}(n)$. The claim is that these are distinct. Let us consider the global sections $\Gamma(\mathscr{O}(n))$. To choose a global section of $\mathscr{O}(n)$, one must choose an element $\varphi(z_1) \in K[z_1]$ and $\psi(z_2)\in K[z_2]$ and glue them together by $z_2^n\varphi(z_1) =\psi(z_2)$. That is, $z^n\varphi(z^{-1}) = \psi (z)$. Therefore, $\deg \varphi \le n$, and the dimension of the vector space of such polynomials is $n+1$ for nonnegative $n$ and $0$ otherwise. That is,
+\begin{align*}
+	\dim \Gamma(\mathscr{O}(n)) = 
+	\begin{cases}
+		n+1&n\ge 0\\
+		0 &\textrm{otherwise.}
+	\end{cases}
+\end{align*}
+Therefore, the $\mathscr{O}(n)$s are distinct for $n\ge 0$. One can see that this holds in general by noting that
+\begin{align*}
+	\mathscr{O}(m) \tensor \mathscr{O}(n) \isomto \mathscr{O}(m+n)\textrm{:}
+\end{align*}
+If one glues two modules by multiplying by $z_2^m$ and glues two other modules by multiplying by $z_2^n$ and then takes the tensor product, one glues by multiplying by $z_2^{m+n}$. Also, one notes that the dual of $\mathscr{O}(m)$ is $\mathscr{O}(-m)$, which follows in much the same way. Either way, all of the $\mathscr{O}(n)$s are distinct. 
+
+Therefore, 
+\begin{align*}
+	\Pic (\mathbf{P}^1_K) \isomto \mathbf{Z}.
+\end{align*}
+
+One notes that $\Gamma(\mathscr{O}(n))$ is finite-dimensional over $K$. The global sections of sheaves over projective spaces tends to be much smaller than that over affine spaces. This is a special case of a very general theorem that states that the cohomology of coherent sheaves over projective varieties is finite-dimensional.\footnote{See Serre and Cartan's ``Un th\'eor\`eme de finitude concernant les vari\'et\'es analytiques compactes,'' 1953.}
+
+Recall that 
+\begin{align*}
+	\mathscr{F}\otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{G},
+\end{align*}
+in which one defines the tensor product in the most natural way, does not give a sheaf necessarily. One sees that
+\begin{align*}
+	\dim( \Gamma(\mathscr{O}(-1) \otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{O}(1) )) = 1
+\end{align*}
+and 
+\begin{align*}
+	\dim(\Gamma\mathscr{O}(-1) \tensor \Gamma\mathscr{O}(1) ) = 0.
+\end{align*}
+Thus, 
+\begin{align*}
+	\Gamma(\mathscr{O}(-1) \otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{O}(1) ) \ne \Gamma\mathscr{O}(-1) \tensor \Gamma\mathscr{O}(1),
+\end{align*}
+and
+\begin{align*}
+	(\mathscr{O}(-1) \otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{O}(1))(\mathbf{P}^1) \ne \mathscr{O}(-1) (\mathbf{P}^1) \tensor \mathscr{O}(1) (\mathbf{P}^1).
+\end{align*}
+This is a nice counterexample.
+
+Let us look at the morphisms $\mathscr{O}(m) \longrightarrow \mathscr{O}(n)$. These are isomorphic to morphisms from $\mathscr{O}(0)$ to $\mathscr{O}(n-m)$ via $\cdot\tensor \mathscr{O}(-m)$. This is $\Gamma(\mathscr{O}(n-m))$ of dimension $n-m+1$ for $n\ge m$ and of dimension $0$ otherwise.
+
+\begin{remark}
+	There is a more straightforward way to describe morphisms at which we shall look later using graded modules over graded rings.
+\end{remark}
+
+Consider the exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r] &\mathscr{O}(-1) \ar[r]& \mathscr{O}(0) \oplus \mathscr{O}(0)\ar[r,"1\oplus z"] & \mathscr{O}(1)\ar[r]&0.
+\end{tikzcd}
+\]
+The third arrow is surjective since the morphism from the first $\mathscr{O}(0)$ to the first $\mathbf{A}^1$ is surjective and the morphism from the second $\mathscr{O}(0)$ to the second $\mathbf{A}^1$ is surjective, so it is surjective on the fibres. One does not need to know how the kernel of the third arrow is $\mathscr{O}(-1)$. With $\cdot\tensor \mathscr{O}(-1)$, which preserves exactness on invertible sheaves,\footnote{This preserves exactness on invertible sheaves since invertible sheaves look like free sheaves locally and exactness is a local property. It does not in general.}
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{O}(-2) \ar[r] &\mathscr{O}(-1) \oplus \mathscr{O}(-1) \ar[r] & \mathscr{O}(0) \ar[r] &0.
+\end{tikzcd}
+\]
+There are no nonzero morphisms from $\mathscr{O}(0)$ to $\mathscr{O}(-1)$, so this is non-split. Now, $\mathscr{O}(0)$ is the sheaf of coordinate functions over $\mathbf{P}^1$. Over any ring $R$,
+\[
+\begin{tikzcd}
+	0\ar[r]&A\ar[r]&B\ar[r]&R\ar[r]&0
+\end{tikzcd}
+\]
+splits. So, over any affine scheme $\Spec R$,
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{M}\ar[r]&\mathscr{N}\ar[r]&\mathscr{O}_{\Spec R}\ar[r]&0
+\end{tikzcd}
+\]
+splits. The sheaf of coordinate functions is always a ``projective module'': Free sheaves are projective over affine schemes. However, in the demonstration above, one has a free sheaf that is not projective over projective space.
+\begin{quote}
+	\small Free sheaves need not be projective!
+\end{quote}
+This is not the case in differential geometry but it is in algebraic geometry.
+
+Now, consider 
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{O}(-2) \ar[r] &\mathscr{O}(-1) \oplus \mathscr{O}(-1) \ar[r] & \mathscr{O}(0) \ar[r] &0.
+\end{tikzcd}
+\]
+Taking global sections,
+\[
+\begin{tikzcd}
+	0\ar[r]&\Gamma(\mathscr{O}(-2)) \ar[r] &\Gamma (\mathscr{O}(-1) \oplus \mathscr{O}(-1)) \ar[r] & \Gamma(\mathscr{O}(0)) \ar[r] &0
+\end{tikzcd}
+\]
+is not exact: The only problem is that the last arrow is not surjective. Everything else is trivial. Taking global sections preserves left exactness. More precisely, if
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{A}\ar[r]&\mathscr{B}\ar[r]&\mathscr{C}\ar[r]&0
+\end{tikzcd}
+\]
+is an exact sequence of quasicoherent sheaves,
+\[
+\begin{tikzcd}
+	0\ar[r] &\Gamma(\mathscr{A}) \ar[r]& \Gamma(\mathscr{B})\ar[r]&\Gamma(\mathscr{C}) \ar[r]&\HH^1(\mathscr{A}) \ar[r]&\HH^1(\mathscr{B}) \ar[r]&\HH^1(\mathscr{C})\ar[d]\\&&&&&\cdots&\HH^2(\mathscr{A}) \ar[l]
+\end{tikzcd}
+\]
+is exact.
+
+There are three main things that are different for schemes over non-affine spaces:
+\begin{enumerate}
+	\item Tensor products do not behave in the natural way;
+	\item Free sheaves are not necessarily projective;
+	\item The map got by taking global sections of a surjective map of sheaves does not need to be surjective.
+\end{enumerate}
+
 \subsection{The functors \texorpdfstring{$f^*$}{f*} and \texorpdfstring{$f_*$}{f*}.}
 \subsection{Coherent sheaves.}
 \subsection{The line bundles \texorpdfstring{$\mathscr O(n)$}{O(n)} on projective space.}
