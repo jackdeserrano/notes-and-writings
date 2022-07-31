@@ -619,13 +619,13 @@ Suppose $G$ is compact and $K=\mathbf{R}$ or $K=\mathbf{C}$. The same proof work
 \begin{align*}
 	\rho(a) = \frac{1}{\Vol (G)}\int_{G}^{} g(a) \, d\mu
 \end{align*}		
-with respect to the Haar measure on the group. Hilbert studied the case $G=\SL_{n}(\mathbf{C})$. Here, one can apply Weyl's unitarian trick: Notice that $\SL_{n}(\mathbf{C})\supset \SU_n(\mathbf{C})$ and $\SU_n(\mathbf{C})$ is compact. Complex actions of $\SL_{n}(\mathbf{C})$ on finite-dimensional complex vector spaces $V$ are ``the same'' as actions of $\SU_n(\mathbf{C})$ on $V$. (The complexification of the Lie algebra of $\SU_n(\mathbf{C})$ is the same as the Lie algebra of $\SL_{n}(\mathbf{C})$.) 
+with respect to the Haar measure on the group. Hilbert studied the case $G=\SL_{n}(\mathbf{C})$. Here, one can apply Weyl's unitarian trick: Notice that $\SL_{n}(\mathbf{C})\supset \SU_n(\mathbf{C})$ and $\SU_n(\mathbf{C})$ is compact. Complex actions of $\SL_{n}(\mathbf{C})$ on finite-dimensional complex vector spaces $V$ are ``the same'' as actions of $\SU_n(\mathbf{C})$ on $V$.\footnote{The complexification of the Lie algebra of $\SU_n(\mathbf{C})$ is the same as the Lie algebra of $\SL_{n}(\mathbf{C})$.}
 
 Let's study Nagata's counterexample. The group
 \begin{align*}
 	K = \left\{ \mat{1&*\\0&1} \right\} 
 \end{align*}
-acts on $K^2$. \footnote{This comes up in counterexamples often. It is a unipotent action in which all eigenvalues are $1$.} Now, $K^{16}$ acts on $K^{32}$. Let $G$ be a ``generic'' $13$-dimensional subspace of $K^{16}$. 
+acts on $K^2$.\footnote{This comes up in counterexamples often. It is a unipotent action in which all eigenvalues are $1$.} Now, $K^{16}$ acts on $K^{32}$. Let $G$ be a ``generic'' $13$-dimensional subspace of $K^{16}$. 
 
 
 \subsection{Three examples of quotients.}
@@ -645,7 +645,7 @@ if $i+j=k+\ell$. Hence, the ring of invariants is
 \end{align*}
 \end{example}
 
-\begin{example}[Parameter space of cyclohexane]\label{}\index{parameter space}
+\begin{example}[The parameter space of cyclohexane]\label{}\index{parameter space}
 \iffalse In a parameter space, points correspond to ``configurations''---some algebraic subset of a variety, for example.\fi Points correspond to ``configurations'' in a parameter space. The centre of each carbon atom is specified by three numbers. Therefore, $\mathbf{A}^{18}$ is the parameter space for six carbon atoms. However, there are some conditions the atoms in cyclohexane must satisfy. Any two adjacent carbon atoms are at a fixed distance. If the first two carbon atoms are located at $(x_1,y_1,z_1)$ and $(x_2,y_2,z_2)$, then one requires $(x_1-x_2)^2 + (y_1-y_2)^2 + (z_1-z_2)^2=\lambda$ for some fixed $\lambda$. Thus, we have six quadrics for these distances. Furthermore, bond angles must be fixed. These angles can be specified by the distances between every other carbon atom, so we get six more quadrics. One is led to believe that the parameter space is of dimension $18-6-6$, but we have translations and rotations. Therefore, one ought to take the space of (lower bound) dimension $18-6-6$ and mod out by the group of translations and rotations. There are three degrees of freedom and the group of rotations is three-dimensional, so the group by which we quotient out is of dimension $6$. 
 
 What is the dimension of this parameter space? The obvious guess is $ (18-6-6) - (3+3)=0$, but this is wrong: Hermann Sachse (1890) discovered two distinct conformations of cyclohexane (``chair'' and ``boat''). The ``boat'' conformation is flexible, so to speak, and the ``chair'' conformation is rigid. Therefore, the parameter space has (at least) one point corresponding to the ``chair'' conformation and one $1$-dimensional component corresponding to the ``boat'' conformation. That is, the na\"ive guess for the dimension of the quotient was wrong.
@@ -3115,8 +3115,8 @@ Consider the sequence
 where $2\pi i \mathbf{Z}$ is, really, the constant sheaf of $2\pi i \mathbf{Z}$ (and the rest of the things are sheaves, too).\footnote{``Holomorphic functions $\ne 0$'' means ``(the sheaf of) holomorphic functions that do not vanish anywhere.''} This is an exact sequence of sheaves because it is exact on fibres (the third arrow is surjective since one can take $\log$ in the neighbourhood of a point). However, it is not exact on sections of open sets: Take $U = \mathbf{C}-\{0\}$ and let $f(z)=z$ be the nonzero holomorphic function. Then, there must be a function $g$ such that $\exp g = z$ at all points. One recalls that this doesn't work: $\log$ is not holomorphic.
 \end{example}
 
-\subsection{The functors \texorpdfstring{$f_*$}{f*} and \texorpdfstring{$f^{-1}$}{f-1}.}
-Suppose $f:X\longrightarrow Y$ is a continuous map of topological spaces. Let $\catn{Sh}_X$ be the category of sheaves of abelian groups on $X$. We shall define functors $f_* : \catn{Sh}_X \longrightarrow \catn{Sh}_Y$ and $f^{-1} : \catn{Sh}_Y \longrightarrow \catn{Sh}_X$.
+\subsection{The functors \texorpdfstring{$f_*$}{f*} and \texorpdfstring{$f^{-1}$}{f-1}.}\label{functorsp_1}
+Suppose $f:X\longrightarrow Y$ is a continuous map of topological spaces. Let $\catn{Sh}(X)$ be the category of sheaves of abelian groups on $X$. We shall define functors $f_* : \catn{Sh}(X) \longrightarrow \catn{Sh}(Y)$ and $f^{-1} : \catn{Sh}(Y) \longrightarrow \catn{Sh}(X)$.
 
 Recall that a sheaf $\mathscr{F}$ on $X$ can be viewed as a map from the open sets of $X$ to abelian groups or as an \'etale space over $X$.
 
@@ -5490,7 +5490,70 @@ There are three main things that are different for schemes over non-affine space
 	\item The map got by taking global sections of a surjective map of sheaves does not need to be surjective.
 \end{enumerate}
 
-\subsection{The functors \texorpdfstring{$f^*$}{f*} and \texorpdfstring{$f_*$}{f*}.}
+\subsection{The functors \texorpdfstring{$f^*$}{f*} and \texorpdfstring{$f_*$}{f*}. Extension by zero.}
+Suppose that $f:X\longrightarrow Y$ is a morphism of schemes. If $\mathscr{F}$ is a quasicoherent sheaf on $Y$, then $f^*(\mathscr{F})$ is a quasicoherent sheaf on $X$. Similarly, if $\mathscr{G}$ is a quasicoherent sheaf on $X$, $f_*(\mathscr{G})$ is a quasicoherent sheaf on $Y$. The functor $f^*$ is left adjoint to $f_*$. Let us look at these functors and consider the affine case first. 
+
+Suppose that $A \longleftarrow B$ is a ring homomorphism. Then, if $M$ is an $A$-module, it is a $B$-module via the functor $g: \catn{Mod}(A) \longrightarrow \catn{Mod}(B)$ given by $M\longmapsto M$. If $N$ is a $B$-module, it is not an $A$-module; however, $N\tensor_B A$ is an $A$-module. Consider the functor $\tilde g = \cdot\tensor_B A: \catn{Mod}(B) \longrightarrow \catn{Mod}(A)$ given by $N\longmapsto N\tensor_B A$. This map $\tilde g$ is left adjoint to the map $g$. 
+
+Rather clearly, $g$ preserves exactness. However, without thinking, one has only the preservation of right exactness for $\tilde g$. Now, $\cdot \tensor_B A$ preserves exactness if $A$ is a flat\index{flat module} $B$-module.\footnote{By definition.}
+
+Now, write $X :=\Spec A$ and $Y:=\Spec B$. Consider the morphism of schemes $f:X\longrightarrow Y$. One can pull back a sheaf $\mathscr{F}$ on $Y$ to a sheaf $f^{-1}(\mathscr{F})\tensor_{f^{-1}(\mathscr{O}_Y)} \mathscr{O}_X$ on $X$. One can make a sheaf $\mathscr{G}$ on $X$ a sheaf $f_*(\mathscr{G})$ on $Y$. Now, define $f^* :\catn{QCoh}(\mathscr{O}_Y)\longrightarrow \catn{QCoh}(\mathscr{O}_X)$ 
+\begin{align*}
+	f^*(\mathscr{F}) := f^{-1}(\mathscr{F}) \tensor_{f^{-1}(\mathscr{O}_Y)} \mathscr{O}_X
+\end{align*}
+and $f_* : \catn{QCoh}(\mathscr{O}_X)\longrightarrow \catn{QCoh}(\mathscr{O}_Y)$ as in \cref{functorsp_1}. Then, $f^*$ and $f_*$ are adjoint.\footnote{Where $f^*$ is left adjoint to $f_*$.}
+
+For affine schemes, $f_*$ is exact and $f^*$ is right exact (and exact if flatness holds).\footnote{All of this is so easy because the category of affine schemes is equivalent to the opposite category of rings.}
+
+Consider a morphism of schemes $f:X\longrightarrow Y$. For a sheaf $\mathscr{F}$ on $Y$, one gets a sheaf $f^*(\mathscr{F})$ on $X$. For a sheaf $\mathscr{G}$ on $X$, one gets a sheaf $f_*(\mathscr{G})$ on $Y$. One sees that adjointness still holds. The functor $f^*$ is defined in the same way as above, and $f^*(\mathscr{F})$ looks like $N\tensor_B A$ locally.
+
+Now, $f^*$ is left adjoint to $f_*$, so $f^*$ is right exact.\footnote{Left adjoints are right exact.} The functor $f^*$ is exact if some flatness condition holds. Similarly, $f_*$ is left exact. However, $f_*$ is not exact in general. We have seen this: Consider $f:\mathbf{P}^1_K\longrightarrow \Spec K$. One sees that taking $f_*$ is the same as taking global sections. Now, 
+\[
+\begin{tikzcd}
+	\mathscr{O}(-1) \oplus \mathscr{O}(-1)\ar[r]& \mathscr{O}(0) \ar[r] & 0
+\end{tikzcd}
+\]
+is exact, but, taking global sections, one has
+\[
+\begin{tikzcd}
+ f_*(\mathscr{O}(-1) \oplus \mathscr{O}(-1))\ar[r]& f_*(\mathscr{O}(0)) \ar[r] & f_*(0)
+\end{tikzcd}
+\]
+and the second arrow is not surjective.
+
+Given an exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{A}\ar[r]&\mathscr{B}\ar[r]&\mathscr{C}\ar[r]&0,
+\end{tikzcd}
+\]
+one gets a long exact sequence
+\[
+\begin{tikzcd}
+	 0\ar[r] &f_*(\mathscr{A}) \ar[r]& f_*(\mathscr{B})\ar[r]&f_*(\mathscr{C}) \ar[r]&\mathscr{R}^1f_*(\mathscr{A}) \ar[r]&\mathscr{R}^1f_*(\mathscr{B}) \ar[r]&\mathscr{R}^1f_*(\mathscr{C})\ar[d]\\&&&&&\cdots&\mathscr{R}^2f_*(\mathscr{A}) \ar[l]
+\end{tikzcd}
+\]
+where $\mathscr{R}^nf_*$ is the $n$th \index{right derived functor}right derived functor of $f_*$. 
+
+Suppose that $f:U\longrightarrow X$ is an open immersion. Then, in addition to the functor $f_*$, one has the functor $f_!$ which is \defn{extension by zero}\index{extension by zero}.\footnote{``$j$ sub shriek.''} One can think of a sheaf $\mathscr{F}$ on $U$ as an \'etale map from the \'etale space of $\mathscr{F}$ $\Et(\mathscr{F})$ to $U$.\footnote{Recall that an \'etale map is just a local homeomorphism.} Since $f$ is an open immersion, the map got by the composition of this \'etale map and $f$ gives the \'etale map $\Et(f_!(\mathscr{G}))\longrightarrow X$.\footnote{The stalk of $f_!(\mathscr{F})$ is $0$ if the point is not in the image of $U$ and is the stalk of $\mathscr{F}$ if the point is in the image of $U$.}
+
+Suppose that $\mathscr{Q}$ is a quasicoherent sheaf. Then, $f_!(\mathscr{Q})$ is not quasicoherent in general.
+
+\begin{example}[ ]\label{}\text{}
+Consider $f:\Spec K\longrightarrow \Spec R$ where $R$ is a discrete valuation ring. Consider the sheaf $\mathscr{K}$ corresponding to the module $K$. Now, $f_*(\mathscr{K}) =\mathscr{K}$. However, the stalk of $f_!(\mathscr{K}) $ at the closed point is $0$, so $f_!(\mathscr{K})$ has no global sections other than $0$, so it is not quasicoherent.\footnote{Any quasicoherent sheaf is determined by its module of global sections.} However, $f_!(\mathscr{K})$ is a $\mathscr{O}_{\Spec R}$-module.
+\end{example}
+
+The functor $f_!$ is left adjoint to $f^*=f^{-1}$ and $f_*$ is right adjoint to it.
+
+\begin{definition}[Stacks project Definition 59.70.1]\label{}\text{}
+Let $j:U\longrightarrow X$ be an \'etale morphism of schemes.
+\begin{enumerate}
+	\item The restriction functor $j^{-1} :\catn{Sh}(X\textsubscript{\'etale})  \longrightarrow \catn{Sh}(U\textsubscript{\'etale})$ has a left adjoint $j_!^{\textrm{Sh}} : \catn{Sh}(U\textsubscript{\'etale}) \longrightarrow \catn{Sh}(X\textsubscript{\'etale})$.
+	\item The restriction functor $j^{-1} : \catn{Ab}(X\textsubscript{\'etale}) \longrightarrow \catn{Ab}(U\textsubscript{\'etale})$ has a left adjoint which is denoted $j_! : \catn{Ab}(U\textsubscript{\'etale}) \longrightarrow \catn{Ab}(X\textsubscript{\'etale})$ and called \defn{extension by zero}\index{extension by zero}.
+	\item Let $\Lambda$ be a ring. The restriction functor $j^{-1} : \catn{Mod}(X\textsubscript{\'etale}, \Lambda)  \longrightarrow \catn{Mod}(U\textsubscript{\'etale}, \Lambda)$ has a left adjoint which is denoted $j_! : \catn{Mod}(U\textsubscript{\'etale}, \Lambda) \longrightarrow \catn{Mod}(X\textsubscript{\'etale}, \Lambda)$ and called \defn{extension by zero}\index{extension by zero}.
+\end{enumerate}
+\end{definition}
+
 \subsection{Coherent sheaves.}
 \subsection{The line bundles \texorpdfstring{$\mathscr O(n)$}{O(n)} on projective space.}
 \subsection{Vector bundles on the projective line.}
