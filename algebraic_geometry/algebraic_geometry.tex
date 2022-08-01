@@ -5535,7 +5535,7 @@ one gets a long exact sequence
 \]
 where $\mathscr{R}^nf_*$ is the $n$th \index{right derived functor}right derived functor of $f_*$. 
 
-Suppose that $f:U\longrightarrow X$ is an open immersion. Then, in addition to the functor $f_*$, one has the functor $f_!$ which is \defn{extension by zero}\index{extension by zero}.\footnote{``$j$ sub shriek.''} One can think of a sheaf $\mathscr{F}$ on $U$ as an \'etale map from the \'etale space of $\mathscr{F}$ $\Et(\mathscr{F})$ to $U$.\footnote{Recall that an \'etale map is just a local homeomorphism.} Since $f$ is an open immersion, the map got by the composition of this \'etale map and $f$ gives the \'etale map $\Et(f_!(\mathscr{G}))\longrightarrow X$.\footnote{The stalk of $f_!(\mathscr{F})$ is $0$ if the point is not in the image of $U$ and is the stalk of $\mathscr{F}$ if the point is in the image of $U$.}
+Suppose that $f:U\longrightarrow X$ is an open immersion. Then, in addition to the functor $f_*$, one has the functor $f_!$ which is \defn{extension by zero}\index{extension by zero}.\footnote{``$f$ sub shriek.''} One can think of a sheaf $\mathscr{F}$ on $U$ as an \'etale map from the \'etale space of $\mathscr{F}$ $\Et(\mathscr{F})$ to $U$.\footnote{Recall that an \'etale map is just a local homeomorphism.} Since $f$ is an open immersion, the map got by the composition of this \'etale map and $f$ gives the \'etale map $\Et(f_!(\mathscr{G}))\longrightarrow X$.\footnote{The stalk of $f_!(\mathscr{F})$ is $0$ if the point is not in the image of $U$ and is the stalk of $\mathscr{F}$ if the point is in the image of $U$.}
 
 Suppose that $\mathscr{Q}$ is a quasicoherent sheaf. Then, $f_!(\mathscr{Q})$ is not quasicoherent in general.
 
@@ -5555,6 +5555,137 @@ Let $j:U\longrightarrow X$ be an \'etale morphism of schemes.
 \end{definition}
 
 \subsection{Coherent sheaves.}
+\begin{definition}[Stacks project Definition 17.12.1]\label{cohs}\text{}
+Let $(X,\mathscr{O}_X)$ be a ringed space. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_X$-modules. The sheaf $\mathscr{F}$ is a \defn{coherent $\mathscr{O}_X$-module}\index{coherent sheaf} if and only if $\mathscr{F}$ is of finite type and, for every open $U\subset X$ and every finite collection $\{s_1,\hdots,s_n\}\subset \mathscr{F}(U)$, the kernel of the associated map
+\begin{align*}
+	\bigoplus_{i=1,\hdots, n}\mathscr{O}_U \longrightarrow \mathscr{F}\big |_U
+\end{align*}
+is of finite type.
+
+One denotes the category of coherent $\mathscr{O}_X$-modules $\catn{Coh}(\mathscr{O}_X)$.
+\end{definition}
+
+The relationship between coherent sheaves and sheaves is similar to the relationship between finite-dimensional vector spaces and vector spaces.
+
+First, let us consider the case of modules over a ring. It might make sense for a coherent module to be a finitely generated module. However, while this works well for Noetherian rings, it doesn't work in general: The kernel of a homomorphism of finitely generated modules does not need to be finitely generated.
+
+\begin{example}[ ]\label{}\text{}
+Consider $R = K[z_1,z_2,\hdots]$. The kernel of $R\longrightarrow R$ given by $z_i \longmapsto 0$ is $(z_1,z_2,\hdots)$ which is not finitely generated.
+\end{example}
+
+This raises the problem of finding an abelian category of modules.\footnote{That is, one with kernels, cokernels, etc.}
+
+\begin{definition}[ ]\label{}\text{}
+Let $A$ be a ring. Let $M$ be an $A$-module. Then, $M$ is \defn{coherent}\index{coherent module} if and only if $M$ is finitely generated and the kernel of any homomorphism $R^n\longrightarrow M$ is finitely generated.
+\end{definition}
+
+\begin{remark}
+	If $M$ is coherent, then $M$ is finitely presented.
+\end{remark}
+
+The category of coherent modules forms an abelian category.
+
+ \begin{definition}[ ]\label{}\text{}
+Let $A$ be a ring. Then, $A$ is \defn{coherent}\index{coherent ring} if and only if $A$ is a coherent $A$-module.
+\end{definition}
+
+Over coherent rings, coherent modules are the same as finitely presented modules. Over Noetherian rings, coherent modules are the same as finitely generated modules.
+
+\begin{example}[ ]\label{}\text{}
+The ring $K[z_1,z_2,\hdots]$ is coherent but not Noetherian. 
+
+The ring $K[z_1,z_2,\hdots]/(z_1z_2,z_1z_3,\hdots)$ is not coherent, for the kernel of $R\longrightarrow R$ given by $1\longmapsto z_1$ is $(z_2,\hdots)$ which is not finitely generated. This ring is a finitely presented module that is not coherent.
+\end{example}
+
+\index{coherent sheaf}Coherent sheaves were introduced for complex analytic manifolds. Serre and Cartan studied complex analytic manifolds with sheaves and Serre introduced sheaves to algebraic geometry after this work with analytic manifolds. 
+
+The sheaf of holomorphic functions on a complex analytic manifold $X$ gives rings that are not Noetherian. The ring of holomorphic functions on $\mathbf{C}^1$ is not Noetherian: The ideal of all functions that vanish on all but finitely many integers is not finitely generated. Kiyoshi Oka showed that the sheaf of holomorphic functions on a complex analytic manifold is coherent.\footnote{See ``Sur les fonctions analytiques de plusieurs variables. VII. Sur quelques notions arithmétiques,'' 1950. This result is called the ``Oka coherence theorem.''}\index{Oka coherence theorem}
+
+That rings of holomorphic functions are not Noetherian is subtle: One has the inclusions
+\begin{align*}
+	\mathbf{C}[z] \subset \textrm{holomorphic functions} \subset \mathbf{C}[\![z]\!].
+\end{align*}
+The rings $\mathbf{C}[z]$ and $\mathbf{C}[\![z]\!]$ are Noetherian.
+
+Recall \cref{cohs}. The ringed space of interest here was $(\mathbf{C}^n, \mathscr{O}_{\mathbf{C}^n})$ where $\mathscr{O}_{\mathbf{C}^n}$ is the sheaf of holomorphic functions that assigns an open set $U$ to the ring of holomorphic functions on $U$.
+
+Suppose that $\mathscr{O}_X$ is coherent. The sheaf $\mathscr{F}$ is coherent if and only if there exists an exact sequence
+\[
+\begin{tikzcd}
+	\displaystyle\bigoplus_{i=1,\hdots,m} \mathscr{O}_X\ar[r]& \displaystyle\bigoplus_{i=1,\hdots,n} \mathscr{O}_X \ar[r]&\mathscr{F}\ar[r]&0.
+\end{tikzcd}
+\]
+This is the sheaf-theoretic analogue of a module being of finite presentation.
+
+Now, $\mathscr{F}$ is \index{quasicoherent sheaf}quasicoherent if and only if there exists an exact sequence
+\[
+\begin{tikzcd}
+	\displaystyle \bigoplus_{}\mathscr{O}_X \ar[r] & \displaystyle \bigoplus_{}\mathscr{O}_X\ar[r]&\mathscr{F}\ar[r]&0.
+\end{tikzcd}
+\]
+Notice that this notion of quasicoherence is vacuous for modules.
+
+For affine schemes, this is equivalent to the condition that $\mathscr{F}$ is of the form $\mathscr{M}$ locally.\footnote{Before, I would write ``of the form $\overline{\mathscr{M}}$.''}
+
+\begin{remark}
+	Hartshorne defines ``coherent'' as ``quasicoherent and of finite type.'' This works for Noetherian schemes, but it goes wrong for schemes in general.
+\end{remark}
+
+The category $\catn{Coh}(\mathscr{O}_X)$ is abelian.
+
+\begin{example}[ ]\label{}\text{}
+The sheaves $\mathscr{O}(n)$ over $\mathbf{P}^1_K$ are coherent.
+\end{example}
+
+\begin{problem}
+	Given a coherent (resp. quasicoherent) sheaf $\mathscr{F}$, are $f^*(\mathscr{F})$ and $f_*(\mathscr{F})$ coherent (resp. quasicoherent)?
+\end{problem}
+
+Suppose that $f:X\longrightarrow Y$ is a morphism of schemes. Then, $f^*$ preserves quasicoherence and $f^*$ preserves coherence if $X$ is coherent.
+
+If $\mathscr{Q}$ is quasicoherent, $f_*(\mathscr{Q})$ is usually quasicoherent.
+\begin{example}[$f_*$ does not preserve quasicoherence]\label{}\text{}
+Suppose that $X$ is a union of infinitely many copies of $\Spec R$ where $R$ is a discrete valuation ring. Suppose that $Y=\Spec R$. Let $\mathscr{F}$ be a copy of $\mathscr{R}$, the sheaf associated to $R$, over each $\Spec R$. Now, $\mathscr{F}$ has two nonempty open sets; one sees that
+\begin{align*}
+	f_*(\mathscr{F})(\Spec K) &= \prod_{ \mathbf{N}} K;\\
+	f_*(\mathscr{F}) (\Spec R) &= \prod_{ \mathbf{N}} R.
+\end{align*}
+However,
+\begin{align*}
+	\left( \prod_{\mathbf{N}} R \right) \tensor_R K \ne \prod_{\mathbf{N}}K.
+\end{align*}
+One can consider the element $(1/2,1/4,1/8,\hdots)$ where $R=\mathbf{Z}_{(2)}$ and $K=\mathbf{Q}$, which is in the second thing but not the first thing. The first thing has bounded denominators and the second thing does not need to have bounded denominators.
+\end{example}
+
+\begin{theorem}[ ]\label{}\index{}\text{}
+Suppose that $f:X\longrightarrow Y$ is a quasicompact and quasiseparated morphism of schemes. Then, $f_*$ preserves quasicoherence.
+\end{theorem}
+
+\begin{proof}
+Stacks project Lemma 26.24.1.
+\end{proof}
+
+Now, while
+\begin{align*}
+	f_*(\mathscr{F}\oplus \mathscr{G}) = f_*(\mathscr{F}) \oplus  f_*(\mathscr{G}),
+\end{align*}
+unfortunately,
+\begin{align*}
+	f_* \left( \bigoplus_{i}\mathscr{F}_i \right)\ne \bigoplus_{i}f_*(\mathscr{F}_i). 
+\end{align*}
+Quasicompactness and quasiseparatedness allow one to exchange $f_*$ and direct sums.
+
+One asks:
+\begin{quote}
+	\small Does $f_*$ preserve coherence?
+\end{quote}
+Dr. Borcherds answers:
+\begin{quote}
+	\small The answer is a big, resounding ``no''!
+\end{quote}
+Consider the morphism $f:\mathbf{A}^1\longrightarrow \Spec K$. Take $\mathscr{F} $ to be the sheaf of coordinate functions $\widetilde{K[z]}$. This sheaf is coherent, but $f_*(\mathscr{F})$ is $\widetilde{K[z]}$ over $\Spec K$, which corresponds to the $K$-module $K[z]$ which is not finitely generated as a $K$-module. 
+
+Suppose that $f:X\longrightarrow Y$ is a proper morphism of schemes where $Y$ is Noetherian. Then, $f_*$ preserves coherence.\footnote{Stacks project Proposition 30.19.1 is a generalization of this to right derived functors.} We have seen this: Consider $f:\mathbf{P}^1_K\longrightarrow \Spec K$. Then, $f_*(\mathscr{O}(n))$ is a finite-dimensional vector space over $K$, which corresponds to a coherent sheaf over $\Spec K$.
 \subsection{The line bundles \texorpdfstring{$\mathscr O(n)$}{O(n)} on projective space.}
 \subsection{Vector bundles on the projective line.}
 \subsection{Coherent sheaves on projective space.}
