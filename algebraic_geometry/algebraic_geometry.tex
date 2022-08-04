@@ -309,7 +309,7 @@ What are the closed sets of the affine line $\mathbf{A}^1_K$? The line is the se
 What about $\mathbf{A}^2_K$? We have sets of points $\{(\alpha,\beta)\}$ that is the set of common roots of $\{x-\alpha, y-\beta\}$. We also have any algebraic curve $f(x,y) =0$. Therefore, a typical closed set in $\mathbf{A}^2_K$ consists of finitely many algebraic curves and points. One notices that the Zariski topology on $\mathbf{A}^2_K$ is not the product topology on $\mathbf{A}^1_K\times \mathbf{A}^1_K$. The latter is a finite number of vertical lines, horizontal lines, and points.
 
 \begin{example}[Determinantal variety]\label{}
-One can think of $\mathbf{A}^{mn}(K)$ as the vector space of linear maps $K^m \longrightarrow K^n$ or of $m\times n$ matrices of dimension $mn$. An algebraic set is given by all linear maps of rank at most $r$ for some $r$. This gives the \index{determinantal variety}determinantal variety. This set is given by the vanishing of all $(r+1)\times  (r+1)$ minors of an $m\times n $ matrix. For example, the subset of surjective maps $K^m\longrightarrow K^n$ is open in the Zariski topology.
+One can think of $\mathbf{A}^{mn}_K$ as the vector space of linear maps $K^m \longrightarrow K^n$ or of $m\times n$ matrices of dimension $mn$. An algebraic set is given by all linear maps of rank at most $r$ for some $r$. This gives the \index{determinantal variety}determinantal variety. This set is given by the vanishing of all $(r+1)\times  (r+1)$ minors of an $m\times n $ matrix. For example, the subset of surjective maps $K^m\longrightarrow K^n$ is open in the Zariski topology.
 \end{example}
 
 \subsection{Noetherian spaces.}
@@ -4841,7 +4841,7 @@ and calls it the \defn{projective bundle}\index{projective bundle} associated to
 \end{definition}
 
 
-\begin{definition}[EGA II D\'efinition 5.5.2]\label{}\text{}
+\begin{definition}[EGA II D\'efinition 5.5.2]\label{ega552}\text{}
 One says that a $Y$-scheme $X$ is \defn{projective}\index{projective scheme} on $Y$ if and only if the following equivalent conditions hold:
 \begin{enumerate}
 	\item $X$ is isomorphic as a $Y$-scheme to a closed subscheme of a projective bundle $\mathbf{P}(\mathscr{M})$ where $\mathscr{M}$ is a quasicoherent $\mathscr{O}_Y$-module of finite type.
@@ -5686,7 +5686,123 @@ Dr. Borcherds answers:
 Consider the morphism $f:\mathbf{A}^1\longrightarrow \Spec K$. Take $\mathscr{F} $ to be the sheaf of coordinate functions $\widetilde{K[z]}$. This sheaf is coherent, but $f_*(\mathscr{F})$ is $\widetilde{K[z]}$ over $\Spec K$, which corresponds to the $K$-module $K[z]$ which is not finitely generated as a $K$-module. 
 
 Suppose that $f:X\longrightarrow Y$ is a proper morphism of schemes where $Y$ is Noetherian. Then, $f_*$ preserves coherence.\footnote{Stacks project Proposition 30.19.1 is a generalization of this to right derived functors.} We have seen this: Consider $f:\mathbf{P}^1_K\longrightarrow \Spec K$. Then, $f_*(\mathscr{O}(n))$ is a finite-dimensional vector space over $K$, which corresponds to a coherent sheaf over $\Spec K$.
+
 \subsection{The line bundles \texorpdfstring{$\mathscr O(n)$}{O(n)} on projective space.}
+
+One wants to construct examples of coherent sheaves on projective space. We concocted examples on $\mathbf{P}^1$ by gluing; however, gluing isn't very elegant, and things can get quite convoluted. 
+
+For affine schemes $\Spec A$, quasicoherent sheaves correspond to $A$-modules.\footnote{Via an equivalence of categories.}
+For projective schemes of the form $\Proj A$ where $A$ is a graded ring, quasicoherent modules subtly correspond to graded $A$-modules.\footnote{See \cref{ega552}.} Let us explore this correspondence.
+
+First, recall that the points of $\Proj A$ consist of the graded prime ideals of $A$ that do not contain
+\begin{align*}
+	\bigoplus_{i>0}A_i,
+\end{align*}
+the basis of open sets is given by $\{U(f):f\in A\}$ where $U(f)$ consists of the prime ideals that do not contain $f$,\footnote{One thinks of this as ``the points where $f$ is nonzero.''} and the ring of regular functions is given by
+\begin{align*}
+	\mathscr{O}(U(f)) := A[f^{-1}]^0.
+\end{align*}
+\begin{example}[ ]\label{}\text{}
+Let $A = K[z_1,\hdots,z_n]$. The closed points of $\Proj A$ correspond to points $(z_0:\cdots:z_n)\sim (\lambda z_0:\cdots:\lambda z_n)$ for $\lambda\ne 0$. The open sets $U(z_i)$ are given by affine space
+\begin{align*}
+	\left\{ (z_0,\hdots,z_n) : \textrm{$1$ in the $i$th position} \right\}. 
+\end{align*}
+Finally,
+\begin{align*}
+	\mathscr{O}(D(z_i)) &= K[z_0,\hdots, z_n][z_i^{-1}]^0\\
+			    &= K \left[ \frac{z_0}{z_i},\hdots, \frac{z_n}{z_i} \right]^0. 
+\end{align*}
+\end{example}
+
+Suppose $M$ is a graded $A$-module. One wants to define a sheaf $\mathscr{M}$ on $\Proj A$. For the graded $A$-module $A$, one defines this sheaf by
+\begin{align*}
+	\mathscr{O}(U(f)) := A[f^{-1}]^0.
+\end{align*}
+Thus, one defines
+\begin{align*}
+	\mathscr{M}(U(f)) := M[f^{-1}]^0.
+\end{align*}
+Showing that this defines a sheaf is similar to showing that $\Proj A$ is a scheme.
+\begin{quote}
+	\small [This definition] is somehow part of Grothendieck's philosophy that the points of a scheme are . . . not terribly important. What is really important is the open sets together with which open sets cover the others. It is actually the basis for something called a Grothendieck topology because Grothendieck realized you could define sheaves by ignoring the points completely and just working with the open sets. You just need to define something for each open set and check some property holds whenever open sets cover other open sets. Grothendieck . . . axiomatized this and came up with the idea of a Grothendieck topology, which turns out to be really useful for defining things like \'etale cohomology where you replace open sets with something a little bit more complicated than open sets and you can still define sheaves on those.\index{Grothendieck topology}
+\end{quote}
+
+\begin{example}[ ]\label{}\text{}
+Let $A = K[z_0,\hdots,z_r]$. Then, $\Proj A = \mathbf{P}^r_K$. A variety $V\subset \mathbf{P}^r_K$ corresponds to a graded ideal $I$. Take $M:=A/I$. Then, $\mathscr{M}$ is sort of a sheaf with support on $V$.
+
+Note that the sheaf $\mathscr{I}$ corresponding to $I$ tends to be uninteresting. For example, if $V$ is the zero locus of $f$, then $I=fA\isomto A$.
+\end{example}
+
+One can shift the grading on graded modules. If 
+\begin{align*}
+	M = \bigoplus_{i\ge 0}M_i,
+\end{align*}
+then
+\begin{align*}
+	M(n) = \bigoplus_{i\ge 0}M (n)_i :=  \bigoplus_{i\ge 0} M_{n+i}.
+\end{align*}
+Now, let us determine $\widetilde{A(n)}$.\footnote{That is, the sheaf given by $A(n)$.} First,
+\begin{align*}
+	\widetilde{A(0) } = \tilde A = \mathscr{O}_{\mathbf{P}^r_K}.
+\end{align*}
+Now, $\widetilde {A(n)} (U(z_i))$ is given by the degree-$0$ elements of $K[z_0,\hdots,z_r][z_i^{-1}]$ grading-shifted by $n$. Now, this shifting seems to make no difference, since $z_i$ is an isomorphism from the degree-$m$ piece of $K[z_0,\hdots,z_r][z_i^{-1}]$ to the degree-$(m+1) $ piece. Therefore, $\widetilde{A(n)}$ is isomorphic to $\widetilde{A(0)}$ over every $U(z_i)$.
+
+Thus, $\widetilde{A(n)}$ is locally isomorphic to $\tilde A$. That is, $\widetilde{A(n)}$ is an \index{invertible sheaf}invertible sheaf.\footnote{Or a line bundle.} One distinguishes $\widetilde{A(n)}$ from $\tilde A$ by computing global sections. Take a section over $U(f_i)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_i^{-1}]$ and glue it over a section of $U(f_j)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_j^{-1}]$ for all $j$. These sections must be the same over $K[z_0,\hdots,z_r][z_i^{-1},z_j^{-1}]$, so the degree-$n$ element must be a polynomial. Thus, one sees that $\Gamma(\widetilde{A(n)})$ is given by the homogeneous degree-$n$ polynomials in $K[z_0,\hdots,z_r]$ for $r\ge 1$. Now,
+\begin{center}
+\begin{tabular}{lccccc}
+     & $\mathbf{P}^0$&$\mathbf{P}^1$&$\mathbf{P}^2$& $\mathbf{P}^3$&$\mathbf{P}^4$\\
+    \midrule
+	$\dim \Gamma (\widetilde{A(-2)})$ &$1$&$0$&$0$&$0$&$0$\\
+	$\dim \Gamma (\widetilde{A(-1)})$&$1$&$0$&$0$&$0$&$0$\\
+	$\dim \Gamma (\widetilde{A(0)})$&$1$&$1$&$1$&$1$&$1$\\
+	$\dim \Gamma (\widetilde{A(1)})$&$1$&$2$&$3$&$4$&$5$\\
+	$\dim \Gamma (\widetilde{A(2)})$&$1$&$3$&$6$&$10$&$15$
+\end{tabular}
+\end{center}
+One sees Pascal's triangle here. Thus, one sees that many of these are distinct. Now, note the following properties:
+\begin{align*}
+	\tilde M\tensor \tilde N &\isomto \widetilde{M\tensor N};\\
+	\widetilde{M(n)} &\isomto \tilde M (n);\\
+	\widetilde {M (n) } &\isomto \tilde M \tensor \widetilde{A(n)}.
+\end{align*}
+Therefore,
+\begin{align*}
+	\widetilde{A (m)} \tensor \widetilde {A (n)} \isomto \widetilde{A (m+n)}.
+\end{align*}
+Thus, all of the line bundles $\widetilde{A(n)}$ are distinct.
+
+\begin{problem}
+	Can one recover $M$ from $\tilde M$?\footnote{That is, from $\mathscr{M}$?}
+\end{problem}
+
+While one can do this for affine schemes,\footnote{Where one considers the global sections.} one cannot do this in general: If $M=K$, then $\tilde M = 0$. However, this is the only problem arises, and it shows up when $M$ is finite dimensional as a $K$--vector space.
+
+Suppose that $\mathscr{F}$ is a sheaf over $\mathbf{P}^r_K$. Then, define 
+\begin{align*}
+	\mathscr{F}(n):=  \mathscr{F}\tensor \underbrace{\mathscr{O}(n).}_{\widetilde{A(n)}}
+\end{align*}
+Now, $\Gamma(\mathscr{F})$ does not give very much information, so one considers the ``graded global sections'' of $\mathscr{F}$:
+\begin{align*}
+	\Gamma_*(\mathscr{F}) := \bigoplus_{n\in\mathbf{Z}} \Gamma(\mathscr{F}(n)).
+\end{align*}
+For example,
+\begin{align*}
+	\Gamma_*(\mathscr{O}) = K[z_0,\hdots, z_r]
+\end{align*}
+since
+\begin{align*}
+	\Gamma_0(\mathscr{O}) &= K;\\
+	\Gamma_1(\mathscr{O}) &= \langle z_0,\hdots, z_r\rangle;\\
+	\Gamma_2(\mathscr{O}) &= \langle z_iz_j\rangle;
+\end{align*}
+etc.
+Further, $\Gamma_*(\mathscr{F})$ is a graded module over $\Gamma_*(\mathscr{O}) = K[z_0,\hdots, z_r]$.\footnote{Since there is a map $\mathscr{O}(m)\tensor  \mathscr{F}(n) \longrightarrow \mathscr{F}(m+n)$.}
+
+One has a correspondence between finitely generated graded modules over $K[z_0,\hdots,z_r]$ and coherent sheaves on $\mathbf{P}^r_K$. The functor $\Gamma_*$ takes coherent sheaves to graded modules and $M\longmapsto \tilde M$ takes graded modules to coherent sheaves. These are not inverses of each other: We saw that $\Gamma_*(\tilde M)$ does not need to be isomorphic to $M$. However, 
+\begin{align*}
+	\widetilde{\Gamma_*(\mathscr{F}) } \isomto \mathscr{F}.
+\end{align*}
+
 \subsection{Vector bundles on the projective line.}
 \subsection{Coherent sheaves on projective space.}
 \subsection{Divisors on a Riemann surface.}
