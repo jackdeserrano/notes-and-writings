@@ -19,18 +19,19 @@
 \fi
 \maketitle
 These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} Dr. Borcherds refers to Hartshorne's \ul{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} I tend to use Grothendieck's EGA. Unless stated otherwise, rings are assumed to be commutative.
+\hypersetup{linkcolor = black}
 \tableofcontents
 \ifams
 	\vspace*{\fill}
 \fi
-
-
+\hypersetup{linkcolor = Red}
+\iffalse
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.8]{images/borcherds}
 \caption{Richard Borcherds.}
 \end{center}
-\end{figure}
+\end{figure}\fi
 \text{}
 \newpage
 
@@ -142,11 +143,11 @@ This is Fermat's last theorem, so finding rational points on curves can be hard.
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
-There are two glass spheres: one of radius $1$ and the other of radius $2$. Find two other glass spheres of rational radius that sum to the same value.\footnote{From \ul{The Canterbury Puzzles}, Henry Dudeney, problem 20.} That is, one wants to solve
+There are two glass spheres: One of radius $1$ and the other of radius $2$. Find two other glass spheres of rational radius that sum to the same value.\footnote{From problem 20 of \ul{The Canterbury Puzzles}.} That is, one wants to solve
 \begin{align*}
 	x^3 + y^3 = 1^3 + 2^3 = 9
 \end{align*}
-in $\Q -\{1,2\}$. Dudeney realized that
+in $\Q$. The puzzle maker Henry Dudeney realized that
 \begin{align*}
 	x &= \frac{415280564497}{348671682660};\\
 	y&= \frac{676702467503}{348671682660};
@@ -732,7 +733,7 @@ One can also look at the minimum number of elements in a system of parameters. T
 A \index{system of parameters}\defn{system of parameters} for a local Noetherian ring of Krull dimension $d$ with maximal ideal $\mathfrak{m}$ is a set of elements $z_1,\hdots, z_d$ that satisfies these equivalent conditions:
 \begin{enumerate}
 	\item $\mathfrak{m}$ is a minimal prime over $(z_1,\hdots, z_d)$;
-	\item The radical $\sqrt{(z_1,\hdots, z_d)}=\mathfrak{m} $;
+	\item The radical $\mathfrak{r}{(z_1,\hdots, z_d)}=\mathfrak{m} $;
 	\item Some power of $\mathfrak{m}$ is contained in $(z_1,\hdots, z_d)$;
 	\item $(z_1,\hdots, z_d)$ is $\mathfrak{m}$-primary.
 \end{enumerate}
@@ -805,7 +806,7 @@ One has duality for projective space, too. Any two distinct points meet in a lin
 One can think about this as duality of vector spaces. Points in projective space $\mathbf{P}^n$ correspond to lines in $\mathbf{A}^{n+1}$, which one thinks about as $K^{n+1}$. Lines in $\mathbf{P}^n$ correspond to planes in $K^{n+1}$. Consider the dual space $(K^{n+1})^*$ which is (non-canonically) isomorphic to $K^{n+1}$. The dual of a line in $\mathbf{A}^{n+1}$ is a hyperplane consisting of all linear transformations vanishing on it. So, lines correspond to hyperplanes, planes corresponds to things of codimension $2$, etc., so hyperplanes correspond to lines, which are points of projective space.
 
 \subsection{Affine varieties. Projective varieties.}
-Recall that affine space $\mathbf{A}^n$ corresponds to its coordinate ring $K[z_1,\hdots, z_n]$. An affine algebraic subset corresponds to a radical ideal $I=\sqrt{I} $.
+Recall that affine space $\mathbf{A}^n$ corresponds to its coordinate ring $K[z_1,\hdots, z_n]$. An affine algebraic subset corresponds to a radical ideal $I=\mathfrak{r}({I}) $.
 
 Projective space sort of corresponds to $K[z_0,\hdots, z_n]$ where one considers this a graded ring that is graded in the obvious way. Projective algebraic sets correspond to graded radical ideals in which every element is a sum of homogeneous elements in the ideal.\footnote{This correspondence ignores the ideal $(z_0,\hdots, z_n)$.} 
 
@@ -1451,14 +1452,14 @@ One can restrict a map $\mathbf{P}^1\longrightarrow \mathbf{P}^1$ to a map $\mat
 \end{align*}
 However, the matrix $\alpha I$ corresponds to the identity, so one needs to mod out by things of this form. This gives $\PGL_2(K)$, which is of dimension $3$. This is parallel to what one sees in complex analysis.
 \end{example}
-
+\iffalse
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.7]{images/serre}
 \caption{Jean-Pierre Serre.}
 \end{center}
 \end{figure}
-
+\fi
 \begin{remark}
 	A paper by Jean-Pierre Serre says, roughly, that analytic maps over projective manifolds tend to be algebraic whereas analytic things over affine manifolds are much more common than algebraic things.\footnote{``G\'eom\'etrie alg\'ebrique et g\'eom\'etrie analytique'' (GAGA), 1956.}
 \end{remark}
@@ -1825,12 +1826,14 @@ Write the elements in the image $((z_1,z_2),  (s:t))$. The projective line is co
 \end{warn}
 
 \subsection{The Atiyah flop.}
+\iffalse
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.15]{images/atiyah}
 \caption{Michael Atiyah.}
 \end{center}
 \end{figure}
+\fi
 Consider the hypersurface $xy=zt$ in $\mathbf{A}^4$. This looks like a cone over $\mathbf{P}^1\times \mathbf{P}^1$: One looks at the corresponding variety of points $(x:y:z:t)\in \mathbf{P}^3$ satisfying $xy=zt$. This is a quadric in projective space, which gives a product $\mathbf{P}^1\times \mathbf{P}^1$.\footnote{Cf. \cref{seg}.} In particular, this variety has a singularity at $(0,0,0,0)$ that is the singular point of the cone.
 
 One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x,y,z,t),  (X:Y:Z:T)) \in \mathbf{A}^4\times \mathbf{P}^3$ satisfying $xy=zt$, $xY=Xy$, $xZ = Xz$, etc. Take the image of the nonzero points in $\mathbf{A}^4$ under
@@ -1929,14 +1932,14 @@ Consider $p= (0,\hdots, 0)$ for simplicity and $V\subseteq \mathbf{A}^n$ with co
 \begin{remark}
 	This definition works for any local ring $R$: The quotient $\mathfrak{m}/\mathfrak{m}^2$ is a vector space over $R/\mathfrak{m}$. The space $\mathfrak{m}/\mathfrak{m}^2$ is called the \defn{Zariski cotangent space}\index{Zariski cotangent space} of the local ring. The \defn{Zariski tangent space}\index{Zariski tangent space}, naturally, is the dual of this.
 \end{remark}
-
+\iffalse
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.8]{images/zariski}
 \caption{Oscar Zariski.}
 \end{center}
 \end{figure}
-
+\fi
 
 Let $R$ be a local ring. The quotient $\mathfrak{m}/\mathfrak{m}^2$ is an $R/\mathfrak{m}$--vector space whose dual $(\mathfrak{m}/\mathfrak{m}^2) ^*$ can be seen as ring homomorphisms 
 \begin{align*}
@@ -2816,14 +2819,14 @@ We shall employ the same technique. Notice that we haven't defined the multiplic
 
 
 \section{Schemes}
-
+\iffalse
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.8]{images/groth}
 \caption{Alexander Grothendieck.}
 \end{center}
 \end{figure}
-
+\fi
 \subsection{Introduction. Presheaves. Sheaves.}
 Affine varieties over a field $K$ correspond to commutative rings $R$ that satisfy the following properties:
 \begin{enumerate}
@@ -4025,20 +4028,20 @@ Let $K$ be a field and let $z_1,\hdots, z_n,\hdots$ be infinitely many algebraic
 \end{remark}
 
 \begin{definition}[ ]\label{}\text{}
-A ring $A$ is a \defn{chain ring}\index{chain ring} if, for any two prime $A$-ideals $\mathfrak{p}\ne \mathfrak{q}$, the lengths of any two unsaturated chains 
+A ring $A$ is a \defn{chain ring}\index{chain ring} if and only if, for any two prime $A$-ideals $\mathfrak{p}\ne \mathfrak{q}$, the lengths of any two unsaturated chains 
 \begin{align*}
 	\mathfrak{p} = \mathfrak{p}_0 \subset \mathfrak{p}_1\subset\cdots\subset \mathfrak{p}_n=\mathfrak{q}
 \end{align*}
-are the same. A ring $A$ is a \defn{universal chain ring}\index{universal chain ring} if any polynomial ring $A[T_1,\hdots, T_k]$ is a chain ring.
+are the same. A ring $A$ is a \defn{universal chain ring}\index{universal chain ring} if and only if any polynomial ring $A[T_1,\hdots, T_k]$ is a chain ring.
 \end{definition}
 
 
 \begin{definition}[ ]\label{}\text{}
-A ring $A$ is \defn{excellent}\index{excellent ring} if the following axioms hold.
+A ring $A$ is \defn{excellent}\index{excellent ring} if and only if the following axioms hold:
 \begin{enumerate}
 	\item The ring $A$ is a universal chain ring;
 	\item The formal fibres of $A$ are geometrically regular: For any prime ideal $\mathfrak{p}$ of $A$ and any homomorphism from $A$ to a field $K$, the ring $\widehat{A_{\mathfrak{p}}}\tensor_A K$ is regular;
-	\item For any integral finite $A$-algebra $B$, there exists a nonzero $\beta\in B$ such that $B[\beta^{-1}]$ is regular.\footnote{See \url{https://encyclopediaofmath.org/wiki/Excellent_ring}.}
+	\item For any integral finite $A$-algebra $B$, there exists a nonzero $\beta\in B$ such that $B[\beta^{-1}]$ is regular.
 \end{enumerate}
 \end{definition}
 
@@ -4185,7 +4188,7 @@ Suppose that $Y$ is a Noetherian scheme, $\varphi: X\longrightarrow Y$ is a quas
 
 A typical example of a closed immersion is $\Spec R/I\longrightarrow \Spec R$. In general, a closed immersion $X\longrightarrow Y$ looks like the following locally: $Y$ is covered affine $Y_i$s and the morphisms $X\cap Y_i\longrightarrow Y_i$ look like $\Spec R_i/I_i \longrightarrow \Spec R_i$.
 
-\begin{definition}[Stacks project Definition 17.4.1]\label{}\text{}
+\begin{definition}[Stacks project Definition 17.4.1]\label{gensec}\text{}
 Let $(X,\mathscr{O}_X)$ be a ringed space. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_X$-modules. One says that $\mathscr{F}$ is \defn{generated by global sections}\index{generation by global sections} if and only if there exists a set $I$ and a global section $s_i\in \Gamma(X,\mathscr{F})$ for all $i\in I$ such that the map
 \begin{align*}
 	\bigoplus_{i\in I}\mathscr{O}_X \longrightarrow \mathscr{F},
@@ -4231,7 +4234,7 @@ The morphism $\Spec K[z]/(z) \longrightarrow \Spec K[z]$ is a closed immersion w
 
 In general, there is more than one closed subscheme that corresponds to a closed subset; however, there is a ``minimal'' closed subscheme associated to a closed subset. Here's the construction.
 
-Consider $\Spec R$ and a closed subset given by $I$. One sees that $\Spec R/ \sqrt{I} $ is a subscheme of $\Spec R$. Further, $\Spec R/\sqrt{I} $ is a reduced scheme. These fit together to give a reduced subscheme assocaited to any closed subset.
+Consider $\Spec R$ and a closed subset given by $I$. One sees that $\Spec R/ \mathfrak{r}({I}) $ is a subscheme of $\Spec R$. Further, $\Spec R/\mathfrak{r}({I}) $ is a reduced scheme. These fit together to give a reduced subscheme associated to any closed subset.
 
 \begin{warn}
 	An intersection of $2$ reduced closed subschemes does not need to be reduced.
@@ -5922,6 +5925,102 @@ Representations of the circle are completely reducible, so all exact sequences s
 is non-split.
 
 \subsection{Coherent sheaves on projective space.}
+First, see Serre's FAC. 
+
+Recall that one has a correspondence between graded $K[z_0,\hdots,z_r]$-modules $M$ and quasicoherent sheaves $\mathscr{F}$ over $\mathbf{P}^r$ via $M\longmapsto \tilde M$ and $\mathscr{F}\longmapsto \Gamma_*(\mathscr{F})$. This correspondence is not an equivalence of categories: $\Gamma_*(\tilde M)$ does not need to be isomorphic to $M$. There is a natural map $M\longrightarrow \Gamma_*(\tilde M)$ that is neither injective nor surjective in general. 
+
+Roughly, coherent sheaves are finitely generated graded modules that are not of finite length. We shall show that, if $\mathscr{F}$ is coherent,
+\begin{align*}
+	\widetilde{\Gamma_*(\mathscr{F}) } \isomto \mathscr{F}.
+\end{align*}
+
+Recall that $\mathbf{P}^r$ is covered by the basis of open sets $\{U(z_0),\hdots, U (z_r)\}$. It suffices to show that there is an isomorphism on each $U(z_i)$ and that these isomorphisms are compatible. One has a map
+\[
+\begin{tikzcd}
+	\Gamma(\mathscr{F}(n)) \ar[r,"z_i"] &\Gamma(\mathscr{F}(n+1))
+\end{tikzcd}
+\]
+given by multiplication by $z_i$. Thus, one can consider the direct limit
+\begin{align*}
+	\varinjlim_{n} \Gamma(\mathscr{F}(n)).
+\end{align*}
+Note that this direct limit is not a union: These maps are not injective. Now, one has maps
+\[
+\begin{tikzcd}
+	\cdots \ar[r] & \Gamma(\mathscr{F}(n)) \ar[r]\ar[dr] & \Gamma(\mathscr{F}(n+1)) \ar[r]\ar[d] &\Gamma(\mathscr{F}(n+2)) \ar[r]\ar[dl] &\cdots\\
+			      &&\mathscr{F}(U(z_i))
+\end{tikzcd}
+\]
+that induce a map
+\[
+\begin{tikzcd}
+	\varphi:\displaystyle\varinjlim_{n} \Gamma(\mathscr{F}(n))\ar[r]&\mathscr{F}(U(z_i))
+\end{tikzcd}
+\]
+that one wants to show is an isomorphism. Note that the maps $\Gamma(\mathscr{F}(n))\longrightarrow \mathscr{F}(U(z_i))$ are neither injective nor surjective in general.
+
+Pick $s\in \Gamma(\mathscr{F}(n))$ with image $0$ in $\mathscr{F}(U(z_i))$. Then, $s$ has image $0$ in $U(z_i)\cap U (z_j)$, so $z_i^\alpha s=0$ in $U(z_j)$ for some $\alpha$. There are finitely many $U(z_j)$s, so $s$ is killed by some power of $z_i$ on $\mathbf{P}^r$. Therefore, $s=0$ in the direct limit. That's injectivity.
+
+Pick $s\in \mathscr{F}(U(z_i))$. One can extend $s$ to $U(z_j)$ if one multiplies by some power of $z_i$. One can extend to $U(z_k)$ also. However, one needs to check that these extensions are the same on $U(z_j)\cap U (z_k)$. They are equal on $U(z_i)\cap U (z_j)\cap U (z_k)$, so they are if one multiplies by a suitably large power of $z_i$.\footnote{We are assuming that this intersection is affine, which holds for projective space. This argument still holds for finite unions of affines.} This roughly gives the surjectivity of $\varphi$, and $\mathscr{F}$ is isomorphic to $\widetilde{\Gamma_*(\mathscr{F})}$. 
+
+Thus, quasicoherent sheaves come from graded modules. Therefore, every coherent sheaf is a quotient of a finite sum of line bundles $\mathscr{O}(n)$.\footnote{Every finitely generated module is a quotient of shifts of free modules. One also needs to consider some facts about coherent sheaves that have not heretofore come up, particularly that global sections of coherent sheaves are finite dimensional.} Further, given a coherent sheaf $\mathscr{F}$, one gets a resolution by locally free sheaves
+\[
+\begin{tikzcd}
+	0\ar[r]&\mathscr{F}_r\ar[r]&\cdots\ar[r]&\mathscr{F}_1\ar[r]&\mathscr{F}_0\ar[r]&\mathscr{F}\ar[r]&0
+\end{tikzcd}
+\]
+where each $\mathscr{F}_j$ is
+\begin{align*}
+	\bigoplus_{i}\mathscr{O}(n_{j_i}).
+\end{align*}
+Moreover, if $\mathscr{F}$ is a coherent sheaf, $\mathscr{F}(n)$ is generated by finitely many global sections for $n$ sufficiently large.\footnote{See \cref{gensec}.} The proof of this fact is similar to the proof of the isomorphism at the beginning of this section.
+
+Additionally, coherent sheaves are built out of sheaves that correspond to $(K[z_0,\hdots,z_r]/\mathfrak{s})(n)$ where $\mathfrak{s}$ is the ideal of an irreducible subset of projective space. This corresponds to the fact that a finitely generated graded module has a filtration
+\begin{align*}
+	0 = M_0\subset\cdots\subset M_k=M
+\end{align*}
+where $M_i/M_{i-1}$ is of the form $(K[z_0,\hdots,z_r]/\mathfrak{s}_i)(n)$. Note that, to classify coherent sheaves, one needs to understand every irreducible subset of projective space---that is, every variety---which is very difficult. Also, the way in which these modules fit together is complicated.
+
+\begin{proposition}[ ]\label{}\text{}
+Suppose that $\mathscr{F}$ is coherent on $\mathbf{P}^n_K$. Then, $\Gamma(\mathscr{F})$ is finite dimensional as a vector space over $K$.
+\end{proposition}
+
+We shall proceed using cohomology. Dr. Borcherds notes:
+\begin{quote}
+	\small We haven't actually covered cohomology yet. But, you know, I don't care. I'm going to give the proof using cohomology anyway. I mean, let's face it: If I had covered cohomology, it wouldn't make any difference because nobody ever bothers looking at the earlier videos. I mean, I've been checking YouTube and everybody watching this channel always starts by watching the latest video I've made as if it's time-sensitive information. So whatever. We're going to give a cohomological proof even though we haven't covered cohomology.
+\end{quote}
+Let $\mathscr{F}$ be a coherent sheaf. One can write $\mathscr{F}$ as a quotient as a finite sum of line bundles:
+\[
+\begin{tikzcd}
+	&&& \displaystyle\bigoplus_{}\mathscr{O}(n)\\
+	0\ar[r]& \mathscr{A}\ar[r]&\mathscr{B}\ar[r]\ar[ur] &\mathscr{F}\ar[r]&0
+\end{tikzcd}
+\]
+where the kernel $\mathscr{A}$ is coherent.\footnote{This uses the fact that $\mathscr{F}$ is generated by a finite number of global sections.} One cannot say that since $\Gamma(\mathscr{O}(n))$ is finite dimensional, $\Gamma(\mathscr{B})$ is finite dimensional, and since $\mathscr{B}$ maps surjectively to $\mathscr{F}$, $\Gamma(\mathscr{B})$ maps surjectively to $\Gamma(\mathscr{F})$, so $\Gamma(\mathscr{F})$ is finite dimensional: $\Gamma$ does not preserve exactness! However, one can extend this to a long exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r]&\Gamma(\mathscr{A}) \ar[r]&\Gamma(\mathscr{B}) \ar[r]&\Gamma(\mathscr{F}) \ar[r] & \HH^1(\mathscr{A}) \ar[r]&\cdots.
+\end{tikzcd}
+\]
+Now, one needs to show that $\HH^1(\mathscr{A})$ is finite dimensional. First, note that one has an exact sequence
+\[
+\begin{tikzcd}
+	\HH^1(\mathscr{A}) \ar[r]&\HH^1(\mathscr{B}) \ar[r]&\HH^1(\mathscr{F}) \ar[r]&\HH^2(\mathscr{A}) \ar[r]&\cdots.
+\end{tikzcd}
+\]
+Now, $\HH^1(\mathscr{B})$ is finite dimensional, since one can compute the cohomology of a sum of line bundles and this gives finite dimensionality. Thus, one needs to show that $\HH^2(\mathscr{A})$ is finite dimensional. This continues. However, one notes that $\HH^{i}(\mathscr{F}) =0$ if $i>\dim_K \mathbf{P}^n_K$, so $\HH^{n+1}(\mathscr{F}) =0$. Therefore, 
+\begin{align*}
+	\dim_K \Gamma(\mathscr{F}) <\infty
+\end{align*}
+by descending induction on cohomology groups.
+
+We used the following facts about cohomology groups:
+\begin{enumerate}
+	\item Given an exact sequence of sheaves, one gets a long exact sequence of cohomology groups.
+	\item $\HH^i(\mathscr{A})= 0$ if $i$ exceeds the dimension of the variety over which one is working.
+	\item $\dim \HH^i(\mathscr{O}(n)) <\infty$. This is demonstrated via explicit computation, which was first done by Serre.
+\end{enumerate}
+
 \subsection{Divisors on a Riemann surface.}
 \subsection{Weil divisors. Cartier divisors.}
 \subsection{A comparison of Weil divisors and Cartier divisors.}
@@ -5950,7 +6049,7 @@ is non-split.
 
 
 \section{The Weil conjectures}
-
+\iffalse
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.8]{images/weil}
@@ -5964,7 +6063,7 @@ is non-split.
 		\caption{Pierre Deligne.}
 	\end{center}
 \end{figure}
-
+\fi
 \subsection{Introduction.}
 \subsection{The functional equation.}
 \subsection{The Riemann hypothesis.}

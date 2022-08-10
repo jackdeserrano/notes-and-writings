@@ -109,12 +109,14 @@
 \RequirePackage {soul}
 \RequirePackage {scalerel}
 \RequirePackage {pgfplots}
+\RequirePackage {latexsym}
 
 
 \ifscr
 	\RequirePackage [headsepline] {scrlayer-scrpage}
 \else
 	\RequirePackage [T1] {fontenc}	% Screws up fonts
+								% Also cannot use T2A
 	\RequirePackage {regexpatch}	% Clashes with `scrlayer-scrpage`
 	\RequirePackage {fancyhdr}
         \setlength {\headheight} {15 pt} % Response to ``Package fancyhdr Warning: \headheight is too small''
@@ -151,8 +153,8 @@
     \fi
 \fi
 
-\RequirePackage [colorlinks, linkcolor = black, citecolor = black, urlcolor = Blue] {hyperref}
-\RequirePackage [capitalize, nameinlink] {cleveref}
+\RequirePackage [colorlinks, linkcolor = Red, citecolor = black, urlcolor = Blue] {hyperref}
+\RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
 
@@ -412,31 +414,40 @@
 	%	exercise [Exercise]
 	%	warning [Warning]
 	%	problem [Problem]
+	
+	\newtheoremstyle{thm}   % name
+                    {1 em}              % space above
+                    {1 em}              % space below
+                    {}                  % body font
+                    {0 em}              % indent amount
+                    {\bfseries} % theorem head font
+                    {.---}                 % punctuation after theorem head
+                    {0 em}              % space after theorem head
+                    {}                  % theorem head spec
 
-	\newcommand {\defn} [1] {\slshape #1} 	% keywords emphasized with slanted font
-
+	\newcommand {\defn} [1] {{\bfseries #1}} 	% keywords emphasized with slanted font
+	
 	\numberwithin{equation}{section}
 	\theoremstyle{thm}
-	\newtheorem{thm}{Theorem}
+	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{thm}{section}
-	\newtheorem{lemma}[thm]{Lemma}
-	\newtheorem{corollary}[thm]{Corollary}
-	\newtheorem{proposition}[thm]{Proposition}
+	\newtheorem{lemma}{Lemma}
+	\newtheorem{corollary}{Corollary}
+	\newtheorem{proposition}{Proposition}
 	\newtheorem{conj}[thm]{Conjecture}
-
-	\theoremstyle{definition}
-	\newtheorem{remark}[thm]{Remark}
+	\newtheorem{remark}{Remark}
 	\newtheorem{definition}[thm]{Definition}
-	\newtheorem{defprop}[thm]{Definition/Proposition}
-	\newtheorem{question}[thm]{Question}
-	\newtheorem{example}[thm]{Example}
-	\newtheorem{examples}[thm]{Examples}
-	\newtheorem{convention}[thm]{Convention}
+	\newtheorem{defprop}{Definition/Proposition}
+	\newtheorem{question}{Question}
+	\newtheorem{example}{Example}
+	\newtheorem{examples}{Examples}
+	\newtheorem{convention}{Convention}
 	\newtheorem{exercise}{Exercise}
 	\newtheorem{warning}{Warning}
 	\newtheorem{problem}{Problem}
 	
-	\setenumerate [1] {label = (\roman*), leftmargin = *}	% enumerates numbered by Roman numerals, no indent
+	\setenumerate [1] {label = (\arabic*)}
+	\setenumerate [2] {label = (\roman*)}
 	
 
 \else		% not [none], not [thing]
@@ -648,7 +659,7 @@
 		
 		\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
 		
-		\newcommand{\defn}[1]{{\iffalse\slshape \fi\bfseries{\color{darkcandyapplered} #1}}}			% keywords emphasized by bolded red
+		\newcommand{\defn}[1]{{\iffalse\slshape \fi{\bfseries {#1}}}}		% keywords emphasized by bold
 		\newcommand{\frdefn}[1]{{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French keywords emphasized by bolded red with appropriate italicization
         
             \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
