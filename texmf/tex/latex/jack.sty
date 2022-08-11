@@ -110,6 +110,7 @@
 \RequirePackage {scalerel}
 \RequirePackage {pgfplots}
 \RequirePackage {latexsym}
+\RequirePackage [makeroom] {cancel}
 
 
 \ifscr
@@ -153,7 +154,7 @@
     \fi
 \fi
 
-\RequirePackage [colorlinks, linkcolor = Red, citecolor = black, urlcolor = Blue] {hyperref}
+\RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
 \RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
@@ -292,7 +293,7 @@
 \DeclareMathOperator {\Burn} {Burn}	                        % Burnside ring
 \DeclareMathOperator {\CC} {C}                              %
 \DeclareMathOperator {\chr} {char}                          % characteristic of an integral domain
-\DeclareMathOperator {\Cl} {Cl}                             % ideal class group
+\DeclareMathOperator {\Cl} {Cl}                             % ideal class group, Weil divisor class group
 \DeclareMathOperator {\cl} {cl}                             % closure of a set
 \DeclareMathOperator {\cis} {cis}                           %
 \DeclareMathOperator {\codim} {codim}                       % codimension
@@ -302,13 +303,14 @@
 \DeclareMathOperator {\coim} {coim}                       % coimage
 \DeclareMathOperator {\Col} {Col}                           % column space
 \DeclareMathOperator {\curl} {curl}                         % curl
-\DeclareMathOperator {\diag} {diag}                         %
-\DeclareMathOperator {\Disc} {Disc}                         % discriminant
-\DeclareMathOperator {\dom} {dom}                           % domain
 \let \D \relax
 \DeclareMathOperator {\D} {D}                               % dihedral group
 \let \d \relax
 \DeclareMathOperator {\d} {d}                               %
+\DeclareMathOperator {\diag} {diag}                         %
+\DeclareMathOperator {\Disc} {Disc}                         % discriminant
+\DeclareMathOperator {\Div} {Div}                         % divisors
+\DeclareMathOperator {\dom} {dom}                           % domain
 \DeclareMathOperator {\E} {E}                               % icosahedral Du Val singularity
 \DeclareMathOperator {\End} {End}                           % endomorphisms
 \DeclareMathOperator {\error} {error}
@@ -353,6 +355,9 @@
 \DeclareMathOperator {\Pic} {Pic}                           % Picard group
 \DeclareMathOperator {\pred} {pred}                         %
 \DeclareMathOperator {\pr} {pr}                             %
+\DeclareMathOperator {\Princ} {Pr}                         % principal divisors
+\let\Pr\relax
+\DeclareMathOperator {\Pr} {Pr}                         % principal divisors
 \DeclareMathOperator {\Proj} {Proj}                         % Proj of a scheme
 \DeclareMathOperator {\proj} {proj}                         % projection
 \DeclareMathOperator {\PGL} {PGL}                           % projective general linear group

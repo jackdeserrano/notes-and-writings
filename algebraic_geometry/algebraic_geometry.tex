@@ -6022,6 +6022,127 @@ We used the following facts about cohomology groups:
 \end{enumerate}
 
 \subsection{Divisors on a Riemann surface.}
+Let $X$ be a Riemann surface. A \defn{divisor}\index{divisor on a Riemann surface} on $X$ is a formal sum $\sum_{i}^{} n_ip_i$ for $p_i\in X$. One gets a divisor from a meromorphic function $f$ on $X$ via
+\begin{align*}
+	f\longmapsto \sum_{p\in X}^{} \ord_p(f)p =: (f)
+\end{align*}
+where $\ord_p(f)$ is the order of the root of $f$ at $p$. Usually, one supposes that $X$ is compact so that this sum is finite. Such a divisor is called a \defn{principal divisor}\index{principal divisor}. The set of divisors on a compact Riemann surface $X$ is a group denoted $\Div(X)$; the set of principal divisors is a subgroup of $\Div(X)$ denoted $\Princ(X)$. If $d=\sum_{i}^{} n_ip_i$ is a divisor on a compact Riemann surface, then its degree is
+\begin{align*}
+	\deg d := \sum_{i}^{} n_i.
+\end{align*}
+
+There is a map from the meromorphic functions on a compact Riemann surface $X$ to the divisors on $X$. One considers the \defn{divisor class group}\index{divisor class group}:
+\begin{align*}
+	\Cl(X) := \Div (X)/\Princ (X).
+\end{align*}
+
+\begin{example}[ ]\label{}\text{}
+Take $X= \mathbf{C}$, and consider rational functions on $\mathbf{C}$.\footnote{So that there are finitely many poles/roots.} There is a map from the rational functions on $\mathbf{C}$ to divisors. The divisor class group is $0$, for any divisor $\sum_{i=1}^{n} n_ip_i$ corresponds to the rational function
+\begin{align*}
+	\prod_{i=1}^n (z-p_i)^{n_i}.
+\end{align*}
+This relates to the fact that $\mathbf{C}[z]$ is a unique factorization domain.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Take $X=\mathbf{C}\cup\{\infty\}$. Meromorphic functions on $X$ are rational functions. However, 
+\begin{align*}
+	\Cl(X)\isomto  \mathbf{Z}
+\end{align*}
+since the degree of a principal divisor is $0$.\footnote{Any rational function has the same number of poles and roots.}
+
+Suppose that $X$ is a compact Riemann surface. Then, the degree of a principal divisor is $0$, so one has a surjective homomorphism
+\[
+\begin{tikzcd}
+	\Cl(X)\ar[r,"\deg"]& \mathbf{Z}.
+\end{tikzcd}
+\]
+\end{example}
+
+Recall why the degree of a principal divisor on a compact Riemann surface is $0$: One can determine the number of poles and roots of a meromorphic function on any region $S$ via
+\begin{align*}
+	(\#\textrm{roots} - \#\textrm{poles})\big|_{S}=\frac{1}{2\pi i}\int_{\partial S}^{} \frac{f'(z)}{f(z)}  \, dz = \frac{1}{2\pi i}\int_{\partial S}^{} d\log f(z).  
+\end{align*}
+This integral is $0$ by compactness.
+
+\begin{example}[ ]\label{}\text{}
+Consider an elliptic curve $X=\mathbf{C}/\Lambda$. Meromorphic functions on $X$ are doubly periodic functions on $\mathbf{C}$. Suppose that $\Lambda = \langle \omega_1,\omega_2\rangle$. Suppose further that $f(z+\omega_1)=f(z)$ and $f(z+\omega_2)=f(z)$. Then,
+\begin{align*}
+	\frac{1}{2\pi i} \int_{\partial(\textrm{fundamental domain})}^{}  \frac{f'(z)}{f(z)} \, dz =0
+\end{align*}
+by the double-periodicity of $f$, noting that the integrals corresponding to opposite sides of the fundamental domain cancel.
+\end{example}
+
+Suppose that $f$ is an elliptic function. Consider
+\begin{align*}
+	\frac{1}{2\pi i}\int_{\partial(\textrm{fundamental domain})}^{} z\frac{f' (z)}{f(z)}  \, dz. 
+\end{align*}
+The integrand has residue $n_ip_i$ at $z=p_i$ if $f$ has a root of order $n_i$ at $p_i$. So, this integral is 
+\begin{align*}
+	\sum_{i}^{} n_ip_i.
+\end{align*}
+Notice that $g(z)=z$ is not doubly periodic, so this integral might not be $0$. One sees that it is
+\begin{align*}
+	\underbrace{\frac{1}{2\pi i}\int_{0}^{\omega_2} \omega_1  \, d\log f (z)}_{m\omega_1} + \underbrace{\frac{1}{2\pi i} \int_{0}^{\omega_1} \omega_2  \, d\log f(z)}_{n\omega_2}  
+\end{align*}
+for $m,n\in \mathbf{Z}$ since $\log f(z)$ increases by a multiple of $2\pi i$.
+Thus,
+\begin{align*}
+	\frac{1}{2\pi i} \int_{\partial(\textrm{fundamental domain})}^{} z \frac{f'(z)}{f(z)} \, dz=m\omega_1+n\omega_2 \in \Lambda. 
+\end{align*}
+Therefore, if $\sum_{i}^{} n_ip_i$ is the divisor of a doubly periodic function $f$,\footnote{Where this summation is formal and the $p_i$s comprise a basis for a free abelian group.} then $\sum_{i}^{} n_ip_i=0$ in $\mathbf{C}/\Lambda$.\footnote{Where this summation is taken in $\mathbf{C}$ and $p_i\in \mathbf{C}$.}
+Thus, one has a surjective map
+\[
+\begin{tikzcd}
+	\displaystyle\frac{\textrm{degree-$0$ divisors}}{\textrm{principal divisors}} \ar[r]&\mathbf{C}/\Lambda.
+\end{tikzcd}
+\]
+This is an isomorphism.
+
+For injectivity, one wants to find an elliptic function corresponding to a degree-$0$ divisor. Recall the definition of the Weierstrass $\wp$ function: Given a lattice $\Lambda$,
+ \begin{align*}
+	\wp(z) := \xcancel{\sum_{\lambda\in\Lambda}^{} \frac{1}{(z+\lambda) ^2}}=\frac{1}{z^2}+\sum_{\lambda\in \Lambda-\{0\}}^{} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right) .
+\end{align*}
+This is doubly periodic. Now, recall that the Weierstrass $\zeta$ function satisfies
+\begin{align*}
+	\frac{d}{dz}\zeta(z) = -\wp (z).
+\end{align*}
+The $\zeta$ function is not doubly periodic, though
+\begin{align*}
+	\zeta(\omega_1+z) &= \zeta(z)+\eta_1;\\
+	\zeta(\omega_2+z)&= \zeta(z)+\eta_2;
+\end{align*}
+for some ``constants of integration'' $\eta_1$ and $\eta_2$. Finally, recall that the Weierstrass $\sigma$ function satisfies
+\begin{align*}
+	\frac{d}{dz}\log\sigma(z) &= \zeta (z);\\
+	\sigma(0)&=0;
+\end{align*}
+and
+\begin{align*}
+	\sigma(z+\omega_1) = -e^{\eta_1(z+\omega_1/2)} \sigma(z).
+\end{align*}
+
+Suppose that $\sum_{i}^{} n_ip_i$ is a divisor. Consider
+\begin{align*}
+	f(z) = \prod_i \sigma (z-p_i) ^{n_i}.
+\end{align*}
+Notice that
+\begin{align*}
+	f(z+\omega_1) = f(z)\prod_i-e^{\eta_1(z-p_i+\omega_1/2)n_i}.
+\end{align*}
+This product is $1$ if $\sum_{i}^{} n_i=0$ and $\sum_{i}^{} n_ip_i=0$ in $\mathbf{C}$. Therefore, $f$ is an elliptic function with divisor $\sum_{i}^{} n_ip_i$.
+
+Hence, one gets an exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r] & \mathbf{C}/\Lambda\ar[r]&\displaystyle \frac{\textrm{divisors}}{\textrm{principal divisors}}\ar[r,"\deg"]&\mathbf{Z}\ar[r]&0.
+\end{tikzcd}
+\]
+\index{Jacobian of a curve}One calls $\mathbf{C}/\Lambda$ the Jacobian of the elliptic curve.\footnote{While $\mathbf{C}/\Lambda$ is the elliptic curve, replacing ``elliptic curve'' by something more general means that the thing in the place of $\mathbf{C}/\Lambda$ is neither the curve nor a group in general, and Adam named it ``Jacobian.'' Just kidding: Weil named it that, I think.}
+One wants to generalize this to higher-dimensional varieties. One does this via \index{Cartier divisor}Cartier divisors, which look like roots of functions, or Weil divisors, which look like codimension-$1$ irreducible subsets.
+
+Sometimes, the thing in the place of $\mathbf{C}/\Lambda$ is called the \index{Picard variety}Picard variety, and the thing in the place of $\mathbf{Z}$ is called the \index{N\'eron--Severi group}N\'eron--Severi group.
+
 \subsection{Weil divisors. Cartier divisors.}
 \subsection{A comparison of Weil divisors and Cartier divisors.}
 \subsection{A comparison of Cartier divisors and the Picard group.}

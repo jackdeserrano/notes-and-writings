@@ -313,7 +313,7 @@ So $\partial v/\partial x = f$.
 
 Suppose we are given $u$ on a rectangle and suppose $u$ is harmonic. Then we can find $w=u+iv$ with $w$ holomorphic. We need to solve $\partial v/\partial y =\partial u /\partial x = g$ and $\partial v/\partial y = -\partial u/\partial y = f$. We need $\partial g/\partial x = \partial f/\partial y$, and that follows because $u$ is harmonic.
 
-What about other regions $U$? Suppose $U = \C\setminus\{0\}$. Take $u=\log r$. The function $u$ is harmonic (it is more-or-less the fundamental solution of the Laplace equation) except at $x=y=0$. Further, $u = \Re (\log z)$, and we take $v = \Im(\log z) = \arg z$. However, $\log z$ is not defined on all of $U$ since $\arg z$ is not defined. (If we take a disk and ``extend'' it into a bigger region by taking disks that overlap in a circular formation around some point, we get a problem when the last disk overlaps the original one: Is $\arg z$ near $0$ or $2\pi$? This is the problem of being defined up to a constant.) If a region $U$ has ``holes,'' we cannot extend a harmonic function $u$ to a holomorphic function $w$. 
+What about other regions $U$? Suppose $U = \C-\{0\}$. Take $u=\log r$. The function $u$ is harmonic (it is more-or-less the fundamental solution of the Laplace equation) except at $x=y=0$. Further, $u = \Re (\log z)$, and we take $v = \Im(\log z) = \arg z$. However, $\log z$ is not defined on all of $U$ since $\arg z$ is not defined. (If we take a disk and ``extend'' it into a bigger region by taking disks that overlap in a circular formation around some point, we get a problem when the last disk overlaps the original one: Is $\arg z$ near $0$ or $2\pi$? This is the problem of being defined up to a constant.) If a region $U$ has ``holes,'' we cannot extend a harmonic function $u$ to a holomorphic function $w$. 
 
 If $U$ is simply connected, then any harmonic function $u$ is the real part of a holomorphic function $w$ where $\Im w$ is unique up to a constant.
 
@@ -829,7 +829,7 @@ Show that
 \begin{align*}
 	\sum_k 1/k^2 = \pi^2/6.
 \end{align*}
-We want to find a function whose residues correspond to $1/k^2$. The function $f(z) = 1/ (\tan z)$ has singularities at $\pi \Z$. The residues at each of these points is $1$ because for $z\approx 0$ then $\tan z \approx z$, so $1/(\tan z)\approx 1/z$, which has residue $1$. Now for $g(z) = 1/z^2 (\tan z)$, the residues at $\pi k$ is $1/(\pi k)^2$ for $k \in \Z\setminus \{0\}$. Now at $0$, the pole is of order $3$. We see that
+We want to find a function whose residues correspond to $1/k^2$. The function $f(z) = 1/ (\tan z)$ has singularities at $\pi \Z$. The residues at each of these points is $1$ because for $z\approx 0$ then $\tan z \approx z$, so $1/(\tan z)\approx 1/z$, which has residue $1$. Now for $g(z) = 1/z^2 (\tan z)$, the residues at $\pi k$ is $1/(\pi k)^2$ for $k \in \Z- \{0\}$. Now at $0$, the pole is of order $3$. We see that
 \begin{align*}
 	\sum_k \Res(g,a_k) = \Res(g,0) + \frac{2}{\pi^2} \left( \sum_k 1/k^2 \right).
 \end{align*}
@@ -1176,7 +1176,7 @@ Let's find a meromorphic function $\varphi$ such that $\varphi(z) = \varphi (m\o
 \end{align*}
 So, we have an elliptic function---right? Wrong! This function $\varphi$ is elliptic if the series is absolutely convergent. Let's figure out when that is the case.
 
-Suppose that $\psi(z)\le \textrm{constant}/z^\alpha$ for $\abs z$ large. We will estimate the sum in an annulus. Fix a natural number $r$. Then the number of points in the annulus $\{z : \abs{z} < r+1\} \setminus \{z : \abs{z} < r\}$ of the form $m\omega_1 + n\omega_2$ is at most a constant times $r$. So the sum is bounded by $\sum _{r\in \N} \textrm{constant}\, r/r^\alpha$, which converges for $\alpha>2$.
+Suppose that $\psi(z)\le \textrm{constant}/z^\alpha$ for $\abs z$ large. We will estimate the sum in an annulus. Fix a natural number $r$. Then the number of points in the annulus $\{z : \abs{z} < r+1\} - \{z : \abs{z} < r\}$ of the form $m\omega_1 + n\omega_2$ is at most a constant times $r$. So the sum is bounded by $\sum _{r\in \N} \textrm{constant}\, r/r^\alpha$, which converges for $\alpha>2$.
 
 Now if $\psi$ is a rational function of degree at most $-3$, then it is elliptic. For instance,
 \begin{align*}
@@ -1255,15 +1255,15 @@ so we can try to subtract this ``divergent part'':
 \end{align*}
 What about at $\lambda = 0$, though? Second patch:
 \begin{align*}
-	\frac{1}{z^2} + \sum_{\lambda\in\Lambda\setminus\{0\}}^{} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right) .
+	\frac{1}{z^2} + \sum_{\lambda\in\Lambda-\{0\}}^{} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right) .
 \end{align*}
 The summand is, approximately, of degree $-3$ in $\lambda$, so it converges absolutely. Let $\Lambda$ be a lattice. Then, we define
 \begin{align*}
-	 \wp (z) :=  \frac{1}{z^2} + \sum_{\lambda\in \Lambda\setminus\{0\}} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right). 
+	 \wp (z) :=  \frac{1}{z^2} + \sum_{\lambda\in \Lambda-\{0\}} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right). 
 \end{align*}
 But, now, this is not invariant under $z\longmapsto z+\lambda$---right? Well, it actually is:
 \begin{align*}
-	\wp'(z) = -2\sum_{\lambda\in\Lambda\setminus\{0\}}^{} \frac{1}{(z+\lambda) ^2}.
+	\wp'(z) = -2\sum_{\lambda\in\Lambda-\{0\}}^{} \frac{1}{(z+\lambda) ^2}.
 \end{align*}
 Term-by-term differentiation is valid: $\wp$ is locally uniformly convergent, local uniform convergence preserves integrals, and the derivative variation on the Cauchy integral formula shows that a derivative can be written as an integral. Therefore, 
 \begin{align*}
@@ -1277,7 +1277,7 @@ That is, $\wp$ is elliptic, and it has a pole of order $2$ at $z=0$.
 
 Abiding by this procedure for a pole of order $1$, we get
 \begin{align*}
-	\zeta(z) :=  \frac{1}{z} + \sum_{\lambda\in \Lambda\setminus\{0\}}^{} \left( \frac{1}{z-\lambda}+ \frac{1}{\lambda} + \frac{z}{\lambda^2} \right), 
+	\zeta(z) :=  \frac{1}{z} + \sum_{\lambda\in \Lambda-\{0\}}^{} \left( \frac{1}{z-\lambda}+ \frac{1}{\lambda} + \frac{z}{\lambda^2} \right), 
 \end{align*}
 which is Weierstrass's $\zeta$ function---not Riemann's. It is absolutely convergent and has a pole of order $1$. Now, let's continue to check if it's elliptic:
 \begin{align*}
