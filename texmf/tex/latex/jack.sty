@@ -157,6 +157,8 @@
 \RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
 \RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 
+\crefname{equation}{}{}
+
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
 
 \usetikzlibrary {arrows, trees, backgrounds}
@@ -291,6 +293,7 @@
 \DeclareMathOperator {\Ann} {Ann}                           % annihilator
 \DeclareMathOperator {\bd} {bd}                             % boundary of a set
 \DeclareMathOperator {\Burn} {Burn}	                        % Burnside ring
+\DeclareMathOperator {\CaCl} {CaCl}			% Cartier divisor class
 \DeclareMathOperator {\CC} {C}                              %
 \DeclareMathOperator {\chr} {char}                          % characteristic of an integral domain
 \DeclareMathOperator {\Cl} {Cl}                             % ideal class group, Weil divisor class group
@@ -340,6 +343,7 @@
 \DeclareMathOperator {\J} {J}                               % Jacobian
 \let\Ker\relax
 \DeclareMathOperator {\Ker} {Ker}                           % kernel
+\DeclareMathOperator {\Length} {Length}                           % kernel
 \DeclareMathOperator {\Mat} {Mat}                           % matrices
 \DeclareMathOperator {\mesh} {mesh}                         % mesh
 \DeclareMathOperator {\Mor} {Mor}                           % morphisms
@@ -437,10 +441,11 @@
 	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{thm}{section}
 	\newtheorem{lemma}{Lemma}
-	\newtheorem{corollary}{Corollary}
+	\newtheorem{corollary}[thm]{Corollary}
 	\newtheorem{proposition}{Proposition}
 	\newtheorem{conj}[thm]{Conjecture}
-	\newtheorem{remark}{Remark}
+	\newtheorem{claim}[thm]{Claim}
+	\newtheorem{remark}[thm]{Remark}
 	\newtheorem{definition}[thm]{Definition}
 	\newtheorem{defprop}{Definition/Proposition}
 	\newtheorem{question}{Question}
