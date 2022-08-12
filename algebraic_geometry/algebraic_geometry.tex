@@ -2629,7 +2629,7 @@ In the construction of the Hilbert polynomial, we used $\dim_K(M_n)$ because it 
 
 \subsection{The degree of a projective variety.}
 \index{degree of a projective variety}
-Suppose that $V\subseteq \PP^n$ is a projective variety. If $V$ is a hypersurface, it is given by $f(z_0,\hdots,z_n)=0$ for a polynomial $f$. One defines
+Suppose that $V\subseteq \mathbf{P}^n$ is a projective variety. If $V$ is a hypersurface, it is given by $f(z_0,\hdots,z_n)=0$ for a polynomial $f$. One defines
 \begin{align*}
 	\deg V := \deg f.
 \end{align*}
@@ -6026,14 +6026,14 @@ Let $X$ be a Riemann surface. A \defn{divisor}\index{divisor on a Riemann surfac
 \begin{align*}
 	f\longmapsto \sum_{p\in X}^{} \ord_p(f)p =: (f)
 \end{align*}
-where $\ord_p(f)$ is the order of the root of $f$ at $p$. Usually, one supposes that $X$ is compact so that this sum is finite. Such a divisor is called a \defn{principal divisor}\index{principal divisor}. The set of divisors on a compact Riemann surface $X$ is a group denoted $\Div(X)$; the set of principal divisors is a subgroup of $\Div(X)$ denoted $\Princ(X)$. If $d=\sum_{i}^{} n_ip_i$ is a divisor on a compact Riemann surface, then its degree is
+where $\ord_p(f)$ is the order of the root of $f$ at $p$. Usually, one supposes that $X$ is compact so that this sum is finite. Such a divisor is called a \defn{principal divisor}\index{principal divisor}. The set of divisors on a compact Riemann surface $X$ is a group denoted $\Div(X)$; the set of principal divisors is a subgroup of $\Div(X)$ denoted $\Pr(X)$. If $d=\sum_{i}^{} n_ip_i$ is a divisor on a compact Riemann surface, then its degree is
 \begin{align*}
 	\deg d := \sum_{i}^{} n_i.
 \end{align*}
 
 There is a map from the meromorphic functions on a compact Riemann surface $X$ to the divisors on $X$. One considers the \defn{divisor class group}\index{divisor class group}:
 \begin{align*}
-	\Cl(X) := \Div (X)/\Princ (X).
+	\Cl(X) := \Div (X)/\Pr (X).
 \end{align*}
 
 \begin{example}[ ]\label{}\text{}
@@ -6274,6 +6274,96 @@ In this case, this map is surjective, since Weil divisors are linear combination
 In many cases, Cartier divisors are the same as Weil divisors.
 
 \subsection{A comparison of Weil divisors and Cartier divisors.}
+Recall that there is a group homomorphism from Cartier divisors to Weil divisors. One wants to know when this homomorphism is an isomorphism, injective, or surjective.
+
+\begin{example}[Non-injectivity]\label{noninjdiv_1}\text{}
+Consider $X = \Spec K [\![t^2,t^3]\!]$. The ring $K[\![t^2,t^3]\!]$ is a local ring, and its spectrum consists of two points: The closed point corresponds to the ideal $(t^2,t^3)$ and the open point corresponds to the ideal $(0)$, which looks like a cusp. The Cartier divisors are given by the units of the function field $L= K[\![t]\!][t^{-1}]$ modulo the units of $R = K [\![t^2,t^3]\!]$. The units of $L$ are of the form
+\begin{align*}
+	\alpha t^n(1+\alpha_1t+\alpha_2t^2+\cdots)
+\end{align*}
+and the units of $R$ look like 
+\begin{align*}
+	\alpha(1+\alpha_2t^2 + \cdots)
+\end{align*}
+where $\alpha$ is nonzero. Therefore, the group of Cartier divisors is isomorphic to $\mathbf{Z}\times K$. The group of Weil divisors is isomorphic to $\mathbf{Z}$. Thus, the homomorphism from Cartier divisors to Weil divisors has kernel isomorphic to $K$. 
+
+Note that $1+\alpha t$ has no ``roots'' or ``poles'' but is not a unit of $R$.
+\end{example}
+
+\begin{definition}[EGA 0 4.1.4]\label{}\text{}
+A sheaf of rings $\mathscr{A}$ on a topological space $X$ is \defn{normal}\index{normal sheaf at a point} at $x\in X$ if and only if the stalk $\mathscr{A}_x$ is an integrally closed domain. One says that $\mathscr{A}$ is \defn{normal}\index{normal sheaf} if and only if $\mathscr{A}$ is normal at every point of $X$. A ringed space $(X,\mathscr{A})$ is \defn{normal}\index{normal ringed space} if and only if $\mathscr{A}$ is normal.
+\end{definition}
+
+Recall that an integrally closed domain is an integral domain whose field of fractions contains its integral closure. 
+
+Suppose that $X$ is Noetherian and integral. Now, $X$ has a function field $K$. If $X$ is normal, then the homomorphism from the group of Cartier divisors to the group of Weil divisors is injective. 
+
+One recalls that, if $A$ is a normal ring,
+\begin{align*}
+	A = \bigcap_{\codim\mathfrak{p} =1} A_{\mathfrak{p}}.
+\end{align*}
+Look at any open subscheme $Y=\Spec A\subset X$. Suppose that a Cartier divisor is represented locally by $g/h$ on $Y$. If its image is $0$ in the group of Weil divisors, then $g/h,h/g\in R_{\mathfrak{p}}$ for all prime ideals $\mathfrak{p}$. Therefore, $g/h$ is a unit of $A$ and is trivial as a Cartier divisor, so the kernel of this homomorphism is trivial.
+
+\begin{definition}[ ]\label{}\text{}
+The \defn{Cartier divisor class group}\index{Cartier divisor class group} $\CaCl(X)$ is the quotient of the group of Cartier divisors by the subgroup of principal Cartier divisors.
+\end{definition}
+
+There is a group homomorphism from the Cartier divisor class group to the Weil divisor class group. While the homomorphism of groups in \cref{noninjdiv_1} is not injective, the homomorphism of class groups is. This doesn't have to hold.
+
+\begin{example}[ ]\label{}\text{}
+Consider $X=\Spec K[t^2,t^3]$. One sees that the group of Weil divisors is trivial. However, consider the Cartier divisor
+\begin{align*}
+	d=
+	\begin{cases}
+		1+\alpha t &\textrm{on the open set in which $t\ne \alpha^{-1}$}\\
+			1 &\textrm{on the open set in which $t\ne 0$.}
+	\end{cases}
+\end{align*}
+This Cartier divisor is not in the image of the function field $L= K(t)$. It isn't principal, so the group $\CaCl(X)$ has a subgroup isomorphic to the additive group $K$.\footnote{The Cartier divisor class group and the additive group $K$ are isomorphic.}
+\end{example}
+
+The homomorphism from the group of Cartier divisors to the group of Weil divisors does not need to be surjective. The homomorphism of divisor class groups does not need to be surjective, either.
+
+\begin{example}[ ]\label{}\text{}
+Consider the cone $X$ given by $xy=z^2$ and the Weil divisor $y=z=0$:
+% https://tex.stackexchange.com/questions/401024/drawing-overlapping-3d-cones
+\tdplotsetmaincoords{80}{45}
+\tdplotsetrotatedcoords{-90}{180}{-90}
+\tikzset{surface/.style = {draw = black, fill = black!20!white, fill opacity = 0.75}}
+\[
+\begin{tikzpicture}[tdplot_main_coords]
+  \coordinate (O) at (0,0,0);
+
+  \coneback[surface]{-3}{2}{-10}
+  %\draw (0,0,-5) -- (O);
+  %\draw[-] (-6,0,0) -- (6,0,0);
+  %\draw[-] (0,-6,0) -- (0,6,0);
+  \coneback[surface]{3}{2}{10}
+  \draw (-1,-3,-4) --  (1,3,4) node[right] {$y=z=0$}; %[thick] 
+  \conefront[surface]{-3}{2}{-10}
+  \conefront[surface]{3}{2}{10}
+  %\draw[thick] (-1,-3,-4) --  (1,3,4) node[right] {$y=0$};
+\end{tikzpicture}
+\]
+We shall see that this is not the image of a Cartier divisor, even near $(0,0,0)$. The local ring of $X$ at $(0,0,0)$ has a maximal ideal $\mathfrak{m} = (x,y,z)$. One sees that $\mathfrak{m}/\mathfrak{m}^2$ has dimension $3$. The ideal $\mathfrak{a}=(y,z)$ has image $\langle y,z\rangle$ in $\mathfrak{m}/\mathfrak{m}^2$, which is $2$-dimensional, so it is not a principal ideal. Therefore, the Weil divisor is not the image of a Cartier divisor.
+
+Now, $\mathfrak{a}^2 = (y^2,z^2,yz) =  (y^2,xy,yz)= (y)$, so $\mathfrak{a}^2$ is the image of a Cartier divisor.
+\end{example}
+
+Suppose that $X$ is a Noetherian, integral scheme. If all local rings of $X$ are unique factorization domains, then the homomorphism from the group of Cartier divisors to the group of Weil divisors is an isomorphism.
+
+Since unique factorization domains are normal, the injectivity of this homomorphism already holds. Pick a codimension-$1$ irreducible subset $D$. The local ring $\mathscr{O}_{z_1}$ at any $z_1\in X$ is a unique factorization domain, so $D$ is of the form $(f_{1})$ near $z_1$. There exists an open neighbourhood $U_{1}$ of $z_1$ such that $D$ is given by $f_{1}$ on $U_1$. Cover $X$ by a finite number of such open sets. Then, the collection $(f_j, U_j)_{j=1,\hdots,n}$ defines a Cartier divisor.\footnote{The quotient $f_i/f_j$ on $U_i\cap U_j$ has no roots/poles and all of the local rings are normal, so $f_i/f_j$ is a unit.}
+
+In summary, the homomorphism from the group of Cartier divisors to the group of Weil divisors is injective if $X$ is normal and an isomorphism if $X$ is also a local unique factorization domain.\footnote{Where $X$ is Noetherian and integral.}
+
+A local Noetherian ring $(R,\mathfrak{m})$ is {regular}\index{regular local ring} if and only if $\mathfrak{m}$ can be generated by $\dim R$ elements. A Noetherian ring $R$ is {regular}\index{regular Noetherian ring} if and only if every local ring $R_{\mathfrak{p}}$ is regular.
+
+\begin{definition}[Stacks project Definition 28.9.1]\label{}\text{}
+Let $X$ be a scheme. One says that $X$ is \defn{regular}\index{regular scheme} or \defn{nonsingular}\index{nonsingular scheme} if and only if, for every $z\in X$, there exists an affine open neighbourhood $U\subset X$ of $z$ such that the ring $\mathscr{O}_X(U)$ is Noetherian and regular.
+\end{definition}
+
+If $X$ is regular, then $X$ is a local unique factorization domain.
+
 \subsection{A comparison of Cartier divisors and the Picard group.}
 \subsection{Divisors and Dedekind domains.}
 \subsection{Examples of \texorpdfstring{$\Pic X$}{Pic X}.}
