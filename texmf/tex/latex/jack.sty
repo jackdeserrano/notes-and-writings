@@ -128,8 +128,6 @@
     %\RequirePackage [frenchmath] {newtxmath}
     \RequirePackage [math-style = french] {unicode-math}
     \let\mathscr\relax   
-\else
-    \RequirePackage {frenchmath}
 \fi
 
 \RequirePackage {eucal}
@@ -155,8 +153,8 @@
 \fi
 
 \RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
-\RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 
+\RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 \crefname{equation}{}{}
 
 \setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
@@ -226,180 +224,195 @@
 \RequirePackage [hmarginratio=1:1] {geometry} 
 
 \newcommand {\0} {\underline{0}}                                                % zero vector
-\let\A\relax
+\let \A \relax
 \newcommand {\A} {\mathbf{A}}                                                   % affine space, adeles
 \newcommand {\abs} [1] {\left \lvert #1 \right \rvert}                          % absolute value
 \let\ang\relax
-\newcommand {\ang} [1] {\left \langle #1 \right \rangle}                        %
+\newcommand {\ang} [1] {\left \langle #1 \right \rangle}
 \newcommand {\cat} [1] {\mathscr #1}                                            % category variable
 \newcommand {\catn} [1] {\textsf{#1}}                                           % category
 
-\def\firstletter#1#2@{#1}
-\def\reststring#1#2@{#2}
+\def \firstletter #1#2@{#1}
+\def \reststring #1#2@{#2}
 \newcommand {\catnold} [1] {\mathcal{\firstletter#1@}\mathrm{\reststring#1@}}   % category (old)
 
 \newcommand {\ceiling} [1] {\left \lceil #1 \right \rceil}                      % ceiling
 \newcommand {\C} {\mathbf C}                                                    % complex numbers
 \newcommand {\dg} {^\circ}                                                      % degrees
-\let\epsilon\varepsilon                                                         %
-\newcommand {\eps} {\epsilon}                                                   %
+\newcommand {\du} [1] {\underline{\underline{#1}}}				% double underline
+\let \epsilon \varepsilon
+\newcommand {\eps} {\varepsilon}
 \newcommand {\floor} [1] {\left \lfloor #1 \right \rfloor}                      % floor
 \newcommand {\F} {\mathbf F}                                                    % finite field
+\newcommand {\Fs} {\mathscr F}                                                  % sheaf
 \newcommand {\Grp} {\catn {Grp}}                                                % Grp
 \let \H \relax
-\newcommand {\H} {\mathbf H}                                                    % upper-half plane, quaternions
+\newcommand {\H} {\mathbf H}                                                    % quaternions
+\newcommand {\hh} {\mathfrak h}                                                 % upper-half plane
+\let \righthookarrow \relax
+\let \lefthookarrow \relax
+\newcommand {\righthookarrow} {lhook\joinrel\longrightarrow}
+\newcommand {\lefthookarrow} {\longleftarrow\joinrel\rhook}
 \newcommand {\indx} [2] {\left [#1 : #2 \right]}                                % index of a subgroup
 \newcommand {\inv} {^{-1}}                                                      % inverse
-\newcommand {\isomto} {\cong}                                                   % isomorphic to
-\newcommand {\isom} {\overset {\sim} {\longrightarrow}}						    % isomorphism
+\newcommand {\isomto} {\cong}                                                   %
 \newcommand {\LL} {\mathcal L}                                                  % Hom but MATH 146
-\newcommand {\mailto} [1] {\href {mailto : #1} {\texttt{#1}}}                   %
-\newcommand {\mat} [1] {\begin{bmatrix} [1] #1\end{bmatrix}}                    % matrix (note array stretch)
+\newcommand {\lrd} {\mathfrak{d}}                                               % logarithmic root discriminant
+\newcommand {\mailto} [1] {\href {mailto : #1} {\texttt{#1}}}
+\newcommand {\mat} [1] {\begin{bmatrix} [1] #1\end{bmatrix}}
 \newcommand {\mf} {\mathfrak}                                                   % Fraktur font
-\newcommand {\morphism} [1] {\overset {#1} {\longrightarrow}}                   %
+\newcommand {\mm} {\mathfrak m}                                                 % maximal ideal
+\newcommand {\Ms} {\mathscr M}                                                  % moduli stack of algebraic curves
 \newcommand {\norm} [1] {\left \lVert #1 \right \rVert}                         % norm
 \newcommand {\N} {\mathbf N}                                                    % natural numbers
-\newcommand {\NN} {\mathcal N}                                                  %
-\newcommand {\ol} {\overline}                                                   %
+\newcommand {\ol} {\overline}
 \newcommand {\OO} {\mathcal O}                                                  % ring of algebraic integers
-\newcommand {\op} {\textsuperscript{op}}                                        % opposite category
-\newcommand {\opn} {\textsubscript{op}}                                         % operator norm
-\newcommand {\Pg} {\tilde {\mathbf{P}}}                                         %
-\newcommand {\PP} {\mathbf P}                                                   % projective space
+\newcommand {\oo} {\mathfrak o}                                                 % "
+\let \P \relax
+\newcommand {\P} {\mathbf P}                                                    % projective space
+\newcommand {\pp} {\mathfrak p}                                                 % prime ideal
 \newcommand {\Q} {\mathbf Q}                                                    % rational numbers
+\newcommand {\Qu} {\operatorname{Q}_8}						% quaternions
 \newcommand {\R} {\mathbf R}                                                    % real numbers
 \newcommand {\Ring} {\catn {Ring}}                                              % Ring
 \newcommand {\Set} {\catn {Set}}                                                % Set
-\let\sh\relax
-\newcommand {\sh} {\textsuperscript{sh}}                                        % sheafification
+\let \sh \relax
+\newcommand {\shf} {^\sharp}                                                    % sheafification
 \newcommand {\tensor} {\otimes}                                                 % tensor product
-\newcommand {\ts} {\textsuperscript}                                            %
+\let \textsubscript \relax
+\newcommand {\textsubscript} [1] {_{\textup {#1}}}
+\let \textsuperscript \relax
+\newcommand {\textsuperscript} [1] {^{\textup {#1}}}
+\newcommand {\op} {\textsuperscript{op}}                                        % opposite category
+\newcommand {\opn} [1] {\norm {#1}\textsubscript{op}}                           % operator norm
+\newcommand {\sh} {\textsuperscript{sh}}                                        % sheafification
+\newcommand {\sub} {\textsubscript}
+\newcommand {\super} {\textsuperscript}
 \newcommand {\tp} {{}^{\mathrm{t}}\!}                                           % transpose
-\newcommand {\wh} {\widehat}                                                    %
-\newcommand {\wt} {\widetilde}                                                  %
-\newcommand {\Zmod} [1] {\Z / #1\Z}	                                            % Z/[arg]Z
+\newcommand {\wh} {\widehat}
+\newcommand {\wt} {\widetilde}
+\newcommand {\Zmod} [1] {\Z / #1\Z}	                                        % Z/[arg]Z
 \newcommand {\Z} {\mathbf Z}                                                    % integers
 
 
-\DeclareMathOperator* {\argmax} {arg max}	                % arg max
-\DeclareMathOperator* {\argmin} {arg min}                   % arg min
+\DeclareMathOperator* {\argmax} {arg max}	                	% arg max
+\DeclareMathOperator* {\argmin} {arg min}                   		% arg min
 \DeclareMathOperator* {\bigtimes} {\scalerel*{\times}{\bigotimes}}
-\DeclareMathOperator* {\colim} {colim}                      % colimit
-\DeclareMathOperator* {\lcm} {lcm}                          % least common multiple
-\DeclareMathOperator {\agm} {agm}                           % arithmetic-geometric mean
-\DeclareMathOperator {\Aut} {Aut}                           % automorphism group
-\DeclareMathOperator {\Ag} {A}                              % alternating group, etc.
-\DeclareMathOperator {\Ass} {Ass}                           % set of associated primes of a module (assassin)
-\DeclareMathOperator {\Ann} {Ann}                           % annihilator
-\DeclareMathOperator {\bd} {bd}                             % boundary of a set
-\DeclareMathOperator {\Burn} {Burn}	                        % Burnside ring
-\DeclareMathOperator {\CaCl} {CaCl}			% Cartier divisor class
-\DeclareMathOperator {\CC} {C}                              %
-\DeclareMathOperator {\chr} {char}                          % characteristic of an integral domain
-\DeclareMathOperator {\Cl} {Cl}                             % ideal class group, Weil divisor class group
-\DeclareMathOperator {\cl} {cl}                             % closure of a set
-\DeclareMathOperator {\cis} {cis}                           %
-\DeclareMathOperator {\codim} {codim}                       % codimension
-\DeclareMathOperator {\Coker} {Coker}                       % cokernel
-\DeclareMathOperator {\coker} {coker}                       % cokernel
-\DeclareMathOperator {\Coim} {Coim}                       % coimage
-\DeclareMathOperator {\coim} {coim}                       % coimage
-\DeclareMathOperator {\Col} {Col}                           % column space
-\DeclareMathOperator {\curl} {curl}                         % curl
+\DeclareMathOperator* {\colim} {colim}                      		% colimit
+\DeclareMathOperator* {\lcm} {lcm}                          		% least common multiple
+\DeclareMathOperator {\agm} {agm}                           		% arithmetic-geometric mean
+\DeclareMathOperator {\Aut} {Aut}                           		% automorphism group
+\DeclareMathOperator {\Ag} {A}                             		% alternating group, etc.
+\DeclareMathOperator {\Ass} {Ass}                           		% set of associated primes of a module (assassin)
+\DeclareMathOperator {\Ann} {Ann}                           		% annihilator
+\DeclareMathOperator {\bd} {bd}                             		% boundary of a set
+\DeclareMathOperator {\Burn} {Burn}					% Burnside ring
+\DeclareMathOperator {\CaCl} {CaCl}					% Cartier divisor class
+\DeclareMathOperator {\CC} {C}
+\DeclareMathOperator {\chr} {char}                          		% characteristic of an integral domain
+\DeclareMathOperator {\Cl} {Cl}                             		% ideal class group, Weil divisor class group
+\DeclareMathOperator {\cl} {cl}                             		% closure of a set
+\DeclareMathOperator {\cis} {cis}
+\DeclareMathOperator {\codim} {codim}                       		% codimension
+\DeclareMathOperator {\Coker} {Coker}                       		% cokernel
+\DeclareMathOperator {\coker} {coker}                       		% cokernel
+\DeclareMathOperator {\Coim} {Coim}                       		% coimage
+\DeclareMathOperator {\coim} {coim}                       		% coimage
+\DeclareMathOperator {\Col} {Col}                           		% column space
+\DeclareMathOperator {\curl} {curl}                         		% curl
 \let \D \relax
-\DeclareMathOperator {\D} {D}                               % dihedral group
+\DeclareMathOperator {\D} {D}                               		% dihedral group
 \let \d \relax
-\DeclareMathOperator {\d} {d}                               %
-\DeclareMathOperator {\diag} {diag}                         %
-\DeclareMathOperator {\Disc} {Disc}                         % discriminant
-\DeclareMathOperator {\Div} {Div}                         % divisors
-\DeclareMathOperator {\dom} {dom}                           % domain
-\DeclareMathOperator {\E} {E}                               % icosahedral Du Val singularity
-\DeclareMathOperator {\End} {End}                           % endomorphisms
+\DeclareMathOperator {\d} {d}
+\DeclareMathOperator {\diag} {diag}                         		% diag
+\DeclareMathOperator {\Disc} {Disc}                         		% discriminant
+\DeclareMathOperator {\Div} {Div}                         		% divisors
+\DeclareMathOperator {\dom} {dom}                           		% domain
+\DeclareMathOperator {\E} {E}                               		% icosahedral Du Val singularity
+\DeclareMathOperator {\End} {End}                           		% endomorphisms
 \DeclareMathOperator {\error} {error}
-\DeclareMathOperator {\Et} {\acute Et}                      % \'etale space
-\DeclareMathOperator {\Ext} {Ext}                           % Ext functor
+\DeclareMathOperator {\Et} {\acute Et}                      		% \'etale space
+\DeclareMathOperator {\Ext} {Ext}                           		% Ext functor
 \DeclareMathOperator {\forget} {forget}	
 \DeclareMathOperator {\free} {free}	
 \DeclareMathOperator {\Free} {Free}	
-\DeclareMathOperator {\Gal} {Gal}                           % Galois group
-\DeclareMathOperator {\GL} {GL}                             % general linear group
-\DeclareMathOperator {\Gr} {Gr}                             % Grassmannian
-\DeclareMathOperator {\Hess} {Hess}                         % Hessian
-\let\Hom\relax
-\DeclareMathOperator {\Hom} {Hom}                           % homomorphisms
-\DeclareMathOperator {\HH} {H}                              % homology group
-\DeclareMathOperator {\h} {h}                               % Hodge number
-\DeclareMathOperator {\Hilb} {Hilb}                         % Hilbert scheme
-\DeclareMathOperator {\id} {id}                             % identity
-\DeclareMathOperator {\II} {I}                              %
-\DeclareMathOperator {\Img} {Im}                            % image
-\DeclareMathOperator {\img} {im}                            % image
-\DeclareMathOperator {\Image} {Image}                       % image
-\DeclareMathOperator {\Inn} {Inn}                           % inner automorphism group
-\DeclareMathOperator {\inr} {int}                           % interior of a set
+\DeclareMathOperator {\Gal} {Gal}                           		% Galois group
+\DeclareMathOperator {\GL} {GL}                             		% general linear group
+\DeclareMathOperator {\Gr} {Gr}                             		% Grassmannian
+\DeclareMathOperator {\Hess} {Hess}                         		% Hessian
+\let \Hom \relax
+\DeclareMathOperator {\Hom} {Hom}                           		% homomorphisms
+\DeclareMathOperator {\HH} {H}                              		% homology group
+\DeclareMathOperator {\h} {h}                               		% Hodge number, height
+\DeclareMathOperator {\Hilb} {Hilb}                         		% Hilbert scheme
+\DeclareMathOperator {\id} {id}                             		% identity
+\DeclareMathOperator {\II} {I}
+\DeclareMathOperator {\Img} {Im}					% image
+\DeclareMathOperator {\img} {im}                            		% image
+\DeclareMathOperator {\Image} {Image}                       		% image
+\DeclareMathOperator {\Inn} {Inn}                           		% inner automorphism group
+\DeclareMathOperator {\inr} {int}                           		% interior of a set
 \DeclareMathOperator {\ISO} {ISO}			
-\DeclareMathOperator {\Jac} {Jac}                           % Jacobian, Jacobson radical
-\DeclareMathOperator {\J} {J}                               % Jacobian
-\let\Ker\relax
-\DeclareMathOperator {\Ker} {Ker}                           % kernel
-\DeclareMathOperator {\Length} {Length}                           % kernel
-\DeclareMathOperator {\Mat} {Mat}                           % matrices
-\DeclareMathOperator {\mesh} {mesh}                         % mesh
-\DeclareMathOperator {\Mor} {Mor}                           % morphisms
-\DeclareMathOperator {\mult} {mult}                         % multiplicity
-\DeclareMathOperator {\MM} {M}                              % matrices
-\DeclareMathOperator {\Nz} {N}                              % normalizer
-\DeclareMathOperator {\Nil} {Nil}                           % nilradical
-\DeclareMathOperator {\Null} {Null}                         % nullspace
-\DeclareMathOperator {\ord} {ord}                           % ord
-\DeclareMathOperator {\On} {On}                             %
-\DeclareMathOperator {\Out} {Out}                           % outer automorphism group
-\DeclareMathOperator {\prp} {perp}                          % perp
-\DeclareMathOperator {\Pic} {Pic}                           % Picard group
-\DeclareMathOperator {\pred} {pred}                         %
-\DeclareMathOperator {\pr} {pr}                             %
-\DeclareMathOperator {\Princ} {Pr}                         % principal divisors
+\DeclareMathOperator {\Jac} {Jac}                           		% Jacobian, Jacobson radical
+\DeclareMathOperator {\J} {J}                               		% Jacobian
+\let \Ker \relax
+\DeclareMathOperator {\Ker} {Ker}                           		% kernel
+\DeclareMathOperator {\Length} {Length}                          	% length
+\DeclareMathOperator {\Mat} {Mat}                           		% matrices
+\DeclareMathOperator {\mesh} {mesh}                         		% mesh
+\DeclareMathOperator {\Mor} {Mor}                           		% morphisms
+\DeclareMathOperator {\mult} {mult}                         		% multiplicity
+\DeclareMathOperator {\MM} {M}                              		% matrices
+\DeclareMathOperator {\Nz} {N}                              		% normalizer
+\DeclareMathOperator {\Nil} {Nil}                           		% nilradical
+\DeclareMathOperator {\NL} {NL}                           		% naive cotangent complex
+\DeclareMathOperator {\Null} {Null}                         		% nullspace
+\DeclareMathOperator {\ord} {ord}                           		% ord
+\DeclareMathOperator {\On} {On}
+\DeclareMathOperator {\Out} {Out}                           		% outer automorphism group
+\DeclareMathOperator {\prp} {perp}                          		% perp
+\DeclareMathOperator {\Pic} {Pic}                           		% Picard group
+\DeclareMathOperator {\pred} {pred}
+\DeclareMathOperator {\pr} {pr}
 \let\Pr\relax
-\DeclareMathOperator {\Pr} {Pr}                         % principal divisors
-\DeclareMathOperator {\Proj} {Proj}                         % Proj of a scheme
-\DeclareMathOperator {\proj} {proj}                         % projection
-\DeclareMathOperator {\PGL} {PGL}                           % projective general linear group
-\DeclareMathOperator {\PSL} {PSL}                           % projective special linear group
-\DeclareMathOperator {\Qu} {Q_8}                            % quaternions
-\DeclareMathOperator {\QQ} {Q}                              %
-\DeclareMathOperator {\RR} {R}                              % range
-\DeclareMathOperator {\Ran} {Ran}                           % range
-\DeclareMathOperator {\Res} {Res}                           % residue
-\DeclareMathOperator {\rank} {rank}                         % rank
-\DeclareMathOperator {\ran} {ran}                           % range
-\DeclareMathOperator {\sgn} {sgn}                           % sign
-\DeclareMathOperator {\Sg} {S}                              % symmetric group
-\DeclareMathOperator {\SL} {SL}                             % special linear group
-\DeclareMathOperator {\SO} {SO}                             % special orthogonal group
-\DeclareMathOperator {\Sp} {Sp}                              % symplectic group
-\DeclareMathOperator {\Spec} {Spec}                         % spectrum
-\DeclareMathOperator {\specmax} {Spec\textsubscript{max}}   % maximal spectrum
-\DeclareMathOperator {\spa} {span}                          % span
-\DeclareMathOperator {\SU} {SU}                             % special unitary group
-\DeclareMathOperator {\Syl} {Syl}                           % Sylow subgroup
+\DeclareMathOperator {\Pr} {Pr}                         		% principal divisors
+\DeclareMathOperator {\Proj} {Proj}                         		% Proj of a scheme
+\DeclareMathOperator {\proj} {proj}                         		% projection
+\DeclareMathOperator {\PGL} {PGL}                           		% projective general linear group
+\DeclareMathOperator {\PSL} {PSL}                           		% projective special linear group
+\DeclareMathOperator {\QQ} {Q}
+\DeclareMathOperator {\RR} {R}
+\DeclareMathOperator {\Ran} {Ran}                           		% range
+\DeclareMathOperator {\ran} {ran}                           		% "
+\DeclareMathOperator {\rank} {rank}                         		% rank
+\DeclareMathOperator {\Res} {Res}                           		% residue
+\DeclareMathOperator {\sgn} {sgn}                           		% sign
+\DeclareMathOperator {\Sg} {S}                              		% symmetric group
+\DeclareMathOperator {\SL} {SL}                             		% special linear group
+\DeclareMathOperator {\SO} {SO}                             		% special orthogonal group
+\DeclareMathOperator {\Sp} {Sp}						% symplectic group
+\DeclareMathOperator {\Spec} {Spec}                         		% spectrum
+\DeclareMathOperator {\specmax} {Spec\textsubscript{max}}   		% maximal spectrum
+\DeclareMathOperator {\spa} {span}                          		% span
+\DeclareMathOperator {\SU} {SU}                             		% special unitary group
+\DeclareMathOperator {\Syl} {Syl}                           		% Sylow subgroup
 \let \Sym \relax
-\DeclareMathOperator {\Sym} {Sym}                           %
-\DeclareMathOperator {\T} {T}                               % Taylor polynomial
-\DeclareMathOperator {\Tor} {Tor}                           % Tor functor
-\DeclareMathOperator {\Tr} {Tr}                             % trace
-\DeclareMathOperator {\tr} {tr}                             % trace
-\DeclareMathOperator {\Vol} {Vol}                           % volume
-\DeclareMathOperator {\vol} {vol}                           % volume
+\DeclareMathOperator {\Sym} {Sym}
+\DeclareMathOperator {\T} {T}                               		% Taylor polynomial
+\DeclareMathOperator {\Tor} {Tor}                           		% Tor functor
+\DeclareMathOperator {\Tr} {Tr}                             		% trace
+\DeclareMathOperator {\tr} {tr}                            		% "
+\DeclareMathOperator {\Vol} {Vol}                           		% volume
+\DeclareMathOperator {\vol} {vol}                           		% "
 \let \O \relax 
-\DeclareMathOperator {\O} {O}                               % orthogonal group
-\DeclareMathOperator {\ZZ} {Z}                              % centre of a group
+\DeclareMathOperator {\O} {O}                               		% orthogonal group
+\DeclareMathOperator {\ZZ} {Z}						% centre of a group
 
 \DeclareMathOperator {\sech} {sech}                         % hyperbolic secant
 \DeclareMathOperator {\csch} {csch}                         % hyperbolic cosecant
 
 
-\setenumerate[1]{label=\arabic*.}	% enumerate label
+\setenumerate[1]{label=(\arabic*)}	% enumerate label
 \setenumerate[2]{label=(\alph*)}	% second-order enumerate label
 
 \renewcommand\labelitemi{---} 	% itemizes have this label unless otherwise specified
@@ -440,21 +453,21 @@
 	\theoremstyle{thm}
 	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{thm}{section}
-	\newtheorem{lemma}{Lemma}
+	\newtheorem{lemma}[thm]{Lemma}
 	\newtheorem{corollary}[thm]{Corollary}
-	\newtheorem{proposition}{Proposition}
+	\newtheorem{proposition}[thm]{Proposition}
 	\newtheorem{conj}[thm]{Conjecture}
 	\newtheorem{claim}[thm]{Claim}
 	\newtheorem{remark}[thm]{Remark}
 	\newtheorem{definition}[thm]{Definition}
-	\newtheorem{defprop}{Definition/Proposition}
-	\newtheorem{question}{Question}
-	\newtheorem{example}{Example}
-	\newtheorem{examples}{Examples}
-	\newtheorem{convention}{Convention}
-	\newtheorem{exercise}{Exercise}
-	\newtheorem{warning}{Warning}
-	\newtheorem{problem}{Problem}
+	\newtheorem{defprop}[thm]{Definition/Proposition}
+	\newtheorem{question}[thm]{Question}
+	\newtheorem{example}[thm]{Example}
+	\newtheorem{examples}[thm]{Examples}
+	\newtheorem{convention}[thm]{Convention}
+	\newtheorem{exercise}[thm]{Exercise}
+	\newtheorem{warning}[thm]{Warning}
+	\newtheorem{problem}[thm]{Problem}
 	
 	\setenumerate [1] {label = (\arabic*)}
 	\setenumerate [2] {label = (\roman*)}
