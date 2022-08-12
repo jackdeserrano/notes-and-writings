@@ -200,10 +200,10 @@
 			\renewcommand{\section}{\@startsection
 				{section}			% name
 				{1}				% level
-				{\z@}			% the indent / 0mm
-				{-\baselineskip}	% before skip / -3.5ex \@plus -1ex \@minus -.2ex
-				{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
-				{\bfseries\large}} 	% style
+				{\z@}				% the indent / 0mm
+				{-\baselineskip}		% before skip / -3.5ex \@plus -1ex \@minus -.2ex
+				{0.5\baselineskip}		% after skip / 2.3ex \@plus .2ex
+				{\bfseries\large}} 		% style
 		\makeatother
 	\fi
 	
@@ -220,14 +220,14 @@
 \makeatother
 
 
-
 \RequirePackage [hmarginratio=1:1] {geometry} 
+
 
 \newcommand {\0} {\underline{0}}                                                % zero vector
 \let \A \relax
 \newcommand {\A} {\mathbf{A}}                                                   % affine space, adeles
 \newcommand {\abs} [1] {\left \lvert #1 \right \rvert}                          % absolute value
-\let\ang\relax
+\let \ang \relax
 \newcommand {\ang} [1] {\left \langle #1 \right \rangle}
 \newcommand {\cat} [1] {\mathscr #1}                                            % category variable
 \newcommand {\catn} [1] {\textsf{#1}}                                           % category
@@ -248,10 +248,10 @@
 \newcommand {\Grp} {\catn {Grp}}                                                % Grp
 \let \H \relax
 \newcommand {\H} {\mathbf H}                                                    % quaternions
-\newcommand {\hh} {\mathfrak h}                                                 % upper-half plane
+\newcommand {\hh} {\mathfrak H}                                                 % upper-half plane
 \let \righthookarrow \relax
 \let \lefthookarrow \relax
-\newcommand {\righthookarrow} {lhook\joinrel\longrightarrow}
+\newcommand {\righthookarrow} {\lhook\joinrel\longrightarrow}
 \newcommand {\lefthookarrow} {\longleftarrow\joinrel\rhook}
 \newcommand {\indx} [2] {\left [#1 : #2 \right]}                                % index of a subgroup
 \newcommand {\inv} {^{-1}}                                                      % inverse
@@ -279,15 +279,11 @@
 \let \sh \relax
 \newcommand {\shf} {^\sharp}                                                    % sheafification
 \newcommand {\tensor} {\otimes}                                                 % tensor product
-\let \textsubscript \relax
-\newcommand {\textsubscript} [1] {_{\textup {#1}}}
-\let \textsuperscript \relax
-\newcommand {\textsuperscript} [1] {^{\textup {#1}}}
-\newcommand {\op} {\textsuperscript{op}}                                        % opposite category
-\newcommand {\opn} [1] {\norm {#1}\textsubscript{op}}                           % operator norm
-\newcommand {\sh} {\textsuperscript{sh}}                                        % sheafification
-\newcommand {\sub} {\textsubscript}
-\newcommand {\super} {\textsuperscript}
+\newcommand {\sub} [1] {_{\textup {#1}}}
+\newcommand {\super} [1] {^{\textup {#1}}}
+\newcommand {\op} {\super{op}}                                        		% opposite category
+\newcommand {\opn} [1] {\norm {#1}\sub{op}}                          		% operator norm
+\newcommand {\sh} {\super{sh}}                                        		% sheafification
 \newcommand {\tp} {{}^{\mathrm{t}}\!}                                           % transpose
 \newcommand {\wh} {\widehat}
 \newcommand {\wt} {\widetilde}
@@ -374,7 +370,7 @@
 \DeclareMathOperator {\Pic} {Pic}                           		% Picard group
 \DeclareMathOperator {\pred} {pred}
 \DeclareMathOperator {\pr} {pr}
-\let\Pr\relax
+\let \Pr \relax
 \DeclareMathOperator {\Pr} {Pr}                         		% principal divisors
 \DeclareMathOperator {\Proj} {Proj}                         		% Proj of a scheme
 \DeclareMathOperator {\proj} {proj}                         		% projection
@@ -438,16 +434,16 @@
 	%	problem [Problem]
 	
 	\newtheoremstyle{thm}   % name
-                    {1 em}              % space above
-                    {1 em}              % space below
-                    {}                  % body font
-                    {0 em}              % indent amount
+                    {1 em}	% space above
+                    {1 em}	% space below
+                    {}		% body font
+                    {0 em}	% indent amount
                     {\bfseries} % theorem head font
-                    {.---}                 % punctuation after theorem head
-                    {0 em}              % space after theorem head
-                    {}                  % theorem head spec
+                    {.---}	% punctuation after theorem head
+                    {0 em}	% space after theorem head
+                    {}	% theorem head spec
 
-	\newcommand {\defn} [1] {{\bfseries #1}} 	% keywords emphasized with slanted font
+	\newcommand {\defn} [1] {{\bfseries #1}}	% keywords emphasized with slanted font
 	
 	\numberwithin{equation}{section}
 	\theoremstyle{thm}
@@ -687,15 +683,15 @@
         
             \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
             
-                \newtheoremstyle{thm}   % name
-                    {1 em}              % space above
-                    {1 em}              % space below
-                    {\iffalse\itshape\fi}                  % body font
-                    {0 em}              % indent amount
-                    {\bfseries}         % theorem head font
-                    {.}                 % punctuation after theorem head
-                    {1 em}              % space after theorem head
-                    {}                  % theorem head spec
+                \newtheoremstyle{thm}   	% name
+                    {1 em}              	% space above
+                    {1 em}              	% space below
+                    {\iffalse\itshape\fi}	% body font
+                    {0 em}              	% indent amount
+                    {\bfseries}         	% theorem head font
+                    {.}                 	% punctuation after theorem head
+                    {1 em}              	% space after theorem head
+                    {}                  	% theorem head spec
     
                 \newtheoremstyle{defn}
                     {1 em}
@@ -853,58 +849,59 @@
 								\end{center}}}
 					\makeatother
                             
-\makeatletter
-\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
-\makeatother
-                            % consider making `\bfseries\scshape' when possible
-                            	\ifluatex
-                            \makeatletter
-                                \renewcommand{\section}{\@startsection
-                                    {section}           % name
-                                    {1}                 % level
-                                    {\z@}               % the indent / 0mm
-                                    {-\baselineskip}    % before skip / -3.5ex \@plus -1ex \@minus -.2ex
-                                    {0.5\baselineskip}  % after skip / 2.3ex \@plus .2ex
-                                    {\bfseries\large}}  % style
-                            \makeatother
-                
-                            \makeatletter
-                                \renewcommand{\subsection}{\@startsection
-                                    {subsection}            % name
-                                    {2}                     % level
-                                    {\z@}                   % the indent / 0mm
-                                    {-\baselineskip}        % before skip / -3.5ex \@plus -1ex \@minus -.2ex
-                                    {0.5\baselineskip}      % after skip / 2.3ex \@plus .2ex
-                                    {\centering\bfseries}}  % style
-                            \makeatother	
-                            \fi 
-                            
-                            
-        					\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
-        						\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
-        					\makeatother 
+					\makeatletter
+						\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+					\makeatother
 					
-        					\ifscr
+                            		% consider making `\bfseries\scshape' when possible
+                            		\ifluatex
+                            			\makeatletter
+                                			\renewcommand{\section}{\@startsection
+                                    				{section}           % name
+                                    				{1}                 % level
+                                    				{\z@}               % the indent / 0mm
+                                    				{-\baselineskip}    % before skip / -3.5ex \@plus -1ex \@minus -.2ex
+                                    				{0.5\baselineskip}  % after skip / 2.3ex \@plus .2ex
+                                    				{\bfseries\large}}  % style
+                            			\makeatother
+                
+                            			\makeatletter
+                                			\renewcommand{\subsection}{\@startsection
+                                    				{subsection}            % name
+                                    				{2}                     % level
+                                    				{\z@}                   % the indent / 0mm
+                                    				{-\baselineskip}        % before skip / -3.5ex \@plus -1ex \@minus -.2ex
+                                    				{0.5\baselineskip}      % after skip / 2.3ex \@plus .2ex
+                                    				{\centering\bfseries}}  % style
+                            			\makeatother	
+					\fi 
+                            
+                            
+        				\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
+        					\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+        				\makeatother 
+					
+        				\ifscr
 					
 					\else	% setting up the headers and footers
 					
-        						\pagestyle{fancy} 
-        						\renewcommand{\sectionmark}[1]{\markright{#1}}
-        						\renewcommand{\subsectionmark}[1]{}
-        						\fancyhf{}
+        					\pagestyle{fancy} 
+        					\renewcommand{\sectionmark}[1]{\markright{#1}}
+        					\renewcommand{\subsectionmark}[1]{}
+        					\fancyhf{}
         			
         				
-        						\ifams
-        							\renewcommand{\sectionmark}[1]{\markleft{#1}}
-        						\fi
+        					\ifams
+        						\renewcommand{\sectionmark}[1]{\markleft{#1}}
+        					\fi
         				
-        						\fancyhead[L]{\jtitle}
-        						\fancyhead[R]{\nouppercase\rightmark}
-        						\cfoot{\text{}\\\thepage}
-						
+        					\fancyhead[L]{\jtitle}
+        					\fancyhead[R]{\nouppercase\rightmark}
+        					\cfoot{\text{}\\\thepage}
+
 						\ifindex
-        							\makeindex
-        							\indexsetup {othercode = {\thispagestyle {fancy}}}
+        						\makeindex
+        						\indexsetup {othercode = {\thispagestyle {fancy}}}
 						\fi
 					\fi
 				\fi
