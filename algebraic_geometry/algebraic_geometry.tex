@@ -528,11 +528,11 @@ We have two definitions for ``coprimary'':
 	\item $rm = 0$ implies $m=0$ or $r^nM=0$ for some $n>0$.
 \end{enumerate}
 
-Suppose that $n\ne 0$ and $m\in M$. Put $\mathfrak{p} = \Ann(m)$. Then the second definition implies $\mathfrak{p} \subseteq \sqrt{\Ann (M)} $. If $\mathfrak{p}$ is prime, then $\Ann(M)\subseteq \Ann (m)= \mathfrak{p}$, so $\sqrt{\Ann(M)}\subseteq \mathfrak{p} $. That is, if $\mathfrak{p}\in \Ass M$, $\mathfrak{p} = \sqrt{\Ann (M)} $. Thus, there is at most $1$ associated prime given by the radical of the annihilator of $M$. So 2. implies 1.
+Suppose that $n\ne 0$ and $m\in M$. Put $\mathfrak{p} = \Ann(m)$. Then the second definition implies $\mathfrak{p} \subseteq \sqrt{\Ann (M)} $. If $\mathfrak{p}$ is prime, then $\Ann(M)\subseteq \Ann (m)= \mathfrak{p}$, so $\sqrt{\Ann(M)}\subseteq \mathfrak{p} $. That is, if $\mathfrak{p}\in \Ass M$, $\mathfrak{p} = \sqrt{\Ann (M)} $. Thus, there is at most $1$ associated prime given by the radical of the annihilator of $M$. So (2) implies (1).
 
 Assume $\Ann M=0$. Put $\Ass M = \{\mathfrak{p}\}$. This associated prime contains $\Ann (m)$ given $m\ne 0$. Therefore, we need to show that $\mathfrak{p}$ is nilpotent. Suppose that $a\in \mathfrak{p}$ is nilpotent. Then, the localization $M[a^{-1}]$ is nonzero. If $z\in M$ is $0$ in $M[a^{-1}]$ , then $za^n=0$ for some $n$. That is, $M[a^{-1}]=0$ implies $a^n \in \Ann M$ for some $n$, since some power kills any element of $M$ and $M$ is finitely generated. But $\Ann M=0$ by assumption, so $a$ is nilpotent. 
 
-Since $M[a^{-1}]\ne 0$, one has $\Ass (M[a^{-1}])\ne \emptyset$ (primes of $R[a^{-1}]$). Pick $T\in \Ass (M[a^{-1}])$, an ideal of $R[a^{-1}]$. Let $\mathfrak{q}$ be the preimage of $T$ in $R$. (Recall we have $R\longrightarrow  R[a^{-1}]$, $\mathfrak{q}\longrightarrow T$, $\mathfrak{q}\subseteq R$, and $T\subseteq R[a^{-1}]$.) Both $T$ and $\mathfrak{q}$ are primes, and $\mathfrak{q}$ is the union of $\Ann(m)\subseteq \Ann (ma)\subseteq \Ann (ma^2)\subseteq \cdots$. (One verifies that $\mathfrak{q}$ is everything that annihilates $ma^n$.) This is an increasing sequence in a Noetherian ring, so it stabilizes. Therefore, $\mathfrak{q}=\Ann(ma^n)$ for some $n$. Hence, $\mathfrak{q}\in \Ass(M)$ since it is prime and the annihilator of some element in $M$. But $a\in \mathfrak{p}$ and $a\notin \mathfrak{q}$ because $a$ is a unit of $M[a^{-1}]$ and if $a\in \mathfrak{q}$ then $M[a^{-1}]=0$. So, $\mathfrak{p}\ne \mathfrak{q}$, so $M$ has at least $2$ associated primes. Contradiction. So 1. implies 2.
+Since $M[a^{-1}]\ne 0$, one has $\Ass (M[a^{-1}])\ne \emptyset$ (primes of $R[a^{-1}]$). Pick $T\in \Ass (M[a^{-1}])$, an ideal of $R[a^{-1}]$. Let $\mathfrak{q}$ be the preimage of $T$ in $R$. (Recall we have $R\longrightarrow  R[a^{-1}]$, $\mathfrak{q}\longrightarrow T$, $\mathfrak{q}\subseteq R$, and $T\subseteq R[a^{-1}]$.) Both $T$ and $\mathfrak{q}$ are primes, and $\mathfrak{q}$ is the union of $\Ann(m)\subseteq \Ann (ma)\subseteq \Ann (ma^2)\subseteq \cdots$. (One verifies that $\mathfrak{q}$ is everything that annihilates $ma^n$.) This is an increasing sequence in a Noetherian ring, so it stabilizes. Therefore, $\mathfrak{q}=\Ann(ma^n)$ for some $n$. Hence, $\mathfrak{q}\in \Ass(M)$ since it is prime and the annihilator of some element in $M$. But $a\in \mathfrak{p}$ and $a\notin \mathfrak{q}$ because $a$ is a unit of $M[a^{-1}]$ and if $a\in \mathfrak{q}$ then $M[a^{-1}]=0$. So, $\mathfrak{p}\ne \mathfrak{q}$, so $M$ has at least $2$ associated primes. Contradiction. So (1) implies (2).
 
 Now, we prove the Lasker--Noether theorem: That is, 
 \begin{align*}
@@ -4008,11 +4008,11 @@ Most schemes are Noetherian in practice and the theory of Noetherian schemes is 
 		\item $r\in I[f_i^{-1}]\le R[f_i^{-1}]$ where $\{U({f_i})\}$ covers $\Spec R$;
 		\item $r\in I_{\mathfrak{p}}\le R_{\mathfrak{p}}$ for all maximal ideals $\mathfrak{p}$.
 	\end{enumerate}
-	1. implies 2. and 2. implies 3. are trivial. Consider
+	The demonstrations that (1) implies (2) and (2) implies (3) are trivial. Consider
 	\begin{align*}
 		J := \{ s : rs \in I\}.
 	\end{align*}
-	If $\mathfrak{m}$ is a maximal ideal, then $r\in I_{\mathfrak{m}}$ implies $\alpha(\beta r - t) =0$ for all $\alpha,\beta\notin \mathfrak{m}$ and $t\in I$. This, in turn, implies $\alpha\beta r\in I$, so $J$ is not contained in $\mathfrak{m}$: $\alpha\beta\in J-\mathfrak{m}$. Therefore, $J=R$, so $r\in I$. That is, 3. implies 1.
+	If $\mathfrak{m}$ is a maximal ideal, then $r\in I_{\mathfrak{m}}$ implies $\alpha(\beta r - t) =0$ for all $\alpha,\beta\notin \mathfrak{m}$ and $t\in I$. This, in turn, implies $\alpha\beta r\in I$, so $J$ is not contained in $\mathfrak{m}$: $\alpha\beta\in J-\mathfrak{m}$. Therefore, $J=R$, so $r\in I$. That is, (3) implies (1).
 
 Suppose that $\Spec R$ is covered by open sets $U({f_i})$. Then, an $R$-ideal is determined by its images $I[f_i^{-1}]$ in the rings $R[f_i]$. Thus, if $R$ has an increasing sequence of ideals $I_1\subseteq I_2\subseteq \cdots$, one can consider $I_1[f_i^{-1}]\subseteq I_2[f_i^{-1}]\subseteq\cdots$. If $R[f_i]$ is Noetherian for all $i$, then these chains terminate. Since $\Spec R$ is covered by finitely many of the $U({f_i})$s, $I_1\subseteq I_2\subseteq \cdots$ terminates. That is, $R$ is Noetherian.  
 \end{remark}
@@ -5034,7 +5034,7 @@ A variety $X$ is \defn{complete}\index{complete variety} if and only if $X\longr
 	Therefore, projective varieties are complete.
 \end{remark}
 
-Andr\'e Weil introduced the notion of the \index{abstract variety}abstract variety to construct Jacobians of curves over fields of finite characteristic for the Riemann hypothesis. However, Chow demonstrated that the Jacobian varieties that Weil needed were projective. 
+Andr\'e Weil introduced the notion of the \index{abstract variety}abstract variety to construct Jacobians of curves over fields of finite characteristic for the Riemann hypothesis. However, Chow Wei Liang demonstrated that the Jacobian varieties that Weil needed were projective. 
 
 Masayoshi Nagata showed that every abstract variety is an open subset of a complete variety.\footnote{``Imbedding of an abstract variety in a complete variety,'' 1962. Look up ``Nagata's compactification theorem.'' See also Stacks project Theorem 38.33.8.}
 
@@ -5854,7 +5854,7 @@ We shall show that any vector bundle on $\mathbf{P}^1$ is a direct sum of line b
 
 Recall that $\mathbf{P}^1$ is a union of two copies of $\mathbf{A}^1$ glued along $\mathbf{A}^1-\{0\}$. A vector bundle on $\mathbf{P}^1$ is got by gluing vector bundles on $\mathbf{A}^1$. Vector bundles on $\mathbf{A}^1$ correspond to locally free modules over $K[z]$. Since $K[z]$ is a principal ideal domain, the only locally free modules are $K[z]^n$.
 \begin{remark}
-	Classifying vector bundles on $\mathbf{A}^r$ for $r>1$ is hard. Serre conjectured that the only vector bundles are direct sums of the trivial bundle and twisted bundles.\footnote{See FAC p. 243.} This was proved by Daniel Quillen and Andrei Suslin independently in 1976.\footnote{See ``Projective modules over polynomial rings,'' Daniel Quillen, \url{https://doi.org/10.1007\%2FBF01390008} and ``Proyektivnyye moduli nad kolʹtsami mnogochlenov svobodny,''\iffalse Проективные модули над кольцами многочленов свободны\fi\ Andrei Suslin, \underline{Doklady Akademii Nauk SSSR}, \textit{229}(5), 1063--66, MR 0469905.} 
+	Classifying vector bundles on $\mathbf{A}^r$ for $r>1$ is hard. Serre conjectured that the only vector bundles are direct sums of the trivial bundle and twisted bundles.\footnote{See FAC p. 243.} This was proved by Daniel Quillen and Andrei Suslin independently in 1976.\footnote{See ``Projective modules over polynomial rings,'' Daniel Quillen, \url{https://doi.org/10.1007\%2FBF01390008} and ``Proyektivnyye moduli nad kol'tsami mnogochlenov svobodny,''\iffalse Проективные модули над кольцами многочленов свободны\fi\ Andrei Suslin, \underline{Doklady Akademii Nauk SSSR}, \textit{229}(5), 1063--66, MR 0469905.} 
 \end{remark}
 
 Now, suppose that $K[z]$ and $K[z^{-1}]$ are the coordinate rings of these copies of $\mathbf{A}^1$.\footnote{So $K[z,z^{-1}]$ is the coordinate ring of the intersection.} Pick vector bundles (finite locally free sheaves) that correspond to locally free modules $K[z]^n$ and $K[z^{-1}]^n$. One wants to glue these over the intersection $K[z,z^{-1}]$, so one considers the restrictions of each of these modules to a copy of $K[z,z^{-1}]^n$. Now, one glues these together via an isomorphism $K[z,z^{-1}]^n\longrightarrow K[z,z^{-1}]^n$, which is given by an element of the group $\GL_{n}(K[z,z^{-1}])$. Thus, one specifies a line bundle by choosing a member of this group.
@@ -6379,7 +6379,7 @@ Suppose that $X$ is a compact Riemann surface. Suppose further that $d=\sum_{i}^
 \end{align*}
 That is, all of the coefficients of $(f)+d$ are greater than or equal to $0$. One sees that this gives a line bundle since, locally, it is isomorphic to the sheaf of coordinate functions: Multiplication by the meromorphic function $f$ gives a local isomorphism.
 
-Suppose that $X$ is a scheme. Let $\mathscr{K}=\mathscr{K}_X$ be the sheaf of total quotient rings. Cover $X$ by open subschemes $U_i$. For every subscheme $U_i$, take a section $f_i\in \mathscr{K}\big|_{U_i}$ where $f_i/f_j$ is a unit of $\mathscr{K}\big|_{U_i\cap U_j}$. This gives a Cartier divisor $d$. Now, one wants to associate this Cartier divisor to an invertible subsheaf $\mathscr{L}(d)$ of $\mathscr{K}$ given by sections $g\in \mathscr{K}\big|_{U_i}$ where $gf_i\in \mathscr{O}_{U_i}$ is regular on $U_i$. Again, $f_i$ is an isomorphism from $\mathscr{L}(d)$ to $\mathscr{O}_{U_i}$, so $\mathscr{L}(d)$ is an invertible sheaf. 
+Suppose that $X$ is a scheme. Let $\mathscr{K}=\mathscr{K}_X$ be the sheaf of total quotient rings. Cover $X$ by open subschemes $U_i$. For every subscheme $U_i$, take a section $f_i\in \mathscr{K}({U_i})$ where $f_i/f_j$ is a unit of $\mathscr{K}({U_i\cap U_j})$. This gives a Cartier divisor $d$. Now, one wants to associate this Cartier divisor to an invertible subsheaf $\mathscr{L}(d)$ of $\mathscr{K}$ given by sections $g\in \mathscr{K}({U_i})$ where $gf_i\in \mathscr{O}({U_i})$ is regular on $U_i$. Again, $f_i$ is an isomorphism from $\mathscr{L}(d)$ to $\mathscr{O}_{U_i}$, so $\mathscr{L}(d)$ is an invertible sheaf. 
 
 This gives a map from the Cartier divisor class group to the Picard group. One can check that this is an injective group homomorphism whose image is the subgroup of the Picard group of invertible sheaves that are isomorphic to a subsheaf of the sheaf of total quotient rings. Usually, this homomorphism is an isomorphism. 
 
@@ -6391,7 +6391,7 @@ If $X$ is an integral scheme, then this homomorphism is an isomorphism: Since $X
 \]
 given by $\ell \longmapsto \ell\tensor 1$. Therefore, $\mathscr{L}$ is a subsheaf of $\mathscr{K}$.
 
-Suppose that $X$ is a scheme. Cover $X$ by open sets $U_i$. Suppose that $\mathscr{L}$ is an invertible sheaf that is trivial on every $U_i$.\footnote{That is, $\mathscr{L}$ is isomorphic to the sheaf of coordinate functions on every $U_i$.} One can define $\mathscr{L}$ by units $b_{ij}\in \mathscr{O}(U_i\cap U_j) ^*$, each of which gives an isomorphism
+Suppose that $X$ is a scheme. Let $\mathscr{U} = (U_i)$ be an open covering of $X$. Suppose that $\mathscr{L}$ is an invertible sheaf that is trivial on every $U_i$.\footnote{That is, $\mathscr{L}$ is isomorphic to the sheaf of coordinate functions on every $U_i$.} One can define $\mathscr{L}$ by units $b_{ij}\in \mathscr{O}(U_i\cap U_j) ^*$, each of which gives an isomorphism
 \[
 \begin{tikzcd}
 	b_{ij}: \mathscr{O}(U_i) \big|_{U_i\cap U_j} \ar[r,"\sim"]& \mathscr{O}(U_j) \big|_{U_i\cap U_j}.
@@ -6401,11 +6401,13 @@ The collection of units $b_{ij}$ is a $1$-\defn{cochain}\index{cochain}. For the
 \begin{align*}
 	b_{ij}b_{jk}b_{ki} = 1.
 \end{align*}
-Thus, $b_{ij}$ is a $1$-\defn{cocycle}\index{cocycle}.
+This is the condition that $b_{ij}$ is a $1$-\defn{cocycle}\index{cocycle}.
 
-Pick a unit $a_i\in \mathscr{O}(U_i) ^*$. If $b_{ij}=a_ia_j^{-1}$, then $\mathscr{L}$ is trivial. In this case, $b_{ij}$ is a $1$-\defn{coboundary}\index{coboundary}. Let $Z^1$ denote the group of $1$-cocycles and let $B^1$ denote the group of $1$-coboundaries. Then, the group invertible sheaves that are trivial on all $U_i$ is isomorphic to $Z^1/B^1$. All invertible sheaves are given by a direct limit over open coverings given by refinements:
+Pick a unit $a_i\in \mathscr{O}(U_i) ^*$. If $b_{ij}=a_ia_j^{-1}$, then $\mathscr{L}$ is trivial. In this case, $b_{ij}$ is a $1$-\defn{coboundary}\index{coboundary}. Let $Z^1(\mathscr{U})$ denote the group of $1$-cocycles and let $B^1(\mathscr{U})$ denote the group of $1$-coboundaries. Then, the group invertible sheaves that are trivial on all $U_i$ is isomorphic to $Z^1(\mathscr{U})/B^1(\mathscr{U})$. 
+
+An open covering $\mathscr{V}=(V_i)$ is a \defn{refinement}\index{refinement} of an open covering $\mathscr{U} = (U_i)$ if and only if, for all $V_i\in \mathscr{V}$, there exists $U_j\in \mathscr{U}$ such that $V_i\subset U_j$. All invertible sheaves are given by a direct limit over open coverings given by refinements:
 \begin{align*}
-	\check H^1 := \varinjlim_{\textrm{open coverings $(U_i)$}} Z^1/B^1.
+	\check H^1(\mathscr{U}) := \varinjlim_{\textrm{open coverings $\mathscr{U}$}} Z^1(\mathscr{U})1/B^1(\mathscr{U}).
 \end{align*}
 This is the $1$st \defn{\v Cech cohomology group}\index{\v Cech cohomology group}.
 
@@ -6436,6 +6438,90 @@ This $1$-cocycle corresponds to $\mathscr{O}(n)$.
 \end{example}
 
 \subsection{Divisors and Dedekind domains.}
+Recall that one has maps
+\[
+\begin{tikzcd}[column sep = 6 em, row sep = 3 em]
+	\CaCl(X)\ar[r, "\textrm{Chern class}"] \ar[d, "\textrm{usually an isomorphism}"] & \Cl (X)\\
+	\Pic (X).
+\end{tikzcd}
+\]
+As one observes in this diagram, the divisor class group homomorphism is called the ``{Chern class}.''\index{Chern class}
+
+Suppose that $X$ is a complex manifold. Then, one has an exact sequence of sheaves
+\[
+\begin{tikzcd}
+	0\ar[r]&2\pi i\mathbf{Z}\ar[r]&\mathscr{O}\ar[r,"\exp"]&\mathscr{O}^* \ar[r]&1
+\end{tikzcd}
+\]
+where $\mathscr{O}$ is the sheaf of meromorphic functions and $\mathscr{O}^*$ is the sheaf of nonzero meromorphic functions. This gives a long exact sequence of cohomology groups. In particular, one gets a map
+\[
+\begin{tikzcd}
+	\HH^1(\mathscr{O}^*)\ar[r] & \HH^2(X,2\pi i \mathbf{Z}).
+\end{tikzcd}
+\]
+Line bundles sort of correspond to the $1$st \v Cech cohomology group, and $\HH^1(\mathscr{O}^*)$ is, more-or-less, the $1$st \v Cech cohomology group, so $\HH^1(\mathscr{O}^*)$ is, more-or-less, $\Pic(X)$. Thus, one gets a natural boundary map from line bundles to the second cohomology group of a manifold. This map is the \defn{Chern class}\index{Chern class}. One can construct Chern classes for vector bundles taking values in even-dimensional cohomology classes.
+
+One wants an analogue of this construction in algebraic geometry. However, $\exp$ is not algebraic and the cohomology of the sheaf $\mathbf{Z}$ is badly behaved. The latter problem was solved by Grothendieck via his construction of \'etale cohomology. 
+
+Now, a second cohomology group $\HH^2(X,2\pi i \mathbf{Z})$ is dual to a second homology group $\HH_2(X,2\pi i\mathbf{Z})$. Poincar\'e duality says that this is dual to a homology group $\HH_{n-2}(X,2\pi i \mathbf{Z})$, which has something to do with codimension-$2$ subsets. Something of real codimension $2$ has complex codimension $1$, so this has something to do with Weil divisors. Furthermore, $\HH^1(\mathscr{O}^*)$ has something to do with Cartier divisors. Thus, the divisor class group homomorphism is the analogue of differential geometry's Chern class map.
+
+Suppose that $A$ is a Dedekind domain. Let us consider the scheme $\Spec A$ and determine the structure of Weil divisors and Cartier divisors on $\Spec A$. Recall that a Dedekind domain $A$ satisfies the following conditions:
+\begin{enumerate}
+	\item $A$ is an integral domain;
+	\item $A$ is Noetherian;
+	\item Every nonzero prime ideal in $A$ is a maximal ideal;
+	\item $A$ is integrally closed in its field of fractions.
+\end{enumerate}
+Let us translate these algebraic conditions into the language of geometry: (1) means that the scheme is integral and affine.  (2) means that the scheme is Noetherian. (3) means that the dimension of the scheme is at most $1$.  (4) means that the scheme is normal.\footnote{This, more-or-less, corresponds to regularity in the context of condition (3).} Thus, one sees that the coordinate ring of any nonsingular affine curve is a Dedekind domain. Another important example is integers of algebraic number fields.
+
+One can approach the ideal class group of $A$ with divisors: Define the group of divisors on $A$ by the free abelian group on the maximal ideals of $A$. Since $A$ is a Dedekind domain, one has
+\begin{align*}
+	(\alpha) =  \mathfrak{p}_1^{n_1}\cdots\mathfrak{p}_\ell^{n_\ell}
+\end{align*}
+for all $\alpha \in A$. Then, one calls anything of the form $n_1\mathfrak{p}_1+\cdots+n_\ell\mathfrak{p}_\ell$ a principal divisor.
+Thus, one can define the divisor class group as the group of divisors modulo the group of principal divisors.
+This group is trivial if and only if $A$ is a unique factorization domain.
+One can think of the elements of the Dedekind domain $A$ as functions. For example, in the case $A=\mathbf{Z}$, then one might say that $12/5$ has a root of order $2$ at $(2)$, a root of order $1$ at $(3)$, and a pole of order $1$ at $(5)$.\footnote{This is part of the analogy between nonsingular curves and integers of algebraic number fields.}
+Notice that the divisors on a Dedekind domain are the same as Weil divisors on a scheme. Furthermore, the divisor class group is the Weil divisor class group.
+
+\begin{example}[ ]\label{}\text{}
+Consider the Dedekind domain $\mathbf{Z}[\sqrt{-5} ]$. One sees that
+\begin{align*}
+	(2)&=  (2,1+\sqrt{-5} )^2;\\
+	(3) &=  (3,1+\sqrt{-5} ) (3,1-\sqrt{-5} ) ;\\
+	(1+\sqrt{-5} ) &= (2,1+\sqrt{-5} ) (3,1+\sqrt{-5} ) ;
+\end{align*}
+etc. The ideals $(2,1+\sqrt{-5} )$, $(3,1\pm \sqrt{-5} )$ are not principal, so the divisor class group is not trivial.
+\end{example}
+
+One can approach the ideal class group of $A$ with ideals. Recall that a \index{fractional ideal}fractional ideal of $A$ is a nonzero finitely generated submodule of the field of fractions of $A$. Fractional ideals comprise a group. The group of fractional ideals modulo the group of principal fractional ideals is called the ideal class group of $A$.
+
+\begin{example}[ ]\label{}\text{}
+Again, consider $\mathbf{Z}[\sqrt{-5}] $. There are two elements in the ideal class group: $(1)$ and $(2,1+\sqrt{-5} )$. Fractional ideals are somehow the same as invertible subsheaves of the sheaf corresponding to the field of fractions of $A$, which somehow correspond to Cartier divisors.
+\end{example}
+
+The classical equivalence between the ideal class group and the ideal class group in number theory is just the isomorphism between the Cartier divisor class group and the Weil divisor class group.
+
+\begin{example}[ ]\label{}\text{}
+Note that $\mathbf{Z}[\sqrt{-3}] $ is not a Dedekind domain since it is not integrally closed: The number $(1+\sqrt{-3} ) /2$ is a root of $z^2+z+1=0$. The scheme $\Spec \mathbf{Z}[(1+\sqrt{-3} ) /2]$ is nonsingular, but the scheme $\mathbf{Z}[\sqrt{-3}] $ has a singularity at $(2,1+\sqrt{-3} )$.
+
+The Weil divisor class group is nontrivial: The prime ideal $(2,1+\sqrt{-3} )$ is not principal. There are two types of fractional ideals: $(1)$ and $(2,1+\sqrt{-3} )$. Thus, one might think that the Cartier divisor class group is isomorphic to the Weil divisor class group. However, $(2,1+\sqrt{-3} )$ does not correspond to a Cartier divisor: It is a fractional ideal, but it isn't invertible.\footnote{In a Dedekind domain, all fractional ideals are invertible.} In fact, 
+\begin{align*}
+	(2,1+\sqrt{-3} ) ^2 = (4,2+2\sqrt{-3} ,-2+2\sqrt{-3} ) = 2(2,1+\sqrt{-3} ).
+\end{align*}
+Thus, the cardinality of the Cartier divisor class group is $1$. 
+
+One also notices that $\mathbf{Z}_{(2)}[ \sqrt{-3}] $ has the maximal ideal $\mathfrak{m}= (2,1+\sqrt{-3} )$ and $\mathfrak{m}/\mathfrak{m}^2$ is $2$ dimensional over $\mathbf{F}_{2}$. The maximal ideal $\mathfrak{m}$ is not principal in the local ring, so it isn't locally free at this point.
+
+Here is what goes wrong:
+\begin{enumerate}
+	\item The local ring is not regular;
+	\item The ideal $(2,1+\sqrt{-3} )$ is not principal in this local ring, so it is not invertible;
+	\item The map from the Picard group to the Weil divisor class group is not an isomorphism.
+\end{enumerate}
+
+\end{example}
+
 \subsection{Examples of \texorpdfstring{$\Pic X$}{Pic X}.}
 \subsection{Morphisms to projective space.}
 \subsection{Very ample sheaves.}
