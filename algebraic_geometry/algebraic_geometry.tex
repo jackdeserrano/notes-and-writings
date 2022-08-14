@@ -4067,7 +4067,7 @@ Suppose that $S$ is a finitely-generated $R$-algebra. If $R$ is Noetherian, then
 \end{theorem}
 
 \begin{remark}
-	\cref{htheo} can be translated into the language of schemes: Suppose $X\longrightarrow Y$ is a morphism of finite type. If $Y$ is Noetherian, then $X$ is Noetherian. If $Y$ is locally Noetherian, then $X$ is locally Noetherian.
+	\Cref{htheo} can be translated into the language of schemes: Suppose $X\longrightarrow Y$ is a morphism of finite type. If $Y$ is Noetherian, then $X$ is Noetherian. If $Y$ is locally Noetherian, then $X$ is locally Noetherian.
 \end{remark}
 
 \begin{remark}
@@ -4149,7 +4149,7 @@ The morphism described in \cref{qfnf_1} is an open immersion. The inclusion $\ma
 \end{example}
 
 \begin{remark}
-	\cref{op_im_ex} demonstrates that open immersions do not need to be finite. 
+	\Cref{op_im_ex} demonstrates that open immersions do not need to be finite. 
 \end{remark}
 
 \begin{remark}
@@ -4164,7 +4164,7 @@ The morphism described in \cref{qfnf_1} is an open immersion. The inclusion $\ma
 Let $Y:= \Spec K[z_1,z_2,\hdots]$ and let $X := Y - (z_1,z_2,\hdots) =: Y-\mathfrak{p}$. The morphism $\varphi : X\longrightarrow Y$ is an open immersion since the complement of a point is open, but it is not quasicompact: $\varphi^{-1}(Y)=X$ and $X$ is not quasicompact: There is no finite subcover for $\{U(f)\}$.
 \end{example}
 
-Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothnoendieck pointed out a sort of converse.
+Open immersions and finite morphisms are quasifinite in the Noetherian case. Grothendieck pointed out a sort of converse.
 
 \begin{definition}[Stacks project Definition 17.24.1]\label{this oneno}\text{}
 Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}({\mathscr{O}_X})\longrightarrow \catn{Mod}({\mathscr{O}_X})$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
@@ -6365,6 +6365,76 @@ Let $X$ be a scheme. One says that $X$ is \defn{regular}\index{regular scheme} o
 If $X$ is regular, then $X$ is a local unique factorization domain.
 
 \subsection{A comparison of Cartier divisors and the Picard group.}
+Recall that that the Picard group of a ringed space $(X,\mathscr{O}_X)$ denoted $\Pic (X)$ is the group of isomorphism classes of invertible sheaves on $X$.\footnote{Equivalently, line bundles on $X$.} We shall construct a group homomorphism
+\[
+\begin{tikzcd}
+	\CaCl(X) \ar[r]&\Pic(X)
+\end{tikzcd}
+\]
+that is usually an isomorphism in practice.
+
+Suppose that $X$ is a compact Riemann surface. Suppose further that $d=\sum_{i}^{} n_ip_i$ is a divisor on $X$. We shall associate this to an invertible subsheaf $\mathscr{L}(d)$ of the sheaf $\mathscr{K}$ of meromorphic functions on $X$. Sections of $\mathscr{L}(d)$ shall correspond to meromorphic functions $f$ such that
+\begin{align*}
+	(f) + d \ge 0.
+\end{align*}
+That is, all of the coefficients of $(f)+d$ are greater than or equal to $0$. One sees that this gives a line bundle since, locally, it is isomorphic to the sheaf of coordinate functions: Multiplication by the meromorphic function $f$ gives a local isomorphism.
+
+Suppose that $X$ is a scheme. Let $\mathscr{K}=\mathscr{K}_X$ be the sheaf of total quotient rings. Cover $X$ by open subschemes $U_i$. For every subscheme $U_i$, take a section $f_i\in \mathscr{K}\big|_{U_i}$ where $f_i/f_j$ is a unit of $\mathscr{K}\big|_{U_i\cap U_j}$. This gives a Cartier divisor $d$. Now, one wants to associate this Cartier divisor to an invertible subsheaf $\mathscr{L}(d)$ of $\mathscr{K}$ given by sections $g\in \mathscr{K}\big|_{U_i}$ where $gf_i\in \mathscr{O}_{U_i}$ is regular on $U_i$. Again, $f_i$ is an isomorphism from $\mathscr{L}(d)$ to $\mathscr{O}_{U_i}$, so $\mathscr{L}(d)$ is an invertible sheaf. 
+
+This gives a map from the Cartier divisor class group to the Picard group. One can check that this is an injective group homomorphism whose image is the subgroup of the Picard group of invertible sheaves that are isomorphic to a subsheaf of the sheaf of total quotient rings. Usually, this homomorphism is an isomorphism. 
+
+If $X$ is an integral scheme, then this homomorphism is an isomorphism: Since $X$ is integral, the sheaf $\mathscr{K}$ of total quotient rings is the constant sheaf of the field $K$ of functions on $X$. Suppose that $\mathscr{L}$ is an invertible sheaf. Then, one can cover $X$ with open sets $U_i$ such that $\mathscr{L}\big|_{U_i}\isomto \mathscr{O}_{U_i}$. Then, $\mathscr{K}\tensor \mathscr{L}\isomto \mathscr{K}$ on $U_i$, so $\mathscr{K}\tensor \mathscr{L}$ is constant on each $U_i$. Since $X$ is irreducible, $\mathscr{K}\tensor \mathscr{L}$ is constant on $X$. Therefore, $\mathscr{K}\tensor \mathscr{L}\isomto \mathscr{K}$ on $X$. This gives a map
+\[
+\begin{tikzcd}
+	\mathscr{L}\ar[r] & \mathscr{L}\tensor \mathscr{K}\isomto \mathscr{K}
+\end{tikzcd}
+\]
+given by $\ell \longmapsto \ell\tensor 1$. Therefore, $\mathscr{L}$ is a subsheaf of $\mathscr{K}$.
+
+Suppose that $X$ is a scheme. Cover $X$ by open sets $U_i$. Suppose that $\mathscr{L}$ is an invertible sheaf that is trivial on every $U_i$.\footnote{That is, $\mathscr{L}$ is isomorphic to the sheaf of coordinate functions on every $U_i$.} One can define $\mathscr{L}$ by units $b_{ij}\in \mathscr{O}(U_i\cap U_j) ^*$, each of which gives an isomorphism
+\[
+\begin{tikzcd}
+	b_{ij}: \mathscr{O}(U_i) \big|_{U_i\cap U_j} \ar[r,"\sim"]& \mathscr{O}(U_j) \big|_{U_i\cap U_j}.
+\end{tikzcd}
+\]
+The collection of units $b_{ij}$ is a $1$-\defn{cochain}\index{cochain}. For the ``gluings'' to be compatible, one needs
+\begin{align*}
+	b_{ij}b_{jk}b_{ki} = 1.
+\end{align*}
+Thus, $b_{ij}$ is a $1$-\defn{cocycle}\index{cocycle}.
+
+Pick a unit $a_i\in \mathscr{O}(U_i) ^*$. If $b_{ij}=a_ia_j^{-1}$, then $\mathscr{L}$ is trivial. In this case, $b_{ij}$ is a $1$-\defn{coboundary}\index{coboundary}. Let $Z^1$ denote the group of $1$-cocycles and let $B^1$ denote the group of $1$-coboundaries. Then, the group invertible sheaves that are trivial on all $U_i$ is isomorphic to $Z^1/B^1$. All invertible sheaves are given by a direct limit over open coverings given by refinements:
+\begin{align*}
+	\check H^1 := \varinjlim_{\textrm{open coverings $(U_i)$}} Z^1/B^1.
+\end{align*}
+This is the $1$st \defn{\v Cech cohomology group}\index{\v Cech cohomology group}.
+
+\begin{example}[ ]\label{}\text{}
+Let us compute
+\begin{align*}
+	\Pic(\mathbf{P}^n)\isomto \CaCl(\mathbf{P}^n)\isomto \Cl(\mathbf{P}^n).
+\end{align*}
+First, $\mathbf{P}^n$ is covered by $n+1$ copies of $\mathbf{A}^n$. The Picard group of $\mathbf{A}^n$ is trivial: $\Pic(\mathbf{A}^n)$ is isomorphic to $\Cl(\mathbf{A}^n)$ and $\Cl(\mathbf{A}^n)$ is isomorphic to $0$ since $K[z_1,\hdots, z_n]$ is a unique factorization domain.
+If $\mathscr{L}$ is a line bundle, then $\mathscr{L}$ is trivial on every copy of $\mathbf{A}^n$. Now, one has an open covering $(U_i)$. Recall that \begin{align*}
+	\mathscr{O}(U_i) = K[ z_0,\hdots, z_n][z_i^{-1}]^0.
+\end{align*}
+One wants $b_{ij}\in \mathscr{O}(U_i\cap U_j) ^*$, but the elements of $\mathscr{O}(U_i\cap U_j)^*$ are given by the units of $K[z_0,\hdots, z_n][z_i^{-1},z_j^{-1}]^0$, namely $c_{ij}(z_i/z_j)^{n_{ij}}$ for $c_{ij}\in K^*$ and $n_{ij}\in \mathbf{Z}$. Now, one applies the $1$-cocycle condition:
+\begin{align*}
+	b_{ij}b_{jk}b_{ki}=1.
+\end{align*}
+This gives
+\begin{align*}
+	(z_i/z_j)^{n_{ij}}  (z_j/z_k)^{n_{jk}} (z_k/z_i)^{n_{ki}}c_{ij}c_{jk}c_{ki} = 1.
+\end{align*}
+Immediately, one concludes that $n_{ij}=n_{jk}=n_{ki}$. Now, the claim is that $c_{ij}$ is a $1$-coboundary. Define $a_0:=1$ and $a_j := c_{j0} = (c_{0j})^{-1}$.
+Then, $c_{ij}c_{jk}c_{ki}=1$ implies $c_{ij} = a_ia_j^{-1}$.
+Multiplying a $1$-cocyle by a $1$-coboundary does not affect the line bundle, so $\mathscr{L}$ is given by a $1$-cocycle $b_{ij} = (z_i/z_j) ^\ell$ for some $\ell \in \mathbf{Z}$ and
+\begin{align*}
+	\Pic(\mathbf{P}^n)\isomto \mathbf{Z}.
+\end{align*}
+This $1$-cocycle corresponds to $\mathscr{O}(n)$.
+\end{example}
+
 \subsection{Divisors and Dedekind domains.}
 \subsection{Examples of \texorpdfstring{$\Pic X$}{Pic X}.}
 \subsection{Morphisms to projective space.}
