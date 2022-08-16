@@ -2363,7 +2363,7 @@ Genus-$1$ curves are called \defn{elliptic curves}\index{elliptic curve}. If one
 \begin{align*}
 	(\wp') ^2 = 4\wp^3 -g_2\wp-g_3,
 \end{align*}
-maps $\mathbf{C}/\Lambda$ to the algebraic curve $y^2=4x^3-g_2x-g_3$. There is a two-to-one map from this curve to the plane that ramifies at four points: the three roots of the equation and a point at infinity.
+maps $\mathbf{C}/\Lambda$ to the algebraic curve $y^2=4x^3-g_2x-g_3$. There is a two-to-one map from this curve to the plane that ramifies at four points: The three roots of the equation and a point at infinity.
 
 Given three points $\lambda_1,\lambda_2,\lambda_3$ in the projective line, there is a linear fractional transformation 
 \begin{align*}
@@ -2388,7 +2388,7 @@ However, one can also write an elliptic curve as $\mathbf{C}/\Lambda=\mathbf{C}/
 	j(\tau) := q ^{-1} + 744 + 196884q + \cdots.
 \end{align*}
 
-Elliptic curves are isomorphic if and only if they have the same $j$-invariant, so one might say that the moduli space of elliptic curves is, more or less, the affine line. However, this moduli space isn't a variety at all; it is an \defn{algebraic stack}\index{algebraic stack}. Describing moduli spaces of things that have automorphisms is kind of difficult.
+Elliptic curves are isomorphic if and only if they have the same $j$-invariant, so one might say that the moduli space of elliptic curves is, more or less, the affine line. However, this moduli space isn't a variety at all: It is an \defn{algebraic stack}\index{algebraic stack}. Describing moduli spaces of things that have automorphisms is kind of difficult.
 
 Let us move on to genus-$2$ curves. One considers the equation
 \begin{align*}
@@ -2534,7 +2534,7 @@ If $f(x,y) = y^2-x^2 -x^3$, then
 \end{example}
 
 \begin{esquisse}
-	Suppose that $f$ has a $y^n$ term but not $y^i$ for $i<n$. Draw a square lattice of monomials. Mark all monomials $x^iy^j$ that occur in $f$. Get a ruler.\footnote{This ruler will become Newton's rotating ruler.} Place it vertically on the left of the lattice. Rotate it counterclockwise about the $y^n$ point until it reaches the first marked point. Draw a line through these points. Rotate about this point. Repeat. This process will generate a \defn{Newton polygon}\index{Newton polygon}.
+	Suppose that $f$ has a $y^n$ term but not $y^i$ for $i<n$. Draw a square lattice of monomials. Mark all monomials $x^iy^j$ that occur in $f$. Get a ruler.\footnote{This ruler will transfigure to become Newton's rotating ruler.} Place it vertically on the left of the lattice. Rotate it counterclockwise about the $y^n$ point until it reaches the first marked point. Draw a line through these points. Rotate about this point. Repeat. This process will generate a \defn{Newton polygon}\index{Newton polygon}.
 
 	One notices that the line that one draws might not pass through a point on each horizontal. Hence, one introduces extra points by $x\longmapsto x^{1/r}$ for a suitable $r$. Write the next monomial through which the line crosses $y^{n-1}x^m$. One can call the terms on the first line of the Newton polygon (which, now, passes through a point on each horizontal) the ``smallest-degree terms.'' Put $\deg y = m$ and $\deg x = 1$. The monomials on this line give a homogeneous polynomial in $y$ and $x^m$. Factorize this to $(y-\alpha x^m) (y-\beta x^m)\cdots$. Then, with $y\longmapsto y+\alpha x^m$, this polynomial becomes $y(y-\gamma x^m)\cdots$. Notice that there is no term in $x^{mn}$.
 
@@ -5362,7 +5362,7 @@ Let $(X,\mathscr{O}_X)$ be a ringed space. The \defn{Picard group}\index{Picard 
 \end{definition}
 
 \begin{problem}
-	Find all invertible sheaves over $\mathbf{P}^1_K$. Invertible sheaves more-or-less line bundles. Two invertible sheaves give an invertible sheaf via the tensor product in \cref{lemma_{17}above}. Therefore, given \cref{invertiblepic} or the line bundle definition, this is equivalent to determining $\Pic(\mathbf{P}^1_K)$.
+	Find all invertible sheaves over $\mathbf{P}^1_K$. Invertible sheaves are, more or less, line bundles. Two invertible sheaves give an invertible sheaf via the tensor product in \cref{lemma_{17}above}. Therefore, given \cref{invertiblepic} or the line bundle definition, this is equivalent to determining $\Pic(\mathbf{P}^1_K)$.
 \end{problem}
 
 Let us guess by identifying the obvious line bundles. First, $\mathbf{P}^n_K =\mathbf{P}^n$ is the set of lines in $K^{n+1}$. Therefore, there is a map from the points of $\mathbf{P}^n$ to the $1$-dimensional vector spaces over $K$ given by
@@ -6459,7 +6459,7 @@ where $\mathscr{O}$ is the sheaf of meromorphic functions and $\mathscr{O}^*$ is
 	\HH^1(\mathscr{O}^*)\ar[r] & \HH^2(X,2\pi i \mathbf{Z}).
 \end{tikzcd}
 \]
-Line bundles sort of correspond to the $1$st \v Cech cohomology group, and $\HH^1(\mathscr{O}^*)$ is, more-or-less, the $1$st \v Cech cohomology group, so $\HH^1(\mathscr{O}^*)$ is, more-or-less, $\Pic(X)$. Thus, one gets a natural boundary map from line bundles to the second cohomology group of a manifold. This map is the \defn{Chern class}\index{Chern class}. One can construct Chern classes for vector bundles taking values in even-dimensional cohomology classes.
+Line bundles sort of correspond to the $1$st \v Cech cohomology group, and $\HH^1(\mathscr{O}^*)$ is, more or less, the $1$st \v Cech cohomology group, so $\HH^1(\mathscr{O}^*)$ is, more or less, $\Pic(X)$. Thus, one gets a natural boundary map from line bundles to the second cohomology group of a manifold. This map is the \defn{Chern class}\index{Chern class}. One can construct Chern classes for vector bundles taking values in even-dimensional cohomology classes.
 
 One wants an analogue of this construction in algebraic geometry. However, $\exp$ is not algebraic and the cohomology of the sheaf $\mathbf{Z}$ is badly behaved. The latter problem was solved by Grothendieck via his construction of \'etale cohomology. 
 
@@ -6472,7 +6472,7 @@ Suppose that $A$ is a Dedekind domain. Let us consider the scheme $\Spec A$ and 
 	\item Every nonzero prime ideal in $A$ is a maximal ideal;
 	\item $A$ is integrally closed in its field of fractions.
 \end{enumerate}
-Let us translate these algebraic conditions into the language of geometry: (1) means that the scheme is integral and affine.  (2) means that the scheme is Noetherian. (3) means that the dimension of the scheme is at most $1$.  (4) means that the scheme is normal.\footnote{This, more-or-less, corresponds to regularity in the context of condition (3).} Thus, one sees that the coordinate ring of any nonsingular affine curve is a Dedekind domain. Another important example is integers of algebraic number fields.
+Let us translate these algebraic conditions into the language of geometry: (1) means that the scheme is integral and affine.  (2) means that the scheme is Noetherian. (3) means that the dimension of the scheme is at most $1$.  (4) means that the scheme is normal.\footnote{This corresponds, more or less, to regularity in the context of condition (3).} Thus, one sees that the coordinate ring of any nonsingular affine curve is a Dedekind domain. Another important example is integers of algebraic number fields.
 
 One can approach the ideal class group of $A$ with divisors: Define the group of divisors on $A$ by the free abelian group on the maximal ideals of $A$. Since $A$ is a Dedekind domain, one has
 \begin{align*}
@@ -6523,6 +6523,117 @@ Here is what goes wrong:
 \end{example}
 
 \subsection{Examples of \texorpdfstring{$\Pic X$}{Pic X}.}
+Suppose that $X$ is Noetherian, integral, and locally factorial. Then,
+\begin{align*}
+	\Pic(X)\isomto \CaCl (X) \isomto \Cl (X).
+\end{align*}
+We shall take an informal survey of various Picard groups.
+
+In \ul{Disquisitiones Arithmeticae}, Gauss worked out things such as $\Pic (\Spec (\oo_K))$ where $K$ is an imaginary quadratic field and $\oo_K$ is its ring of integers. For example, if $\oo_K = \mathbf{Z}[\sqrt{-5}] $, then $\Pic(\Spec (\oo_K))\isomto \mathbf{Z}/2\mathbf{Z}$. Also, for $\alpha = (1+\sqrt{-163} ) /2$, $\Pic (\Spec (\mathbf{Z}[\alpha]))$ is trivial.
+Gauss conjectured\footnote{And Heegner, Stark, and Baker proved . . .} that this was the largest ring of integers of an imaginary quadratic field whose spectrum had a trivial Picard group.\footnote{Of course, Gauss talked about this in terms of class numbers.} This is the proved class number problem. There remains the following open problem of Gauss:
+\begin{quote}
+	\small Are there infinitely many real quadratic fields with class number $1$?
+\end{quote}
+
+Ernst Kummer's work toward the resolution of Fermat's last theorem and on reciprocity laws translates to results about Picard groups. For example, he worked out the Picard groups $\Pic(\Spec (\oo_{\Q(\zeta)})) = \Pic(\Spec (\mathbf{Z}[\zeta]))$ for a cyclotomic field $\mathbf{Q}(\zeta)$.\footnote{The ring of integers of any cyclotomic field is $\mathbf{Z}[\zeta]$ where $\zeta$ is a root of $(z^p -1)/ (z-1)$.} 
+Kummer showed that, if $p$ does not divide $\# \Pic(\Spec (\mathbf{Z}[\zeta]))$, then Fermat's last theorem holds for exponent $p$. For example, Kummer demonstrated that, if $\zeta\ne 1$ is a $p$th root of unity, then
+\begin{align*}
+	\Pic(\Spec(\mathbf{Z}[\zeta])) =
+	\begin{cases}
+		1 & p<23\\
+		\mathbf{Z}/3\mathbf{Z}& p=23\\
+		\mathbf{Z}/37\mathbf{Z} & p=37.
+	\end{cases}
+\end{align*}
+In the case $p=257$,
+\begin{align*}
+	\# \Pic(\Spec(\mathbf{Z}[\zeta])) = 545248502341923087322382262555964461476422854662168321.
+\end{align*}
+
+One can also consider the Picard group of a projective nonsingular curve $X$ over $\mathbf{C}$. Such curves are, more or less, compact Riemann surfaces. We have seen that $\Pic (\mathbf{P}^1)\isomto \mathbf{Z}$ and, if $E$ is an elliptic curve, $\Pic(E)$ fits into an extension
+\[
+\begin{tikzcd}
+	0\ar[r] & E\ar[r]&\Pic(E)\ar[r,"\deg"] & \mathbf{Z}\ar[r]&0.
+\end{tikzcd}
+\]
+In general, the Abel--Jacobi theorem describes the Picard groups of all such curves in terms of the genus; the projective line and elliptic curves take care of genus $0$ and genus $1$.
+
+The space of holomorphic $1$-forms\footnote{Locally $f(z)\,dz$ for $f(z)$ a holomorphic function.} $\omega$, $\Omega^1(X)$, has dimension $g$ over $\mathbf{C}$. Pick $c_0\in X$. One might try to define a map from $X$ to the dual $\Omega^1(X)^*$ by
+\[
+\begin{tikzcd}
+	c\ar[r,mapsto]& \displaystyle\int_{c_0}^{c} \omega.
+\end{tikzcd}
+\]
+
+However, this is not well defined, for not all paths from $c_0$ to $c$ need to be homotopic. 
+One needs to define a map from $X$ to the dual modulo the first homology group $\HH_1(X,\mathbf{Z})$.
+The dual $\Omega^1(X)^*$ has complex dimension $g$ and $\HH_1(X,\mathbf{Z})$ is isomorphic to $\mathbf{Z}^{2g}$. As a topological space, this quotient is isomorphic to $(S^1)^{2g}$.
+Thus, one has a well defined map from $X$ to $\Omega^1(X)^*/\HH_1 (X,\mathbf{Z})$, which depends on $c_0$. One can extend this map to divisors and restrict it to degree-$0$ divisors modulo principal divisors. The resulting map
+\[
+\begin{tikzcd}
+	\displaystyle \frac{\textrm{degree-$0$ divisors}}{\textrm{principal divisors}} \ar[r] & \Omega^1(X)^*/\HH_1 (X,\mathbf{Z})
+\end{tikzcd}
+\]
+is an isomorphism. This is the \index{Abel--Jacobi theorem}Abel--Jacobi theorem: Abel proved injectivity and Jacobi proved surjectivity. The group $\Omega^1(X)^*/\HH_1(X,\mathbf{Z})$ is the \defn{Jacobian}\index{Jacobian of a curve} of the curve $X$.
+The Abel--Jacobi theorem says that one has the exact sequence
+\[
+\begin{tikzcd}
+	0\ar[r]& \Omega^1(X)^*/\HH_1(X,\mathbf{Z}) \ar[r]&\Pic(X)\ar[r,"\deg"] &\mathbf{Z}\ar[r]&0.
+\end{tikzcd}
+\]
+In the case of $\mathbf{P}^1$, the Jacobian is $0$: There are no holomorphic $1$-forms on $\mathbf{P}^1$ other than $0$. In the case of elliptic curves, the Jacobian is isomorphic to the curve itself.
+
+Weil extended this notion to curves over fields of characteristic $p>0$.
+
+Now, let us consider a degree-$2$ quadric in $\mathbf{P}^3$, say
+\begin{align*}
+	wz=xy.
+\end{align*}
+Such surfaces are isomorphic to $\mathbf{P}^1\times\mathbf{P}^1$ via, say,
+\[
+\begin{tikzcd}
+	((a:b), (c:d) )\ar[r,mapsto] & (ac:ad:bc:bd).
+\end{tikzcd}
+\]
+The Picard group of this is $\mathbf{Z}\times \mathbf{Z}$.
+
+The map
+\[
+\begin{tikzcd}
+	\Pic(X)\times\Pic (Y)\ar[r]&\Pic (X\times Y)
+\end{tikzcd}
+\]
+does not need to be an isomorphism: Injectivity fails if $Y$ is empty and surjectivity fails if $X=\mathbf{P}^1$ and $Y$ is $2$ points. Also, surjectivity fails if $X$ and $Y$ are curves of genus greater than $0$.
+
+Now, suppose that $X$ is degree-$3$ surface in $\mathbf{P}^3$. Then,
+\begin{align*}
+	\Pic(X)\isomto  \mathbf{Z}^7.
+\end{align*}
+This surface is the cubic surface isomorphic to $\mathbf{P}^2$ blown up at $6$ points. One knows that $\Pic(\mathbf{P}^2)\isomto \mathbf{Z}$, and blowing up at a point means replacing that point with a copy of $\mathbf{P}^1$, roughly.
+This copy of $\mathbf{P}^1$ gives a new divisor and, hence, a new factor of $\mathbf{Z}$ in the Picard group.
+
+There exists a surface $X$ with 
+\begin{align*}
+	\Pic(X) \isomto  \mathbf{Z}/n\mathbf{Z}.
+\end{align*}
+Take a nonsingular curve $Y$ of degree $n$ over $\mathbf{P}^2$ and consider $X = \mathbf{P}^2-Y$. Then, there is a surjective map
+\[
+\begin{tikzcd}
+	\Pic(\mathbf{P}^2)\ar[r]&\Pic(X).
+\end{tikzcd}
+\]
+The kernel of this map is generated by $Y$. Thus, there is an exact sequence
+\[
+\begin{tikzcd}
+	\mathbf{Z}\ar[r]&\mathbf{Z}\ar[r]&\Pic(X)\ar[r]&0,
+\end{tikzcd}
+\]
+so $\Pic(X)\isomto  \mathbf{Z}/n\mathbf{Z}$.
+
+\begin{remark}
+	These surfaces are rational surfaces.
+\end{remark}
+
 \subsection{Morphisms to projective space.}
 \subsection{Very ample sheaves.}
 \subsection{Linear systems.}
