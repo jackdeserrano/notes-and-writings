@@ -5219,7 +5219,7 @@ whose fibres are vector spaces that is locally trivial, so one can cover $M$ by 
 \]
 locally, where $U$ is open. One can also use sheaves: It is a sheaf over $M$ that looks like $\mathscr{O}_U^{\oplus n}$ where $U$ is open and $\mathscr{O}_U$ is the sheaf of regular functions on $U$. Also, one can use rings: If $R$ is a ring, a vector bundle is a locally free $R$-module\index{locally free module} $\mathscr{M}$: That is, $\mathscr{M}[f_i^{-1}] \isomto R[f_i^{-1}]^n$ where $\{U(f_i)\}$ covers $\Spec R$.\footnote{That is, $(f_1,f_2,\hdots)=(1)$.}
 
-\begin{example}[Vector bundles]\label{}\text{}
+\begin{example}[Vector bundles]\label{vectb}\text{}
 We have seen that the tangent space of a sphere is a vector bundle.
 
 Let $R=\mathbf{Z}\left[ \sqrt{-5}  \right] $. Consider $X=\Spec R$. Recall that unique factorization fails in $R$:
@@ -6635,6 +6635,162 @@ so $\Pic(X)\isomto  \mathbf{Z}/n\mathbf{Z}$.
 \end{remark}
 
 \subsection{Morphisms to projective space.}
+Consider a morphism of schemes
+\[
+\begin{tikzcd}
+	X\ar[r]&Y=\Spec B.
+\end{tikzcd}
+\]
+Suppose that $X=\Spec A.$ Then, such a morphism corresponds to a ring homomorphism
+\[
+\begin{tikzcd}
+	A &B\ar[l].
+\end{tikzcd}
+\]
+Now, suppose that $X$ has an open affine covering $\mathscr{U}=(U_i)$ where $U_i = \Spec A_i$. Then, one needs compatible ring homomorphisms
+\[
+\begin{tikzcd}
+	A_i &B.\ar[l]
+\end{tikzcd}
+\]
+One needs to give a section on each $U_i$ such that these sections are compatible on intersections. This is the same as a ring homomorphism
+\[
+\begin{tikzcd}
+	\Gamma(\mathscr{O}_X) & B\ar[l].
+\end{tikzcd}
+\]
+One sees that morphisms to affine schemes are straightforward to describe.
+
+Now, consider a morphism of schemes whose target is a projective scheme, say
+\[
+\begin{tikzcd}
+	X\ar[r]&\mathbf{P}^n_\mathbf{Z}.
+\end{tikzcd}
+\]
+The scheme $\mathbf{P}^n_\mathbf{Z}$ is the union of $n$ copies of $\mathbf{A}^n_\mathbf{Z}$. If $X$ is the spectrum of a local ring, then the collection of morphisms from $X$ to $\mathbf{P}^n_\mathbf{Z}$ is given by the union of the morphisms from $X$ to the $i$th copy of $\mathbf{A}^n_\mathbf{Z}$.
+If $X$ is the spectrum of any ring $A$, say $\mathbf{Z}$, then one does not have this characterization of morphisms.\footnote{The image of the morphism does not need to lie in only one copy of $\mathbf{A}^n_\mathbf{Z}$.} However, for some rings,\footnote{Local rings, polynomial rings, the integers, etc.} one can think of such a morphism as $(\alpha_0:\cdots:\alpha_n)\sim (\lambda \alpha_0:\cdots:\lambda \alpha_n)$ where $\lambda$ is a unit and $(\alpha_0,\hdots,\alpha_n)= (1)$.
+Clearly, such a thing defines a morphism, but not all morphisms need to be described this way.
+
+\begin{example}[This doesn't work for all rings]\label{}\text{}
+Take $A= \mathbf{Z}[\sqrt{-5}]$. Take a morphism
+\[
+\begin{tikzcd}
+	X = \Spec A\ar[r] &\mathbf{P}^1_\mathbf{Z}
+\end{tikzcd}
+\]
+indicated by $(2:1+\sqrt{-5} )$. Notice that $(2,1+\sqrt{-5} ) \ne (1)$. One can cover $X$ by $U(2)$ and $U(3)$.\footnote{Cf. \cref{vectb}.} Over $U(2)$ and $U(3)$, one writes $(2:1+\sqrt{-5} )$ as 
+\begin{align*}
+	& \left( 1:\frac{1+\sqrt{-5} }{2} \right); \quad \left( \frac{1-\sqrt{-5} }{3}: 1\right); 
+\end{align*}
+respectively. The $i$th thing above lives in the $i$th copy of $\mathbf{A}^1_\mathbf{Z}$.\footnote{For $i=1,2$.}
+One sees that these morphisms are compatible on intersections, etc., so they define a morphism from $X$ to $\mathbf{P}^1_\mathbf{Z}$. However, this morphism is not described by two elements \ul{that generate the unit ideal}.
+
+Instead, notice that $2$ and $1+\sqrt{-5}$ generate an invertible ideal.\footnote{Or invertible sheaf.} Thus, we shall describe such morphisms as $(s_0:\cdots:s_n)\sim(\lambda s_0:\cdots:\lambda s_n)$ where $\lambda$ is a unit, $s_i$ is a section of an invertible sheaf $\mathscr{L}$, and $s_0,\hdots, s_n$ generate $\mathscr{L}$. 
+\end{example}
+
+\begin{remark}
+	The original description works for some rings because the Picard group of those rings is trivial, so any invertible sheaf is isomorphic to the relevant sheaf of rings and one can think of sections as elements of the ring.
+\end{remark}
+
+Morphisms
+\[
+\begin{tikzcd}
+	X\ar[r]&\mathbf{P}^n_\mathbf{Z}
+\end{tikzcd}
+\]
+correspond to isomorphism classes of things that contain the following data:
+\begin{enumerate}
+	\item An invertible sheaf $\mathscr{L}$ on $X$;
+	\item Sections $s_0,\hdots, s_n$ of $\mathscr{L}$ that generate $\mathscr{L}$.\footnote{That is, their restrictions to each stalk generate the stalk.}
+\end{enumerate}
+The condition of multiplication by units in the restricted case corresponds to taking isomorphism classes of such data.\footnote{Multiplication by $\lambda$ corresponds to an automorphism of the line bundle $\mathscr{L}$.}
+
+Consider a morhpism
+\[
+\begin{tikzcd}
+	f:X\ar[r] & \mathbf{P}^n_\mathbf{Z}.
+\end{tikzcd}
+\]
+One wants to construct an invertible sheaf on $X$ from this. The scheme $\mathbf{P}^n_\mathbf{Z}$ has a ``special'' invertible sheaf $\mathscr{O}(1)$ with $n+1$ ``special'' sections $z_0,\hdots, z_n$---the coordinate functions. These are not functions on projective space; they are sections of $\mathscr{O}(1)$. Now, one pulls back $f$ and sees that $f^*(\mathscr{O}(1))$ is invertible on $X$. One also pulls back the sections $z_0,\hdots,z_n$ to $X$. The sections $z_0,\hdots,z_n$ generate $\mathscr{O}(1)$ and their pullbacks generate $f^*(\mathscr{O}(1))$.
+
+Now, consider an invertible sheaf $\mathscr{L}$ on $X$ and sections $s_0,\hdots, s_n$ that generate $\mathscr{L}$. One wants to construct a morphism from $X$ to $\mathbf{P}^n_\mathbf{Z}$. Pick $z\in X$. Some $s_i$ does not vanish at $z$.\footnote{That is, $s_i$ is not in the unique maximal submodule of the stalk.} There is an affine open neighbourhood $U$ of $z$ such that $s_i$ does not vanish on $U$. Now, one can define a morphism from $U$ to $\mathbf{P}^n_\mathbf{Z}$ by, first, taking it to the $i$th copy of $\mathbf{A}^n_\mathbf{Z}$ in $\mathbf{P}^n_\mathbf{Z}$:
+\[
+\begin{tikzcd}[sep = 3 em]
+	U\ar[r]\ar[d]&\mathbf{P}^n_\mathbf{Z}.\\
+	\mathbf{A}^n_\mathbf{Z}\ar[ur]
+\end{tikzcd}
+\]
+This morphism from $U$ to $\mathbf{A}^n_\mathbf{Z}$ is given by 
+\begin{align*}
+	\left( \frac{s_0}{s_i},\hdots, \frac{s_{i-1}}{s_i},\frac{s_{i+1}}{s_i},\hdots, \frac{s_n}{s_i} \right) .
+\end{align*}
+These fractions are elements of $\Gamma(\mathscr{O}_U)$.\footnote{The sections $s_0$ and $s_i$ are not functions on $U$, but $s_0/s_i$ is a function on $U$ since $s_i$ is nonzero.} 
+One can check that these morphisms are compatible on intersections, that the defined morphism is the inverse of the one defined before, etc.
+
+This correspondence between line bundles and morphisms to projective space occurs in algebraic topology: For ``reasonable'' topological spaces, complex line bundles on $X$ correspond to homotopy classes of maps 
+\[
+\begin{tikzcd}
+	X\ar[r]& \mathbf{C}\mathbf{P}^\infty.
+\end{tikzcd}
+\]
+
+\begin{example}[ ]\label{p_1morph}\text{}
+Morphisms
+\[
+\begin{tikzcd}
+	\mathbf{P}^1_\mathbf{Z}\ar[r]&\mathbf{P}^1_\mathbf{Z}
+\end{tikzcd}
+\]
+are given by line bundles $\mathscr{O}(n)$ and sections. For $n<0$, $\mathscr{O}(n)$ has no sections. For $n\ge 0$, the sections of $\mathscr{O}(n) $ correspond to $2$-variable homogeneous polynomials of degree $n$. 
+One wants two sections, so one wants two polynomials $\varphi(x,y)$ and $\psi(x,y)$. The sections corresponding to $\varphi$ and $\psi$ should generate $\mathscr{O}(n)$, so $\varphi$ and $\psi$ should have no common factors and at least one of $\varphi$ and $\psi$ should have degree $n$.
+So, for $\mathscr{O}(n)$ where $n\ne 0$, morphisms to $\mathbf{P}^1_\mathbf{Z}$ correspond to rational functions $\varphi/\psi$ where $\varphi$ and $\psi$ are coprime and one of $\varphi$ and $\psi$ has degree less than or equal to $n$ and the other has degree greater than $n$. 
+For $n=0$, one must include
+\[
+\begin{tikzcd}
+	z\ar[r,mapsto]&\infty.
+\end{tikzcd}
+\]
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+One can copy the process outlined in \cref{p_1morph} above to determine $\Aut(\mathbf{P}^1_K)$.
+To consider automorphisms, the preimage of $\mathscr{O}(1)$ must be $\mathscr{O}(1)$, so one considers only $n=1$. Thus, automorphisms correspond to rational functions
+\begin{align*}
+	\frac{az+b}{cz+d}
+\end{align*}
+where $ad-bc\ne 0$ and $(az+b)/ (cz+d) \sim \lambda (az+b) /(cz+d)$ for $\lambda\ne 0$. Therefore,
+\begin{align*}
+	\Aut(\mathbf{P}^1_K)\isomto \GL_{2}(K)/K^* = \PGL_{2}(K).
+\end{align*}
+\end{example}
+
+Suppose that $\mathscr{L}$ is a line bundle on $X$ and sections $s_0,\hdots, s_n$ of $\mathscr{L}$ do not generate $\mathscr{L}$. Then, one gets a morphism 
+\[
+\begin{tikzcd}
+	U\ar[r]& \mathbf{P}^n_\mathbf{Z}
+\end{tikzcd}
+\]
+where $U$ is the open subscheme in which not all $s_i$s vanish.
+\begin{example}[ ]\label{}\text{}
+Take $X= \mathbf{P}^2_K$ and $\mathscr{L}=\mathscr{O}(1)$ on $X$.
+The sections $s_0=z_0$ and $s_1=z_1$ do not generate $\mathscr{L}$. The appropriate open subscheme here is $\mathbf{P}^2_K - \{ *\}$, so one has a morphism
+\[
+\begin{tikzcd}
+	U\ar[r]&\mathbf{P}^1_K
+\end{tikzcd}
+\]
+where, if, for example, $(x:y:z)\longmapsto  (x:y)$, then $* = (0:0:1)$.
+\end{example}
+
+Suppose that one has a line bundle $\mathscr{L}$ on $X$. Then, one can take a basis of sections of $\mathscr{L}$\footnote{If $X$ is projective, then this basis is finite.} and this gives a morphism from some open subscheme to $\mathbf{P}^n$ where $n=\dim(\Gamma)-1$.  
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $X=\mathbf{P}^1$ and $\mathscr{L}=\mathscr{O}(n)$. If $n<0$, then $U =\emptyset$. If $nn=0$, then one gets a morphism from $\mathbf{P}^1$ to $\mathbf{P}^0$, which is a point. 
+If $n=1$, then one gets a morphism $(x:y)\longmapsto  (x:y)$.
+If $n=2$, then one gets a morphism $(x:y)\longmapsto  (x^2:xy:y^2)$. The image of this morphism from $\mathbf{P}^1$ to $\mathbf{P}^2$ is a conic.
+If $n=3$, then one gets a morphism $(x:y)\longmapsto  (x^3:x^2y:xy^2:y^3)$. This is the \index{twisted cubic}twisted cubic.
+\end{example}
+
 \subsection{Very ample sheaves.}
 \subsection{Linear systems.}
 \subsection{The Proj construction.}
