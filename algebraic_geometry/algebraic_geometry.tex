@@ -162,7 +162,7 @@ First, one draws the curve. We have two rational points on the curve already: $(
 
 This curve is not birational to a line. If a curve is birational to a line, it must be a complex sphere if one ignores some points. The curve $x^3 + y^3 =9$ looks like a torus with one point removed. Therefore, this example is fundamentally harder than the first curve and the circle.
 
-We have an algebraic operation on this curve: Given two rational points $\alpha$ and $\beta$, we get another rational point $\alpha\cdot \beta$ by taking the third intersection of the curve and the line between $\alpha$ and $\beta$. If $\alpha$ and $\beta$ are the same point, we take the tangent to that point. Sometimes, though, we find that the line doesn't intersect with a third point. Defining a point at infinity solves this. (More on this in projective geometry.)
+We have an algebraic operation on this curve: Given two rational points $\alpha$ and $\beta$, we get another rational point $\alpha\cdot \beta$ by taking the third intersection of the curve and the line between $\alpha$ and $\beta$. If $\alpha$ and $\beta$ are the same point, we take the tangent to that point. Sometimes, though, we find that the line doesn't intersect with a third point. Defining a point at infinity solves this.
 
 This operation defines a group. We let the identity be the point at infinity. We define the group law by $\alpha+\beta+\gamma = 0$ if and only if $\alpha$, $\beta$, and $\gamma$ lie on the same line. (The ``negative operation'' is what forms a group.) The operation is clearly commutative. What about associativity? It is very difficult to show that associativity holds with coordinates. However, it turns out that
 \begin{align*}
@@ -264,7 +264,9 @@ Cayley and Salmon proved that any nonsingular cubic surface has exactly $27$ lin
 \begin{align*}
 	w^3 + x^3 +y^3 + z^3 = 0 \subset \mathbf{P}^3.
 \end{align*}
-(Projective space is the set of quadruples $(w,x,y,z)$ modulo the equivalence relation $(w,x,y,z)\sim  (\lambda w, \lambda x, \lambda y,\lambda z)$ for $\lambda\ne 0$. That is, if $z\ne 0$, one can take $\{(w,x,y,1)\} \isomto  \mathbf{C}^3$. One can see that $\mathbf{P}^3$ is covered by four copies of affine space.) The line $(a,-a,b,-b)$ is on this surface. We can permute the coordinates and multiply by a cube root of unity. This gives $3^3 = 27$ lines.  
+Projective space $\mathbf{P}^3$ is the set of quadruples $(w,x,y,z)$ modulo the equivalence relation $(w,x,y,z)\sim  (\lambda w, \lambda x, \lambda y,\lambda z)$ for $\lambda\ne 0$. That is, if $z\ne 0$, one can take $\{(w,x,y,1)\} \isomto  \mathbf{C}^3$. One can see that $\mathbf{P}^3$ is covered by four copies of affine space. 
+
+The line $(a,-a,b,-b)$ is on this surface. We can permute the coordinates and multiply by a cube root of unity. This gives $3^3 = 27$ lines.  
 \end{example}
 
 \subsection{Affine space. The Zariski topology.}
@@ -396,9 +398,9 @@ No: Take $\mathfrak{a} = (z^2 + 1) \subset \R[z]$. Notice that $\ZZ(\mathfrak{a}
 	What are the maximal ideals of $K[z_1,\hdots, z_n]$?
 \end{problem}
 
-There are some obvious ones. Take $(a_1,\hdots, a_n)\in \mathbf{A}^n$. Consider the ideal $(z_1-a_1,\hdots, z_n-a_n)$. This consists of the functions vanishing on $(a_1,\hdots, a_n)$. It is maximal because its quotient by the ring is $K$. Are these all maximal ideals? No, but that's true if $K$ is algebraically closed. This is the weak Nullstellensatz.\footnote{As opposed to the strong Nullstellensatz above.} Let us prove this.
+There are some obvious ones. Take $(a_1,\hdots, a_n)\in \mathbf{A}^n$. Consider the ideal $(z_1-a_1,\hdots, z_n-a_n)$. This consists of the functions vanishing on $(a_1,\hdots, a_n)$. It is maximal because its quotient by the ring is $K$. Are these all maximal ideals? No, but that's true if $K$ is algebraically closed. This is \cref{wen}. Let us prove this.
 
-First, we shall show that if $K$ is a field and finitely generated as an algebra over $L$, then $K$ is a finitely generated module over $L$. We're going to cheat by assuming that $L$ is uncountable. Notice that $K$ is of at most countable dimension as a module since it is finitely generated as an algebra. If $z\in K$ is transcendental over $L$, then the elements $1/(z-a)$ for $a\in L$ form an uncountable, linearly independent set. This is a contradiction. Therefore, all elements $z\in K$ are algebraic over $L$. Since $K$ is finitely generated as an algebra, $K$ is finitely generated as a module (or vector space). (One does not require $L$ to be uncountable: The finite number of generators of $K$ only have poles on a finite number of irreducible subsets of the affine space over $L$, but there are an infinite number of such irreducible subsets.)
+First, we shall show that if $K$ is a field and finitely generated as an algebra over $L$, then $K$ is a finitely generated module over $L$. We're going to cheat by assuming that $L$ is uncountable. Notice that $K$ is of at most countable dimension as a module since it is finitely generated as an algebra. If $z\in K$ is transcendental over $L$, then the elements $1/(z-a)$ for $a\in L$ form an uncountable, linearly independent set. This is a contradiction. Therefore, all elements $z\in K$ are algebraic over $L$. Since $K$ is finitely generated as an algebra, $K$ is finitely generated as a module (or vector space).\footnote{One does not require $L$ to be uncountable: The finite number of generators of $K$ only have poles on a finite number of irreducible subsets of the affine space over $L$, but there are an infinite number of such irreducible subsets.}
 
 Suppose $I$ is a maximal ideal of $L[z_1,\hdots, z_n]$. We want to show that $I = (z_1-a_1,\hdots, z_n-a_n)$ for some $(a_1,\hdots, a_n)$. Put $K = L[z_1,\hdots, z_n]/I$, which is a field since $I$ is maximal. The field $K$ is also finitely generated by an algebra (generated by $z_1,\hdots, z_n$). By  the previous ``lemma,'' $K$ is finitely generated as a module; that is, $K$ is algebraic over $L$. However, $L$ is algebraically closed, so $L=K$. Therefore, $z_i\in K$, so $z_i=a_i$ for some $a_i\in L$. This implies that $I\supseteq (z_1-a_1,\hdots, z_n-a_n)$. So $I = (z_1-a_1,\hdots, z_n-a_n)$. The weak Nullstellensatz follows.
 
@@ -406,11 +408,11 @@ Suppose $I$ is a maximal ideal of $L[z_1,\hdots, z_n]$. We want to show that $I 
 \subsection{The strong Nullstellensatz.}
 Suppose that $K$ is an algebraically closed field.
 
-\begin{theorem}[Weak Nullstellensatz]\label{}\index{}
+\begin{theorem}[Weak Nullstellensatz]\label{wen}\index{}
 The maximal ideals of $K[z_1,\hdots, z_n]$ correspond to points in affine space.
 \end{theorem}
 
-\begin{theorem}[Strong Nullstellensatz]\label{}\index{}
+\begin{theorem}[Strong Nullstellensatz]\label{stn}\index{}
 Suppose that $\mathfrak{a}\subseteq K[z_1,\hdots, z_n]$ is an ideal. Then, 
 \begin{align*}
 	\II(\ZZ(\mathfrak{a})) = \sqrt{\mathfrak{a}} .
@@ -418,7 +420,7 @@ Suppose that $\mathfrak{a}\subseteq K[z_1,\hdots, z_n]$ is an ideal. Then,
 \end{theorem}
 
 \begin{proof}
-It is straightforward to show that $\sqrt{\mathfrak{a}} \subseteq \II(\ZZ(\mathfrak{a}))$. We shall employ the Rabinowitsch trick.\footnote{See ``Zum Hilbertschen Nullstellensatz,'' 1929.} Suppose $\mathfrak{a}$ is generated by $f_1,\hdots, f_m$ and $f\in \II(\ZZ(\mathfrak{a}))$. We want to show $f\in \II(\ZZ(\mathfrak{a}))$. This means that $f$ vanishes if $f_1,\hdots, f_m$ vanish. Therefore, $f_1,\hdots, f_m$ and $1-z_0f$ have no common roots in $\mathbf{A}^{n+1}$.\footnote{Bringing in another variable is the trick of Rabinowitsch.} Apply the weak Nullstellensatz to $\mathbf{A}^{n+1}$. Therefore, $f_1,\hdots, f_m, 1-x_0f$ generate the unit ideal. That is, $(f_1,\hdots,f_m,1-z_0f) = (1) = K[z_0,\hdots, z_n]$, hence $1 = g_0(1-z_0f)+g_1f_1 +\cdots + g_mf_m$ for some $g_i$. Put $z_0=1/f$, so $1=g_1f_1+\cdots +g_mf_m$ where $g_i \in K[z_1,\hdots, z_n, 1/f]$. Clearing denominators, one has
+It is straightforward to show that $\sqrt{\mathfrak{a}} \subseteq \II(\ZZ(\mathfrak{a}))$. We shall employ the Rabinowitsch trick.\footnote{See ``Zum Hilbertschen Nullstellensatz,'' 1929.} Suppose $\mathfrak{a}$ is generated by $f_1,\hdots, f_m$ and $f\in \II(\ZZ(\mathfrak{a}))$. We want to show $f\in \II(\ZZ(\mathfrak{a}))$. This means that $f$ vanishes if $f_1,\hdots, f_m$ vanish. Therefore, $f_1,\hdots, f_m$ and $1-z_0f$ have no common roots in $\mathbf{A}^{n+1}$.\footnote{Bringing in another variable is the trick of Rabinowitsch.} Apply \cref{wen} to $\mathbf{A}^{n+1}$. Therefore, $f_1,\hdots, f_m, 1-x_0f$ generate the unit ideal, so $1 = g_0(1-z_0f)+g_1f_1 +\cdots + g_mf_m$ for some $g_i$. Put $z_0=1/f$, so $1=g_1f_1+\cdots +g_mf_m$ where $g_i \in K[z_1,\hdots, z_n, 1/f]$. Clearing denominators, one has
 \begin{align*}
 	f^N = h_1f_1+\cdots + h_mf_m
 \end{align*}
@@ -433,7 +435,11 @@ Consider the line $y=0$ that corresponds to the ideal $(y)$ and the parabola $y=
 
 
 \begin{example}[Nilpotent matrices]\label{}
-Recall that $A\in \MM_n(K)$ is nilpotent if and only if $A^n = 0$. One can think of $\MM_n(K)$ as $\mathbf{A}^{n^2}$. If $A = (a_{ij})$, then $A^n$ is something complicated, but one can suppose that its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{n^2}$. Does $I=\sqrt{I} $ hold? No: If $A$ is nilpotent, then all of its eigenvalues are $0$, so its trace is $0$. However, $\sum_{j}^{} a_{jj}\notin I$, since $I$ is generated by homogeneous polynomials of degree $n$ and $\sum_{j}^{} a_{jj} \in \sqrt{I} $ by the Nullstellensatz.
+Recall that $A\in \MM_n(K)$ is nilpotent if and only if $A^n = 0$. One can think of $\MM_n(K)$ as $\mathbf{A}^{n^2}$. If $A = (a_{ij})$, then $A^n$ is something complicated, but one can suppose that its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{n^2}$. 
+\begin{quote}
+	\small Does $I=\sqrt{I}$ hold?
+\end{quote} 
+No: If $A$ is nilpotent, then all of its eigenvalues are $0$, so its trace is $0$. However, $\sum_{j}^{} a_{jj}\notin I$, since $I$ is generated by homogeneous polynomials of degree $n$ and $\sum_{j}^{} a_{jj} \in \sqrt{I} $ by \cref{stn}.
 
 Take $n=2$. If 
 \begin{align*}
@@ -447,7 +453,7 @@ Hence $I=   (a^2+bc,\, b(a+d), \,c (a+d),\,d^2 + bc)$. Some power of $a+d$ is an
 \end{example}
 
 \begin{example}[Commuting matrices]\label{}
-Write $A=(a_{ij})$ and $B=(b_{ij})$. Then $AB-BA$ is something; let its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{2n^2}$. Whether or not $I=\sqrt{I} $ holds is an open problem. The question of whether an ideal $I\subset R$ is radical is the same as asking whether $R/I$ has nilpotent elements.\footnote{The space of pairs of commuting matrices is a notoriously difficult space to study.}
+Write $A=(a_{ij})$ and $B=(b_{ij})$. Then $AB-BA$ is something; let its entries generate the ideal $I$ in the coordinate ring of $\mathbf{A}^{2n^2}$. Whether or not $I=\sqrt{I}$ holds is an open problem. The question of whether an ideal $I\subset R$ is radical is the same as asking whether $R/I$ has nilpotent elements.\footnote{The space of pairs of commuting matrices is a notoriously difficult space to study.}
 \end{example}
 
 \subsection{The Lasker--Noether theorem.}
@@ -664,7 +670,7 @@ but this is wrong: Hermann Sachse (1890) discovered two distinct conformations o
 \end{figure}
 \fi
 \begin{example}[Moduli space of elliptic curves]\label{}
-A \index{moduli space}moduli space is a space whose points correspond to isomorphism classes of things. (It is tradition to use ``parameter space'' when the thing is embedded in something else and ``moduli space'' otherwise.) An \index{elliptic curve}elliptic curve over $\mathbf{C}$ is a nonsingular curve topologically isomorphic to a torus. Any elliptic curve in the form \[ y^2=x^3+ax^2+bx+c = (x-\alpha) (x-\beta) (x-\gamma).\] One can make some changes of variables to get the elliptic curve into the form
+A \index{moduli space}moduli space is a space whose points correspond to isomorphism classes of things.\footnote{It is tradition to use ``parameter space'' when the thing is embedded in something else and ``moduli space'' otherwise.} An \index{elliptic curve}elliptic curve over $\mathbf{C}$ is a nonsingular curve topologically isomorphic to a torus. Any elliptic curve in the form \[ y^2=x^3+ax^2+bx+c = (x-\alpha) (x-\beta) (x-\gamma).\] One can make some changes of variables to get the elliptic curve into the form
 \begin{align*}
 	y^2 = x(x-1) (x-\lambda)\quad\textrm{where}\quad \lambda \ne 0,1.
 \end{align*}
@@ -1807,7 +1813,7 @@ Therefore, one gets a regular map from the blow up of $\mathbf{P}^1\times \mathb
 
 The geometric meaning of blowing up a point is taking it to the projective space over its tangent space. We have seen that we can blow up a line, and, more generally, we can blow up a subvariety $X$; the geometric interpretation here is mapping a point in $X$ to the projective space over the normal space at that point. 
 
-We can also blow up an ideal or a \index{quasicoherent sheaf}quasicoherent sheaf of graded algebras. One can construct a projective variety from a graded algebra. Suppose we have a graded algebra for every point in the variety and replace every point by the projective space of the corresponding graded algebra. That's a blow up. But how does one assign a graded algebra to every point of the variety? The nice way to do this is through a quasicoherent sheaf of graded algebras. (More on that in the next chapter.) This corresponds to the projective space of a graded algebra at each point.
+We can also blow up an ideal or a \index{quasicoherent sheaf}quasicoherent sheaf of graded algebras. One can construct a projective variety from a graded algebra. Suppose we have a graded algebra for every point in the variety and replace every point by the projective space of the corresponding graded algebra. That's a blow up. But how does one assign a graded algebra to every point of the variety? The nice way to do this is through a quasicoherent sheaf of graded algebras. This corresponds to the projective space of a graded algebra at each point.
 
 There is one straightforward example to consider: Suppose the variety is a point. Then a quasicoherent sheaf of graded algebras is a graded algebra, say $K[z_0,\hdots,z_n]$. Blowing up a point along this sheaf is the usual construction of $\mathbf{P}^n$.
 
@@ -2402,11 +2408,11 @@ has Euler characteristic $\chi = 2+2n-4n +2 = 4-2n$, so its genus is $g=n-1$ (si
 \begin{align*}
 	\tau \longmapsto \frac{a\tau+b}{c\tau+d}.
 \end{align*}
-This is, more or less, the same as classifying binary forms of degree $6$ modulo the action of $\SL_{2}(\mathbf{C})$. This comes down to the problem of classifying the invariance of binary quantics. One gets that this looks like $\mathbf{A}^3/(\mathbf{Z}/5\mathbf{Z})$ where $\mathbf{Z}/5\mathbf{Z}$ acts by
+This is, more or less, the same as classifying binary forms of degree $6$ modulo the action of $\SL_{2}(\mathbf{C})$. This comes down to the problem of classifying the invariance of binary quantics. One sees that this looks like $\mathbf{A}^3/(\mathbf{Z}/5\mathbf{Z})$ where $\mathbf{Z}/5\mathbf{Z}$ acts by
 \begin{align*}
 	(x,y,z) \longmapsto  (\zeta x,\zeta^2 y, \zeta^3 z)
 \end{align*}
-where $\zeta$ is a $5$th root of unity. The set of generators for the invariants of this action is $\{x^5,x^3y,xy^2,y^5,x^2z, xz^3, z^5, yz\}$. Hence, there is an explicit description of the moduli space genus-$2$ curves. 
+for a $5$th root of unity $\zeta$. The set of generators for the invariants of this action is $\{x^5,x^3y,xy^2,y^5,x^2z, xz^3, z^5, yz\}$. Hence, there is an explicit description of the moduli space genus-$2$ curves. 
 
 We continue to consider curves of genus $3$. There are hyperelliptic genus-$3$ curves and degree-$4$ nonsingular curves in the plane. One can determine the genus of a nonsingular plane curve of degree $d$: One can think of a generic degree-$d$ plane curve as a $d$-fold cover of the line and, generally, it will have $d(d-1)$ $2$-fold branch points and only $2$-fold branch points. Therefore, its Euler characteristic is $\chi = 2d -  d(d-1)$, so its genus is $(d-1) (d-2)/2$. Hence, the genus of nonsingular plane curve must be a triangular number.
 
@@ -4170,7 +4176,7 @@ Open immersions and finite morphisms are quasifinite in the Noetherian case. Gro
 Let $(X,\mathscr{O}_X)$ be a ringed space. An \defn{invertible $\mathscr{O}_X$-module}\index{invertible module} is a sheaf of $\mathscr{O}_X$-modules $\mathscr{L}$ such that the functor $\catn{Mod}({\mathscr{O}_X})\longrightarrow \catn{Mod}({\mathscr{O}_X})$ given by $\mathscr{F}\longmapsto \mathscr{L}\tensor_{\mathscr{O}_X} \mathscr{F}$ is an equivalence of categories. One says that $\mathscr{L}$ is \defn{trivial}\index{trivial invertible module} if it is isomorphic to $\mathscr{O}_X$ as an $\mathscr{O}_X$-module.
 \end{definition}
 
-\begin{definition}[Stacks project Definition 28.26.1]\label{}\text{}
+\begin{definition}[Stacks project Definition 28.26.1]\label{ample}\text{}
 Let $X$ be a scheme. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is \defn{ample}\index{ample sheaf} if and only if $X$ is quasicompact and, for all $\alpha\in X$, there exists a natural number $n\ge 1$ and a global section $s\in \Gamma(X, \mathscr{L}^{\tensor n})$ such that $\alpha \in X_s := \{  \beta\in X :\Image s\notin \mathfrak{m}_\beta \mathscr{L}_\beta \}$ and $X_s$ is affine.
 \end{definition}
 
@@ -5369,7 +5375,7 @@ Let us guess by identifying the obvious line bundles. First, $\mathbf{P}^n_K =\m
 \begin{align*}
 	(z_0:\cdots :z_n)\longmapsto \left\{ (\lambda z_0,\hdots,\lambda z_n):\lambda \in K \right\}. 
 \end{align*}
-Informally, this is a line bundle $L$. One can consider $L^{\tensor n} =: L^n$ and $L^* =: L^{-1}$.\footnote{One takes the dual by taking the dual of every vector space.} Thus, one has $L^n$ for $n\in\mathbf{Z}$. The claim is that these give all of the invertible sheaves over $\mathbf{P}^1_K$.\footnote{We shall consider $\mathbf{P}^n_K$ soon.}
+Informally, this is a line bundle $\mathscr{L}$. One can consider $\mathscr{L}^{\tensor n} =: \mathscr{L}^n$ and $\mathscr{L}^* =: \mathscr{L}^{-1}$.\footnote{One takes the dual of a line bundle by taking the dual of every vector space.} Thus, one has $\mathscr{L}^n$ for $n\in\mathbf{Z}$. The claim is that these give all of the invertible sheaves over $\mathbf{P}^1_K$.\footnote{We shall consider $\mathbf{P}^n_K$ soon.}
 
 Recall that one has $\mathbf{P}^1 = \mathbf{A}^1\cup \mathbf{A}^1$ via gluing. An invertible sheaf on $\mathbf{P}^1$ is given by an invertible sheaf over each copy of $\mathbf{A}^1$ and gluing them together on the intersection. First, one needs to determine the invertible sheaves on $\mathbf{A}^1$.
 
@@ -6773,25 +6779,161 @@ Suppose that $\mathscr{L}$ is a line bundle on $X$ and sections $s_0,\hdots, s_n
 where $U$ is the open subscheme in which not all $s_i$s vanish.
 \begin{example}[ ]\label{}\text{}
 Take $X= \mathbf{P}^2_K$ and $\mathscr{L}=\mathscr{O}(1)$ on $X$.
-The sections $s_0=z_0$ and $s_1=z_1$ do not generate $\mathscr{L}$. The appropriate open subscheme here is $\mathbf{P}^2_K - \{ *\}$, so one has a morphism
+The sections $s_0=z_0$ and $s_1=z_1$ do not generate $\mathscr{L}$. The appropriate open subscheme here is $U = \mathbf{P}^2_K - \{ *\}$, so one has a morphism
 \[
 \begin{tikzcd}
 	U\ar[r]&\mathbf{P}^1_K
 \end{tikzcd}
 \]
-where, if, for example, $(x:y:z)\longmapsto  (x:y)$, then $* = (0:0:1)$.
+where, if, for example, $(x:y:z)\longmapsto  (x:y)$, then $U = \mathbf{P}^1_K - \{(0:0:1)\}$.
 \end{example}
 
-Suppose that one has a line bundle $\mathscr{L}$ on $X$. Then, one can take a basis of sections of $\mathscr{L}$\footnote{If $X$ is projective, then this basis is finite.} and this gives a morphism from some open subscheme to $\mathbf{P}^n$ where $n=\dim(\Gamma)-1$.  
+Suppose that one has a line bundle $\mathscr{L}$ on $X$. Then, one can take a basis of sections of $\mathscr{L}$\footnote{If $X$ is projective, then this basis is finite.} and this gives a morphism from some open subscheme to $\mathbf{P}^n$ where $n=\dim(\Gamma(\mathscr{L}))-1$.  
 
-\begin{example}[ ]\label{}\text{}
-Suppose that $X=\mathbf{P}^1$ and $\mathscr{L}=\mathscr{O}(n)$. If $n<0$, then $U =\emptyset$. If $nn=0$, then one gets a morphism from $\mathbf{P}^1$ to $\mathbf{P}^0$, which is a point. 
+\begin{example}[ ]\label{usefulnow}\text{}
+Suppose that $X=\mathbf{P}^1$ and $\mathscr{L}=\mathscr{O}(n)$. If $n<0$, then $U =\emptyset$. If $n=0$, then one gets a morphism from $\mathbf{P}^1$ to $\mathbf{P}^0$, which is a point. 
 If $n=1$, then one gets a morphism $(x:y)\longmapsto  (x:y)$.
 If $n=2$, then one gets a morphism $(x:y)\longmapsto  (x^2:xy:y^2)$. The image of this morphism from $\mathbf{P}^1$ to $\mathbf{P}^2$ is a conic.
 If $n=3$, then one gets a morphism $(x:y)\longmapsto  (x^3:x^2y:xy^2:y^3)$. This is the \index{twisted cubic}twisted cubic.
 \end{example}
 
 \subsection{Very ample sheaves.}
+Recall \cref{ample}.
+
+\begin{example}[Stacks project Definition 29.38.1]\label{}\text{}
+Let $f:X\longrightarrow Y$ be a morphism of schemes. Let $\mathscr{L}$ be an invertible $\mathscr{O}_X$-module. One says that $\mathscr{L}$ is $f$--\defn{relatively very ample}\index{relatively very ample sheaf}, $f$--\defn{very ample}\index{very ample sheaf}, or \defn{very ample}\index{very ample sheaf} on $X/Y$ if and only if there exist a quasicoherent $\mathscr{O}_Y$-module $\mathscr{M}$ and an immersion $j:X\longrightarrow \mathbf{P}(\mathscr{M})$ such that 
+\begin{align*}
+	\mathscr{L}\isomto j^*\mathscr{O}_{\mathbf{P}(\mathscr{M}) } (1).	
+\end{align*}
+\end{example}
+
+\begin{remark}
+	There is no assumption of quasicompactness, so a relatively very ample invertible sheaf does not need to be a relatively ample invertible sheaf.
+\end{remark}
+
+We shall assume that $X$ is a projective variety over an algebraically closed field $\Omega$. Suppose that $\mathscr{L}$ is an invertible sheaf on $X$. Sections $s_0,\hdots, s_n$ of $\mathscr{L}$ give a morphism from an open subscheme of $X$ to $\mathbf{P}^n_\Omega$.
+If $\{s_0,\hdots,s_n\}$ is a basis for $\Gamma(\mathscr{L})$ and this gives an isomorphism from $X$ to its image in $\mathbf{P}^n_\Omega$, then one calls $\mathscr{L}$ \defn{very ample}\index{very ample sheaf}. One calls $\mathscr{L}$ \defn{ample}\index{ample sheaf} if and only if $\mathscr{L}^{\tensor n}$ is very ample for some $n>0$.\footnote{These definitions do not work for general schemes.}
+
+\begin{remark}
+	Being ample and being very ample are two notions of ``positivity.''
+\end{remark}
+
+\begin{example}[ ]\label{}\text{}
+Consider the sheaf $\mathscr{O}(n)$ on $\mathbf{P}^r_\Omega$. For $n<0$, this has no global sections. For $n=0$, the only global sections are constant, so one gets a morphism from $\mathbf{P}^r_\Omega$ to a point. Therefore, in these cases, $\mathscr{O}(n)$ is not very ample.
+
+For $n=1$, the global sections are given by $z_0,\hdots, z_r$ and one gets an isomorphism $\mathbf{P}^r_\Omega\longrightarrow \mathbf{P}^r_\Omega$. Therefore, $\mathscr{O}(1)$ is very ample. For $n>1$, one gets an isomorphism from $\mathbf{P}^r_\Omega$ to its image. For example, there are maps from $\mathbf{P}^1_\Omega$ to $\mathbf{P}^1_\Omega$, to a quadric, to the twisted cubic, etc.\footnote{Cf. \cref{usefulnow}.} Therefore, $\mathscr{O}(n)$ is very ample if and only if $n\ge 1$.
+\end{example}
+
+\begin{example}[An ample, not very ample sheaf]\label{}\text{}
+Suppose that $X$ is an elliptic curve over $\mathbf{C}$, say $\mathbf{C}/\Lambda$. Suppose further that the line bundle $\mathscr{L}$ is the sheaf associated to the divisor $(0)$.
+
+Recall that one writes $\mathscr{L}^n := \mathscr{L}^{\tensor n}$ and $\mathscr{L}^{-n} := (\mathscr{L}^n)^*$ for $n>0$.
+
+Sections of $\mathscr{L}^n$ correspond to elliptic functions that have a pole of order less than or equal to $n$ at $0$ and that are holomorphic everywhere else. For $n<0$, $\mathscr{L}^n$ has no nonzero sections. For $n=0$, $\{1\}$ is a basis for the sections of $\mathscr{L}^n$.\footnote{For $n=0$, all of the sections of $\mathscr{L}^n$ are constants.}
+For $n=1$, the same thing is true.\footnote{There are no elliptic functions with one pole of order $1$.}
+For $n=2$, $\{\wp,1\}$ is a basis for the sections of $\mathscr{L}^n$. 
+For $n=3$, $\{\wp,\wp',1\}$ is a basis for the sections of $\mathscr{L}^n$.
+For $n=4$, $\{\wp,\wp',\wp^2, 1\}$ is a basis for the sections of $\mathscr{L}^n$.
+
+In the cases in which $n=0$ or $n=1$, one gets a map from $X$ to a point. In the case in which $n=3$, one gets an isomorphism from $\mathscr{L}^n$ to the elliptic curve $y^2 = 4x^3 - g_2x-g_3$. Therefore, $\mathscr{L}^3$ is very ample.
+Note that $\mathscr{L}^2$ is not very ample: Here, one gets a map from $X$ to $\mathbf{P}^1_\Omega$ via
+\[
+\begin{tikzcd}
+	(x:y:z)\ar[r,mapsto] &  (x:1),
+\end{tikzcd}
+\]
+and this is not an isomorphism from $X$ to its image in $\mathbf{P}^1_\Omega$.
+One sees that $\mathscr{L}^n$ is very ample if and only if $n \ge 3$. However, $\mathscr{L}^n$ is ample if and only if $n \ge 1$.
+\end{example}
+
+\begin{problem}
+	Given a line bundle $\mathscr{L}$ on a projective variety $X$, when do sections $s_0,\hdots, s_n$ of $\mathscr{L}$ define an isomorphism from $X$ to its image in $\mathbf{P}^n_\Omega$?\footnote{That is, when do they define a closed immersion?}
+\end{problem}
+Let us write down some necessary conditions for this to be the case:
+\begin{enumerate}
+	\item The morphism must be defined on all of $X$, not just an open subscheme of $X$; that is, $s_0,\hdots,s_n$ must generate $\mathscr{L}$;
+	\item The morphism to $\mathbf{P}^n_\Omega$ must be injective; that is, given $z\sub{zero},z\sub{nonzero}\in X$, there exists a section in $\langle s_0,\hdots, s_n\rangle$ that is zero on $z\sub{zero}$ and nonzero on $z\sub{nonzero}$.\footnote{Then, one says that ``the sections $s_0,\hdots, s_n$ separate points.''}
+\end{enumerate}
+
+\begin{example}[These conditions are not sufficient]\label{}\text{}
+Consider the morphism
+\[
+\begin{tikzcd}
+	\mathbf{P}^1_\Omega\ar[r]&\mathbf{P}^2_\Omega
+\end{tikzcd}
+\]
+given by 
+\[
+\begin{tikzcd}
+	(x:y) \ar[r,mapsto] & (x^3:x^2y:y^3).
+\end{tikzcd}
+\]
+This morphism is injective and defined everywhere.
+However, it is not an isomorphism to its image: It is not injective on tangent spaces.
+\end{example}
+
+Therefore, one also needs the morphism to be injective on tangent spaces; that is, the sections of $\mathscr{L}$ that vanish at $z$ must span $\mathfrak{m}_z\mathscr{L}_z/\mathfrak{m}_z^2\mathscr{L}_z$ where $\mathscr{L}_z$ is the stalk of $\mathscr{L}$ at $z$ and $\mathfrak{m}_z$ is the maximal ideal of the localization at $z$.\footnote{Essentially, this says that the sections of $\mathscr{L}$ span the cotangent space. Then, one says that ``the sections separate tangent vectors.''}
+
+These conditions are sufficient to ensure that
+\[
+\begin{tikzcd}
+	f:X\ar[r]&\mathbf{P}^n_\Omega
+\end{tikzcd}
+\]
+is a closed immersion.
+
+To sees this, one needs to show that
+\[
+\begin{tikzcd}
+	\mathscr{O}_{\mathbf{P}^n_\Omega} \ar[r]& f_*(\mathscr{O}_X)
+\end{tikzcd}
+\]
+is surjective. One can check this at stalks: One needs to demonstrate that 
+\[
+\begin{tikzcd}
+	\varphi: A\ar[r]&B
+\end{tikzcd}
+\]
+is surjective where $A$ is the local ring of $\mathbf{P}^n_\Omega$ at $f(z)$ and $B$ is the local ring of $f_*(\mathscr{O}_X)$ at $f(z)$.
+First, $\varphi$ is a local homomorphism and
+\begin{align*}
+	A/\mathfrak{m}_A \isomto B/\mathfrak{m}_B \isomto \Omega.
+\end{align*}
+Second,
+\[
+\begin{tikzcd}
+	\psi:\mathfrak{m}_A/\mathfrak{m}_A^2 \ar[r]&\mathfrak{m}_B/\mathfrak{m}_B^2
+\end{tikzcd}
+\]
+is surjective.\footnote{This is the condition that sections separate tangent vectors.} Third, $B$ is a finitely generated $A$-module: $f_*$ preserves coherence.
+
+Recall Nakayama's lemma.
+\iffalse
+ \begin{definition}[ ]\label{}\text{}
+Let $A$ be a ring. The \defn{Jacobson radical}\index{Jacobson radical} of $A$ is the intersection of all maximal $A$-ideals:
+\begin{align*}
+	\mathfrak{J}(A) := \bigcap_{\textrm{$\mathfrak{m}$ maximal}} \mathfrak{m}.
+\end{align*}
+\end{definition}
+\fi
+\begin{lemma}[Nakayama]\label{nak}\index{Nakayama's lemma}\text{}
+Let $A$ be a local ring whose maximal ideal is $\mathfrak{m}$. Let $N$ be a finitely generated module. If $N = \mathfrak{m}N$, then $N=0$.
+\end{lemma}
+
+Consider the $B$-module $M=\mathfrak{m}_B/\mathfrak{m}_A B$. Since $\psi$ is surjective, $M/\mathfrak{m}_BM = 0$. Via \cref{nak}, $M=0$, so $\mathfrak{m}_B = \mathfrak{m}_AB$.
+
+Consider the $A$-module $N = B/f(A)$. Now, since $\mathfrak{m}_B = \mathfrak{m}_AB$,
+\begin{align*}
+	N/\mathfrak{m}_AN = B/(\mathfrak{m}_AB, f(A)) = B/(\mathfrak{m}_B,f(A)).
+\end{align*}
+By \cref{nak}, this is $0$, so $B/f(A)=0$ and $B=f(A)$, which was required.
+
+\begin{corollary}[ ]\label{}\text{}
+Suppose that $X$ is a projective curve and that $\mathscr{L}$ is an invertible sheaf. Then, $\mathscr{L}$ is ample if and only if $\deg \mathscr{L}>0$.\footnote{Recall that invertible sheaves correspond to divisors.}
+\end{corollary}
+
+One needs the Riemann--Roch theorem, too.
+
 \subsection{Linear systems.}
 \subsection{The Proj construction.}
 \subsection{Blowing up schemes.}
