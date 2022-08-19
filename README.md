@@ -16,10 +16,6 @@ By the way, I use a Vim setup on a theme of [Gilles Castel](https://castel.dev/p
 
 
 
-Please inform me about any errors in the notes or otherwise with an issue. One should note that my LaTeX practices were (and, to some extent, still are) dodgy. Be forewarned.
+Please inform me about any errors in the notes or otherwise with an issue.
 
 Thank you to Dr. Richard Borcherds, Khan Academy, and Dr. Benedict Gross for providing me with most of the content of these notes and, particularly, teaching me. 
-
-I am working on some lengthy notes on algebraic geometry that I hope to complete by the fall of 2022. 
-
-SDG.

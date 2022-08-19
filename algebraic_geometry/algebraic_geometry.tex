@@ -18,7 +18,13 @@
     \vspace*{\fill}
 \fi
 \maketitle
-These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} Dr. Borcherds refers to Hartshorne's \ul{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} I tend to use Grothendieck's EGA. Unless stated otherwise, rings are assumed to be commutative.
+These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. 
+Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} 
+section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} 
+and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} 
+Dr. Borcherds refers to Hartshorne's \ul{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} 
+I tend to use Grothendieck's EGA. 
+Unless stated otherwise, rings are assumed to be commutative.
 \hypersetup{linkcolor = black}
 \tableofcontents
 \ifams
@@ -128,7 +134,7 @@ Consider the curve
 \end{align*}
 Suppose $(x,y)$ is a rational point on this curve. Draw a line between this point and $(0,0)$. The slope of this line is $y/x=t$. If we choose a line through $(0,0)$ with rational slope, it will meet the cubic curve at one other rational point. That is, $(x,y)$ being rational corresponds to $t$ being rational. This is almost a one-to-one correspondence: $(0,0)$ corresponds to $t = \pm 1$. Using the equation of the cubic, one gets that $x=t^2-1$ and $y=t^3-t$. This is another birational equivalence.
 
-One can think of this cubic curve as a copy of the rational line except that two of the points on the rational line are identified and mapped to the same point. This is a \index{resolution of a singularity}resolution of a singularity. This resolution is done by \index{blowing up}blowing up. Hironaka proved that blowing up resolves singularities in characteristic zero.\footnote{``Resolution of singularities of an algebraic variety over a field of characteristic zero. I,'' 1964.}
+One can think of this cubic curve as a copy of the rational line except that two of the points on the rational line are identified and mapped to the same point. This is a \index{resolution of a singularity}resolution of a singularity. This resolution is done by \index{blow up}blowing up. Hironaka proved that blowing up resolves singularities in characteristic zero.\footnote{``Resolution of singularities of an algebraic variety over a field of characteristic zero. I,'' 1964.}
 
 \begin{example}[ ]
 Find all rational points on 
@@ -164,7 +170,7 @@ This curve is not birational to a line. If a curve is birational to a line, it m
 
 We have an algebraic operation on this curve: Given two rational points $\alpha$ and $\beta$, we get another rational point $\alpha\cdot \beta$ by taking the third intersection of the curve and the line between $\alpha$ and $\beta$. If $\alpha$ and $\beta$ are the same point, we take the tangent to that point. Sometimes, though, we find that the line doesn't intersect with a third point. Defining a point at infinity solves this.
 
-This operation defines a group. We let the identity be the point at infinity. We define the group law by $\alpha+\beta+\gamma = 0$ if and only if $\alpha$, $\beta$, and $\gamma$ lie on the same line. (The ``negative operation'' is what forms a group.) The operation is clearly commutative. What about associativity? It is very difficult to show that associativity holds with coordinates. However, it turns out that
+This operation defines a group. We let the identity be the point at infinity. We define the group law by $\alpha+\beta+\gamma = 0$ if and only if $\alpha$, $\beta$, and $\gamma$ lie on the same line.\footnote{The ``negative operation'' is what forms a group.} The operation is clearly commutative. What about associativity? It is very difficult to show that associativity holds with coordinates. However, it turns out that
 \begin{align*}
 	\alpha_1+\alpha_2+\cdots = \beta_1+\beta_2+\cdots
 \end{align*}
@@ -179,7 +185,9 @@ Let $V$ be an $F$--vector space. A \defn{symplectic bilinear form} is a function
 	\item $\omega(v,v)=0$ for all $v\in V$;
 	\item If $\omega(w,v)$ for all $v\in V$, then $w=0$.
 \end{enumerate}
+\iffalse
 The pair $(V,\omega)$ comprises a \defn{symplectic vector space}\index{symplectic vector space}.
+\fi
 \end{definition}
 
 \begin{definition}
@@ -538,7 +546,7 @@ Suppose that $n\ne 0$ and $m\in M$. Put $\mathfrak{p} = \Ann(m)$. Then the secon
 
 Assume $\Ann M=0$. Put $\Ass M = \{\mathfrak{p}\}$. This associated prime contains $\Ann (m)$ given $m\ne 0$. Therefore, we need to show that $\mathfrak{p}$ is nilpotent. Suppose that $a\in \mathfrak{p}$ is nilpotent. Then, the localization $M[a^{-1}]$ is nonzero. If $z\in M$ is $0$ in $M[a^{-1}]$ , then $za^n=0$ for some $n$. That is, $M[a^{-1}]=0$ implies $a^n \in \Ann M$ for some $n$, since some power kills any element of $M$ and $M$ is finitely generated. But $\Ann M=0$ by assumption, so $a$ is nilpotent. 
 
-Since $M[a^{-1}]\ne 0$, one has $\Ass (M[a^{-1}])\ne \emptyset$ (primes of $R[a^{-1}]$). Pick $T\in \Ass (M[a^{-1}])$, an ideal of $R[a^{-1}]$. Let $\mathfrak{q}$ be the preimage of $T$ in $R$. (Recall we have $R\longrightarrow  R[a^{-1}]$, $\mathfrak{q}\longrightarrow T$, $\mathfrak{q}\subseteq R$, and $T\subseteq R[a^{-1}]$.) Both $T$ and $\mathfrak{q}$ are primes, and $\mathfrak{q}$ is the union of $\Ann(m)\subseteq \Ann (ma)\subseteq \Ann (ma^2)\subseteq \cdots$. (One verifies that $\mathfrak{q}$ is everything that annihilates $ma^n$.) This is an increasing sequence in a Noetherian ring, so it stabilizes. Therefore, $\mathfrak{q}=\Ann(ma^n)$ for some $n$. Hence, $\mathfrak{q}\in \Ass(M)$ since it is prime and the annihilator of some element in $M$. But $a\in \mathfrak{p}$ and $a\notin \mathfrak{q}$ because $a$ is a unit of $M[a^{-1}]$ and if $a\in \mathfrak{q}$ then $M[a^{-1}]=0$. So, $\mathfrak{p}\ne \mathfrak{q}$, so $M$ has at least $2$ associated primes. Contradiction. So (1) implies (2).
+Since $M[a^{-1}]\ne 0$, one has $\Ass (M[a^{-1}])\ne \emptyset$ (primes of $R[a^{-1}]$). Pick $T\in \Ass (M[a^{-1}])$, an ideal of $R[a^{-1}]$. Let $\mathfrak{q}$ be the preimage of $T$ in $R$.\footnote{Recall that one has $R\longrightarrow  R[a^{-1}]$, $\mathfrak{q}\longrightarrow T$, $\mathfrak{q}\subseteq R$, and $T\subseteq R[a^{-1}]$.} Both $T$ and $\mathfrak{q}$ are primes, and $\mathfrak{q}$ is the union of $\Ann(m)\subseteq \Ann (ma)\subseteq \Ann (ma^2)\subseteq \cdots$.\footnote{One verifies that $\mathfrak{q}$ is everything that annihilates $ma^n$.} This is an increasing sequence in a Noetherian ring, so it stabilizes. Therefore, $\mathfrak{q}=\Ann(ma^n)$ for some $n$. Hence, $\mathfrak{q}\in \Ass(M)$ since it is prime and the annihilator of some element in $M$. But $a\in \mathfrak{p}$ and $a\notin \mathfrak{q}$ because $a$ is a unit of $M[a^{-1}]$ and if $a\in \mathfrak{q}$ then $M[a^{-1}]=0$. So, $\mathfrak{p}\ne \mathfrak{q}$, so $M$ has at least $2$ associated primes. Contradiction. So (1) implies (2).
 
 Now, we prove the Lasker--Noether theorem: That is, 
 \begin{align*}
@@ -603,7 +611,7 @@ The ring of invariants $A^G$ of $A$ has a Reynolds operator\index{Reynolds opera
 \begin{align*}
 	\rho(a) = \frac{1}{\left\lvert G \right\rvert } \sum_{g\in G}^{} g(a).
 \end{align*}
-(Notice that we needed that $G$ is finite and $\chr K = 0$.) It has the following properties:
+Notice that we needed that $G$ is finite and $\chr K = 0$. It has the following properties:
 \begin{itemize}
 	\item $\rho(1)=1$;
 	\item $\rho(a+b) = \rho (a)+\rho (b)$;
@@ -674,7 +682,7 @@ A \index{moduli space}moduli space is a space whose points correspond to isomorp
 \begin{align*}
 	y^2 = x(x-1) (x-\lambda)\quad\textrm{where}\quad \lambda \ne 0,1.
 \end{align*}
-(Note that this does not change the isomorphism classes.) One gets the impression that elliptic curves are classified by numbers $\lambda$, but this is invariant under $\lambda\longmapsto 1/\lambda$ and $\lambda \longmapsto 1-\lambda$. Therefore, it is also invariant under
+Note that this does not change the isomorphism classes. One gets the impression that elliptic curves are classified by numbers $\lambda$, but this is invariant under $\lambda\longmapsto 1/\lambda$ and $\lambda \longmapsto 1-\lambda$. Therefore, it is also invariant under
 \begin{align*}
 	\lambda &\longmapsto \frac{1}{1-\lambda};\\
 	\lambda&\longmapsto \frac{\lambda}{\lambda-1};\\
@@ -689,7 +697,7 @@ It turns out that $K[\lambda, 1/\lambda, 1/(\lambda-1)]^{\Sg_3} \isomto K[j]$. T
 
 
 \subsection{Dimension.}
-Dimension\index{dimension} first was thought of as the number of parameters needed to define a point. However, this fails: Cantor showed that $\mathbf{R}^2$ and $\mathbf{R}$ have the same number of points. Peano and Hilbert showed that there are continuous maps from $\mathbf{R}$ onto $\mathbf{R}^2$. So, in a sense, one does not need two parameters to describe points in $\mathbf{R}^2$. (This does make sense if one looks at smooth manifolds.)
+Dimension\index{dimension} first was thought of as the number of parameters needed to define a point. However, this fails: Cantor showed that $\mathbf{R}^2$ and $\mathbf{R}$ have the same number of points. Peano and Hilbert showed that there are continuous maps from $\mathbf{R}$ onto $\mathbf{R}^2$. So, in a sense, one does not need two parameters to describe points in $\mathbf{R}^2$.\footnote{This makes sense if one looks at smooth manifolds.}
 
 The second attempt was the \index{Lebesgue covering dimension}Lebesgue covering dimension: A set has dimension at most $n$ if every open cover has a refinement such that each point is in at most $n+1$ sets. This works for Euclidean space but isn't all that useful in algebraic geometry.
 
@@ -880,7 +888,7 @@ One has
 \end{align*}
 given by $((z_0:z_1), (y_0:y_1)) \longmapsto (z_0y_0:z_0y_1: z_1y_0: z_1y_1) =:(w_0:w_1:w_2:w_3)$. One gets one relation: $w_0w_3=w_1w_2$. This is a quadric in $\mathbf{P}^3$. Over an algebraically closed field with characteristic not $2$, any two nonsingular quadrics are isomorphic. That is, any quadric in $\mathbf{P}^3$ is isomorphic to $\mathbf{P}^1\times \mathbf{P}^1$. In particular, it has two sets of lines on it. 
 
-Suppose one takes a sphere $x^2+y^2+z^2=1$. One claims that this has two sets of straight lines on it. Indeed, it does over $\mathbf{C}$. Example: $x=1$, $y=iz$. Exercise: Find all straight lines on this sphere over $\mathbf{C}$. (Writing this as $(x+iy) (x-iy)= (1-z) (1+z)$ puts into the form of the quadric above.)
+Suppose one takes a sphere $x^2+y^2+z^2=1$. One claims that this has two sets of straight lines on it. Indeed, it does over $\mathbf{C}$. Example: $x=1$, $y=iz$. Exercise: Find all straight lines on this sphere over $\mathbf{C}$.\footnote{Writing this as $(x+iy) (x-iy)= (1-z) (1+z)$ puts into the form of the quadric above.}
 \end{example}
 
 
@@ -1126,7 +1134,7 @@ Suppose $X$ and $Y$ both satisfy the universal property above. Since $Y$ is a pr
 
 We would like to make varieties or algebraic sets into a category. One can use \index{regular map}regular maps, which are somewhat analogous to smooth maps in differential geometry and defined everywhere, or one can use \index{rational map}rational maps, which are not defined everywhere.
 
-Given a category $\mathscr{C} $, its opposite $\mathscr{C}\op$ is $\mathscr{C} $ with all arrows reversed. The morphisms of ${\mathscr{C}}\op $ from $A$ to $B$ are the same as the morphisms of $\mathscr{C} $ from $B$ to $A$. Affine varieties with regular maps is somewhat dual to finitely-generated algebras over $K$ with no nilpotent elements. (Affine schemes have the same correspondence to commutative rings.)
+Given a category $\mathscr{C} $, its opposite $\mathscr{C}\op$ is $\mathscr{C} $ with all arrows reversed. The morphisms of ${\mathscr{C}}\op $ from $A$ to $B$ are the same as the morphisms of $\mathscr{C} $ from $B$ to $A$. Affine varieties with regular maps is somewhat dual to finitely-generated algebras over $K$ with no nilpotent elements.\footnote{Affine schemes have the same correspondence to commutative rings.}
 
 A map of varieties $V\longrightarrow W$ does not give a map from a coordinate ring of $V$ to that of $W$; it gives a map from functions on $W$ to functions on $V$.
 
@@ -1162,7 +1170,7 @@ Define $f:= a_1g_1+\cdots + a_mg_m$. We want to check that $h_if = g_i$ on $U_i$
 \end{align*}
 Therefore, the local and global conditions for regularity are equivalent.
 
-Suppose that $U$ is a \index{quasiprojective variety}quasiprojective variety, so it is an open subset of a projective variety. (Every quasiaffine variety is a quasiprojective variety.) Notice that a quasiprojective variety is covered by open affine subvarieties. A function on a quasiprojective variety is  \index{regular function}regular if it is \index{locally regular}locally regular.
+Suppose that $U$ is a \index{quasiprojective variety}quasiprojective variety, so it is an open subset of a projective variety.\footnote{Every quasiaffine variety is a quasiprojective variety.} Notice that a quasiprojective variety is covered by open affine subvarieties. A function on a quasiprojective variety is  \index{regular function}regular if it is \index{locally regular}locally regular.
 
 Given a quasiprojective variety $Y$, one has a \index{ring of regular functions}ring of regular functions $\mathscr{O}(U)$ for each open subset $U\subset Y$. 
 
@@ -1724,7 +1732,7 @@ These kinds of arguments were typical of old school algebraic geometry. Proving 
 Take $6$ points in $\mathbf{P}^2$ as before. The map above is indeterminate at these points, and there are lines on the cubic surface whose preimages are these points. That is, $6$ points give rise to $6$ lines on the cubic. One also gets $15$ lines in $\mathbf{P}^2$ through $2$ of the $6$ points whose images are lines on the cubic surface. Lastly, take a conic through five of the points. There are $6$ conics through $5$ points, and the image of each is a line on the cubic surface. Altogether, there are $27$ lines.
 
 \subsection{Blowing up.}
-\index{blowing up} 
+\index{blow up} 
 \begin{example}[ ]\label{}
 Take the curve $y^2 = x^3 +x^2$. This has a singularity at $(0,0)$. Let $y=tx$. Then one has $t^2x^2 = x^3+x^2$, which factorizes as follows:
 \begin{align*}
@@ -1848,7 +1856,7 @@ One resolves this singularity by blowing up at $(0,0,0,0)$. Consider points $((x
 	\]
 	Taking the Zariski closure of the image, one has the equation $XY=ZT$. Every nonzero point of $\mathbf{A}^4$ corresponds to a unique point in the blow up $\mathbf{A}^4\times \mathbf{P}^3$ while $(0,0,0,0)$ corresponds to a copy of $\mathbf{P}^1\times \mathbf{P}^1$. This is not singular\iffalse, since, along $X=1$, it becomes $Y=ZT$ in the coordinates $(x,Y,Z,T)$\fi.
 
-	One can also resolve this by blowing up to $\mathbf{P}^1$: Blow up along the line $y=t=0$. Consider the points $((x,y,z,t),  (X:Z)) \in \mathbf{A}^4\times \mathbf{P}^1$. Blowing up, we get the equations $xy=zt$ and $xZ=Xz$. However, taking the closure of the image of $\mathbf{A}^4$, we get the equation $tZ = Xy$, too. Say $X=1$. Then $y=tZ$, $z=xZ$, and $xy=tz$, which reduces to affine $3$-space. Hence, the blow up nonsingular. The point $(0,0,0,0)$ is blown up to $\mathbf{P}^1$. (One can also blow up along $x=z=0$, which results in a distinct resolution to $\mathbf{P}^1$.)
+	One can also resolve this by blowing up to $\mathbf{P}^1$: Blow up along the line $y=t=0$. Consider the points $((x,y,z,t),  (X:Z)) \in \mathbf{A}^4\times \mathbf{P}^1$. Blowing up, we get the equations $xy=zt$ and $xZ=Xz$. However, taking the closure of the image of $\mathbf{A}^4$, we get the equation $tZ = Xy$, too. Say $X=1$. Then $y=tZ$, $z=xZ$, and $xy=tz$, which reduces to affine $3$-space. Hence, the blow up nonsingular. The point $(0,0,0,0)$ is blown up to $\mathbf{P}^1$.\footnote{One can also blow up along $x=z=0$, which results in a distinct resolution to $\mathbf{P}^1$.}
 
 	The birational map from the first resolution to the second resolution is called the \defn{Atiyah flop}\index{Atiyah flop}.\footnote{This explanation from Wikipedia is slightly more clear: Let $Y$ be the zeros of $xy=zw$ in $\mathbf{A}^4$, and let $V$ be the blowup of $Y$ at the origin. The exceptional locus of this blowup is isomorphic to $\mathbf{P}^1\times \mathbf{P}^1$ and can be blown down to $\mathbf{P}^1$ in two different ways, giving varieties $X_1$ and $X_2$. The natural birational map from $X_1$ to $X_2$ is the Atiyah flop.}
 	\begin{figure} 
@@ -2115,7 +2123,7 @@ The ring $\mathbf{Z}\!\left[\sqrt{-3}\right]$ does not have unique factorization
 Even though it is the coordinate ring of a scheme, pretend that $\mathbf{Z}\!\left[\sqrt{-3}\right]$ is the coordinate ring of a variety. This ring has a maximal ideal $(2,\sqrt{-3}-1 )$. If one, somehow, thinks of maximal ideals as points, one wants to show that the variety has a singular point at that maximal ideal. Let us look at the local ring $R=\Z_{(2)} \!\!\left[ \sqrt{-3}  \right] $ whose maximal ideal is $\mathfrak{m}=(2,\sqrt{-3}-1 )$. One sees that \begin{align*}
 	R/\mathfrak{m} = \mathbf{F}_{2}.
 \end{align*}
-Further, $R/\mathfrak{m}^2$ has order $8$, so $\mathfrak{m}/\mathfrak{m}^2$ is a $2$-dimensional vector space over $R/\mathfrak{m}$. (Recall that $\mathfrak{m}/\mathfrak{m}^2$ is the \index{Zariski cotangent space}Zariski cotangent space at $\mathfrak{m}$.) The \index{Krull dimension}Krull dimension of $R$ is $1$ since the only prime ideals of $R$ are $(0)$ and its maximal ideals. One notices that this is smaller than the dimension of the cotangent space at $\mathfrak{m}$, so $\mathfrak{m}$ corresponds to a ``singular point.''
+Further, $R/\mathfrak{m}^2$ has order $8$, so $\mathfrak{m}/\mathfrak{m}^2$ is a $2$-dimensional vector space over $R/\mathfrak{m}$.\footnote{Recall that $\mathfrak{m}/\mathfrak{m}^2$ is the \index{Zariski cotangent space}Zariski cotangent space at $\mathfrak{m}$.} The \index{Krull dimension}Krull dimension of $R$ is $1$ since the only prime ideals of $R$ are $(0)$ and its maximal ideals. One notices that this is smaller than the dimension of the cotangent space at $\mathfrak{m}$, so $\mathfrak{m}$ corresponds to a ``singular point.''
 
 \begin{remark}
 	The existence of a singular point is somehow related to unique factorization failing. However, there are some rings of algebraic integers with no singular points in which unique factorization fails. 
@@ -2209,7 +2217,7 @@ Suppose $f(z)\equiv g_0(z) h_0(z)\pmod{\mathfrak{m}}$ where $g_0,h_0\in K[z]$ an
 \end{example}
 
 \begin{esquisse}
-	Suppose that $f\equiv gh\pmod{\mathfrak{m}^n}$. Try to find elements $a,b\in \mathfrak{m}^{n+1}/\mathfrak{m}^{n+2}$ such that $f\equiv (g+a) (h+b)\pmod { \mathfrak{m}^{n+1}}$. One needs to solve an equation $g_0b+h_0a = *$, which one can solve if $g_0$ and $h_0$ are coprime. (This is related to the fact that two coprime polynomials over a field generate the unit ideal.)
+	Suppose that $f\equiv gh\pmod{\mathfrak{m}^n}$. Try to find elements $a,b\in \mathfrak{m}^{n+1}/\mathfrak{m}^{n+2}$ such that $f\equiv (g+a) (h+b)\pmod { \mathfrak{m}^{n+1}}$. One needs to solve an equation $g_0b+h_0a = *$, which one can solve if $g_0$ and $h_0$ are coprime.\footnote{This relates to the fact that two coprime polynomials over a field generate the unit ideal.}
 \end{esquisse}
 
 \begin{example}[ ]\label{}\text{}
@@ -2316,7 +2324,7 @@ We have seen that $\mathbf{P}^n_{\mathbf{R}}$ and $\mathbf{P}^n_{\mathbf{C}}$ ar
 	What is the correct analogue of compactness?
 \end{problem}
 
-First, let us digress. A map of topological spaces $X\longrightarrow Y$ is \defn{proper}\index{proper map} if and only if it is continuous and universally closed. (Recall that a map is \defn{universally proper}\index{universally proper morphism} if $X\times W\longrightarrow Y\times W$ is closed for all $W$.) Notice that this is equivalent to saying that $X\longrightarrow Y$ is continuous and closed and has compact fibres.
+First, let us digress. A map of topological spaces $X\longrightarrow Y$ is \defn{proper}\index{proper map} if and only if it is continuous and universally closed.\footnote{Recall that a map is \defn{universally proper}\index{universally proper morphism} if and only if $X\times W\longrightarrow Y\times W$ is closed for all $W$.} Notice that this is equivalent to saying that $X\longrightarrow Y$ is continuous and closed and has compact fibres.
 
 Maps of Hausdorff spaces are proper if and only if they are continuous and the preimage of a compact set is compact.
 
@@ -3957,7 +3965,8 @@ One can think of this as $\mathbf{Z}[z]/(z^4-1)$. The spectrum of the group ring
 	&\frac{1 -iz-z^2 + iz^3}{4};\\
 	&\frac{1+iz-z^2-iz^3}{4}.
 \end{align*}
-(These are the $4$ irreducible idempotents. There are $16$ idempotents.) Thus, the points of the spectrum correspond to the $4$ complex representations of $G$. Over $\mathbf{Q}$, the spectrum has points $(z-1)$, $(z+1)$, and $(z^2+1)$. There is a map $\mathbf{Q}[G] \longrightarrow \mathbf{C}[G]$, so there is a morphism that takes $(z\pm1)$ to itself and $(z\pm i)$ to $(z^2+1)$. Over $\mathbf{Z}$, the representations of $G$ are complicated.
+These are the $4$ irreducible idempotents. There are $16$ idempotents. 
+Thus, the points of the spectrum correspond to the $4$ complex representations of $G$. Over $\mathbf{Q}$, the spectrum has points $(z-1)$, $(z+1)$, and $(z^2+1)$. There is a map $\mathbf{Q}[G] \longrightarrow \mathbf{C}[G]$, so there is a morphism that takes $(z\pm1)$ to itself and $(z\pm i)$ to $(z^2+1)$. Over $\mathbf{Z}$, the representations of $G$ are complicated.
 \end{example}
 
 \begin{remark}
@@ -4102,8 +4111,8 @@ It suffices to prove this result for finite morphisms $\varphi: \Spec S\longrigh
 
 One can assume that $\mathfrak{p}=(0)$ by taking $R \longmapsto R/\mathfrak{p}$ and $S\longmapsto S/\mathfrak{p}S$. One can also take the field of fractions of $R$, so one assumes that $R$ is a field. Therefore, $S$ is a finite-dimensional $R$--vector space, hence an Artinian ring. Since $S$ is Artinian, it has a finite number of prime ideals (which are maximal and open in $\Spec R$). This completes the sketch of the proof.
 
-\begin{proposition}[SGA I Prop. 2.1]\label{}\text{}
-Let $A\longrightarrow B$ be a local homomorphism and $\mathfrak{m}$ the maximal ideal of $A$. The following conditions are equivalent.
+\begin{proposition}[SGA 1 I Proposition 2.1]\label{}\text{}
+Let $A\longrightarrow B$ be a local homomorphism and let $\mathfrak{m}$ be the maximal ideal of $A$. The following conditions are equivalent:
 \begin{enumerate}
 	\item $B/\mathfrak{m}B$ is of finite dimension over $K=A/\mathfrak{m}$.
 	\item $\mathfrak{m}B$ is an ideal of definition and $B/\mathfrak{r}(B) = K(B)$ is an extension of $K=K(A)$.
@@ -4112,14 +4121,14 @@ Let $A\longrightarrow B$ be a local homomorphism and $\mathfrak{m}$ the maximal 
 \end{proposition}
 
 One calls $B$ \defn{quasifinite}\index{quasifinite ring} over $A$.
-\begin{definition}[SGA I 2]\label{qf_1}\text{}
-A morphism $\varphi:X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $\alpha\in X$ if $\mathscr{O}_\alpha$ is quasifinite over $\mathscr{O}_{\varphi (\alpha)}$. Equivalently, $\alpha$ is isolated in its fibre $\varphi^{-1}(\alpha)$.\footnote{``The fibres are finite and discrete.''}
+\begin{definition}[SGA 1 I 2]\label{qf_1}\text{}
+A morphism $\varphi:X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $z\in X$ if and only if $\mathscr{O}_z$ is quasifinite over $\mathscr{O}_{\varphi (z)}$. Equivalently, $z$ is isolated in its fibre $\varphi^{-1}(z)$.\footnote{``The fibres are finite and discrete.''}
 \end{definition}
 \begin{definition}[EGA II 6.2]\label{qf_2}\text{} 
-	A morphism $\varphi: X \longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $\alpha\in X$ if it is quasifinite in the sense of \cref{qf_1} and of finite type. 
+	A morphism $\varphi: X \longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} at $z\in X$ if it is quasifinite in the sense of \cref{qf_1} and of finite type. 
 \end{definition}
-\begin{definition}[\ul{Algebraic Geometry} p. 91]\label{qf_3}\text{}
-A morphism $\varphi : X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} if, for all $\alpha\in Y$, $\varphi^{-1}(\alpha)$ is finite.\footnote{``The fibres are finite.''}
+\begin{definition}[Hartshorne p. 91]\label{qf_3}\text{}
+A morphism $\varphi : X\longrightarrow Y$ is \defn{quasifinite}\index{quasifinite morphism} if, for all $z\in Y$, $\varphi^{-1}(z)$ is finite.\footnote{``The fibres are finite.''}
 \end{definition}
 \begin{remark}\label{qfnf_1}
 	The morphism $\Spec K[z,z^{-1}]\longrightarrow \Spec K[z]$ has finite fibres, so it is quasifinite, but it is not finite: $K[z,z^{-1}]$ is not a finitely-generated $K[z]$-module.
@@ -5772,7 +5781,7 @@ Now, let us determine $\widetilde{A(n)}$.\footnote{That is, the sheaf given by $
 \end{align*}
 Now, $\widetilde {A(n)} (U(z_i))$ is given by the degree-$0$ elements of $K[z_0,\hdots,z_r][z_i^{-1}]$ grading-shifted by $n$. Now, this shifting seems to make no difference, since $z_i$ is an isomorphism from the degree-$m$ piece of $K[z_0,\hdots,z_r][z_i^{-1}]$ to the degree-$(m+1) $ piece. Therefore, $\widetilde{A(n)}$ is isomorphic to $\widetilde{A(0)}$ over every $U(z_i)$.
 
-Thus, $\widetilde{A(n)}$ is locally isomorphic to $\tilde A$. That is, $\widetilde{A(n)}$ is an \index{invertible sheaf}invertible sheaf.\footnote{Or a line bundle.} One distinguishes $\widetilde{A(n)}$ from $\tilde A$ by computing global sections. Take a section over $U(f_i)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_i^{-1}]$ and glue it over a section of $U(f_j)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_j^{-1}]$ for all $j$. These sections must be the same over $K[z_0,\hdots,z_r][z_i^{-1},z_j^{-1}]$, so the degree-$n$ element must be a polynomial. Thus, one sees that $\Gamma(\widetilde{A(n)})$ is given by the homogeneous degree-$n$ polynomials in $K[z_0,\hdots,z_r]$ for $r\ge 1$. Now,
+Thus, $\widetilde{A(n)}$ is locally isomorphic to $\tilde A$, so $\widetilde{A(n)}$ is an \index{invertible sheaf}invertible sheaf.\footnote{Or a line bundle.} One distinguishes $\widetilde{A(n)}$ from $\tilde A$ by computing global sections. Take a section over $U(f_i)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_i^{-1}]$ and glue it over a section of $U(f_j)$ that is a degree-$n$ element of $K[z_0,\hdots,z_r][z_j^{-1}]$ for all $j$. These sections must be the same over $K[z_0,\hdots,z_r][z_i^{-1},z_j^{-1}]$, so the degree-$n$ element must be a polynomial. Thus, one sees that $\Gamma(\widetilde{A(n)})$ is given by the homogeneous degree-$n$ polynomials in $K[z_0,\hdots,z_r]$ for $r\ge 1$. Now,
 \begin{center}
 \begin{tabular}{lccccc}
      & $\mathbf{P}^0$&$\mathbf{P}^1$&$\mathbf{P}^2$& $\mathbf{P}^3$&$\mathbf{P}^4$\\
@@ -5784,7 +5793,8 @@ Thus, $\widetilde{A(n)}$ is locally isomorphic to $\tilde A$. That is, $\widetil
 	$\dim \Gamma (\widetilde{A(2)})$&$1$&$3$&$6$&$10$&$15$
 \end{tabular}
 \end{center}
-One beholds Pascal's triangle here. Thus, one sees that many of these are distinct. Now, note the following properties:
+One beholds Pascal's triangle here and one sees that many of these are distinct. 
+Now, note the following properties:
 \begin{align*}
 	\tilde M\tensor \tilde N &\isomto \widetilde{M\tensor N};\\
 	\widetilde{M(n)} &\isomto \tilde M (n);\\
@@ -5792,9 +5802,9 @@ One beholds Pascal's triangle here. Thus, one sees that many of these are distin
 \end{align*}
 Therefore,
 \begin{align*}
-	\widetilde{A (m)} \tensor \widetilde {A (n)} \isomto \widetilde{A (m+n)}.
+	\widetilde{A (m)} \tensor \widetilde {A (n)} \isomto \widetilde{A (m+n)}
 \end{align*}
-Thus, all of the line bundles $\widetilde{A(n)}$ are distinct.
+and all of the line bundles $\widetilde{A(n)}$ are distinct.
 
 \begin{problem}
 	Can one recover $M$ from $\tilde M$?\footnote{That is, from $\mathscr{M}$?}
@@ -6173,11 +6183,7 @@ $\CaCl$ is closely related to $\Pic$ and $\Pic\longrightarrow \CaCl $ and $\CaCl
 Let $X$ be a locally Noetherian integral scheme.
 \begin{enumerate}
 	\item A \defn{prime divisor}\index{prime divisor of a scheme} is an integral closed subscheme $Y\subset X$ of codimension $1$.
-	\item A \defn{Weil divisor}\index{Weil divisor} is a formal sum
-		\begin{align*}
-			\sum_{Y}^{} n_Y Y 
-		\end{align*}
-		where the collection $\{Y: n_Y\ne 0\}$ is locally finite.
+	\item A \defn{Weil divisor}\index{Weil divisor} is a formal integer linear combination of codimension-$1$ integral closed subschemes where the collection of subschemes with nonzero coefficients is locally finite.
 \end{enumerate}
 \end{definition}
 
@@ -6193,7 +6199,7 @@ Suppose further that $X$ is integral. Then, $X$ has a function field $K$, and th
 given by
 \[
 \begin{tikzcd}[arrows = mapsto]
-	f\ar[r]& \displaystyle\sum_{Y}^{}  \ord_Y(f) Y
+	f\ar[r]& \displaystyle\sum_{}^{}  \ord_Y(f) Y
 \end{tikzcd}
 \]
 where $\ord_Y(f)$ is ``the order of the root of $f$ at $Y$.'' This sum is finite.\footnote{The function $f$ is $0$ or $\infty$ on a proper closed subset. The scheme $X$ is Noetherian, so a proper closed subset is a union of a finite number of irreducible subsets.} However, one wonders:
@@ -7041,6 +7047,140 @@ Hirzebruch showed that $\Sigma_m$ and $\Sigma_n$ are not isomorphic for $m\ne n$
 \end{example}
 
 \subsection{Blowing up schemes.}
+Don't worry: This isn't what you think it is.
+
+\begin{example}[Blowing up the point $(0,0)$ in $\mathbf{A}^2$]\label{backtothis_{08}2}\text{}
+One has a map
+\[
+\begin{tikzcd}
+	\phi:\left\{ ((x,y), (a:b)) : xa=yb \right\} \ar[r]&\mathbf{A}^2
+\end{tikzcd}
+\]
+where
+\begin{align*}
+	\phi^{-1}(x,y) = 
+	 \begin{cases}
+		 \mathbf{P}^1 & (x,y) =(0,0)\\
+		 \textrm{point} &\textrm{otherwise.}
+	\end{cases}
+\end{align*}
+\end{example}
+
+Let $\mathscr{I}$ be a sheaf of ideals on $X$.\footnote{That is, $\mathscr{I}$ is a closed subscheme.} Define
+\begin{align*}
+	\mathscr{F}_n := \mathscr{I}^n,
+\end{align*}
+so $\mathscr{F}_0=\mathscr{O}_X$. Then, $\underline{\Proj}_X(\mathscr{F})$ is the \defn{blow up}\index{blow up}\index{blow up along a sheaf of ideals} of $X$ along $\mathscr{I}$.
+
+\begin{example}[Back to \cref{backtothis_{08}2}]\label{}\text{}
+The coordinate ring of $\mathbf{A}^2$ is $K[z_1,z_2]$.
+The sheaf of ideals corresponding to the point $(0,0)$ corresponds to the ideal $I = (z_1,z_2)$.
+Now, to avoid notational confusion, one considers the surjective map
+\[
+\begin{tikzcd}
+	K[z_1,z_2][a,b] \ar[r]&\displaystyle\bigoplus_{n\ge 0}I^n
+\end{tikzcd}
+\]
+given by
+\[
+\begin{tikzcd}[row sep = 0 em]
+	a\ar[r,mapsto]&z_1;\\
+	b\ar[r,mapsto]&z_2.
+\end{tikzcd}
+\]
+One sees that $bz_1=az_2$, so
+\begin{align*}
+	\bigoplus_{n\ge 0}I^n\isomto K[z_1,z_2][a,b]/(bz_1-az_2).
+\end{align*}
+Therefore, if $\mathscr{F}$ is the sheaf corresponding to $\bigoplus_{n\ge 0}I^n$,
+\begin{align*}
+	\underline{\Proj}_X(\mathscr{I}) \isomto \left\{ ((z_1,z_2),(a:b)): bz_1=az_2 \right\}\subset K^2\times \mathbf{P}^1, 
+\end{align*}
+which is what the blow up should be.
+\end{example}
+
+Let us explore the following idea:
+\begin{quote}
+	\small Blowing up along $\mathscr{I}$ makes $\mathscr{I}$ invertible or locally principal.
+\end{quote}
+Let $X$ be a scheme. Let $\mathscr{I}$ be a sheaf of ideals on $X$. Let $\tilde X$ denote the blow up of $X$ along $\mathscr{I}$. 
+First, there is a morphism
+\[
+\begin{tikzcd}
+	f:\tilde X \ar[r]& X.
+\end{tikzcd}
+\]
+Now, to consider this idea, a technical question arises:
+\begin{quote}
+	\small How does one move $\mathscr{I}$ from $X$ to $\tilde X$?
+\end{quote}
+Given the morphism $f$, there are at least $2$ ways to take $\mathscr{I}$ to $\tilde X$: Via $f^{-1}$ or via $f^*$. Recall that $f^{-1}(\mathscr{I})$ is not an $\mathscr{O}_{\tilde X}$-module, so we will not use $f^{-1}$. Even though
+\begin{align*}
+	f^*(\mathscr{I}) := f^{-1}(\mathscr{I})\tensor_{f^{-1}(\mathscr{O}_X)} \mathscr{O}_{\tilde X}
+\end{align*}
+is an $\mathscr{O}_{\tilde X}$-module, we will not use $f^*$ either.
+
+To understand what we need, consider the affine case. Suppose that
+\[
+\begin{tikzcd}
+	B&A\ar[l]
+\end{tikzcd}
+\]
+is a homomorphism of rings. Let $M$ be an $A$-module.
+\begin{quote}
+	\small How does one make $M$ a $B$-module?
+\end{quote}
+One can take $M$, but this is not a $B$-module.\footnote{This corresponds to $f^{-1}$.} One can take $M\tensor_A B$, and this is a $B$-module.\footnote{This corresponds to $f^*$.} There's another way, though.
+
+Suppose that $I$ is an $A$-ideal. Now, $\Img(I)$ does not need to be a $B$-module. However, $B\cdot\Img(I)$ is a $B$-ideal. 
+
+Let us compare $I\tensor_A B$ and $B\cdot \Img(I)$.
+There is a surjective map
+\[
+\begin{tikzcd}
+	 I\tensor_A B \ar[r] & B· \Img(I).
+\end{tikzcd}
+\]
+This map does not need to be injective, and it isn't in some of the simplest cases: Take $B= K$ and $A = K[z]$ and map $A$ to $B$ via $z\longmapsto 0$.
+Now, take $I = (z)$. Then, $\Img(I)=0$, so $B\cdot \Img(I)=0$.
+However, $I\tensor_A B \isomto B$. 
+The analogue we need is $B\cdot \Img(I)$.
+
+Now, one wants to show that $f^{-1}(\mathscr{I}) \cdot \mathscr{O}_{\tilde X}$ is invertible.
+The blow up $\tilde X$ has an invertible sheaf $\mathscr{O}(1)$. One claims that
+\begin{align*}
+	\mathscr{O}(1)\isomto f ^{-1}(\mathscr{I}) \cdot \mathscr{O}_{\tilde X}.
+\end{align*}
+To outline the idea here, the sheaf $\mathscr{O}(1)$ corresponds to the graded module $\bigoplus_{n\ge 0}\mathscr{I}^{n+1}$. This is $\mathscr{I}\cdot \bigoplus_{n\ge 0}\mathscr{I}^n$. The $\mathscr{I}$ term corresponds to $f^{-1}(\mathscr{I})$ and $\bigoplus_{n\ge 0}\mathscr{I}^n$ corresponds to $\mathscr{O}_{\tilde X}$.\footnote{All of this follows easily from unravelling the definitions.}
+
+\begin{remark}
+	One can blow up along one sheaf of ideals to resolve singularities. However, this magical sheaf of ideals is not easy to determine.
+\end{remark}
+
+\begin{example}[Eliminating points of indeterminacy]\label{}\text{}
+The map from $\mathbf{P}^2-\{(0:0:1)\}$ to $\mathbf{P}^1$ given by
+\[
+\begin{tikzcd}
+	(x:y:z)\ar[r,mapsto] &  (x:y)
+\end{tikzcd}
+\]
+has a point of indeterminacy at $(0:0:1)$. The blow up of $\mathbf{P}^2$ maps to $\mathbf{P}^1$, though.
+Here, one blows up along the sheaf of ideals of the closed subscheme corresponding to $(0:0:1)$.
+\end{example}
+
+Let $X$ be a scheme. Suppose that
+\[
+\begin{tikzcd}
+	X\ar[r] & \mathbf{P}^n
+\end{tikzcd}
+\]
+is not defined everywhere.
+Now, suppose that $\mathscr{L}$ is an invertible sheaf on $X$ and that $s_0,\hdots,s_n$ are sections of $\mathscr{L}$ that give this map.\footnote{From some open subscheme $U$ to $\mathbf{P}^n$.} 
+The sections $s_0,\hdots,s_n$ generate a subsheaf $\mathscr{J}\subsetneq \mathscr{L}$.\footnote{If $\mathscr{J}=\mathscr{L}$, then the map in question would be defined everywhere.} 
+Now, $\mathscr{J}\tensor \mathscr{L}^{-1}\subset \mathscr{O}$ is a subsheaf of the sheaf of regular functions, so it is a sheaf of ideals.
+Let $\tilde X$ be the blow up of $X$ along $\mathscr{J}\tensor \mathscr{L}^{-1}$. Then, one has a map from $\tilde X$ to $\mathbf{P}^n$ defined everywhere.
+
+\iffalse
 \subsection{Differential operators.}
 \subsection{The cotangent bundle.}
 \subsection{The canonical sheaf.}
@@ -7093,6 +7233,6 @@ Hirzebruch showed that $\Sigma_m$ and $\Sigma_n$ are not isomorphic for $m\ne n$
 \section{The Chow ring}
 \subsection{Introduction.}
 \subsection{Chern classes.}
-
+\fi
 \printindex
 \end{document}
