@@ -692,7 +692,7 @@ etc. These six transformations form a group isomorphic to $\Sg_3$. We get this a
 \begin{align*}
 	j(\lambda) =  \frac{2^8(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}.
 \end{align*}
-It turns out that $K[\lambda, 1/\lambda, 1/(\lambda-1)]^{\Sg_3} \isomto K[j]$. This is the so-called \index{$j$-invariant}$j$-invariant of an elliptic curve.
+It turns out that $K[\lambda, 1/\lambda, 1/(\lambda-1)]^{\Sg_3} \isomto K[j]$. This is the so-called \index{$j$-invariant}\defn{$j$-invariant} of an elliptic curve.
 \end{example}
 
 
@@ -928,7 +928,7 @@ We want to show that the map from $\Gr(2,2)$ to solutions to the Plucker relatio
 which gives a line in $\Gr(2,2)$ with image a given point of $\mathbf{P}^5$.
 \end{example}
 
-One can use this to find the cohomology of a quadric in $\mathbf{P}^5(\mathbf{C})$. The Grassmannian is a union of subsets:
+One can use this to find the cohomology of a quadric in $\mathbf{P}^5_{\mathbf{C}}$. The Grassmannian is a union of subsets:
 \begin{align*}
 	&\mat{1&0&*&*\\0&1&*&*};
 	\quad\mat{1&*&0&*\\0&0&1&*};\\
@@ -1717,10 +1717,10 @@ One guesses that it's a hypersurface, so assume so. What is the degree of this h
 
 The dimension of the space of cubics in $\mathbf{P}^3$ has dimension $20$. Therefore, the dimension of the space of cubic surfaces is $19$.\footnote{Think of each cubic surface as being a point in a parameter space. This parameter space is $\mathbf{P}^{19}$.}
 
-The dimension of the parameter space of the six points is $6\cdot 2$. Further, $\dim (\Aut(\mathbf{P}^2))=8$ and $\dim(\Aut(\mathbf{P}^3)) =15$. The dimension of the space of cubic surfaces one gets by taking $6$ points in $\mathbf{P}^2$ is probably going to be $12+15-8=19$, which strongly suggests that one can get all nonsingular cubic surfaces from this construction. Dr. Borcherds states about this argument:
+The dimension of the parameter space of the six points is $6\cdot 2$. Further, $\dim (\Aut(\mathbf{P}^2))=8$ and $\dim(\Aut(\mathbf{P}^3)) =15$. The dimension of the space of cubic surfaces one gets by taking $6$ points in $\mathbf{P}^2$ is probably going to be $12+15-8=19$, which strongly suggests that one can get all nonsingular cubic surfaces from this construction. Dr. Borcherds:
 \begin{quote}
 	\small 
-	It's got more holes in [it] than a piece of Swiss cheese.
+	[This argument's] got more holes in it than a piece of Swiss cheese.
 \end{quote}
 
 These kinds of arguments were typical of old school algebraic geometry. Proving this true claim takes a lot more work.
@@ -6987,7 +6987,7 @@ Now, one takes an open covering of $X$ and glues together the projective schemes
 \end{tikzcd}
 \]
 
-With this construction, one can construct projective varieties, projective bundles, blow up subschemes/sheaves of ideals, make ideals \index{locally principal ideal}locally principal, resolve singularities, make rational maps defined everywhere.
+With this construction, one can construct projective varieties, projective bundles, blow up subschemes/sheaves of ideals, make ideals \index{locally principal ideal}locally principal, resolve singularities, and make rational maps defined everywhere.
 The next two sections shall concern these applications.
 
 Suppose that $K$ is a field. Then, if $X=\Spec (K)$ and $\mathscr{F}$ is a graded sheaf of ideals on $\Spec (K)$, which one associates with a graded $K$-algebra, this construction is equivalent to that of forming a projective variety from $X$.
@@ -7180,8 +7180,308 @@ The sections $s_0,\hdots,s_n$ generate a subsheaf $\mathscr{J}\subsetneq \mathsc
 Now, $\mathscr{J}\tensor \mathscr{L}^{-1}\subset \mathscr{O}$ is a subsheaf of the sheaf of regular functions, so it is a sheaf of ideals.
 Let $\tilde X$ be the blow up of $X$ along $\mathscr{J}\tensor \mathscr{L}^{-1}$. Then, one has a map from $\tilde X$ to $\mathbf{P}^n$ defined everywhere.
 
-\iffalse
 \subsection{Differential operators.}
+An example of a differential operator is Bessel's differential operator from $\mathbf{R}[z]$ to $\mathbf{R}[z]$:
+\begin{align*}
+	z^2 \frac{d^2}{dz^2} + z\frac{d}{dz}+(z^2-\alpha^2).
+\end{align*}
+This is $\mathbf{R}$-linear but not $\mathbf{R}[z]$-linear.
+
+Let $A$ be a ring and let $B$ be an $A$-algebra. 
+\begin{quote}
+	\small What is a differential operator from $B$ to $B$?
+\end{quote}
+Now, let $M$ and $N$ be $B$-modules.
+\begin{quote}
+	\small What is a differential operator from $M$ to $N$?
+\end{quote}
+
+\begin{example}[ ]\label{}\text{}
+Let $A=\mathbf{R}$ and $B=\mathbf{R}[z]$. Consider the differential operator $d/dz$.
+This differential operator satisfies Leibniz's rule:
+\begin{align*}
+	\frac{d}{dz}(zf) = z \frac{d}{dz}f + f.
+\end{align*}
+If one considers $z$ as an operator,
+\begin{align*}
+	[d/dz,z]=1.
+\end{align*}
+Furthermore,
+\begin{align*}
+	[d/dz,f] = \frac{df}{dz}.
+\end{align*}
+This is a linear map.
+\end{example}
+
+The order-$0$ differential operators are linear operators.
+If $D$ is an order-$1$ differential operator, then $[D,f]$ is an order-$0$ differential operator.
+
+\begin{definition}[ ]\label{}\text{}
+Let $D$ be a differential operator on an $A$-algebra $B$. One says that $D$ has \defn{order}\index{order of a differential operator} less than or equal to $n$ if and only if
+\begin{enumerate}
+	\item $D$ is linear over $A$;
+	\item $[D,f]$ has order less than or equal to $n-1$ for $f\in B$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}[ ]\label{diffopr}\text{}
+Let us determine all differential operators on $B=\mathbf{R}[z]$.
+Clearly, $z^m(d/dz)^n$ is a differential operator of order $m$, so
+\begin{align}\label{diffop_1}
+	\sum_{i,j}^{} a_{ij}z^i(d/dz) ^j
+\end{align}
+for $a_{ij}\in \mathbf{R}$ is a differential operator.
+Now, 
+\begin{align*}
+	[(d/dz) ^n,z] = n(d/dz) ^{n-1},
+\end{align*}
+so any differential operator of order $n$ is of the form $[D,z]$ where $D$ is an order-$(n+1)$ differential operator.
+Suppose that $E$ is a differential operator of order $n$. Then, $[E,z]$ has order $n-1$, so it is of the form $[D,z]$ where 
+\begin{align*}
+	D = \sum_{0\le i,j\le n}^{} a_{ij}z^i(d/dz) ^j
+\end{align*}
+for $a_{ij}\in \mathbf{R}$.
+Now, $E$ is $D$ plus an order-$0$ operator, so $E$ takes the form of \cref{diffop_1}.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let us determine all differential operators on $B=\mathbf{Z}[z]$.
+Again, examples of differential operators come from
+\begin{align*}\label{diffop_2}
+	\sum_{i,j}^{} a_{ij} z^i(d/dz) ^j
+\end{align*}
+for $a_{ij}\in \mathbf{Z}$.
+However, there are other differential operators: For example,
+\begin{align*}
+	\frac{1}{2}(d/dz)^2 : z^n \longmapsto \frac{n(n-1)}{2}z^{n-2}
+\end{align*}
+is a differential operator on $B$.
+More generally,
+\begin{align*}
+	\sum_{i,j}^{} \frac{a_{ij}}{j!}x^i(d/dz) ^j
+\end{align*}
+for $a_{ij}\in \mathbf{Z}$ is a differential operator.
+One shows that all differential operators on $B$ are of this form with the same method as in \cref{diffopr}.
+\end{example}
+
+\begin{definition}[ ]\label{}\text{}
+	Let $D$ be a differential operator. The operator $D$ is \defn{normalized}\index{normalized differential operator} if and only if 
+	\begin{align*}
+		D(1)=0.
+	\end{align*}
+\end{definition}
+
+If $D$ is a differential operator, one can write
+\begin{align*}
+	D = D_0+c
+\end{align*}
+where $D_0$ is normalized and $c=D(1)$.
+
+Differential operators comprise a filtered ring
+\begin{align*}
+	F_0\subset F_1\subset F_2\subset\cdots
+\end{align*}
+where $F_i$ consists of differential operators of order less than or equal to $i$ on $B$:
+\begin{align*}
+	F_i\cdot F_j\subset F_{i+j}.
+\end{align*}
+The graded ring
+\begin{align*}
+	\bigoplus_{i}F_i/F_{i-1}
+\end{align*}
+is commutative.
+
+Suppose that $B$ is an $A$-algebra. There is a universal order-$n$ differential operator $D$ on $B$:
+\[
+\begin{tikzcd}[row sep = 4 em, column sep = 5 em]
+	B\ar[r,"D"] \ar[dr, "\textrm{order-$n$}", swap]& M\ar[d,dashed,"\textrm{linear}"] \\
+						  & N.
+\end{tikzcd}
+\]
+
+The pair $(\Omega_{B/A}, d)$ is the \defn{module of K\"ahler differentials}\index{module of K\"ahler differentials} or the \defn{module of differentials}\index{module of differentials} on $B$ over $A$. This is the universal order-$1$ normalized $A$-linear differential operator:
+\[
+\begin{tikzcd}[row sep = 4 em, column sep = 5 em]
+	B\ar[dr]\ar[r,"d"] & \Omega_{B/A}\ar[d,dashed]\\
+			   & M.
+\end{tikzcd}
+\]
+\begin{example}[ ]\label{}\text{}
+Let $A=\mathbf{R}$ and let $B=\mathbf{R}[z_1,z_2]$. Then, $\Omega_{B/A}$ is generated by things of the form $df$. As a $B$-module, $\Omega_{B/A}$ is generated by $dz_1$ and $dz_2$ since
+\begin{align*}
+	df = \frac{\partial f}{\partial z_1}dz_1 + \frac{\partial f}{\partial z_2}dz_2.
+\end{align*}
+This follows from the fact that $d$ is an order-$1$ normalized differential operator, so
+\begin{align*}
+	d(fg) = f\,{dg} + g\, {df}.
+\end{align*}
+Therefore,
+\begin{align*}
+	\Omega_{B/A} \isomto B\oplus B.
+\end{align*}
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $A=\mathbf{Q}$ and let $B= \mathbf{Q}[i]$.
+The module $\Omega_{B/A}$ is generated by $di$. Since $d$ is normalized, $2i\,di=0$, so $di=0$. Therefore,
+\begin{align*}
+	\Omega_{B/A} = 0.
+\end{align*}
+More generally, if $K$ is a field and $L$ is a finite separable extension of $K$, then one can write $L=K(\alpha)$ where
+\begin{align*}
+	f(\alpha) = \alpha^n + c_{n-1}\alpha^{n-1}+\cdots + c_1\alpha + c_0=0
+\end{align*}
+for some $c_i\in K$. Now, $f'(\alpha)\,d\alpha=0$, and $f'(\alpha)\ne 0$ since $L/K$ is separable. Therefore, $d\alpha =0$ and 
+\begin{align*}
+	\Omega_{L/K} = 0.
+\end{align*}
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $K$ is a field of characteristic $p$. Let $L = K(\alpha^{1/p})$. Write $\beta = \alpha^{1/p}$.
+Then, $\beta^p=\alpha$ and 
+\begin{align*}
+	p\beta^{p-1}\,d\beta = 0.
+\end{align*}
+This does not mean that $d\beta =0$, for $\chr(K) = p$. In fact, $\Omega_{L/K}$ is $1$-dimensional generated by $d\beta$.
+
+Inseparable extensions can have nontrivial modules of differentials.
+\end{example}
+
+Suppose that $A$ is a ring. Write $B = A[z_1,\hdots, z_n]$. Then, $\Omega_{B/A}$ is a free $B$-module generated by $dz_1,\hdots, dz_n$.
+Now, write $C=B/I$. Then, $\Omega_{C/A}$ is generated by $dz_1,\hdots, dz_n$ where, for all $f\in I$,
+\begin{align*}
+	df = \sum_{i}^{} \frac{\partial f}{\partial z_i}dz_i =0.
+\end{align*}
+
+\begin{example}[ ]\label{}\text{}
+Let $K$ be a field and let $B=K[z_1,z_2]$. Further, let $E=B/(z_2^2-z_1^3-z_1)$ be an elliptic curve.
+Then, $\Omega_{E/K}$ is free generated by $dz_1$ and $dz_2$ modulo the relation $2z_2dz_2 =(3z_1^2 + 1)dz_1$.
+There is a resolution
+\[
+\begin{tikzcd}
+	0\ar[r] & B\ar[r,"g"]&B^2 \ar[r,"f"] &\Omega_{E/K} \ar[r]&0
+\end{tikzcd}
+\]
+where $f$ takes $(0,1)$ to $dz_1$ and $(1,0)$ to $dz_2$ and $g$ takes $1$ to $2z_2(0,1) -  (3z_1^2 + 1) (1,0)$.
+\end{example}
+
+More generally, if $C=B/I$, then
+\[
+\begin{tikzcd}
+	I\ar[r,"d"]&\Omega_{B/A}\tensor_B C\ar[r]&\Omega_{C/A} \ar[r]&0
+\end{tikzcd}
+\]
+is exact.
+
+Consider the map
+\[
+\begin{tikzcd}
+	f:B\tensor_A B\ar[r]& B.
+\end{tikzcd}
+\]
+Write $\mathfrak{h} = \Ker (f)$. Then,
+\begin{align*}
+	\Omega_{B/A} = \mathfrak{h}/\mathfrak{h}^2
+\end{align*}
+where
+\[
+\begin{tikzcd}
+	d: B\ar[r]& \Omega_{B/A}
+\end{tikzcd}
+\]
+is given by
+\[
+\begin{tikzcd}
+	b\ar[r,mapsto] & b\tensor 1 - 1\tensor b.
+\end{tikzcd}
+\]
+
+To see why this holds, consider, more generally,
+\[
+\begin{tikzcd}
+	D : B\ar[r]&M
+\end{tikzcd}
+\]
+where $D$ is an order-$n$ differential operator.
+Consider the map
+\[
+\begin{tikzcd}
+	f: B\tensor_A B\ar[r]& M
+\end{tikzcd}
+\]
+given by 
+\[
+\begin{tikzcd}
+	b\tensor c \ar[r,mapsto] & b\, Dc.
+\end{tikzcd}
+\]
+If one lets $B$ act on the left, $B\tensor_A B$ has a $B$-module structure, so $f$ is a homomorphism of $B$-modules. 
+Now, consider a map
+\[
+\begin{tikzcd}
+	g: B\ar[r] & B\tensor_A B
+\end{tikzcd}
+\]
+given by 
+\[
+\begin{tikzcd}
+	b\ar[r,mapsto] & 1\tensor b.
+\end{tikzcd}
+\]
+This is not $B$-linear.
+
+Suppose that $D$ has order $0$. Then,
+\begin{align*}
+	Da - a\,D1 = 0.
+\end{align*}
+If $D$ has order $1$, then
+\begin{align*}
+	D(ab) - a\, Db - b\, D a + ab\,  D1=0.
+\end{align*}
+If $D$ has order $2$, then
+\begin{align*}
+	D(abc) - a \,D (bc) - b\, D(ca) - c\, D (ab) + ab \, Dc + ac \, Db + bc \, Da - abc\,  D1=0.
+\end{align*}
+If $D$ has order $n$, then $D$ vanishes on $\mathfrak{h}^{n+1}$ where $\mathfrak{h}$ is the $B$-module generated by $b\tensor 1 - 1\tensor b$, which, one can check, is $\Ker(f)$.
+
+Now, the map
+\[
+\begin{tikzcd}
+	B\ar[r] & (B\tensor_A B)/ \mathfrak{h}^{n+1} 
+\end{tikzcd}
+\]
+given by
+\[
+\begin{tikzcd}
+	b\ar[r,mapsto] & 1\tensor b
+\end{tikzcd}
+\]
+is an order-$n$ differential operator. It is the universal order-$n$ differential operator:
+\[
+\begin{tikzcd}[row sep = 3 em]
+	B\ar[r,"\textrm{order-$n$}"] \ar[dr] & M\\
+					     &(B\tensor_A B)/ \mathfrak{h}^{n+1} \ar[u]
+\end{tikzcd}
+\]
+The image of $\mathfrak{h}^{n+1}$ in $M$ is $0$. 
+
+Now, one can normalize this by taking
+\[
+\begin{tikzcd}
+	b\ar[r, mapsto] &1\tensor b - b\tensor 1.
+\end{tikzcd}
+\]
+The image of $1\tensor b-b\tensor 1$ is in $\mathfrak{h}$. 
+Thus, one gets a normalized differential operator from $B$ to $\mathfrak{h}/\mathfrak{h}^{n+1}$ given by
+\[
+\begin{tikzcd}
+	b\ar[r,mapsto] & b\tensor 1-1\tensor b,
+\end{tikzcd}
+\]
+and this is the universal such differential operator of order $n$.
+
+\iffalse
 \subsection{The cotangent bundle.}
 \subsection{The canonical sheaf.}
 
