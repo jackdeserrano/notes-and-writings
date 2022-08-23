@@ -7676,10 +7676,201 @@ spans $\Omega_{R_i}$.
 Therefore, one can canonically identify the sheaf corresponding to the graded module $M$ with the cotangent sheaf over every $U_i$, so over $\mathbf{P}^n$.
 \end{example}
 
-\iffalse
 \subsection{The canonical sheaf.}
+Suppose that $X$ is a nonsingular projective variety over a field $K$.
+Recall that the sections of $\Omega_{X/K}$ are $1$-forms.
+Since $X$ is nonsingular, $\Omega_{X/K}$ is a locally free ``vector bundle.''
 
+From this, one can define the \index{tangent sheaf}tangent sheaf 
+\begin{align*}
+	\Theta_X := \underline{\Hom}_{}(\Omega_{X/K}, \mathscr{O}_X)
+\end{align*}
+where $\underline{\Hom}$ gives a sheaf.\footnote{One writes $\underline{\Hom}$ for the sheaf of morphisms and $\Hom$ for the abelian group of global sections of that sheaf.}
+The sections of $\Theta_X$ are tangent vector fields.
 
+The tangent sheaf is the dual of the cotangent sheaf. One can take exterior powers, also: The invertible sheaf\footnote{That is, the line bundle.}
+\begin{align*}
+	\omega_{X/K} := \bigwedge\nolimits^{n} (\Omega_{X/K})
+\end{align*}
+is the \defn{canonical sheaf}\index{canonical sheaf} of $X$ over $K$.\footnote{Where $n=\dim(X)$.} The sections of this sheaf are ``$n$-forms'' on $X$.
+
+\begin{example}[Riemann--Roch for curves]\label{}\text{}
+Suppose that $D$ is a divisor. This divisor corresponds to a line bundle $\mathscr{L}(D)$.
+If one defines
+\begin{align*}
+	\ell(D) := \dim  (\Gamma(\mathscr{L}(D))),
+\end{align*}
+then
+\begin{align*}
+	\ell(D) = \underbrace{\deg(D) +  (1-g)}_{\textrm{Riemann}} + \underbrace{\ell (\tilde D-D)}_{\textrm{Roch}}.
+\end{align*}
+Here,
+\begin{align*}
+	g := \dim(\Gamma(\omega_{X/K}))
+\end{align*}
+is the genus of the curve $X$ and $\tilde D$ is a canonical divisor of $X$. One gets a canonical divisor by taking a global $n$-form. The quantity $\ell(\tilde D-D)$ does not depend on one's choice of $\tilde D$.\index{Riemann--Roch theorem}
+\end{example}
+
+\begin{example}[Serre duality]\label{}\text{}
+The canonical sheaf $\omega$ is a ``dualizing object.'' \defn{Serre duality}\index{Serre duality} says that
+\begin{align*}
+	\HH^i(X,\mathscr{F}) \isomto \HH^{n-i} (X, \mathscr{F}^* \tensor \omega)^*.
+\end{align*}
+Compare this to Poincar\'e duality:
+\begin{align*}
+	\HH^i(X,\mathbf{R}) \isomto \HH^{n-i}(X,\mathbf{R}).
+\end{align*}
+The Riemann--Roch theorem can be written as
+\begin{align*}
+	\dim(\HH^0(\mathscr{L}(D)))- \dim(\HH^1(\mathscr{L}(D))) = \deg (D) +  ( 1-g).
+\end{align*}
+Hirzebruch generalized this. One applies Serre duality to $\HH^1(\mathscr{L}(D))$. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+One might classify varieties $X$ in $2$ steps:
+\begin{enumerate}
+	\item Embed $X$ into $\mathbf{P}^n$;
+	\item Classify subvarieties of $\mathbf{P}^n$.
+\end{enumerate}
+One makes some progress on (2) via Hilbert schemes\index{Hilbert scheme}. 
+
+With a line bundle $\mathscr{L}$ and all of its sections, there is a map from an open subscheme $U\subset X$ to $\mathbf{P}^n$. To pick $\mathscr{L}$ in a canonical way and to ensure that $\mathscr{L}$ has enough sections, one takes 
+\begin{align*}
+	\mathscr{L}:= \omega_X^m
+\end{align*}
+for some $m\in \mathbf{Z}$. This gives a \defn{canonical embedding}\index{canonical embedding} of $X$ into projective space.
+\end{example}
+
+\begin{example}[Kodaira dimension]\label{}\text{}
+The \defn{Kodaira dimension}\index{Kodaira dimension} $\kappa$ is the dimension of the image of $X$ under the canonical embeddings of $\omega^i$ for $i\gg 0$.\footnote{This is a very rough description.} If there does not exist a number $i>0$ such that $\omega^i$ has sections, then $\kappa := -\infty$.
+
+The canonical line bundle of $\mathbf{P}^1$ is its cotangent bundle $\mathscr{O}(-2)$, and this has no nonzero sections, so $\kappa = -\infty$.
+The canonical line bundle of an elliptic curve is, again, its cotangent bundle, which is $\mathscr{O}(0)$. For all $i$,
+\begin{align*}
+	\dim(\Gamma(\mathscr{O}(0)^i)) = 1,
+\end{align*}
+so $\kappa = 0$.
+The canonical bundle of a curve of degree $4$ such as 
+\begin{align*}
+	x^4 + y^4 + z^4 =0
+\end{align*}
+has enough sections, and we shall see that $\kappa = 1$.
+
+Roughly speaking, if a curve has dimension $n$, then $\kappa$ can be $-\infty,0,1,\hdots, n$.\footnote{The case $\kappa = -\infty$ corresponds to positive curvature. The case $\kappa = 0$ corresponds to $0$ curvature. The case $\kappa = 1,\hdots, n$ corresponds to negative curvature.}
+\end{example}
+
+The canonical sheaf of $\mathbf{P}^1$ is
+\begin{align*}
+	\omega_{\mathbf{P}^1} = \mathscr{O}(-2).
+\end{align*}
+
+Now, there is the exact sequence of sheaves
+\[
+\begin{tikzcd}[row sep = 0]
+	0\ar[r]&\Omega_{\mathbf{P}^n}\ar[r]&\mathscr{O}(-1) ^{n+1} \ar[r]&\mathscr{O}(0)\ar[r]&0.
+\end{tikzcd}
+\]
+Notice that
+\begin{align*}
+	\rank (\Omega_{\mathbf{P}^n}) &= n;\\
+	\rank (\mathscr{O}(-1) ^{n+1}) &= n+1;\\
+	\rank (\mathscr{O}(0)) &= 1.
+\end{align*}
+Recall that, if
+\[
+\begin{tikzcd}
+	0\ar[r]&A\ar[r] &B\ar[r]&C\ar[r]&0
+\end{tikzcd}
+\]
+is an exact sequence of vector spaces and 
+\begin{align*}
+	\dim (A) &= m;\\
+	\dim (B) &= n;\\
+	\dim (C) &= \ell;
+\end{align*}
+then
+\begin{align*}
+	\bigwedge\nolimits^n(B) \isomto \bigwedge\nolimits^m  (A)\tensor \bigwedge\nolimits^\ell (C).
+\end{align*}
+Similarly,
+\begin{align*}
+	\underbrace{\bigwedge\nolimits^{n+1} (\mathscr{O}(-1)^{n+1})}_{\mathscr{O}(-(n+1))} \isomto \underbrace{\bigwedge\nolimits^n (\Omega_{\mathbf{P}^n})}_{\omega_{\mathbf{P}^n}} \tensor \underbrace{\bigwedge\nolimits^1 (\mathscr{O}(0)).}_{\textrm{trivial line bundle}}
+\end{align*}
+Therefore,
+\begin{align*}
+	\omega_{\mathbf{P}^n} \isomto \mathscr{O}(-(n+1)).
+\end{align*}
+This means that the Kodaira dimension of $\mathbf{P}^n$ is $-\infty$: $\mathscr{O}(-m(n+1))$ does not have any sections.
+
+Suppose that $Y$ is a nonsingular hypersurface in $\mathbf{P}^n$. Let us demonstrate that
+\begin{align*}
+	\omega_Y \isomto \omega_{\mathbf{P}^n} \tensor \mathscr{L}(D)\tensor \mathscr{O}_Y
+\end{align*}
+where $\mathscr{L}(D)$ is the line bundle corresponding to the divisor $D$ that corresponds to $Y$.
+
+Consider the exact sequence\footnote{See Hartshorne II 8.17.}
+\[
+\begin{tikzcd}
+	0\ar[r] & \mathscr{I}/\mathscr{I}^2 \ar[r] & \Omega_{\mathbf{P}^n}\tensor \mathscr{O}_Y \ar[r] & \Omega_Y\ar[r] &0.
+\end{tikzcd}
+\]
+Notice that
+\begin{align*}
+	\rank (\mathscr{I}/\mathscr{I}^2) &= 1;\\
+	\rank (\Omega_{\mathbf{P}^n}\tensor \mathscr{O}_Y) &= n;\\
+	\rank (\Omega_Y) &= n-1.
+\end{align*}
+Therefore, taking top exterior powers,
+\begin{align*}
+	\omega_{\mathbf{P}^n} \tensor \mathscr{O}_Y \isomto \omega_Y \tensor (\mathscr{I}/\mathscr{I}^2).
+\end{align*}
+Now, $\mathscr{I}$ is the ideal sheaf of $Y$, and 
+\begin{align*}
+	\mathscr{I}/\mathscr{I}^2 = \mathscr{I}\cdot (\mathscr{I}^0/\mathscr{I}^1) = \mathscr{I}\cdot  \mathscr{O}_Y.
+\end{align*}
+Further, $\mathscr{I}\isomto \mathscr{L}(-D)\isomto  \mathscr{L}(D) ^{-1}$. Therefore,
+\begin{align*}
+	\omega_Y \isomto \omega_{\mathbf{P}^n} \tensor \mathscr{O}_Y \tensor \mathscr{L}(D) ^{-1}.
+\end{align*}
+Finally, $\mathscr{L}(D) ^{-1} \isomto \mathscr{L}(-D)\isomto  \mathscr{O}(d)$ if $Y$ is a hypersurface of degree $d$, so
+\begin{align*}
+	\omega_Y \isomto \mathscr{O}_Y(d-n-1).
+\end{align*}
+
+\begin{example}[$n=2$]\label{}\text{}
+Now, if $d=1$, then $Y$ is a line in $\mathbf{P}^2$, so $Y\isomto \mathbf{P}^1$. Further,
+\begin{align*}
+	\omega_Y \isomto \mathscr{O}(1-2-1)=  \mathscr{O}(-2),
+\end{align*}
+which we showed before. 
+
+If $d=2$, then $Y$ is a conic in $\mathbf{P}^2$ and 
+\begin{align*}
+	\omega_Y \isomto \mathscr{O}(2-2-1) =  \mathscr{O}(-1).
+\end{align*}
+However, this is on $\mathbf{P}^2$, and pulling back to $\mathbf{P}^1$ gives $\mathscr{O}_{\mathbf{P}^1} \isomto \mathscr{O}_{\mathbf{P}^1}(-2)$.\footnote{This map $\mathbf{P}^1\longrightarrow \mathbf{P}^2$ a degree-$2$ embedding, and $\mathscr{O}(1)$ on $\mathbf{P}^2$ restricts to $\mathscr{O}(2)$. on $\mathbf{P}^1$.}
+
+If $d=3$, then $Y$ is a cubic curve and 
+\begin{align*}
+	\omega_Y \isomto \mathscr{O}_Y.
+\end{align*}
+Therefore, the genus\footnote{That is, the dimension of the space of sections of $1$-forms.} of $Y$ is
+\begin{align*}
+	g = 3
+\end{align*}
+and, since $\omega^n \isomto \mathscr{O}_Y$, the Kodaira dimension of $Y$ is
+\begin{align*}
+	\kappa = 0.
+\end{align*}
+\end{example}
+
+If $d=4$, then $Y$ is a quartic and 
+\begin{align*}
+	\omega_Y \isomto \mathscr{O}_Y(1).
+\end{align*}
+Now, the dimension of the space of sections of $1$-forms is at least $3$.\footnote{It is $3$.} 
+\iffalse
 \section{The Riemann--Roch theorem}
 \subsection{Introduction.}
 \subsection{Genus \texorpdfstring{$0$}{0}.}
