@@ -7880,13 +7880,184 @@ Now, the dimension of the space of sections of $1$-forms is at least $3$.\footno
 \subsection{Genus-\texorpdfstring{$3$}{3} curves.}
 \subsection{Plane curves.}
 \subsection{The proof of the Riemann--Roch theorem.}
-
+\fi
 
 \section{The Weil conjectures}
-\iffalse
-
-\fi
 \subsection{Introduction.}
+Recall the definition of the Riemann $\zeta$ function:
+\begin{align*}
+	\zeta(s) := \sum_{n\ge 0}^{} \frac{1}{n^s}.
+\end{align*}
+This function has an Euler product:
+\begin{align*}
+	\zeta(s) = \prod_{\textrm{prime numbers $p$}} \frac{1}{1-p^{-s}}.
+\end{align*}
+One sees that
+\begin{align*}
+	\prod_{\textrm{prime numbers $p$}} \frac{1}{1-p^{-s}} &= \prod_{\textrm{prime numbers $p$}} \,\sum_{n\ge 0}^{} \frac{1}{p^{ns}}\\
+							     &= \sum_{n\ge 0}^{} \frac{1}{n^s}.
+\end{align*}
+This property is equivalent to unique factorization.
+
+The Riemann $\zeta$ function has an analytic continuation to $\mathbf{C}$ that is holomorphic with the exception of a pole of order $1$ at $s=1$.
+
+Write
+\begin{align*}
+	\zeta^*(s) &= \pi^{-s/2} \Gamma (s/2) \zeta (s).
+\end{align*}
+Then, $\zeta^*$ has the functional equation
+\begin{align*}
+	\zeta^*(s) = \zeta^* (1-s).
+\end{align*}
+The function $\zeta^*$ is holomorphic with the exception of poles at $s=0$ and $s=1$.
+
+There is a Riemann hypothesis concerning the Riemann $\zeta$ function, which suggests that all roots of $\zeta^*$ have real part $1/2$.\footnote{That is, all nontrivial roots of $\zeta$ have real part $1/2$.}
+
+Let $K$ be a number field. A divisor of the ring of integers $\mathfrak{o}_K$ of $K$ is a finite integer linear combination of prime ideals of $\mathfrak{o}_K$. 
+There is a $\zeta$ function associated to $K$:
+\begin{align*}
+	\zeta_K(s) :=  \sum_{\textrm{positive divisors $D$ of $\mathfrak{o}_K$}}^{}\frac{1}{\mathscr{N}(D)^s}. 
+\end{align*}
+Unique factorization of divisors implies that there is an Euler product:
+\begin{align*}
+	\zeta_K(s) = \prod_{\textrm{prime ideals $\mathfrak{p}$ of $\mathfrak{o}_K$}} \frac{1}{1-\mathscr{N}( \mathfrak{p}) ^{-s}}.
+\end{align*}
+Note that
+\begin{align*}
+	\mathscr{N}(\mathfrak{p}) := \#(\mathfrak{o}_K/\mathfrak{p}).
+\end{align*}
+Again, $\zeta_K$ has a functional equation.
+
+Emil Artin defined the $\zeta$ function of a curve $X$ over a finite field $\mathbf{F}_{q}$:\footnote{Recall that there is a close relationship between algebraic number fields and curves over finite fields.}
+\begin{align*}
+	\zeta_X(s) :=  \sum_{\textrm{positive divisors $D$ of $X$}}^{} \frac{1}{\mathscr{N}(D) ^s}.
+\end{align*}
+Here, a divisor of $X$ is a finite integer linear combination of prime divisors---points on the curve over $\overline{\mathbf{F}_{q}}$ up to Galois conjugacy.
+This has an Euler product.
+
+\begin{example}[ ]\label{}\text{}
+Let $K = \mathbf{F}_{q}$. Let $X=\mathbf{A}^1_K$. The coordinate ring of $X$ is $K[z]$, so prime divisors correspond to irreducible monic polynomials
+\begin{align*}
+	f(z) = z^d + c_{d-1}z^{d-1} +\cdots + c_1z +  c_0\in K[z].
+\end{align*}
+Now,
+\begin{align*}
+	\mathscr{N}(f(z)) = q^d
+\end{align*}
+and $q^d$ polynomials have this norm, so
+\begin{align*}
+	\zeta_X(s) &= \sum_{\textrm{positive divisors $D$ of $X$}}^{} \frac{1}{\mathscr{N}(D) ^{-s}}\\
+		   &= \sum_{d\ge 1}^{} \frac{1}{(q^d) ^{-s}}q^d\\
+		   &= \frac{1}{1-q^{1-s}}.
+\end{align*}
+
+Now, $\mathbf{P}^1_K$ is $\mathbf{A}^1_K$ with a point at infinity, which is a divisor of norm $q$, so
+\begin{align*}
+	\zeta_{\mathbf{P}^1_K}(s) &= \prod_{\textrm{prime divisors $P$ of $\mathbf{P}^1_K$}} \frac{1}{1-\mathscr{N}(P) ^{-s}}\\
+		   &= \zeta_{\mathbf{A}^1_K} (s)  \frac{1}{1-q^{-s}}\\
+		   &= \frac{1}{(1-q^{1-s}) (1-q^{-s})}.
+\end{align*}
+Similarly, $\zeta(s)$ corresponds to $\Spec(\mathbf{Z})$ and $\zeta(s) \pi^{-s/2}\Gamma(s/2)$ corresponds to some sort of ``completion'' of $\Spec(\mathbf{Z})$.
+
+Notice that
+\begin{align*}
+	\zeta_{\mathbf{P}^1_K}(1-s) = q^{1-2s}\zeta_{\mathbf{P}^1_K} (s).
+\end{align*}
+This function is a rational function in $q^{-s}$. It is invariant under
+\[
+\begin{tikzcd}
+	s\ar[r,mapsto] & \displaystyle s + \frac{2\pi i}{\log(q)},
+\end{tikzcd}
+\]
+so it is periodic in $s$.
+It has poles at $2\pi i n/\log(q), 1+2\pi i n/\log (q)$ and it has no roots.
+\end{example}
+
+The $\zeta$ function $\zeta_X$ of a curve $X$ over $\mathbf{F}_{q}$ is closely related to the number of points that $X$ has over some extension $\mathbf{F}_{q^f}$. One denotes this quantity $\mathup{n}_f$.
+A prime divisor of $X$ of degree $d$ gives $d$ points on $X$ over $\mathbf{F}_{q^f}$ whenever $d$ divides $f$.
+Therefore,
+\begin{align*}
+	\log(\zeta_X(s)) &= \sum_{\textrm{prime divisors $P$ of $X$, $f\ge 0$}}^{} \frac{\mathscr{N}(P) ^{-fs}}{f}\\
+			 &= \sum_{\textrm{prime divisors $P$ of $X$, $f\ge 0$}}^{} \frac{q^{-\deg(P) fs}}{f}\\
+			 &= \sum_{f\ge 0}^{} \mathup{n}_f \frac{q^{-fs}}{f}.
+\end{align*}	
+
+Now, take $t:= q^{-s}$ and write
+\begin{align*}
+	Z(t) := \zeta (s).
+\end{align*}
+Then, $Z(t)$ is rational in $t$ and
+\begin{align*}
+	Z(t) =  \frac{P(t)}{(1-t) (1-qt)}
+\end{align*}
+where $P$ is a polynomial of degree $2$ times the genus $g$ of $X$.\footnote{One supposes that $X$ is nonsingular and projective.}
+
+There is the functional equation
+\begin{align*}
+	\zeta_X(1-s)&= q^{(1-g) (1-2s)}\zeta_X (s).
+\end{align*}
+
+There is a Riemann hypothesis concerning $\zeta_X$, which says that, if 
+\begin{align*}
+	P(t) = \prod_{i=1}^{2g}  (1-\omega_it),
+\end{align*}
+then
+\begin{align*}
+	\left\lvert \omega_i \right\rvert = q^{1/2}.
+\end{align*}
+These properties follow from the Riemann--Roch theorem.
+
+Now,
+\begin{align*}
+	\log(Z(t)) &=
+%	&= t + \frac{t^2}{2} + \frac{t^3}{3} +\cdots\\
+%		   &\phantom{=} \ + qt + \frac{q^2t^2}{2} + \frac{q^3t^3}{3}+\cdots\\
+%		   &\phantom{=} \ + \omega_1t + \frac{\omega_1^2t^2}{2} + \frac{\omega_1^3t^3}{3}+\cdots\\
+%		   &\phantom{=} \ + \omega_2t + \frac{\omega_2^2t^2}{2} + \frac{\omega_2^3t^3}{3}+\cdots
+	   \sum_{f\ge 1}^{} \frac{t^f}{f} + \sum_{f\ge 1}^{}  \frac{(qt) ^f}{f} + \sum_{f\ge 1}^{} \frac{(\omega_1t)^f}{f} + \cdots + \sum_{f\ge 1}^{} \frac{(\omega_{2g}t)^f}{f}\\
+		   &= \sum_{f\ge 1}^{} \mathup{n}_f\frac{t^f}{f}.
+\end{align*}
+Therefore,
+\begin{align*}
+	\left\lvert \mathup{n}_f -1 - q^f \right\rvert \le 2g(q^{f/2}).
+\end{align*}
+% Check when t = q^{1/2} and when t = q^{-1/2}.
+% Will make it t = q^{-1/2}.
+
+Weil associated a $\zeta$ function to a Fermat hypersurface:
+\begin{align*}
+	\log (\zeta_X(s)) := \sum_{f\ge 0}^{} \mathup{n}_f \frac{q^{-fs}}{f}.
+\end{align*}
+\begin{theorem}[Weil conjectures]\label{Weil conjectures}\index{Weil conjectures}\text{}
+	Let $X$ be an $n$-dimensional nonsingular projective algebraic variety over $\mathbf{F}_{q}$.
+\begin{enumerate}
+	\item The function $\zeta_X$ is rational in $q^{-s}$.
+	\item The function $\zeta_X$ satisfies
+		 \begin{align*}
+			 \zeta_X(n-s) = \pm q^{n\chi/2 - \chi s} \zeta_X (s)
+		 \end{align*}
+		 or, equivalently,
+		 \begin{align*}
+		 	Z(1/(q^nt)) = \pm q^{n\chi/2} t^{\chi} Z(t)
+		 \end{align*}
+		 where $\chi$ is the Euler characteristic of $X$ and $t= q^{-s}$.
+	\item One can write
+		\begin{align*}
+			Z(t) = \frac{P_1(t)\cdots P_{2n-1} (t)}{P_0(t)\cdots P_{2n} (t)}
+		\end{align*}
+		where, if
+		\begin{align*}
+			P_i(t) = \prod_j  (1-\omega_{ij}t),
+		\end{align*}
+		then
+		\begin{align*}
+			\left\lvert \omega_{ij} \right\rvert = q^{i/2}.
+		\end{align*}
+\end{enumerate}
+\end{theorem}
+
+
+\iffalse
 \subsection{The functional equation.}
 \subsection{The Riemann hypothesis.}
 \subsection{Fermat hypersurfaces.}
