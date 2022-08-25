@@ -712,7 +712,11 @@ but this is wrong: Hermann Sachse (1890) discovered two distinct conformations o
 \end{figure}
 \fi
 \begin{example}[Moduli space of elliptic curves]\label{}
-A \index{moduli space}moduli space is a space whose points correspond to isomorphism classes of things.\footnote{It is tradition to use ``parameter space'' when the thing is embedded in something else and ``moduli space'' otherwise.} An \index{elliptic curve}elliptic curve over $\mathbf{C}$ is a nonsingular curve topologically isomorphic to a torus. Any elliptic curve in the form \[ y^2=x^3+ax^2+bx+c = (x-\alpha) (x-\beta) (x-\gamma).\] One can make some changes of variables to get the elliptic curve into the form
+A \index{moduli space}moduli space is a space whose points correspond to isomorphism classes of things.\footnote{It is tradition to use ``parameter space'' when the thing is embedded in something else and ``moduli space'' otherwise.} An \index{elliptic curve}elliptic curve over $\mathbf{C}$ is a nonsingular curve topologically isomorphic to a torus. Any elliptic curve in the form 
+\[ 
+	y^2=x^3+ax^2+bx+c = (x-\alpha) (x-\beta) (x-\gamma).
+\] 
+One can make some changes of variables to get the elliptic curve into the form
 \begin{align*}
 	y^2 = x(x-1) (x-\lambda)\quad\textrm{where}\quad \lambda \ne 0,1.
 \end{align*}
@@ -7973,13 +7977,13 @@ so it is periodic in $s$.
 It has poles at $2\pi i n/\log(q), 1+2\pi i n/\log (q)$ and it has no roots.
 \end{example}
 
-The $\zeta$ function $\zeta_X$ of a curve $X$ over $\mathbf{F}_{q}$ is closely related to the number of points that $X$ has over some extension $\mathbf{F}_{q^f}$. One denotes this quantity $\mathup{n}_f$.
-A prime divisor of $X$ of degree $d$ gives $d$ points on $X$ over $\mathbf{F}_{q^f}$ whenever $d$ divides $f$.
+The $\zeta$ function $\zeta_X$ of a curve $X$ over $\mathbf{F}_{q}$ is closely related to the number of points that $X$ has over some extension $\mathbf{F}_{q^m}$. One denotes this quantity $\mathup{n}_m$.
+A prime divisor of $X$ of degree $d$ gives $d$ points on $X$ over $\mathbf{F}_{q^m}$ whenever $d$ divides $m$.
 Therefore,
 \begin{align*}
-	\log(\zeta_X(s)) &= \sum_{\textrm{prime divisors $P$ of $X$, $f\ge 0$}}^{} \frac{\mathscr{N}(P) ^{-fs}}{f}\\
-			 &= \sum_{\textrm{prime divisors $P$ of $X$, $f\ge 0$}}^{} \frac{q^{-\deg(P) fs}}{f}\\
-			 &= \sum_{f\ge 0}^{} \mathup{n}_f \frac{q^{-fs}}{f}.
+	\log(\zeta_X(s)) &= \sum_{\textrm{prime divisors $P$ of $X$, $m\ge 0$}}^{} \frac{\mathscr{N}(P) ^{-ms}}{m}\\
+			 &= \sum_{\textrm{prime divisors $P$ of $X$, $m\ge 0$}}^{} \frac{q^{-\deg(P) ms}}{m}\\
+			 &= \sum_{m\ge 0}^{} \mathup{n}_m \frac{q^{-ms}}{m}.
 \end{align*}	
 
 Now, take $t:= q^{-s}$ and write
@@ -8005,7 +8009,7 @@ then
 \begin{align*}
 	\left\lvert \omega_i \right\rvert = q^{1/2}.
 \end{align*}
-These properties follow from the Riemann--Roch theorem.
+These properties follow from the Riemann--Roch theorem. Weil proved the Riemann hypothesis first, and Stepanov--Bombieri proved the Riemann hypothesis via the Riemann--Roch theorem.
 
 Now,
 \begin{align*}
@@ -8014,19 +8018,19 @@ Now,
 %		   &\phantom{=} \ + qt + \frac{q^2t^2}{2} + \frac{q^3t^3}{3}+\cdots\\
 %		   &\phantom{=} \ + \omega_1t + \frac{\omega_1^2t^2}{2} + \frac{\omega_1^3t^3}{3}+\cdots\\
 %		   &\phantom{=} \ + \omega_2t + \frac{\omega_2^2t^2}{2} + \frac{\omega_2^3t^3}{3}+\cdots
-	   \sum_{f\ge 1}^{} \frac{t^f}{f} + \sum_{f\ge 1}^{}  \frac{(qt) ^f}{f} + \sum_{f\ge 1}^{} \frac{(\omega_1t)^f}{f} + \cdots + \sum_{f\ge 1}^{} \frac{(\omega_{2g}t)^f}{f}\\
-		   &= \sum_{f\ge 1}^{} \mathup{n}_f\frac{t^f}{f}.
+	   \sum_{m\ge 1}^{} \frac{t^m}{m} + \sum_{m\ge 1}^{}  \frac{(qt) ^m}{m} + \sum_{m\ge 1}^{} \frac{(\omega_1t)^m}{m} + \cdots + \sum_{m\ge 1}^{} \frac{(\omega_{2g}t)^m}{m}\\
+		   &= \sum_{m\ge 1}^{} \mathup{n}_m\frac{t^m}{m}.
 \end{align*}
 Therefore,
 \begin{align*}
-	\left\lvert \mathup{n}_f -1 - q^f \right\rvert \le 2g(q^{f/2}).
+	\left\lvert \mathup{n}_m -1 - q^m \right\rvert \le 2g(q^{m/2}).
 \end{align*}
 % Check when t = q^{1/2} and when t = q^{-1/2}.
 % Will make it t = q^{-1/2}.
 
 Weil associated a $\zeta$ function to a Fermat hypersurface:
 \begin{align*}
-	\log (\zeta_X(s)) := \sum_{f\ge 0}^{} \mathup{n}_f \frac{q^{-fs}}{f}.
+	\log (\zeta_X(s)) := \sum_{m\ge 0}^{} \mathup{n}_m \frac{q^{-ms}}{m}.
 \end{align*}
 \begin{theorem}[Weil conjectures]\label{Weil conjectures}\index{Weil conjectures}\text{}
 	Let $X$ be an $n$-dimensional nonsingular projective algebraic variety over $\mathbf{F}_{q}$.
@@ -8056,9 +8060,96 @@ Weil associated a $\zeta$ function to a Fermat hypersurface:
 \end{enumerate}
 \end{theorem}
 
-
-\iffalse
 \subsection{The functional equation.}
+Suppose that $X$ is a curve over $\mathbf{F}_{q}$. Here, we shall demonstrate that
+\begin{align*}
+	\zeta_{X}(s) &=  \frac{P(q^{-s})}{(1-q^{-s}) (1-q^{1-s})}
+\end{align*}
+where $P$ is a polynomial of degree $2g$ and that
+\begin{align*}
+	q^{(g-1) s}\zeta_{X}(s)
+\end{align*}
+is invariant under $s\longmapsto 1-s$.
+
+Recall the Riemann--Roch theorem:
+\begin{align*}
+	\ell(D) = \deg (D) +  (1-g) + \ell (\tilde D- D).
+\end{align*}
+
+One can write
+\begin{align*}
+	\zeta_{X}(s)&=  \sum_{\textrm{positive divisors $D$ of $X$}}^{} \frac{1}{\mathscr{N}(D) ^{s}}\\
+		    &= \sum_{n\ge 0}^{} \sum_{\deg(D)=n}^{} \frac{1}{q^{ns}}.
+\end{align*}
+Now, write $D_1\sim D_2$ and say that ``$D_1$ and $D_2$ are in the same class'' if and only if $D_1-D_2$ is principal.
+There is a finite number $h$ of classes of a given degree.\footnote{This is the finiteness of the class number of an imaginary quadratic field.}
+Now,
+\begin{align*}
+	\#\textrm{positive divisors of degree $n$} = \sum_{\textrm{degree-$n$ divisor classes $A$}}^{} \frac{q^{\ell(A)} - 1}{q - 1}\textrm{:}
+\end{align*}
+The number of positive divisors of degree $n$ in a divisor class $A$ is $(q^{\ell(A)}-1)/(q-1)$: $q^{\ell(A)}-1$ is the number of nonzero functions $f$ with $(f)+A\ge 0$ and $(f)= (\lambda f)$ for $\lambda \in \mathbf{F}_{q}^{*}$.
+
+Therefore,
+\begin{align*}
+	\zeta_{X}(s) &=  \sum_{n\ge 0}^{} \sum_{\deg(D)=n}^{} \frac{1}{q^{ns}}\\
+		     &= \sum_{n\ge 0}^{} \frac{1}{q^{ns}} \sum_{\textrm{degree-$n$ divisor classes $A$}}^{}\frac{q^{\ell(A)}-1}{q-1}. 
+\end{align*}
+The part of the sum with $n\le 2g-2$ is rational: Each term is rational and there are finitely many terms.
+If $n>2g-2$, then
+\begin{align*}
+	\ell(A) = \deg (A) +  (1-g).
+\end{align*}
+Therefore,
+\begin{align}
+	\sum_{n>2g-2}^{} \frac{1}{q^{ns}} \sum_{\textrm{degree-$n$ divisor classes $A$}}^{}\frac{q^{\ell(A)}-1}{q-1} &= \sum_{n>2g-2}^{} \frac{1}{q^{ns}} h \frac{q^{n+1-g}-1}{q-1}\nonumber\\
+														     &= \frac{h}{q-1} \frac{q^{1-g+(2g-1) (1-s)}}{1-q^{1-s}}\label{3.1}\\
+														     &\phantom{=}\  - \frac{h}{q-1}\frac{q^{(2g-1) s}}{1-q^{-s}}.\label{3.2}
+\end{align}
+This is rational in $q^{-s}$ and the denominator is $(1-q^{1-s}) (1-q^{-s})$.
+
+Multiply $\zeta_{X}(s)$ by $q^{(g-1) s}$. The expression got from \cref{3.1} and \cref{3.2} is not invariant under $s\longmapsto 1-s$. However, if one takes the term \cref{3.2} with $n\ge 0$, not $n>2g-2$, and does not change \cref{3.1}, it is invariant under $s\longmapsto 1-s$.
+
+One sees that $s\longmapsto 1-s$ gives
+\[
+\begin{tikzcd}
+	\displaystyle q^{(g-1) s}\frac{h}{q-1}\frac{q^{1-g+(2g-1) (1-s)}}{1-q^{1-s}}\ar[r,mapsto]&\displaystyle -q^{(g-1) s}\frac{h}{q-1} \frac{1}{1-q^{-s}}.
+\end{tikzcd}
+\]
+Recall:
+\begin{align*}
+	\zeta_{X}(s) =  \sum_{n\ge 0}^{} \sum_{\deg(A) =n}^{} \frac{1}{q^{ns}}\frac{q^{\ell(A)}-1}{q-1}.
+\end{align*}
+The term
+\begin{align*}
+	\sum_{n\ge 0}^{} \frac{1}{q^{ns}}\frac{-1}{q-1}
+\end{align*}
+gives the right hand expression.
+The term
+\begin{align*}
+	\sum_{n>2g-2}^{} \frac{1}{q^{ns}}h\frac{q^{n+1-g}}{q-1}
+\end{align*}
+gives the left hand expression. 
+
+Now, one needs to look at
+\begin{align*}
+	q^{(g-1) s}\sum_{n\le 2g-2}^{} \sum_{\deg(A)=n}^{} \frac{1}{q^{ns}} \frac{q^{\ell(A)}}{q-1}.
+\end{align*}
+Exchanging $A$ and $\tilde A-A$ corresponds to $s\longmapsto 1-s$: The divisor $A$ gives the term
+\begin{align*}
+	\frac{q^{(g-1) s}}{q^{ns}} q^{\ell(A)} 
+\end{align*}
+and the divisor $\tilde A-A$ gives the term
+\begin{align*}
+	\frac{q^{(g-1) s}}{q^{(2g-2-n) s}}q^{\ell(\tilde A-A)} &=  \frac{q^{(g-1) s}}{q^{(2g-2-n) s}}q^{\ell(A) +g-1-n}.
+\end{align*}
+These are exchanged by $s\longmapsto 1-s$.
+
+Therefore, $q^{(g-1) s}\zeta(s)$ is invariant under $s\longmapsto 1-s$.
+
+\begin{remark}
+	We have assumed that there are divisors of any given degree, which is not a trivial fact.
+\end{remark}
+\iffalse
 \subsection{The Riemann hypothesis.}
 \subsection{Fermat hypersurfaces.}
 \subsection{The Lefschetz trace formula.}
