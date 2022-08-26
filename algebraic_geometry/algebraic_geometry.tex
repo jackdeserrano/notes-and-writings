@@ -7129,7 +7129,7 @@ One sees that $bz_1=az_2$, so
 \end{align*}
 Therefore, if $\mathscr{F}$ is the sheaf corresponding to $\bigoplus_{n\ge 0}I^n$,
 \begin{align*}
-	\underline{\Proj}_X(\mathscr{I}) \isomto \left\{ ((z_1,z_2),(a:b)): bz_1=az_2 \right\}\subset K^2\times \mathbf{P}^1, 
+	\underline{\Proj}_X(\mathscr{F}) \isomto \left\{ ((z_1,z_2),(a:b)): bz_1=az_2 \right\}\subset K^2\times \mathbf{P}^1, 
 \end{align*}
 which is what the blow up should be.
 \end{example}
@@ -7722,7 +7722,7 @@ The canonical sheaf $\omega$ is a ``dualizing object.'' \defn{Serre duality}\ind
 \end{align*}
 Compare this to Poincar\'e duality:
 \begin{align*}
-	\HH^i(X,\mathbf{R}) \isomto \HH^{n-i}(X,\mathbf{R}).
+	\HH^i(X,\mathbf{R}) \isomto \HH^{n-i}(X,\mathbf{R})^*.
 \end{align*}
 The Riemann--Roch theorem can be written as
 \begin{align*}
@@ -8149,8 +8149,86 @@ Therefore, $q^{(g-1) s}\zeta(s)$ is invariant under $s\longmapsto 1-s$.
 \begin{remark}
 	We have assumed that there are divisors of any given degree, which is not a trivial fact.
 \end{remark}
-\iffalse
+
 \subsection{The Riemann hypothesis.}
+Helmut Hasse proved the Riemann hypothesis for elliptic curves in 1933. 
+Andr\'e Weil proved the Riemann hypothesis for all curves over finite fields in 1949. 
+Sergei Stepanov proved the Riemann hypothesis for hyperelliptic curves via the Riemann--Roch theorem, and Enrico Bombieri generalized and simplified this technique: He proved the Riemann hypothesis for all curves over finite fields with the Riemann--Roch theorem in 1974.
+Pierre Deligne proved the Riemann hypothesis for all varieties over finite fields in 1974.
+
+Recall the Riemann hypothesis for curves:
+\begin{align*}
+	\left\lvert \mathup{n}_{m}-q^{m}-1 \right\rvert \le 2g(q^{m/2}).
+\end{align*}
+
+Let $X$ be a curve over $\mathbf{F}_{q}$ where $q = p^{\alpha}$. The idea of the proof follows: 
+Pick a point $z_0$. 
+Find functions $f\ne 0$ such that $f$ vanishes to high order at all points of $X(\mathbf{F}_{q})$ except $z_0$ and such that the only pole of $f$ is at $z_0$. Then, $\nu = \# X(\mathbf{F}_{q})$ is bounded by a constant multiple of the order of the pole at $z_0$.
+If $\mathfrak{f}_{m}$ is the space of such functions whose poles at $z_0$ have order at most $m$, then the Riemann--Roch theorem says that  
+\begin{align*}
+	\dim (\mathfrak{f}_{m}) = m+1-g
+\end{align*}
+for $m>2g-2$.
+
+Write
+\begin{align*}
+	f(z) = \sum_{i,j}^{} g_{i}^{p^\mu}(z) h _{j}(\varphi(z))
+\end{align*}
+where $\varphi(z_0,\hdots,z_{n}) = \Frob _{q}(z_0,\hdots,z_{n}) = (z_0^{q},\hdots,z_{n}^{q})$ is the Frobenius automorphism, $g_{i}\in \mathfrak{f}_{\ell}$, and $h_{j}\in \mathfrak{f}_{m}$.
+We shall specify $\mu$, $\ell$, and $m$ later.
+
+One wants to choose $g_{i}$ and $h_{j}$ such that $f\ne 0$ vanishes to high order for $z\in X(\mathbf{F}_{q})$. 
+
+Choose $g_{i}$ and $h_{j}$ such that
+\begin{align*}
+	\sum_{i,j}^{} g_{i}^{p^\mu}(z) h_{j}(z)=0
+\end{align*}
+for all $z$. If $z$ is defined over $\mathbf{F}_{q}$, then $z=\varphi(z)$. Therefore, $f(z)=0$ for all $z\in X(\mathbf{F}_{q})$.
+However, all monomials in $f$ are $p^{\mu}$ powers, so all zeros have order at least $p^{\mu}$.
+Thus, the number of zeros of $f$ is at least $p^{\mu}(\nu - 1)$.
+Now, the number of poles of $f$ is at most $\ell p^{\mu}+mq$: $m$ is the order of the pole of $h_{j}$ and $\ell$ is the order of the pole of $g_{i}$.\footnote{These are upper bounds for the orders of the poles, not precisely the orders of the poles.} If $f$ is not identically $0$, then the number of poles is the number of zeros.
+
+Take $\ell,m>g$. Consider the map 
+\[
+\begin{tikzcd}
+	\displaystyle\underbrace{\sum_{i,j}^{} g_{i}^{p^{\mu}} (h_{j}\circ \varphi)}_{V} \ar[r,mapsto] & \displaystyle\underbrace{\sum_{i,j}^{} g_{i}^{p^{\mu}} h_{j}}_{W}.
+\end{tikzcd}
+\]
+First,
+\begin{align*}
+	\dim(W)\le \ell p ^{\mu} + m+1-g
+\end{align*}
+by the Riemann--Roch theorem. 
+The space of $g_{i}$s has dimension at least $\ell+1-g$ and the space of the $h_{j}$s has dimension at least $m + 1 -g$ by the Riemann--Roch theorem. However, it is not clear that the $g_{i}$s and the $h_j$s are linearly independent.
+
+The $g_{i}^{p^{\mu}}$s have poles of order at most $p^{\mu}\ell$ and the poles of the $(h_{j}\circ \varphi)$s have order divisible by $q$. Thus, if
+\begin{align}\label{3.3}
+	p^{\mu}\ell < q,
+\end{align}
+then these functions are linearly independent. That is, if $\ell,m >g$, \cref{3.3} holds, and 
+\begin{align*}
+	 (\ell+1-g) (m+1-g) > \ell p^{\mu} + m+1-g,
+\end{align*}
+then $\dim(V) > \dim (W)$ and there is a nonzero function $f$. 
+One gets the inequality
+\begin{align*}
+	p^{\mu}(\nu -1) \le \ell p^{\mu}+ mq.
+\end{align*}
+Choose $\mu$, $\ell$, and $m$ to optimize the bound for $\nu$:
+\begin{align*}
+	\mu &:= \alpha/2;\\
+	\ell &:= \frac{g}{g+1}p^{\mu} + 1;\\
+	m &:= p^{\mu}+2g.
+\end{align*}
+One gets
+\begin{align*}
+	\mu \le q + (2g+1) q^{1/2} + 1.
+\end{align*}
+This is, more or less, the upper bound one gets from the Riemann hypothesis.
+
+One also needs a lower bound for $\nu$. Bombieri got a lower bound for $\nu$ using this upper bound and some algebraic geometry.\footnote{Enrico Bombieri, ``Counting points on curves over finite fields,'' 1974, \url{http://www.numdam.org/article/SB_1972-1973__15__234_0.pdf}.}
+
+\iffalse
 \subsection{Fermat hypersurfaces.}
 \subsection{The Lefschetz trace formula.}
 \subsection{\'Etale cohomology of a curve.}

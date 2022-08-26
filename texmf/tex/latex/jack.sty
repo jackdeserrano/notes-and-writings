@@ -157,7 +157,7 @@
 \RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
 \crefname{equation}{}{}
 
-\setlength {\emergencystretch} {10pt}  % Response to ``Overfull \hbox''
+\setlength {\emergencystretch} {14 pt}  % Response to ``Overfull \hbox''
 
 \usetikzlibrary {arrows, trees, backgrounds}
 
@@ -339,7 +339,8 @@
 \DeclareMathOperator {\Ext} {Ext}                           		% Ext functor
 \DeclareMathOperator {\forget} {forget}	
 \DeclareMathOperator {\free} {free}	
-\DeclareMathOperator {\Free} {Free}	
+\DeclareMathOperator {\Free} {Free}
+\DeclareMathOperator {\Frob} {Frob}                         		% Frobenius
 \DeclareMathOperator {\Gal} {Gal}                           		% Galois group
 \DeclareMathOperator {\GL} {GL}                             		% general linear group
 \DeclareMathOperator {\Gr} {Gr}                             		% Grassmannian
@@ -686,7 +687,7 @@
 		
 		\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
 		
-		\newcommand{\defn}[1]{{\iffalse\slshape \fi{\bfseries {#1}}}}		% keywords emphasized by bold
+		\newcommand{\defn}[1]{{\iffalse\slshape \fi{\ul {#1}}}}		% keywords emphasized by bold
 		\newcommand{\frdefn}[1]{{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French keywords emphasized by bolded red with appropriate italicization
         
             \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
