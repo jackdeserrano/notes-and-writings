@@ -8358,8 +8358,119 @@ Weil found that
 \end{align*}
 where $\alpha_{i}$ is a product of Gauss sums, so it has absolute value $p^{n/2}$.
 
-\iffalse
 \subsection{The Lefschetz trace formula.}
+Suppose that $X$ is a compact manifold and that
+\[
+\begin{tikzcd}
+	\varphi : X\ar[r] &X
+\end{tikzcd}
+\]
+is a continuous map whose fixed points are isolated and have multiplicity $1$. 
+The \defn{Lefschetz fixed-point formula}\index{Lefschetz fixed-point formula} says that
+\begin{align*}
+	\#\Fix(\varphi) = \sum_{i}^{} (-1)^{i} \Tr(\varphi\mid \HH^{i}(X))
+\end{align*}
+Define 
+\begin{align*}
+	\mathup{n}_m := \# \Fix(\varphi^{m}).
+\end{align*}
+Then,
+\begin{align*}
+	\mathup{n}_m = \sum_{i,j}^{} (-1) ^{i}(\alpha_{ij}) ^{m}
+\end{align*}
+where the $\alpha_{ij}$s are the eigenvalues of $\varphi$ on $\HH^{i}(X)$.
+Thus,
+\begin{align*}
+	\sum_{m}^{} \frac{\mathup{n}_m T^{m}}{m} &= \sum_{i,j,m}^{}  \frac{(-1) ^{i}(\alpha_{ij}) ^{m}T^{m}}{m}\\
+						 &= \sum_{i,j}^{} (-1) ^{i+1} \log(1-\alpha_{ij}T).
+\end{align*}
+Now, if
+\begin{align*}
+	Z(T):= \exp \left( \sum_{m}^{} \frac{\mathup{n}_m T^{m}}{m} \right) ,
+\end{align*}
+then
+\begin{align*}
+	Z(T) &= \prod_{i,j}(1-\alpha_{ij}T) ^{(-1) ^{i+1}}\\
+	     &= \frac{P_1(T) P_3(T) \cdots}{P_0(T) P_2(T)\cdots}
+\end{align*}
+where $P_{i}(T)$ is almost the characterisitc polynomial of $\varphi$ on $\HH^{i}(X)$.
+Poincar\'e duality relates $P_{i}(T)$ and $P_{\dim(X)-i}(T)$ and gives a functional equation for $Z(T)$. 
+
+Take $\varphi = \Frob_{q}$. Then, $\mathup{n}_m$ is the number of points defined over $\mathbf{F}_{q^{m}}$.
+
+Suppose that $X$ is a complex manifold. There is singular cohomology $\HH^{i}(X, \mathbf{Z})$ with constant coefficients and sheaf cohomology $\HH^{i}(X,\mathscr{F})$ with values in a quasicoherent sheaf $\mathscr{F}$.
+If $X$ is a variety over a field $K$, the Zariski topology gives ``terrible'' singular cohomology groups $\HH^{i}(X,\mathbf{Z})$ and ``good'' sheaf cohomology groups $\HH^{i}(X, \mathscr{F})$.\footnote{See Serre's GAGA.} 
+The Zariski topology is ``terrible'' for singular cohomology because there are not enough open sets.
+
+Thus, one wants to add open sets to the Zariski topology. An extraordinary idea of Grothendieck is that open sets of $X$ do not need to be subsets of $X$.
+Instead, one considers a morphism\footnote{That does not need to be injective.}
+\[
+\begin{tikzcd}
+	U\ar[r]& X
+\end{tikzcd}
+\]
+that is \'etale. Translating from \'etale topology to complex topology, \'etale morphisms are local homeomorphisms.
+
+The simplest nontrivial example here is the map from $\mathbf{C}^{*}$ to itself given by
+\[
+\begin{tikzcd}
+	z\ar[r,mapsto]&z^{2}.
+\end{tikzcd}
+\]
+One can replace $\mathbf{C}$ with a field of characteristic not $2$.
+
+These ``\'etale open sets'' comprise a category: There is a morphism $\psi$ such that
+\[
+\begin{tikzcd}[column sep = 4 em, row sep = 3 em]
+	U_{i}\ar[r]\ar[d,dashed,"\psi"] & X\\
+	U_{j}\ar[ur]
+\end{tikzcd}
+\]
+commutes.
+Now, one can define presheaves\footnote{That is, contravariant functors from open sets to sets.} and sheaves,\footnote{``Omitting 500 pages of explanation.''} and one gets a reasonable cohomology theory over any field.
+
+Hence, one defines \'etale cohomology groups $\etco^{i}(X,\mathbf{Z})$. However, these are still poorly behaved. \ul{One cannot define well behaved cohomology groups with integer coefficients for varieties over finite fields}: Suppose that $X$ is a supersingular elliptic curve. Now, $\HH^{i}(X,\mathbf{Z})$ should be $\mathbf{Z}^{2}$. 
+However, $\End(X)$ is a quaternion algebra. This does not act on $\mathbf{Z}^{2}$.
+
+One might try $\etco^{i}(X, \mathbf{Z}/p\mathbf{Z})$,\footnote{Where $p$ is the characteristic of the finite field.} but these groups are poorly behaved, too. Now, one tries $\etco^{i}(X, \mathbf{Z}/\ell\mathbf{Z})$ for $\ell\ne p$ prime and finds that these groups are well behaved.
+
+Certainly, ``Wherefore?'' is a question that comes to mind.
+
+Consider the exact sequence
+\[
+\begin{tikzcd}
+	1\ar[r] & \mu_{\ell}\ar[r] & K\ar[r,"z^{\ell}"] & K\ar[r] &1
+\end{tikzcd}
+\]
+where $\mu_{\ell}$ comprises the $\ell$th roots of $1$ and $K$ is a field of characteristic $p\ne \ell$. 
+This is an exact sequence of sheaves to which one can apply \'etale cohomology, but, if $\ell=p$, then $z\longmapsto z^{\ell}$ is inseparable, $\mu_{\ell}$ comprises the $p$th roots of unity mod $p$, etc.
+Now, $\mu_{\ell}$ is, more or less, $\mathbf{Z}/\ell\mathbf{Z}$.\footnote{Supposing that the field over which one works is algebraically closed.}
+However, one wants the groups to be over a field of characteristic $0$.
+
+One sees that the groups $\etco^{i}(X, \mathbf{Z}/\ell^{n}\mathbf{Z})$ are well behaved. Hence, one can define \defn{$\ell$-adic cohomology groups}\index{$\ell$-adic cohomology group} by 
+\begin{align*}
+	\HH^{i}_{\ell} (X, \mathbf{Z}_{\ell}) := \varprojlim_{n} \etco^{i}(X, \mathbf{Z}/\ell^{n}\mathbf{Z}).
+\end{align*}
+and
+\begin{align*}
+	\HH^{i}_{\ell}(X,\mathbf{Q}_{\ell}) := \mathbf{Q}_{\ell} \tensor_{\mathbf{Z}_{\ell}} \HH^{i}_{\ell} (X,\mathbf{Z}_{\ell}).
+\end{align*}
+Note that
+\begin{align*}
+	\varprojlim_{n} \etco^{i}(X, \mathbf{Z}/\ell^{n}\mathbf{Z})\ne \etco^{i}(X, \varprojlim_{n}\mathbf{Z}/\ell^{n}\mathbf{Z}).
+\end{align*}
+The latter groups are poorly behaved.
+
+Grothendieck used these groups to resolve the first two parts of the Weil conjectures.
+
+Dr. Borcherds mentions the following books:
+\begin{itemize}
+	\item Michael Artin. \ul{Grothendieck topologies}. 1962.
+	\item Pierre Deligne. \ul{Cohomologie \'etale}. ``SGA $4\ 1/2$.'' 1977.
+	\item Eberhard Freitag and Reinhardt Kiehl. \ul{\'Etale cohomology and the Weil conjecture}. 1988.
+\end{itemize}
+
+\iffalse
 \subsection{\'Etale cohomology of a curve.}
 \subsection{\'Etale morphisms.}
 
