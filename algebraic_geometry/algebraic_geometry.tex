@@ -6158,7 +6158,7 @@ This is an isomorphism.
 
 For injectivity, one wants to find an elliptic function corresponding to a degree-$0$ divisor. Recall the definition of the Weierstrass $\wp$ function: Given a lattice $\Lambda$,
  \begin{align*}
-	\wp(z) := \xcancel{\sum_{\lambda\in\Lambda}^{} \frac{1}{(z+\lambda) ^2}}=\frac{1}{z^2}+\sum_{\lambda\in \Lambda-\{0\}}^{} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right) .
+	\wp(z) := \xcancel{\sum_{\lambda\in\Lambda}^{} \frac{1}{(z+\lambda) ^2}}\ \ \frac{1}{z^2}+\sum_{\lambda\in \Lambda-\{0\}}^{} \left( \frac{1}{(z+\lambda) ^2}-\frac{1}{\lambda^2} \right) .
 \end{align*}
 This is doubly periodic. Now, recall that the Weierstrass $\zeta$ function satisfies
 \begin{align*}
@@ -6366,7 +6366,7 @@ There is a group homomorphism from the Cartier divisor class group to the Weil d
 \begin{example}[ ]\label{}\text{}
 Consider $X=\Spec K[t^2,t^3]$. One sees that the group of Weil divisors is trivial. However, consider the Cartier divisor
 \begin{align*}
-	d=
+	D=
 	\begin{cases}
 		1+\alpha t &\textrm{on the open set in which $t\ne \alpha^{-1}$}\\
 			1 &\textrm{on the open set in which $t\ne 0$.}
@@ -6426,13 +6426,13 @@ Recall that that the Picard group of a ringed space $(X,\mathscr{O}_X)$ denoted 
 \]
 that is usually an isomorphism in practice.
 
-Suppose that $X$ is a compact Riemann surface. Suppose further that $d=\sum_{i}^{} n_ip_i$ is a divisor on $X$. We shall associate this to an invertible subsheaf $\mathscr{L}(d)$ of the sheaf $\mathscr{K}$ of meromorphic functions on $X$. Sections of $\mathscr{L}(d)$ shall correspond to meromorphic functions $f$ such that
+Suppose that $X$ is a compact Riemann surface. Suppose further that $D=\sum_{i}^{} n_ip_i$ is a divisor on $X$. We shall associate this to an invertible subsheaf $\mathscr{L}(D)$ of the sheaf $\mathscr{K}$ of meromorphic functions on $X$. Sections of $\mathscr{L}(D)$ shall correspond to meromorphic functions $f$ such that
 \begin{align*}
-	(f) + d \ge 0.
+	(f) + D \ge 0.
 \end{align*}
-That is, all of the coefficients of $(f)+d$ are greater than or equal to $0$. One sees that this gives a line bundle since, locally, it is isomorphic to the sheaf of coordinate functions: Multiplication by the meromorphic function $f$ gives a local isomorphism.
+That is, all of the coefficients of $(f)+D$ are greater than or equal to $0$. One sees that this gives a line bundle since, locally, it is isomorphic to the sheaf of coordinate functions: Multiplication by the meromorphic function $f$ gives a local isomorphism.
 
-Suppose that $X$ is a scheme. Let $\mathscr{K}=\mathscr{K}_X$ be the sheaf of total quotient rings. Cover $X$ by open subschemes $U_i$. For every subscheme $U_i$, take a section $f_i\in \mathscr{K}({U_i})$ where $f_i/f_j$ is a unit of $\mathscr{K}({U_i\cap U_j})$. This gives a Cartier divisor $d$. Now, one wants to associate this Cartier divisor to an invertible subsheaf $\mathscr{L}(d)$ of $\mathscr{K}$ given by sections $g\in \mathscr{K}({U_i})$ where $gf_i\in \mathscr{O}({U_i})$ is regular on $U_i$. Again, $f_i$ is an isomorphism from $\mathscr{L}(d)$ to $\mathscr{O}_{U_i}$, so $\mathscr{L}(d)$ is an invertible sheaf. 
+Suppose that $X$ is a scheme. Let $\mathscr{K}=\mathscr{K}_X$ be the sheaf of total quotient rings. Cover $X$ by open subschemes $U_i$. For every subscheme $U_i$, take a section $f_i\in \mathscr{K}({U_i})$ where $f_i/f_j$ is a unit of $\mathscr{K}({U_i\cap U_j})$. This gives a Cartier divisor $D$. Now, one wants to associate this Cartier divisor to an invertible subsheaf $\mathscr{L}(D)$ of $\mathscr{K}$ given by sections $g\in \mathscr{K}({U_i})$ where $gf_i\in \mathscr{O}({U_i})$ is regular on $U_i$. Again, $f_i$ is an isomorphism from $\mathscr{L}(D)$ to $\mathscr{O}_{U_i}$, so $\mathscr{L}(D)$ is an invertible sheaf. 
 
 This gives a map from the Cartier divisor class group to the Picard group. One can check that this is an injective group homomorphism whose image is the subgroup of the Picard group of invertible sheaves that are isomorphic to a subsheaf of the sheaf of total quotient rings. Usually, this homomorphism is an isomorphism. 
 
@@ -8228,8 +8228,137 @@ This is, more or less, the upper bound one gets from the Riemann hypothesis.
 
 One also needs a lower bound for $\nu$. Bombieri got a lower bound for $\nu$ using this upper bound and some algebraic geometry.\footnote{Enrico Bombieri, ``Counting points on curves over finite fields,'' 1974, \url{http://www.numdam.org/article/SB_1972-1973__15__234_0.pdf}.}
 
-\iffalse
 \subsection{Fermat hypersurfaces.}
+Here, we shall follow, to some extent, Andr\'e Weil's ``Numbers of solutions of equations in finite fields.''
+
+Let $X$ be a curve over $\mathbf{F}_{q}$. Recall that there is a $\zeta$ function associated to $X$:
+\begin{align*}
+	\log(\zeta(s)) := \sum_{m\ge 0}^{}\frac{\mathup{n}_{m}q^{-ms}}{m}
+\end{align*}
+where $\mathup{n}_{m}$ is the number of points on $X$ over $\mathbf{F}_{q^{m}}$.
+Weil noted that this definition makes sense for varieties.
+He calculated the $\zeta$ function associated to a Fermat hypersurface
+\begin{align*}
+	f(z_1,\hdots, z_{n}) = a_1z_1^{r_1} + \cdots + a_{n}z_{n}^{r_{n}}
+\end{align*}
+explicitly.
+We shall treat the case in which $q=p$ and $m=1$.
+
+The number of solutions to
+\begin{align*}
+	f(z_1,\hdots, z_{n}) \equiv 0\pmod p
+\end{align*}
+is 
+\begin{align*}
+	\frac{1}{p} \sum_{z_1,\hdots,z_{n} \bmod p}^{} \,\, \sum_{z\bmod p}^{} \zeta^{zf(z_1,\hdots,z_{n})}
+\end{align*}
+where $\zeta$ is a $p$th root of unity, since
+\begin{align*}
+	\sum_{z}^{} \zeta^{\ell z} =
+	\begin{cases}
+		p& \ell \equiv 0\pmod p\\
+		0&\textrm{otherwise.}
+	\end{cases}
+\end{align*}
+One can rewrite this as
+\begin{align*}
+	p^{n-1}+\frac{1}{p}\sum_{z_1,\hdots, z_{n}}^{} \, \sum_{z\not\equiv 0}^{} \zeta^{zf(z_1,\hdots,z_{n})}.
+\end{align*}
+One can write the second term as
+\begin{align*}
+	\sum_{z\not\equiv 0}^{} \sum_{z_1, \hdots,z_{n}}^{} \zeta^{z(a_1z_1^{r_1}+\cdots+a_{n}z_{n}^{r^{n}})} = \sum_{z\not\equiv 0}^{} \prod_{i=1}^{n} \sum_{z_{i}}^{} \zeta^{za_{i}z_{i}^{r_{i}}}.
+\end{align*}
+Thus, one wants to estimate/compute sums
+\begin{align*}
+	\sum_{y}^{} \zeta^{ay^{r}} = \sum_{z}^{} \zeta^{az}s(z)
+\end{align*}
+where $s(z)$ is the number of solutions to $y^{r}=z$. Now,
+\begin{align*}
+	s(z) = 
+	\begin{cases}
+		p & z =0\\
+		(r,p-1) &\textrm{$z\ne 0$ and $z$ is an $r$th power}\\
+		0 & \textrm{$z\ne 0$ and $z$ is not an $r$th power.}
+	\end{cases}
+\end{align*}
+
+Recall that a \defn{Dirichlet character}\index{Dirichlet character} is a homomorphism
+\[
+\begin{tikzcd}
+	\chi : (\mathbf{Z}/p\mathbf{Z}) ^{*}\ar[r]& \mathbf{C}^{*}.
+\end{tikzcd}
+\]
+The Dirichlet characters form an orthogonal basis for functions on $(\mathbf{Z}/p\mathbf{Z})^{*}$.
+One sees that $s(z)$ is a sum of $d=(p-1,r)$ Dirichlet characters. That is,
+\begin{align*}
+	\sum_{y}^{} \zeta^{ay^{r}} = \sum_{i}^{} \sum_{z}^{} \chi_{i}(z) \zeta^{az}.
+\end{align*}
+
+Now, sums
+\begin{align*}
+	\sum_{z}^{} \chi(z) \zeta^{az}
+\end{align*}
+are examples of \defn{Gauss sums}\index{Gauss sum}.
+Gauss sums are ``finite field gamma functions.'' There is an analogue of the identity\footnote{For $s\notin \mathbf{Z}$.}
+\begin{align*}
+	\Gamma(s) \Gamma(1-s) = \frac{\pi}{\sin(\pi s)} 
+\end{align*}
+for Gauss sums.
+
+
+Let us compute the absolute value of a Gauss sum $\sum_{}^{} \chi(z) \zeta^{z}$ where $\chi$ is nontrivial:\footnote{One assumes that $a = 1$ without any loss of generality.}
+\begin{align*}
+	\sum_{z}^{} \chi(z) \zeta^{z} \sum_{y}^{} \ol{\chi(y)} \zeta^{-y} &= \sum_{y,z}^{} \chi(zy^{-1}) \zeta^{z-y} \\
+									  &= \sum_{y,z}^{} \chi(z) \zeta^{(z-1) y} 
+\end{align*}
+via $z\longmapsto zy$. One sees that
+\begin{align*}
+	\sum_{y}^{} \zeta^{(z-1) y}  = 
+	\begin{cases}
+		p-1&z=1\\
+		-1&\textrm{otherwise,}
+	\end{cases}
+\end{align*}
+so
+\begin{align*}
+	\sum_{y,z}^{} \chi(z) \zeta^{(z-1) y} = p - \sum_{z\ne 0}^{} \chi(z) = p
+\end{align*}
+since $\chi$ is not the trivial character.
+Therefore,
+\begin{align*}
+	\left\lvert \sum_{z}^{} \chi(z) \zeta^{az} \right\rvert = \sqrt{p}. 
+\end{align*}
+
+Now, the number of solutions to $f(z_1,\hdots,z_{n}) =0 $ is $p^{n-1}$ plus a sum of products of $n$ Gauss sums. Each product has absolute value $p^{n/2}$, so the number of solutions is
+\begin{align*}
+	p^{n-1} + \alpha
+\end{align*}
+where
+\begin{align*}
+	\left\lvert \alpha \right\rvert \le c p^{n/2}
+\end{align*}
+and
+\begin{align*}
+	c = \prod_{i=1}^{n} ((r_{i}, p-1) - 1).
+\end{align*}
+
+Therefore, if $n\ge 3$ and $p$ is ``large,'' then the number of solutions is more than $1$.
+
+Consider the Fermat hypersurface
+\begin{align*}
+	a_0z_0^{r}+\cdots+a_{n}z_{n}^{r} =0.
+\end{align*}
+This is a variety in $\mathbf{P}^{n}$ and it has a $\zeta$ function\footnote{Now written in $T = q^{-s}$.}
+\begin{align*}
+	\log(Z(T)) := \sum_{m\ge 0}^{} \frac{\mathup{n}_{m}T^{m}}{m}.
+\end{align*}
+Weil found that 
+\begin{align*}
+	Z(T) = \frac{\prod_{i} (1-\alpha_{i}T) ^{\pm 1}}{(1-T) (1-pT) \cdots (1-p^{n}T)}
+\end{align*}
+where $\alpha_{i}$ is a product of Gauss sums, so it has absolute value $p^{n/2}$.
+
+\iffalse
 \subsection{The Lefschetz trace formula.}
 \subsection{\'Etale cohomology of a curve.}
 \subsection{\'Etale morphisms.}
