@@ -8470,8 +8470,176 @@ Dr. Borcherds mentions the following books:
 	\item Eberhard Freitag and Reinhardt Kiehl. \ul{\'Etale cohomology and the Weil conjecture}. 1988.
 \end{itemize}
 
-\iffalse
 \subsection{\'Etale cohomology of a curve.}
+Dr. Borcherds:
+\begin{quote}
+	\small I'm going to take a rather unusual approach to this. . . . I'm not actually going to tell you what \'etale cohomology is before calculating the \'etale cohomology of a curve. . . . The problem is that most introductions to \'etale cohomology . . . spend large amounts of time doing abstract category theory and talking about Grothendieck topologies and so on. . . . This is all very important, but it's also kind of a bit mind-numbing, so I'm going to skip over this and just go straight to the interesting part of the calculation. The disadvantage is that you won't actually know what ``\'etale cohomology'' means, so I guess this is just a sort of overview as motivation for finding the precise definition.
+\end{quote}
+
+A sheaf is a contravariant functor from open sets to sets with a certain covering condition. 
+An \defn{\'etale sheaf}\index{\'etale sheaf} is a contravariant functor from \'etale open sets to sets.\footnote{The next section shall introduce the notion of an \'etale morphism.} 
+
+\begin{example}[\'Etale sheaves]\label{}\text{}
+The constant sheaf is an \'etale sheaf.
+The sheaf of regular functions is an \'etale sheaf.
+The \index{sheaf of invertible regular functions}sheaf of invertible regular functions
+\[
+\begin{tikzcd}
+	\mathbf{G}\sub{m} : (U\ar[r]& X)\ar[r] &  \mathscr{O}^{*}(U)
+\end{tikzcd}
+\]
+is an \'etale sheaf.
+The sheaf of $n$th roots of unity
+\[
+\begin{tikzcd}
+	\mu_{n} : (U\ar[r]&X) \ar[r] & \textrm{$n$th roots of unity in $\mathscr{O}(U)$}
+\end{tikzcd}
+\]
+is an \'etale sheaf.
+\end{example}
+
+One want to show that the \'etale cohomology groups of a curve are similar to the singular cohomology groups of a curve. 
+Recall the singular cohomology groups of a nonsingular, projective, genus-$g$ curve $X$ over $\mathbf{C}$:
+\begin{align*}
+	\HH^{q}(X,\mathbf{Z}) =
+	\begin{cases}
+		\mathbf{Z} & q = 0,2\\
+		\mathbf{Z}^{2g} & q=1\\
+		0&\textrm{otherwise.}
+	\end{cases}
+\end{align*}
+One wants to show that, if $X$ is a nonsingular, projective, genus-$g$ curve over an algebraically closed field $\Omega$ of characteristic $p$,
+\begin{align*}
+	\etco^{q} (X,\mathbf{Z}/n\mathbf{Z}) =
+	\begin{cases}
+		\mathbf{Z}/n\mathbf{Z} & q=0\\
+		(\mathbf{Z}/n\mathbf{Z}) ^{2g}& q=1\\
+		\mathbf{Z}/n\mathbf{Z}&q=2
+	\end{cases}
+\end{align*}
+where $n := n1$ is invertible in $\Omega$. 
+
+First, one computes
+\begin{align*}
+	\etco^{q}(X, \mathbf{G}\sub{m}^{*}).
+\end{align*}
+Consider the exact sequence
+\[
+\begin{tikzcd}
+	1\ar[r] & \mathbf{G}\sub{m}\ar[r] & \mathscr{F}\sub{rat}^{*}\ar[r] & \displaystyle \bigoplus_{\textrm{closed points}} \mathbf{Z}\ar[r] &0
+\end{tikzcd}
+\]
+where $\mathscr{F}\sub{rat}^{*}$ is the sheaf of invertible rational functions.
+The third arrow takes a rational function to the order of the root at each closed point.
+This exact sequence says that, if a rational function has no roots or poles, then it is an invertible regular function.
+Recall that an exact sequence of sheaves gives a long exact sequence of cohomology groups.
+One sees that
+\begin{align*}
+	\etco^{q}\left(\bigoplus_{\textrm{closed points}} \mathbf{Z} \right) =0  
+\end{align*}
+for $q>0$: The sheaf in question is a direct sum of sheaves with support a point, which is the spectrum of an algebraically closed field; in \'etale cohomology, the higher cohomology groups of the spectrum of an algebraically closed field vanish.
+
+Now, let us compute
+\begin{align*}
+	\etco^{q}(X,\mathscr{F}\sub{rat}^{*}).
+\end{align*}
+One can reduce this to computing
+\begin{align*}
+	\etco^{q}(\Spec(K), \mathscr{F}\sub{rat}^{*})
+\end{align*}
+where $K$ is the field of rational functions on $X$. 
+The \'etale cohomology of the spectrum of a field is the same as Galois cohomology
+\begin{align*}
+	\HH^{q}(\Gal(\overline{K}/K),\cdot).
+\end{align*}
+\begin{theorem}[Tsen]\label{tsent}\index{Tsen's theorem}\text{}
+Suppose that $K$ is the field of rational functions on a curve over an algebraically closed field $\Omega$. Then, $K$ is $\mathscr{C}_{1}$.\footnote{That is, any homogeneous polynomial in $n$ variables of degree less than $n$ has a nonzero solution.}
+\end{theorem}
+
+\begin{remark}
+	Over finite fields, \cref{tsent} is the Chevalley--Warning theorem.
+\end{remark}
+
+Recall that the \defn{Brauer group}\index{Brauer group} of a field $K$ consists of (Morita) equivalence classes of central division algebras over $K$. 
+Now, if $K$ is $\mathscr{C}_{1}$, then the Brauer group of $K$ is trivial. 
+In Galois cohomology,
+\begin{align*}
+	\Br(K) \isomto \HH^{2}(\overline{K}/K, \overline{K}^*).
+\end{align*}
+
+Furthermore, if the Brauer groups of all finite extensions of $K$ are trivial, then
+\begin{align*}
+	\HH^{q} (\overline{K}/K, \overline{K}^{*}) =0
+\end{align*}
+for $q\ge 1$.
+Therefore,
+\begin{align*}
+	\etco^{q}(X,\mathscr{F}\sub{rat}^{*}) = 0
+\end{align*}
+for $q\ge 1$.
+
+Now, one has the long exact sequence
+\[
+\begin{tikzcd}[row sep = 0 em]
+	0\ar[r] & \etco^{0}(\mathbf{G}\sub{m}) \ar[r] & \etco ^{0}(\mathscr{F}\sub{rat}^{*}) \ar[r] & \displaystyle\etco^{0}\left( \bigoplus_{\textrm{closed points}} \mathbf{Z} \right) \\
+		\text{}\ar[r]&\etco^{1}(\mathbf{G}\sub{m})\ar[r] & \underbrace{\etco ^{1}(\mathscr{F}\sub{rat}^{*})}_{0} \ar[r] & \displaystyle\underbrace{\etco^{1}\left( \bigoplus_{\textrm{closed points}} \mathbf{Z} \right)}_{0} \\
+		\text{}\ar[r]&\etco^{2}(\mathbf{G}\sub{m})\ar[r] & \underbrace{\etco ^{2}(\mathscr{F}\sub{rat}^{*})}_{0} \ar[r] & \displaystyle\underbrace{\etco^{2}\left( \bigoplus_{\textrm{closed points}} \mathbf{Z} \right)}_{0} \ar[r] & \cdots\\
+		\text{}\ar[r]&\etco^{q}(\mathbf{G}\sub{m})\ar[r] & \underbrace{\etco ^{q}(\mathscr{F}\sub{rat}^{*})}_{0} \ar[r] & \displaystyle\underbrace{\etco^{q}\left( \bigoplus_{\textrm{closed points}} \mathbf{Z} \right)}_{0} \ar[r] & \cdots.
+\end{tikzcd}
+\]
+Hence, $\etco^{q}(\mathbf{G}\sub{m}) = 0$ for $q\ge 2$. One also sees that
+\begin{align*}
+	\etco^{0}(\mathbf{G}\sub{m}) &\isomto K^{*};\\
+	\etco^{1}(\mathbf{G}\sub{m}) & \isomto \Div(X)\isomto \mathbf{Z}\times \Pic^0(X).
+\end{align*}
+
+Now, if $n$ is invertible in $\Omega$, then the sheaf $\mathbf{Z}/n\mathbf{Z}$ is isomorphic\footnote{Non-canonically.} to $\mu_{n}$. 
+One has a Kummer exact sequence
+\[
+\begin{tikzcd}
+	1\ar[r]& \mu_{n}\ar[r]& \mathbf{G}\sub{m}\ar[r,"z^{n}"] & \mathbf{G}\sub{m}\ar[r] & 1.
+\end{tikzcd}
+\]
+Now, the third arrow is surjective in the \'etale topology and not surjective in the Zariski topology.
+This gives a long exact sequence:
+\[
+\begin{tikzcd}[row sep = 0 em]
+	  0\ar[r] & \etco^{0}(\mu_{n}) \ar[r] & \etco^{0}(\mathbf{G}\sub{m}) \ar[r] & \etco^{0}(\mathbf{G}\sub{m}) \\
+	  \text{}\ar[r] & \etco^{1}(\mu_{n}) \ar[r] & \etco^{1}(\mathbf{G}\sub{m}) \ar[r] & \etco^{1}(\mathbf{G}\sub{m}) \\
+	  \text{}\ar[r] & \etco^{2}(\mu_{n}) \ar[r] &0\ar[r] &0 \ar[r] &\cdots\\
+	  \text{}\ar[r] &\etco^{q}(\mu_{n}) \ar[r]&0\ar[r]&0\ar[r]&\cdots.
+\end{tikzcd}
+\]
+One sees that $\etco^{q}(\mu_{n}) =0$ for $q\ge 3$. One can focus on the first part of the long exact sequence:
+\[
+\begin{tikzcd}[column sep = 3 em, row sep = 0 em]
+	0\ar[r] & \etco^{0}(\mu_{n}) \ar[r] & K^{*}\ar[r, "\times n"] & K^{*} \ar[r] & \etco^{1}(\mu_{n}) \\ 
+	\text{} \ar[rr]&& \mathbf{Z}\times \Pic^0(X)\ar[r,"\times n"] &\mathbf{Z}\times \Pic^0(X) \ar[r] & \etco^{2}(\mu_{n}) \ar[r] &0.
+\end{tikzcd}
+\]
+The third arrow is surjective, so the fourth arrow is $0$ and
+\begin{align*}
+	\etco^{0}(\mu_{n}) \isomto \mu_{n}.
+\end{align*}
+The group of things of order $n$ in $\Pic^0(X)$ is $(\mathbf{Z}/n\mathbf{Z})^{2g}$, so
+\begin{align*}
+	\etco^{1}(\mu_{n}) \isomto (\mathbf{Z}/n\mathbf{Z}) ^{2g}. 
+\end{align*}
+The map 
+\[
+\begin{tikzcd}
+	\Pic^{0}(X)\ar[r,"\times n"] &\Pic ^{0}(X)
+\end{tikzcd}
+\]
+is surjective, so
+\begin{align*}
+	\etco^{2}(\mu_{n})\isomto \mathbf{Z}/n\mathbf{Z}.
+\end{align*}
+Recall that $\mu_n\isomto\Z/n\Z$.
+
+One can compute the \'etale cohomology of higher dimensional varieties with this.
+
+\iffalse
 \subsection{\'Etale morphisms.}
 
 \section{Complex surfaces}
