@@ -24,10 +24,9 @@
 These notes are based on some of Richard Borcherds's YouTube series on algebraic geometry. 
 Section 1 concerns varieties,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53j51FG6wCbQKjBgpjKa5PX}.} 
 section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-}.} 
-and sections 3--6 treat miscellaneous topics.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} 
+and section 3 treats the Weil conjectures.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} 
 Dr. Borcherds refers to Hartshorne's \ul{Algebraic Geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} 
-I tend to use Grothendieck's EGA. 
-Unless stated otherwise, rings are assumed to be commutative.
+Grothendieck's \'El\'ements de g\'eom\'etrie alg\'ebrique (EGA) and the Stacks project\footnote{See \url{https://stacks.math.columbia.edu}.} are frequently referenced.
 \hypersetup{linkcolor = black}
 
 \begin{figure}
@@ -8639,9 +8638,201 @@ Recall that $\mu_n\isomto\Z/n\Z$.
 
 One can compute the \'etale cohomology of higher dimensional varieties with this.
 
-\iffalse
 \subsection{\'Etale morphisms.}
+Dr. Borcherds:
+\begin{quote}
+	\small The first question is ``What does `\'etale' mean?'' Well, it's a French word which means ``slack.'' This is not really very helpful. You sometimes get the impression that, when people like Serre and Grothendieck were inventing all this terminology, they opened a dictionary completely at random and chose a random adjective. So, I have no idea why these are called ``slack morphisms.''
+\end{quote}
 
+First, let us define \'etale morphisms for the usual topology of complex manifolds:
+\[
+\begin{tikzcd}
+	X\ar[r] & Y
+\end{tikzcd}
+\]
+is \defn{\'etale}\index{\'etale morphism} if and only if it is a local homeomorphism.\footnote{For all $z\in X$, there exists an open neighbourhood $U$ such that the map is a homeomorphism from $U$ to its image.}
+
+\begin{example}[ ]\label{}\text{}
+	The inclusion of an open set is \'etale.
+	The map from $\C^*$ to $\C^*$ given by
+	\[
+	\begin{tikzcd}
+		z\ar[r, mapsto] & z^n
+	\end{tikzcd}
+	\]
+	is \'etale.
+	The map from the line with two origins to the line is \'etale.
+\end{example}
+
+\'Etale maps 
+\[
+\begin{tikzcd}
+	X\ar[r] & Y
+\end{tikzcd}
+\]
+are, more or less, the same as sheaves over $Y$. The sheaf corresponding to an \'etale map is given by the sections of the map. 
+The \'etale space corresponding to a sheaf is given by the union of the fibres of the sheaf.
+
+Sheaves for the usual complex topology on a complex manifold $Y$ assign a set to each open set of $Y$.\footnote{This must be functorial and must satisfy some covering conditions.} 
+Similary, sheaves for the \'etale topology assign a set to each \'etale map to $Y$.\footnote{Again, this must be functorial and must satisfy some covering conditions.}
+One sees that sheaves for the usual topology are, more or less, the same as sheaves for the \'etale topology.
+
+Suppose that
+\[
+\begin{tikzcd}
+	X\ar[r] & Y
+\end{tikzcd}
+\]
+is \'etale. Then, $X$ is covered by ``open sets'' of $Y$, so any \'etale sheaf on $X$ is determined by its values on $U\subset Y$.
+
+Now, let us try to figure out \'etale morphisms for the Zariski topology.
+First, one considers morphisms
+\[
+\begin{tikzcd}
+	f:X\ar[r] & Y
+\end{tikzcd}
+\]
+that are local isomorphisms.\footnote{Every $z\in X$ has an open neighbourhood $U$ such that $f$ from $U$ to its image is an isomorphism of schemes.} 
+This fails as an analogue for an \'etale map:
+The map from $\mathbf{C}^{*}$ to $\mathbf{C}^{*}$ given by
+\[
+\begin{tikzcd}
+	z\ar[r,mapsto] & z^{2}
+\end{tikzcd}
+\]
+is not a local isomorphism.
+Also, sheaves are the ``same'' as Zariski sheaves.
+This fails because Zariski open sets are too big.
+
+Suppose that 
+\[
+\begin{tikzcd}
+	f:X\ar[r] & Y
+\end{tikzcd}
+\]
+is a local isomorphism. Then, induced homomorphisms of local rings
+\[
+\begin{tikzcd}
+	R_{z}&R_{f(z)}\ar[l]
+\end{tikzcd}
+\]
+are isomorphisms.
+\begin{quote}
+	\small Local rings see too much of $X$ in algebraic geometry. It sees all of $X$ except for codimension-$1$ subsets. There is a variation on the local ring that sees far less.
+\end{quote}
+This variation is the completion of the local ring: One might say that $f$ is \'etale if and only if every induced homomorphism of completions
+\[
+\begin{tikzcd}
+	\widehat{R_{z}}& \widehat{R_{f(z)}}\ar[l]
+\end{tikzcd}
+\]
+is an isomorphism.
+This notion works for varieties over algebraically closed fields.
+
+Now, for $z\in X$, write $y = f(z)$ for its image. Recall that
+\begin{align*}
+	\widehat{R_{y}} = \varprojlim_{n} (R_{y}/\mathfrak{m}^{n})
+\end{align*}
+where $\mathfrak{m}$ is the maximal ideal of $R_{y}$.
+One wants to define compatible maps from $R_{y}/\mathfrak{m}^{n}$ to $\widehat{R_{z}}$.
+One does this by starting with a map from $R_{y}/\mathfrak{m}$ and lifting it to a map from $R_{y}/\mathfrak{m}^{2}$, etc.
+That is, one wants a lifting $g$ such that
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(R_{y}/\mathfrak{m}^{n}) \ar[d]\ar[r]& X\ar[d,"f"]\\
+	\Spec(R_{y}/\mathfrak{m}^{n+1}) \ar[r]\ar[ur,dashed,"g"] &Y
+\end{tikzcd}
+\]
+commutes.
+Now, suppose that $A$ is a ring, that $I$ is an $A$-ideal with $I^{2}=0$, and that
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(A/I)\ar[r]\ar[d]& X\ar[d,"f"]\\
+	\Spec (A) \ar[r] &Y
+\end{tikzcd}
+\]
+commutes. One says that $f$ is \defn{formally \'etale}\index{formally \'etale morphism} if and only if there exists a unique lifting $g$ such that
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(A/I) \ar[r]\ar[d]& X\ar[d,"f"]\\
+	\Spec(A)\ar[r]\ar[ur,dashed,"g"] & Y
+\end{tikzcd}
+\]
+commutes.
+One says that $f$ is \defn{formally smooth}\index{formally smooth morphism} if and only if there exists a lifting $g$. One says that $f$ is \defn{formally unramified}\index{formally unramified morphism} if and only if there is at most $1$ lifting $g$.
+
+Now, one says that $f$ is \defn{\'etale}\index{\'etale morphism} if and only if $f$ is formally \'etale and locally of finite presentation.
+
+\begin{example}[ ]\label{}\text{}
+Consider
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(K)\ar[r] \ar[d] & X\ar[d,"f"]\\
+	\Spec (K[z]/(z^{2})) \ar[r]&Y.
+\end{tikzcd}
+\]
+One thinks of $\Spec(K)$ as a point and of $\Spec(K[z]/(z^{2}))$ as a point with a tangent vector. 
+If $f$ is \'etale, then there is a unique lifting $g$. That is, $f$ uniquely lifts tangent vectors. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider
+\[
+\begin{tikzcd}
+	f: \Spec(K[z]/(z^{2})) \ar[r] & \Spec(K).
+\end{tikzcd}
+\]
+One wants to see if there exists a unique lifting $g$ that makes the following diagram commute:
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(A/I) \ar[r]\ar[d]& \Spec (K[z]/(z^{2})) \ar[d,"f"]\\
+	\Spec(A)\ar[r]\ar[ur,dashed,"g"] & \Spec (K).
+\end{tikzcd}
+\]
+One can translate this into a question about rings:
+\[
+\begin{tikzcd}[sep = 4 em]
+	A/I & K[z]/(z^{2}) \ar[l]\ar[ld,dashed]\\
+	A\ar[u] & K.\ar[l]\ar[u]
+\end{tikzcd}
+\]
+Now, if $A= K[z]/(z^{3})$ and $I = (z^{2})$, then there is no lifting. Therefore, $f$ is not (formally) \'etale.
+\end{example}
+
+\begin{example}[Over a field that is not algebraically closed]\label{}\text{}
+Suppose that $L$ is a finite separable extension of $K$. Consider the morphism
+\[
+\begin{tikzcd}
+	f: \Spec(L) \ar[r] & \Spec(K).
+\end{tikzcd}
+\]
+To see if this is \'etale, one surveys the diagram
+\[
+\begin{tikzcd}[sep = 4 em]
+	\Spec(A/I)\ar[r] \ar[d] & \Spec (L) \ar[d]\\
+	\Spec(A)\ar[r]& \Spec (K)
+\end{tikzcd}
+\]
+and looks for liftings $g$. One translates this into rings:
+\[
+\begin{tikzcd}[sep = 4 em]
+	A/I & L\ar[l]\\
+	A\ar[u]& K.\ar[l]\ar[u]
+\end{tikzcd}
+\]
+One wants a unique lifting from $L$ to $A$.
+Really, one wants $r\in I$ such that $f(\alpha+r) = 0$.
+Since $f(r)\in I$, one wants
+\begin{align*}
+	f(\alpha+r) = f (\alpha) + f'(\alpha) \cdot r = 0.
+\end{align*}
+Now, $f'(\alpha)$ is invertible, so one can choose an element $r\in I$ such that $f(\alpha+r)=0$.
+Therefore, finite separable extensions are \'etale.
+\end{example}
+
+One can show that inseparable extensions are not \'etale.
+
+\iffalse
 \section{Complex surfaces}
 \subsection{Introduction.}
 \subsection{Minimal surfaces.}
