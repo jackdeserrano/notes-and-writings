@@ -111,6 +111,7 @@
 \RequirePackage {pgfplots}
 \RequirePackage {latexsym}
 \RequirePackage [makeroom] {cancel}
+\RequirePackage {setspace}
 
 
 \ifscr
@@ -155,7 +156,7 @@
 \RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
 
 \RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
-\crefname{equation}{}{}
+\crefname {equation} {} {}
 
 \setlength {\emergencystretch} {14 pt}  % Response to ``Overfull \hbox''
 
@@ -458,25 +459,25 @@
 
 	\newcommand {\defn} [1] {{\bfseries #1}}	% keywords emphasized with slanted font
 	
-	\numberwithin{equation}{section}
-	\theoremstyle{thm}
-	\newtheorem{thm}{Theorem}[section]
-	\numberwithin{thm}{section}
-	\newtheorem{lemma}[thm]{Lemma}
-	\newtheorem{corollary}[thm]{Corollary}
-	\newtheorem{proposition}[thm]{Proposition}
-	\newtheorem{conj}[thm]{Conjecture}
-	\newtheorem{claim}[thm]{Claim}
-	\newtheorem{remark}[thm]{Remark}
-	\newtheorem{definition}[thm]{Definition}
-	\newtheorem{defprop}[thm]{Definition/Proposition}
-	\newtheorem{question}[thm]{Question}
-	\newtheorem{example}[thm]{Example}
-	\newtheorem{examples}[thm]{Examples}
-	\newtheorem{convention}[thm]{Convention}
-	\newtheorem{exercise}[thm]{Exercise}
-	\newtheorem{warn}[thm]{Warning}
-	\newtheorem{problem}[thm]{Problem}
+	\numberwithin {equation}{ section}
+	\theoremstyle {thm}
+	\newtheorem {thm} {Theorem} [section]
+	\numberwithin {thm} {section}
+	\newtheorem {lemma} [thm] {Lemma}
+	\newtheorem {corollary} [thm] {Corollary}
+	\newtheorem {proposition} [thm] {Proposition}
+	\newtheorem {conj} [thm] {Conjecture}
+	\newtheorem {claim} [thm] {Claim}
+	\newtheorem {remark} [thm] {Remark}
+	\newtheorem {definition} [thm] {Definition}
+	\newtheorem {defprop} [thm] {Definition/Proposition}
+	\newtheorem{question} [thm] {Question}
+	\newtheorem {example} [thm] {Example}
+	\newtheorem {examples} [thm] {Examples}
+	\newtheorem {convention} [thm] {Convention}
+	\newtheorem {exercise} [thm] {Exercise}
+	\newtheorem {warn} [thm] {Warning}
+	\newtheorem {problem} [thm] {Problem}
 	
 	\setenumerate [1] {label = (\arabic*)}
 	\setenumerate [2] {label = (\roman*)}
@@ -506,13 +507,13 @@
 		%		An empty text box
 		%	warning [Warning]
 
-		\mdfsetup{skipabove = \topskip, skipbelow = \topskip}
+		\mdfsetup {skipabove = \topskip, skipbelow = \topskip}
 
 		\theoremstyle {definition}
 
 		\ifjackcolour	% not [none], [old, colour]
 	
-			\newcommand{\defn}[1]{{\bf{\color{Blue} #1}}} % emphasize keywords with bolded blue
+			\newcommand {\defn} [1] {{\bf{\color{Blue} #1}}} % emphasize keywords with bolded blue
 	
 			\ifevan	% not [none], [old, colour, evan]
 					% Evan Chen--inspired theme 
@@ -691,12 +692,12 @@
 		
 		\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
 		
-		\newcommand{\defn}[1]{{\iffalse\slshape \fi{\ul {#1}}}}		% keywords emphasized by bold
-		\newcommand{\frdefn}[1]{{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French keywords emphasized by bolded red with appropriate italicization
+		\newcommand {\defn} [1] {{\iffalse\slshape \fi{\ul {#1}}}}		% key words emphasized by underline
+		\newcommand {\frdefn} [1] {{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French key words emphasized by bolded red with appropriate italicization
         
             \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
             
-                \newtheoremstyle{thm}   	% name
+                \newtheoremstyle {thm}   	% name
                     {1 em}              	% space above
                     {1 em}              	% space below
                     {\iffalse\itshape\fi}	% body font
@@ -706,7 +707,7 @@
                     {1 em}              	% space after theorem head
                     {}                  	% theorem head spec
     
-                \newtheoremstyle{defn}
+                \newtheoremstyle {defn}
                     {1 em}
                     {1 em}
                     {}
@@ -716,7 +717,7 @@
                     {1 em}
                     {}
             
-                \newtheoremstyle{remark}
+                \newtheoremstyle {remark}
                     {1 em}
                     {1 em}
                     {}
@@ -726,7 +727,7 @@
                     {0 em}
                     {}
                 
-                \newtheoremstyle{proof}
+                \newtheoremstyle {proof}
                     {1 em}
                     {1 em}
                     {}
@@ -738,7 +739,7 @@
                 
             \else
             
-                \newtheoremstyle{thm}   % name
+                \newtheoremstyle {thm}   % name
                     {1 em}              % space above
                     {1 em}              % space below
                     {}                  % body font
@@ -748,7 +749,7 @@
                     {1 em}              % space after theorem head
                     {}                  	% theorem head spec
     
-                \newtheoremstyle{defn}
+                \newtheoremstyle {defn}
                     {1 em}
                     {1 em}
                     {}
@@ -758,7 +759,7 @@
                     {1 em}
                     {}
             
-                \newtheoremstyle{remark}
+                \newtheoremstyle {remark}
                     {1 em}
                     {1 em}
                     {}
@@ -768,7 +769,7 @@
                     {0 em}
                     {}
                 
-                \newtheoremstyle{proof}
+                \newtheoremstyle {proof}
                     {1 em}
                     {1 em}
                     {}
@@ -780,51 +781,51 @@
                 
             \fi
 				
-			\theoremstyle{proof}
-			\newtheorem*{proof}{Proof}
-			\newtheorem*{pf}{Proof}
-			\newtheorem*{esquisse}{Esquisse}
+			\theoremstyle {proof}
+			\newtheorem* {proof} {Proof}
+			\newtheorem* {pf} {Proof}
+			\newtheorem* {esquisse} {Esquisse}
 			
 			\let \tempendproof = \endproof
 			\def \endproof {\hfill\mbox{\qed}\tempendproof}
 			
-			\numberwithin{equation}{section}
-			\theoremstyle{thm}
-			\newtheorem{thm}{Theorem}
-			\numberwithin{thm}{section}
+			\numberwithin {equation} {section}
+			\theoremstyle {thm}
+			\newtheorem {thm} {Theorem}
+			\numberwithin {thm} {section}
 			\ifassg	% if this is in an assignment, ignore sections
-				\newtheorem{theorem}{Theorem}
+				\newtheorem {theorem} {Theorem}
 			\else
-				\newtheorem{theorem}[thm]{Theorem}		
+				\newtheorem {theorem} [thm] {Theorem}		
 			\fi
-			\newtheorem{lemma}[thm]{Lemma}
-			\newtheorem{corollary}[thm]{Corollary}
-			\newtheorem{algorithm}[thm]{Algorithm}
-			\newtheorem{proposition}[thm]{Proposition}
-			\newtheorem{conj}[thm]{Conjecture}
+			\newtheorem {lemma} [thm] {Lemma}
+			\newtheorem {corollary} [thm] {Corollary}
+			\newtheorem {algorithm} [thm] {Algorithm}
+			\newtheorem {proposition} [thm] {Proposition}
+			\newtheorem {conj} [thm] {Conjecture}
 
-			\theoremstyle{defn}
-			\newtheorem{definition}[thm]{Definition}
-			\newtheorem{defprop}[thm]{Definition/Proposition}
-			\newtheorem{question}[thm]{Question}
-			\newtheorem{example}[thm]{Example}
-			\newtheorem{examples}[thm]{Examples}
-			\newtheorem{convention}[thm]{Convention}
-			\newtheorem{exercise}[thm]{Exercise}
+			\theoremstyle {defn}
+			\newtheorem {definition} [thm] {Definition}
+			\newtheorem {defprop} [thm] {Definition/Proposition}
+			\newtheorem {question} [thm] {Question}
+			\newtheorem {example} [thm] {Example}
+			\newtheorem {examples} [thm] {Examples}
+			\newtheorem {convention} [thm] {Convention}
+			\newtheorem {exercise} [thm] {Exercise}
 			
 			\ifassg	% if this is in an assignment, ignore sections
-				\newtheorem{problem}{Problem}	
+				\newtheorem {problem} {Problem}	
 			\else
-				\newtheorem{problem}[thm]{Problem}		
+				\newtheorem {problem} [thm] {Problem}		
 			\fi
 
-			\newtheorem{notation}[thm]{Notation}
-			\newtheorem{bnotation}[thm]{Bad notation}
+			\newtheorem {notation} [thm] {Notation}
+			\newtheorem {bnotation} [thm] {Bad notation}
 			
-			\theoremstyle{remark}
-			\newtheorem{remark}[thm]{Remark}
-			\newtheorem{warn}[thm]{Warning}
-			\newtheorem{ramble}[thm]{Ramble}
+			\theoremstyle {remark}
+			\newtheorem {remark} [thm] {Remark}
+			\newtheorem {warn} [thm] {Warning}
+			\newtheorem {ramble} [thm] {Ramble}
 			
 			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}} {\hfill\qed\end{enumerate}\end{pf}}
 
