@@ -112,6 +112,8 @@
 \RequirePackage {latexsym}
 \RequirePackage [makeroom] {cancel}
 \RequirePackage {setspace}
+\RequirePackage {tipa}
+\RequirePackage {mathdots}
 
 
 \ifscr
@@ -268,7 +270,7 @@
 \newcommand {\LL} {\mathcal L}                                                  % Hom but MATH 146
 \newcommand {\lrd} {\mathfrak{d}}                                               % logarithmic root discriminant
 \newcommand {\mailto} [1] {\href {mailto : #1} {\texttt{#1}}}
-\newcommand {\mat} [1] {\begin{bmatrix} [1] #1\end{bmatrix}}
+\newcommand {\mat} [1] {\begin{pmatrix} [1.2] #1\end{pmatrix}}
 \newcommand {\mf} {\mathfrak}                                                   % Fraktur font
 \newcommand {\mm} {\mathfrak m}                                                 % maximal ideal
 \newcommand {\Ms} {\mathscr M}                                                  % moduli stack of algebraic curves
@@ -288,6 +290,7 @@
 \let \sh \relax
 \newcommand {\shf} {^\sharp}                                                    % sheafification
 \newcommand {\tensor} {\otimes}                                                 % tensor product
+\let \super \relax
 \newcommand {\sub} [1] {_{\textup {#1}}}
 \newcommand {\super} [1] {^{\textup {#1}}}
 \newcommand {\op} {\super{op}}                                        		% opposite category
@@ -459,7 +462,7 @@
 
 	\newcommand {\defn} [1] {{\bfseries #1}}	% keywords emphasized with slanted font
 	
-	\numberwithin {equation}{ section}
+	\numberwithin {equation} {section}
 	\theoremstyle {thm}
 	\newtheorem {thm} {Theorem} [section]
 	\numberwithin {thm} {section}
