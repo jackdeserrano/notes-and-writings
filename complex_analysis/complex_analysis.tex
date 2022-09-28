@@ -22,32 +22,32 @@ These notes are based on Richard Borcherds's YouTube series on complex analysis.
 \fi
 \newpage
 \section{Introduction}
-Many things in complex analysis are similar to things in real analysis: we have the usual arithmetic operations, exponentials, trigonometric functions, differentiation, integration, limits, series, etc.
+Many things in complex analysis are similar to things in real analysis: One has the usual arithmetic operations, exponentials, trigonometric functions, differentiation, integration, limits, series, etc.
 
 There are notable differences between real and complex analysis:
 \begin{itemize}
-	\item We can write trigonometric functions in terms of exponentials:
+	\item One can write trigonometric functions in terms of exponentials:
 		\begin{align*}
-			\cos z = \frac{e^{iz} + e^{-iz}}{2};
+			\cos (z) = \frac{e^{iz} + e^{-iz}}{2};
 		\end{align*}
 	\item If a complex function is differentiable, it is infinitely differentiable.
 \end{itemize}
 
-In real analysis, we can interpret
+In real analysis, one interprets
 \begin{align*}
-	\int_{0}^{1} f(x)   \, dx
+	\int_{0}^{1} f(s)   \, ds
 \end{align*}
-in only one way: there is only one path from $0$ to $1$. But there are infinitely many in complex analysis. Cauchy's theorem resolves this problem: the integral is almost independent of the path from $0$ to $1$.
+in only one way: There is only one path from $0$ to $1$. But there are infinitely many paths from $0$ to $1$ in the plane. Cauchy's theorem resolves this problem: The integral is almost independent of the path from $0$ to $1$.
 
 One doesn't learn how to evaluate integrals like
 \begin{align*}
-	\int_{0}^{\infty} \frac{\sin x}{x}  \, dx = \pi/2
+	\int_{0}^{\infty} \frac{\sin (s)}{s}  \, ds = \pi/2
 \end{align*}
 or sums like
 \begin{align*}
 	\sum_n \frac{1}{n^2} = \pi^2/6
 \end{align*}
-in introductory calculus courses. (The antiderivative of $(\sin x)/x$ does not have a closed form.) We will use complex integration to compute integrals and sums like these.
+in introductory calculus courses.\footnote{The antiderivative of $(\sin (s))/s$ does not have a closed form.} We shall use complex integration to compute integrals and sums like these.
 
 Further, any complex differentiable function on (for instance) $(0,1)$ has a unique continuation on any larger open connected set. For example, Riemann's $\zeta$ function
  \begin{align*}
@@ -57,7 +57,10 @@ converges only if $\Re(s) > 1$. However, $\zeta$ has an analytic continuation to
 
 Recall the construction of the Mandelbrot set: Fix a complex number $c$. Let $z_0=0$, and consider the sequence $\{z_0, z_1 = z_0^2 + c, z_2 = z_1^2 + c,\hdots\}$. If this sequence is bounded, then $c$ is in the Mandelbrot set. Despite having such a simple definition, the Mandelbrot set is incredibly intricate. The study of things like the Mandelbrot set is complex dynamics.
 
-``If you want to check whether a textbook on complex analysis is good or not, there's a very simple test: you check to see if it has a section on the gamma function and a section on elliptic functions. If it doesn't have these sections, then the author doesn't really understand complex analysis. [Reading such a textbook] is like reading a book on music by somebody who is tone-deaf.'' Dr. Borcherds recommends something like \underline{Complex Analysis} by Lars Ahlfors. 
+\begin{quote}
+\small If you want to check whether a textbook on complex analysis is good or not, there's a very simple test: You check to see if it has a section on the gamma function and a section on elliptic functions. If it doesn't have these sections, then the author doesn't really understand complex analysis. [Reading such a textbook] is like reading a book on music by somebody who is tone-deaf.
+\end{quote}
+Dr. Borcherds recommends something like \underline{Complex Analysis} by Lars Ahlfors. 
 
 \section{Arithmetic}
 Operations on complex numbers are defined in the obvious way:
@@ -69,18 +72,28 @@ Operations on complex numbers are defined in the obvious way:
 
 One can do cumbersome computations to check distributivity, associativity, etc. However, one sees that $\C = \R[i]/(i^2+1)$ is a ring.
 
-Recall that complex conjugation (given by $\overline{a+ib} = a-ib$) preserves all properties of the complex numbers. (In fact, $z\mapsto \overline{z}$ is an automorphism of $\C$.) One notices that 
+Recall that complex conjugation\footnote{Given by $\overline{a+ib} = a-ib$.} preserves all properties of the complex numbers.\footnote{In fact, $z\longmapsto \overline{z}$ is an automorphism of $\C$.} One notices that 
 \begin{align*}
 	z^{-1} = \frac{\overline{z}}{\left\lvert z \right\rvert ^2}.
 \end{align*}
 
-``You must never use $\Xi$ as a complex variable!'' Here's why:
+\begin{quote}
+\small You must never use $\Xi$ as a complex variable!
 \begin{align*}
-	\frac{\Xi}{\overline{\Xi}}.
-\end{align*}
-``[This] wins the prize for the most awful mathematical notation of all time.'' % Doesn't really have the same effect in TeX
+	\frac{\Xi}{\overline{\Xi}}
+\end{align*} 
+wins the prize for the most awful mathematical notation of all time.
+\end{quote} % Doesn't really have the same effect in TeX
 
-Another useful notion is the norm: $\left\lvert z \right\rvert =\sqrt{z\overline{z}} $. In particular, we have $\left\lvert zw \right\rvert = \left\lvert z \right\rvert \cdot \left\lvert w \right\rvert$ and $\left\lvert z-w \right\rvert \le \left\lvert z \right\rvert +\left\lvert w \right\rvert $.
+Another useful notion is the norm: 
+\[
+	\left\lvert z \right\rvert =\sqrt{z\overline{z}}.
+\]
+One has 
+\begin{align*}
+\left\lvert zw \right\rvert &= \left\lvert z \right\rvert \cdot \left\lvert w \right\rvert;\\
+\left\lvert z-w \right\rvert &\le \left\lvert z \right\rvert +\left\lvert w \right\rvert .
+\end{align*}
 
 One makes $\C$ a metric space by defining the distance between $z$ and $w$ by $\left\lvert z-w \right\rvert $.
 
@@ -88,21 +101,62 @@ One makes $\C$ a metric space by defining the distance between $z$ and $w$ by $\
 	What integers can be written as a sum of two squares?
 \end{problem}
 
-One notices that the set of these integers is closed under multiplication: $(a^2+b^2) (c^2+d^2) =  (ac-bd) ^2 + (ad+bc) ^2$. We have $a^2 + b^2 = \left\lvert a+ib \right\rvert ^2$ and $c^2 + d^2 = \left\lvert c+id \right\rvert ^2$. Then 
+The set of these integers is closed under multiplication: 
+\[
+	(a^2+b^2) (c^2+d^2) =  (ac-bd) ^2 + (ad+bc) ^2.
+\] 
+Since 
+\begin{align*}
+a^2 + b^2 &= \left\lvert a+ib \right\rvert ^2;\\
+c^2 + d^2 &= \left\lvert c+id \right\rvert ^2;
+\end{align*}
+one gets
 \begin{align*}
 	(a^2+b^2) (c^2+d^2)&=  \left\lvert (a+ib) (c+id) \right\rvert ^2\\
 			   &= \left\lvert (ac-bd) + i (ad+bc) \right\rvert^2\\
 			   &= (ac-bd) ^2 + (ad+bc)^2.
 \end{align*}
 
-For example, $5=1^2 + 2^2$ and $13 = 2^2 + 3^2$. We have $5\cdot 13 = 65 = 8^2 + 1^2 = 4^2 + 7^2$. Why are there two ways? Well, $\left\lvert 1+2i \right\rvert ^2 = 5$ and $\left\lvert 2+3i \right\rvert ^2 = 13$, but we also have $\left\lvert 2-3i \right\rvert ^2 = 13$. So $(1+2i) (2+3i) = -4 + 7i$ gives one solution, and $(1+2i) (2-3i) = 8+i$ gives another. (Also, squaring any Gaussian integer generates a Pythagorean triple.)
+For example, 
+\begin{align*}
+5&=1^2 + 2^2; \\
+13&= 2^2 + 3^2.
+\end{align*} 
+One has 
+\[
+5\cdot 13 = 65 = 8^2 + 1^2 = 4^2 + 7^2.
+\] 
+Why are there two ways? Well, $\left\lvert 1+2i \right\rvert ^2 = 5$ and $\left\lvert 2+3i \right\rvert ^2 = 13$, but $\left\lvert 2-3i \right\rvert ^2 = 13$. Therefore,
+\[
+	(1+2i) (2+3i) = -4 + 7i
+\] 
+gives one solution, and 
+\[
+	(1+2i) (2-3i) = 8+i 
+\]
+gives another.\footnote{Squaring any Gaussian integer generates a Pythagorean triple.}
 
-Hamilton came up with the quaternions---an extension of the complex numbers---wherein $i^2 = j^2 = k^2 = -1$, $ij = -ji = k$, $jk = -kj = i$, and $ki = -ik = j$. They are not commutative. If $z = a+bi+cj+dk$, we define $\overline{z}=a-bi-cj-dk$, and we find that $z\overline{z}=a^2 + b^2+c^2+d^2$. Moreover, just like in the complex case, we let
+Hamilton came up with the quaternions---an extension of the complex numbers---wherein 
+\begin{align*}
+i^2 &= j^2 = k^2 = -1;\\
+ij &= -ji = k;\\
+jk &= -kj = i;\\
+ki &= -ik = j.
+\end{align*}
+Quaternions do not commute in general. If $z = a+bi+cj+dk$, one defines
+\[
+	\overline{z} :=a-bi-cj-dk,
+\] 
+and this gives 
+\[
+	z\overline{z}=a^2 + b^2+c^2+d^2.
+\] 
+Moreover, one lets
 \begin{align*}
 	(a+bi+cj+dk) ^{-1} = \frac{a-bi-cj-dk}{a^2+b^2+c^2+d^2}.
 \end{align*}
 
-Sums of three squares are not closed under multiplication, but sums of four squares are. (We show this as we did for the sum of two squares case.)
+Sums of three squares are not closed under multiplication, but sums of four squares are.\footnote{One shows this as one does for the sum of two squares case.}
 \iffalse\section{Roots}
 Complex numbers have $n$th roots. To understand this idea, one needs to comprehend the geometric meaning of multiplication.
 
@@ -111,156 +165,165 @@ To do this, we will shift our perspective to polar coordinates. One thing to not
 	\C^* \isomto \R_{>0} \times S^1.
 \end{align*}
 
-One can multiply elements in $S^1$ in two different ways: by the ordinary multiplication or adding angles.\fi
+One can multiply elements in $S^1$ in two different ways: By the ordinary multiplication or adding angles.\fi
 \section{\texorpdfstring{$\exp$}{exp}, \texorpdfstring{$\log$}{log}, \texorpdfstring{$\sin$}{sin}, \texorpdfstring{$\cos$}{cos}}
-We define $\exp z = e^z$ in the expected way: \begin{align*}
-	\exp z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!}+\cdots = \sum_{k}^{} \frac{z^k}{k!} .
-\end{align*}
-This is absolutely convergent. We can show that $\exp (z_1 + z_2) =(\exp z_1) (\exp z_2)$ just as one does for the real case (by expanding and rearranging) since it is absolutely convergent.
-
-If $z= \alpha+i\beta$, then $\exp z = (\exp \alpha) (\exp i\beta)$. We know what $\exp \alpha$ is since $\alpha$ is real, but what about $\exp i\beta$? Let's try it:
+One defines $\exp (z) = e^z$ in the expected way: 
 \begin{align*}
-	\exp i\beta &= 1 + i\beta + \frac{i^2\beta^2}{2!} + \frac{i^3\beta^3}{3!} + \frac{i^4\beta^4}{4!} + \frac{i^5\beta^5}{5!} + \cdots\\
+	\exp (z) := 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!}+\cdots = \sum_{k}^{} \frac{z^k}{k!} .
+\end{align*}
+This definition is absolutely convergent. One can show that $\exp (z_1 + z_2) =(\exp (z_1)) (\exp (z_2))$ just as one does for the real case\footnote{By expanding and rearranging.} via absolute convergence.
+
+If $z= \alpha+i\beta$, then $\exp (z) = (\exp (\alpha)) (\exp (i\beta))$. One knows what $\exp (\alpha)$ is since $\alpha$ is real, but what about $\exp (i\beta)$? Let's try it:
+\begin{align*}
+	\exp (i\beta) &= 1 + i\beta + \frac{i^2\beta^2}{2!} + \frac{i^3\beta^3}{3!} + \frac{i^4\beta^4}{4!} + \frac{i^5\beta^5}{5!} + \cdots\\
 		    &= 1 + i\beta - \frac{\beta^2}{2!} - i \frac{\beta^3}{3!} + \frac{\beta^4}{4!} + i \frac{\beta^5}{5!} + \cdots\\
 		    &= 1 - \frac{\beta^2}{2!} + \frac{\beta^4}{4!} +\cdots + i\beta - i \frac{\beta^3}{3!} + i\frac{\beta^5}{5!} + \cdots\\
-		    &= \cos \beta + i \sin \beta.
+		    &= \cos (\beta) + i \sin (\beta).
 \end{align*}
-One sees that $\left\lvert \exp z \right\rvert = \exp \Re z$. The map $\exp : \C \longrightarrow \C^*$ is a surjective group homomorphism. Further, $\ker \exp = 2\pi i\Z$.
+One sees that $\left\lvert \exp (z) \right\rvert = \exp (\Re (z))$. The map $\exp : \C \longrightarrow \C^*$ is a surjective group homomorphism. Further, $\Ker(\exp) = 2\pi i\Z$.
 
-Suppose we want to solve $\exp w = z$. Write $z = r(\cos\theta + i\sin\theta)$. Since $\arg z$ is defined up to multiples of $2\pi$, $\log z$ is defined up to multiples of $2\pi i$, since $\log z = \log \left\lvert z \right\rvert + i\arg z$. 
+Suppose that one wants to solve $\exp (w) = z$. Write $z = r(\cos(\theta) + i\sin(\theta))$. Since $\arg (z)$ is defined up to multiples of $2\pi$, $\log (z)$ is defined up to multiples of $2\pi i$, since $\log (z) = \log( \left\lvert z \right\rvert) + i\arg (z)$. 
 
-What about $z_1^{z_2}$? That is just $\exp(z_2\log z_1)$, but $\log z_1$ is ambiguous. It is well defined if $z_1>0$ is real and we take $\log z_1$ real. It is also okay if $n=z_2$ is an integer, since $\exp(n 2\pi i)=1$.
+What about $z_1^{z_2}$? That is just $\exp(z_2\log (z_1))$, but $\log (z_1)$ is ambiguous. It is well defined if $z_1>0$ is real and one takes $\log (z_1)$ to be real. It is also okay if $z_2=n$ is an integer, since $\exp(n 2\pi i)=1$.
 
-We have $\exp iz = \cos z + i\sin z$, hence $\exp (-iz)=\cos z - i\sin z$. So
+Since $\exp (iz) = \cos (z) + i\sin (z)$, $\exp (-iz)=\cos (z) - i\sin (z)$. Therefore,
 \begin{align*}
-	\cos z = \frac{e^{iz}+ e^{-iz}}{2}.
+	\cos (z) = \frac{e^{iz}+ e^{-iz}}{2}.
 \end{align*}
-In the same way,
+Similarly,
 \begin{align*}
-	\sin z = \frac{e^{iz}-e^{-iz}}{2i}.
+	\sin (z) = \frac{e^{iz}-e^{-iz}}{2i}.
 \end{align*}
 One can derive any trigonometric identity using these definitions.
  \begin{figure}
 	 \begin{center}
 	 	\includegraphics[scale=0.2]{sin_z}
-		\caption{A domain colouring of $\sin z$ where brightness indicates $\left\lvert \sin z \right\rvert $ and hue indicates $\arg(\sin z)$.}
+		\caption{A domain colouring of $\sin (z)$ where brightness indicates $\left\lvert \sin (z) \right\rvert $ and hue indicates $\arg(\sin (z))$.}
 	 \end{center}
 \end{figure}
 The differential equation
 \begin{align*}
-	a \frac{d^2y}{dx^2}+ b \frac{dy}{dx}+cy =0
+	a \frac{d^2y}{dz^2}+ b \frac{dy}{dz}+cy =0
 \end{align*}
-has a solution $y=e^{\lambda x} $. For instance, if
+has a solution $y=e^{\lambda z} $. For instance, if
 \begin{align*}
-	\frac{d^2y}{dx}+2\frac{dy}{dx}+2y =0,
+	\frac{d^2y}{dz}+2\frac{dy}{dz}+2y =0,
 \end{align*}
-we have
+then
 \begin{align*}
 	\lambda ^2 + 2\lambda + 2 =0,
 \end{align*}
-so $\lambda = -1\pm i$. So the solutions to this differential equation are $y=e^{-(1+i)x}$ and $y = e^{-(1-i)x}$, (one may write these in terms of $\cos$ and $\sin$).
+so $\lambda = -1\pm i$. Thus, the solutions to this differential equation are $y=e^{-(1+i)z}$ and $y = e^{-(1-i)z}$.\footnote{One may write these in terms of $\cos$ and $\sin$.}
 
-Complex numbers simplify Fourier series. If $f(x) =f(2\pi+x)$, we can write
+Complex numbers simplify Fourier series. If $f(z) =f(2\pi+z)$, one can write
 \begin{align*}
-	f(x) &=  \sum_{n>0}^{} a_n\sin nx + \sum_{n>0}^{} b_n\cos nx\\
-	     &= \sum_{n\in\Z}^{} c_ne^{inx},\ c_n\in \C.
+	f(z) &=  \sum_{n>0}^{} a_n\sin (nz) + \sum_{n>0}^{} b_n\cos (nz)\\
+	     &= \sum_{n\in\Z}^{} c_ne^{inz},\ c_n\in \C.
 \end{align*}
 
 The function
 \begin{align*}
-	\tan z: = \frac{\sin z}{\cos z}
+	\tan (z): = \frac{\sin (z)}{\cos (z)}
 \end{align*}
-is defined in the obvious way. On the upper half-plane, $\tan z \approx i$ and on the lower half-plane, $\tan z \approx -i$. Near the real axis, $\tan z$ oscillates as it does in the real case. (In real analysis, one thinks of $\sin$ and $\cos$ bounded and $\tan$ being ``wild,'' and, in complex analysis, it is approximately the opposite.)
+is defined in the natural way. On the upper half plane $\mathfrak H$, $\tan (z) \approx i$, and, on the lower half plane, $\tan (z) \approx -i$. Near the real axis, $\tan (z)$ oscillates as it does in the real case.\footnote{In real analysis, one thinks of $\sin$ and $\cos$ as being bounded and $\tan$ as being ``wild,'' and, in complex analysis, it is approximately the opposite.}
 
  \begin{exercise}\label{}\text{}
-Express $\arccos z$ using $\log$ and $\sqrt{} $.
+Express $\arccos (z)$ using $\log$ and $\sqrt{} $.
 \end{exercise}
 
 Notice that 
 \begin{align*}
-	\sin (iz) &= i\sinh z;\\
-	\cos (iz) &= \cosh z;\\
-	\tan (iz) &= i\tanh z.
+	\sin (iz) &= i\sinh (z);\\
+	\cos (iz) &= \cosh (z);\\
+	\tan (iz) &= i\tanh (z).
 \end{align*}
 
 \section{Holomorphic functions}
-A function $f:\R\longrightarrow \R$ is called differentiable at $x_0\in \R$ is $f$ is approximately linear there: that is, $f(x)= f (x_0)+a (x-x_0) + \textrm{small error}$. (``Small error'' means less than any nonzero linear function, or $\mathrm{error}/(x-x_0)$ goes to $0$ as $x$ goes to $x_0$.) Equivalently, $f$ is differentiable at $x_0$ if a certain limit exists. 
+A function $f:\R\longrightarrow \R$ is called differentiable at $z_0\in \R$ if and only if $f$ is approximately linear there: That is, 
+\[
+	f(z)= f (z_0)+a (z-z_0) + \textrm{small error}
+\]
+.\footnote{``Small error'' means less than any nonzero linear function, or $\mathrm{error}/(z-z_0)$ goes to $0$ as $z$ goes to $z_0$.} Equivalently, $f$ is differentiable at $z_0$ if and only if some limit exists. 
 
-Suppose $w=u+iv$ is a function of $z=x+iy$ (where $u$ and $v$ are functions of $x$ and $y$). We write $u$ and $v$ as a vector that we want to be approximately linear:
+Suppose that $w=u+iv$ is a function of $z=x+iy$.\footnote{Where $u$ and $v$ are functions of $x$ and $y$.} One writes $u$ and $v$ in a vector that one wants to be approximately linear:
  \begin{align*}
 	 \mat{u(x,y) \\ v (x,y)} = \mat{u (x_0,y_0) \\ v (x_0,y_0)} + \mat{\partial u/\partial x&\partial u/\partial y\\ \partial v/\partial x&\partial v / \partial y}\mat{x-x_0\\y-y_0} + \mathrm{error}.
 \end{align*}
-We can approximate $w$ as a linear function. There's nothing really complex going on yet. Above is the differentiability of real functions in two variables. 
+One can approximate $w$ as a linear function. There's nothing really complex going on yet.
 
-Now we seek a complex derivative. The function $w$ is differentiable if 
+Now, one seeks a complex derivative. The function $w$ is differentiable if and only if
 \begin{align*}
-	w(z) = w (z_0) + A (z-z_0) + \textrm{small error}.
+	w(z) = w (z_0) + \alpha(z-z_0) + \textrm{small error}.
 \end{align*}
-Here, $A$ is a complex number. Hence, for $w$ to be differentiable as a complex function (from the real two-variable case above), we must also have
+Here, $\alpha$ is a complex number. Hence, for $w$ to be differentiable as a complex function,\footnote{From the real two-variable case above.} one must also have
 \begin{align*}
-	\mat{\partial u/\partial x&\partial u/\partial y\\ \partial v/\partial x&\partial v / \partial y} = \mat {\Re A &- \Im A\\ \Im A & \Re A}.
+	\mat{\partial u/\partial x&\partial u/\partial y\\ \partial v/\partial x&\partial v / \partial y} = \mat {\Re (\alpha)&- \Im (\alpha)\\ \Im (\alpha) & \Re (\alpha)}.
 \end{align*}
 That is,
 \begin{align*}
 	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y};\\
 	\frac{\partial v}{\partial x}& = - \frac{\partial u}{\partial y}.
 \end{align*}
-These are called the \defn{Cauchy--Riemann equations}\index{Cauchy--Riemann equations}. We also have the expected limit definition:
+These are the \defn{Cauchy--Riemann equations}\index{Cauchy--Riemann equations}. One also has the expected limit definition:
 \begin{align*}
 	\lim_{z\to z_0} \frac{w(z) - w (z_0)}{z-z_0}.
 \end{align*}
 
 \begin{definition}[ ]\label{}\text{}
-Suppose $w$ is a complex function of $z\in U\subset \C$ where $U$ is an open set. The function $w$ is called \defn{holomorphic}\index{holomorphic function} if it has a complex derivative everywhere. (That is, it is continuous with real derivatives satisfying the Cauchy--Riemann equations.)
+Suppose that $w$ is a complex function of $z\in U\subset \C$ where $U$ is an open set of $\C$. The function $w$ is called \defn{holomorphic}\index{holomorphic function} if and only if it has a complex derivative everywhere.\footnote{That is, it is continuous with real derivatives satisfying the Cauchy--Riemann equations.}
 \end{definition}
 
 \begin{remark}
-	Sometimes you will see ``analytic'' instead of ``holomorphic.'' A function is \defn{analytic}\index{analytic function} if it has a power series expansion at each point. Complex functions are holomorphic if and only if they are analytic. 
+	Sometimes, one will see ``analytic'' instead of ``holomorphic.'' A function is \defn{analytic}\index{analytic function} if and only if it has a power series expansion at each point. Complex functions are holomorphic if and only if they are analytic. 
 \end{remark}
 
-There is another way of getting the Cauchy--Riemann equations. We define
+There is another way of getting the Cauchy--Riemann equations. One defines
 \begin{align*}
 	\partial/\partial z &:= \frac{1}{2}(\partial/\partial x -  i\partial/\partial y);\\
-		\partial/\partial \overline{z} &:= \frac{1}{2}(\partial/\partial x + i \partial/\partial y);
+		\partial/\partial \overline{z} &:= \frac{1}{2}(\partial/\partial x + i \partial/\partial y).
 \end{align*}
-these are called \defn{Wirtinger derivatives}\index{Wirtinger derivatives}. These are chosen such that 
+These are \defn{Wirtinger derivatives}\index{Wirtinger derivatives}, which are chosen such that 
 \begin{align*}
 	(\partial /\partial z)z = 1;\  (\partial /\partial z) \overline{z} = 0;\  (\partial /\partial \overline{z}) z = 0;\  (\partial /\partial \overline{z})\overline{z} =1. 
 \end{align*}
-Hence the Cauchy--Riemann equations are equivalent to
+Hence, the Cauchy--Riemann equations are equivalent to
 \begin{align*}
 	\frac{\partial w}{\partial \overline{z}} = 0.
 \end{align*}
-Informally, ``holomorphic'' means ``depends on $z$ but not on $\overline{z}$.'' 
 
- \begin{example}[Holomorphic functions]\label{}\text{}
+\begin{remark}
+Informally, ``holomorphic'' means ``depends on $z$ but not on $\overline{z}$.'' 
+\end{remark}
+
+\begin{example}[Holomorphic functions]\label{}\text{}
 \begin{itemize}
-	\item The functions  $1$ and $z$ are holomorphic (since they are linear).
-	\item Suppose $f$ and $g$ are holomorphic on $U\subset \C$. Then $f+g$, $f-g$, $fg$, $f/g$, and $f\circ g$ are holomorphic.
-	\item If a power series $a_0 + a_1z + a_2z^2 + \cdots$ converges for $\left\lvert z \right\rvert <R$, then it is holomorphic and its derivative is $a_1 + 2a_2z + \cdots$.
-	\item Hence $\sin$, $\cos$, $\tan$, $\exp$, and $\log$ are holomorphic when defined.
-	\item If $f$ is holomorphic, then its derivative is. 
+	\item The functions  $1$ and $z$ are holomorphic.\footnote{They are linear.}
+	\item Suppose that $f$ and $g$ are holomorphic on $U\subset \C$. Then, $f+g$, $f-g$, $fg$, $f/g$, and $f\circ g$ are holomorphic.
+	\item If a power series $a_0 + a_1z + a_2z^2 + \cdots$ converges for $\left\lvert z \right\rvert <r$, then it is holomorphic and its derivative is $a_1 + 2a_2z + \cdots$.
+	\item Hence, $\sin$, $\cos$, $\tan$, $\exp$, and $\log$ are holomorphic when defined.
+	\item If $f$ is holomorphic, then its derivative is.
 \end{itemize}
 \end{example}
 
 \begin{example}[Non-holomorphic functions]\label{}\text{}
 \begin{itemize}
-	\item $\Re z$;
-	\item $\Im z$;
+	\item $\Re (z)$;
+	\item $\Im (z)$;
 	\item $\left\lvert z \right\rvert$;
 	\item $\left\lvert z \right\rvert ^2$;
 	\item $\overline{z}$.
 \end{itemize}
 \end{example}
 
-What polynomials in $x$ and $y$ are holomorphic? Equivalently, what polynomials in $z=x+iy$ and $\overline{z}=x-iy$ are holomorphic? When is $\sum_{}^{} a_{mn}z^m \overline{z}^n$ holomorphic? We need
+What polynomials in $x$ and $y$ are holomorphic? Equivalently, what polynomials in $z=x+iy$ and $\overline{z}=x-iy$ are holomorphic? When is $\sum_{}^{} a_{mn}z^m \overline{z}^n$ holomorphic? 
+One needs
 \begin{align*}
-	\partial/\partial \overline{z}= \sum_{}^{} a_{mn} z^m n \overline{z}^{n-1} = 0.
+	\partial/\partial \overline{z}= \sum_{}^{} a_{mn} z^m n \overline{z}^{n-1} = 0,
 \end{align*}
-So $a_{mn} n = 0$ for all $m$ and $n$, hence $a_{mn} = 0$ if $n>0$. So $f(x,y)=  \sum_{}^{} a_{m0}z^m$ is a polynomial in $z$.
+so $a_{mn} n = 0$ for all $m$ and $n$, hence $a_{mn} = 0$ if $n>0$. Therefore, $f(x,y)=  \sum_{}^{} a_{m0}z^m$ is a polynomial in $z$.
 
 \section{Harmonic functions}
-Suppose $w=u+iv$ is a complex function of $ z=x+iy$. Given $u$ of $x$ and $y$, can we find a holomorphic function $w$ such that $u = \Re w$? In general, no. If a complex function is holomorphic, it satisfies the Cauchy--Riemann equations:
+Suppose that $w=u+iv$ is a complex function of $ z=x+iy$. Given a function $u$ of $x$ and $y$, can one find a holomorphic function $w$ such that $u = \Re(w)$? In general, no. If a complex function is holomorphic, it satisfies the Cauchy--Riemann equations:
 \begin{align*}
 	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y};\\\frac{\partial v}{\partial x}& = - \frac{\partial u}{\partial y}.
 \end{align*}
@@ -272,11 +335,11 @@ In particular,
 \begin{align*}
 \frac{\partial ^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0.
 \end{align*}
-This is the Laplace equation, and functions that satisfy it are called harmonic functions. It has a physical interpretation: it gives the steady state heat of some planar region. (Equivalently one writes $\nabla u=0$.) 
+This is the \defn{Laplace equation}\index{Laplace equation}, and functions that satisfy it are called \defn{harmonic functions}\index{harmonic function}. It has a physical interpretation: It gives the steady state heat of some planar region.\footnote{Equivalently, one writes $\nabla u=0$.} 
 
 We use this to find solutions to the Laplace equation by taking a holomorphic function and taking its real or imaginary part.
-\begin{example}[ ]\label{}\text{}
-Find all harmonic polynomials in $x$ and $y$. The polynomials that result from taking the real and imaginary parts of powers of $z = x+iy$ are harmonic, and they happen to be a basis for harmonic polynomials.
+\begin{example}[Find all harmonic polynomials in $x$ and $y$]\label{}\text{}
+The polynomials that result from taking the real and imaginary parts of powers of $z = x+iy$ are harmonic, and they happen to be a basis for harmonic polynomials.
 \end{example}
 
 \begin{example}[ ]\label{}\text{}
@@ -284,18 +347,23 @@ The function
 \begin{align*}
 	ze^z = (x+iy)e^x (\cos y + i\sin y)
 \end{align*}
-is holomorphic. Hence the real part of this is $e^x(x\cos y - y\sin y)$. This is harmonic.
+is holomorphic. Therefore, its real part, $e^x(x\cos y - y\sin y)$, is harmonic.
 \end{example}
 
 Is any harmonic function $u$ the real part of some holomorphic function $w = u+iv$? It is useful to take $u$ as a function on an open set $U\subset \C$. The answer depends on $U$. 
 
-We are trying to solve the Cauchy--Riemann equations. They determine $v$ up to a constant. 
+One is trying to solve the Cauchy--Riemann equations. These determine $v$ up to a constant. 
 
 \begin{problem}
-	Given $f$ and $g$ functions of $x$ and $y$, can we solve $\partial v/\partial x = f$ and $\partial v/\partial y = g$?
+	Given functions $f$ and $g$ of $x$ and $y$, can one solve $\partial v/\partial x = f$ and $\partial v/\partial y = g$?
 \end{problem}
 
-We need $\partial f/\partial y = \partial f/\partial x$ because both sides equal $\partial^2 v/\partial x\partial y$. Sometimes we can solve for $v$. Suppose $U$ is a rectangle containing the origin. Put $v(0,0)=0$. We see that
+One needs
+\[
+	\frac{\partial f}{\partial y} = \frac{\partial f}{\partial x}
+\] 
+because both sides equal $\partial^2 v/\partial x\partial y$. Sometimes, one can solve for $v$. 
+Suppose that $U$ is a rectangle containing the origin. Put $v(0,0)=0$. One sees that
 \begin{align*}
 	v(x,0) =  \int_{0}^{x} f(x,0)   \, dx 
 \end{align*}
@@ -303,19 +371,19 @@ and
 \begin{align*}
 	v(x,y) &= v (x,0) +  \int_{0}^{y} g(x,y)  \, dy. 
 \end{align*}
-Clearly $\partial v/\partial y=g$. Is $\partial v/\partial x = f$? It is true on the $x$ axis by definition. We see
+Clearly, $\partial v/\partial y=g$. Is $\partial v/\partial x = f$? This is true on the $x$ axis by definition. Further, one gets
 \begin{align*}
 	\frac{\partial v}{\partial x} &= \frac{\partial}{\partial x} v(x,0) +  \int_{0}^{y} \frac{\partial g}{\partial x}(x,y)  \, dy\\
 				      &= f(x,0) +  \int_{0}^{y} \frac{\partial f}{\partial y}  \, dy\\
-				      &= f(x,y).
+				      &= f(x,y),
 \end{align*}
-So $\partial v/\partial x = f$.
+so $\partial v/\partial x = f$.
 
-Suppose we are given $u$ on a rectangle and suppose $u$ is harmonic. Then we can find $w=u+iv$ with $w$ holomorphic. We need to solve $\partial v/\partial y =\partial u /\partial x = g$ and $\partial v/\partial y = -\partial u/\partial y = f$. We need $\partial g/\partial x = \partial f/\partial y$, and that follows because $u$ is harmonic.
+Suppose that one is given a harmonic function $u$ on a rectangle. Then, one can find $w=u+iv$ where $w$ is holomorphic. One needs to solve $\partial v/\partial y =\partial u /\partial x = g$ and $\partial v/\partial y = -\partial u/\partial y = f$. One needs $\partial g/\partial x = \partial f/\partial y$, and this follows from $u$ being harmonic.
 
-What about other regions $U$? Suppose $U = \C-\{0\}$. Take $u=\log r$. The function $u$ is harmonic (it is more-or-less the fundamental solution of the Laplace equation) except at $x=y=0$. Further, $u = \Re (\log z)$, and we take $v = \Im(\log z) = \arg z$. However, $\log z$ is not defined on all of $U$ since $\arg z$ is not defined. (If we take a disk and ``extend'' it into a bigger region by taking disks that overlap in a circular formation around some point, we get a problem when the last disk overlaps the original one: Is $\arg z$ near $0$ or $2\pi$? This is the problem of being defined up to a constant.) If a region $U$ has ``holes,'' we cannot extend a harmonic function $u$ to a holomorphic function $w$. 
+What about other regions? Suppose that $U = \C-\{0\}$. Take $u=\log (r)$. The function $u$ is harmonic\footnote{It is, more or less, the fundamental solution of the Laplace equation.} except at $x=y=0$. Further, $u = \Re (\log (z))$, and one takes $v = \Im(\log (z)) = \arg (z)$. However, $\log (z)$ is not defined on all of $U$ since $\arg (z)$ is not defined.\footnote{If one takes a disk and ``extends'' it into a bigger region by taking disks that overlap in a circular formation around some point, one gets a problem when the last disk overlaps the original one: Is $\arg (z)$ near $0$ or $2\pi$? This is the problem of being defined up to a constant.} If a region $U$ has ``holes,'' then one cannot extend a harmonic function $u$ to a holomorphic function $w$. 
 
-If $U$ is simply connected, then any harmonic function $u$ is the real part of a holomorphic function $w$ where $\Im w$ is unique up to a constant.
+If $U$ is simply connected, then any harmonic function $u$ is the real part of a holomorphic function $w$ where $\Im(w)$ is unique up to a constant.
 
 In differential geometry, one might write
 \begin{align*}
@@ -328,10 +396,10 @@ as a $1$-form
 Does there exist a $v$ such that $ dv =\omega = f\,dx + g\,dy$? We need $d\omega = 0$, or $df/dy = dg/dx$. We saw that $\omega = dv$ for some $v$ if and only if $dv = 0$ on a simply connected region $U$.
 
 \begin{definition}[ ]\label{}\text{}
-The \defn{de Rham cohomology group}\index{de Rham cohomology group} of an open region $U$  of the complex numbers $H^1(U)$ is the set of closed $1$-forms $\omega$ ($d\omega = 0$) modulo the set of exact forms $\omega$ ($\omega = dv$ for some $v$).
+The \defn{de Rham cohomology group}\index{de Rham cohomology group} of an open region $U$  of the complex numbers, $H^1(U)$, is the set of closed $1$-forms $\omega$\footnote{$d\omega = 0$.} modulo the set of exact forms $\omega$.\footnote{$\omega = dv$ for some $v$.}
 \end{definition}
 
-We have shown that $U$ is simply connected implies $H^1(U)=0$. 
+We have shown that, if $U$ is simply connected, then $H^1(U)=0$. 
 \section{Integration}
 We cannot really integrate a complex function $f$ from $\alpha$ to $\beta$ since there are many paths between them. So, we define an integral over a path $C$ from $\alpha$ to $\beta$.
 
@@ -437,16 +505,16 @@ Hence
 \end{align*}
 
 \begin{enumerate}
-	\item In a simply connected region, a holomorphic function $w$ has an antiderivative. We might define it as
+	\item In a simply connected region, a holomorphic function $w$ has an antiderivative. One might define it as
 		\begin{align*}
 			\int_{\alpha}^{z} w(z)  \, dz, 
 		\end{align*}
-		but is this well defined? There are many paths from $\alpha$ to $z$. Since the region is simply connected, an two paths from $\alpha$ to $z$ are homotopic, so the integrals are the same. 
+		but is this well defined? There are many paths from $\alpha$ to $z$. Since the region is simply connected, any two paths from $\alpha$ to $z$ are homotopic, so the integrals are the same. 
 	\item What is 
 		\begin{align*}
 			\int_{C}^{} \frac{z^2+3}{z^4-2z+3}  \, dz 
 		\end{align*}
-		where $C$ is the circle of radius two? We cannot just apply Cauchy's theorem, since $z^4-2z+3$ has roots inside $C$. (In particular it is not holomorphic.) Instead, let $C$ be the circle of radius $R>2$. We see that
+		where $C$ is the circle of radius $2$? One cannot apply just Cauchy's theorem, since $z^4-2z+3$ has roots inside $C$. (In particular it is not holomorphic.) Instead, let $C$ be the circle of radius $R>2$. One sees that
 		\begin{align*}
 			\int_{C}^{} \frac{z^2 + 3}{z^4-2z+3}  \, dz &\le 2\pi R \cdot (2/R^2) \\
 								    &\le 4\pi/R
@@ -524,10 +592,10 @@ Suppose $\left\lvert f \right\rvert$ is bounded by some $g\in \C[z]$. Show that 
 	\setcounter{enumi}{3}
 	\item Any holomorphic function can be expanded as a power series. (This is not true for the real function
 		\begin{align*}
-			f(x) = 
+			f(z) = 
 			 \begin{cases}
 				 0  & x=0\\
-				 e^{-1/x^2} &\textrm{otherwise}
+				 e^{-1/z^2} &\textrm{otherwise}
 			\end{cases}
 		\end{align*}
 		though it is infinitely differentiable.)
@@ -833,7 +901,7 @@ We want to find a function whose residues correspond to $1/k^2$. The function $f
 \begin{align*}
 	\sum_k \Res(g,a_k) = \Res(g,0) + \frac{2}{\pi^2} \left( \sum_k 1/k^2 \right).
 \end{align*}
-Let's calculate the sum of the residues first (we want to show that this sum is $0$). Consider the contour $C$ given by a square with sidelength $2R$ centred at the origin where $R = \pi/2 + \pi k$. In particular, 
+Let's calculate the sum of the residues first (we want to show that this sum is $0$). Consider the contour $C$ given by a square with side length $2R$ centred at the origin where $R = \pi/2 + \pi k$. In particular, 
  \begin{align*}
 	 \abs{\int_C \frac{1}{z^2\tan z} \, dz} &\le \abs{C} \max_C f\\
 						&= 8R\left (\max_C {1}/{z^2}\right) \left(\max_C {1}/{\tan z}\right)\\
@@ -1186,7 +1254,7 @@ has poles at $\{\alpha,\beta,\gamma\}+m\omega_1 + n\omega_2$. That is, we need a
 
 But are there elliptic functions with $1$ or $2$ poles in the fundamental domain? Notice that an elliptic function $\varphi$ is determined by its roots and poles up to constant multiplication. 
 
-We require the argument principle. Suppose $f$ is meromorphic in a region $U$. Write $f(z) = a_nz^n+\cdots$, so $f'(z) = na_nz^{n-1} + \cdots$. Then $f'(z)/f (z) = nz\inv + \cdots$, and the first term has residue $n$, which is the order of the root of $f$ at $0$. Then 
+One requires the argument principle. Suppose $f$ is meromorphic in a region $U$. Write $f(z) = a_nz^n+\cdots$, so $f'(z) = na_nz^{n-1} + \cdots$. Then $f'(z)/f (z) = nz\inv + \cdots$, and the first term has residue $n$, which is the order of the root of $f$ at $0$. Then 
 \begin{align*}
 \frac{1}{2\pi i} \int_{\partial U} \frac{f'(z)}{f (z)} \, dz &= \# \textrm{roots} - \#\textrm{poles} \\
 							     &= \frac{1}{2\pi}\Delta (\arg f(z)).

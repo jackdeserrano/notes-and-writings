@@ -41,6 +41,7 @@
 
 \ProcessOptions\relax
 
+\RequirePackage {tipa}	% Before amsmath resolves errors like ``command \; invalid in math mode'' and ``missing } inserted'' with \implies
 \RequirePackage [usenames, svgnames, dvipsnames] {xcolor}
 \RequirePackage {amsmath, amsthm, amssymb, amsfonts}
 \RequirePackage {microtype}
@@ -56,8 +57,8 @@
 	\else
 		\newcommand\frontmatter{%
     			\cleardoublepage
-  			%\@mainmatterfalse
-  			\pagenumbering{roman}
+  			% \@mainmatterfalse
+  			\pagenumbering {roman}
 		}
 	\fi
 	
@@ -67,7 +68,7 @@
 		\newcommand\mainmatter{%
     			\cleardoublepage
  			% \@mainmattertrue
-  			\pagenumbering{arabic}
+  			\pagenumbering {arabic}
 		}
 	\fi
 	
@@ -112,7 +113,6 @@
 \RequirePackage {latexsym}
 \RequirePackage [makeroom] {cancel}
 \RequirePackage {setspace}
-\RequirePackage {tipa}
 \RequirePackage {mathdots}
 
 
@@ -208,7 +208,7 @@
 
 	\iffalse
 		\makeatletter
-			\renewcommand{\section}{\@startsection
+			\renewcommand {\section} {\@startsection
 				{section}			% name
 				{1}				% level
 				{\z@}				% the indent / 0mm
