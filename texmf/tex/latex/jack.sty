@@ -15,6 +15,7 @@
 \newif \ifassg \assgfalse
 \newif \ifold \oldfalse
 \newif \iffrench \frenchfalse
+\newif \ifslides \slidesfalse
 
 
 % TODO: Add arg options
@@ -33,6 +34,7 @@
 \DeclareOption {scr} {\scrtrue}
 \DeclareOption {assg} {\assgtrue}
 \DeclareOption {french} {\frenchtrue}
+\DeclareOption {slides} {\slidestrue}
 
 % USELESS OPTIONS
 \DeclareOption {wide} {\jackwidetrue}
@@ -42,9 +44,15 @@
 \ProcessOptions\relax
 
 \RequirePackage {tipa}	% Before amsmath resolves errors like ``command \; invalid in math mode'' and ``missing } inserted'' with \implies
-\RequirePackage [usenames, svgnames, dvipsnames] {xcolor}
+\ifslides
+\else
+	\RequirePackage [usenames, svgnames, dvipsnames] {xcolor}
+\fi
 \RequirePackage {amsmath, amsthm, amssymb, amsfonts}
+
 \RequirePackage {microtype}
+\DisableLigatures{encoding = *, family = * }
+
 \RequirePackage {thmtools}
 \RequirePackage [framemethod = TikZ] {mdframed}
 \RequirePackage {mathtools}
@@ -55,7 +63,7 @@
 	\ifdefined\frontmatter
 		
 	\else
-		\newcommand\frontmatter{%
+		\newcommand\frontmatter {%
     			\cleardoublepage
   			% \@mainmatterfalse
   			\pagenumbering {roman}
@@ -65,7 +73,7 @@
 	\ifdefined\mainmatter
 
 	\else
-		\newcommand\mainmatter{%
+		\newcommand\mainmatter {%
     			\cleardoublepage
  			% \@mainmattertrue
   			\pagenumbering {arabic}
@@ -75,7 +83,7 @@
 	\ifdefined\backmatter
 
 	\else
-		\newcommand\backmatter{%
+		\newcommand\backmatter {%
 			\if@openright
     				\cleardoublepage
  			 \else
@@ -157,7 +165,7 @@
 
 \RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
 
-\RequirePackage [ ] {cleveref}	% no `nameinlink' or `capitalize'
+\RequirePackage {cleveref}	% no `nameinlink' or `capitalize'
 \crefname {equation} {} {}
 
 \setlength {\emergencystretch} {14 pt}  % Response to ``Overfull \hbox''
@@ -405,6 +413,7 @@
 \DeclareMathOperator {\Spec} {Spec}                         		% spectrum
 \DeclareMathOperator {\specmax} {Spec\textsubscript{max}}   		% maximal spectrum
 \DeclareMathOperator {\spa} {span}                          		% span
+\DeclareMathOperator {\Stab} {Stab}                          		% span
 \DeclareMathOperator {\SU} {SU}                             		% special unitary group
 \DeclareMathOperator {\Syl} {Syl}                           		% Sylow subgroup
 \let \Sym \relax
@@ -790,7 +799,7 @@
 			\newtheorem* {esquisse} {Esquisse}
 			
 			\let \tempendproof = \endproof
-			\def \endproof {\hfill\mbox{\qed}\tempendproof}
+			\def \endproof {\hfill\mbox{$\square$}\tempendproof}
 			
 			\numberwithin {equation} {section}
 			\theoremstyle {thm}
@@ -830,7 +839,7 @@
 			\newtheorem {warn} [thm] {Warning}
 			\newtheorem {ramble} [thm] {Ramble}
 			
-			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}} {\hfill\qed\end{enumerate}\end{pf}}
+			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}} {\hfill$\square$\end{enumerate}\end{pf}}
 
 			\ifjackcourse	% not [none], [course]
 			
