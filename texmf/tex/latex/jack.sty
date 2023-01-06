@@ -657,7 +657,7 @@
 			\declaretheorem [style = theorembox, name = Corollary, numbered = no] {corollary*}
 			\declaretheorem [name = Definition,  sibling = theorem] {definition}
 			\declaretheorem [name = Exercise,  sibling = theorem] {exercise}
-			\decl	aretheorem [name = Remark, sibling = theorem] {remark}
+			\declaretheorem [name = Remark, sibling = theorem] {remark}
 			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm}
 			\declaretheorem [style = algbox, name = Algorithm, sibling = theorem] {algorithm*}
 
@@ -851,14 +851,14 @@
 				%		\def \jtitle {Linear Algebra 2}
 				%		\def \jlecturer {Dr. John Smith}
 				%		\def \jterm {Spring 2022}
-				%		\def \jauthor {Me}
+				%		\def \jauthor {me}
 			
-				\iffalse%\ifscr
+				\iffalse % \ifscr
 					
 				\else
 
 					\makeatletter
-						%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
+						% \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
 					
 						\def\title#1{\gdef\@title{#1}\gdef\THETITLE{#1}}
 
@@ -940,7 +940,7 @@
 					% 	Define `jtitle` for title
 					% 	Define `jauthor` for you, the person writing this
 					%		\def \jtitle {Title}
-					%		\def \jauthor {Me}
+					%		\def \jauthor {me}
 			
 					\iffalse%\ifscr
 					
