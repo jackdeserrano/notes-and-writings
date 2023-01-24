@@ -4426,13 +4426,13 @@ Hence, one defines groups in the category of schemes over a fixed scheme $S$; on
 One sees that $G$ is a contravariant (resp. covariant) functor from the category of schemes (resp. rings) to the category of groups.
 
 \begin{example}[ ]\label{ga}\text{}
-Suppose $S=\Spec \mathbf{Z}$. Suppose further that $G\textsubscript{a}(R)=G(R)$ is the additive group of $R$. 
-Then, $G=\Spec \mathbf{Z}[z]$ since $\Hom_{}(\mathbf{Z}[z], R)=R$. The map $G\times G\longrightarrow G$ corresponds to $\mathbf{Z}[z] \longrightarrow \mathbf{Z}[z]\tensor \mathbf{Z}[z]$ where $z\longmapsto z\tensor 1 + 1\tensor z$. The map $1\longrightarrow G$ corresponds to $z\longmapsto 0$ and the map $G\longrightarrow G$ corresponds to $z\longmapsto -z$.
+Suppose $S=\Spec \mathbf{Z}$. Suppose further that $\mathbf{G}\textsubscript{a}(R)=\mathbf{G}(R)$ is the additive group of $R$. 
+Then, $\mathbf{G}=\Spec (\mathbf{Z}[z])$ since $\Hom_{}(\mathbf{Z}[z], R)=R$. The map $\mathbf{G}\times \mathbf{G}\longrightarrow \mathbf{G}$ corresponds to $\mathbf{Z}[z] \longrightarrow \mathbf{Z}[z]\tensor \mathbf{Z}[z]$ where $z\longmapsto z\tensor 1 + 1\tensor z$. The map $1\longrightarrow \mathbf{G}$ corresponds to $z\longmapsto 0$ and the map $\mathbf{G}\longrightarrow \mathbf{G}$ corresponds to $z\longmapsto -z$.
 
-Note that one does not have to consider $S=\Spec \mathbf{Z}$ and that one can consider the pullback
+Note that one does not have to consider $S=\Spec (\mathbf{Z})$ and that one can consider the pullback
 \[
 \begin{tikzcd}
-	G\times_{\Spec \mathbf{Z}} \Spec \mathbf{F}_{p} \ar[r]\ar[d] & G\ar[d]\\
+	\mathbf{G}\times_{\Spec \mathbf{Z}} \Spec \mathbf{F}_{p} \ar[r]\ar[d] & \mathbf{G}\ar[d]\\
 	\Spec \mathbf{F}_{p} \ar[r] & \Spec \mathbf{Z}.
 \end{tikzcd}
 \]
@@ -4444,7 +4444,7 @@ Suppose $R$ is an $\mathbf{F}_{p}$-algebra. Let
 \begin{align*}
 	\alpha_p(R) = \{ r\in R : r^p =0\}.
 \end{align*}
-This is a group under addition, so $\alpha_p$ is a functor. Consider the scheme $\Spec \mathbf{F}_{p}[z]/(z^p)$. One can identify elements of this group with morphisms $\Spec R \longrightarrow \Spec \mathbf{F}_{p}[z]/(z^p)$. This makes $\alpha_p$ a scheme. There is a map $\Spec \mathbf{F}_{p}[z]/(z^p)\longrightarrow \Spec \mathbf{F}_{p}[z]$, so $\Spec \mathbf{F}_{p}[z]/(z^p)$ is a closed subscheme of $\Spec \mathbf{F}_{p}[z]$, so $\alpha_p$ is a closed subgroup of the group $G \textsubscript{a}$ in the second part of \cref{ga}. Notice that $\alpha_p \longrightarrow \Spec \mathbf{F}_{p}$ is a finite morphism since $\mathbf{F}_{p}[z]/(z^p)$ is a finite $\mathbf{F}_{p}$-module. The order of $\alpha_p$ is given by
+This is a group under addition, so $\alpha_p$ is a functor. Consider the scheme $\Spec (\mathbf{F}_{p}[z]/(z^p))$. One can identify elements of this group with morphisms $\Spec R \longrightarrow \Spec \mathbf{F}_{p}[z]/(z^p)$. This makes $\alpha_p$ a scheme. There is a map $\Spec \mathbf{F}_{p}[z]/(z^p)\longrightarrow \Spec \mathbf{F}_{p}[z]$, so $\Spec \mathbf{F}_{p}[z]/(z^p)$ is a closed subscheme of $\Spec \mathbf{F}_{p}[z]$, so $\alpha_p$ is a closed subgroup of the group $G \textsubscript{a}$ in the second part of \cref{ga}. Notice that $\alpha_p \longrightarrow \Spec \mathbf{F}_{p}$ is a finite morphism since $\mathbf{F}_{p}[z]/(z^p)$ is a finite $\mathbf{F}_{p}$-module. The order of $\alpha_p$ is given by
 \begin{align*}
 	\left\lvert \alpha_p \right\rvert := \dim_{\mathbf{F}_{p}} \mathbf{F}_{p}[z]/(z^p) =p.
 \end{align*}
@@ -4459,10 +4459,10 @@ There are two other ways to get a ``group scheme of order $p$.'' The first way i
 	Notice that $\mathbf{Z}/p\mathbf{Z}(R)$ does not need to have $p$ points if $R$ has nontrivial idempotents.
 \end{remark}
 
-The second way is to take the functor $G\textsubscript{m}(R)=R^*$ which is represented by $\Spec \mathbf{Z}[z,z^{-1}]$. Again, $G\textsubscript{m}\times G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z\tensor z$, $G\textsubscript{m}\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto z^{-1}$, and $1\longrightarrow G\textsubscript{m}$ corresponds to $z\longmapsto 1$.
+The second way is to take the functor $\mathbf{G}\textsubscript{m}(R)=R^*$ which is represented by $\Spec (\mathbf{Z}[z,z^{-1}])$. Again, $\mathbf{G}\textsubscript{m}\times \mathbf{G}\textsubscript{m}\longrightarrow \mathbf{G}\textsubscript{m}$ corresponds to $z\longmapsto z\tensor z$, $\mathbf{G}\textsubscript{m}\longrightarrow \mathbf{G}\textsubscript{m}$ corresponds to $z\longmapsto z^{-1}$, and $1\longrightarrow \mathbf{G}\textsubscript{m}$ corresponds to $z\longmapsto 1$.
 This has a closed subgroup $\mu_p$ which comprises the $p$th roots of unity. This is represented by
 \begin{align*}
-	\Spec \mathbf{Z}[z]/(z^p-1) \subset \Spec \mathbf{Z}[z,z^{-1}].
+	\Spec (\mathbf{Z}[z]/(z^p-1)) \subset \Spec (\mathbf{Z}[z,z^{-1}]).
 \end{align*}
 Again, reduce mod $p$: Consider $\mu_p$ over $\mathbf{F}_{p}$. This is represented by
 \begin{align*}
@@ -7875,6 +7875,377 @@ If $d=4$, then $Y$ is a quartic and
 	\omega_Y \isomto \mathscr{O}_Y(1).
 \end{align*}
 Now, the dimension of the space of sections of $1$-forms is at least $3$.\footnote{It is $3$.} 
+
+\subsection{More concise and more precise re-definitions.}
+\begin{definition}[Stacks project Definition 6.3.1]\label{}\text{}
+Let $X$ be a topolgical space. 
+\begin{itemize}
+	\item A \defn{presheaf}\index{presheaf} of sets on $X$ assigns each open set $U$ of $X$ a set $\mathscr{F}(U)$ and each inclusion of open sets $V\subset U$ a map
+\[
+\begin{tikzcd}
+	\rho_{V}^{U} : \mathscr{F}(U)\ar[r]&  \mathscr{F}(V)
+\end{tikzcd}
+\]
+where $\rho_{U}^{U} = \id_{\mathscr{F}(U)}$ and $\rho_{W}^{U} = \rho_{W}^{V}\circ \rho_{V}^{U}$.
+
+\item A \defn{morphism of presheaves}\index{morphism of presheaves} of sets on $X$ 
+\[
+\begin{tikzcd}
+	\varphi:\mathscr{F}\ar[r]& \mathscr{G}
+\end{tikzcd}
+\]
+of sets on $X$ assigns each open set $U$ of $X$ to a function of sets
+\[
+\begin{tikzcd}
+	\overline{\varphi} : \mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
+\end{tikzcd}
+\]
+such that for all inclusions of open sets $V\subset U$ the diagram
+\[
+\begin{tikzcd}[sep = 4 em]
+	\mathscr{F}(U)\ar[r,"\overline{\varphi}"] \ar[d,"\rho_{V}^{U}" ] & \mathscr{G}(U)\ar[d,"\rho_{V}^{U}" ]\\
+	\mathscr{F}(V)\ar[r,"\overline{\varphi}"] &  \mathscr{G}(V)
+\end{tikzcd}
+\]
+commutes.
+\item Let $\mathscr{F}$ be a presheaf of sets on $X$. Let $U$ be an open set of $X$. A \defn{section}\index{section} of $\mathscr{F}$ over $U$ is an element of $\mathscr{F}(U)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.5.1]\label{sheafcat}\text{}
+Let $X$ be a topological space. Let $\mathscr{C}$ be a category. A \defn{presheaf}\index{presheaf} on $X$ with values in $\mathscr{C}$ assigns every open set $U\subset X$ to an object $\mathscr{F}(U)$ of $\mathscr{C}$ and assigns each inclusion of open sets $V\subset U$ to a morphism
+\[
+\begin{tikzcd}
+	\rho_{V}^{U} :\mathscr{F}(U)\ar[r]& \mathscr{F}(V)
+\end{tikzcd}
+\]
+in $\mathscr{C}$ where $\rho_{U}^{U}=\id_{\mathscr{F}(U)}$ and, for inclusions of open sets $W\subset V\subset U$, $\rho_{W}^{U} = \rho_{W}^{V}\circ \rho_{V}^{U}$. 
+A \defn{morphism of presheaves}\index{morphism of presheaves} with values in $\mathscr{C}$ 
+\[
+\begin{tikzcd}
+	\varphi:\mathscr{F}\ar[r]& \mathscr{G}
+\end{tikzcd}
+\]
+associates each open set $U$ of $X$ to a morphism
+\[
+\begin{tikzcd}
+	\varphi : \mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
+\end{tikzcd}
+\]
+compatible with restriction morphisms.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+An \defn{abelian presheaf}\index{abelian presheaf} is a presheaf of abelian groups.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.5.2]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{C}$ be a category. Let
+\[
+\begin{tikzcd}
+	F : \mathscr{C}\ar[r]& \catn{Set}
+\end{tikzcd}
+\]
+be a faithful functor. 
+Let $\mathscr{F}$ be a presheaf on $X$ with values in $\mathscr{C}$. The presheaf of sets
+\begin{align*}
+	\mathscr{F}\super{set}(U) := F (\mathscr{F}(U))
+\end{align*}
+is the \defn{underlying presheaf of sets}\index{underlying presheaf of sets} of $\mathscr{F}$.
+\end{definition}
+
+
+
+\iffalse
+\begin{remark}
+	\Cref{sheafcat} applies to the categories $\catn{Ab}$, $\catn{Grp}$, $\catn{Ring}$, $\catn{Mod}(A)$ where $A$ is a ring, $\catn{Vect}(F)$ where $F$ is a field, and morphisms between these.
+\end{remark}
+\fi
+
+\begin{definition}[Stacks project Definition 6.6.1]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{O}$ be a presheaf of rings on $X$.
+\begin{itemize}
+	\item A \defn{presheaf of $\mathscr{O}$-modules}\index{presheaf of $\mathscr{O}$-modules} is an abelian presheaf $\mathscr{F}$ with a map of presheaves of sets
+		\[
+		\begin{tikzcd}
+			\varphi : \mathscr{O}\times \mathscr{F}\ar[r] & \mathscr{F}
+		\end{tikzcd}
+		\]
+		such that, for all open sets $U$ of $X$, the induced map
+		\[
+		\begin{tikzcd}
+			\overline{\varphi} : \mathscr{O}(U)\times  \mathscr{F}(U)\ar[r]&  \mathscr{F}(U)
+		\end{tikzcd}
+		\]
+		defines an $\mathscr{O}(U)$-module structure on the abelian group $\mathscr{F}(U)$.
+
+	\item A \defn{morphism of presheaves of $\mathscr{O}$-modules}\index{morphism of presheaves of $\mathscr{O}$-modules} 
+		\[
+		\begin{tikzcd}
+			\varphi :\mathscr{F}\ar[r]& \mathscr{G}
+		\end{tikzcd}
+		\]
+		is a morphism of abelian presheaves such that 
+		\[
+		\begin{tikzcd}[sep = 4 em]
+			\mathscr{O}\times \mathscr{F}\ar[r]\ar[d,"\id\times \varphi"] &\mathscr{F}\ar[d,"\varphi"]\\
+			\mathscr{O}\times \mathscr{G}\ar[r] & \mathscr{G}
+		\end{tikzcd}
+		\]
+		commutes.
+	\iffalse\item One denotes the set of morphisms of presheaves of $\mathscr{O}$-modules as above by $\Hom_{\mathscr{O}}(\mathscr{F}, \mathscr{G})$. \fi	
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.7.1]\label{}\text{}
+Let $X$ be a topological space.
+\begin{itemize}
+	\item A \defn{sheaf}\index{sheaf} of sets on $X$ is a presheaf of sets on $X$ that satisfies the following property: given an open cover $(U_{\alpha}) _{\alpha\in A}$ of an open set $U$ of $X$ and a collection of sections $(s_{\alpha}\in \mathscr{F}(U_{\alpha}))_{\alpha\in A} $ such that, for all $\alpha,\beta\in A$,
+		\begin{align*}
+			s_{\alpha}\big|_{U_{\alpha}\cap U_{\beta}} = s_{\beta}\big|_{U_{\alpha}\cap U_{\beta}},
+		\end{align*}
+		there exists a unique section $s\in \mathscr{F}(U)$ such that $s_{\alpha} = s\big|_{U_{\alpha}}$ for all $\alpha\in A$.
+	\item A morphism of sheaves of sets is a morphism of presheaves of sets between two sheaves.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+An \defn{abelian sheaf}\index{abelian sheaf} is an abelian presheaf whose underlying presheaf of sets is a sheaf.
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 6.9.1]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{C}$ be a category with products. A \defn{sheaf}\index{sheaf} on $X$ with values in $\mathscr{C}$ is a presheaf on $X$ with values in $\mathscr{C}$ where, for every open cover $(U_{\alpha}) _{\alpha\in A}$ of an open set $U$ of $X$, the diagram
+\[
+\begin{tikzcd}[column sep = 4 em]
+	\mathscr{F}(U) \ar[r] & \displaystyle \prod_{\alpha\in A} \mathscr{F}(U_{\alpha}) \ar[r,shift left = 0.5 ex] \ar[r, shift right = 0.5 ex] &\displaystyle \prod_{(\alpha,\beta)\in A\times A} \mathscr{F}(U_{\alpha}\cap U_{\beta})
+\end{tikzcd}
+\]
+is an equalizer diagram in $\mathscr{C}$.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.10.1]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{O}$ be a sheaf of rings on $X$. A \defn{sheaf of $\mathscr{O}$-modules}\index{sheaf of $\mathscr{O}$-modules} is a presheaf of $\mathscr{O}$-modules whose underlying presheaf of abelian groups is a sheaf. A \defn{morphism of sheaves of $\mathscr{O}$-modules}\index{morphism of sheaves of $\mathscr{O}$-modules} is a morphism of presheaves of $\mathscr{O}$-modules between sheaves of $\mathscr{O}$-modules.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+Let $X$ be a topological space. Let $\mathscr{F}$ be a presheaf on $X$. The \defn{stalk}\index{stalk} at a point $z\in X$ is
+\begin{align*}
+	\mathscr{F}_{z} := \varinjlim_{U\ni z} \mathscr{F}(U).
+\end{align*}
+\end{definition}
+
+
+\begin{definition}[ ]\label{}\text{}
+Let $X$ be a topological space.
+Let $\mathscr{F}$ be a presheaf of sets on $X$. 
+Let $U$ be an open set of $X$. An element $(s_{u}) \in \prod_{u\in U} \mathscr{F}_{u}$ satisfies the \defn{sheafification criterion}\index{sheafification criterion} on $U$ if and only if, for all $u\in U$, there is an open neighbourhood $V\subset U$ of $u$ and a section $\sigma\in \mathscr{F}(V)$ such that, for all $v\in V$, $s_{v} = (V,\sigma)$ is in $\mathscr{F}_{v}$.
+The \defn{sheafification}\index{sheafification} of $\mathscr{F}$ assigns every open set $U$ of $X$ to the set
+\begin{align*}
+	\mathscr{F}^{\sharp}(U) :=  \left\{ \displaystyle (s_{u}) \in \prod_{u\in U}\mathscr{F}_{u} : \textrm{$(s_{u})$ satisfies the sheafification criterion on $U$} \right\}. 
+\end{align*}
+For each inclusion of open sets $U\subset V$ of $X$, the projections
+\[
+\begin{tikzcd}
+	\displaystyle \prod_{u\in U} \mathscr{F}_{u}\ar[r]& \displaystyle \prod_{v\in V} \mathscr{F}_{v}
+\end{tikzcd}
+\]
+map elements of $\mathscr{F}^{\sharp}(U)$ into $\mathscr{F}^{\sharp}(V)$, so $\mathscr{F}^{\sharp}$ is a presheaf. 
+Indeed, $\mathscr{F}^{\sharp}$ is a sheaf.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+Let $X$ and $Y$ be topological spaces.
+Let 
+\[
+\begin{tikzcd}
+	f:X\ar[r]& Y
+\end{tikzcd}
+\]
+be a continuous map. 
+Let $\mathscr{F}$ be a presheaf of sets on $X$. The \defn{pushforward}\index{pushforward} of $\mathscr{F}$ is defined by
+\begin{align*}
+	f_{*}(\mathscr{F}) (V) :=  \mathscr{F}(f^{-1}(V))
+\end{align*}
+for an open set $V$ of $Y$.
+\end{definition}
+
+\begin{definition}[ ]\label{}\text{}
+Let $X$ and $Y$ be topological spaces. 
+Let
+\[
+\begin{tikzcd}
+	f:X\ar[r]& Y
+\end{tikzcd}
+\]
+Let $\mathscr{G}$ be a sheaf of sets on $Y$. The \defn{pullback}\index{pullback} of $\mathscr{G}$ is defined by
+\begin{align*}
+	f^{-1}(\mathscr{G}) := (f\sub{p}(\mathscr{G})) ^{\sharp}.
+\end{align*}
+where $f\sub{p}$ is the functor left adjoint to $f_{*}$ defined by
+\begin{align*}
+	f\sub{p}(\mathscr{G}) (U) := \varinjlim _{V\supset f(U)} \mathscr{G}(V)
+\end{align*}
+where the limit is taken over open neighbourhoods of $f(U)$. Notice that $f^{-1}$ is left adjoint to $f_{*}$. 
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 6.21.7]\label{}\text{}
+Let $X$ and $Y$ be topological spaces.
+Let
+\[
+\begin{tikzcd}
+	f:X\ar[r]& Y
+\end{tikzcd}
+\]
+be a continuous map.
+Let $\mathscr{F}$ and $\mathscr{G}$ be sheaves of sets on $X$ and $Y$ respectively. 
+An \defn{$f$-map}\index{$f$-map} 
+\[
+\begin{tikzcd}
+	\xi : \mathscr{G}\ar[r] & \mathscr{F}
+\end{tikzcd}
+\]
+is a collection of maps
+\[
+\begin{tikzcd}
+	\xi_{V} : \mathscr{G}(V)\ar[r]  &\mathscr{F}(f^{-1}(V))
+\end{tikzcd}
+\]
+indexed by the open sets $V$ of $Y$ such that
+\[
+\begin{tikzcd}[sep = 4 em]
+	\mathscr{G}(V)\ar[r,"\xi_{V}" ] \ar[d,"\textrm{restriction of $\mathscr{G}$}", swap] & \mathscr{F}(f^{-1}(V)) \ar[d,"\textrm{restriction of $\mathscr{F}$}"]\\
+	\mathscr{G}(V')\ar[r,"\xi_{V'}" ] & \mathscr{F}(f^{-1}(V'))
+\end{tikzcd}
+\]
+commutes for all inclusions $V'\subset V$ of open sets of $Y$.
+
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 6.25.1]\label{}\text{}
+A \defn{ringed space}\index{ringed space} is a pair $(X,\mathscr{O}_{X})$ consisting of a topological space $X$ and a sheaf of rings $\mathscr{O}_{X}$ on $X$. A \defn{morphism of ringed spaces}\index{morphism of ringed spaces} from $(X,\mathscr{O}_{X})$ to $(Y,\mathscr{O}_{Y})$ is a pair consisting of a continuous map
+\[
+\begin{tikzcd}
+	f:X\ar[r] &Y
+\end{tikzcd}
+\]
+and an $f$-map of sheaves of rings
+\[
+\begin{tikzcd}
+	f^{\sharp} : \mathscr{O}_{Y}\ar[r] & \mathscr{O}_{X}.
+\end{tikzcd}
+\]
+
+\end{definition}
+
+
+\begin{definition}[ ]\label{}\text{}
+Let $X$ be a topological space. 
+Let $\mathscr{F}$ and $\mathscr{G}$ be quasicoherent $\mathscr{O}_X$-modules. The \defn{tensor product presheaf}\index{tensor product presheaf} is defined by
+\begin{align*}
+	(\mathscr{F}\otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{G})(U) :=  \mathscr{F}(U) \tensor_{\mathscr{O}_X(U)}  \mathscr{G}(U)
+\end{align*}
+for an open set $U$ of $X$. The \defn{tensor product sheaf}\index{tensor product sheaf} is the \index{sheafification}sheafification of the tensor product presheaf:
+\begin{align*}
+	\mathscr{F}\tensor_{\mathscr{O}_X} \mathscr{G} := (\mathscr{F}\tensor^{\textrm{pre}}_{\mathscr{O}_X}\mathscr{G})^\sharp.
+\end{align*}
+\end{definition}
+
+
+
+\begin{definition}[Stacks project Definition 6.26.1]\label{}\text{}
+Let
+\[
+\begin{tikzcd}
+	(f,f^{\sharp}) : (X,\mathscr{O}_{X}) \ar[r]& (Y,\mathscr{O}_{Y})
+\end{tikzcd}
+\]
+be a morphism of ringed spaces. 
+\begin{itemize}
+	\item Let $\mathscr{F}$ be a sheaf of $\mathscr{O}_{X}$-modules. The \defn{pushforward}\index{pushforward} of $\mathscr{F}$ is the sheaf of $\mathscr{O}_{Y}$-modules which, as a sheaf of abelian groups, equals $f_{*}(\mathscr{F})$, and whose module structure is given by the restriction via 
+		\[
+		\begin{tikzcd}
+			f^{\sharp} : \mathscr{O}_{Y}\ar[r] & f_{*}(\mathscr{O}_{X})
+		\end{tikzcd}
+		\]
+		of the module structure induced by the natural map of underlying presheaves of sets
+		\iffalse
+		\[
+		\begin{tikzcd}
+			\varphi : f_{*}(\mathscr{O}_{X}) \times f_{*}(\mathscr{F}) \ar[r] & f_{*}(\mathscr{F})
+		\end{tikzcd}
+		\]
+		given by
+		\fi
+		\begin{align*}
+			\varphi(f_{*}(\mathscr{O}_{X}) (V) \times f _{*}(\mathscr{F}) (V)) = f_{*}(\mathscr{F}) (V)
+		\end{align*}
+		for an open set $V$ of $Y$.\footnote{See Stacks project Lemma 6.24.1.}
+	\item Let $\mathscr{G}$ be a sheaf of $\mathscr{O}_{Y}$-modules. The \defn{pullback}\index{pullback} $f^{*}(\mathscr{G})$ is the sheaf of $\mathscr{O}_{X}$-modules given by
+		\begin{align*}
+			f^{*}(\mathscr{G}) := \mathscr{O}_{X} \tensor_{f^{-1}(\mathscr{O}(Y))} f^{-1}(\mathscr{G})
+		\end{align*}
+		where the ring map from $f^{-1}(\mathscr{O}_{Y})$ to $\mathscr{O}_{X}$ is the map corresponding to $f^{\sharp}$ and the module structure is that described in Stacks project Lemma 6.24.6.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.31.2]\label{}\text{}
+Let $X$ be a topological space. Let
+\[
+\begin{tikzcd}
+	j:U\ar[r]& X
+\end{tikzcd}
+\]
+be the inclusion of an open set $U$ of $X$.
+\begin{itemize}
+	\item Let $\mathscr{G}$ be a presheaf of sets, abelian groups, or algebraic structures on $X$. The presheaf $j\sub{p}(\mathscr{G})$ is the \defn{restriction}\index{restriction} of $\mathscr{G}$ to $U$ and denoted $\mathscr{G}\big|_{U}$.
+	\item Let $\mathscr{G}$ be a sheaf of sets, abelian groups, or algebraic structures on $X$. The sheaf $j^{-1}(\mathscr{G})$ is the \defn{restriction}\index{restriction} of $\mathscr{G}$ to $U$ and denoted $\mathscr{G}\big|_{U}$.
+	\item If $(X,\mathscr{O})$ is a ringed space, then the pair $(U, \mathscr{O}\big|_{U})$ is the \defn{open subspace}\index{open subspace} of $(X,\mathscr{O})$ associated to $U$.
+	\item If $\mathscr{G}$ is a presheaf of $\mathscr{O}$-modules, then $\mathscr{G}\big|_{U}$ with the multiplication map
+		\[
+		\begin{tikzcd}
+			\mathscr{O}\big|_{U}\times \mathscr{G}\big|_{U}\ar[r]&\mathscr{G}\big|_{U}
+		\end{tikzcd}
+		\]
+		is the \defn{restriction}\index{restriction} of $\mathscr{G}$ to $U$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 6.31.5]\label{}\text{}
+Let $X$ be a topological space. Let
+\[
+\begin{tikzcd}
+	j:U\ar[r]& X
+\end{tikzcd}
+\]
+be the inclusion of an open set $U$ of $X$.
+\begin{itemize}
+	\item Let $\mathscr{F}$ be an abelian presheaf on $U$. The \defn{extension}\index{extension by zero} of $\mathscr{F}$ by zero is the abelian presheaf on $X$ defined by
+		\begin{align*}
+			j\sub{p!}(\mathscr{F}) (V) :=
+			 \begin{cases}
+				 \mathscr{F} & V\subset U\\
+				 0&\textrm{otherwise}
+			\end{cases}
+		\end{align*}
+		with obvious restriction mappings. 
+	\item 
+	\item 
+\end{itemize}
+
+\end{definition}
+
+
+
+\subsection{Sites.}
+
+\subsection{Grothendieck topoi.}
+
+\subsection{Grothendieck's six-functor formalism.}
+
+
 \iffalse
 \section{The Riemann--Roch theorem}
 \subsection{Introduction.}
@@ -8832,6 +9203,8 @@ Now, $f'(\alpha)$ is invertible, so one can choose an element $r\in I$ such that
 \end{example}
 
 One can show that inseparable extensions are not \'etale.
+
+
 
 \section{Some books and papers}
 {\small
