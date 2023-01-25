@@ -7929,7 +7929,7 @@ A \defn{morphism of presheaves}\index{morphism of presheaves} with values in $\m
 associates each open set $U$ of $X$ to a morphism
 \[
 \begin{tikzcd}
-	\varphi : \mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
+	\overline{\varphi} : \mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
 \end{tikzcd}
 \]
 compatible with restriction morphisms.
@@ -8140,10 +8140,11 @@ and an $f$-map of sheaves of rings
 
 \end{definition}
 
-
+\iffalse
 \begin{definition}[ ]\label{}\text{}
 Let $X$ be a topological space. 
-Let $\mathscr{F}$ and $\mathscr{G}$ be quasicoherent $\mathscr{O}_X$-modules. The \defn{tensor product presheaf}\index{tensor product presheaf} is defined by
+Let $\mathscr{F}$ and $\mathscr{G}$ be quasicoherent $\mathscr{O}_X$-modules. 
+The \defn{tensor product presheaf}\index{tensor product presheaf} is defined by
 \begin{align*}
 	(\mathscr{F}\otimes^{\textrm{pre}}_{\mathscr{O}_X} \mathscr{G})(U) :=  \mathscr{F}(U) \tensor_{\mathscr{O}_X(U)}  \mathscr{G}(U)
 \end{align*}
@@ -8152,7 +8153,7 @@ for an open set $U$ of $X$. The \defn{tensor product sheaf}\index{tensor product
 	\mathscr{F}\tensor_{\mathscr{O}_X} \mathscr{G} := (\mathscr{F}\tensor^{\textrm{pre}}_{\mathscr{O}_X}\mathscr{G})^\sharp.
 \end{align*}
 \end{definition}
-
+\fi
 
 
 \begin{definition}[Stacks project Definition 6.26.1]\label{}\text{}
@@ -8213,6 +8214,21 @@ be the inclusion of an open set $U$ of $X$.
 \end{itemize}
 \end{definition}
 
+\iffalse
+\begin{definition}[Stacks project Definition 6.27.1]\label{}\text{}
+Let $X$ be a topological space.
+\begin{itemize}
+	\item Let $x\in X$ be a point. Let 
+		\[
+		\begin{tikzcd}
+			i_{x} :\{x\}\ar[r]& X
+		\end{tikzcd}
+		\]
+		be the inclusion. Let $A$ be a set and think of $A$ as a sheaf on the one-point space $\{x\}$. 
+\end{itemize}
+\end{definition}
+\fi
+
 \begin{definition}[Stacks project Definition 6.31.5]\label{}\text{}
 Let $X$ be a topological space. Let
 \[
@@ -8222,7 +8238,7 @@ Let $X$ be a topological space. Let
 \]
 be the inclusion of an open set $U$ of $X$.
 \begin{itemize}
-	\item Let $\mathscr{F}$ be an abelian presheaf on $U$. The \defn{extension}\index{extension by zero} of $\mathscr{F}$ by zero is the abelian presheaf on $X$ defined by
+	\item Let $\mathscr{F}$ be an abelian presheaf on $U$. The \defn{extension by zero}\index{extension by zero} of $\mathscr{F}$ is the abelian presheaf on $X$ defined by
 		\begin{align*}
 			j\sub{p!}(\mathscr{F}) (V) :=
 			 \begin{cases}
@@ -8230,14 +8246,156 @@ be the inclusion of an open set $U$ of $X$.
 				 0&\textrm{otherwise}
 			\end{cases}
 		\end{align*}
-		with obvious restriction mappings. 
-	\item 
-	\item 
+		with the obvious restriction mappings. 
+	\item Let $\mathscr{F}$ be an abelian sheaf on $U$. The \defn{extension by zero}\index{extension by zero} of $\mathscr{F}$ is the sheafification of the abelian presheaf $j\sub{p!}(\mathscr{F})$:
+		\begin{align*}
+			j_{!}(\mathscr{F}) := (j\sub{p!}(\mathscr{F})) ^{\sharp}.
+		\end{align*}
+	\item Let $\mathscr{C}$ be a category. Let $e$ be its initial object. Let $\mathscr{F}$ be a presheaf on $U$ with values in $\mathscr{C}$. The \defn{extension}\index{extension} by $e$ of $\mathscr{F}$ is the presheaf on $X$ with values in $\mathscr{C}$ defined by
+		\begin{align*}
+			j\sub{p!}(\mathscr{F}) (V) := 
+			 \begin{cases}
+				 \mathscr{F}(V)& V\subset U\\
+				 e&\textrm{otherwise}
+			\end{cases}
+		\end{align*}
+		with the obvious restriction mappings.
+	\item Let $\mathscr{C}$ be a category with initial object $e$. Let $\mathscr{F}$ be a sheaf on $U$ with values in $\mathscr{C}$. The \defn{extension}\index{extension} by $e$ of $\mathscr{F}$ is the sheafification of the presheaf $j\sub{p!}(\mathscr{F})$:
+		\begin{align*}
+			j_{!}(\mathscr{F}) := (j\sub{p!}(\mathscr{F})) ^{\sharp}.
+		\end{align*}
+	\item Let $\mathscr{O}$ be a presheaf of rings on $X$. Let $\mathscr{F}$ be a presheaf of $\mathscr{O}\big|_{U}$-modules. The \defn{extension by zero}\index{extension by zero} of $\mathscr{F}$is the presheaf of $\mathscr{O}$-modules equal to $j\sub{p!}(\mathscr{F})$ as an abelian presheaf with the multiplication
+		\[
+		\begin{tikzcd}
+			\mathscr{O}\times j\sub{p!}(\mathscr{F}) \ar[r]& j\sub{p!}(\mathscr{F}).
+		\end{tikzcd}
+		\]
+	\item Let $\mathscr{O}$ be a sheaf of rings on $X$. Let $\mathscr{F}$ be a sheaf of $\mathscr{O}\big|_{U}$-modules. The \defn{extension by zero}\index{extension by zero} of $\mathscr{F}$ is the $\mathscr{O}$-module equal to $j_{!}(\mathscr{F})$ as an abelian sheaf with the multiplication
+		\[
+		\begin{tikzcd}
+			\mathscr{O}\times j_{!}(\mathscr{F}) \ar[r]& j_{!}(\mathscr{F}).
+		\end{tikzcd}
+		\]
+		
 \end{itemize}
 
 \end{definition}
 
+\begin{remark}
+	$j_{!}$ does not commute with taking underlying sheaves of sets.
+\end{remark}
 
+\begin{definition}[Stacks project Definition 7.2.1]\label{}\text{}
+Let $\mathscr{C}$ be a category.
+A \defn{presheaf of sets}\index{presheaf of sets} on $\mathscr{C}$ is a contravariant functor
+\[
+\begin{tikzcd}
+	\mathscr{F}:\mathscr{C}\ar[r]& \catn{Set}.
+\end{tikzcd}
+\]
+A \defn{morphism of presheaves of sets}\index{morphism of presheaves of sets} is a transformation of functors.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 7.2.2]\label{}\text{}
+Let $\mathscr{C}$ and $\mathscr{A}$ be categories.
+A \defn{presheaf}\index{presheaf} on $\mathscr{C}$ with values in $\mathscr{A}$ is a contravariant functor 
+\[
+\begin{tikzcd}
+	\mathscr{F}:\mathscr{C}\ar[r]& \mathscr{A}.
+\end{tikzcd}
+\]
+A \defn{morphism of presheaves}\index{morphism of presheaves} 
+\[
+\begin{tikzcd}
+	\mathscr{F}\ar[r]& \mathscr{G}
+\end{tikzcd}
+\]
+is a transformation of functors.
+\end{definition}
+
+
+\begin{definition}[Stacks project Definition 7.3.1]\label{}\text{}
+Let $\mathscr{C}$ be a category. Let 
+\[
+\begin{tikzcd}
+	\varphi : \mathscr{F}\ar[r]&\mathscr{G}
+\end{tikzcd}
+\]
+be a morphism of presheaves of sets.
+\begin{itemize}
+	\item The morphism $\varphi$ is \defn{injective}\index{injective morphism of sheaves} if and only if 
+		 \[
+		\begin{tikzcd}
+			\varphi_{U} :\mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
+		\end{tikzcd}
+		\]
+		is injective for all objects $U$ in $\mathscr{C}$.
+	\item The morphism $\varphi$ is \defn{surjective}\index{surjective morphism of sheaves} if and only if
+		\[
+		\begin{tikzcd}
+			\varphi_{U}:\mathscr{F}(U)\ar[r]&  \mathscr{G}(U)
+		\end{tikzcd}
+		\]
+		is surjective for all objects $U$ in $\mathscr{C}$.	
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Stacks project Definition 7.3.3]\label{}\text{}
+Let $\mathscr{C}$ be a category. Let $\mathscr{G}$ be a presheaf of sets on $\mathscr{C}$.
+A presheaf of sets $\mathscr{F}$ is a \defn{sub-presheaf}\index{sub-presheaf} of $\mathscr{G}$ if and only if, for every object $U$ of $\mathscr{C}$, the set $\mathscr{F}(U)$ is a subset of $\mathscr{G}(U)$ compatibly with the restriction maps.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 7.6.1]\label{}\text{}
+Let $\mathscr{C}$ be a category.
+A \defn{family of morphisms with fixed target}\index{family of morphisms with fixed target} in $\mathscr{C}$ is a tuple $(U,\Lambda,(\varphi_{\lambda}))$ where $U$ is an object in $\mathscr{C}$, $\Lambda$ is a set, and $(\varphi_{\lambda})$ is a collection of morphisms
+\[
+\begin{tikzcd}
+	\varphi_{\lambda} : U_{\lambda} \ar[r]& U
+\end{tikzcd}
+\]
+indexed by $\Lambda$.
+\end{definition}
+
+\begin{definition}[Stacks project Definition 7.6.2]\label{sitestacksproject}\text{}
+A \defn{site}\index{site} is a category $\mathscr{C}$ with a set $\Cov(\mathscr{C})$ of families of morphisms with fixed target $(U,\lambda,(\varphi_{\lambda}))$, \defn{coverings}\index{covering} of $\mathscr{C}$, that satisfy the following conditions:
+\begin{enumerate}[leftmargin=*]
+	\item If 
+		\[
+		\begin{tikzcd}
+			\varphi:V\ar[r]& U
+		\end{tikzcd}
+		\]
+		is an isomorphism, then $(U,1,\varphi) \in \Cov(\mathscr{C})$.
+	\item If $(U,\Lambda,(\varphi_{\lambda})) \in \Cov(\mathscr{C})$ and, for every $\lambda\in \Lambda$, $(U_{\lambda}, I_{\lambda}, (\varphi_{i_{\lambda}})) \in \Cov(\mathscr{C})$, then 
+		\[
+			\left( U,\bigcup_{\lambda\in\Lambda}I_{\lambda}, (\varphi_{\lambda}\circ \varphi_{i_{\lambda}}) \right) \in \Cov(\mathscr{C}).
+			\]
+	\item If $(U,\Lambda,(\varphi_{\lambda})) \in \Cov(\mathscr{C})$ and 
+		\[
+		\begin{tikzcd}
+			V\ar[r]&U
+		\end{tikzcd}
+		\]
+		is a morphism of $\mathscr{C}$, then $U_{\lambda}\times_{U}V$ exists for all $\lambda\in\Lambda$ and $(V,\Lambda, (\psi_{\lambda}))\in \Cov(\mathscr{C})$ where $\psi_{\lambda}$ is a morphism
+		\[
+		\begin{tikzcd}
+			\psi_{\lambda} : U_{\lambda}\times_{U}V\ar[r]& V.
+		\end{tikzcd}
+		\]
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[SGA IV]\label{}\text{}
+A \defn{universe}\index{universe} is a non-empty set $\mathscr{U}$ that satisfies the following conditions:
+\begin{enumerate}[leftmargin=*, label = (U\arabic*)]
+	\item If $x\in \mathscr{U}$ and $y\in x$, then $y\in \mathscr{U}$.
+	\item If $x,y\in \mathscr{U}$, then $\{x,y\}\in \mathscr{U}$.
+	\item If $x\in \mathscr{U}$, then $\mathscr{P}(x)\in  \mathscr{U}$.
+	\item If $(x_{\lambda} : \lambda\in \Lambda\in \mathscr{U})$ is a family of elements in $\mathscr{U}$, then $\bigcup_{\lambda\in\Lambda}x_{\lambda}\in \mathscr{U}$.
+\end{enumerate}
+\end{definition}
+
+\subsection{Grothendieck topology.}
 
 \subsection{Sites.}
 
