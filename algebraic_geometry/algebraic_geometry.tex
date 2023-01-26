@@ -8000,11 +8000,11 @@ Let $X$ be a topological space. Let $\mathscr{O}$ be a presheaf of rings on $X$.
 \begin{definition}[Stacks project Definition 6.7.1]\label{}\text{}
 Let $X$ be a topological space.
 \begin{itemize}
-	\item A \defn{sheaf}\index{sheaf} of sets on $X$ is a presheaf of sets on $X$ that satisfies the following property: given an open cover $(U_{\alpha}) _{\alpha\in A}$ of an open set $U$ of $X$ and a collection of sections $(s_{\alpha}\in \mathscr{F}(U_{\alpha}))_{\alpha\in A} $ such that, for all $\alpha,\beta\in A$,
+	\item A \defn{sheaf}\index{sheaf} of sets on $X$ is a presheaf of sets on $X$ that satisfies the following property: given an open cover $(U_{\alpha})$ of an open set $U$ of $X$ and a collection of sections $(s_{\alpha}\in \mathscr{F}(U_{\alpha})) $ such that, for all $\alpha$ and $\beta$,
 		\begin{align*}
 			s_{\alpha}\big|_{U_{\alpha}\cap U_{\beta}} = s_{\beta}\big|_{U_{\alpha}\cap U_{\beta}},
 		\end{align*}
-		there exists a unique section $s\in \mathscr{F}(U)$ such that $s_{\alpha} = s\big|_{U_{\alpha}}$ for all $\alpha\in A$.
+		there exists a unique section $s\in \mathscr{F}(U)$ such that $s_{\alpha} = s\big|_{U_{\alpha}}$ for all $\alpha$.
 	\item A morphism of sheaves of sets is a morphism of presheaves of sets between two sheaves.
 \end{itemize}
 \end{definition}
@@ -8015,10 +8015,10 @@ An \defn{abelian sheaf}\index{abelian sheaf} is an abelian presheaf whose underl
 
 
 \begin{definition}[Stacks project Definition 6.9.1]\label{}\text{}
-Let $X$ be a topological space. Let $\mathscr{C}$ be a category with products. A \defn{sheaf}\index{sheaf} on $X$ with values in $\mathscr{C}$ is a presheaf on $X$ with values in $\mathscr{C}$ where, for every open cover $(U_{\alpha}) _{\alpha\in A}$ of an open set $U$ of $X$, the diagram
+Let $X$ be a topological space. Let $\mathscr{C}$ be a category with products. A \defn{sheaf}\index{sheaf} on $X$ with values in $\mathscr{C}$ is a presheaf on $X$ with values in $\mathscr{C}$ where, for every open cover $(U_{\alpha})$ of an open set $U$ of $X$, the diagram
 \[
 \begin{tikzcd}[column sep = 4 em]
-	\mathscr{F}(U) \ar[r] & \displaystyle \prod_{\alpha\in A} \mathscr{F}(U_{\alpha}) \ar[r,shift left = 0.5 ex] \ar[r, shift right = 0.5 ex] &\displaystyle \prod_{(\alpha,\beta)\in A\times A} \mathscr{F}(U_{\alpha}\cap U_{\beta})
+	\mathscr{F}(U) \ar[r] & \displaystyle \prod_{\alpha} \mathscr{F}(U_{\alpha}) \ar[r,shift left = 0.5 ex] \ar[r, shift right = 0.5 ex] &\displaystyle \prod_{\alpha,\beta} \mathscr{F}(U_{\alpha}\cap U_{\beta})
 \end{tikzcd}
 \]
 is an equalizer diagram in $\mathscr{C}$.
@@ -8345,6 +8345,7 @@ Let $\mathscr{C}$ be a category. Let $\mathscr{G}$ be a presheaf of sets on $\ma
 A presheaf of sets $\mathscr{F}$ is a \defn{sub-presheaf}\index{sub-presheaf} of $\mathscr{G}$ if and only if, for every object $U$ of $\mathscr{C}$, the set $\mathscr{F}(U)$ is a subset of $\mathscr{G}(U)$ compatibly with the restriction maps.
 \end{definition}
 
+\iffalse
 \begin{definition}[Stacks project Definition 7.6.1]\label{}\text{}
 Let $\mathscr{C}$ be a category.
 A \defn{family of morphisms with fixed target}\index{family of morphisms with fixed target} in $\mathscr{C}$ is a tuple $(U,\Lambda,(\varphi_{\lambda}))$ where $U$ is an object in $\mathscr{C}$, $\Lambda$ is a set, and $(\varphi_{\lambda})$ is a collection of morphisms
@@ -8384,7 +8385,9 @@ A \defn{site}\index{site} is a category $\mathscr{C}$ with a set $\Cov(\mathscr{
 		\]
 \end{enumerate}
 \end{definition}
+\fi
 
+\iffalse
 \begin{definition}[SGA IV]\label{}\text{}
 A \defn{universe}\index{universe} is a non-empty set $\mathscr{U}$ that satisfies the following conditions:
 \begin{enumerate}[leftmargin=*, label = (U\arabic*)]
@@ -8394,10 +8397,267 @@ A \defn{universe}\index{universe} is a non-empty set $\mathscr{U}$ that satisfie
 	\item If $(x_{\lambda} : \lambda\in \Lambda\in \mathscr{U})$ is a family of elements in $\mathscr{U}$, then $\bigcup_{\lambda\in\Lambda}x_{\lambda}\in \mathscr{U}$.
 \end{enumerate}
 \end{definition}
+\fi
 
-\subsection{Grothendieck topology.}
+\begin{definition}[Artin 1962 Definition 0.1]\label{}\text{}
+A \defn{Grothendieck topology}\index{Grothendieck topology} $\mathscr{T}$ consists of a category $\Cat(\mathscr{T})$ and a set $\Cov(\mathscr{T})$ of families of maps 
+\[
+\begin{tikzcd}
+	\{U_{i}\ar[r]& U\}_{i\in I}
+\end{tikzcd}
+\]
+(where $U$ is fixed in each family) satisfying the following properties.
+ \begin{itemize}
+	\item If $\varphi$ is an isomorphism, then $\{\varphi\}\in \Cov(\mathscr{T})$.
+	\item If 
+		\[
+		\begin{tikzcd}
+			\{U_{i}\ar[r]& U\}\in \Cov(\mathscr{T})
+		\end{tikzcd}
+		\]
+		and
+		\[
+		\begin{tikzcd}
+			\{V_{ij}\ar[r]& U_{i}\}\in \Cov(\mathscr{T})
+		\end{tikzcd}
+		\]
+		for each $i$, then the family
+		\[
+		\begin{tikzcd}
+			\{V_{ij} \ar[r]& U\}
+		\end{tikzcd}
+		\]
+		obtained by composition is in $\Cov(\mathscr{T})$.
+	\item If
+		\[
+		\begin{tikzcd}
+			\{U_{i}\ar[r]& U\}\in \Cov(\mathscr{T})
+		\end{tikzcd}
+		\]
+		and 
+		\[
+		\begin{tikzcd}
+			V\ar[r]& U
+		\end{tikzcd}
+		\]
+		is a morphism of $\Cat(\mathscr{T})$, then $U_{i}\times_{U}V$ exists and 
+		\[
+		\begin{tikzcd}
+			\{U_{i}\times_{U}V\ar[r]& V\}\in \Cov(\mathscr{T}).
+		\end{tikzcd}
+		\]
+\end{itemize}
+\end{definition}
 
-\subsection{Sites.}
+\subsection{\v Cech cohomology}
+Let $\mathscr{C}$ be a category. Let
+\[
+\begin{tikzcd}
+	\{U_{\alpha}\ar[r] & V\}_{\alpha\in I}
+\end{tikzcd}
+\]
+be a family of maps in $\mathscr{C}$.
+Suppose that the produces used below exist in $\mathscr{C}$.
+We get a lot of maps denoted symbolically by the figure below:
+\[
+\begin{tikzcd}[column sep = 5 em]
+V& \{U_{\alpha}\}_{\alpha\in I}\ar[l] & \{U_{\alpha}\times _{V}U_{\beta}\}_{(\alpha,\beta)\in I ^{2}} \ar[l,shift left = 1.7 ex, "\widehat{1}",swap] \ar[l,shift right = 1.3 ex, "\widehat{0}",swap]\\
+         &\phantom{\{U_{\alpha}\}_{\alpha\in I}}&\{U_{\alpha}\times_{V}U_{\beta}\times_{V}U_{\gamma}\} _{(\alpha,\beta,\gamma)\in I^{3}}\ar[l, shift right = 3 ex, "\widehat{0}",swap] \ar[l, "\widehat{1}",swap] \ar[l, shift left = 3 ex, "\widehat{2}",swap] & \cdots.\ar[l,shift left = 1.5 ex] \ar[l, shift left = 0.5 ex] \ar[l, shift right = 0.5 ex] \ar[l, shift right = 1.5 ex]
+         \end{tikzcd} 
+\]
+If $\mathscr{F}$ is a presheaf on $\mathscr{C}$, we obtain a diagram
+\[
+\begin{tikzcd}[column sep = 5 em]
+\displaystyle \prod_\alpha \mathscr{F}(U_\alpha) \ar[r,shift right = 1.7 ex, "\mathscr{F}(\widehat{1})"] \ar[r,shift left = 1.3 ex, "\mathscr{F}(\widehat{0})"] & \displaystyle \prod_{(\alpha,\beta)} \mathscr{F}(U_\alpha\times_V U_\beta)\\
+\phantom{\displaystyle \prod_\alpha \mathscr{F}(U_\alpha)}\ar[r, shift left = 3 ex, "\mathscr{F}(\widehat{0})",] \ar[r, "\mathscr{F}(\widehat{1})",] \ar[r, shift right = 3 ex, "\mathscr{F}(\widehat{2})",] &\displaystyle \prod_{(\alpha,\beta,\gamma)} \mathscr{F}(U_\alpha\times_VU_\beta\times_VU_\gamma) \ar[r,shift left = 1.5 ex] \ar[r, shift left = 0.5 ex] \ar[r, shift right = 0.5 ex] \ar[r, shift right = 1.5 ex]&\cdots
+\end{tikzcd}
+\]
+in the canonical way. Define
+\[
+\begin{tikzcd}
+	d_n : \displaystyle \prod_{(\alpha_0,\hdots,\alpha_{n})} \mathscr{F}(U_{\alpha_0} \times_{V} \cdots\times_{V} U_{\alpha_{n}}) \ar[r]& \displaystyle\prod_{(\alpha_0,\hdots, \alpha_{n+1})} \mathscr{F}(U_{\alpha_0}\times_{V}\cdots \times_{V}U_{\alpha_{n+1}}) 
+\end{tikzcd}
+\]
+by
+\begin{align*}
+	d_{n} = \sum_{i=0}^{n+1} (-1) ^{i}\mathscr{F}(\widehat{i}),
+\end{align*}
+and verify $d_{n+1}\circ d_{n}=0$. One obtains a functor 
+\[
+\begin{tikzcd}
+	\catn{PAb}(\mathscr{C}) \ar[r]& \textrm{cochain complexes}	
+\end{tikzcd}
+\]
+which is obviously exact.
+Taking cohomology, we get an exact sequence of cohomological functors
+\[
+\begin{tikzcd}
+	\catn{PAb}(\mathscr{C}) \ar[r]& \catn{Ab}
+\end{tikzcd}
+\]
+denoted by
+\[
+\begin{tikzcd}
+	H^{q}(\{U_{\alpha}\ar[r]& V\},\ ),
+\end{tikzcd}
+\]
+
+where
+\[
+\begin{tikzcd}
+        H^{0}(\{U_{\alpha}\ar[r]& V\}, \mathscr{F}) = \displaystyle \Ker \Bigg( \prod_{\alpha}\mathscr{F}(U_{\alpha}) \ar[r,shift left = 0.5 ex]\ar[r,shift right =0.5 ex] & \displaystyle \prod_{(\alpha,\beta)} \mathscr{F}(U_{\alpha}\times_{V}U_{\beta})\Bigg).
+\end{tikzcd}
+\]
+These functors are called the \defn{\v Cech cohomology}\index{\v Cech cohomology} of the family
+\[
+\begin{tikzcd}
+	\{U_\alpha \ar[r]& V\}.
+\end{tikzcd}
+\]
+These functors are effecable and the derived functors of the left exact functor $H^0$.
+
+\begin{definition}[Artin 1962 Definition 3.3]\label{i_3.3}\text{}
+Let 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\{U_{\alpha}\ar[r]& V\}_{\alpha\in I};\\
+	\{U'_{\nu}\ar[r]& V\}_{\nu\in I'};
+\end{tikzcd}
+\]
+be families of maps in $\mathscr{C}$.
+A \defn{map}\index{map} 
+\[
+\begin{tikzcd}
+	f: \{U_{\alpha}\ar[r]& V\}\ar[r]& \{U'_{\nu}\ar[r]& V\}
+\end{tikzcd}
+\]
+is a map
+\[
+\begin{tikzcd}
+	\eps : I\ar[r]& I'
+\end{tikzcd}
+\]
+and for $\alpha\in I$ a map
+\[
+\begin{tikzcd}
+	f_{\alpha} : U_{\alpha} \ar[r]& U'_{\eps(\alpha)}
+\end{tikzcd}
+\]
+such that
+\[
+\begin{tikzcd}
+	U_{\alpha}\ar[rr]\ar[dr]&&U_{\eps(\alpha)} \ar[dl]\\
+				&V
+\end{tikzcd}
+\]
+commutes.
+
+
+\end{definition}
+
+
+\subsection{The associated sheaf to a presheaf.}
+Let $\mathscr{T}$ be a topology. Let $\catn{PAb}(\mathscr{T})$ be the category of abelian presheaves on $\mathscr{T}$, and let $\catn{Ab}(\mathscr{T})$ be the set of sheaves. 
+Make $\catn{Ab}(\mathscr{T})$ into a full subcatgeory of $\catn{PAb}(\mathscr{T})$ (that is, define a morphism of sheaves to be a morphism of presheaves).
+Write
+ \[
+\begin{tikzcd}
+	i:\catn{Ab}(\mathscr{T}) \ar[r]& \catn{PAb}(\mathscr{T})
+\end{tikzcd}
+\]
+for the inclusion.
+
+The claim is that there is a functor 
+\[
+\begin{tikzcd}
+	\sharp : \catn{PAb}(\mathscr{T})\ar[r]& \catn{Ab}(\mathscr{T})
+\end{tikzcd}
+\]
+adjoint to $i$.
+
+For $\mathscr{F}\in \catn{PAb}(\mathscr{T})$, the sheaf $\mathscr{F}^{\sharp} := \sharp(\mathscr{F})$ is the \defn{associated sheaf}\index{associated sheaf} to $\mathscr{F}$ (the sheafification\index{sheafification} of $\mathscr{F}$). 
+
+Write $\catn{PAb}:=\catn{PAb}(\mathscr{T})$ and $\catn{Ab}:=\catn{Ab}(\mathscr{T})$. 
+Since $\catn{Ab}$ is a subcategory of $\catn{PAb}$, the adjointness property can be re-stated: there is a functorial homomorphism
+\[
+\begin{tikzcd}
+	\mathscr{F}\ar[r]& \mathscr{F}^{\sharp}
+\end{tikzcd}
+\]
+that has the universal mapping property for maps of $\mathscr{F}$ into sheaves. 
+
+We will define a functor 
+\[
+\begin{tikzcd}
+	+ : \catn{PAb}\ar[r]& \catn{PAb}.
+\end{tikzcd}
+\]
+Let $U\in \Cat(\mathscr{T})$ be fixed, and denote by $\mathscr{J}_{U}$ the category of coverings 
+\[
+\begin{tikzcd}
+	\{U_{\alpha}\ar[r]& U\}
+\end{tikzcd}
+\]
+of $U$ in $\Cov(\mathscr{T})$, with maps in the sense of \cref{i_3.3}.
+A presheaf $\mathscr{F}\in \catn{PAb}$ induces a functor
+\[
+\begin{tikzcd}
+	\mathscr{F}_{U} : \mathscr{J}_{U}\op \ar[r]& \catn{Ab}
+\end{tikzcd}
+\]
+by
+\[
+\begin{tikzcd}
+	\mathscr{F}_{U}(\{U_{\alpha}\ar[r]& U\}) = \Ker\Bigg ( \prod \mathscr{F}(U_{\alpha}) \ar[r,shift right=0.5 ex] \ar[r,shift left = 0.5 ex] & \mathscr{F}(U_{\alpha}\times_{U}U_{\beta})  \Bigg) = H^{0}(\{U_{\alpha}\ar[r]& U\}, \mathscr{F}).
+\end{tikzcd}
+\]
+Note that, for
+\[
+\begin{tikzcd}
+	\phi : V\ar[r]& U,
+\end{tikzcd}
+\]
+we get also a functor
+\[
+\begin{tikzcd}
+	\mathscr{J}(\phi) :  \mathscr{J}_{U}\ar[r]& \mathscr{J}_{V}
+\end{tikzcd}
+\]
+and a morphism of functors
+\[
+\begin{tikzcd}
+	\mathscr{F}_U \ar[r]& \mathscr{F}_{U}\cdot \mathscr{J}(\phi)
+\end{tikzcd}
+\]
+since 
+\[
+\begin{tikzcd}
+	U_{\alpha}\times_{U}V \ar[d] & U_{\alpha}\times_{U} U_{\beta}\times_{U} V\ar[l,shift right = 0.5 ex] \ar[l, shift left = 0.5 ex] \ar[r,"\sim"]\ar[d] & U_{\alpha}\times_{U} V\times_{V} U_{\alpha}\times_{U} V\\
+	U_{\alpha}&U_{\alpha}\times_{U}U_{\beta}\ar[l, shift right=0.5 ex]\ar[l,shift left = 0.5 ex]
+\end{tikzcd}
+\]
+commutes and since $\Ker$ is a functor. Therefore, we get 
+\[
+\begin{tikzcd}
+	\varinjlim \mathscr{F}_{U}\ar[r]& \varinjlim \mathscr{F}_{V}.
+\end{tikzcd}
+\]
+
+Set 
+\begin{align*}
+	\mathscr{F}^{+}(U) = \varinjlim  \mathscr{F}_{U} := \check H^{0}(\mathscr{T},U;\mathscr{F})
+\end{align*}
+and give $\mathscr{F}^{+}$ the structure of a presheaf just defined.
+
+Since $\prod$ is exact and $\Ker$ is left exact, $+$ is left exact.
+
+\begin{remark}
+	
+\end{remark}
+
+
+
+
 
 \subsection{Grothendieck topoi.}
 
