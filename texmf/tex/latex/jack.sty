@@ -16,6 +16,7 @@
 \newif \ifold \oldfalse
 \newif \iffrench \frenchfalse
 \newif \ifslides \slidesfalse
+\newif \ifplaintitle \plaintitlefalse
 
 
 % TODO: Add arg options
@@ -35,6 +36,7 @@
 \DeclareOption {assg} {\assgtrue}
 \DeclareOption {french} {\frenchtrue}
 \DeclareOption {slides} {\slidestrue}
+\DeclareOption {plaintitle} {\plaintitletrue}
 
 % USELESS OPTIONS
 \DeclareOption {wide} {\jackwidetrue}
@@ -332,7 +334,8 @@
 \DeclareMathOperator {\bd} {bd}                             		
 \DeclareMathOperator {\Br} {Br}                             
 \DeclareMathOperator {\Burn} {Burn}					
-\DeclareMathOperator {\CaCl} {CaCl}				
+\DeclareMathOperator {\CaCl} {CaCl}	
+\DeclareMathOperator {\card} {card}			
 \DeclareMathOperator {\Cat} {Cat}
 \DeclareMathOperator {\CC} {C}
 \DeclareMathOperator {\chr} {char}                          	
@@ -449,6 +452,7 @@
 \setenumerate[2]{label=(\alph*)}	% second-order enumerate label
 
 \setlist [itemize] {label = ------, leftmargin = *}
+\setlist [enumerate] {leftmargin = *}
 
 
 \ifnone	% [none]
@@ -490,11 +494,12 @@
 	\newtheorem {corollary} [thm] {Corollary}
 	\newtheorem {proposition} [thm] {Proposition}
 	\newtheorem {conj} [thm] {Conjecture}
+	\newtheorem {surprise} [thm] {Surprise}
 	\newtheorem {claim} [thm] {Claim}
 	\newtheorem {remark} [thm] {Remark}
 	\newtheorem {definition} [thm] {Definition}
 	\newtheorem {defprop} [thm] {Definition/Proposition}
-	\newtheorem{question} [thm] {Question}
+	\newtheorem {question} [thm] {Question}
 	\newtheorem {example} [thm] {Example}
 	\newtheorem {examples} [thm] {Examples}
 	\newtheorem {convention} [thm] {Convention}
@@ -835,6 +840,7 @@
 			\newtheorem {examples} [thm] {Examples}
 			\newtheorem {convention} [thm] {Convention}
 			\newtheorem {exercise} [thm] {Exercise}
+			\newtheorem {surprise} [thm] {Surprise}
 			
 			\ifassg	% if this is in an assignment, ignore sections
 				\newtheorem {problem} {Problem}	
@@ -851,6 +857,8 @@
 			\newtheorem {ramble} [thm] {Ramble}
 			
 			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}} {\hfill$\square$\end{enumerate}\end{pf}}
+			
+			\newenvironment {iproof} {\begin{pf}\text{}\begin{itemize}} {\hfill$\square$\end{itemize}\end{pf}}
 
 			\ifjackcourse	% not [none], [course]
 			
@@ -966,6 +974,8 @@
 					% 	Define `jauthor` for you, the person writing this
 					%		\def \jtitle {Title}
 					%		\def \jauthor {Me}
+					
+					\geometry{left = 0.5 in, right = 0.5 in, top = 1 in, bottom = 1 in}
 			
 					\iffalse%\ifscr
 					
@@ -1049,7 +1059,15 @@
         						\indexsetup {othercode = {\thispagestyle {fancy}}}
 					\fi
 				\fi
+				
+			\else
+			
+				\ifplaintitle
+					\geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 0.5 in}
+				\fi
+			
 			\fi
+			
 		\fi
 	\fi
 \fi

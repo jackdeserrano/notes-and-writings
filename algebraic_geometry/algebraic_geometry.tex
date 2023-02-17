@@ -8350,7 +8350,7 @@ Suppose that $X$ is Noetherian and integral. Now, $X$ has a function field $K$. 
 
 One recalls that, if $A$ is a normal ring,
 \begin{align*}
-	A = \bigcap_{\codim\mathfrak{p} =1} A_{\mathfrak{p}}.
+	A = \bigcap_{\codim(\mathfrak{p}) =1} A_{\mathfrak{p}}.
 \end{align*}
 Look at any open subscheme $Y=\Spec A\subset X$. Suppose that a Cartier divisor is represented locally by $g/h$ on $Y$. If its image is $0$ in the group of Weil divisors, then $g/h,h/g\in R_{\mathfrak{p}}$ for all prime ideals $\mathfrak{p}$. Therefore, $g/h$ is a unit of $A$ and is trivial as a Cartier divisor, so the kernel of this homomorphism is trivial.
 
@@ -10581,18 +10581,19 @@ Write
 \]
 for the inclusion.
 
-The claim is that there is a functor 
+\begin{theorem}[Artin 1962 Theorem 1.1]\label{t_{1.1}}
+There is a functor 
 \[
 \begin{tikzcd}
 	\sharp : \catn{PAb}(\mathscr{T})\ar[r]& \catn{Ab}(\mathscr{T})
 \end{tikzcd}
 \]
 adjoint to $i$.
+\end{theorem}
 
 For $\mathscr{F}\in \catn{PAb}(\mathscr{T})$, the sheaf $\mathscr{F}^{\sharp} := \sharp(\mathscr{F})$ is the \defn{associated sheaf}\index{associated sheaf} to $\mathscr{F}$ (the sheafification\index{sheafification} of $\mathscr{F}$). 
 
-Write $\catn{PAb}:=\catn{PAb}(\mathscr{T})$ and $\catn{Ab}:=\catn{Ab}(\mathscr{T})$. 
-Since $\catn{Ab}$ is a subcategory of $\catn{PAb}$, the adjointness property can be re-stated: there is a functorial homomorphism
+Since $\catn{Ab}(\mathscr{T})$ is a subcategory of $\catn{PAb}(\mathscr{T})$, the adjointness property can be re-stated: there is a functorial homomorphism
 \[
 \begin{tikzcd}
 	\mathscr{F}\ar[r]& \mathscr{F}^{\sharp}
@@ -10603,7 +10604,7 @@ that has the universal mapping property for maps of $\mathscr{F}$ into sheaves.
 We will define a functor 
 \[
 \begin{tikzcd}
-	+ : \catn{PAb}\ar[r]& \catn{PAb}.
+	+ : \catn{PAb}(\mathscr{T})\ar[r]& \catn{PAb}(\mathscr{T}).
 \end{tikzcd}
 \]
 Let $U\in \Cat(\mathscr{T})$ be fixed, and denote by $\mathscr{J}_{U}$ the category of coverings 
@@ -10613,7 +10614,7 @@ Let $U\in \Cat(\mathscr{T})$ be fixed, and denote by $\mathscr{J}_{U}$ the categ
 \end{tikzcd}
 \]
 of $U$ in $\Cov(\mathscr{T})$, with maps in the sense of \cref{i_3.3}.
-A presheaf $\mathscr{F}\in \catn{PAb}$ induces a functor
+A presheaf $\mathscr{F}\in \catn{PAb}(\mathscr{T})$ induces a functor
 \[
 \begin{tikzcd}
 	\mathscr{F}_{U} : \mathscr{J}_{U}\op \ar[r]& \catn{Ab}
@@ -10666,9 +10667,79 @@ and give $\mathscr{F}^{+}$ the structure of a presheaf just defined.
 Since $\prod$ is exact and $\Ker$ is left exact, $+$ is left exact.
 
 \begin{remark}
-	
+	For every 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\{U_{\alpha}\ar[r]& U\} \in \mathscr{J}_U,
+\end{tikzcd}
+\]
+there is a canonical map
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{F}(U)\ar[r]& \mathscr{F}_U(\{U_{\alpha}\ar[r]& V\})
+\end{tikzcd}
+\]
+given by 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{F}(U)\ar[r]& \prod \mathscr{F}(U_\alpha).
+\end{tikzcd}
+\]
+Since connectedness holds in $\mathscr{J}_U$, the limit of the constant functor 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{J}_U^0 \ar[r]& \catn{Ab}
+\end{tikzcd}
+\]
+with value $\mathscr{F}(U)$ is canonically isomorphic to $\mathscr{F}(U)$.
+We get a functorial homomorphism
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{F}\ar[r]&\mathscr{F}^+
+\end{tikzcd}
+\]
+and, by the definition of a sheaf, if $\mathscr{G}\in \catn{Ab}(\mathscr{T})$, then
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{G}\ar[r]&\mathscr{G}^+
+\end{tikzcd}
+\]
+is bijective. 
+Hence any map of $\mathscr{F}$ into a sheaf must factor through $\mathscr{F}^+$. Therefore, \cref{t_{1.1}} holds if we show
 \end{remark}
 
+\begin{surprise}\label{surprise}
+$\mathscr{F}^{++}$ is a sheaf.
+\end{surprise}
+
+\begin{definition}[Artin 1962 Definition 1.3]
+Let $\mathscr{F}\in \catn{PAb}(\mathscr{T})$. Then, $\mathscr{F}$ \defn{satisfies (+)}\index{satisfying (+)} if and only if, for all 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\{U_{\alpha}\ar[r]& U\} \in \Cov(\mathscr{T}),
+\end{tikzcd}
+\]
+the map
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{F}(U)\ar[r]& \prod\mathscr{F}(U_\alpha)
+\end{tikzcd}
+\]
+is injective.
+\end{definition}
+
+\Cref{surprise} (and hence \cref{t_{1.1}}) follows from the following.
+
+\begin{lemma}[Artin 1962 Lemma 1.4]\label{l_{1.4}}\text{}
+\begin{enumerate}
+\item $\mathscr{F}^+$ satisfies (+).
+\item If $\mathscr{F}$ satisfies (+), then $\mathscr{F}^+$ is a sheaf.
+\end{enumerate}
+\end{lemma}
+
+\begin{eproof}
+\item
+\end{eproof}
 
 
 
@@ -11354,7 +11425,7 @@ One can reduce this to computing
 where $K$ is the field of rational functions on $X$. 
 The \'etale cohomology of the spectrum of a field is the same as Galois cohomology
 \begin{align*}
-	\HH^{q}(\Gal(\overline{K}/K),\cdot).
+	\HH^{q}(\Gal(\overline{K}/K),\ ).
 \end{align*}
 \begin{theorem}[Tsen]\label{tsent}\index{Tsen's theorem}\text{}
 Suppose that $K$ is the field of rational functions on a curve over an algebraically closed field $\Omega$. Then, $K$ is $\mathscr{C}_{1}$.\footnote{That is, any homogeneous polynomial in $n$ variables of degree less than $n$ has a nonzero solution.}
