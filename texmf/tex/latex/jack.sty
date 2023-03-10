@@ -53,7 +53,7 @@
 \RequirePackage {amsmath, amsthm, amssymb, amsfonts}
 
 \RequirePackage {microtype}
-\DisableLigatures{encoding = *, family = * }
+%\DisableLigatures{encoding = *, family = * }
 
 \RequirePackage {thmtools}
 \RequirePackage [framemethod = TikZ] {mdframed}
@@ -354,7 +354,8 @@
 \DeclareMathOperator {\D} {D}               
 \let \d \relax
 \DeclareMathOperator {\d} {d}
-\DeclareMathOperator {\diag} {diag}      
+\DeclareMathOperator {\diag} {diag}  
+\DeclareMathOperator {\diam} {diam}        
 \DeclareMathOperator {\Disc} {Disc}          
 \DeclareMathOperator {\Div} {Div}                
 \DeclareMathOperator {\dom} {dom}           
@@ -474,41 +475,90 @@
 	%	warning [Warning]
 	%	problem [Problem]
 	
-	\newtheoremstyle{thm}   % name
-                    {1 em}	% space above
-                    {1 em}	% space below
-                    {}		% body font
-                    {0 em}	% indent amount
-                    {\bfseries} % theorem head font
-                    {.------}	% punctuation after theorem head
-                    {0 em}	% space after theorem head
-                    {}	% theorem head spec
+	\let\proof\relax		% will redefine the proof environment for style
+		\let\endproof\relax	% "
+	                \newtheoremstyle {thm}   	% name
+                    {1 em}              	% space above
+                    {1 em}              	% space below
+                    {\iffalse\itshape\fi}	% body font
+                    {0 em}              	% indent amount
+                    {\bfseries}         	% theorem head font
+                    {.}                 	% punctuation after theorem head
+                    {1 em}              	% space after theorem head
+                    {}                  	% theorem head spec
+    
+                \newtheoremstyle {defn}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\bfseries}
+                    {.}
+                    {1 em}
+                    {}
+            
+                \newtheoremstyle {remark}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\bfseries}
+                    {.------}
+                    {0 em}
+                    {}
+                
+                \newtheoremstyle {proof}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\bfseries}
+                    {.------}
+                    {0 em}
+                    {}
+    
+			\theoremstyle {proof}
+			\newtheorem* {proof} {Proof}
+			\newtheorem* {pf} {Proof}
+			\newtheorem* {esquisse} {Esquisse}
+			
+			\let \tempendproof = \endproof
+			\def \endproof {\hfill\mbox{$\square$}\tempendproof}
+			
+			\numberwithin {equation} {section}
+			\theoremstyle {thm}
+			\newtheorem {thm} {Theorem}
+			\numberwithin {thm} {section}
+				\newtheorem {theorem} [thm] {Theorem}		
+			\newtheorem {lemma} [thm] {Lemma}
+			\newtheorem {corollary} [thm] {Corollary}
+			\newtheorem {algorithm} [thm] {Algorithm}
+			\newtheorem {proposition} [thm] {Proposition}
+			\newtheorem {conj} [thm] {Conjecture}
 
-	\newcommand {\defn} [1] {{\bfseries #1}}	% keywords emphasized with slanted font
-	
-	\numberwithin {equation} {section}
-	\theoremstyle {thm}
-	\newtheorem {thm} {Theorem} [section]
-	\numberwithin {thm} {section}
-	\newtheorem {lemma} [thm] {Lemma}
-	\newtheorem {corollary} [thm] {Corollary}
-	\newtheorem {proposition} [thm] {Proposition}
-	\newtheorem {conj} [thm] {Conjecture}
-	\newtheorem {surprise} [thm] {Surprise}
-	\newtheorem {claim} [thm] {Claim}
-	\newtheorem {remark} [thm] {Remark}
-	\newtheorem {definition} [thm] {Definition}
-	\newtheorem {defprop} [thm] {Definition/Proposition}
-	\newtheorem {question} [thm] {Question}
-	\newtheorem {example} [thm] {Example}
-	\newtheorem {examples} [thm] {Examples}
-	\newtheorem {convention} [thm] {Convention}
-	\newtheorem {exercise} [thm] {Exercise}
-	\newtheorem {warn} [thm] {Warning}
-	\newtheorem {problem} [thm] {Problem}
-	
-	\setenumerate [1] {label = (\arabic*)}
-	\setenumerate [2] {label = (\roman*)}
+			\theoremstyle {defn}
+			\newtheorem {definition} [thm] {Definition}
+			\newtheorem {defprop} [thm] {Definition/Proposition}
+			\newtheorem {question} [thm] {Question}
+			\newtheorem {example} [thm] {Example}
+			\newtheorem {examples} [thm] {Examples}
+			\newtheorem {convention} [thm] {Convention}
+			\newtheorem {exercise} [thm] {Exercise}
+			\newtheorem {surprise} [thm] {Surprise}
+			
+			\newtheorem {problem} [thm] {Problem}		
+
+			\newtheorem {notation} [thm] {Notation}
+			\newtheorem {bnotation} [thm] {Bad notation}
+			
+			\theoremstyle {remark}
+			\newtheorem {remark} [thm] {Remark}
+			\newtheorem {warn} [thm] {Warning}
+			\newtheorem {ramble} [thm] {Ramble}
+			
+			\newenvironment {eproof} {\begin{pf}\text{}\begin{enumerate}[leftmargin=*,label=(\roman*)]} {\hfill$\square$\end{enumerate}\end{pf}}
+			
+			\newenvironment {iproof} {\begin{pf}\text{}\begin{itemize}} {\hfill$\square$\end{itemize}\end{pf}}
 	
 
 \else		% not [none], not [thing]
@@ -686,6 +736,7 @@
 
 
 	\else	% not [old]
+	
 	
 		% ENVIRONMENTS FOR not [old]:
 		% 	esquisse [Esquisse] (for proof sketches)
@@ -874,7 +925,7 @@
 				
 				
 				% \geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in, rmargin = 1 in}
-				\geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in}
+				\geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in, inner = 1 in, outer = 0.5 in}
 				
 				\iffalse%\ifscr
 					

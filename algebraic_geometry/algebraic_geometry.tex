@@ -25,6 +25,7 @@ section 2 concerns schemes,\footnote{See \url{https://www.youtube.com/playlist?l
 and section 3 treats the Weil conjectures.\footnote{See \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53Rwr6ly1oUasJXR2Qerwgj}.} 
 Dr. Borcherds refers to Hartshorne's \ul{Algebraic geometry}.\footnote{See \url{https://link.springer.com/book/10.1007/978-1-4757-3849-0}.} 
 Grothendieck's \ul{\'El\'ements de g\'eom\'etrie alg\'ebrique} (EGA) and the Stacks project\footnote{See \url{https://stacks.math.columbia.edu}.} are referenced frequently.
+The subsections on \v Cech cohomology and the associated sheaf to a presheaf come from Michael Artin's \ul{Grothendieck topologies} of 1962.
 \hypersetup{linkcolor = black}
 
 \begin{figure}
@@ -38,19 +39,19 @@ Grothendieck's \ul{\'El\'ements de g\'eom\'etrie alg\'ebrique} (EGA) and the Sta
 
 \begin{figure}
 	\begin{center}
-		\includegraphics [scale = 0.4] {images/weil}
+		\includegraphics [scale = 2] {images/weil}
 		\caption {Andr\'e Weil.}
 	\end{center}
 	\begin{center}
-		\includegraphics [scale = 0.75] {images/zariski}
-		\caption {Oscar Zariski.}
+		\includegraphics [scale = 1.5] {images/artin}
+		\caption {Michael Artin.}
 	\end{center}
 \end{figure}
-% Sylvie Weil.
-% https://attentionsw.org/about-andre-weil/
+% Wolf Prize.
+% https://wolffund.org.il/2018/12/09/andre-well/
 
-% Oberwolfach photo collection.
-% https://opc.mfo.de/detail?photo_id=6262
+% AMS.
+% https://www.ams.org/about-us/presidents/51-artin
 
 \begin{figure}
 	\begin{center}
@@ -10515,7 +10516,6 @@ denoted by
 	H^{q}(\{U_{\alpha}\ar[r]& V\},\ ),
 \end{tikzcd}
 \]
-
 where
 \[
 \begin{tikzcd}
@@ -10902,6 +10902,22 @@ By (1.5), this must be so in any common refinement, and hence ``$\xi_{\alpha\bet
 \]
 whence $\ol\xi\in \mathscr{F}^+(U)$.
 \end{eproof}
+
+\begin{remark}
+A presheaf is a sheaf if and only if 
+\[
+\begin{tikzcd}[row sep = 0 pt]
+	\mathscr{F}(U) \ar[r]& \displaystyle\prod_{i} \mathscr{F}(U_{i}) \ar[r,shift left = 0.5 ex]\ar[r,shift right =0.5 ex]&\displaystyle\prod_{i,j} \mathscr{F}(U_i\cap U_j)
+\end{tikzcd}
+\]
+is an equalizer diagram. 
+This can fail in two ways:
+\begin{enumerate}
+\item the first map need not be injective;
+\item two things that are the same in $\prod_{i,j}\mathscr{F}(U_i\cap U_j)$ do not have to be in the image of $\mathscr{F}(U)$.\footnote{This is Takumi Murayama's comment on \url{https://math.stackexchange.com/questions/1624054/nonstandard-construction-of-sheafification}, a Math StackExchange question titled ``Nonstandard construction of sheafification.''}
+\end{enumerate}
+
+\end{remark}
 
 
 \subsection{Grothendieck topoi.}

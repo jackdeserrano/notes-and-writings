@@ -1,4 +1,4 @@
-\documentclass [11 pt, oneside] {article}
+\documentclass [11 pt, twoside] {article}
 
 
 \def \jtitle {Lie groups}
@@ -165,7 +165,149 @@ Dr. Borcherds remarks:
 \end{quote}
 
 \section {Lie algebras}
-Lie groups can be complicated.
+Lie groups---for example, $\GL_{n}(\mathbf{R})$---can be complicated.
+One can replace the Lie group with the corresponding Lie algebra, which is much less complicated (it is a vector space).
+One wants to put more structure on the Lie algebra so that it says something about the Lie group.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{images/tangentspace}
+		\caption{The Lie algebra corresponding to a Lie group $G$ is the tangent space at the identity.}
+	\end{center}
+\end{figure}
+
+A  \defn{first-order differential operator}\index{first-order differential operator} is a sum
+\begin{align*}
+	\sum_{i=1}^{d} f_{i}(X_1,\hdots,X_{d}) \frac{\partial}{\partial X_{i}}.
+\end{align*}
+First-order differential operators are, more or less, the same as vector fields on a manifold.
+One can think of a vector field on a manifold as an infinitesimal automorphism that pushes each point an ``infinitesimal'' distance along the vector at that point.
+
+Let $D = \sum_{i=1}^{d} f_{i}(X_1,\hdots,X_{d})\partial/\partial X_{i}$ and $E = \sum_{i=1}^{d} g_{i}(X_1,\hdots,X_{d})\partial/\partial X_{i}$ be first-order differential operators.
+One can write
+\begin{align*}
+	D E &= \sum_{1\le i,j\le d}^{} f_{i} \frac{\partial}{\partial X_{i}} g_{j}\frac{\partial}{\partial X_{j}}\\
+		 &= \sum_{1\le i,j\le d}^{} f_{i}g_{j}\frac{\partial}{\partial X_{i}}\frac{\partial}{\partial X_{j}} + f_{i}\frac{\partial g_{j}}{\partial X_{i}}\frac{\partial}{\partial X_{j}}.
+\end{align*}
+Similarly,
+\begin{align*}
+	ED &= \sum_{1\le i,j\le d}^{} f_{i}g_{j}\frac{\partial}{\partial X_{i}}\frac{\partial}{\partial X_{j}} + g_{j}\frac{\partial f_{i}}{\partial X_{j}} \frac{\partial}{\partial X_{i}}.
+\end{align*}
+Though $DE$ and $ED$ are not first-order, $DE-ED$ is first-order.
+One can defines the \defn{Lie bracket}\index{Lie bracket} to be
+\begin{align*}
+	[D,E] := DE - ED.
+\end{align*}
+
+\begin{exercise}\label{}\text{}
+Suppose that $D$ and $E$ are differential operators of orders $m$ and $n$ respectively.
+Show that $[D,E]$ has order $m+n-1$.
+\end{exercise}
+
+One can see that 
+\begin{align*}
+	[D,E] = -[E,D].
+\end{align*}
+There is also the \defn{Jacobi identity}\index{Jacobi identity}:
+\begin{align*}
+	[[A,B],C] + [[B,C],A] + [[C,A],B] = 0.
+\end{align*}
+This is true for any (associative) ring.
+
+\begin{definition}[ ]\label{}\text{}
+A \defn{Lie algebra}\index{Lie algebra} $\mathfrak{g}$ is a vector space over $\mathbf{R}$ or $\mathbf{C}$ that has a bilinear map 
+\begin{tikzcd}[cramped]
+	{[}\ ,\ {]} : \mathfrak{g}\times \mathfrak{g}\ar[r]& \mathfrak{g}
+\end{tikzcd}
+that satisfies 
+\begin{align*}
+	[x,y] =- [y,x]
+\end{align*}
+and
+\begin{align*}
+	[[x,y],z] + [[y,z],x] + [[z,x],y] =0
+\end{align*}
+for all $x,y,z\in \mathfrak{g}$.
+\end{definition}
+
+\begin{remark}
+	One can take $\mathfrak{g}$ to be a module over a commutative ring.
+\end{remark}
+
+Let $G$ be a Lie group with identity $e$. Let $T_{e}G$ be the tangent space to $G$ at $e$.
+Notice that $G$ acts on itself by left translation. A left-invariant vector field on $G$ is uniquely determined by its value at $e$. That is, left-invariant vector fields on $G$correspond to tangent vectors to $G$ at $e$.
+Vector fields correspond to first-order differential operators, so the left-invariant vector fields on $G$ are closed under the Lie bracket. Left-invariant vector fields correspond to tangent vectors to $G$ at $e$, so $T_{e}G$ has a Lie bracket. Thus, we define the Lie algebra of a Lie group $G$ to be 
+\begin{align*}
+	\mathfrak{g} := T_{e}G.
+\end{align*}
+
+\begin{example}[ ]\label{}\text{}
+Consider $G =\mathbf{R}^{n}$ with addition.
+The left-invariant vector fields on $G$ are of the form
+\begin{align*}
+	\sum_{i=1}^{n} a_{i} \frac{\partial}{\partial X_{i}}
+\end{align*}
+where $a_{i}$ is constant.
+The Lie bracket of any two such operators is $0$, so the Lie algebra of $G$ is commutative. 
+\end{example}
+
+\iffalse
+\begin{example}[ ]\label{}\text{}
+Let $\mathfrak{g}$ be the Lie algebra of $G = \GL_{n}(\mathbf{R})$. The identity of $G$ is the identity matrix $e$, and the tangent space to $G$ at $e$ can be identified with $M_{n}(\mathbf{R})$.
+Let $x\in M_{n}(\mathbf{R})$. What does the vector field $D$ corresponding to $x$ look like?
+For a function $f$ on $\GL_{n}(\mathbf{R})$, this vector field is given by
+\begin{align*}
+	Df = \frac{f(a(1+\eps x)) - f(a)}{\eps}
+\end{align*}
+for $a\in G$.
+This is the lowest order term of $f(a (1+\eps x)) - f(a)$, which is $\eps$ times something, which we want, plus higher order terms.
+
+Let $x$ and $y$ be vector fields corresponding to differential operators $D$ and $E$ respectively.
+Then, at $a\in G$, $(ED)f$ is the lowest order term of
+\begin{align*}
+	f(a(1+\delta y) (1+\eps x)) - f(a(1+\delta y)) - f(a(1+\eps x)) + f(a),
+\end{align*}
+which is $\eps\delta$ times something, which we want, plus higher order terms.
+One sees that $(DE)f$ is similar and $(DE-ED)f$ is the lowest order term of 
+\begin{align*}
+	f(a(1+\eps x) (1+\delta y)) - f(a(1+\delta y) (1+\eps x)).
+\end{align*}
+Taking $a$ to $(1+\eps x-\delta y + \delta \eps yx)a$, this is the lowest order term of
+\begin{align*}
+	f(a(1-\delta\eps yx + \eps\delta xy)) - f(a),
+\end{align*}
+which is the differential operator corresponding to $xy-yx$. Thus, the Lie bracket of differentiable operators corresponding to matrices $x$ and $y$ is $xy-yx$, so we get the same bracket whether we consider $x$ and $y$ as matrices or left-invariant vector fields.  
+
+It follows that the Lie algebra of $G$ is $\mathfrak{g} = M_{n}(\mathbf{R})$ with Lie bracket $[x,y] = xy-yx$.
+For a closed subgroup of $\GL_{n}(\mathbf{R})$, the tangent space at $e$ is a subspace of $M_{n}(\mathbf{R})$ and the Lie bracket one gets is the restriction of the one above.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider $G=\SL_{n}(\mathbf{R})$. Then, the tangent space $T_{e}G$ consists of matrices $x$ such that $\det(1+\eps x) = 1 + O (\eps^{2}) = 1 + \eps \tr(x) + \eps ^{2}\cdots$, so $\tr(x)=0$.
+Thus, the Lie algebra of $\SL_{n}(\mathbf{R})$ is $n\times n$ matrices with trace $0$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider $G = O_{n}(\mathbf{R}) = \{x\in M_{n}(\mathbf{R}) : xx^{*}=e\}$. 
+The tangent space $T_{e}G$ consists of matrices $x$ such that $(e+\eps x)(e+\eps x) ^{*}=  e + O(\eps^{2})$.
+Since $(e+\eps x) (e+\eps x) ^{*} = e + \eps x + \eps x ^{*} + \eps ^{2}xx^{*}$, $T_{e}G$ (that is, the Lie algebra) consists of matrices with $x+x^{*}=0$.
+\end{example}
+
+One can compute the Lie algebra differently.
+For example, let $G=\GL_{n}(\mathbf{R})$.
+One defines $[x,y]$ to be the lowest-order term of the commutator $a^{-1}b^{-1}ab$ where $a\approx 1+\eps x$ and $b\approx 1+\delta y$ are elements of $G$ and $x$ and $y$ are tangent vectors. 
+One sees that
+\begin{align*}
+	a^{-1}b^{-1}ab &= (1-\eps x) (1-\delta y)  (1+\eps x) (1+\delta y)\\
+		       &= \eps\delta (xy-yx) + \textrm{higher order terms.}
+\end{align*}
+One gets the Jacobi identity here from the \defn{Hall--Witt identity}\index{Hall--Witt identity}:
+\begin{align*}
+	[[x,y^{-1}],z]^{y}[[y,z^{-1}],x]^{z}[[z,x^{-1}],y]^{x} = 1
+\end{align*}
+where $[x,y] = x^{-1}y^{-1}xy$ and $x^{y}=y^{-1}xy$.
+\fi
+
 
 \iffalse
 \section {Lie groups and Lie algebras}
