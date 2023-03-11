@@ -20,6 +20,13 @@ snippet dm "Math" wA
 \end{align*}$0
 endsnippet
 
+snippet ifn "inline function" wA
+\begin{tikzcd}[cramped]
+	$1
+\end{tikzcd}
+$0
+endsnippet
+
 snippet mk "Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ', ':']:
@@ -216,7 +223,7 @@ snippet part "d/dx" w
 endsnippet
 
 context "math()"
-snippet sq "\sqrt{}" iA
+snippet sq "\sqrt{}" wA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
@@ -523,6 +530,15 @@ snippet detm  "determinant" iA
 endsnippet
 
 context "math()"
+snippet perm  "permutation" iA
+\left(
+	\begin{array}{$1}
+		$2
+	\end{array}
+\right)
+endsnippet
+
+context "math()"
 snippet llmat  "matrix split with lines" iA
 \left[
 	\begin{array}{${1:c|c|c}}
@@ -576,3 +592,4 @@ context "math()"
 snippet ^ "exponent" iA
 ^{$1}$0
 endsnippet
+

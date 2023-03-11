@@ -309,9 +309,150 @@ where $[x,y] = x^{-1}y^{-1}xy$ and $x^{y}=y^{-1}xy$.
 \fi
 
 
-\iffalse
 \section {Lie groups and Lie algebras}
+Note: we are working in the finite-dimensional case.
 
+If two groups have the same Lie algebras, are they isomorphic?
+A homomorphism of (Lie) groups \begin{tikzcd}[cramped]
+	G\ar[r]& H
+\end{tikzcd}
+induces a homomorphism of the corresponding Lie algebras \begin{tikzcd}[cramped]
+	\mathfrak{g}\ar[r]&\mathfrak{h}
+\end{tikzcd}
+that preserves the Lie bracket, but does a homomorphism of Lie algebras give a homomorphism of the corresponding Lie groups?
+If $G$ is a closed subgroup of $H$, then $\mathfrak{g}$ is a subalgebra of $\mathfrak{h}$, but does a Lie algebra contained in $\mathfrak{h}$ come from a closed subgroup of $H$?
+Does any Lie algebra come from a Lie group?
+
+\begin{example}[ ]\label{}\text{}
+Let $G$ be a group. Then, $G$ has the same Lie algebra as its connected component. Thus, if $G$ is not connected, then $G$ and its connected component are not isomorphic despite their Lie algebras being the same.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Both $\mathbf{R}$ and $S^{1}$ have Lie algebra $\mathbf{R}$.
+The Lie groups $\SL_{2}(\mathbf{R})$ and $\PSL_{2}(\mathbf{R})$ have the same Lie algebra. 
+Note that these are pairs of locally isomorphic groups. 
+If two Lie groups are locally isomorphic, then they have the same Lie algebra.
+One can get a group locally isomorphic to a group $G$ by modding out by a normal discrete closed subgroup.
+
+If $G$ is connected, then any normal discrete subgroup $\Gamma$ is in the centre of $G$. Fix $\gamma\in \Gamma$. Consider \begin{tikzcd}[cramped]
+	g\ar[r,mapsto]&g\gamma^{-1}g\gamma.
+\end{tikzcd}
+This is a map from $G$ to $\Gamma$.
+Since $G$ is connected and $\Gamma$ is discrete, the image of this map is a point---the identity---whence $g$ commutes with $\gamma$ for all $g\in G$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+The homomorphism \begin{tikzcd}[cramped]
+	\R\ar[r]& S^1
+\end{tikzcd}
+gives a homomorphism of Lie algebras \begin{tikzcd}[cramped]
+	\R\ar[r]&\R.
+\end{tikzcd}
+This is an isomorphism, so it has an inverse, but there is no homomorphism from $S^{1}$ to $\mathbf{R}$ that corresponds to its inverse.
+Here, $S^{1}$ is not simply connected. If $G$ is simply connected, then, if $G$ and $H$ are Lie groups and $\mathfrak{g}$ and $\mathfrak{h}$ are the corresponding Lie algebras, then a homomorphism \begin{tikzcd}[cramped]
+	\mathfrak{g}\ar[r]& \mathfrak{h}
+\end{tikzcd}
+induces a homomorphism of Lie groups \begin{tikzcd}[cramped]
+	G\ar[r]& H.
+\end{tikzcd}
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Let $H$ be a Lie group and let $\mathfrak{h}$ be its Lie algebra. 
+If $\mathfrak{g}\subseteq \mathfrak{h}$, then is there a closed subgroup of $H$ that corresopnds to $\mathfrak{g}$?
+Not quite: let $H = S^{1}\times S^{1} = \mathbf{R}^{2}/\mathbf{Z}^{2}$.
+Let $\mathfrak{g} = \{(x\alpha,x\beta): x\in  \mathbf{R},\ \textrm{$\alpha/\beta$ is irrational}\}$.
+The subgroup of all points $(x\alpha,x\beta)$ is dense in $H$, but it's not closed.
+\begin{quote}
+	\small
+	So, in some sense, we do get a subgroup, but, if a subgroup isn't closed, then you run into funny problems trying to take its Lie algebra.
+\end{quote}
+\end{example}
+
+Indeed, every Lie algebra comes from a Lie group.
+The easy case here comes when the centre of $\mathfrak{g}$, that is, $\{x\in \mathfrak{g} : \textrm{$[x,y]=0$ for all $y\in \mathfrak{g}$}\}$, is $0$.
+In this case, one can view $\mathfrak{g}\subseteq M_{n}(\mathbf{R})$ where $n = \dim(\mathfrak{g})$ by identifying elements $\mathfrak{g}$ with linear transformations of $\mathfrak{g}$ by a map $\rho$. One defines $\rho$ by 
+\begin{align*}
+	\rho(x) (y) = [x,y].
+\end{align*}
+One needs to check that 
+\begin{align*}
+	\rho([x,y]) = \rho (x)\rho (y),
+\end{align*}
+which one does by seeing that
+\begin{align*}
+	[[x,y],z] = [x,[y,z]] - [y,[x,z]],
+\end{align*}
+which follows from the Jacobi identity and the antisymmetry of the bracket.
+This is one interpretation of the Jacobi identity: the natural action of $\mathfrak{g}$ on itself is a Lie algebra homomorphism from $\mathfrak{g}$ to $M_{n}(\mathbf{R})$.
+The fact that $\mathfrak{g}$ is a subalgebra of $M_{n}(\mathbf{R})$ follows from the fact that $\mathfrak{g}$ has $0$ centre, since everything in the centre of $\mathfrak{g}$ would have image $0$ under $\rho(x)$ for all $x\in \mathfrak{g}$.
+Even if the centre of $\mathfrak{g}$ is non-zero, $\mathfrak{g}$ is still a subalgebra of $M_{n}(\mathbf{R})$, but the proof isn't as easy.
+
+
+We have seen that Lie algebras roughly correspond to simply connected Lie groups.
+Let us compare connected groups with simply connected groups.
+
+If $G$ is a simply connected group, then $G/\Gamma$ is connected where $\Gamma$ is a discrete, normal subgroup of $G$. 
+Suppose that $H$ is a connected group. Let $G$ be the universal cover of $H$: that is, $e$ is a base point of $H$ and $G$ consists of homotopy classes of paths in $H$ fixing $f(0) =e$ and $f(1)$. The universal cover is simply connected, and it is a group. This group is also locally isomorphic to $H$, so $H$ and $G$ have the same Lie algebra. 
+In this case, $\Gamma$ is isomorphic to $\pi_1(H)$.
+This says that the fundamental group of a Lie group is abelian. 
+One can check this directly.
+
+\begin{example}[ ]\label{}\text{}
+For $H=S^{1}$, the universal cover is $\mathbf{R}$, which lies above $S^{1}$ ``helically.'' We know that $\pi_{11}(S^{1}) =\mathbf{Z}$ and the kernel of the map from $\mathbf{R}$ to $S^{1}$ is $\mathbf{Z}$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Consider $H=\GL_{2}(\mathbf{R})$. What is the group of components? What is $\pi_1(H)$?
+Remember that the Gram--Schmidt procedure takes a basis of a inner product space and produces an orthonormal basis of that inner product space.
+Iwasawa decomposition is a more general process: it allows one to write $H$ as a product $KAN$ of a compact subgroup, an abelian subgroup, and a nilpotent subgroup. 
+In this case, the Iwasawa decomposition is the Gram--Schmidt procedure, and we have
+\begin{align*}
+	K &= O_{2}(\mathbf{R}) ;\\
+	A &= \left\{ \mat{x&0\\0&y} : x,y>0 \right\};\\
+	N &= \left\{ \mat{1&x\\0&1} : x\in \mathbf{R} \right\} . 
+\end{align*}
+Since $A$ and $N$ are contractible, the components of $H$ are the components of $K = O_{2}(\mathbf{R})$.
+
+The group $O_{2}(\mathbf{R})$ has two components: $\SO_{2}(\mathbf{R})$, which corresponds to rotations, and reflections.
+The group of components of $H$ is $\pi_0(H)\isomto  \mathbf{Z}/2\mathbf{Z}$.
+The fundamental group of $H$ is $\pi_1(H)\isomto \pi_1(\SO_{2}(\mathbf{R})) \isomto \pi_1(S^{1}) \isomto \mathbf{Z}$.
+Thus, there is a simply connected group $\widetilde{\GL_{2}(\mathbf{R}) ^{+}}$ with
+\[
+\begin{tikzcd}
+	\mathbf{Z}\ar[r]& \widetilde{\GL_{2}(\mathbf{R}) ^{+}} \ar[r]& \GL_{2}(\mathbf{R})\ar[r]& \{\pm 1\}.
+\end{tikzcd}
+\]
+Note that $\widetilde{\GL_{2}(\mathbf{R}) ^{+}}$ is not a group of matrices.
+We will see the difficulty of this group later.
+
+The group $\SL_{2}(\mathbf{R})$ also has universal covers with centre $\mathbf{Z}$. These covers are mysterious, though one that one sees is the metaplectic group
+\[
+\begin{tikzcd}
+	\Mp_{2}(\mathbf{R})\ar[r]& \SL_{2}(\mathbf{R}),
+\end{tikzcd}
+\]
+a double cover that turns up in the theory of modular forms.
+Again, its representation theory is tricky. 
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Now, consider $H=\GL_{3}(\mathbf{R})$. This has the same connected components and fundamental group as $O_3(\mathbf{R})$.
+The group $O_{3}(\mathbf{R})$ has an index-$2$ subgroup $\SO_{3}(\mathbf{R})$ consisting of matrices with determinant $+1$, so
+\begin{align*}
+	\pi_0(\GL_{3}(\mathbf{R})) = \pi_{0}(O_{3}(\mathbf{R})) = \mathbf{Z}/2\mathbf{Z}.
+\end{align*}
+Also,
+\begin{align*}
+	\pi_1(\GL_{3}(\mathbf{R})) = \pi_1(\SO_{3}(\mathbf{R})) = \mathbf{Z}/2\mathbf{Z}, 
+\end{align*}
+and one can see this with the theory of quaternions.
+\end{example}
+
+
+
+
+\iffalse
 \section {The exponential map}
 
 \section {The Poincar\'e--Birkhoff--Witt theorem}
