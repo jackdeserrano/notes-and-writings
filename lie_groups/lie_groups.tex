@@ -429,7 +429,7 @@ We will see the difficulty of this group later.
 The group $\SL_{2}(\mathbf{R})$ also has universal covers with centre $\mathbf{Z}$. These covers are mysterious, though one that one sees is the metaplectic group
 \[
 \begin{tikzcd}
-	\Mp_{2}(\mathbf{R})\ar[r]& \SL_{2}(\mathbf{R}),
+	0\ar[r]& \mathbf{Z}/2\mathbf{Z}\ar[r]& \Mp_{2}(\mathbf{R})\ar[r]& \SL_{2}(\mathbf{R}),
 \end{tikzcd}
 \]
 a double cover that turns up in the theory of modular forms.
@@ -449,12 +449,108 @@ Also,
 and one can see this with the theory of quaternions.
 \end{example}
 
+\section {The exponential map}
+The exponential map
+\[
+\begin{tikzcd}
+	\exp : \mathfrak{g}\ar[r]& G
+\end{tikzcd}
+\]
+is a map from a Lie group to the corresponding Lie algebra.
 
+The exponential map is easy to define when $G$ is a matrix group (that is, a closed subgroup of the general linear group). In this case,
+ \begin{align*}
+	\exp(x) :=  \sum_{n=1}^{\infty} \frac{1}{n!}{x^{n}}.
+\end{align*}
+This converges: if $\left\lVert \ \right\rVert_{\mathbf{R}^{n}}$ is a norm on $\mathbf{R}^{n}$, then
+\begin{align*}
+	\left\lVert A \right\rVert  := \sup_{\substack{x\in \mathbf{R}^{n}\\\left\lVert x \right\rVert _{\mathbf{R}^{n}}=1}} \left\lVert Ax \right\rVert _{\mathbf{R}^{n}}
+\end{align*}
+defines a norm on $M_{n}(\mathbf{R})$. The series that defines $\exp(x)$ converges absolutely with this norm.
 
+If $xy=yx$, then
+\begin{align*}
+	\exp(x+y) = \exp (x)\exp (y).
+\end{align*}
+The map \begin{tikzcd}[cramped]
+	\lambda\ar[r,mapsto]& \exp(\lambda x)
+\end{tikzcd}
+is a homomorphism of groups from $\mathbf{R}$ to $G$.
+
+What about $\exp$ in the general setting?
+The metaplectic group $\Mp_2(\mathbf{R})$, a double cover of $\SL_{2}(\mathbf{R})$, is not a matrix group.
+However, the Lie group $G$ will always be locally isomorphic to a matrix group. From this, one can define $\exp$ for arbitrary Lie groups. 
+We stick to the matrix group case here.
+
+Now, what happens to $\exp(x+y)$ when we don't know that $xy=yx$?
+Compute:
+\begin{align*}
+	\exp(x+y) &= 1 + x+y +  \frac{1}{2} (x^{2}+xy + yx + y^{2}) + \cdots;\\
+	\exp (x)\exp (y)&= 1 +  x + y + \frac{1}{2}x ^{2} +\frac{1}{2}y^{2} + xy + \cdots.
+\end{align*}
+One observes that
+\begin{align*}
+	\exp(x)\exp (y) = \exp (x+y + [x,y]/2 + \textrm{higher-order terms}).
+\end{align*}
+There is a formula for these higher-order terms due to Baker, Campbell, Hausdorff, et al.
+
+Let $x\in M_{2}(\mathbf{R})$. 
+By the Cayley--Hamilton theorem, for $n\in \mathbf{N}$, one can write $x^{n}$ as a linear combination of $x$ and $I$, so $\exp(x)$ is a linear combination of $x$ and $I$.\footnote{Similarly, for $y\in M_{n}(\mathbf{R})$, one can write $\exp(y)$ as a linear combination of $x,\hdots,x^{n-1}$ and $I$.}
+If
+\begin{align*}
+	x = \mat{\lambda&0\\0&\mu},
+\end{align*}
+then 
+\begin{align*}
+	\exp(x) = \mat{e ^{\lambda} &0\\ 0&e^{\mu}}.
+\end{align*}
+That is, 
+\begin{align*}
+	\exp(x) = a I + b x
+\end{align*}
+where $a = (\mu e^{\lambda} - \lambda e^{\mu}) /(\mu-\lambda)$ and $b = (e^{\lambda}-e^{\mu})/(\lambda-\mu)$.
+The same formula holds when $x$ is diagonalizable, and the diagonalizable matrices are dense in the space of matrices, so this holds in general.\footnote{Where $\lambda$ and $\mu$ are given by the relations $\lambda+\mu = \tr(x)$ and $\lambda\mu = \det(x)$.}
+
+Is \begin{tikzcd}[cramped]
+	\exp:\mathfrak{g}\ar[r]& G
+\end{tikzcd}
+onto? Clearly, it is not when $G$ isn't connected, so we suppose that $G$ is connected. One sees that $\exp$ is a local isomorphism with local inverse $\log (1+y) = y - y ^{2}/2 + y^{3}/3+\cdots$ for $\left\lVert y \right\rVert <1$.
+This leads one to think that $\exp$ is onto, but it isn't.
+
+\begin{example}[ ]\label{}\text{}
+Consider $\mathfrak{g} = \mathfrak{sl}_{2}(\mathbf{R}) = \{x\in M_{2}(\mathbf{R}): \tr(x)=0\}$ and $G=\SL_{2}(\mathbf{R})$.
+
+If $x\in\mathfrak{sl}_{2}(\mathbf{C})$ has eigenvalues $\lambda$ and $\mu$, then $\exp(x)$ has eigenvalues $e^{\lambda} + e^{\mu}$ and $\lambda+\mu=0$. 
+Thus, in the case $\mathfrak{sl}_{2}(\mathbf{R})$, $\lambda$ and $\mu$ are both real or both imaginary and $e^{\lambda}$ and $e^{\mu}$ are both real and positive and product-$1$ or both complex of absolute value $1$.
+Either way, $\tr(\exp(x)) \ge -2$. That is, \begin{tikzcd}[cramped]
+	\exp : \mathfrak{sl}_2(\R) \ar[r]& \SL_2 (\R)
+\end{tikzcd}
+is not onto.
+\end{example}
 
 \iffalse
-\section {The exponential map}
+How do things work in the infinite-dimensional case?
 
+\begin{example}[ ]\label{}\text{}
+Let $G$ be the diffeomorphisms of a manifold $M$.
+Then, the Lie algebra $\mathfrak{g}$ of $G$ is, more or less, the vector fields on $M$.
+A vector field on $M$ should give a $1$-parameter group of diffeomorphisms.
+
+Consider the case $M=\mathbf{R}$. A vector field on $M$ is of the form $f(x)  (d/dx)$.
+We define $X(t)$ to be the image of a point $x_0$ if one follows the flow for time $t$. Then, $(d/dt)X = f (X)$, so 
+\begin{align*}
+	t = \int_{x_0}^{x} \frac{dX}{f(X)}. 
+\end{align*}
+In the case $f(x)=1$, one gets a translation (since $x=x_0+t$).
+In the case $f(x)=x$, one gets $x = e^{t}x_0$.
+In the case $f(x)=x ^{2}$, one gets $x=x_0/(1-x_0t)$, which is problematic at $t=1/x_0$. That is, this does not give a $1$-parameter group as $\exp$ does.
+
+In the case $M=(0,1)$ with the vector field $d/dx$, we expect a $1$-parameter group given by translations (that is, $x=x_0+t$), but this fails.
+This doesn't become a problem when $M$ is compact.
+\end{example}
+\fi
+
+\iffalse
 \section {The Poincar\'e--Birkhoff--Witt theorem}
 
 \section {The Baker--Campbell--Hausdorff formula}
