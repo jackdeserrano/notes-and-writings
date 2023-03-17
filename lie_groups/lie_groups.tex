@@ -550,10 +550,246 @@ This doesn't become a problem when $M$ is compact.
 \end{example}
 \fi
 
-\iffalse
-\section {The Poincar\'e--Birkhoff--Witt theorem}
 
-\section {The Baker--Campbell--Hausdorff formula}
+\section{The Baker--Campbell--Hausdorff formula}
+Let $x,y\in M_{n}(\mathbf{R})$. Then,
+\begin{align*}
+	\exp(x)\exp (y) = \exp (x+y+ [x,y]/2 + [x,[x,y]]/12 - [y,[x,y]]/12 + \cdots)
+\end{align*}
+where all of the terms only involve $x$, $y$, and $[\ ,\ ]$.
+This converges for $x$ and $y$ in some neighbourhood of $0$, but not in general.
+
+It follows that a Lie group is determined up to local isomorphism by its Lie algebra (this fails over fields of characteristic $p$, which motivates using $\mathbf{R}$ or $\mathbf{C}$ for defining Lie algebras).
+
+Suppose that $G$ and $H$ are Lie groups.
+Suppose that there is a Lie algebra homomorphism \begin{tikzcd}[cramped]
+	\mathfrak{g}\ar[r]&\mathfrak{h}
+\end{tikzcd} 
+where $\mathfrak{g}$ (resp. $\mathfrak{h}$) is the Lie algebra of $G$ (resp. $H$).
+
+If $G$ is simply connected, then this homomorphism induces a Lie group homomorphism \begin{tikzcd}[cramped]
+	G\ar[r]& H.
+\end{tikzcd}
+Two analytic continuations given by homotopic paths are the same. Thus, any analytic continuations in a simply connected region are the same. 
+By the Baker--Campbell--Hausdorff formula, one can define a map from a neighbourhood of the identity in $G$ to a neighbourhood of the identity in $H$. One can ``continue'' this map along a path that starts on the identity in $G$ using the original map and the group operation. If $G$ is simply connected, this continuation is independent of the choice of path (fixing the endpoint).
+
+It suffices prove the Baker--Campbell--Hausdorff formula for the free Lie algebra on two generators.
+Let $R$ be the free associative algebra on $x$ and $y$---``the ring of non-commutative polynomials.''
+One can take the completion $\widehat{R}$ of $R$---``the ring of non-commutative power series.''
+Now, we define a coproduct on $\widehat{R}$. Define \begin{tikzcd}[cramped]
+	\Delta : R\ar[r] & R\tensor R
+\end{tikzcd}
+by $\Delta(x) = x\tensor 1 + 1\tensor x$ and $\Delta(y) = y\tensor 1 + 1\tensor y$.
+This induces a homomorphism
+\begin{tikzcd}[cramped]
+	\widehat{\Delta} : \widehat{R}\ar[r]& \widehat{R}\tensor\widehat{R}.
+\end{tikzcd}
+
+We digress to sketch what this coproduct is. 
+Take the group algebra $\mathbf{R}[G]$ of a group $G$. This is an associative algebra, so it has a product \begin{tikzcd}[cramped]
+	\R[G]\tensor \R[G]\ar[r]&\R[G].
+\end{tikzcd}
+It also has a coproduct \begin{tikzcd}[cramped]
+	\Delta:\R[G]\ar[r] &\R[G]\tensor \R[G]
+\end{tikzcd}
+defined by $\Delta(g) = g\tensor g$.
+This data with a unit, a counit, and an antipode comprise a Hopf algebra. Any group algebra is a Hopf algebra.
+One can construct a Hopf algebra from any Lie algebra: the Lie algebra's universal enveloping algebra.
+The universal enveloping algebra of the free Lie algebra on two generators is the free associative algebra on two generators, and the coproduct in consideration is the coproduct of the universal enveloping algebra.
+
+An element $r\in R$ is primitive if and only if $\Delta(r) = r\tensor 1+1\tensor r$, so, for example, $x$ and $y$ are primitive.
+The primitive elements of $R$ form a Lie algebra.
+Suppose that $r$ and $s$ are primitive. 
+Then, 
+\begin{align*}
+	\Delta([r,s]) &= \Delta (r)\Delta (s)-\Delta (s)\Delta (r)\\
+		      &=  (rs-sr)\tensor 1 + 1 \tensor  (rs-sr)\\
+		      &= [r,s]\tensor 1 + 1\tensor [r,s].
+\end{align*}
+There is a map $\exp$ from the elements in $\widehat{R}$ with constant term $0$ to the elements in $\widehat{R}$ with constant term $1$. This converges. This map and its inverse are bijections. 
+Primitive elements under $\exp$ are group-like elements: that is, $\widehat{\Delta}(g) = g\tensor g$.
+If $r$ is primitive, then
+\begin{align*}
+	\Delta(\exp(r)) &= \exp(\Delta(r)) \\
+			&=\exp(r\tensor 1+1\tensor r)\\
+			&= \exp (r\tensor 1)\exp (1\tensor r)\\
+			&= \exp (r)\tensor \exp (r).
+\end{align*}
+In fact, one gets a bijection between primitive elements and group-like elements under $\exp$.
+The primitive elements form a Lie algebra, and the group-like elements form a group.
+
+Now, the elements $x$ and $y$ in $\widehat{R}$ are primitive, so $\exp(x)$ and $\exp(y)$ are group-like. Thus, one can show that $\exp(x)\exp (y)$ is group-like.
+Therefore, $\Log(\exp(x)\exp (y))$ is primitive. This is precisely what we want to show is $x + y + [x,y]/2+\cdots$.
+Thus, it remains to prove that any primitive element of $\widehat{R}$ is in the completion of the Lie algebra. We postpone this part of the proof.
+
+
+
+
+\section {The Poincar\'e--Birkhoff--Witt theorem}
+\begin{definition}[ ]\label{}\text{}
+Let $\mathfrak{g}$ be a Lie algebra over a field $F$.
+An \defn{enveloping algebra}\index{enveloping algebra} of $\mathfrak{g}$ is a pair $(\varphi,U)$ where $U$ is a unital associative algebra and \begin{tikzcd}[cramped]
+	\varphi : \mathfrak{g}\ar[r]& U_-
+\end{tikzcd}
+is a Lie algebra homomorphism where $U_{-}$ is $U$ with the bracket $[a,b] = ab-ba$.
+\end{definition}
+
+\begin{example}[ ]\label{}\text{}
+If \begin{tikzcd}[cramped]
+	\varphi : \mathfrak{g}\ar[r]& \End(V)
+\end{tikzcd}
+is a representation of $\mathfrak{g}$ in a vector space $V$, then the pair $(\varphi,\End(V))$ is an enveloping algebra of $\mathfrak{g}$.
+\end{example}
+
+\begin{definition}[ ]\label{}\text{}
+The \defn{universal enveloping algebra}\index{universal enveloping algebra} of $\mathfrak{g}$ is an enveloping algebra $(\Phi, U(\mathfrak{g}))$ that has the following universal mapping property: for any enveloping algebra $(\varphi, U)$ of $\mathfrak{g}$, there exists a unique associative algebra homomorphism
+\begin{tikzcd}[cramped]
+	f:U(\mathfrak{g})\ar[r]& U
+\end{tikzcd}
+such that $\varphi = f\circ \Phi$.
+\end{definition}
+
+One can show that the universal enveloping algebra is unique if it exists.
+
+Let $T(\mathfrak{g})$ be the free unital associative algebra on a basis $a_1,a_2,\hdots$ of $\mathfrak{g}$ (note that $T(\mathfrak{g})$ is the tensor algebra) and let $J(\mathfrak{g})$ be the two-sided ideal of $T(\mathfrak{g})$ generated by the elements $a_{i}a_{j}-a_{j}a_{i}-[a_{i},a_{j}]$. Then, $U(\mathfrak{g}) = T(\mathfrak{g}) /J(\mathfrak{g})$. Define
+\begin{tikzcd}[cramped]
+	\Phi : \mathfrak{g}\ar[r]& U(\mathfrak{g})_-
+\end{tikzcd}
+by letting $\Phi(a_{i})$ be the image of $a_{i}$ in $U(\mathfrak{g})$ and extending linearly.
+One can show that $(\Phi,U(\mathfrak{g}))$ is the universal enveloping algebra.
+
+It follows that any representation \begin{tikzcd}[cramped]
+	\pi : \mathfrak{g}\ar[r]& \End(V)
+\end{tikzcd}
+extends uniquely to a homomorphism of associative algebras
+\begin{tikzcd}[cramped]
+	U(\mathfrak{g})\ar[r]& \End (V).
+\end{tikzcd}
+
+\begin{theorem}[Poincar\'e--Birkhoff--Witt]\label{pbw}\index{Poincar\'e--Birkhoff--Witt theorem}\text{}
+Let $a_1,a_2,\hdots$ be a basis for $\mathfrak{g}$.
+Then, the ``monomials'' $a_{i_1}\cdots a_{i_{s}}$ with $i_1\le\cdots\le i_{s}$ form a basis for $U(\mathfrak{g})$.
+\end{theorem}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $\mathfrak{g}$ is abelian (so $[a,b]=0$ for all $a,b\in \mathfrak{g}$).
+Suppose that $\mathfrak{g}$ has a basis $a_1,\hdots, a_{n}$.
+Then, $U(\mathfrak{g}) = \mathbf{R}[a_1,\hdots, a_{n}]$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $\mathfrak{g}$ is spanned by $a$ and $b$ with $[a,b]=b$.
+Then, $U(\mathfrak{g})$ is generated by elements $a$ and $b$ with $ab-ba=b$.
+\end{example}
+
+\begin{example}[ ]\label{}\text{}
+Suppose that $\mathfrak{g}$ is the Lie algebra of a Lie group $G$ (so it corresponds to left invariant first-order differential operators on $G$).
+Then, $U(\mathfrak{g})$ corresponds to the left invariant differential operators on $G$.
+\end{example}
+
+One can ask how big $U(\mathfrak{g})$ is, whatever that means.
+
+Let $a_1,\hdots,a_{n}$ be a basis for $\mathfrak{g}$. 
+Then, $U(\mathfrak{g})$ is spanned by elements $a_{i_1}\cdots a_{i_{k}}$. 
+Notice that $a_{i}a_{j}-a_{j}a_{i}=[a_{i},a_{j}]$ is in $\mathfrak{g}$, so one can swap $a_{i}$ and $a_{j}$ at the cost of adding terms of ``lower degree.''
+Thus, one sees that $U(\mathfrak{g})$ is spanned by elements $a_{i_1}\cdots a_{i_{k}}$ where $i_1\le\cdots\le i_{k}$.
+
+Now, one filters $U(\mathfrak{g})$ as follows:
+\begin{align*}
+	F_0\subseteq F_1\subseteq F_2\subseteq\cdots 
+\end{align*}
+where $F_{k}$ is spanned by all products of $a_{i}$s with at most $k$ factors.
+One can form a graded algebra as follows:
+\begin{align*}
+	F_0\oplus F_1/F_0\oplus F_2/F_1\oplus\cdots.
+\end{align*}
+In some sense, this is ``the same size as'' $U(\mathfrak{g})$.
+Notice that this is a graded algebra since $F_{i}F_{j}\subseteq F_{i+j}$.
+Since $F_{i}$ and $F_{j}$ commute up to terms in $F_{i+j-1}$, that algebra is a commutative algebra.
+Furthermore, this graded algebra is generated by the image of $\mathfrak{g}$ in $F_1/F_0$.
+Thus, there is a map from the symmetric algebra $\Sym(\mathfrak{g})$ onto this graded algebra, and the symmetric algebra is a polynomial algebra.
+The Poincar\'e--Birkhoff--Witt theorem says that this map 
+\[
+\begin{tikzcd}
+	\Sym(\mathfrak{g}) \ar[r]& F_0\oplus F_1/F_0\oplus F_2/F_1\oplus \cdots
+\end{tikzcd}
+\]
+is an isomorphism.
+We refer to this map as ``the map in question.''
+
+We already have an ``upper bound'' on the ``size'' of $U(\mathfrak{g})$, so what remains is getting a ``lower bound.''
+
+One can do this construction for any bilinear bracket on an algebra and one still gets this. 
+Indeed, the proof that this is an isomorphism uses the fact that the bracket is antisymmetric and satisfies the Jacobi identity---if it doesn't, the map in question tends not to be an isomorphism.
+
+When $\mathfrak{g}$ is abelian, $U(\mathfrak{g})$ is a polynomial algebra, so it is easy to see that the map in question is an isomorphism.
+
+When $\mathfrak{g}$ is a Lie algebra of a Lie group,\footnote{All (finite-dimensional) Lie algebras are the Lie algebra of a Lie group, but we aren't there yet.} one can pick local coordinates so that the identity $e$ is $(0,\hdots, 0)$ and one can pick a basis for $\mathfrak{g}$ consisting of left invariant vector fields:
+\begin{align*}
+	a_{i1}\frac{\partial}{\partial X_1} + \cdots + a_{in}\frac{\partial}{\partial X_{n}}
+\end{align*}
+for $1\le i\le n$. One can choose this basis such that $a_{ii}$ is $1$ at the identity and everything else is $0$ at the identity. Thus, we get basis elements of the form
+\begin{align*}
+	a_{i} = \frac{\partial}{\partial X_i} + \textrm{terms vanishing at the identity} 
+\end{align*}
+for $1\le i\le n$, so 
+\begin{align*}
+	a_{i_1}\cdots a_{i_{k}} = \frac{\partial}{\partial X_{i_1}}\cdots \frac{\partial}{\partial X_{i_{k}}} + \textrm{terms vanishing at the identity} + \textrm{lower order terms.}
+\end{align*}
+The leading terms are linearly independent for $i_1\le \cdots\le i_{k}$.
+
+Informally, we have a representation of $U(\mathfrak{g})$ on a vector space $V$. 
+That is, we have a module acted on by the ring $U(\mathfrak{g})$.
+This is the same as a representation $\rho$ of $\mathfrak{g}$---that is, a vector space $V$ together with an action $\rho$ on $V$ such that $\rho(a)\rho (b)-\rho (b)\rho (a) = \rho ([a,b])$.
+
+Now, we wish to find a representation of $U(\mathfrak{g})$ to show that elements $a_{i_1}\cdots a_{i_{k}}$ with $i_1\le\cdots\le i_{k}$ are linearly independent.
+Let $V$ be the vector space spanned by elements $a_{i_1}\cdots a_{i_{k}}$ with $i_1\le \cdots\le i_{k}$. For now, these are formal expressions (we want $V$ to be $U(\mathfrak{g})$, but $U(\mathfrak{g})$ is what we're constructing).
+
+Next, we wish to define an action $\rho$ of $\mathfrak{g}$ on $V$.
+We want $\rho(a_{i}) (a_{i_1}\cdots a_{i_{k}})$ to be multiplication by $a_{i}$, so we define $\rho(a_{i})$ to adhere to the indexing rules as if $V$ were $U(\mathfrak{g})$ as follows:
+\begin{align*}
+	\rho(a_{i}) (a_{i_1}a_{i_2}\cdots a_{i_{k}}) := 
+	\begin{cases}
+		a_{i}a_{i_1}a_{i_2}\cdots a_{i_{k}}& i\le i_1\\
+		\rho([a_{i},a_{i_1}]) a_{i_2}\cdots a_{i_{k}} + \rho(a_{i_1}) \rho(a_{i})a_{i_2} \cdots a_{i_{k}} & i > i_{1}.
+	\end{cases}
+\end{align*}
+We want the element $[a_{1},a_{i_1}]$ to act as $a_{i}a_{i_1}- a_{i_1}a_{i}$, so the above was the only reasonable thing we could have done.
+The expressions above are well defined by induction, whence we have a well defined collection of operators mapping $V$ to itself.
+
+We have one last question to answer in the affirmative: is this an action of $\mathfrak{g}$ on $V$?
+To demonstrate this, we need to show that
+\begin{align*}
+	\rho([a_{i},a_{j}]) = \rho(a_{i}) \rho(a_{j})-\rho(a_{j}) \rho(a_{i}).
+\end{align*}
+This is a ``straightforward but tedious calculation'' that makes use of the properties of the bracket and that requires the application of induction on the length of monomials.
+
+Now, we cover some applications of the Poincar\'e--Birkhoff--Witt theorem.
+
+One application of this theorem is determining how to recover $\mathfrak{g}$ from $U(\mathfrak{g})$.
+One can do this using the coproduct \begin{tikzcd}[cramped]
+	\Delta : U(\mathfrak{g})\ar[r]& U (\mathfrak{g})\tensor U (\mathfrak{g}),
+\end{tikzcd}
+which is defined by $\Delta(a) = a\tensor 1 + 1\tensor a$. We prove the following theorem: the Lie algebra $\mathfrak{g}$ consists of the primitive elements of $U(\mathfrak{g})$.
+This theorem isn't true in a general setting: if $\mathfrak{g}$ is a $1$-dimensional Lie algebra over a field of characteristic $p$ and it has a basis element $a$, then $a$ is primitive, and so is $a^{p}$.
+The theorem holds in characteristic $0$.
+
+Suppose that $\mathfrak{g}$ is abelian with basis $a_1,\hdots,a_{n}$. Then, $U(\mathfrak{g}) = \mathbf{R}[a_1,\hdots,a_{n}]$. One sees that $f\in U(\mathfrak{g})$  is primitive if and only if it is additive, which occurs if and only if $f$ is linear.
+
+Let $\mathfrak{g}$ be a Lie algebra. Filter $U(\mathfrak{g})$ as follows:
+\begin{align*}
+	F_0\oplus F_1/F_0 \oplus F_2/F_1\oplus\cdots.
+\end{align*}
+This is a polynomial algebra, which one can think of as the universal enveloping algebra of an abelian Lie algebra.
+Suppose that $f\in U(\mathfrak{g})$ is primitive and that $f\in F_{n}$.
+The image of $f$ in $F_{n}/F_{n-1}$ is primitive, so it is in $F_{n-1}$ for $n>1$.
+Thus, $f\in F_1$, so $f\in \mathfrak{g}\subseteq F_1$.
+The theorem follows.
+
+Now, let $\mathfrak{g}$ be the free Lie algebra on $x$ and $y$. Then, $U(\mathfrak{g})$ is the free asociative algebra on $x$ and $y$, so the primitive elements of $U(\mathfrak{g})$ are the elements of $\mathfrak{g}$.
+
+
+\iffalse
 
 \section {Positive characteristic is weird}
 
