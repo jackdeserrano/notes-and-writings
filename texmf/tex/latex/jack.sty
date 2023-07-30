@@ -17,6 +17,8 @@
 \newif \iffrench \frenchfalse
 \newif \ifslides \slidesfalse
 \newif \ifplaintitle \plaintitlefalse
+\newif \iftesting \testingfalse
+\newif \ifmanim \manimfalse
 
 
 % TODO: Add arg options
@@ -37,6 +39,8 @@
 \DeclareOption {french} {\frenchtrue}
 \DeclareOption {slides} {\slidestrue}
 \DeclareOption {plaintitle} {\plaintitletrue}
+\DeclareOption {testing} {\testingtrue}
+\DeclareOption {manim} {\manimtrue}
 
 % USELESS OPTIONS
 \DeclareOption {wide} {\jackwidetrue}
@@ -50,7 +54,16 @@
 \else
 	\RequirePackage [usenames, svgnames, dvipsnames] {xcolor}
 \fi
-\RequirePackage {amsmath, amsthm, amssymb, amsfonts}
+
+
+\RequirePackage {amsthm}
+
+
+
+\RequirePackage {MnSymbol}
+%\RequirePackage {amssymb, amsfonts, amsmath}
+
+
 
 \RequirePackage {microtype}
 %\DisableLigatures{encoding = *, family = * }
@@ -58,7 +71,8 @@
 \RequirePackage {thmtools}
 \RequirePackage [framemethod = TikZ] {mdframed}
 \RequirePackage {mathtools}
-\RequirePackage {imakeidx}
+\RequirePackage {imakeidx} % add `\makeindex[intoc]' in preamble to get index in toc
+
 \RequirePackage {ifluatex}
 
 \makeatletter
@@ -97,6 +111,7 @@
 \makeatother
 
 
+
 \RequirePackage {enumitem}
 \RequirePackage {graphicx}
 \RequirePackage {parcolumns}
@@ -105,8 +120,8 @@
 \RequirePackage {tikz}
 \RequirePackage {tikz-cd}
 \RequirePackage {tikz-3dplot}
-\RequirePackage {manfnt}
-\RequirePackage {stmaryrd}
+%\RequirePackage {manfnt}
+%\RequirePackage {stmaryrd}
 \RequirePackage {wasysym}
 \RequirePackage {listings}
 \RequirePackage {spverbatim}
@@ -115,7 +130,7 @@
 \RequirePackage {siunitx}
 \RequirePackage {ifmtarg}
 \RequirePackage {kvoptions}
-\RequirePackage {esint}
+%\RequirePackage {esint}
 \RequirePackage [usestackEOL] {stackengine}
 \RequirePackage {soul}
 \RequirePackage {scalerel}
@@ -124,6 +139,7 @@
 \RequirePackage [makeroom] {cancel}
 \RequirePackage {setspace}
 \RequirePackage {mathdots}
+\RequirePackage {parskip}
 
 
 \ifscr
@@ -132,10 +148,10 @@
 	\RequirePackage [T1] {fontenc}	% Screws up fonts
 								% Also cannot use T2A
 
-    \RequirePackage [utf8] {inputenc}
+    \RequirePackage [utf8x] {inputenc}
     \RequirePackage [scaled] {beramono} 
     
-	\RequirePackage {regexpatch}	% Clashes with `scrlayer-scrpage`
+	%\RequirePackage {regexpatch}	% Clashes with `scrlayer-scrpage`
 	\RequirePackage {fancyhdr}
         \setlength {\headheight} {15 pt} % Response to ``Package fancyhdr Warning: \headheight is too small''
 \fi
@@ -144,11 +160,16 @@
     %\RequirePackage {frenchmath}
     %\RequirePackage [frenchmath] {newtxmath}
     \RequirePackage [math-style = french] {unicode-math}
+    
     \let\mathscr\relax   
+    \AtBeginDocument{
+    \renewcommand{\setminus}{\mathbin{\backslash}}%
+}
 \fi
 
-\RequirePackage {eucal}
+%\RequirePackage {eucal}
 \RequirePackage {mathrsfs}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
 
 \iffalse    % DEPRECATED (default colours for specific styles)
@@ -169,20 +190,24 @@
     \fi
 \fi
 
-\RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
+%\RequirePackage [colorlinks, linkcolor = Red, citecolor = red, urlcolor = Blue] {hyperref}
+\RequirePackage [colorlinks, linkcolor = Black, citecolor = Black, urlcolor = Black] {hyperref}
 
 \RequirePackage {cleveref}	% no `nameinlink' or `capitalize'
 \crefname {equation} {} {}
 
 \setlength {\emergencystretch} {14 pt}  % Response to ``Overfull \hbox''
 
-\usetikzlibrary {arrows, trees, backgrounds}
+\usetikzlibrary {arrows, trees, backgrounds, decorations.text, calc, arrows.meta}
 
 \tikzset {
 	commutative diagrams/.cd,
-	arrow style = tikz,
-	diagrams = {>= latex}
+	%arrow style = tikz,
+	arrow style = math font,
+	%diagrams = {>= latex}
 }
+
+\tikzset{>=latex}
 
 % https://tex.stackexchange.com/questions/401024/drawing-overlapping-3d-cones
 \newcommand {\coneback} [4] [] {
@@ -244,16 +269,15 @@
 	}
 \makeatother
 
-\setcounter {tocdepth} {2}
 
-
-\RequirePackage [hmarginratio=1:1] {geometry} 
+\RequirePackage {geometry} 
 
 
 \newcommand {\0} {\underline{0}}
 \let \A \relax
 \newcommand {\A} {\mathbf{A}} 
 \newcommand {\abs} [1] {\left \lvert #1 \right \rvert}  
+\newcommand {\Alt} {\mathfrak{A}}    
 \let \ang \relax
 \newcommand {\ang} [1] {\left \langle #1 \right \rangle}
 \newcommand {\cat} [1] {\mathscr #1} 
@@ -265,7 +289,9 @@
 
 \newcommand {\ceiling} [1] {\left \lceil #1 \right \rceil} 
 \newcommand {\C} {\mathbf C} 
+\newcommand {\Cyc} {\mathfrak{C}} 
 \newcommand {\dg} {^\circ} 
+\newcommand {\Di} {\mathfrak{D}} 
 \newcommand {\du} [1] {\underline{\underline{#1}}} 
 \let \epsilon \varepsilon
 \newcommand {\eps} {\varepsilon}
@@ -301,12 +327,13 @@
 \newcommand {\P} {\mathbf P} 
 \newcommand {\pp} {\mathfrak p} 
 \newcommand {\Q} {\mathbf Q}
-\newcommand {\Qu} {\operatorname{Q}_8}	
 \newcommand {\R} {\mathbf R} 
 \newcommand {\Ring} {\catn {Ring}} 
 \newcommand {\Set} {\catn {Set}} 
 \let \sh \relax
 \newcommand {\shf} {^\sharp}
+\newcommand {\Sy} {\mathfrak{S}}
+\newcommand {\Simp} {\text{{\scshape Simp}}}
 \newcommand {\tensor} {\otimes}
 \let \super \relax
 \newcommand {\sub} [1] {_{\textup {#1}}}
@@ -314,25 +341,33 @@
 \newcommand {\op} {\super{op}}
 \newcommand {\opn} [1] {\norm {#1}\sub{op}}
 \newcommand {\sh} {\super{sh}}
+\newcommand {\T} {\mathbf{T}}
 \newcommand {\tp} {{}^{\mathrm{t}}\!}
+\newcommand {\Trig} {\text{{\scshape Trig}}}
 \newcommand {\wh} {\widehat}
 \newcommand {\wt} {\widetilde}
-\newcommand {\Zmod} [1] {\Z / #1\Z}
-\newcommand {\Z} {\mathbf Z}
+\newcommand {\X} {\mathfrak{X}}
+\newcommand {\Y} {\mathfrak{Y}}
+\newcommand {\Z} {\mathbf{Z}}
+\newcommand {\Zf} {\mathfrak{Z}}
 
 
 \DeclareMathOperator* {\argmax} {arg max}
 \DeclareMathOperator* {\argmin} {arg min}
-\DeclareMathOperator* {\bigtimes} {\scalerel*{\times}{\bigotimes}}
+%\DeclareMathOperator* {\bigtimes} {\scalerel*{\times}{\bigotimes}} % bad when mnsymbol
 \DeclareMathOperator* {\colim} {colim}                      		
-\DeclareMathOperator* {\lcm} {lcm}                          		
-\DeclareMathOperator {\agm} {agm}                           		
-\DeclareMathOperator {\Aut} {Aut}                           		
-\DeclareMathOperator {\Ag} {A}                             		
-\DeclareMathOperator {\Ass} {Ass}                           		
+\DeclareMathOperator* {\lcm} {lcm}
+\DeclareMathOperator* {\sotlim} {\textsc{sot}-lim}
+\DeclareMathOperator* {\wotlim} {\textsc{wot}-lim}
+
+\DeclareMathOperator {\agm} {agm}
+\DeclareMathOperator {\Ani} {Ani}
+\DeclareMathOperator {\Ass} {Ass}
+\DeclareMathOperator {\Aut} {Aut}
 \DeclareMathOperator {\Ann} {Ann}                           		
 \DeclareMathOperator {\bd} {bd}                             		
-\DeclareMathOperator {\Br} {Br}                             
+\DeclareMathOperator {\Br} {Br}
+\DeclareMathOperator {\Bun} {Bun}
 \DeclareMathOperator {\Burn} {Burn}					
 \DeclareMathOperator {\CaCl} {CaCl}	
 \DeclareMathOperator {\card} {card}			
@@ -354,17 +389,26 @@
 \DeclareMathOperator {\D} {D}               
 \let \d \relax
 \DeclareMathOperator {\d} {d}
+\DeclareMathOperator {\Dem} {Dem}
 \DeclareMathOperator {\diag} {diag}  
 \DeclareMathOperator {\diam} {diam}        
-\DeclareMathOperator {\Disc} {Disc}          
+\DeclareMathOperator {\Disc} {Disc} 
+\DeclareMathOperator {\dist} {dist}  
+\let\div\relax 
+\DeclareMathOperator {\div} {div}          
 \DeclareMathOperator {\Div} {Div}                
-\DeclareMathOperator {\dom} {dom}           
+\DeclareMathOperator {\dom} {dom}  
+\DeclareMathOperator {\Dom} {Dom}             
 \DeclareMathOperator {\E} {E}                        
 \DeclareMathOperator {\End} {End}                         
 \DeclareMathOperator {\error} {error}
-\DeclareMathOperator {\Et} {\acute Et}  
+\DeclareMathOperator {\esssup} {{ess\ sup}}
+\DeclareMathOperator {\ev} {ev}
+\DeclareMathOperator {\Et} {\acute Et}
+\DeclareMathOperator {\Exc} {Exc}  
 \DeclareMathOperator {\ext} {ext}                   
-\DeclareMathOperator {\Ext} {Ext}                        
+\DeclareMathOperator {\Ext} {Ext}
+\DeclareMathOperator {\Fil} {Fil}                        
 \DeclareMathOperator {\Fix} {Fix}              
 \DeclareMathOperator {\forget} {forget}	
 \DeclareMathOperator {\free} {free}	
@@ -375,6 +419,7 @@
 \DeclareMathOperator {\GKdim} {GKdim}                    
 \DeclareMathOperator {\GL} {GL}                    
 \DeclareMathOperator {\Gr} {Gr}                        
+\DeclareMathOperator {\Hck} {Hck}
 \DeclareMathOperator {\Hess} {Hess}                
 \let \Hom \relax
 \DeclareMathOperator {\Hom} {Hom}                      
@@ -385,7 +430,8 @@
 \DeclareMathOperator {\II} {I}
 \DeclareMathOperator {\Img} {Im}			
 \DeclareMathOperator {\img} {im}                   
-\DeclareMathOperator {\Image} {Image}              
+\DeclareMathOperator {\Image} {Image}
+\DeclareMathOperator {\Ind} {Ind}              
 \DeclareMathOperator {\Inn} {Inn}                  
 \DeclareMathOperator {\inr} {int}                  
 \DeclareMathOperator {\ISO} {ISO}			
@@ -394,7 +440,8 @@
 \DeclareMathOperator {\Kdim} {Kdim}                    
 \let \Ker \relax
 \DeclareMathOperator {\Ker} {Ker}                    
-\DeclareMathOperator {\Length} {Length}              
+\DeclareMathOperator {\Length} {Length}
+\DeclareMathOperator {\Loc} {Loc}              
 \DeclareMathOperator {\Log} {Log}         
 \DeclareMathOperator {\Mat} {Mat}                   
 \DeclareMathOperator {\mesh} {mesh}                
@@ -406,11 +453,14 @@
 \DeclareMathOperator {\Nz} {N}                             
 \DeclareMathOperator {\Nil} {Nil}                           
 \DeclareMathOperator {\NL} {NL}                          
-\DeclareMathOperator {\Null} {Null}                   
+\DeclareMathOperator {\Null} {Null}     
+\DeclareMathOperator {\orb} {orb}                 
 \DeclareMathOperator {\ord} {ord}                          
 \DeclareMathOperator {\On} {On}
 \DeclareMathOperator {\Out} {Out}                           
-\DeclareMathOperator {\prp} {perp}                          
+\DeclareMathOperator {\Perf} {Perf}
+\DeclareMathOperator {\prp} {perp}    
+\DeclareMathOperator {\Perv} {Perv}                      
 \DeclareMathOperator {\Pic} {Pic}                           
 \DeclareMathOperator {\pred} {pred}
 \DeclareMathOperator {\pr} {pr}
@@ -424,25 +474,33 @@
 \DeclareMathOperator {\RR} {R}
 \DeclareMathOperator {\Ran} {Ran}                           
 \DeclareMathOperator {\ran} {ran}                       
-\DeclareMathOperator {\rank} {rank}                 
+\DeclareMathOperator {\rank} {rank}  
+\DeclareMathOperator {\red} {red}
+\DeclareMathOperator {\Rep} {Rep}                  
 \DeclareMathOperator {\Res} {Res}                 
-\DeclareMathOperator {\sgn} {sgn}                    
-\DeclareMathOperator {\Sg} {S}                              	
+\DeclareMathOperator {\sgn} {sgn}
+\DeclareMathOperator {\Shv} {Shv}
+\DeclareMathOperator {\Sht} {Sht}                                               	
 \DeclareMathOperator {\SL} {SL}                             	
 \DeclareMathOperator {\SO} {SO}                             
-\DeclareMathOperator {\Sp} {Sp}					
+\DeclareMathOperator {\Sp} {Sp}		
+\DeclareMathOperator {\Spa} {Spa}
+\DeclareMathOperator {\Spd} {Spd}   			
 \DeclareMathOperator {\Spec} {Spec}                         
-\DeclareMathOperator {\specmax} {Specmax}   	
+\DeclareMathOperator {\specmax} {Specmax}   
+\DeclareMathOperator {\Spf} {Spf}	
 \DeclareMathOperator {\spa} {span}                         
 \DeclareMathOperator {\Stab} {Stab}                          
-\DeclareMathOperator {\SU} {SU}                            
+\DeclareMathOperator {\SU} {SU}    
+\DeclareMathOperator {\Supp} {Supp}                           
 \DeclareMathOperator {\Syl} {Syl}                         
 \let \Sym \relax
-\DeclareMathOperator {\Sym} {Sym}
-\DeclareMathOperator {\T} {T}                               	
+\DeclareMathOperator {\Sym} {Sym}                            	
 \DeclareMathOperator {\Tor} {Tor}                       
 \DeclareMathOperator {\Tr} {Tr}                             
-\DeclareMathOperator {\tr} {tr}                           
+\DeclareMathOperator {\tr} {tr}
+\DeclareMathOperator {\vdim} {vdim}
+\DeclareMathOperator {\Vect} {Vect}                         
 \DeclareMathOperator {\Vol} {Vol}                           	
 \DeclareMathOperator {\vol} {vol}                           	
 \let \O \relax 
@@ -455,12 +513,14 @@
 \newcommand {\etco} {\HH\sub{\'et}}
 
 
-\setenumerate[1]{label=(\arabic*)}	% enumerate label
-\setenumerate[2]{label=(\alph*)}	% second-order enumerate label
+\setenumerate[1]{label=\normalfont(\arabic*)}	% enumerate label
+\setenumerate[2]{label=\normalfont(\alph*)}	% second-order enumerate label
 
-\setlist [itemize] {label = ------, leftmargin = *}
-\setlist [enumerate] {leftmargin = *}
+\setlist [itemize] {label = ---, leftmargin = *, wide} % topsep=0 em
+\setlist [enumerate] {wide}% topsep=0 em
+%\setlength{\parskip}{0pt}
 
+\AddToHook{cmd/section/before}{\clearpage}
 
 \ifnone	% [none]
 
@@ -777,95 +837,96 @@
 		
 		\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
 		
-		\newcommand {\defn} [1] {{\iffalse\slshape \fi{\ul {#1}}}}		% key words emphasized by underline
+		\newcommand {\defn} [1] {{{\bfseries #1}}}		% key words emphasized by underline
 		\newcommand {\frdefn} [1] {{\iffalse\slshape \fi\emph{\bfseries\color{darkcandyapplered} #1}}}	% French key words emphasized by bolded red with appropriate italicization
         
-            \ifluatex   % `[math-style = french] {unicode-math}' does not support `\scshape\bfseries'
-            
-                \newtheoremstyle {thm}   	% name
+                 \ifplaintitle
+                 
+                  \newtheoremstyle {thm}   	% name
                     {1 em}              	% space above
                     {1 em}              	% space below
-                    {\iffalse\itshape\fi}	% body font
+                    {}	            % body font
+                    {0 em}              	% indent amount
+                    {\scshape}         	% theorem head font
+                    {.}                 	% punctuation after theorem head
+                    {\newline}              % space after theorem head
+                    {\thmname{#1}\thmnote{: #3}}                  	% theorem head spec
+                    % \thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}
+    
+                \newtheoremstyle {defn}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\scshape}
+                    {.}
+                    {\newline}
+                    {\thmname{#1}\thmnote{: #3}}
+            
+                \newtheoremstyle {remark}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\scshape}
+                    {.}
+                    {\newline}
+                    {\thmname{#1}\thmnote{ --- #3}}
+                
+                \newtheoremstyle {proof}
+                    {1 em}
+                    {1 em}
+                    {}
+                    {0 em}
+                    {\scshape}
+                    {.}
+                    {\newline}
+                    {\thmname{#1}\thmnote{ --- #3}}
+                 \else
+                  \newtheoremstyle {thm}   	% name
+                    {1 em}              	% space above
+                    {1 em}              	% space below
+                    {\itshape}	            % body font
                     {0 em}              	% indent amount
                     {\bfseries}         	% theorem head font
                     {.}                 	% punctuation after theorem head
-                    {1 em}              	% space after theorem head
-                    {}                  	% theorem head spec
-    
-                \newtheoremstyle {defn}
-                    {1 em}
-                    {1 em}
-                    {}
-                    {0 em}
-                    {\bfseries}
-                    {.}
-                    {1 em}
-                    {}
-            
-                \newtheoremstyle {remark}
-                    {1 em}
-                    {1 em}
-                    {}
-                    {0 em}
-                    {\bfseries}
-                    {.------}
-                    {0 em}
-                    {}
-                
-                \newtheoremstyle {proof}
-                    {1 em}
-                    {1 em}
-                    {}
-                    {0 em}
-                    {\bfseries}
-                    {.------}
-                    {0 em}
-                    {}
-                
-            \else
-            
-                \newtheoremstyle {thm}   % name
-                    {1 em}              % space above
-                    {1 em}              % space below
-                    {}                  % body font
-                    {0 em}              % indent amount
-                    {\scshape\bfseries} % theorem head font
-                    {.}                 % punctuation after theorem head
                     {1 em}              % space after theorem head
-                    {}                  	% theorem head spec
+                    {\thmname{#1}\thmnumber{ #2}\thmnote{. #3}}                  	% theorem head spec
+                    % \thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}
     
                 \newtheoremstyle {defn}
                     {1 em}
                     {1 em}
                     {}
                     {0 em}
-                    {\scshape\bfseries}
+                    {\bfseries}
                     {.}
                     {1 em}
-                    {}
+                    {\thmname{#1}\thmnumber{ #2}\thmnote{. #3}}
             
                 \newtheoremstyle {remark}
                     {1 em}
                     {1 em}
                     {}
                     {0 em}
-                    {\scshape\bfseries}
-                    {.------}
-                    {0 em}
-                    {}
+                    {\bfseries}
+                    {.}
+                    {1 em}
+                    {\thmname{#1}\thmnumber{ #2}\thmnote{. #3}}
                 
                 \newtheoremstyle {proof}
                     {1 em}
                     {1 em}
                     {}
                     {0 em}
-                    {\scshape\bfseries}
-                    {.------}
-                    {0 em}
-                    {}
+                    {\bfseries}
+                    {.}
+                    {1 em}
+                    {\thmname{#1}\thmnumber{ #2}\thmnote{. #3}}
+                 \fi
+               
                 
-            \fi
-				
+           				
 			\theoremstyle {proof}
 			\newtheorem* {proof} {Proof}
 			\newtheorem* {pf} {Proof}
@@ -931,7 +992,7 @@
 				
 				
 				% \geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in, rmargin = 1 in}
-				\geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in, inner = 1 in, outer = 0.5 in}
+				\geometry {left = 1 in, bottom = 1.5 in, right = 1 in, top = 1.5 in, inner = 1.5 in, outer = 1.5 in}
 				
 				\iffalse%\ifscr
 					
@@ -960,7 +1021,8 @@
 					\makeatother
 					
                             		% consider making `\bfseries\scshape' when possible
-                            		\ifluatex
+		
+                            		%\ifluatex %%%%%
                             			\makeatletter
                                 			\renewcommand{\section}{\@startsection
                                     				{section}           % name
@@ -978,7 +1040,7 @@
                                     				{\z@}                   % the indent / 0mm
                                     				{-\baselineskip}        % before skip / -3.5ex \@plus -1ex \@minus -.2ex
                                     				{0.5\baselineskip}      % after skip / 2.3ex \@plus .2ex
-                                    				{\bfseries}}  % style
+                                    				{\scshape}}  % style
                             			\makeatother	
 			
 										\makeatletter
@@ -990,7 +1052,7 @@
             									{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
             									{}} 				% style
             							\makeatother
-					\fi 
+							%\fi %%%%%
                             
                             
         				\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
@@ -1011,9 +1073,13 @@
         						\renewcommand{\sectionmark}[1]{\markleft{#1}}
         					\fi
         				
-        					\fancyhead[L]{\jtitle}
-        					\fancyhead[R]{\nouppercase\rightmark}
-        					\cfoot{\text{}\\\thepage}
+        					\fancyhead[CO]{\small \scshape\jtitle}
+							\fancyhead[CE]{\small \scshape\nouppercase\rightmark}
+							\fancyhead[LE,RO]{\footnotesize \thepage}
+							\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+        					%\fancyhead[R]{\nouppercase\rightmark}
+        					%\cfoot{\text{}\\\thepage}
 
 						\ifindex
         						\makeindex
@@ -1128,5 +1194,119 @@
 		\fi
 	\fi
 \fi
+
+\iftesting %%%%% BEGINNING OF TESTING
+
+%% getting theorem style error for proof environment when amsthm loaded before, obvious error when loaded after ...
+
+\RequirePackage {mathpazo}
+\RequirePackage {eucal}
+
+\RequirePackage [titles] {tocloft}
+\renewcommand*{\cftbeforesecskip}{0 em}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecnumwidth}{3 em}
+\renewcommand{\cftsecaftersnum}{.}
+%\AddToHook{cmd/section/before}{\clearpage}
+
+
+\setcounter {tocdepth} {1}
+%\setcounter {tocdepth} {2}
+
+\geometry {left = 0.5 in, bottom = 1 in, right = 0.5 in, top = 1 in, inner = 1 in, outer = 0.5 in}
+				
+
+					\makeatletter
+						%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
+					
+						\def\title#1{\gdef\@title{#1}\gdef\THETITLE{#1}}
+
+						% redefining `\maketitle` such that it is better suited for courses
+						\renewcommand \maketitle{
+							\thispagestyle{empty}
+								{\raggedright 
+								\begin{center}
+									{\Large\scshape \jtitle}\\\vspace*{1 em}
+									{\large Based on lectures by \jlecturer}\text{}\\
+									{\normalsize Scribed by \jauthor}\text{}\\
+									{\small Last updated on \today}\\\vspace*{0.666666 em}
+									{\large \jterm}
+								\end{center}}}
+					\makeatother
+                            
+					\makeatletter
+						\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+					\makeatother
+					
+                            		% consider making `\bfseries\scshape' when possible
+                            		%\ifluatex
+                            			\makeatletter
+                                			\renewcommand{\section}{\@startsection
+                                    				{section}           % name
+                                    				{1}                 % level
+                                    				{\z@}               % the indent / 0mm
+                                    				{-\baselineskip}    % before skip / -3.5ex \@plus -1ex \@minus -.2ex
+                                    				{0.5\baselineskip}  % after skip / 2.3ex \@plus .2ex
+                                    				{\centering\bfseries\large}}  % style
+                            			\makeatother
+                
+                            			\makeatletter
+                                			\renewcommand{\subsection}{\@startsection
+                                    				{subsection}            % name
+                                    				{2}                     % level
+                                    				{\z@}                   % the indent / 0mm
+                                    				{-\baselineskip}        % before skip / -3.5ex \@plus -1ex \@minus -.2ex
+                                    				{0.5\baselineskip}      % after skip / 2.3ex \@plus .2ex
+                                    				{\bfseries\large}}  % style
+                            			\makeatother	
+			
+										\makeatletter
+            								\renewcommand{\subsubsection}{\@startsection
+            									{subsubsection}		% name
+            									{3}				% level
+            									{\z@}			% the indent / 0mm
+            									{-\baselineskip}	% before skip / -3.5ex \@plus -1ex \@minus -.2ex
+            									{0.5\baselineskip}	% after skip / 2.3ex \@plus .2ex
+            									{\bfseries}} 				% style
+            							\makeatother
+					%\fi 
+                            
+                            
+        				\makeatletter	% https://tex.stackexchange.com/questions/94853/section-and-subsection-alternating-in-the-header
+        					\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+        				\makeatother 
+					
+					
+					
+        					\pagestyle{fancy} 
+        					\renewcommand{\sectionmark}[1]{\markright{#1}}
+        					\renewcommand{\subsectionmark}[1]{}
+        					\fancyhf{}
+					\renewcommand{\headrulewidth}{0pt}
+        			
+        				
+        					\ifams
+        						\renewcommand{\sectionmark}[1]{\markleft{#1}}
+        					\fi
+        				
+        					\fancyhead[LE]{\footnotesize\thepage}
+							\fancyhead[RO]{\footnotesize\thepage}
+        					\fancyhead[RE]{\footnotesize\nouppercase\jtitle}
+							\fancyhead[LO]{\footnotesize\nouppercase\rightmark}
+        					%\cfoot{\text{}\\\thepage}
+
+						\ifindex
+        						\makeindex
+        						\indexsetup {othercode = {\thispagestyle {fancy}}}
+						\fi
+												%%PS
+												
+						
+
+
+\fi %%%%%%% END OF TESTING
+
+
 
 \endinput

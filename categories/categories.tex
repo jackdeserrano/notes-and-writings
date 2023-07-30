@@ -1,4 +1,4 @@
-\documentclass[11pt, oneside]{article}
+\documentclass[11pt, twoside]{article}
 \def\jtitle{Categories}
 \def\jlecturer{Richard Borcherds}
 \def\jterm{}
@@ -398,7 +398,18 @@ n \isomto \underbrace{1 \tensor \cdots \tensor 1 }_{n \textrm{ times}}.
 $$
 This is a universal example. Another example: fix a category $\cat C$ and we get a new category with objects functors $\cat C\longrightarrow\cat C$ and morphisms as natural transformations. We define $\tensor$ as composition of functors, and we get a strict monoidal category, where the monoids are \href{https://en.wikipedia.org/wiki/Monad_(category_theory)}{\defn{monads}}\index{monad}.
 
-In a monoidal category, we need to be given an isomorphism $(A\tensor B)\tensor C \isom A\tensor(B\tensor C)$ and $A \tensor 1 \isom A $ and $1\tensor A\isom A$. For abelian groups, we could take $(a\tensor b)\tensor c \longrightarrow a\tensor (b\tensor c)$, but why can't we take $(a\tensor b)\tensor c \longrightarrow -a\tensor (b\tensor c)$? The problem here is a coherence condition: consider 
+In a monoidal category, we need to be given an isomorphism \begin{tikzcd}[cramped]
+(A\tensor B)\tensor C \ar[r,"\sim"]& A\tensor(B\tensor C)
+\end{tikzcd}
+and
+\begin{tikzcd}[cramped]
+A \tensor 1   \ar[r,"\sim"]&  A
+\end{tikzcd}
+ and
+\begin{tikzcd}[cramped]
+1\tensor A   \ar[r,"\sim"]&  A.
+\end{tikzcd} 
+For abelian groups, we could take $(a\tensor b)\tensor c \longrightarrow a\tensor (b\tensor c)$, but why can't we take $(a\tensor b)\tensor c \longrightarrow -a\tensor (b\tensor c)$? The problem here is a coherence condition: consider 
  \[
 \begin{tikzcd}
 A \tensor (B \tensor (C \tensor D)) \arrow[r]  & (A \tensor B)\tensor (C \tensor D) \arrow[r] & ((A\tensor B)\tensor C)\tensor D\arrow [d] \\
@@ -433,7 +444,7 @@ to hold. We also find that
 $$
 \underbrace{A \tensor \cdots \tensor A }_{n \textrm{ times}}
 $$
-is acted on by the symmetric group on $n$ letters $S_n$. If we drop the identity condition, we get \href{https://en.wikipedia.org/wiki/Braided_monoidal_category}{\defn{braided monoidal categories}}\index{braided monoidal category}; they are closely related to \href{https://en.wikipedia.org/wiki/Braid_group}{\defn{braid groups}}\index{braid group}.
+is acted on by the symmetric group on $n$ letters $\mathfrak{S}_n$. If we drop the identity condition, we get \href{https://en.wikipedia.org/wiki/Braided_monoidal_category}{\defn{braided monoidal categories}}\index{braided monoidal category}; they are closely related to \href{https://en.wikipedia.org/wiki/Braid_group}{\defn{braid groups}}\index{braid group}.
 
 Let's consider a non-trivial example of a symmetric monoidal category. Take the category of abelian groups with the usual tensor product $\tensor$. We need an isomorphism 
 $$

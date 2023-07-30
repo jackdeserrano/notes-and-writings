@@ -1,4 +1,4 @@
-\documentclass[11pt, oneside,margin=1in]{article}
+\documentclass[11pt, twoside,margin=1in]{article}
 
 \def\jtitle{Rings and modules}
 \def\jlecturer{Richard Borcherds}
@@ -62,7 +62,7 @@ Recall Cayley's theorem: every group $G$ is the symmetry of something. This some
 
 Suppose $R$ is a ring. If we take $M=R$ with a right action of $R$, the set of endomorphisms is $R$ acting on the left. So rings are the endomorphisms of linear objects in the same way that groups are the symmetries of objects.
 
-A homomorphism of rings preserves all ring operations. One should be careful, though. The map $\Zmod{6} \longrightarrow \Zmod 2 \times \Zmod 3$ is an isomorphism of groups and rings; however, the ring $\Zmod 2$ is not a subring of $\Zmod 6$ (even though it is a subgroup): the map does not take $1_{\Zmod 2}$ to $1_{\Zmod 6}$.
+A homomorphism of rings preserves all ring operations. One should be careful, though. The map $\Z/6\Z \longrightarrow \Z/2\Z  \times \Z/3\Z $ is an isomorphism of groups and rings; however, the ring $\Z/2\Z $ is not a subring of $\Z/6\Z $ (even though it is a subgroup): the map does not take $1_{\Z/2\Z }$ to $1_{\Z/6\Z }$.
 
 If $G$ acts on $S$ and $T$, then we can consider maps from $S$ to $T$ preserving the action of $G$ (maps of $G$-sets). Similarly, we have homomorphisms (or linear transformations) of modules.
 
@@ -93,7 +93,7 @@ is a left ideal of $R$, and
 \[
 I_3 =\left\{ \mat {2\alpha & 2\beta\\ 2\gamma&2\zeta}: \alpha,\beta,\gamma,\zeta \in \Z\right\}
 \]
-is a two-sided ideal of $R$. Furthermore, we have $R/I_1 = \Z^2$ and $R/I_2 = \Z^2$ (the difference is the side on which $R$ acts). Also, $R/I_3 = \MM_2(\Zmod 2)$.
+is a two-sided ideal of $R$. Furthermore, we have $R/I_1 = \Z^2$ and $R/I_2 = \Z^2$ (the difference is the side on which $R$ acts). Also, $R/I_3 = \MM_2(\Z/2\Z )$.
 \end{example}
 
 The ring-analogue of the symmetric group $\Sg_n$ is the symmetry group of
@@ -325,7 +325,7 @@ When is a prime a sum of two squares? A square is $0$ or $1$ mod $4$, so a sum o
 An odd prime $p$ can be written as a sum of two squares if and only if $p\equiv 1\pmod 4$.
 \end{proposition}
 \begin{proof}
-The group $(\Zmod p)^*$ is cyclic of order $p-1$, which is divisible by $4$, so there must be an element $a$ of order $4$. Further, $a^2$ has order $2$, so $a^2\equiv -1$. So $a^2 = np-1$, and 
+The group $(\Z/p\Z )^*$ is cyclic of order $p-1$, which is divisible by $4$, so there must be an element $a$ of order $4$. Further, $a^2$ has order $2$, so $a^2\equiv -1$. So $a^2 = np-1$, and 
 $$
 (a+i)(a-i) = np.
 $$
@@ -383,7 +383,7 @@ Let's figure out why this goes wrong. Suppose $\psi:R\longrightarrow S$ is a map
 \[
 \begin{tikzcd}
 R \arrow[r] \arrow[d]& S \arrow[d]\\
- R/\psi\inv(\mf m) \arrow[hookrightarrow]{r}& S/\mf m
+ R/\psi\inv(\mf m) \arrow[r]& S/\mf m
 \end{tikzcd}
 \]
 Notice that $S/\mf m$ is a field. The quotient $R/\psi\inv (\mf m)$ is a subring of a field: it is not necessarily a field, but it is an integral domain. Since a subring of an integral domain is an integral domain, the inverse of a prime ideal is prime. Now we define the \defn{spectrum}\index{spectrum} of $R$, written $\Spec(R)$, to be the set of prime ideals of $R$. The topology is defined as before: take $f\in R$ and define 
@@ -454,7 +454,7 @@ We need to check if this well--defines an equivalence relation and satisfies rin
 
 So if $S$ is multiplicative and has no zero divisors, then one can construct $R\left[S\inv\right]$ as above, and $R\longrightarrow R\left[S\inv\right]$ is injective. When $S$ has zero divisors, let $I$ be the ideal of elements $r$ where $rs=0$ for some $s\in S$. (This is an ideal because $S$ is multiplicative.) Then one takes
 $$
-R \longrightarrow R/I \lhook\joinrel\longrightarrow (R/I)\left[ S\inv\right] =R\left[ S\inv\right]
+R \longrightarrow R/I \rightarrow (R/I)\left[ S\inv\right] =R\left[ S\inv\right]
 $$
 where $(R/I)\left[ S\inv\right]$ corresponds to the images of the elements of $S$ in $R/I$. The second arrow corresponds to an injective map because the images of elements of $S$ are not zero divisors. So the map $R\longrightarrow R\left[S\inv\right]$ has kernel $I$.
 
@@ -466,12 +466,12 @@ Let $R=\Z$. ``Suppose you . . . want to kill the prime $2$ and get rid of it.'' 
 $$
 \Spec (R\left[ 1/3,1/5,1/7,1/9,\hdots\right]) = \{ (2), (0)\}
 $$
-which can be written as $R_{(2)} = R \left[S\inv\right]$ where $S={(2)}^\complement$. 
+which can be written as $R_{(2)} = R \left[S\inv\right]$ where $S={(2)}^{{\complement}}$. 
 \end{example}
 
 More generally, if $\mf p$ is a prime ideal of any ring $R$, then the \defn{localization}\index{localization} of $R$ at $\mf p$ is
 $$
-R_{\mf p} = R\left[ S\inv\right], \quad S = {\mf p}^\complement.
+R_{\mf p} = R\left[ S\inv\right], \quad S = {\mf p}^{\complement}.
 $$
 The ring $R_{\mf p} $ is an example of a \defn{local ring}\index{local ring}: it has a unique maximal ideal.
 
@@ -489,7 +489,7 @@ If $M$ and $N$ are left $R$-modules, then $\Hom_R\left( M,N \right) $ acts on th
 
 The simplest $R$-modules are \defn{free modules}\index{free module}, which are sums of copies of $R$. A free module $M$ has a vector space--resemblant basis. Over a field, all modules are free modules. 
 \begin{example}[Non--free module]\label{}
-The $\mathbf{Z}$-module $\Zmod 2$ is not free.
+The $\mathbf{Z}$-module $\Z/2\Z $ is not free.
 \end{example}
 
 The essential invariant of a vector space is dimension: we define $\dim(k^n):= n$. We define the \defn{rank}\index{rank} of a free $R$-module in a similar way: $\rank (R^n):= n$. Is this well defined?
@@ -544,13 +544,13 @@ and another $R$--module $M$. Then we get an exact sequence
 Why didn't we put $\{0\}$ at the beginning of the exact sequence? Consider
 \[
 \begin{tikzcd}
-\{0\} \arrow[r] & \Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Zmod 2\arrow[r] & \{0\}
+\{0\} \arrow[r] & \Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Z/2\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-and let $M=\Zmod 2$. By the process above, we get the sequence
+and let $M=\Z/2\Z $. By the process above, we get the sequence
 \[
 \begin{tikzcd}
-\{0\} & \Zmod 2 \arrow[l]& \Zmod 2\arrow[l,swap, "\times 2"] & \Zmod 2 \arrow[l] & \{0\} \arrow[l]
+\{0\} & \Z/2\Z  \arrow[l]& \Z/2\Z \arrow[l,swap, "\times 2"] & \Z/2\Z  \arrow[l] & \{0\} \arrow[l]
 \end{tikzcd}
 \]
 which is not exact (the $\times 2$ map is not onto). 
@@ -579,7 +579,7 @@ All free modules are projective modules (see the beginning of the section). If $
 \end{example}
 
 \begin{example}[Non--free projective modules]\label{}
-Take $R=\Zmod 6$. We know $\Zmod 3\oplus \Zmod 2$ is free of rank $1$, so $\Zmod 3$ is projective. But $R$ has zero divisors (if a ring splits as a direct sum, it inevitably has zero divisors).
+Take $R=\Z/6\Z $. We know $\Z/3\Z \oplus \Z/2\Z $ is free of rank $1$, so $\Z/3\Z $ is projective. But $R$ has zero divisors (if a ring splits as a direct sum, it inevitably has zero divisors).
 \end{example}
 
 \begin{example}[Non--free projective modules over an integral domain]\label{ms}
@@ -657,7 +657,7 @@ Let's show that the tensor product exists. We have a map $A\times B\longrightarr
 \]
 We have $a\tensor b \longmapsto f(a\times b) $. So $\tensor$ exists.\iffalse
 \begin{example}[ ]\label{}
-Although $\Zmod {91} \tensor \Zmod {119} \ne \{0\}$, we have $\Zmod {91} \tensor \Zmod {120} = \{0\}$.
+Although $\Z/91\Z  \tensor \Z/119\Z  \ne \{0\}$, we have $\Z/91\Z  \tensor \Z/ {120}\Z = \{0\}$.
 \end{example}
 \fi
 
@@ -707,55 +707,55 @@ A \arrow[r, "f", shift left]\arrow[r, "0", shift right, swap] & B \arrow[r]& C
 \end{proof}
 
 \begin{example}[Calculating tensor products]\label{}
-Suppose we want to compute $\Zmod 2\tensor \Zmod 2$. Then we have the exact sequence 
+Suppose we want to compute $\Z/2\Z \tensor \Z/2\Z $. Then we have the exact sequence 
 \[
 \begin{tikzcd}
-\Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Zmod 2\arrow[r] & \{0\}
+\Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Z/2\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-so tensoring by $\Zmod 2$ 
+so tensoring by $\Z/2\Z $ 
 \[
 \begin{tikzcd}
-\Zmod 2 \arrow[r,"\times 2"] & \Zmod 2\arrow[r]& \Zmod 2\tensor \Zmod 2\arrow[r] & \{0\}
+\Z/2\Z  \arrow[r,"\times 2"] & \Z/2\Z \arrow[r]& \Z/2\Z \tensor \Z/2\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-is exact. We know that $\img_{\times 2}(\Zmod 2)=\{0\}$, so \begin{align*}
-	\Zmod 2\tensor \Zmod 2 \isomto \Zmod 2.
+is exact. We know that $\img_{\times 2}(\Z/2\Z )=\{0\}$, so \begin{align*}
+	\Z/2\Z \tensor \Z/2\Z  \isomto \Z/2\Z .
 \end{align*}
 
-Suppose we want to compute $\Zmod 2\tensor \Zmod 3$. Then we have 
+Suppose we want to compute $\Z/2\Z \tensor \Z/3\Z $. Then we have 
 \[
 \begin{tikzcd}
-\Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Zmod 2\arrow[r] & \{0\}
+\Z \arrow[r, "\times 2"] & \Z\arrow[r]& \Z/2\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
 so
 \[
 \begin{tikzcd}
-\Zmod 3 \arrow[r,"\times 2"] & \Zmod 3\arrow[r]& \Zmod 2\tensor \Zmod 3\arrow[r] & \{0\}
+\Z/3\Z  \arrow[r,"\times 2"] & \Z/3\Z \arrow[r]& \Z/2\Z \tensor \Z/3\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-The $\times 2$ map is an isomorphism, so $\Zmod 2\tensor \Zmod 3 \isomto (\Zmod 3)/ (\Zmod 3)$, so 
+The $\times 2$ map is an isomorphism, so $\Z/2\Z \tensor \Z/3\Z  \isomto (\Z/3\Z )/ (\Z/3\Z )$, so 
 \begin{align*}
-	\Zmod 2\tensor\Zmod 3\isomto \{0\}.
+	\Z/2\Z \tensor\Z/3\Z \isomto \{0\}.
 \end{align*}
 \end{example}
-\begin{example}[$\Zmod m \tensor \Zmod n$]\label{}
+\begin{example}[$\Z/m\Z  \tensor \Z/n\Z $]\label{}
 We have the exact sequence
 \[
 \begin{tikzcd}
-  \Z \arrow[r, "\times m"] & \Z\arrow[r]& \Zmod m\arrow[r] & \{0\}
+  \Z \arrow[r, "\times m"] & \Z\arrow[r]& \Z/m\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-and tensoring by $\Zmod n$ we get 
+and tensoring by $\Z/n\Z $ we get 
 \[
 \begin{tikzcd}
-\Zmod n \arrow[r,"\times m"] & \Zmod n\arrow[r]& \Zmod m\tensor \Zmod n\arrow[r] & \{0\}
+\Z/n\Z  \arrow[r,"\times m"] & \Z/n\Z \arrow[r]& \Z/m\Z \tensor \Z/n\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-So $\Zmod m\tensor \Zmod n$ is $ (\Zmod n) / (\img_{\times m} (\Zmod n))$, so
+So $\Z/m\Z \tensor \Z/n\Z $ is $ (\Z/n\Z ) / (\img_{\times m} (\Z/n\Z ))$, so
 \begin{align*}
-	\Zmod m\tensor \Zmod n \isomto \Zmod {\gcd(n,m)}. 
+	\Z/m\Z \tensor \Z/n\Z  \isomto \Z/ {\gcd(n,m)}\Z. 
 \end{align*}
 \end{example}
 
@@ -763,24 +763,24 @@ We have seen that $\cdot \tensor Y$ preserves right exactness, but it also prese
 
 Any finitely generated abelian group is a direct sum of cyclic groups, so working out their tensor products is straightforward:
 \begin{align*}
-	(\mathbf{Z}\oplus \mathbf{Z}\oplus \Zmod 6) \tensor(\mathbf{Z}\oplus \Zmod{15}) = \mathbf{Z}\oplus \mathbf{Z}\oplus \Zmod{6}\oplus \Zmod{15}\oplus \Zmod {15}\oplus \Zmod 3.
+	(\mathbf{Z}\oplus \mathbf{Z}\oplus \Z/6\Z ) \tensor(\mathbf{Z}\oplus \Z/15\Z) = \mathbf{Z}\oplus \mathbf{Z}\oplus \Z/6\Z\oplus \Z/15\Z\oplus \Z/15\Z\oplus \Z/3\Z .
 \end{align*}
 \begin{example}[Tensor products of not finitely generated abelian groups]\label{}
-	Suppose we want to compute $\Zmod n \tensor \Q$. Then
+	Suppose we want to compute $\Z/n\Z  \tensor \Q$. Then
 	\[
 	\begin{tikzcd}
-	\Z \arrow[r, "\times n"] & \Z\arrow[r]& \Zmod n\arrow[r] & \{0\}
+	\Z \arrow[r, "\times n"] & \Z\arrow[r]& \Z/n\Z \arrow[r] & \{0\}
 	\end{tikzcd}
 	\]
 	is exact, so tensoring by $\mathbf{Q}$ we get
 	\[
 	\begin{tikzcd}
-	\Q \arrow[r, "\times n"] & \mathbf{Q}\arrow[r]& \Zmod n\tensor \mathbf{Q}\arrow[r] & \{0\}
+	\Q \arrow[r, "\times n"] & \mathbf{Q}\arrow[r]& \Z/n\Z \tensor \mathbf{Q}\arrow[r] & \{0\}
 	\end{tikzcd}
 	\]
 	and the $\times n$ map is an isomorphism, so 
 	\begin{align*}
-		\Zmod n \tensor \Q \isomto\{0\}.
+		\Z/n\Z  \tensor \Q \isomto\{0\}.
 	\end{align*}
 \end{example}
 \begin{example}[Tensor products where neither group is finitely generated]\label{}
@@ -806,13 +806,13 @@ and all of these arrows are isomorphisms. So the colimit of this is $\mathbf{Q}$
 \end{example}
 
 \begin{example}[Mistake]\label{}
-Suppose we want to calculate $\mathbf{Q}\tensor (\Zmod 2)$. We write $\mathbf{Q}$ as a colimit as before, and tensor by $\Zmod 2$ to obtain an exact sequence with $\Zmod 2$ everywhere. Take its colimit, and obtain $\mathbf{Q}\tensor (\Zmod 2) \isomto \Zmod 2$. This is wrong. When we get the sequence
+Suppose we want to calculate $\mathbf{Q}\tensor (\Z/2\Z )$. We write $\mathbf{Q}$ as a colimit as before, and tensor by $\Z/2\Z $ to obtain an exact sequence with $\Z/2\Z $ everywhere. Take its colimit, and obtain $\mathbf{Q}\tensor (\Z/2\Z ) \isomto \Z/2\Z $. This is wrong. When we get the sequence
 \[
 \begin{tikzcd}
-\Zmod 2 \arrow[r, "\times 2"] & \Zmod 2 \arrow[r, "\times 3"] & \Zmod 2 \arrow[r, "\times 4"] & \cdots,
+\Z/2\Z  \arrow[r, "\times 2"] & \Z/2\Z  \arrow[r, "\times 3"] & \Z/2\Z  \arrow[r, "\times 4"] & \cdots,
 \end{tikzcd}
 \]
-we cannot say that its colimit is $\Zmod 2$ since these arrows are not isomorphisms. These arrows mean nothing more than the $0$ map, so the colimit (and tensor product) is $\{0\}$. Also, once we tensor with $\Zmod 2$, the arrows are not injective maps, so we do not have an increasing union of $\Zmod 2$.
+we cannot say that its colimit is $\Z/2\Z $ since these arrows are not isomorphisms. These arrows mean nothing more than the $0$ map, so the colimit (and tensor product) is $\{0\}$. Also, once we tensor with $\Z/2\Z $, the arrows are not injective maps, so we do not have an increasing union of $\Z/2\Z $.
 \end{example}
 \begin{exercise}\label{}
 	Compute
@@ -908,7 +908,7 @@ Let $V$ be a vector space over $\C$ with $\dim V < \infty$ and let $G$ be a fini
 \end{example}
 
 \begin{example}[Representation rings]\label{}
-Suppose $G=\Zmod n = \langle g \rangle$. Suppose $V$ and $W$ are vector spaces as described in \cref{notserre} with dimension $1$ and 
+Suppose $G=\Z/n\Z  = \langle g \rangle$. Suppose $V$ and $W$ are vector spaces as described in \cref{notserre} with dimension $1$ and 
 \begin{align*}
 	g(v)& = e^{2\pi ia/n}, v\in V,\\
 	g(w) &= e^{2\pi i b/n}, w\in W.
@@ -956,7 +956,7 @@ Suppose $R$ is a commutative ring. The dual of an $R$--module $M$ is given by $M
 
 If $P$ is a finitely generated projective module, then there exists another projective module $Q$ such that $P\oplus Q$ is free of finite rank. We have $(P\oplus Q) ^* \isomto P^* \oplus Q^*$, so the natural map $P\longrightarrow P^{**}$ is an isomorphism (as it is for free modules). 
 
-Suppose $R=\Z$ and $M=\Zmod 2$. Then $M^* = \Hom_{R}(M, R)=\{0\}$. The theory seems to fall apart for nonprojective modules.
+Suppose $R=\Z$ and $M=\Z/2\Z $. Then $M^* = \Hom_{R}(M, R)=\{0\}$. The theory seems to fall apart for nonprojective modules.
 
 We define a different dual where
 \begin{align*}
@@ -964,13 +964,13 @@ We define a different dual where
 \end{align*}
 The module $\Q/\Z$ is a \defn{dualizing module}\index{dualizing module}. We have a natural map $M\longrightarrow M^{**}$, and this is an isomorphism if $M$ is a finite abelian group. (For free abelian groups, the dualizing module is $\mathbf{Z}$.) 
 \begin{proof}
-Notice that $(A\oplus B) ^* \isomto A^*\oplus B^*$ and $M$ is a direct sum of cyclic groups. So it is enough to check that $M$ is isomorphic to its double dual when $M$ is cyclic. We know that $(\Zmod n) ^* = \Hom_{\mathbf{Z}}(\Zmod n, \Q/\Z)$. Suppose $g$ is a generator of $\Zmod n$. Then the image of $g$ is an element of order dividing $n$ in $\Q/\Z$, and there are $n$ such elements: $0$, $1/n$, $2/n$, et cetera. So there are $n$ homomorphisms from $\Zmod n$ to $\mathbf{Q}/\mathbf{Z}$ corresponding to these elements. One sees that $\Hom_{}(\Zmod n, \Q/\Z)\isomto \Zmod n$, but this isomorphism is not natural: it depends on the choice of generator. However, $\Zmod n$ has the same size as its dual, so we have a natural isomorphism $\Zmod n \longrightarrow (\Zmod n) ^{**}$. So any finite abelian group is isomorphic to its double dual. (That it is isomorphic to its dual is an ``accident.'') 
+Notice that $(A\oplus B) ^* \isomto A^*\oplus B^*$ and $M$ is a direct sum of cyclic groups. So it is enough to check that $M$ is isomorphic to its double dual when $M$ is cyclic. We know that $(\Z/n\Z ) ^* = \Hom_{\mathbf{Z}}(\Z/n\Z , \Q/\Z)$. Suppose $g$ is a generator of $\Z/n\Z $. Then the image of $g$ is an element of order dividing $n$ in $\Q/\Z$, and there are $n$ such elements: $0$, $1/n$, $2/n$, et cetera. So there are $n$ homomorphisms from $\Z/n\Z $ to $\mathbf{Q}/\mathbf{Z}$ corresponding to these elements. One sees that $\Hom_{}(\Z/n\Z , \Q/\Z)\isomto \Z/n\Z $, but this isomorphism is not natural: it depends on the choice of generator. However, $\Z/n\Z $ has the same size as its dual, so we have a natural isomorphism $\Z/n\Z  \longrightarrow (\Z/n\Z ) ^{**}$. So any finite abelian group is isomorphic to its double dual. (That it is isomorphic to its dual is an ``accident.'') 
 \end{proof}
 
 Why choose $\Q/\Z$ as the dualizing module? We needed the elements of order dividing $n$ in the module to form a cyclic subgroup of order $n$. We might have used $S^1$, $\R/\Z$, or even $\C^\times$.
 
-\begin{example}[Dual of $(\Zmod 8)^\times$]\label{}
-	(Notice that the usual notation for the unit ring conflicts with notation for duals. If context isn't enough to clarify things we use $(\cdot)^\times$ for the unit ring.) Take $\C^\times$ to be the dualizing module. There are $4$ homomorphisms from $(\Zmod 8) ^\times$ to $\C^\times$:
+\begin{example}[Dual of $(\Z/8\Z )^\times$]\label{}
+	(Notice that the usual notation for the unit ring conflicts with notation for duals. If context isn't enough to clarify things we use $(\cdot)^\times$ for the unit ring.) Take $\C^\times$ to be the dualizing module. There are $4$ homomorphisms from $(\Z/8\Z ) ^\times$ to $\C^\times$:
 	\begin{center}
 \begin{tabular}{cccccccc}
 	%\toprule
@@ -986,13 +986,13 @@ $\chi_3$ & $1$ & $-1$ & $-1$ & $1$\\
 \end{center}
 So
 \begin{align*}
-	\left( \left( \Zmod 8 \right) ^\times \right) ^* = \{\chi_0,\chi_1,\chi_2,\chi_3\}.
+	\left( \left( \Z/8\Z  \right) ^\times \right) ^* = \{\chi_0,\chi_1,\chi_2,\chi_3\}.
 \end{align*}
 \end{example}
 
 These are examples of \defn{Dirichlet characters}\index{Dirichlet character}: a Dirichlet character is a map
  \begin{align*}
-	\chi : (\Zmod n) ^\times \longrightarrow \C^\times.
+	\chi : (\Z/n\Z ) ^\times \longrightarrow \C^\times.
 \end{align*}
 A Dirichlet $L$--series, for example, is given by
 \begin{align*}
@@ -1032,7 +1032,7 @@ commutes. This is the category-theoretic dual of a projective module. So we can 
 \end{definition}
 
 \begin{example}[Injective modules over $R=\Z$]\label{}
-Is $I=\Z$ injective? There is an injective map from $\mathbf{Z}$ to itself given by multiplication by $2$. Suppose we take the identity map on $\mathbf{Z}$. We cannot extend this map to a map from $2\mathbf{Z}$ to $\mathbf{Z}$. So $\mathbf{Z}$ is not injective. The module $I=\Zmod 2$ also is not injective by the same reasoning. The only injective module over $\mathbf{Z}$ is the zero module.
+Is $I=\Z$ injective? There is an injective map from $\mathbf{Z}$ to itself given by multiplication by $2$. Suppose we take the identity map on $\mathbf{Z}$. We cannot extend this map to a map from $2\mathbf{Z}$ to $\mathbf{Z}$. So $\mathbf{Z}$ is not injective. The module $I=\Z/2\Z $ also is not injective by the same reasoning. The only injective module over $\mathbf{Z}$ is the zero module.
 \end{example}
 
 \begin{definition}[ ]\label{}
@@ -1043,7 +1043,7 @@ If $M$ is an injective module, then $M$ is divisible: consider
 \[
 \begin{tikzcd}
 	&&M\\
-	\{0\} \arrow[r] & \mathbf{Z} \arrow[ur] \arrow[r] & \Zmod n \arrow[u]
+	\{0\} \arrow[r] & \mathbf{Z} \arrow[ur] \arrow[r] & \Z/n\Z  \arrow[u]
 \end{tikzcd}
 \]
 
@@ -1064,18 +1064,18 @@ So $\mathbf{Q}$ is injective. The module $\mathbf{Q}/\mathbf{Z}$ is divisible, s
 There are enough injective modules: any $\mathbf{Z}$--module is a sumbodule of an injective module. Suppose $M$ is a module. We want to find an injective module containing $M$. Pick $m\in M$ nonzero and map $m$ to an element $q\in \mathbf{Q}/\mathbf{Z}$ with $q\ne 0$ where $q$ has the same order as $m$. We extend this map to $M$ as $\mathbf{Q}/\mathbf{Z}$ is injective. Take a copy of $\mathbf{Q}/\mathbf{Z}$ for every nonzero $m\in M$. So we map $M$ to $\prod (\mathbf{Q}/\mathbf{Z})$, and we map each element of $M$ to something nonzero in the corresponding copy of $\mathbf{Q}/\mathbf{Z}$, so this map is injective and the module $\prod (\mathbf{Q}/\mathbf{Z})$ is injective. One can usually find smaller modules with this desired property.
 
 \begin{example}[Smaller injective modules]\label{}
-One can embed $\mathbf{Z}$ in $\mathbf{Q}$. One can embed $\Zmod p$ in $M_p$. This module is an increasing union of
+One can embed $\mathbf{Z}$ in $\mathbf{Q}$. One can embed $\Z/p\Z $ in $M_p$. This module is an increasing union of
  \begin{align*}
-	\Zmod p \subset \Zmod {p^2} \subset \Zmod {p^3} \subset \cdots
+	\Z/p\Z  \subset \Z/p^2\Z \subset \Z/p^3\Z \subset \cdots
 \end{align*}
-and is the smallest injective module containing $\Zmod p$. The same goes for $\Zmod {p^f}$. These are the injective envelopes of the corresponding modules.
+and is the smallest injective module containing $\Z/p\Z $. The same goes for $\Z/ {p^f}\Z$. These are the injective envelopes of the corresponding modules.
 \end{example}
 
 \begin{definition}[ ]\label{}
 The \defn{injective envelope}\index{injective envelope} or \defn{injective hull}\index{injective hull} of a module is the smallest injective module containing that module and the largest essential extension of it.
 \end{definition}
 
-There is no unique ``minimal'' free module mapping onto a module $M$ in general. For instance, one can write $\Zmod 5$ as a quotient of a free module in at least two different ways. 
+There is no unique ``minimal'' free module mapping onto a module $M$ in general. For instance, one can write $\Z/5\Z $ as a quotient of a free module in at least two different ways. 
 
 What about injective modules over arbitrary rings $R$? One can lift injective modules from $\mathbf{Z}$ to $R$. If $I$ is an injective $\mathbf{Z}$--module, then $\Hom_{\mathbf{Z}}(R, I)$ is an injective $R$--module. 
 
@@ -1117,23 +1117,23 @@ Another example of a colimit is a \defn{direct limit}\index{direct limit} or inj
 If these homomorphisms are injective then $\varinjlim M_i = \bigcup M_i$. We have seen that the limit of 
  \[
 \begin{tikzcd}
-	\Zmod p \arrow[r] & \Zmod {p^2} \arrow[r] & \Zmod {p^3} \arrow[r] & \cdots
+	\Z/p\Z  \arrow[r] & \Z/p^2\Z \arrow[r] & \Z/p^3\Z \arrow[r] & \cdots
 \end{tikzcd}
 \]
 is the injective module $M_p$. The dual of this is given by
 \[
 \begin{tikzcd}
-	\Zmod p  & \Zmod {p^2} \arrow[l] & \Zmod {p^3} \arrow[l] & \cdots, \arrow[l]
+	\Z/p\Z   & \Z/p^2\Z \arrow[l] & \Z/p^3\Z \arrow[l] & \cdots, \arrow[l]
 \end{tikzcd}
 \]
 and the limit of the opposite diagram---in this case the $p$-adic numbers---is called the \defn{inverse limit}\index{inverse limit} or projective limit:
 \[
 \begin{tikzcd}
-	\Zmod p  & \Zmod {p^2} \arrow[l] & \Zmod {p^3} \arrow[l] &\Zmod{p^4} \arrow[l] & \cdots \arrow[l] \\
-	 && \varprojlim \Zmod {p^i} = \Z_p \arrow[lu] \arrow[u] \arrow[llu] \arrow[ru] \arrow[rru]
+	\Z/p\Z   & \Z/p^2\Z \arrow[l] & \Z/p^3\Z \arrow[l] &\Z/{p^4}\Z \arrow[l] & \cdots \arrow[l] \\
+	 && \varprojlim \Z/ {p^i}\Z = \Z_p \arrow[lu] \arrow[u] \arrow[llu] \arrow[ru] \arrow[rru]
 \end{tikzcd}
 \]
-The dual of a direct limit is an inverse limit. The dual of an inverse limit is not necessarily a direct limit. Another example of an inverse limit is the \defn{profinite completion}\index{profinite completion} of $\mathbf{Z}$. Suppose $\Zmod m$ maps to $\Zmod n$ if $m$ divides $n$. Draw all of these maps. The inverse limit of the resulting diagram is the profinite completion of $\mathbf{Z}$, denoted $\widehat{\mathbf{Z}}$. One sees that $\widehat{\mathbf{Z}}$ is given by the submodule of the product of all $\Zmod n$ whose components are compatible with the maps. This profinite completion can be described differently. Suppose $m = p_1^{\alpha_1}p_2^{\alpha_2} \cdots$. Then $\Zmod m \isomto \prod_i \Zmod {p_i^{\alpha_i}}$. One sees that this means that
+The dual of a direct limit is an inverse limit. The dual of an inverse limit is not necessarily a direct limit. Another example of an inverse limit is the \defn{profinite completion}\index{profinite completion} of $\mathbf{Z}$. Suppose $\Z/m\Z $ maps to $\Z/n\Z $ if $m$ divides $n$. Draw all of these maps. The inverse limit of the resulting diagram is the profinite completion of $\mathbf{Z}$, denoted $\widehat{\mathbf{Z}}$. One sees that $\widehat{\mathbf{Z}}$ is given by the submodule of the product of all $\Z/n\Z $ whose components are compatible with the maps. This profinite completion can be described differently. Suppose $m = p_1^{\alpha_1}p_2^{\alpha_2} \cdots$. Then $\Z/m\Z  \isomto \prod_i \Z/ {p_i^{\alpha_i}}\Z$. One sees that this means that
 \begin{align*}
 	\widehat{\mathbf{Z}} \isomto \prod_{p \textrm{ prime}} \Z_p.
 \end{align*}
@@ -1168,15 +1168,15 @@ Clearly, there is a map from $F(I,J)$ to $\colim_{\cat I} F(I, J)$. Then we get 
 Consider the following three identical exact sequences.
 \[
 \begin{tikzcd}
-\{0\} \arrow[r] & \Z \arrow[r] & \Z\arrow[r]& \Zmod 2\arrow[r] & \{0\}\\
-\{0\} \arrow[r] & \Z \arrow[r]\arrow[u, "\times 2", swap]\arrow[d, "\times 2"] & \Z\arrow[r]\arrow[u, "\times 2", swap]\arrow[d, "\times 2"]& \Zmod 2\arrow[r] \arrow[u, "\times 2",swap] \arrow[d, "\times 2"]& \{0\}\\
-\{0\} \arrow[r] & \Z \arrow[r] & \Z\arrow[r]& \Zmod 2\arrow[r] & \{0\}\\
+\{0\} \arrow[r] & \Z \arrow[r] & \Z\arrow[r]& \Z/2\Z \arrow[r] & \{0\}\\
+\{0\} \arrow[r] & \Z \arrow[r]\arrow[u, "\times 2", swap]\arrow[d, "\times 2"] & \Z\arrow[r]\arrow[u, "\times 2", swap]\arrow[d, "\times 2"]& \Z/2\Z \arrow[r] \arrow[u, "\times 2",swap] \arrow[d, "\times 2"]& \{0\}\\
+\{0\} \arrow[r] & \Z \arrow[r] & \Z\arrow[r]& \Z/2\Z \arrow[r] & \{0\}\\
 \end{tikzcd}
 \]
 This diagram has three pushouts, and the colimits of each (by methods described eariler) give
 \[
 \begin{tikzcd}
-	\Z\oplus \Zmod 2 \arrow[r, "\times 2"] & \Z\oplus \Zmod 2 \arrow[r] & \Zmod 2\oplus \Zmod 2 \arrow[r] & \{0\}.
+	\Z\oplus \Z/2\Z  \arrow[r, "\times 2"] & \Z\oplus \Z/2\Z  \arrow[r] & \Z/2\Z \oplus \Z/2\Z  \arrow[r] & \{0\}.
 \end{tikzcd}
 \]
 The first arrow is not injective, so pushouts do not preserve exact sequences.
@@ -1214,14 +1214,14 @@ A category $\cat C$ is a \defn{filtered category}\index{filtered category} if
 Consider the following diagram.
 \[
 \begin{tikzcd}
-	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left]& \Z \arrow[r] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left] & \Zmod 2 \arrow[r] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left] & \{0\}\\
-	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] & \Z\arrow[r]&  \Zmod 2\arrow[r] & \{0\}
+	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left]& \Z \arrow[r] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left] & \Z/2\Z  \arrow[r] \arrow[d, "\times 2", swap, shift right] \arrow[d, "\times 0", shift left] & \{0\}\\
+	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] & \Z\arrow[r]&  \Z/2\Z \arrow[r] & \{0\}
 \end{tikzcd}
 \]
 Taking colimits gives 
 \[
 \begin{tikzcd}
-	\Zmod 2 \arrow[r, "\times 2"] & \Zmod 2 \arrow[r] & \Zmod 2 \arrow[r] & \{0\},
+	\Z/2\Z  \arrow[r, "\times 2"] & \Z/2\Z  \arrow[r] & \Z/2\Z  \arrow[r] & \{0\},
 \end{tikzcd}
 \]
 but the first arrow is not injective. So we need all conditions of a filtered category for colimits to preserve exactness.
@@ -1269,14 +1269,14 @@ The rightmost arrow is not surjective if $M$ is nonzero, so pullbacks do not pre
 Kernels do not preserve exactness. Consider the following diagram.
 \[
 \begin{tikzcd}
-	\{0\} \arrow[r] & \Z \arrow[r] \arrow[d, "\times 2"] & \Z \arrow[r] \arrow[d, "\times 2"] & \Zmod 2 \arrow[r] \arrow[d, "\times 2"] & \{0\}\\
-	\{0\} \arrow[r] & \Z \arrow[r] & \Z \arrow[r] & \Zmod 2 \arrow[r] & \{0\}
+	\{0\} \arrow[r] & \Z \arrow[r] \arrow[d, "\times 2"] & \Z \arrow[r] \arrow[d, "\times 2"] & \Z/2\Z  \arrow[r] \arrow[d, "\times 2"] & \{0\}\\
+	\{0\} \arrow[r] & \Z \arrow[r] & \Z \arrow[r] & \Z/2\Z  \arrow[r] & \{0\}
 \end{tikzcd}
 \]
 Taking kernels, one gets
 \[
 \begin{tikzcd}
-	\{0\} \arrow[r]&\{0\} \arrow[r]&\{0\} \arrow[r]&\Zmod 2.
+	\{0\} \arrow[r]&\{0\} \arrow[r]&\{0\} \arrow[r]&\Z/2\Z .
 \end{tikzcd}
 \]
 The rightmost arrow is not onto, so kernels do not preserve exactness.
@@ -1285,12 +1285,12 @@ Inverse limits do not preserve exactness. Consider the following diagram.
 \[
 \begin{tikzcd}
 	& \text{ } \arrow[d, "\times 3"] & \textrm{etc.} \arrow[d, "\times 3"] & \text{ } \arrow[d, "\times 3"] &\\
-	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 3"] & \Z \arrow[r]\arrow[d, "\times 3"] & \Zmod 2 \arrow[r] \arrow[d, "\times 3"] & \{0\}\\
-\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 3"] & \Z \arrow[r]\arrow[d, "\times 3"] & \Zmod 2 \arrow[r] \arrow[d, "\times 3"] & \{0\}\\
-\{0\} \arrow[r] & \Z \arrow[r, "\times 2"] & \Z \arrow[r] & \Zmod 2 \arrow[r] & \{0\}
+	\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 3"] & \Z \arrow[r]\arrow[d, "\times 3"] & \Z/2\Z  \arrow[r] \arrow[d, "\times 3"] & \{0\}\\
+\{0\} \arrow[r] & \Z \arrow[r,"\times 2"] \arrow[d, "\times 3"] & \Z \arrow[r]\arrow[d, "\times 3"] & \Z/2\Z  \arrow[r] \arrow[d, "\times 3"] & \{0\}\\
+\{0\} \arrow[r] & \Z \arrow[r, "\times 2"] & \Z \arrow[r] & \Z/2\Z  \arrow[r] & \{0\}
 \end{tikzcd}
 \]
-One finds that the inverse limits of the second and third columns must be $\{0\}$ (we need the thing to be a multiple of every power of $3$). The inverse limit of the fourth column is $\Zmod 2$ since we have $1\longmapsto 1$ at each arrow. So inverse limits do not preserve exactness (despite direct limits preserving exactness). 
+One finds that the inverse limits of the second and third columns must be $\{0\}$ (we need the thing to be a multiple of every power of $3$). The inverse limit of the fourth column is $\Z/2\Z $ since we have $1\longmapsto 1$ at each arrow. So inverse limits do not preserve exactness (despite direct limits preserving exactness). 
 
 Mittag--Leffler came up with a condition on the $A_i$ to guarantee exactness. First, suppose each $A_{i+1} \longrightarrow A_i$ is surjective. We have sequences 
 \[
@@ -1339,14 +1339,14 @@ There is an algorithm similar to the Sieve of Eratosthenes to determine the irre
 Recall that if $a$ is a root of a polynomial, then that polynomial is divisible by $x-a$. So, over a field, a polynomial of degree $n$ has at most $n$ roots. It is important that $k$ is a field, or, more specifically, that $k$ is commutative and has no zero divisors.
 
 \begin{example}[$k$ must be a field]\label{}
-Over $\Zmod 8[x]$, the polynomial $x^2-1$ has $4$ roots. (Notice that $\Zmod 8$ is not a field.) Over $\H[x]$, the polynomial $x^2 + 1$ has roots $\pm i$, $\pm j$, and $\pm k$ (and uncountably many more).
+Over $\Z/8\Z [x]$, the polynomial $x^2-1$ has $4$ roots. (Notice that $\Z/8\Z $ is not a field.) Over $\H[x]$, the polynomial $x^2 + 1$ has roots $\pm i$, $\pm j$, and $\pm k$ (and uncountably many more).
 \end{example}
 
 \begin{proposition}[ ]\label{thing thing tng}
-The group $(\Zmod p)^*$ is cyclic. So it has a so-called \defn{primitive root}\index{primitive root} that generates it.
+The group $(\Z/p\Z )^*$ is cyclic. So it has a so-called \defn{primitive root}\index{primitive root} that generates it.
 \end{proposition}
 \begin{proof}
-Consider the field $\Zmod p$. Over this field, $x^n-1$ has at most $n$ roots. So $(\Zmod p)^*$ has at most $n$ elements of order dividing $n$, and hence it is cyclic. There is a counting argument due to Gauss\footnote{See \underline{Disquisitiones Arithmeticae} arts. 52--56.} that proves this. One can also use the classification of finite abelian groups. 
+Consider the field $\Z/p\Z $. Over this field, $x^n-1$ has at most $n$ roots. So $(\Z/p\Z )^*$ has at most $n$ elements of order dividing $n$, and hence it is cyclic. There is a counting argument due to Gauss\footnote{See \underline{Disquisitiones Arithmeticae} arts. 52--56.} that proves this. One can also use the classification of finite abelian groups. 
 \end{proof}
 \begin{proposition}[ ]\label{}
 Suppose $F$ is a finite field. Then $F^*$ is cyclic. Suppose $k$ is a field. If $G$ is a finite subgroup of $k^*$, then $G$ is cyclic.
@@ -1355,13 +1355,13 @@ Suppose $F$ is a finite field. Then $F^*$ is cyclic. Suppose $k$ is a field. If 
 See the proof for \cref{thing thing tng}.
 \end{proof}
 \begin{example}[$F$ must be a field]\label{}
-The group $(\Zmod 8)^*$ is not cyclic (the elements $1$, $3$, $5$, and $7$ all satisfy $g^2=1$). The group of unit quaternions has a noncyclic subgroup $\{\pm 1,\pm i,\pm j,\pm k\}$.
+The group $(\Z/8\Z )^*$ is not cyclic (the elements $1$, $3$, $5$, and $7$ all satisfy $g^2=1$). The group of unit quaternions has a noncyclic subgroup $\{\pm 1,\pm i,\pm j,\pm k\}$.
 \end{example}
 \begin{warn}
 	If a polynomial of degree $n$ vanishes at more than $n$ points, it is $0$. However, a polynomial may vanish at all elements of the field without being $0$.
 \end{warn}
 \begin{example}[ ]\label{}
-The polynomial $x^p - x$ vanishes at all points of $\Zmod p$.
+The polynomial $x^p - x$ vanishes at all points of $\Z/p\Z $.
 \end{example}
 \begin{proposition}[ ]\label{}
 The ring $\Z[x]$ is a UFD.
@@ -1388,7 +1388,7 @@ There is no algorithm for determining whether $f\in \Z[x_1,\hdots,x_n]$ has a ro
 
 There is almost a ``fast'' algorithm for factorizing polynomials over $\Z[x]$. One takes $f\in \Z[x]$ and writes it as $f = c(f)g$, and the LLL (Lenstra--Lenstra--Lov\'asz) algorithm allows one to factor $g $ in polynomial time. However, determining $c(f)$ comes down to factoring integers (and we don't know whether integers can be factored in polynomial time). Of course, Shor's algorithm would allow one to determine $c(f)$ in polynomial time.
 
-One notices that almost all polynomials with degree greater than $0$ and content 1 are irreducible over $\Z$. If a polynomial is irreducible over $\Zmod p$, then it is irreducible over $\Z$ (granted the degree over $\Zmod p$ is the same as that over $\Z$). Recall {Eisenstein's criterion}\index{Eisenstein's criterion}: if $x^n + a_{n-1}x^{n-1} + \cdots + a_0 \in \Z[x]$ satisfies
+One notices that almost all polynomials with degree greater than $0$ and content 1 are irreducible over $\Z$. If a polynomial is irreducible over $\Z/p\Z $, then it is irreducible over $\Z$ (granted the degree over $\Z/p\Z $ is the same as that over $\Z$). Recall {Eisenstein's criterion}\index{Eisenstein's criterion}: if $x^n + a_{n-1}x^{n-1} + \cdots + a_0 \in \Z[x]$ satisfies
  \begin{enumerate}
 	\item $p$ divides $a_0,\hdots, a_{n-1}$;
 	\item $p^2$ does not divide $a_0$;
@@ -1519,7 +1519,7 @@ Suppose $G=\Sg_n$ and $V=\C^n$ is finite dimensional. The invariants consist of 
 \end{example}
 
 \begin{example}[ ]\label{}
-Let $G= \Zmod 4$ and $V$ be a $2$--dimensional vector space. The group $G$ with generator $g$ acts on $k[x,y]$ by $g(x) = ix$ and $g(y)=iy$. The ring of invariants comprises $1$ and the polynomials of degree dividing $4$, and it is generated by $x^4$, $x^3y$, $x^2y^2$, $xy^3$, and $y^4$. (It is not normally the case that one can write down the generators of the invariant ring with ease.) 
+Let $G= \Z/4\Z $ and $V$ be a $2$--dimensional vector space. The group $G$ with generator $g$ acts on $k[x,y]$ by $g(x) = ix$ and $g(y)=iy$. The ring of invariants comprises $1$ and the polynomials of degree dividing $4$, and it is generated by $x^4$, $x^3y$, $x^2y^2$, $xy^3$, and $y^4$. (It is not normally the case that one can write down the generators of the invariant ring with ease.) 
 \end{example}
 
 \begin{example}[ ]\label{}
@@ -1660,7 +1660,7 @@ Suppose $f$ and $g$ are homonogenous polynomials in $y$ and $z$ with coefficient
 We saw that the invariants of $\Ag_3$ on $k[x,y,z]$ are $k[e_1,e_2,e_3,\Delta]/(\Delta - \Disc(e_1,e_2,e_3))$. The ideal $(\Delta - \Disc(e_1,e_2,e_3))$ is a \defn{syzygy}\index{syzygy}.
 
 \begin{example}[Syzygies]\label{}
-The ring $\Zmod n$ acts on $k[x,y]$ by $x\longmapsto x\zeta$ and $y\longmapsto y\zeta$ where $\zeta$ is a primitive $n$th root of unity. Then the ring of invariants is $k[x^n, x^{n-1}y, \hdots, y^n]$. Call these generators $a_n$, $a_{n-1}$, etc. We have relations like $a_{n-1}^2 = a_na_{n-2}$, $a_{n-2}^2 = a_na_{n-3}$, etc. These are syzygies.
+The ring $\Z/n\Z $ acts on $k[x,y]$ by $x\longmapsto x\zeta$ and $y\longmapsto y\zeta$ where $\zeta$ is a primitive $n$th root of unity. Then the ring of invariants is $k[x^n, x^{n-1}y, \hdots, y^n]$. Call these generators $a_n$, $a_{n-1}$, etc. We have relations like $a_{n-1}^2 = a_na_{n-2}$, $a_{n-2}^2 = a_na_{n-3}$, etc. These are syzygies.
 \end{example}
 
 \section{Formal power series}
